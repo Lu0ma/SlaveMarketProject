@@ -146,8 +146,11 @@
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Merchand.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
+    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovementComponent.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
@@ -178,8 +181,11 @@
     <ClInclude Include="Kismet.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Macro.h" />
+    <ClInclude Include="Merchand.h" />
     <ClInclude Include="MovementComponent.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="ShapeObject.h" />

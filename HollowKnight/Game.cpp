@@ -11,11 +11,13 @@
 Game::Game()
 {
 	//map = new Map();
+	player = new Player();
 }
 
 Game::~Game()
 {
 	//delete map;
+	//delete player;
 }
 
 

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "Player.h"
 using namespace std;
 using namespace sf;
 
@@ -11,6 +12,7 @@ using namespace sf;
 class Game
 {
 	RenderWindow window;
+	Player* player;
 
 public:
 	Game();

@@ -171,6 +171,15 @@
     <ClCompile Include="MovementComponent.cpp">
       <Filter>Components\Movement</Filter>
     </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="Merchand.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -265,6 +274,15 @@
     </ClInclude>
     <ClInclude Include="MovementComponent.h">
       <Filter>Components\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Merchand.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
