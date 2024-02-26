@@ -9,6 +9,8 @@
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
 
+RenderWindow Game::window;
+
 Game::Game()
 {
 	//map = new Map();
@@ -22,7 +24,7 @@ Game::~Game()
 
 void Game::Start()
 {
-	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SparklingSprings");
+	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
 }

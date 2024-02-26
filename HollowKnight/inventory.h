@@ -43,6 +43,6 @@ public:
 
 	void UpdateMaskCount(const int _factor);
 
-	void AddItem(const int _count, const string _path, const ItemType& _type, const RarityType& _rarity = RARITY_COMMON);
-	void CreateItemData(const std::string& _path, const ItemType& _type, const RarityType& _rarity);
+	void AddItem(const int _count, const string _path);
+	void CreateItemData(const std::string& _path);
 };

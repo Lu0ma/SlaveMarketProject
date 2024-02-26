@@ -10,7 +10,13 @@ using namespace sf;
 
 class Game
 {
-	RenderWindow window;
+	static RenderWindow window;
+
+public:
+	static Vector2f GetWindowSize()
+	{
+		return Vector2f(window.getSize());
+	}
 
 public:
 	Game();

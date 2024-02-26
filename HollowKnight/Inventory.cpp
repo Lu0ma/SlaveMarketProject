@@ -182,29 +182,29 @@ void Inventory::UpdateMaskCount(const int _factor)
 }
 
 
-void Inventory::AddItem(const int _count, const string _path, const ItemType& _type, const RarityType& _rarity)
+void Inventory::AddItem(const int _count, const string _path)
 {
 	if (_count <= 0) return;
 
 	if (Item* _item = FindItemData(_path))
 	{
 		_item->UpdateCount(1);
-		AddItem(_count - 1, _path, _type, _rarity);
+		AddItem(_count - 1, _path);
 		return;
 	}
 
-	CreateItemData(_path, _type, _rarity);
-	AddItem(_count - 1, _path, _type, _rarity);
+	CreateItemData(_path);
+	AddItem(_count - 1, _path);
 }
 
-void Inventory::CreateItemData(const std::string& _path, const ItemType& _type, const RarityType& _rarity)
+void Inventory::CreateItemData(const std::string& _path)
 {
 	Button* _button = GetFirstAvailableButton();
 	if (!_button) return;
 
 	const ShapeData& _objectData = ShapeData(_button->GetObject()->GetShapePosition(),
 		_button->GetObject()->GetShapeSize(), _path);
-	ItemWidget* _widget = new ItemWidget(_objectData, _type, _rarity);
+	ItemWidget* _widget = new ItemWidget(_objectData);
 	Item* _item = new Item(_widget, FONT);
 	Add(_item->GetID(), _item);
 

@@ -22,6 +22,10 @@ protected:
 	Shape* shape;
 
 public:
+	void SetShape(Shape* _shape)
+	{
+		shape = _shape;
+	}
 	void SetShapePosition(const Vector2f& _position)
 	{
 		shape->setPosition(_position);

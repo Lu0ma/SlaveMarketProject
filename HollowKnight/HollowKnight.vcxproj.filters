@@ -79,6 +79,15 @@
     <Filter Include="Games">
       <UniqueIdentifier>{1cfa9301-bc39-4e55-9a1e-6e9c5ce7adfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers\Inventory">
+      <UniqueIdentifier>{15cbcdfd-1cc5-4320-b8b3-f3aa5d8fe85f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\Item">
+      <UniqueIdentifier>{65d3a162-fb79-4bc2-851b-66d816c2325b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Player">
+      <UniqueIdentifier>{ff683619-de14-452e-906b-56321ba1f24e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -161,6 +170,18 @@
     </ClCompile>
     <ClCompile Include="ShapeWidget.cpp">
       <Filter>UIs\Widgets\ShapeWidgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Managers\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Managers\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemWidget.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +271,18 @@
     </ClInclude>
     <ClInclude Include="ShapeWidget.h">
       <Filter>UIs\Widgets\ShapeWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Managers\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Managers\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemWidget.h">
+      <Filter>UIs\Widgets\ShapeWidgets\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

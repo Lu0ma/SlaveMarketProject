@@ -54,6 +54,10 @@ public:
 	{
 		return foreground;
 	}
+	ButtonData& GetData()
+	{
+		return data;
+	}
 
 public:
 	Button(const ShapeData& _data, const ButtonData& _buttonData = ButtonData());
