@@ -5,6 +5,7 @@
 #include "HUD.h"
 #include "Widget.h"
 
+
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
 
@@ -13,6 +14,7 @@ Game::Game()
 	//map = new Map();
 	//player = new Player();
 	//camera = new Camera();
+	//playerInfo = new PlayerInfo(10, 10, 20, 20, 1000)
 }
 
 Game::~Game()
@@ -39,6 +41,8 @@ void Game::Update()
 {
 	while (window.isOpen())
 	{
+		playerInfo->SetMaxHealth(playerInfo->GetMaxHealth() +1);
+		cout << playerInfo->GetMaxHealth() << endl;
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
 		ActorManager::GetInstance().Update();
