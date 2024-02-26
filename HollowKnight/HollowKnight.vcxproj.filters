@@ -168,6 +168,12 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="MovementComponent.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponent.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -263,5 +269,19 @@
     <ClInclude Include="Camera.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="MovementComponent.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="HollowKnight.rc">
+      <Filter>Fichiers de ressources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -7,5 +7,14 @@ class Player : public Actor
 
 public :
 	Player();
+
+
+public:
+	void Init();
+
+private:
+	void Right();
+	void Left();
+	void Up();
 };
 

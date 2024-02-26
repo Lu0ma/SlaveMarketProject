@@ -1,6 +1,7 @@
 #pragma once
 #include<SFML/Graphics.hpp>
 using namespace sf;
+#include "Player.h"
 
 class Camera 
 {
@@ -41,5 +42,7 @@ public:
 	}
 public:
 	View FollowPlayer();
+private:
+	FloatRect GetPlayerRect();
 };
 

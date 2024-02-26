@@ -11,11 +11,13 @@
 Game::Game()
 {
 	//map = new Map();
+	camera = new Camera();
 }
 
 Game::~Game()
 {
 	//delete map;
+	// delete camera;
 }
 
 
@@ -28,7 +30,7 @@ void Game::Start()
 
 void Game::Init()
 {
-
+	
 }
 
 void Game::Update()
