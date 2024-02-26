@@ -88,6 +88,9 @@
     <Filter Include="UIs\Widgets\ShapeWidgets\Items">
       <UniqueIdentifier>{56eb58f9-0645-4860-921e-d705ae9e8764}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Player">
+      <UniqueIdentifier>{bfa6ca6f-05b5-4903-8076-d8cd9ad33e4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -183,9 +186,6 @@
     <ClCompile Include="Merchand.cpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -200,6 +200,9 @@
     </ClCompile>
     <ClCompile Include="ItemWidget.cpp">
       <Filter>UIs\Widgets\ShapeWidgets\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -302,9 +305,6 @@
     <ClInclude Include="Merchand.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -319,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="ItemWidget.h">
       <Filter>UIs\Widgets\ShapeWidgets\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

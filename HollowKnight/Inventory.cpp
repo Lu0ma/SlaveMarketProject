@@ -14,7 +14,7 @@ Inventory::Inventory()
 {
 	canvas = nullptr;
 	gridSize = Vector2i(4, 5);
-	cellSize = Vector2f(70.0f, 70.0f);
+	cellSize = Vector2f(80.0f, 80.0f);
 	buttons = vector<Button*>();
 	stackSize = 5;
 }
@@ -80,16 +80,15 @@ void Inventory::Init()
 			const Vector2f& _buttonPos = Vector2f(_posX, _posY);
 
 			Button* _button = new Button(ShapeData(_buttonPos, cellSize, PATH_CELL));
+			_button->GetDrawable()->setFillColor(Color::Transparent);
+
 			_button->GetData().hoveredCallback = [&]()
 			{ 
 				// afficher le pointer au dessus du boutton
-				Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons);
+				Button* _hoveredButton = dynamic_cast<Button*>(HUD::GetInstance().GetHoveredButton(buttons));
 				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
 				pointer->SetShapePosition(_position);
-			};
-			_button->GetData().pressedCallback = [&]()
-			{
-				// toggle la visibility du widget de l'item contenu
+
 				//_button->ToggleVisibilityWidget();
 			};
 
@@ -168,7 +167,7 @@ void Inventory::Init()
 	canvas->AddWidget(_separator1);
 
 	const float _separatorPosX2 = _descriptionPosX - _descriptionSizeX / 2.0f - _separatorSize.x / 2.0f;
-	const Vector2f& _separatorPos2 = Vector2f(_separatorPosX2, _gridSizeY);
+	const Vector2f& _separatorPos2 = Vector2f(_separatorPosX2, _halfSize.y);
 	ShapeWidget* _separator2 = new ShapeWidget(ShapeData(_separatorPos2, _separatorSize, PATH_SEPARATOR));
 	canvas->AddWidget(_separator2);
 
@@ -206,13 +205,14 @@ void Inventory::AddItem(const int _count, const string _path)
 	AddItem(_count - 1, _path);
 }
 
-void Inventory::CreateItemData(const std::string& _path)
+void Inventory::CreateItemData(const string& _path)
 {
 	Button* _button = GetFirstAvailableButton();
 	if (!_button) return;
 
 	const ShapeData& _objectData = ShapeData(_button->GetObject()->GetShapePosition(),
-		_button->GetObject()->GetShapeSize(), _path);
+											 _button->GetObject()->GetShapeSize() * 60.0f / 100.0f,
+											 _path);
 	ItemWidget* _widget = new ItemWidget(_objectData);
 	Item* _item = new Item(_widget, FONT);
 	Add(_item->GetID(), _item);

@@ -14,7 +14,11 @@ public:
 	void UpdateCount(const int _factor)
 	{
 		count += _factor;
-		countText->SetString(to_string(count));
+
+		if (count >= 1)
+		{
+			countText->SetString(to_string(count));
+		}
 	}
 	bool IsEmpty() const
 	{
