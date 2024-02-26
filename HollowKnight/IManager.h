@@ -104,6 +104,23 @@ public:
 		return _values;
 	}
 
+	template<typename SpecificValue>
+	vector<SpecificValue*> GetSpecificValues()
+	{
+		vector<SpecificValue*> _allspecificValues;
+
+		vector<Value*>_allValues = GetAllValues();
+		for (Value* _value : _allValues)
+		{
+			if (SpecificValue* _specificValue = dynamic_cast<SpecificValue*>(_value))
+			{
+		 		_allspecificValues.push_back(_specificValue);
+			}
+		}
+		
+		return _allspecificValues;
+
+	}
 	bool Exist(const Key& _key) const
 	{
 		//if (allValues.empty()) return false;

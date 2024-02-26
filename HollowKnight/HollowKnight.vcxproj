@@ -135,6 +135,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorManager.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="FontData.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
     <ClCompile Include="ShapeWidget.cpp" />
@@ -164,6 +166,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorManager.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="FontData.h" />
@@ -177,6 +180,7 @@
     <ClInclude Include="Label.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="ShapeWidget.h" />

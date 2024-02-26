@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
-
+#include "Camera.h"
 using namespace std;
 using namespace sf;
 
@@ -11,6 +11,7 @@ using namespace sf;
 class Game
 {
 	RenderWindow window;
+	Camera* camera;
 
 public:
 	Game();

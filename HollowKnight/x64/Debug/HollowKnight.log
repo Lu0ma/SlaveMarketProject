@@ -1,0 +1,29 @@
+﻿  Action.cpp
+  ActionMap.cpp
+  Actor.cpp
+  ActorManager.cpp
+  Button.cpp
+  Camera.cpp
+  Canvas.cpp
+  Component.cpp
+  FontData.cpp
+  FontManager.cpp
+  Game.cpp
+  HUD.cpp
+  InputManager.cpp
+  Kismet.cpp
+  Main.cpp
+  Player.cpp
+  ProgressBar.cpp
+  ShapeObject.cpp
+  ShapeWidget.cpp
+  TextObject.cpp
+  Generating Code...
+D:\SlaveMarketProject\HollowKnight\Camera.cpp(24): error C4700: uninitialized local variable '_player' used
+  Compiling...
+  TextureData.cpp
+  TextureManager.cpp
+  TextWidget.cpp
+  Timer.cpp
+  TimerManager.cpp
+  Generating Code...

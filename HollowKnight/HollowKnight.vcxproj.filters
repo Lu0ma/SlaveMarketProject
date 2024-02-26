@@ -162,6 +162,12 @@
     <ClCompile Include="ShapeWidget.cpp">
       <Filter>UIs\Widgets\ShapeWidgets</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -250,6 +256,12 @@
     </ClInclude>
     <ClInclude Include="ShapeWidget.h">
       <Filter>UIs\Widgets\ShapeWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

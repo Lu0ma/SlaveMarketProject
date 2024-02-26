@@ -46,7 +46,13 @@ void Game::UpdateWindow()
 	window.clear();
 
 	// Game
-	const View& _defaultView = window.getDefaultView();
+	// const View& _defaultView = window.getDefaultView();
+	//Deux façon de suivre le Player
+	//1:
+	const View& _defaultView =  camera->FollowPlayer();
+	//2:
+	// const View& _defaultView = camera->GetView();
+
 	window.setView(_defaultView);
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
@@ -68,6 +74,9 @@ void Game::UpdateWindow()
 			window.draw(*_widget->GetDrawable());
 		}
 	}
+	// Camera
+	// 
+	// camera->FollowPlayer;
 
 	window.display();
 }
