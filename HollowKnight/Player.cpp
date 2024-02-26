@@ -22,7 +22,8 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	inventory = new Inventory();
 
 	//TODO move
-	//merchand = new Merchand();
+	// merchand = new Merchand();
+
 }
 
 
@@ -51,6 +52,10 @@ void Player::InitStats()
 void Player::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
+
+	//MovementComponent* _mouvement = GetComponent<MovementComponent>();
+
+	//_mouvement->SetDestination(new Vector2f(0.01f, 0.0f));
 
 }
 

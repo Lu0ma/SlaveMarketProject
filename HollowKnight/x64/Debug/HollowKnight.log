@@ -1,2 +1,5 @@
-﻿  Game.cpp
-  HollowKnight.vcxproj -> D:\p1VS\SFML\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
+﻿  MovementComponent.cpp
+  Player.cpp
+  PlayerMovementComponent.cpp
+  Generating Code...
+  HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

@@ -2,7 +2,6 @@
 #include "Actor.h"
 #include "PlayerStats.h"
 #include "Inventory.h"
-
 #include "Merchand.h"
 
 using namespace std;
@@ -11,7 +10,6 @@ class Player : public Actor
 {
 	PlayerStats* stats;
 	Inventory* inventory;
-
 	//TODO move
 	Merchand* merchand;
 

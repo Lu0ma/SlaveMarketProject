@@ -1,9 +1,11 @@
 #include "Camera.h"
 #include "Game.h"
 
+
 Camera::Camera()
 {
-	center = Vector2f(/* rectPlayer.left , rectPlayer.top */);
+	const FloatRect& _rect = Game::GetInstance().GetPlayer()->GetShape()->getGlobalBounds();
+	center = Vector2f(_rect.left, _rect.top/* rectPlayer.left , rectPlayer.top */);
 	size = Vector2f(1000 , 1000);
 	view = View(center , size);
 }
@@ -22,6 +24,6 @@ View Camera::FollowPlayer()
 FloatRect Camera::GetPlayerRect()
 {
 	Player* _player = Game::GetInstance().GetPlayer(); // Ne pas creer de player mais le recuperer 
-	const FloatRect& _rectP = _player->GetShape()->getGlobalBounds();
-	return _rectP;
+	const FloatRect& _rectPlayer = _player->GetShape()->getGlobalBounds();
+	return _rectPlayer;
 }

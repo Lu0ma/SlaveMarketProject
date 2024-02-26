@@ -12,7 +12,7 @@ class MovementComponent : public Component
 	bool canMove;
 	float speed;
 	float minRange;
-	Vector2f destination;
+	Vector2f* destination;
 	function<void()> callback;
 
 public:
@@ -20,7 +20,7 @@ public:
 	{
 		canMove = _status;
 	}
-	void SetDestination(const Vector2f& _destination, const bool _canMove = true)
+	void SetDestination(Vector2f* _destination, const bool _canMove = true)
 	{
 		destination = _destination;
 		//cout << destination.x << " " << destination.y << endl;
@@ -30,7 +30,7 @@ public:
 	{
 		callback = _callback;
 	}
-	const Vector2f& GetDestination()
+	const Vector2f* GetDestination()
 	{
 		return destination;
 	}
