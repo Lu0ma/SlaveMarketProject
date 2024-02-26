@@ -12,12 +12,20 @@
 Game::Game()
 {
 	//map = new Map();
+<<<<<<< Updated upstream
 	playerInfo = new PlayerInfo(10, 10, 20, 20, 1000);
+=======
+	camera = new Camera();
+>>>>>>> Stashed changes
 }
 
 Game::~Game()
 {
 	//delete map;
+<<<<<<< Updated upstream
+=======
+	// delete camera;
+>>>>>>> Stashed changes
 }
 
 

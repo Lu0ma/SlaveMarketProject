@@ -17,6 +17,7 @@ using namespace std;
 
 class Player : public Actor//, public IDamagable
 {
+<<<<<<< Updated upstream
 	PlayerStats* stats;
 	//Inventory* inventory;
 	//CraftBook* craftBook;
@@ -57,5 +58,14 @@ private:
 
 public:
 	virtual void Update(const float _deltaTime) override;
+=======
+	ShapeData data;
+
+public :
+	Player();
+
+
+public:
+>>>>>>> Stashed changes
 	void Init();
 };

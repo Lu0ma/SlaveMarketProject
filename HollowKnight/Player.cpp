@@ -1,6 +1,13 @@
 #include "Player.h"
+<<<<<<< Updated upstream
 #include "Macro.h"
 #include "Kismet.h"
+=======
+//#include "TextureManager.h"
+#include "ActionMap.h"
+#include "Component.h"
+#include "MovementComponent.h"
+>>>>>>> Stashed changes
 
 // Managers
 #include "ActorManager.h"
@@ -49,6 +56,7 @@
 Player::Player(const string& _name, const ShapeData& _data)
 			: Actor(_name, _data)//, IDamagable(GetDrawable())
 {
+<<<<<<< Updated upstream
 	InitStats();
 
 	/*inventory = new Inventory();
@@ -75,6 +83,9 @@ Player::Player(const string& _name, const ShapeData& _data)
 void Player::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
+=======
+	data = ShapeData();
+>>>>>>> Stashed changes
 }
 
 void Player::Init()
@@ -97,6 +108,7 @@ void Player::Init()
 			}),
 		ResourceData(PATH_WOOD, ITEM_RESOURCE, RARITY_COMMON, 3, 5.0f, 0.01f)
 	);
+<<<<<<< Updated upstream
 	static Resource* _rock = new Resource(
 		InteractableData("Rock", ShapeData(Vector2f(600.0f, 200.0f), Vector2f(50.0f, 50.0f), ""), [&]() {
 			gather->Gather(_rock);
@@ -124,6 +136,8 @@ void Player::Init()
 	//new Enemy("Enemy", ShapeData(Vector2f(450.0f, 610.0f), Vector2f(80.0f, 80.0f), ""));
 
 	#pragma endregion
+=======
+>>>>>>> Stashed changes
 }
 
 void Player::SetupPlayerInput()

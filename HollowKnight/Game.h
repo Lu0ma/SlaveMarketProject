@@ -1,8 +1,12 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
+<<<<<<< Updated upstream
 #include "PlayerInfo.h"
 
+=======
+#include "Camera.h"
+>>>>>>> Stashed changes
 using namespace std;
 using namespace sf;
 
@@ -12,6 +16,7 @@ using namespace sf;
 class Game
 {
 	RenderWindow window;
+<<<<<<< Updated upstream
 	PlayerInfo* playerInfo;
 
 public:
@@ -19,6 +24,9 @@ public:
 	{
 		return Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT);
 	}
+=======
+	Camera* camera;
+>>>>>>> Stashed changes
 
 public:
 	Game();
