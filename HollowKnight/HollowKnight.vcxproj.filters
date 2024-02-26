@@ -82,6 +82,9 @@
     <Filter Include="Components\Movement">
       <UniqueIdentifier>{51a7a8f9-3dc1-48ca-8574-2d01ac573be2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Collision">
+      <UniqueIdentifier>{33f06531-86fd-41a2-9e92-ff553e767f62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -113,9 +116,6 @@
     </ClCompile>
     <ClCompile Include="Actor.cpp">
       <Filter>Objects\ShapeObjects\Actors</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="Kismet.cpp">
       <Filter>Fichiers de ressources\Kismet</Filter>
@@ -171,6 +171,15 @@
     <ClCompile Include="MovementComponent.cpp">
       <Filter>Components\Movement</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponent.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -199,9 +208,6 @@
     </ClInclude>
     <ClInclude Include="Actor.h">
       <Filter>Objects\ShapeObjects\Actors</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Kismet.h">
       <Filter>Fichiers de ressources\Kismet</Filter>
@@ -265,6 +271,15 @@
     </ClInclude>
     <ClInclude Include="MovementComponent.h">
       <Filter>Components\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 using namespace sf;
 #include "Player.h"
 
-class Camera 
+class Camera
 {
 	View view;
 	Vector2f  center; // faudrait le centrer sur Le player
@@ -28,7 +28,7 @@ public:
 	Camera();
 	Camera(View _view);
 public:
-	void SetView(const View&  _view)
+	void SetView(const View& _view)
 	{
 		view = _view;
 	}
@@ -45,4 +45,5 @@ public:
 private:
 	FloatRect GetPlayerRect();
 };
+
 
