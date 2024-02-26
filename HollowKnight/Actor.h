@@ -21,7 +21,6 @@ public:
 				return _component;
 			}
 		}
-
 		return nullptr;
 	}
 

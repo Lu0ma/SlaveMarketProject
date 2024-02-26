@@ -1,0 +1,35 @@
+﻿  Action.cpp
+  ActionMap.cpp
+  Actor.cpp
+  ActorManager.cpp
+  Button.cpp
+  Canvas.cpp
+  Component.cpp
+  FontData.cpp
+  FontManager.cpp
+  Game.cpp
+  HUD.cpp
+  InputManager.cpp
+  Kismet.cpp
+  Label.cpp
+  Macro.cpp
+  Main.cpp
+  Mob.cpp
+  MovementComponent.cpp
+  Object.cpp
+  PlayerMovementComponent.cpp
+  Generating Code...
+  Compiling...
+  ProgressBar.cpp
+  ShapeObject.cpp
+  ShapeWidget.cpp
+  Spawner.cpp
+  TextObject.cpp
+  TextureData.cpp
+  TextureManager.cpp
+  TextWidget.cpp
+  Timer.cpp
+  TimerManager.cpp
+  Widget.cpp
+  Generating Code...
+  HollowKnight.vcxproj -> C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
