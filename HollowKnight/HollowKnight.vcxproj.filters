@@ -82,6 +82,12 @@
     <Filter Include="Components\Movement">
       <UniqueIdentifier>{51a7a8f9-3dc1-48ca-8574-2d01ac573be2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers\Inventory">
+      <UniqueIdentifier>{53bbd895-9d03-4743-81a3-5c00db2049c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\Items">
+      <UniqueIdentifier>{56eb58f9-0645-4860-921e-d705ae9e8764}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -179,6 +185,21 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponent.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Managers\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Managers\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemWidget.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets\Items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -283,6 +304,21 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Managers\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Managers\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemWidget.h">
+      <Filter>UIs\Widgets\ShapeWidgets\Items</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -29,7 +29,6 @@ public:
 	Player(const string& _name, const ShapeData& _data);
 
 private:
-	void Init();
 	void SetupPlayerInput();
 	void InitStats();
 

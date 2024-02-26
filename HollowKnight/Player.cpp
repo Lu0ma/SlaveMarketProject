@@ -19,11 +19,10 @@
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
-	data = ShapeData();
 	inventory = new Inventory();
 
 	//TODO move
-	merchand = new Merchand();
+	//merchand = new Merchand();
 }
 
 
@@ -34,18 +33,18 @@ void Player::SetupPlayerInput()
 		ActionData("AddHealthMash", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::A })),
 	});
 	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab })) });
-	ActionMap("Movement ", {
-		ActionData("Right" , this , &Player::Right , {Event::KeyPressed , Keyboard::D} , {Event::KeyPressed , Keyboard::Right}),
+	new ActionMap("Movement", {
+		/*ActionData("Right" , this , &Player::Right , {Event::KeyPressed , Keyboard::D} , {Event::KeyPressed , Keyboard::Right}),
 		ActionData("Left" , this , &Player::Left , {Event::KeyPressed , Keyboard::Q} , {Event::KeyPressed , Keyboard::Left}),
-		ActionData("Up" , this , &Player::Up , {Event::KeyPressed , Keyboard::Z} , {Event::KeyPressed , Keyboard::Up})
+		ActionData("Up" , this , &Player::Up , {Event::KeyPressed , Keyboard::Z} , {Event::KeyPressed , Keyboard::Up})*/
 		}
 	);
 }
 
 void Player::InitStats()
 {
-	canvas = new Canvas("PlayerStats");
-	stats = new PlayerStats(_healthBar, _manaBar, _thirstBar, _hungerBar);
+	//canvas = new Canvas("PlayerStats");
+	//stats = new PlayerStats(_healthBar, _manaBar, _thirstBar, _hungerBar);
 }
 
 
@@ -57,7 +56,7 @@ void Player::Update(const float _deltaTime)
 
 void Player::Init()
 {
-	InitStats();
+	//InitStats();
 	inventory->Init();
-	SetupPlayerInputs();
+	SetupPlayerInput();
 }

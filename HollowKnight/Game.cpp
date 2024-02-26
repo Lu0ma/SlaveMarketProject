@@ -9,56 +9,56 @@
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
 
-RenderWindow Game::window;
-
 Game::Game()
 {
-	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
+	instance.player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
 }
 
 Game::~Game()
 {
-	delete camera;
+	delete instance.camera;
 }
 
 
 void Game::Start()
 {
-	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
+	instance.window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
 }
 
 void Game::Init()
 {
-	player->Init();
+	instance.player->Init();
 }
 
 void Game::Update()
 {
-	while (window.isOpen())
+	while (instance.window.isOpen())
 	{
 		TimerManager::GetInstance().Update();
-		if (!InputManager::GetInstance().Update(window)) break;
+		if (!InputManager::GetInstance().Update(instance.window)) break;
 		ActorManager::GetInstance().Update();
 	}
 }
 
 void Game::UpdateWindow()
 {
-	window.clear();
+	instance.window.clear();
 
 	// const View& _defaultView = window.getDefaultView();
 	//Deux façon de suivre le Player
 	//1:
-	const View& _defaultView =  camera->FollowPlayer();
-	//2:
-	// const View& _defaultView = camera->GetView();
+	//const View& _defaultView =  camera->FollowPlayer();
+	////2:
+	//const View& _defaultView = camera->GetView();
 
-	window.setView(_defaultView);
+	const View& _defaultView = instance.window.getDefaultView();
+	instance.window.setView(_defaultView);
+
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
-		window.draw(*_actor->GetDrawable());
+		instance.window.draw(*_actor->GetDrawable());
 	}
 
 	// UI
@@ -68,18 +68,18 @@ void Game::UpdateWindow()
 		if (!_canvas->IsVisible()) continue;
 
 		_view.setViewport(_canvas->GetRect());
-		window.setView(_view);
+		instance.window.setView(_view);
 
 		for (Widget* _widget : _canvas->GetWidgets()) 
 		{
 			if (!_widget->IsVisible()) continue;
-			window.draw(*_widget->GetDrawable());
+			instance.window.draw(*_widget->GetDrawable());
 		}
 	}
 
 	// camera->FollowPlayer;
 
-	window.display();
+	instance.window.display();
 }
 
 void Game::Stop()
