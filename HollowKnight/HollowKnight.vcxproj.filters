@@ -79,6 +79,9 @@
     <Filter Include="Games">
       <UniqueIdentifier>{1cfa9301-bc39-4e55-9a1e-6e9c5ce7adfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Movement">
+      <UniqueIdentifier>{51a7a8f9-3dc1-48ca-8574-2d01ac573be2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -161,6 +164,12 @@
     </ClCompile>
     <ClCompile Include="ShapeWidget.cpp">
       <Filter>UIs\Widgets\ShapeWidgets</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMovementComponent.cpp">
+      <Filter>Components\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementComponent.cpp">
+      <Filter>Components\Movement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +259,12 @@
     </ClInclude>
     <ClInclude Include="ShapeWidget.h">
       <Filter>UIs\Widgets\ShapeWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovementComponent.h">
+      <Filter>Components\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementComponent.h">
+      <Filter>Components\Movement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
