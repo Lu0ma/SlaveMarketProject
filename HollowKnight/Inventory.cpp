@@ -2,6 +2,7 @@
 #include "Button.h"
 #include "Game.h"
 #include "TextureManager.h"
+#include "HUD.h"
 
 #define PATH_BACKGROUND "UIs/Inventory.png"
 #define PATH_CELL "UIs/Cell.png"
@@ -79,9 +80,17 @@ void Inventory::Init()
 			const Vector2f& _buttonPos = Vector2f(_posX, _posY);
 
 			Button* _button = new Button(ShapeData(_buttonPos, cellSize, PATH_CELL));
-			_button->GetData().hoveredCallback = [&]() { 
-
-				//pointer->SetShapePosition(_button->GetDrawable()->getPosition());
+			_button->GetData().hoveredCallback = [&]()
+			{ 
+				// afficher le pointer au dessus du boutton
+				Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons);
+				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
+				pointer->SetShapePosition(_position);
+			};
+			_button->GetData().pressedCallback = [&]()
+			{
+				// toggle la visibility du widget de l'item contenu
+				//_button->ToggleVisibilityWidget();
 			};
 
 			buttons.push_back(_button);

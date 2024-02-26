@@ -16,4 +16,5 @@ public:
 
 public:
 	void Interact(const Vector2f& _worldPosition, const Event::EventType& _type);
+	Button* GetHoveredButton(const vector<Button*>& _buttons);
 };

@@ -32,3 +32,16 @@ void HUD::Interact(const Vector2f& _worldPosition, const Event::EventType& _type
 		_button->OnHeld();
 	}
 }
+
+Button* HUD::GetHoveredButton(const vector<Button*>& _buttons)
+{
+	const Vector2f& _worldPosition = InputManager::GetInstance().GetWorldPosition();
+
+	for (Button* _button : _buttons)
+	{
+		if (_button->IsVisible() && _button->GetDrawable()->getGlobalBounds().contains(_worldPosition))
+		{
+			return _button;
+		}
+	}
+}
