@@ -1,13 +1,22 @@
 #pragma once
 #include "InputManager.h"
 #include "Merchand.h"
-
-class Player
+#include "Actor.h"
+#include "Component.h"
+class Player : public Actor
 {
+	ShapeData data;
 	Merchand* merchand;
+
 public:
 	Player();
 
-	void InitInputs();
+private:
+	void Init();
+
+private:
+	void Right();
+	void Left();
+	void Up();
 };
 

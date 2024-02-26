@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Player.h"
+#include "Camera.h"
 using namespace std;
 using namespace sf;
 
@@ -12,7 +13,9 @@ using namespace sf;
 class Game
 {
 	RenderWindow window;
+
 	Player* player;
+	Camera* camera;
 
 public:
 	Game();
