@@ -1,0 +1,2 @@
+﻿  Game.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Inventory.h(3,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Item.h' : No such file or directory

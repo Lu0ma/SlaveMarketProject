@@ -4,6 +4,7 @@
 #include "ActorManager.h"
 #include "HUD.h"
 #include "Widget.h"
+#include "Player.h"
 
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
@@ -28,7 +29,8 @@ void Game::Start()
 
 void Game::Init()
 {
-
+	Player* _player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
+	_player->Init();
 }
 
 void Game::Update()

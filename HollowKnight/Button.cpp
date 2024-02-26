@@ -1,13 +1,13 @@
 #include "Button.h"
 #include <iostream>
 
-Button::Button(const ShapeData& _data/*, const AllButtonData& _buttonData*/) : ShapeWidget(_data)
+Button::Button(const ShapeData& _data, const ButtonData& _buttonData) : ShapeWidget(_data)
 {
-	//allData = _buttonData;
 	isSelected = false;
 	isHovered = false;
 	isHeld = false;
 	foreground = nullptr;
+	data = _buttonData;
 }
 
 
@@ -15,11 +15,21 @@ void Button::OnPressed()
 {
 	isSelected = true;
 	isHeld = true;
+
+	if (data.pressedCallback)
+	{
+		data.pressedCallback();
+	}
 }
 
 void Button::OnHeld()
 {
 	if (!isHeld) return;
+
+	if (data.releasedCallback)
+	{
+		data.releasedCallback();
+	}
 }
 
 void Button::OnReleased()
@@ -28,16 +38,31 @@ void Button::OnReleased()
 
 	isSelected = false;
 	isHeld = false;
+
+	if (data.heldCallback)
+	{
+		data.heldCallback();
+	}
 }
 
 void Button::OnHovered()
 {
 	isHovered = true;
+
+	if (data.hoveredCallback)
+	{
+		data.hoveredCallback();
+	}
 }
 
 void Button::OnUnhovered()
 {
 	isHovered = false;
+
+	if (data.unHoveredCallback)
+	{
+		data.unHoveredCallback();
+	}
 }
 
 
