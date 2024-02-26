@@ -82,6 +82,9 @@
     <Filter Include="Components\Movement">
       <UniqueIdentifier>{51a7a8f9-3dc1-48ca-8574-2d01ac573be2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mob">
+      <UniqueIdentifier>{a127b75c-c230-4f69-b8c5-3db4a6af40ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -172,10 +175,10 @@
       <Filter>Components\Movement</Filter>
     </ClCompile>
     <ClCompile Include="Mob.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Mob</Filter>
     </ClCompile>
     <ClCompile Include="Spawner.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Mob</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -273,10 +276,10 @@
       <Filter>Components\Movement</Filter>
     </ClInclude>
     <ClInclude Include="Mob.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Mob</Filter>
     </ClInclude>
     <ClInclude Include="Spawner.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Mob</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
