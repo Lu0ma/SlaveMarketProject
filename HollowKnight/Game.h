@@ -4,6 +4,7 @@
 #include "PlayerInfo.h"
 #include "Player.h"
 #include "Camera.h"
+
 using namespace std;
 using namespace sf;
 
@@ -12,17 +13,16 @@ using namespace sf;
 
 class Game
 {
-	RenderWindow window;
+	static RenderWindow window;
 	PlayerInfo* playerInfo;
+	Player* player;
+	Camera* camera;
 
 public:
 	static Vector2f GetWindowSize()
 	{
-		return Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT);
+		return Vector2f(window.getSize());
 	}
-
-	Player* player;
-	Camera* camera;
 
 public:
 	Game();

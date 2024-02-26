@@ -4,45 +4,40 @@
 #include "ActorManager.h"
 #include "HUD.h"
 #include "Widget.h"
-
+#include "Player.h"
 
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
 
+RenderWindow Game::window;
+
 Game::Game()
 {
-	//map = new Map();
-	//player = new Player();
-	//camera = new Camera();
-	//playerInfo = new PlayerInfo(10, 10, 20, 20, 1000)
+	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
 }
 
 Game::~Game()
 {
-	//delete map;
-	//delete player;
-	// delete camera;
+	delete camera;
 }
 
 
 void Game::Start()
 {
-	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SparklingSprings");
+	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
 }
 
 void Game::Init()
 {
-	
+	player->Init();
 }
 
 void Game::Update()
 {
 	while (window.isOpen())
 	{
-		playerInfo->SetMaxHealth(playerInfo->GetMaxHealth() +1);
-		cout << playerInfo->GetMaxHealth() << endl;
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
 		ActorManager::GetInstance().Update();
@@ -53,7 +48,6 @@ void Game::UpdateWindow()
 {
 	window.clear();
 
-	// Game
 	// const View& _defaultView = window.getDefaultView();
 	//Deux façon de suivre le Player
 	//1:
@@ -82,8 +76,7 @@ void Game::UpdateWindow()
 			window.draw(*_widget->GetDrawable());
 		}
 	}
-	// Camera
-	// 
+
 	// camera->FollowPlayer;
 
 	window.display();

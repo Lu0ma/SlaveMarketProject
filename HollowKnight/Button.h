@@ -4,28 +4,30 @@
 
 using namespace std;
 
-//struct AllButtonData
-//{
-//	ButtonData pressedData;
-//	ButtonData heldData;
-//	ButtonData releasedData;
-//	ButtonData hoveredData;
-//	ButtonData unhoveredData;
-//
-//public:
-//	AllButtonData(const ButtonData& _pressedData = ButtonData(Color::White, 3.0f, Color::Red),
-//				  const ButtonData& _heldData = ButtonData(Color::White, 3.0f, Color::Red),
-//				  const ButtonData& _releasedData = ButtonData(Color::White, 3.0f, Color::Red),
-//				  const ButtonData& _hoveredData = ButtonData(Color::White, 3.0f, Color::Red),
-//				  const ButtonData& _unhoveredData = ButtonData(Color::White, 3.0f, Color::Red))
-//	{
-//		pressedData = _pressedData;
-//		heldData = _heldData;
-//		releasedData = _releasedData;
-//		hoveredData = _hoveredData;
-//		unhoveredData = _unhoveredData;
-//	}
-//};
+struct ButtonData
+{
+	function<void()> hoveredCallback;
+	function<void()> unHoveredCallback;
+	function<void()> pressedCallback;
+	function<void()> releasedCallback;
+	function<void()> heldCallback;
+
+	ButtonData() = default;
+
+	ButtonData(const function<void()>& _hoveredCallback,
+		const function<void()>& _unHoveredCallback,
+		const function<void()>& _pressedCallback,
+		const function<void()>& _releasedCallback,
+		const function<void()>& _heldCallback)
+	{
+		hoveredCallback = _hoveredCallback;
+		unHoveredCallback = _unHoveredCallback;
+		pressedCallback = _pressedCallback;
+		releasedCallback = _releasedCallback;
+		heldCallback = _heldCallback;
+	};
+
+};
 
 class Button : public ShapeWidget
 {
@@ -33,8 +35,7 @@ class Button : public ShapeWidget
 	bool isHeld;
 	bool isHovered;
 	Widget* foreground;
-	function<void()> callback;
-	//AllButtonData allData;
+	ButtonData data;
 
 public:
 	bool IsSelected() const
@@ -53,9 +54,13 @@ public:
 	{
 		return foreground;
 	}
+	ButtonData& GetData()
+	{
+		return data;
+	}
 
 public:
-	Button(const ShapeData& _data/*, const AllButtonData& _buttonData = AllButtonData()*/);
+	Button(const ShapeData& _data, const ButtonData& _buttonData = ButtonData());
 
 public:
 	void OnPressed();
