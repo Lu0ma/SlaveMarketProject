@@ -23,12 +23,16 @@ public:
 	void SetDestination(const Vector2f& _destination, const bool _canMove = true)
 	{
 		destination = _destination;
-		cout << destination.x << " " << destination.y << endl;
+		//cout << destination.x << " " << destination.y << endl;
 		canMove = _canMove;
 	}
 	void SetCallback(const function<void()>& _callback)
 	{
 		callback = _callback;
+	}
+	const Vector2f& GetDestination()
+	{
+		return destination;
 	}
 
 public:
@@ -36,8 +40,8 @@ public:
 
 private:
 	void MoveToDestination(const float _deltaTime);
-	bool IsAtPosition() const;
 
 public:
 	virtual void Update(const float _deltaTime) override;
+	bool IsAtPosition() const;
 };
