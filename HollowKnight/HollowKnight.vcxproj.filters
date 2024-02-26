@@ -13,10 +13,243 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers de ressources\Macros">
+      <UniqueIdentifier>{3b70fdc2-533f-4071-b107-a38247ad5d7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\Kismet">
+      <UniqueIdentifier>{b2e88baa-88e0-498c-8e14-d42122b374fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{3291a3c2-c0e0-4ae8-bad8-09178d0ea0ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{d18e7fd2-a1d8-42ea-a9d2-bda89f9dd455}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\TextObjects">
+      <UniqueIdentifier>{0fdc9212-805c-4b6d-8960-600015a50621}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects">
+      <UniqueIdentifier>{11c1311d-247d-409b-bfae-7c4c6a2b9b64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors">
+      <UniqueIdentifier>{0ff71419-aed1-41d5-b9bd-f7f970a96171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{7d016800-8e5c-45da-94b5-bcf853d6ffb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Inputs">
+      <UniqueIdentifier>{bdf0566b-9dc1-4694-90a1-5ab1008e54b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Fonts">
+      <UniqueIdentifier>{7265aa95-e0b8-4754-a3e4-2a4558a38fbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Actors">
+      <UniqueIdentifier>{de9d6cf3-4b3a-40e8-ab5f-11417969c3bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Textures">
+      <UniqueIdentifier>{3cc47af8-9f44-4fd5-99a0-8a9f37ccc23b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Timers">
+      <UniqueIdentifier>{ff0e07d0-27db-4be3-be26-5d773cf54f56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs">
+      <UniqueIdentifier>{65c358c9-7301-4333-879f-06cb406d9e68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets">
+      <UniqueIdentifier>{7b6df82d-60f1-49e3-a0c8-421822c0e2c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\TextWidgets">
+      <UniqueIdentifier>{eb09ccc3-94eb-43c3-85b3-af6515ffdbbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets">
+      <UniqueIdentifier>{bb2363d5-d2ad-41fb-a0a1-69da9cc51dd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\Buttons">
+      <UniqueIdentifier>{c5bc071c-a7a8-4a42-ba85-9245d1780b29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\ProgressBars">
+      <UniqueIdentifier>{9f2ea531-c1fc-4bc2-9244-877e426c0aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\Labels">
+      <UniqueIdentifier>{e4f31552-37cf-44a8-a60c-d7e4902d2bc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Canvas">
+      <UniqueIdentifier>{03190bf5-bbd5-4671-8dac-20ba49f692c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Games">
+      <UniqueIdentifier>{1cfa9301-bc39-4e55-9a1e-6e9c5ce7adfd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Action.cpp">
+      <Filter>Managers\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionMap.cpp">
+      <Filter>Managers\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorManager.cpp">
+      <Filter>Managers\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="FontData.cpp">
+      <Filter>Managers\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Managers\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="Canvas.cpp">
+      <Filter>UIs\Canvas</Filter>
+    </ClCompile>
+    <ClCompile Include="Macro.cpp">
+      <Filter>Fichiers de ressources\Macros</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Objects\ShapeObjects\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Kismet.cpp">
+      <Filter>Fichiers de ressources\Kismet</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Managers\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressBar.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets\ProgressBars</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets\Labels</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>UIs</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureData.cpp">
+      <Filter>Managers\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Managers\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Managers\Timers</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerManager.cpp">
+      <Filter>Managers\Timers</Filter>
+    </ClCompile>
+    <ClCompile Include="Widget.cpp">
+      <Filter>UIs\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="TextWidget.cpp">
+      <Filter>UIs\Widgets\TextWidgets</Filter>
+    </ClCompile>
+    <ClCompile Include="TextObject.cpp">
+      <Filter>Objects\TextObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeObject.cpp">
+      <Filter>Objects\ShapeObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Games</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeWidget.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ActionMap.h">
+      <Filter>Managers\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>Managers\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorManager.h">
+      <Filter>Managers\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Managers\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="FontData.h">
+      <Filter>Managers\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>UIs\Widgets\ShapeWidgets\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="Canvas.h">
+      <Filter>UIs\Canvas</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>Fichiers de ressources\Macros</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Objects\ShapeObjects\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Kismet.h">
+      <Filter>Fichiers de ressources\Kismet</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Managers\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="IManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="IManagable.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressBar.h">
+      <Filter>UIs\Widgets\ShapeWidgets\ProgressBars</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>UIs\Widgets\ShapeWidgets\Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>UIs</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Managers\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureData.h">
+      <Filter>Managers\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerManager.h">
+      <Filter>Managers\Timers</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Managers\Timers</Filter>
+    </ClInclude>
+    <ClInclude Include="Widget.h">
+      <Filter>UIs\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="TextWidget.h">
+      <Filter>UIs\Widgets\TextWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="TextObject.h">
+      <Filter>Objects\TextObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeObject.h">
+      <Filter>Objects\ShapeObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Games</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeWidget.h">
+      <Filter>UIs\Widgets\ShapeWidgets</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

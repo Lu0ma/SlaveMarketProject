@@ -130,7 +130,64 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="ActionMap.cpp" />
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="ActorManager.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="FontData.cpp" />
+    <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Kismet.cpp" />
+    <ClCompile Include="Label.cpp" />
+    <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ProgressBar.cpp" />
+    <ClCompile Include="ShapeObject.cpp" />
+    <ClCompile Include="ShapeWidget.cpp" />
+    <ClCompile Include="TextObject.cpp" />
+    <ClCompile Include="TextureData.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="TextWidget.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TimerManager.cpp" />
+    <ClCompile Include="Widget.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="ActionMap.h" />
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="ActorManager.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="Canvas.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="FontData.h" />
+    <ClInclude Include="FontManager.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="HUD.h" />
+    <ClInclude Include="IManagable.h" />
+    <ClInclude Include="IManager.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Kismet.h" />
+    <ClInclude Include="Label.h" />
+    <ClInclude Include="Macro.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="ProgressBar.h" />
+    <ClInclude Include="ShapeObject.h" />
+    <ClInclude Include="ShapeWidget.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="TextObject.h" />
+    <ClInclude Include="TextureData.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TextWidget.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="TimerManager.h" />
+    <ClInclude Include="Widget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
