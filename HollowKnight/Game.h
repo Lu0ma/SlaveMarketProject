@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "PlayerInfo.h"
 
 using namespace std;
 using namespace sf;
@@ -11,6 +12,13 @@ using namespace sf;
 class Game
 {
 	RenderWindow window;
+	PlayerInfo* playerInfo;
+
+public:
+	static Vector2f GetWindowSize()
+	{
+		return Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT);
+	}
 
 public:
 	Game();

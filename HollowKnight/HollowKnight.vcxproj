@@ -147,6 +147,7 @@
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="PlayerInfo.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
     <ClCompile Include="ShapeWidget.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Label.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="PlayerInfo.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="ShapeWidget.h" />

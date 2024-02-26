@@ -162,6 +162,9 @@
     <ClCompile Include="ShapeWidget.cpp">
       <Filter>UIs\Widgets\ShapeWidgets</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerInfo.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -250,6 +253,9 @@
     </ClInclude>
     <ClInclude Include="ShapeWidget.h">
       <Filter>UIs\Widgets\ShapeWidgets</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInfo.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
