@@ -130,10 +130,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicData.cpp" />
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicManager.cpp" />
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundData.cpp" />
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundManager.cpp" />
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="ActionMap.cpp" />
     <ClCompile Include="Actor.cpp" />
@@ -160,6 +156,8 @@
     <ClCompile Include="Merchand.cpp" />
     <ClCompile Include="Mob.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
+    <ClCompile Include="MusicData.cpp" />
+    <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -167,6 +165,8 @@
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
     <ClCompile Include="ShapeWidget.cpp" />
+    <ClCompile Include="SoundData.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="TextureData.cpp" />
     <ClCompile Include="TextureManager.cpp" />
@@ -177,10 +177,6 @@
     <ClCompile Include="Widget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicData.h" />
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicManager.h" />
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundData.h" />
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundManager.h" />
     <ClInclude Include="Action.h" />
     <ClInclude Include="ActionMap.h" />
     <ClInclude Include="Actor.h" />
@@ -208,6 +204,8 @@
     <ClInclude Include="Merchand.h" />
     <ClInclude Include="Mob.h" />
     <ClInclude Include="MovementComponent.h" />
+    <ClInclude Include="MusicData.h" />
+    <ClInclude Include="MusicManager.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
@@ -216,6 +214,8 @@
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="ShapeWidget.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="SoundData.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="TextureData.h" />
     <ClInclude Include="TextureManager.h" />

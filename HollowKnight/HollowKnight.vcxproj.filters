@@ -222,16 +222,16 @@
     <ClCompile Include="InteractableActor.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundData.cpp">
+    <ClCompile Include="SoundData.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundManager.cpp">
+    <ClCompile Include="SoundManager.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicData.cpp">
+    <ClCompile Include="MusicData.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicManager.cpp">
+    <ClCompile Include="MusicManager.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -365,16 +365,16 @@
     <ClInclude Include="InteractableActor.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundData.h">
+    <ClInclude Include="SoundData.h">
       <Filter>Fichiers sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundManager.h">
+    <ClInclude Include="SoundManager.h">
       <Filter>Fichiers sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicData.h">
+    <ClInclude Include="MusicData.h">
       <Filter>Fichiers sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicManager.h">
+    <ClInclude Include="MusicManager.h">
       <Filter>Fichiers sources</Filter>
     </ClInclude>
   </ItemGroup>

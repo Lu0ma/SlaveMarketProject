@@ -36,7 +36,7 @@ void SoundManager::Load(const string& _path)
 		_soundData = new SoundData(_path);
 		if (!_soundData->loadFromFile(_path))
 		{
-			cerr << "Le son n'a pas été correctement chargée !" << endl;
+			//cerr << "Le son n'a pas été correctement chargée !" << endl;
 		}
 	}
 }

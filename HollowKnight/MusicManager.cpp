@@ -12,7 +12,7 @@ void MusicManager::Play(const string& _path)
 		_musicData = new MusicData(_path);
 		if (!_musicData->openFromFile(_path))
 		{
-			cerr << "Le son n'a pas été correctement chargée !" << endl;
+			//cout << "Le son n'a pas été correctement chargée !" << endl;
 			return;
 		}
 	}
