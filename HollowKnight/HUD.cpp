@@ -44,4 +44,6 @@ Button* HUD::GetHoveredButton(const vector<Button*>& _buttons)
 			return _button;
 		}
 	}
+
+	return nullptr;
 }
