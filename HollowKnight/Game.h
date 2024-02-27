@@ -4,7 +4,7 @@
 #include "Menu.h"
 #include "Player.h"
 #include "Camera.h"
-
+#include "Singleton.h"
 using namespace std;
 using namespace sf;
 
@@ -32,7 +32,7 @@ public:
 	Game();
 	~Game();
 
-private:
+public:
 	void Start();
 	void Init();
 	void Update();

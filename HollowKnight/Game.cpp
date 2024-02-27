@@ -13,7 +13,7 @@ Player* Game::player;
 
 Game::Game()
 {
-	instance.player = new Player("Player", ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), ""));
+	player = new Player("Player", ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), ""));
 	camera = new Camera();
 	menu = new Menu();
 }
@@ -52,8 +52,8 @@ void Game::UpdateWindow()
 {
 	window.clear();
 
-	const View& _defaultView = camera->FollowPlayer();
-	instance.window.setView(_defaultView);
+	/*const View& _defaultView = camera->FollowPlayer();
+	window.setView(_defaultView);*/
 
 	const View& _defaultView = window.getDefaultView();
 	window.setView(_defaultView);
@@ -78,7 +78,7 @@ void Game::UpdateWindow()
 			window.draw(*_widget->GetDrawable());
 		}
 	}
-	instance.window.display();
+	window.display();
 }
 
 void Game::Stop()

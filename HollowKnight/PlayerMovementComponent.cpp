@@ -9,7 +9,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	// Movement
 	canMove = true;
 	speed = 0.1f;
-	direction = Vector2f(0.0f , 0.0f);
+	direction = Vector2f();
 
 	// Sprint
 	isSprinting = false;
