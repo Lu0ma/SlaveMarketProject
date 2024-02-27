@@ -25,6 +25,7 @@ void Menu::Init()
 
 	const Vector2f& _windowSize = Game::GetWindowSize();
 	ShapeWidget* _image = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_MAIN_MENU));
+	// Camera::GetTargetStat()
 	mainMenu->AddWidget(_image);
 
 	const float _mainMenuTextPosX = _windowSize.x / 2.0f;

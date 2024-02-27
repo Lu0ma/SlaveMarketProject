@@ -29,9 +29,14 @@ public:
 	{
 		return size;
 	}
+	Target GetTargetStat() const
+	{
+		return target;
+	}
 public:
 	Camera();
 	Camera(View _view);
+	Camera(const Target& _target);
 	//Camera();
 public:
 	void SetTarget(const Target& _target)
