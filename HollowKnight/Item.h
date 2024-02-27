@@ -4,6 +4,13 @@
 #include "Button.h"
 #include "Label.h"
 
+struct ItemData
+{
+	string path;
+	string title;
+	string text;
+};
+
 class Item : public IManagable<int>
 {
 	int count;
@@ -14,7 +21,11 @@ public:
 	void UpdateCount(const int _factor)
 	{
 		count += _factor;
-		countText->SetString(to_string(count));
+
+		if (count > 1)
+		{
+			countText->SetString(to_string(count));
+		}
 	}
 	bool IsEmpty() const
 	{

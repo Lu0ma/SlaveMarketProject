@@ -5,7 +5,6 @@
 #include "HUD.h"
 #include "Widget.h"
 #include "Player.h"
-
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
 
@@ -13,6 +12,7 @@ Game::Game()
 {
 	instance.player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
 	camera = new Camera();
+	menu = new Menu();
 }
 
 Game::~Game()
@@ -31,6 +31,7 @@ void Game::Start()
 void Game::Init()
 {
 	instance.player->Init();
+	menu->Init();
 }
 
 void Game::Update()
@@ -94,4 +95,9 @@ void Game::Launch()
 	Start();
 	Update();
 	Stop();
+}
+
+void Game::Close()
+{
+	instance.window.close();
 }
