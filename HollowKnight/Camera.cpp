@@ -4,8 +4,9 @@
 
 Camera::Camera()
 {
+	target = TARGET_NONE;
 	const FloatRect& _rect = Game::GetPlayer()->GetShape()->getGlobalBounds();
-	center = Vector2f(_rect.left, _rect.top/* rectPlayer.left , rectPlayer.top */);
+	center = Vector2f(_rect.left, _rect.top /* rectPlayer.left , rectPlayer.top */);
 	size = Vector2f(1000 , 1000);
 	view = View(center , size);
 }

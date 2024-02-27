@@ -65,10 +65,14 @@ void Game::UpdateWindow()
 	}
 
 	// UI
-	View _view = _defaultView;
+	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{
-		if (!_canvas->IsVisible()) continue;
+		if (!_canvas->IsVisible())
+		{
+			window.setView(_defaultView);
+			continue;
+		}
 
 		_view.setViewport(_canvas->GetRect());
 		window.setView(_view);
