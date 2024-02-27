@@ -153,6 +153,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Merchand.cpp" />
+    <ClCompile Include="Mob.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Merchand.h" />
+    <ClInclude Include="Mob.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Object.h" />

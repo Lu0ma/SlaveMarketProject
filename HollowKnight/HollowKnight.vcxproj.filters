@@ -94,6 +94,9 @@
     <Filter Include="Objects\ShapeObjects\Actors\Player">
       <UniqueIdentifier>{89aee257-6703-436a-94cf-1c74b7b0af88}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mobs">
+      <UniqueIdentifier>{03b12366-449a-4d98-8f02-adb3ade85d29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -212,6 +215,9 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Objects\ShapeObjects\Actors\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Mob.cpp">
+      <Filter>Mobs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -337,6 +343,9 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Objects\ShapeObjects\Actors\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Mob.h">
+      <Filter>Mobs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
