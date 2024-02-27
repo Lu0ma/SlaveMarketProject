@@ -63,7 +63,7 @@ public:
 	Button(const ShapeData& _data, const ButtonData& _buttonData = ButtonData());
 
 public:
-	void OnPressed();
+	bool OnPressed();
 	void OnHeld();
 	void OnReleased();
 	void OnHovered();

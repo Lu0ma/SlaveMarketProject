@@ -24,24 +24,22 @@
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
+	stats = new PlayerStat();
 	inventory = new Inventory();
-
-	//TODO move
-	//merchand = new Merchand();
-
-	canvas = nullptr;
-	healthBar = nullptr;
-	manaBar = nullptr;
-	geosCountText = nullptr;
-	stats = new PlayerStat(10, 10, 20, 20, 0);
-
 }
 
 
 void Player::SetupPlayerInput()
 {
-	new ActionMap("Storages", {
-		ActionData("Inventory", [&]() { inventory->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::B })),
+	new ActionMap("Stats", {
+		ActionData("RemoveMana", [&]() { stats->UseMana(10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Space })),
+		ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
+		ActionData("RemoveLife", [&]() { stats->UpdateLife(-1); }, InputData({ ActionType::KeyPressed, Keyboard::Num0 })),
+		ActionData("AddGeos", [&]() { stats->AddGeos(12); }, InputData({ ActionType::KeyPressed, Keyboard::Num8 })),
+	});
+
+	new ActionMap("Inventory", {
+		ActionData("ToggleInventory", [&]() { inventory->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::B })),
 		ActionData("AddItem", [&]() { inventory->AddItem(1, {
 			PATH_ITEM, "Item",
 			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"}); 
@@ -58,52 +56,14 @@ void Player::SetupPlayerInput()
 		ActionData("ToggleShriek", [&]() { inventory->SetShriekStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num6 })),
 		ActionData("UpgradeSword", [&]() { inventory->UpdateSwordLevel(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num7 })),
 	});
-	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab })) });
-	new ActionMap("Movement", {
-		/*ActionData("Right" , this , &Player::Right , {Event::KeyPressed , Keyboard::D} , {Event::KeyPressed , Keyboard::Right}),
-		ActionData("Left" , this , &Player::Left , {Event::KeyPressed , Keyboard::Q} , {Event::KeyPressed , Keyboard::Left}),
-		ActionData("Up" , this , &Player::Up , {Event::KeyPressed , Keyboard::Z} , {Event::KeyPressed , Keyboard::Up})*/
-		}
-	);
 }
 
-void Player::InitStats()
-{
-	canvas = new Canvas("PlayerInfo", FloatRect(0, 0, 1, 1));
-
-	const Vector2f& _windowSize = Game::GetWindowSize();
-	healthBar = new Label(TextData(to_string(stats->health) + "/" + to_string(stats->maxHealth), Vector2f(_windowSize.x / 100.0f * 10.0f, _windowSize.y / 100.0f * 1.0f), "TrajanProRegular.ttf"));
-	manaBar = new Label(TextData(to_string(stats->mana) + "/" + to_string(stats->maxMana), Vector2f(_windowSize.x / 100.0f * 10.0f, _windowSize.y / 100.0f * 5.0f), "TrajanProRegular.ttf"));
-	geosCountText = new Label(TextData(to_string(stats->geosCount), Vector2f(_windowSize.x / 100.0f * 10.0f, _windowSize.y / 100.0f * 10.0f), "TrajanProRegular.ttf"));
-
-	canvas->AddWidget(healthBar);
-	canvas->AddWidget(manaBar);
-	canvas->AddWidget(geosCountText);
-
-
-	//stats = new PlayerStats(stats->health, stats->health + 1, stats->mana, stats->maxMana + 1, stats->geosCount + 1);
-	//SetStat(stats->health);
-}
-
-
-void Player::Update(const float _deltaTime)
-{
-	Actor::Update(_deltaTime);
-	if (!healthBar ||!manaBar||!geosCountText)
-	{
-		return;
-	}
-	healthBar->SetString(to_string(stats->health) + "/" + to_string(stats->maxHealth));
-	manaBar->SetString(to_string(stats->mana) + "/" + to_string(stats->maxMana));
-	geosCountText->SetString(to_string(stats->geosCount));
-	canvas->SetVisibilityStatus(stats->isVisible);
-
-	stats->Healing();
-}
 
 void Player::Init()
 {
-	InitStats();
+	stats->Init();
 	inventory->Init();
 	SetupPlayerInput();
+	
+	shape->setFillColor(Color::Transparent);
 }

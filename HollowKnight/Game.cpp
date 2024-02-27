@@ -14,8 +14,8 @@ Player* Game::player;
 
 Game::Game()
 {
-	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
 	menu = new Menu();
+	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
 }
 
 Game::~Game()
@@ -33,7 +33,6 @@ void Game::Start()
 
 void Game::Init()
 {
-	player->Init();
 	menu->Init();
 }
 

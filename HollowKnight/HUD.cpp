@@ -13,7 +13,7 @@ void HUD::Interact(const Vector2f& _worldPosition, const Event::EventType& _type
 		{
 			if (_type == Event::EventType::MouseButtonPressed)
 			{
-				_button->OnPressed();
+  				if (_button->OnPressed()) return;
 			}
 
 			_button->OnHovered();

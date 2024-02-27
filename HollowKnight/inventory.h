@@ -59,33 +59,14 @@ class Inventory : public IManager<int, Item>
 	ShapeWidget* dashWidget = nullptr;
 
 private:
-	string ComputeHealthMaskPath() const
+	string ComputePath(const string& _path, const int _index) const
 	{
-		return PATH_HEALTH_MASK + to_string(maskCount) + ".png";
+		return _path + to_string(_index) + ".png";
 	}
-	string ComputeVesselPath() const
+public:
+	void Toggle()
 	{
-		return PATH_VESSEL + to_string(vesselCount) + ".png";
-	}
-	string ComputeMirrorPath() const
-	{
-		return PATH_MIRROR + to_string(mirrorLevel) + ".png";
-	}
-	string ComputeSwordPath() const
-	{
-		return PATH_SWORD + to_string(swordLevel) + ".png";
-	}
-	string ComputeVengefulPath() const
-	{
-		return PATH_VENGEFUL + to_string(isVengefulActive) + ".png";
-	}
-	string ComputeSlamPath() const
-	{
-		return PATH_SLAM + to_string(isSlamActive) + ".png";
-	}
-	string ComputeShriekPath() const
-	{
-		return PATH_SHRIEK + to_string(isShriekActive) + ".png";
+		canvas->SetVisibilityStatus(!canvas->IsVisible());
 	}
 
 public:
@@ -95,12 +76,12 @@ private:
 	Button* GetFirstAvailableButton() const;
 	Item* FindItemData(const string& _path);
 
+	void UpdateCount(ShapeWidget* _widget, int& _count, const string& _path,
+		const int _max, const int _factor = 1);
+	void UpdateTexture(ShapeWidget* _widget, const string& _path);
+
 public:
 	void Init();
-	void Toggle()
-	{
-		canvas->SetVisibilityStatus(!canvas->IsVisible());
-	}
 
 	void UpdateMaskCount(const int _factor);
 	void UpdateVesselCount(const int _factor);

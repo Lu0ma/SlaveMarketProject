@@ -45,8 +45,10 @@ void TitleMenu::Init()
 	{
 		ButtonData(
 			"START GAME",
-			[&]() { canvas->SetVisibilityStatus(false);
-					Game::GetPlayer()->SetVisibilityPlayerStats(true);}
+			[&]() { 
+				canvas->SetVisibilityStatus(false);
+				Game::GetPlayer()->Init();
+			}
 		),
 		ButtonData(
 			"   OPTIONS",
