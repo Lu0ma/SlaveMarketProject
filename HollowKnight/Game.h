@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Singleton.h"
+#include "Menu.h"
 #include "Player.h"
 #include "Camera.h"
 
@@ -14,6 +15,7 @@ using namespace sf;
 class Game : public Singleton<Game>
 {
 	RenderWindow window;
+	Menu* menu;
 	Player* player;
 	Camera* camera;
 
@@ -40,4 +42,5 @@ private:
 
 public:
 	void Launch();
+	void Close();
 };

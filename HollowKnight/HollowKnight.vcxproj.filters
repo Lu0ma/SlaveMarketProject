@@ -88,8 +88,11 @@
     <Filter Include="UIs\Widgets\ShapeWidgets\Items">
       <UniqueIdentifier>{56eb58f9-0645-4860-921e-d705ae9e8764}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menus">
+      <UniqueIdentifier>{58031b06-6ac4-444a-9216-52110532dbd8}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Objects\ShapeObjects\Actors\Player">
-      <UniqueIdentifier>{bfa6ca6f-05b5-4903-8076-d8cd9ad33e4e}</UniqueIdentifier>
+      <UniqueIdentifier>{89aee257-6703-436a-94cf-1c74b7b0af88}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +203,12 @@
     </ClCompile>
     <ClCompile Include="ItemWidget.cpp">
       <Filter>UIs\Widgets\ShapeWidgets\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleMenu.cpp">
+      <Filter>Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Menus</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Objects\ShapeObjects\Actors\Player</Filter>
@@ -319,6 +328,12 @@
     </ClInclude>
     <ClInclude Include="ItemWidget.h">
       <Filter>UIs\Widgets\ShapeWidgets\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleMenu.h">
+      <Filter>Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Menus</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Objects\ShapeObjects\Actors\Player</Filter>

@@ -4,10 +4,10 @@
 #include "TextureManager.h"
 #include "HUD.h"
 
-#define PATH_BACKGROUND "UIs/Inventory.png"
-#define PATH_CELL "UIs/Cell.png"
-#define PATH_POINTER "UIs/Pointer.png"
-#define PATH_SEPARATOR "UIs/Separator.png"
+#define PATH_BACKGROUND "UIs/Inventory/Inventory.png"
+#define PATH_CELL "UIs/Inventory/Cell.png"
+#define PATH_POINTER "UIs/Inventory/Pointer.png"
+#define PATH_SEPARATOR "UIs/Inventory/Separator.png"
 #define FONT "Font.ttf"
 
 Inventory::Inventory()
@@ -84,12 +84,17 @@ void Inventory::Init()
 
 			_button->GetData().hoveredCallback = [&]()
 			{ 
-				// afficher le pointer au dessus du boutton
-				Button* _hoveredButton = dynamic_cast<Button*>(HUD::GetInstance().GetHoveredButton(buttons));
-				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-				pointer->SetShapePosition(_position);
+				if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
+				{
+					const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
+					pointer->SetShapePosition(_position);
 
-				//_button->ToggleVisibilityWidget();
+					if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_hoveredButton->GetForeground()))
+					{
+						descriptionTitle->SetString(_itemWidget->GetTitle());
+						descriptionText->SetString(_itemWidget->GetText());
+					}
+				}
 			};
 
 			buttons.push_back(_button);
@@ -138,8 +143,8 @@ void Inventory::Init()
 	const float _descriptionTitlePosX = _descriptionPos.x - _descriptionSizeX * 20.0f / 100.0f;
 	const float _descriptionTitlePosY = _descriptionPos.y - _gridSizeY / 2.0f;
 	const Vector2f& _descriptionTitlePos = Vector2f(_descriptionTitlePosX, _descriptionTitlePosY);
-	Label* _descriptionTitle = new Label(TextData("Shade Cloak", _descriptionTitlePos, FONT, 26));
-	canvas->AddWidget(_descriptionTitle);
+	descriptionTitle = new Label(TextData("Shade Cloak", _descriptionTitlePos, FONT, 26));
+	canvas->AddWidget(descriptionTitle);
 
 	#pragma endregion
 
@@ -150,8 +155,8 @@ void Inventory::Init()
 	const float _descriptionTextPosX = _descriptionPos.x - _descriptionSizeX / 2.0f + _textSpacingX;
 	const float _descriptionTextPosY = _descriptionTitlePosY + _textSpacingY;
 	const Vector2f& _descriptionLabelPos = Vector2f(_descriptionTextPosX, _descriptionTextPosY);
-	Label* _descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT));
-	canvas->AddWidget(_descriptionText);
+	descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT));
+	canvas->AddWidget(descriptionText);
 
 	#pragma endregion
 
@@ -167,7 +172,7 @@ void Inventory::Init()
 	canvas->AddWidget(_separator1);
 
 	const float _separatorPosX2 = _descriptionPosX - _descriptionSizeX / 2.0f - _separatorSize.x / 2.0f;
-	const Vector2f& _separatorPos2 = Vector2f(_separatorPosX2, _halfSize.y);
+	const Vector2f& _separatorPos2 = Vector2f(_separatorPosX2, _gridSizeY);
 	ShapeWidget* _separator2 = new ShapeWidget(ShapeData(_separatorPos2, _separatorSize, PATH_SEPARATOR));
 	canvas->AddWidget(_separator2);
 
@@ -190,30 +195,30 @@ void Inventory::UpdateMaskCount(const int _factor)
 }
 
 
-void Inventory::AddItem(const int _count, const string _path)
+void Inventory::AddItem(const int _count, const ItemData& _data)
 {
 	if (_count <= 0) return;
 
-	if (Item* _item = FindItemData(_path))
+	if (Item* _item = FindItemData(_data.path))
 	{
 		_item->UpdateCount(1);
-		AddItem(_count - 1, _path);
+		AddItem(_count - 1, _data);
 		return;
 	}
 
-	CreateItemData(_path);
-	AddItem(_count - 1, _path);
+	CreateItemData(_data);
+	AddItem(_count - 1, _data);
 }
 
-void Inventory::CreateItemData(const string& _path)
+void Inventory::CreateItemData(const ItemData& _data)
 {
 	Button* _button = GetFirstAvailableButton();
 	if (!_button) return;
 
 	const ShapeData& _objectData = ShapeData(_button->GetObject()->GetShapePosition(),
-											 _button->GetObject()->GetShapeSize() * 60.0f / 100.0f,
-											 _path);
-	ItemWidget* _widget = new ItemWidget(_objectData);
+											 _button->GetObject()->GetShapeSize() * 70.0f / 100.0f,
+											 _data.path);
+	ItemWidget* _widget = new ItemWidget(_objectData, _data.title, _data.text);
 	Item* _item = new Item(_widget, FONT);
 	Add(_item->GetID(), _item);
 

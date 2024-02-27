@@ -4,6 +4,13 @@
 #include "Button.h"
 #include "Label.h"
 
+struct ItemData
+{
+	string path;
+	string title;
+	string text;
+};
+
 class Item : public IManagable<int>
 {
 	int count;
@@ -15,7 +22,7 @@ public:
 	{
 		count += _factor;
 
-		if (count >= 1)
+		if (count > 1)
 		{
 			countText->SetString(to_string(count));
 		}
