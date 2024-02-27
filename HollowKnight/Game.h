@@ -31,7 +31,7 @@ public:
 	Game();
 	~Game();
 
-private:
+public:
 	void Start();
 	void Init();
 	void Update();

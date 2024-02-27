@@ -1,8 +1,7 @@
 #pragma once
-#include "Action.h"
 #include "MovementComponent.h"
 
-class PlayerMovementComponent : public Component
+class PlayerMovementComponent : public MovementComponent
 {
 	// Movement
 	bool canMove;

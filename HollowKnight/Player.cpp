@@ -13,7 +13,6 @@
 #include "Action.h"
 #include "ActionMap.h"
 #include "Timer.h"
-
 // UIs
 #include "Canvas.h"
 
@@ -25,7 +24,8 @@
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
 	inventory = new Inventory();
-
+	movement = new PlayerMovementComponent(this);
+	components.push_back(movement);
 	//TODO move
 	//merchand = new Merchand();
 
@@ -45,31 +45,45 @@ void Player::SetupPlayerInput()
 		ActionData("Inventory", [&]() { inventory->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::B })),
 		ActionData("AddItem", [&]() { inventory->AddItem(1, {
 			PATH_ITEM, "Item",
-			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"}); 
+			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"});
 		}, InputData({ActionType::KeyPressed, Keyboard::Q})),
 		ActionData("AddItem2", [&]() { inventory->AddItem(1, {
 			PATH_ITEM2, "Object",
-			"Ceci est un texte\nEt ça, c'est un saut de ligne"}); 
+			"Ceci est un texte\nEt ça, c'est un saut de ligne"});
 		}, InputData({ActionType::KeyPressed, Keyboard::W})),
-		ActionData("AddHealthMask", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num1 })),
+
+		ActionData("AddHealthMash", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::A })),
+		});
+	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab }))});
+
+	ActionData("AddHealthMask", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num1 })),
 		ActionData("AddVessel", [&]() { inventory->UpdateVesselCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num2 })),
 		ActionData("UpgradeMirror", [&]() { inventory->UpdateMirrorLevel(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num3 })),
 		ActionData("ToggleVengeful", [&]() { inventory->SetVengefulStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num4 })),
 		ActionData("ToggleSlam", [&]() { inventory->SetSlamStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num5 })),
 		ActionData("ToggleShriek", [&]() { inventory->SetShriekStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num6 })),
 		ActionData("UpgradeSword", [&]() { inventory->UpdateSwordLevel(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num7 })),
-	});
+
 	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab })) });
+	
 	new ActionMap("Movement", {
-		/*ActionData("Right" , this , &Player::Right , {Event::KeyPressed , Keyboard::D} , {Event::KeyPressed , Keyboard::Right}),
-		ActionData("Left" , this , &Player::Left , {Event::KeyPressed , Keyboard::Q} , {Event::KeyPressed , Keyboard::Left}),
-		ActionData("Up" , this , &Player::Up , {Event::KeyPressed , Keyboard::Z} , {Event::KeyPressed , Keyboard::Up})*/
-		}
-	);
+		ActionData("Left", [&]()
+			{
+			 	movement->SetDirectionX(-1.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
+		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
+
+		ActionData("Right", [&]() { movement->SetDirectionX(1.0f); }, InputData({ ActionType::KeyPressed, Keyboard::D })),
+		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
+
+		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
+	});
 }
 
 void Player::InitStats()
 {
+	// canvas = new Canvas("PlayerStats");
+	// stats = new PlayerStats(_healthBar, _manaBar, _thirstBar, _hungerBar);
+
 	canvas = new Canvas("PlayerInfo", FloatRect(0, 0, 1, 1));
 
 	const Vector2f& _windowSize = Game::GetWindowSize();
@@ -90,6 +104,8 @@ void Player::InitStats()
 void Player::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
+	// PlayerMovementComponent::Update(_deltaTime);
+	// movement->Update(_deltaTime);
 	if (!healthBar ||!manaBar||!geosCountText)
 	{
 		return;
@@ -107,4 +123,22 @@ void Player::Init()
 	InitStats();
 	inventory->Init();
 	SetupPlayerInput();
+}
+
+void Player::Right()
+{
+ 	movement->SetDirectionX(1.0f);
+	cout << "Je vais a droite " << endl;
+}
+
+void Player::Left()
+{
+	movement->SetDirectionX(-1.0f);
+	cout << "Je vais a gauche " << endl;
+}
+
+void Player::Up()
+{
+	movement->Jump();
+	cout << "Je saute " << endl;
 }

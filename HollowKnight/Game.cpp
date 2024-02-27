@@ -5,7 +5,6 @@
 #include "HUD.h"
 #include "Widget.h"
 #include "Player.h"
-
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
 
@@ -14,12 +13,14 @@ Player* Game::player;
 
 Game::Game()
 {
-	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
+	player = new Player("Player", ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), ""));
+	camera = new Camera();
 	menu = new Menu();
 }
 
 Game::~Game()
 {
+	//delete instance.camera;
 	delete camera;
 }
 
@@ -51,12 +52,8 @@ void Game::UpdateWindow()
 {
 	window.clear();
 
-	// const View& _defaultView = window.getDefaultView();
-	//Deux façon de suivre le Player
-	//1:
-	//const View& _defaultView =  camera->FollowPlayer();
-	////2:
-	//const View& _defaultView = camera->GetView();
+	/*const View& _defaultView = camera->FollowPlayer();
+	window.setView(_defaultView);*/
 
 	const View& _defaultView = window.getDefaultView();
 	window.setView(_defaultView);
@@ -81,9 +78,6 @@ void Game::UpdateWindow()
 			window.draw(*_widget->GetDrawable());
 		}
 	}
-
-	// camera->FollowPlayer;
-
 	window.display();
 }
 

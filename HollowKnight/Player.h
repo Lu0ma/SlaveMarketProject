@@ -1,11 +1,9 @@
 #pragma once
 #include "Actor.h"
 #include "Inventory.h"
-
 #include "Merchand.h"
-
 #include "Bench.h"
-
+#include "PlayerMovementComponent.h"
 using namespace std;
 
 struct PlayerStat
@@ -54,17 +52,14 @@ class Player : public Actor
 {
 	PlayerStat* stats;
 	Inventory* inventory;
-
 	//TODO move
 	Merchand* merchand;
-
+	PlayerMovementComponent* movement;
 	Canvas* canvas;
 	Label* healthBar;
 	Label* manaBar;
 	Label* geosCountText;
-
 	Bench* bench;
-
 public:
 	PlayerStat* GetStats() const
 	{
@@ -90,4 +85,9 @@ private:
 public:
 	virtual void Update(const float _deltaTime) override;
 	void Init();
+
+private:
+	void Right();
+	void Left();
+	void Up();
 };
