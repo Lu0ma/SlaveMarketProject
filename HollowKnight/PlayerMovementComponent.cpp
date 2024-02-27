@@ -4,12 +4,12 @@
 #include "Macro.h"
 #include "Kismet.h"
 
-PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : Component(_owner)
+PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementComponent(_owner)
 {
 	// Movement
 	canMove = true;
 	speed = 0.1f;
-	direction = Vector2f();
+	direction = Vector2f(0.0f , 0.0f);
 
 	// Sprint
 	isSprinting = false;
@@ -24,7 +24,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : Component(_own
 	// Jump
 	isJumping = false;
 	jumpForce = 0.1f;
-	jumpDuration = 0.5f;
+	jumpDuration = 5.0f;
 	gravity = 0.1f;
 
 	// Dash
@@ -34,6 +34,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : Component(_own
 	dashSpeed = 0.75f;
 	dashDuration = 0.2f;
 	dashCooldown = 3.0f;
+
 }
 
 
@@ -48,8 +49,8 @@ bool PlayerMovementComponent::CheckGround()
 
 void PlayerMovementComponent::Update(const float _deltaTime)
 {
-	if (!canMove) return;
-
+	if(!canMove) return;
+	MovementComponent::Update(_deltaTime);
 	Vector2f _offset;
 		
 	// Déplacement par défaut
@@ -105,7 +106,6 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 void PlayerMovementComponent::Jump()
 {
 	if (!isOnGround || isJumping) return;
-
 	isJumping = true;
 	new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
 }

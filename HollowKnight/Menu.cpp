@@ -35,6 +35,6 @@ void Menu::Init()
 	mainMenu->AddWidget(_mainMenuText);
 
 	new ActionMap("MenuInputs", { 
-		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
+		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu();  }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
 	});
 }

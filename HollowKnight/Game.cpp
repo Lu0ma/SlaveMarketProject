@@ -10,14 +10,14 @@
 
 Game::Game()
 {
-	instance.player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
+	instance.player = new Player("Player", ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), ""));
 	camera = new Camera();
 	menu = new Menu();
 }
 
 Game::~Game()
 {
-	delete instance.camera;
+	//delete instance.camera;
 }
 
 
@@ -48,14 +48,8 @@ void Game::UpdateWindow()
 {
 	instance.window.clear();
 
-	// const View& _defaultView = window.getDefaultView();
-	//Deux façon de suivre le Player
-	//1:
-	const View& _defaultView =  camera->FollowPlayer();
-	////2:
-	//const View& _defaultView = camera->GetView();
+	const View& _defaultView = camera->FollowPlayer();
 
-	//const View& _defaultView = instance.window.getDefaultView();
 	instance.window.setView(_defaultView);
 
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
@@ -78,9 +72,6 @@ void Game::UpdateWindow()
 			instance.window.draw(*_widget->GetDrawable());
 		}
 	}
-
-	// camera->FollowPlayer;
-
 	instance.window.display();
 }
 

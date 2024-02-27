@@ -13,8 +13,7 @@ MovementComponent::MovementComponent(Actor* _owner) : Component(_owner)
 
 void MovementComponent::MoveToDestination(const float _deltaTime)
 {
-	if (!canMove) return;
-
+	if (!canMove || !destination) return;
 	if (IsAtPosition())
 	{
 		if (callback)
@@ -32,6 +31,7 @@ void MovementComponent::MoveToDestination(const float _deltaTime)
 
 	const Vector2f& _position = _shape->getPosition() + _direction * speed * _deltaTime;
 	_shape->setPosition(_position);
+	cout << _position.x << " " << _position.y << endl;
 }
 
 bool MovementComponent::IsAtPosition() const

@@ -3,7 +3,7 @@
 #include "PlayerStats.h"
 #include "Inventory.h"
 #include "Merchand.h"
-
+#include "PlayerMovementComponent.h"
 using namespace std;
 
 class Player : public Actor
@@ -12,7 +12,7 @@ class Player : public Actor
 	Inventory* inventory;
 	//TODO move
 	Merchand* merchand;
-
+	PlayerMovementComponent* movement;
 public:
 	PlayerStats* GetStats() const
 	{
@@ -33,4 +33,9 @@ private:
 public:
 	virtual void Update(const float _deltaTime) override;
 	void Init();
+
+private:
+	void Right();
+	void Left();
+	void Up();
 };

@@ -3,8 +3,7 @@
 #include "Player.h"
 bool CollisionComponent::CheckCollision(Actor* _currentActor)
 {
-
-	const vector<Actor*>& _allActors =  ActorManager::GetInstance().GetAllValues();
+	const vector<Actor*>& _allActors = ActorManager::GetInstance().GetAllValues();
 	Shape* _currentShape = _currentActor->GetShape();
 	FloatRect _rect = _currentShape->getGlobalBounds();
 
@@ -17,8 +16,9 @@ bool CollisionComponent::CheckCollision(Actor* _currentActor)
 			if (_actor != dynamic_cast<Actor*>(_actor))
 			{
 				cout << "je rentre dans le if" << endl;
-				// Execute callback 
-				// _actor.
+				// Execute callback
+				//_actor.
+	
 			}
 		}
 	}
