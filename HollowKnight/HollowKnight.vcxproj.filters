@@ -219,6 +219,9 @@
     <ClCompile Include="Mob.cpp">
       <Filter>Mobs</Filter>
     </ClCompile>
+    <ClCompile Include="InteractableActor.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -346,6 +349,9 @@
     </ClInclude>
     <ClInclude Include="Mob.h">
       <Filter>Mobs</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractableActor.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

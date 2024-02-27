@@ -16,6 +16,7 @@ Game::Game()
 	player = new Player("Player", ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), ""));
 	camera = new Camera();
 	menu = new Menu();
+	npc = new NPC();
 }
 
 Game::~Game()
@@ -52,11 +53,11 @@ void Game::UpdateWindow()
 {
 	window.clear();
 
-	/*const View& _defaultView = camera->FollowPlayer();
-	window.setView(_defaultView);*/
-
-	const View& _defaultView = window.getDefaultView();
+	const View& _defaultView = camera->FollowPlayer();
 	window.setView(_defaultView);
+
+	//const View& _defaultView = window.getDefaultView();
+	//window.setView(_defaultView);
 
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
