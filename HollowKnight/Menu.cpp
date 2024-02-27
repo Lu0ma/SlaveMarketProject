@@ -33,8 +33,7 @@ void Menu::Init()
 									Vector2f(_mainMenuTextPosX, _mainMenuTextPosY),
 									FONT, 26));
 	mainMenu->AddWidget(_mainMenuText);
-
 	new ActionMap("MenuInputs", { 
-		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
+		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu();  }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
 	});
 }

@@ -30,7 +30,7 @@ public:
 	{
 		callback = _callback;
 	}
-	const Vector2f& GetDestination()
+	 Vector2f GetDestination() const
 	{
 		return destination;
 	}

@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\SFML-2.6.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../SFML-2.6.1/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\SFML-2.6.1\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../SFML-2.6.1/lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -130,6 +130,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicData.cpp" />
+    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicManager.cpp" />
+    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundData.cpp" />
+    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundManager.cpp" />
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="ActionMap.cpp" />
     <ClCompile Include="Actor.cpp" />
@@ -144,6 +148,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="InteractableActor.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemWidget.cpp" />
@@ -173,6 +178,10 @@
     <ClCompile Include="Widget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicData.h" />
+    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicManager.h" />
+    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundData.h" />
+    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundManager.h" />
     <ClInclude Include="Action.h" />
     <ClInclude Include="ActionMap.h" />
     <ClInclude Include="Actor.h" />
@@ -189,6 +198,7 @@
     <ClInclude Include="IManagable.h" />
     <ClInclude Include="IManager.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="InteractableActor.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemWidget.h" />

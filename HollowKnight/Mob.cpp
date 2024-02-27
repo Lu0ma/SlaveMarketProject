@@ -17,10 +17,7 @@ Mob::Mob(const ShapeData& _data) : Actor("Mob" + to_string(GetUniqueID()), _data
 void Mob::Move()
 {
 	MovementComponent* _movementComponent = GetComponent<MovementComponent>();
-
-	Vector2f _destination = startPosition;
-
-	_movementComponent->SetDestination(_destination);
+	_movementComponent->SetDestination(startPosition);
 }
 
 void Mob::Patrol()
@@ -29,14 +26,14 @@ void Mob::Patrol()
 
 	if (_movementComponent->IsAtPosition())
 	{
-		if (_movementComponent->GetDestination() == startPosition)
+		/*if (_movementComponent->GetDestination() == &startPosition)
 		{
 			_movementComponent->SetDestination(goalPosition);
 		}
 		else
 		{
-			_movementComponent->SetDestination(startPosition);
-		}
+			_movementComponent->SetDestination(&startPosition);
+		}*/
 	}
 }
 
