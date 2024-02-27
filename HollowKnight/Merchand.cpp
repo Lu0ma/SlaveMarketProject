@@ -8,7 +8,7 @@ Merchand::Merchand() : NPC()
 
 void Merchand::Toggle()
 {
-	canvas->SetVisibilityStatus(canvas->IsVisible() ? false : true);
+	//canvas->SetVisibilityStatus(!canvas->IsVisible());
 }
 
 void Merchand::OpenShop()

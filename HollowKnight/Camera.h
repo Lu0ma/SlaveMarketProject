@@ -1,7 +1,7 @@
 #pragma once
 #include<SFML/Graphics.hpp>
-using namespace sf;
 #include "Player.h"
+using namespace sf;
 
 class Camera
 {

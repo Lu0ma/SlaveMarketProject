@@ -97,6 +97,15 @@
     <Filter Include="Mobs">
       <UniqueIdentifier>{03b12366-449a-4d98-8f02-adb3ade85d29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\NPC">
+      <UniqueIdentifier>{c877fca7-4b21-40f9-82d8-1144ea443a7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Collision">
+      <UniqueIdentifier>{ffd10db1-a453-492d-8d82-2ee55443de11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{fc94657c-2c9f-4892-a808-904a81432adf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -186,18 +195,6 @@
     <ClCompile Include="MovementComponent.cpp">
       <Filter>Components\Movement</Filter>
     </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="Merchand.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionComponent.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Inventory.cpp">
       <Filter>Managers\Inventory</Filter>
     </ClCompile>
@@ -218,6 +215,21 @@
     </ClCompile>
     <ClCompile Include="Mob.cpp">
       <Filter>Mobs</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Objects\ShapeObjects\Actors\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="Merchand.cpp">
+      <Filter>Objects\ShapeObjects\Actors\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponent.cpp">
+      <Filter>Components\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Bench.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -314,18 +326,6 @@
     <ClInclude Include="MovementComponent.h">
       <Filter>Components\Movement</Filter>
     </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Merchand.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Inventory.h">
       <Filter>Managers\Inventory</Filter>
     </ClInclude>
@@ -346,6 +346,21 @@
     </ClInclude>
     <ClInclude Include="Mob.h">
       <Filter>Mobs</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC.h">
+      <Filter>Objects\ShapeObjects\Actors\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="Merchand.h">
+      <Filter>Objects\ShapeObjects\Actors\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>Components\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Bench.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

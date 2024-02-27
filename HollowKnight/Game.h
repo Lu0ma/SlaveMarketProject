@@ -4,7 +4,6 @@
 #include "Menu.h"
 #include "Player.h"
 #include "Camera.h"
-
 using namespace std;
 using namespace sf;
 

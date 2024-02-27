@@ -4,6 +4,8 @@
 
 #include "Merchand.h"
 
+#include "Bench.h"
+
 using namespace std;
 
 struct PlayerStat
@@ -60,6 +62,8 @@ class Player : public Actor
 	Label* healthBar;
 	Label* manaBar;
 	Label* geosCountText;
+
+	Bench* bench;
 
 public:
 	PlayerStat* GetStats() const

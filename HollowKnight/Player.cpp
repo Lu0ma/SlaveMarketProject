@@ -34,6 +34,7 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	manaBar = nullptr;
 	geosCountText = nullptr;
 	stats = new PlayerStat(10, 10, 20, 20, 0);
+	bench = new Bench();
 
 }
 
