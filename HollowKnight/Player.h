@@ -16,15 +16,23 @@ struct PlayerStat
 	int geosCount;
 
 	bool isVisible ;
+	int damages;
+
+	int GetDamages()const
+	{
+		return damages;
+	}
 
 public:
-	PlayerStat(int _health, int _maxHealth, int _mana, int _maxMana, int _geosCount, int _isVisible = false)
+	PlayerStat(int _health, int _maxHealth, int _mana, int _maxMana, int _geosCount, const int _damages,
+		int _isVisible = false)
 	{
 		health = _health;
 		maxHealth = _maxHealth;
 		mana = _mana;
 		maxMana = _maxMana;
 		geosCount = _geosCount;
+		damages = _damages;
 		isVisible = _isVisible;
 	}
 
@@ -58,6 +66,7 @@ class Player : public Actor
 	Label* healthBar;
 	Label* manaBar;
 	Label* geosCountText;
+
 public:
 	PlayerStat* GetStats() const
 	{
@@ -88,4 +97,5 @@ private:
 	void Right();
 	void Left();
 	void Up();
+	void SpecialAttack();
 };

@@ -17,6 +17,7 @@
 #include "Canvas.h"
 
 #include "Game.h"
+#include"Mob.h"
 
 #define PATH_ITEM "UIs/Inventory/Item.png"
 #define PATH_ITEM2 "test.png"
@@ -33,7 +34,7 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	healthBar = nullptr;
 	manaBar = nullptr;
 	geosCountText = nullptr;
-	stats = new PlayerStat(10, 10, 20, 20, 0);
+	stats = new PlayerStat(10, 10, 20, 20,10, 0);
 
 }
 
@@ -76,6 +77,18 @@ void Player::SetupPlayerInput()
 
 		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
 	});
+	new ActionMap("Attack", {
+
+		ActionData("Dash", [&]() {
+			SpecialAttack();
+			cout << "Dash" << endl; },
+			InputData({ActionType::KeyPressed, Keyboard::R})),
+
+		ActionData("StopDash", [&]() {
+			movement->SetDirectionX(0.0f); },
+			InputData({ActionType::KeyReleased, Keyboard::R})),
+
+		});
 }
 
 void Player::InitStats()
@@ -140,4 +153,16 @@ void Player::Up()
 {
 	movement->Jump();
 	cout << "Je saute " << endl;
+}
+
+void Player::SpecialAttack()
+{
+		movement->SetDirectionX(10.0f);
+
+		const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(GetShapePosition(), 15.0f);
+		for (Mob* _mob : _mobs)
+		{
+			if (!_mob)continue;
+			_mob->TakeDamages(stats->damages);
+		}
 }
