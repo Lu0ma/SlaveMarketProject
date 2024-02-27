@@ -12,7 +12,7 @@ using namespace sf;
 class Game
 {
 	RenderWindow window;
-
+	Spawner spawner;
 
 public:
 	Game();

@@ -9,8 +9,8 @@ Mob::Mob(const ShapeData& _data) : Actor("Mob" + to_string(GetUniqueID()), _data
 	startPosition = _data.position;
 	goalPosition = startPosition + Vector2f(500.0f, 0.0f);
 
-	components.push_back(new MovementComponent(this));
-	Move();
+	//components.push_back(new MovementComponent(this));
+	//Move();
 	InitTimer();
 }
 
@@ -42,5 +42,5 @@ void Mob::Patrol()
 
 void Mob::InitTimer()
 {
-	new Timer(this , &Mob::Patrol, seconds(1.5f), true, true);
+	//new Timer(this , &Mob::Patrol, seconds(1.5f), true, true);
 }
