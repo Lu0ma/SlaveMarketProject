@@ -4,7 +4,7 @@
 #include "Canvas.h"
 #include "Button.h"
 
-#define PATH_HEALTH_MASK "UIs/HealthMasks/HealthMask_"
+#define PATH_HEALTH_MASK "UIs/Inventory/HealthMasks/HealthMask_"
 
 class Inventory : public IManager<int, Item>
 {
@@ -16,6 +16,8 @@ class Inventory : public IManager<int, Item>
 
 	//TODO move
 	ShapeWidget* pointer = nullptr;
+	Label* descriptionTitle = nullptr;
+	Label* descriptionText = nullptr;
 
 	//TODO move
 	int maskCount = 0;
@@ -43,6 +45,6 @@ public:
 
 	void UpdateMaskCount(const int _factor);
 
-	void AddItem(const int _count, const string _path);
-	void CreateItemData(const std::string& _path);
+	void AddItem(const int _count, const ItemData& _data);
+	void CreateItemData(const ItemData& _data);
 };

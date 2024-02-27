@@ -33,7 +33,8 @@ public:
 	}
 
 public:
-	Canvas(const string& _name, const FloatRect& _rect, const vector<Widget*>& _widgets = vector<Widget*>());
+	Canvas(const string& _name, const FloatRect& _rect = FloatRect(0, 0, 1, 1), 
+		   const vector<Widget*>& _widgets = vector<Widget*>());
 
 private:
 	virtual void Register() override;
