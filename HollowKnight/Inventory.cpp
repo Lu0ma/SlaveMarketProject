@@ -52,7 +52,7 @@ void Inventory::Init()
 	canvas = new Canvas("PlayerInventory", FloatRect(0, 0, 1, 1));
 	canvas->SetVisibilityStatus(false);
 
-	const Vector2f& _windowSize = Game::GetInstance().GetWindowSize();
+	const Vector2f& _windowSize = Game::GetWindowSize();
 	const Vector2f& _halfSize = _windowSize / 2.0f;
 	const float _borderSpacingX = _windowSize.x * 5.0f / 100.0f;
 	const float _gapX = _windowSize.x * 5.0f / 100.0f;

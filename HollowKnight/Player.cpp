@@ -17,6 +17,8 @@
 // UIs
 #include "Canvas.h"
 
+#include "Game.h"
+
 #define PATH_ITEM "UIs/Inventory/Item.png"
 #define PATH_ITEM2 "test.png"
 
@@ -26,6 +28,13 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 
 	//TODO move
 	//merchand = new Merchand();
+
+	canvas = nullptr;
+	healthBar = nullptr;
+	manaBar = nullptr;
+	geosCountText = nullptr;
+	stats = new PlayerStat(10, 10, 20, 20, 0);
+
 }
 
 
@@ -54,20 +63,41 @@ void Player::SetupPlayerInput()
 
 void Player::InitStats()
 {
-	//canvas = new Canvas("PlayerStats");
-	//stats = new PlayerStats(_healthBar, _manaBar, _thirstBar, _hungerBar);
+	canvas = new Canvas("PlayerInfo", FloatRect(0, 0, 1, 1));
+
+	const Vector2f& _windowSize = Game::GetWindowSize();
+	healthBar = new Label(TextData(to_string(stats->health) + "/" + to_string(stats->maxHealth), Vector2f(_windowSize.x / 100.0f * 10.0f, _windowSize.y / 100.0f * 1.0f), "TrajanProRegular.ttf"));
+	manaBar = new Label(TextData(to_string(stats->mana) + "/" + to_string(stats->maxMana), Vector2f(_windowSize.x / 100.0f * 10.0f, _windowSize.y / 100.0f * 5.0f), "TrajanProRegular.ttf"));
+	geosCountText = new Label(TextData(to_string(stats->geosCount), Vector2f(_windowSize.x / 100.0f * 10.0f, _windowSize.y / 100.0f * 10.0f), "TrajanProRegular.ttf"));
+
+	canvas->AddWidget(healthBar);
+	canvas->AddWidget(manaBar);
+	canvas->AddWidget(geosCountText);
+
+
+	//stats = new PlayerStats(stats->health, stats->health + 1, stats->mana, stats->maxMana + 1, stats->geosCount + 1);
+	//SetStat(stats->health);
 }
 
 
 void Player::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
+	if (!healthBar ||!manaBar||!geosCountText)
+	{
+		return;
+	}
+	healthBar->SetString(to_string(stats->health) + "/" + to_string(stats->maxHealth));
+	manaBar->SetString(to_string(stats->mana) + "/" + to_string(stats->maxMana));
+	geosCountText->SetString(to_string(stats->geosCount));
+	canvas->SetVisibilityStatus(stats->isVisible);
 
+	stats->Healing();
 }
 
 void Player::Init()
 {
-	//InitStats();
+	InitStats();
 	inventory->Init();
 	SetupPlayerInput();
 }
