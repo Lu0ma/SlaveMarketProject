@@ -8,6 +8,11 @@
 #define PATH_CELL "UIs/Inventory/Cell.png"
 #define PATH_POINTER "UIs/Inventory/Pointer.png"
 #define PATH_SEPARATOR "UIs/Inventory/Separator.png"
+
+#define PATH_CORE "UIs/Inventory/Core.png"
+#define PATH_GEO "UIs/Inventory/Geo.png"
+#define PATH_SKILL_SLOT "UIs/Inventory/Skills/SkillSlot.png"
+
 #define FONT "Font.ttf"
 
 Inventory::Inventory()
@@ -52,7 +57,7 @@ void Inventory::Init()
 	canvas = new Canvas("PlayerInventory", FloatRect(0, 0, 1, 1));
 	canvas->SetVisibilityStatus(false);
 
-	const Vector2f& _windowSize = Game::GetInstance().GetWindowSize();
+	const Vector2f& _windowSize = Game::GetWindowSize();
 	const Vector2f& _halfSize = _windowSize / 2.0f;
 	const float _borderSpacingX = _windowSize.x * 5.0f / 100.0f;
 	const float _gapX = _windowSize.x * 5.0f / 100.0f;
@@ -119,10 +124,77 @@ void Inventory::Init()
 	/*ShapeWidget* _equipment = new ShapeWidget(ShapeData(_equipmentPos, _equipmentSize, ""));
 	canvas->AddWidget(_equipment);*/
 
-	const Vector2f& _healthMaskPos = Vector2f(_equipmentPosX, _equipmentPosY);
-	const Vector2f& _healthMaskSize = Vector2f(125.0f, 200.0f);
+	// HealthMask
+	const Vector2f& _healthMaskPos = Vector2f(150.0f, 180.0f);
+	const Vector2f& _healthMaskSize = Vector2f(150.0f, 200.0f);
 	maskWidget = new ShapeWidget(ShapeData(_healthMaskPos, _healthMaskSize, ComputeHealthMaskPath()));
 	canvas->AddWidget(maskWidget);
+
+	// Vessel
+	const Vector2f& _vesselPos = Vector2f(250.0f, 150.0f);
+	const Vector2f& _vesselSize = Vector2f(70.0f, 70.0f);
+	vesselWidget = new ShapeWidget(ShapeData(_vesselPos, _vesselSize, ComputeVesselPath()));
+	canvas->AddWidget(vesselWidget);
+
+	// Mirror
+	const Vector2f& _mirrorPos = Vector2f(330.0f, 180.0f);
+	const Vector2f& _mirrorSize = Vector2f(90.0f, 130.0f);
+	mirrorWidget = new ShapeWidget(ShapeData(_mirrorPos, _mirrorSize, ComputeMirrorPath()));
+	canvas->AddWidget(mirrorWidget);
+
+	// Sword
+	const Vector2f& _swordPos = Vector2f(150.0f, 450.0f);
+	const Vector2f& _swordSize = Vector2f(70.0f, 300.0f);
+	swordWidget = new ShapeWidget(ShapeData(_swordPos, _swordSize, ComputeSwordPath()));
+	canvas->AddWidget(swordWidget);
+
+	// Core
+	const Vector2f& _corePos = Vector2f(300.0f, 350.0f);
+	const Vector2f& _coreSize = Vector2f(100.0f, 100.0f);
+	coreWidget = new ShapeWidget(ShapeData(_corePos, _coreSize, PATH_CORE));
+	canvas->AddWidget(coreWidget);
+
+	// Vengeful
+	const Vector2f& _vengefulPos = Vector2f(260.0f, 300.0f);
+	const Vector2f& _vengefulSize = Vector2f(45.0f, 40.0f);
+	vengefulWidget = new ShapeWidget(ShapeData(_vengefulPos, _vengefulSize, ComputeVengefulPath()));
+	canvas->AddWidget(vengefulWidget);
+
+	// Slam
+	const Vector2f& _slamPos = Vector2f(340.0f, 300.0f);
+	const Vector2f& _slamSize = Vector2f(40.0f, 40.0f);
+	slamWidget = new ShapeWidget(ShapeData(_slamPos, _slamSize, ComputeSlamPath()));
+	canvas->AddWidget(slamWidget);
+
+	// Shriek
+	const Vector2f& _shriekPos = Vector2f(300.0f, 415.0f);
+	const Vector2f& _shriekSize = Vector2f(40.0f, 40.0f);
+	shriekWidget = new ShapeWidget(ShapeData(_shriekPos, _shriekSize, ComputeShriekPath()));
+	canvas->AddWidget(shriekWidget);
+
+	// Whirlwind
+	const Vector2f& _whirlwindPos = Vector2f(235.0f, 500.0f);
+	const Vector2f& _whirlwindSize = Vector2f(80.0f, 80.0f);
+	whirlwindWidget = new ShapeWidget(ShapeData(_whirlwindPos, _whirlwindSize, PATH_SKILL_SLOT));
+	canvas->AddWidget(whirlwindWidget);
+
+	// Uppercut
+	const Vector2f& _uppercutPos = Vector2f(305.0f, 500.0f);
+	const Vector2f& _uppercutSize = Vector2f(80.0f, 80.0f);
+	uppercutWidget = new ShapeWidget(ShapeData(_uppercutPos, _uppercutSize, PATH_SKILL_SLOT));
+	canvas->AddWidget(uppercutWidget);
+
+	// Dash
+	const Vector2f& _dashPos = Vector2f(375.0f, 500.0f);
+	const Vector2f& _dashSize = Vector2f(80.0f, 80.0f);
+	dashWidget = new ShapeWidget(ShapeData(_dashPos, _dashSize, PATH_SKILL_SLOT));
+	canvas->AddWidget(dashWidget);
+
+	// Geo
+	const Vector2f& _geoPos = Vector2f(230.0f, 590.0f);
+	const Vector2f& _geoSize = Vector2f(40.0f, 40.0f);
+	ShapeWidget* _geoWidget = new ShapeWidget(ShapeData(_geoPos, _geoSize, PATH_GEO));
+	canvas->AddWidget(_geoWidget);
 
 	#pragma endregion
 
@@ -185,13 +257,84 @@ void Inventory::UpdateMaskCount(const int _factor)
 	if (!maskWidget) return;
 
 	maskCount += _factor;
-
-	maskCount %= 5;
+	maskCount %= 5; // TODO remove
 
 	const string& _path = ComputeHealthMaskPath();
 	Shape* _shape = maskWidget->GetDrawable();
 	TextureManager::GetInstance().Load(_shape, _path);
 	maskWidget->GetObject()->SetShape(_shape);
+}
+
+void Inventory::UpdateVesselCount(const int _factor)
+{
+	if (!vesselWidget) return;
+
+	vesselCount += _factor;
+	vesselCount %= 4; // TODO remove
+
+	const string& _path = ComputeVesselPath();
+	Shape* _shape = vesselWidget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	vesselWidget->GetObject()->SetShape(_shape);
+}
+
+void Inventory::UpdateMirrorLevel(const int _factor)
+{
+	if (!mirrorWidget) return;
+
+	mirrorLevel += _factor;
+	mirrorLevel %= 4; // TODO remove
+
+	const string& _path = ComputeMirrorPath();
+	Shape* _shape = mirrorWidget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	mirrorWidget->GetObject()->SetShape(_shape);
+}
+
+void Inventory::UpdateSwordLevel(const int _factor)
+{
+	if (!swordWidget) return;
+
+	swordLevel += _factor;
+	swordLevel %= 5; // TODO remove
+
+	const string& _path = ComputeSwordPath();
+	Shape* _shape = swordWidget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	swordWidget->GetObject()->SetShape(_shape);
+}
+
+void Inventory::SetVengefulStatus(const bool _status)
+{
+	isVengefulActive = !isVengefulActive; //TODO remove
+	//isSlamActive = _status;
+
+	const string& _path = ComputeVengefulPath();
+	Shape* _shape = vengefulWidget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	vengefulWidget->GetObject()->SetShape(_shape);
+}
+
+void Inventory::SetSlamStatus(const bool _status)
+{
+	isSlamActive = !isSlamActive; //TODO remove
+	//isSlamActive = _status;
+
+	const string& _path = ComputeSlamPath();
+	Shape* _shape = slamWidget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	slamWidget->GetObject()->SetShape(_shape);
+}
+
+void Inventory::SetShriekStatus(const bool _status)
+{
+	isShriekActive = !isShriekActive; //TODO remove
+	//isSlamActive = _status;
+
+	const string& _path = ComputeShriekPath();
+	Shape* _shape = shriekWidget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	shriekWidget->GetObject()->SetShape(_shape);
 }
 
 

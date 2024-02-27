@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Singleton.h"
 #include "Menu.h"
 #include "Player.h"
 #include "Camera.h"
@@ -12,19 +11,19 @@ using namespace sf;
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 
-class Game : public Singleton<Game>
+class Game
 {
-	RenderWindow window;
+	static RenderWindow window;
 	Menu* menu;
-	Player* player;
+	static Player* player;
 	Camera* camera;
 
 public:
-	Vector2f GetWindowSize() const
+	static Vector2f GetWindowSize()
 	{
 		return Vector2f(window.getSize());
 	}
-	Player* GetPlayer() const
+	static Player* GetPlayer()
 	{
 		return player;
 	}
@@ -42,5 +41,5 @@ private:
 
 public:
 	void Launch();
-	void Close();
+	static void Close();
 };

@@ -8,6 +8,9 @@
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
 
+RenderWindow Game::window;
+Player* Game::player;
+
 Game::Game()
 {
 	instance.player = new Player("Player", ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), ""));
@@ -18,43 +21,46 @@ Game::Game()
 Game::~Game()
 {
 	//delete instance.camera;
+	delete camera;
 }
 
 
 void Game::Start()
 {
-	instance.window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
+	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
 }
 
 void Game::Init()
 {
-	instance.player->Init();
+	player->Init();
 	menu->Init();
 }
 
 void Game::Update()
 {
-	while (instance.window.isOpen())
+	while (window.isOpen())
 	{
 		TimerManager::GetInstance().Update();
-		if (!InputManager::GetInstance().Update(instance.window)) break;
+		if (!InputManager::GetInstance().Update(window)) break;
 		ActorManager::GetInstance().Update();
 	}
 }
 
 void Game::UpdateWindow()
 {
-	instance.window.clear();
+	window.clear();
 
 	const View& _defaultView = camera->FollowPlayer();
-
 	instance.window.setView(_defaultView);
+
+	const View& _defaultView = window.getDefaultView();
+	window.setView(_defaultView);
 
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
-		instance.window.draw(*_actor->GetDrawable());
+		window.draw(*_actor->GetDrawable());
 	}
 
 	// UI
@@ -64,12 +70,12 @@ void Game::UpdateWindow()
 		if (!_canvas->IsVisible()) continue;
 
 		_view.setViewport(_canvas->GetRect());
-		instance.window.setView(_view);
+		window.setView(_view);
 
 		for (Widget* _widget : _canvas->GetWidgets()) 
 		{
 			if (!_widget->IsVisible()) continue;
-			instance.window.draw(*_widget->GetDrawable());
+			window.draw(*_widget->GetDrawable());
 		}
 	}
 	instance.window.display();
@@ -90,5 +96,5 @@ void Game::Launch()
 
 void Game::Close()
 {
-	instance.window.close();
+	window.close();
 }

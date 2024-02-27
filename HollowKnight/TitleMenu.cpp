@@ -1,6 +1,7 @@
 #include "TitleMenu.h"
 #include "Game.h"
 #include "HUD.h"
+#include "ActorManager.h"
 
 #define PATH_TITLE_MENU "UIs/Menus/TitleMenu.png"
 #define PATH_POINTER "UIs/Menus/TitleMenuPointer.png"
@@ -20,7 +21,7 @@ void TitleMenu::Init()
 
 	#pragma region Title
 
-	const Vector2f& _windowSize = Game::GetInstance().GetWindowSize();
+	const Vector2f& _windowSize = Game::GetWindowSize();
 	ShapeWidget* _image = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_TITLE_MENU));
 	canvas->AddWidget(_image);
 
@@ -44,7 +45,8 @@ void TitleMenu::Init()
 	{
 		ButtonData(
 			"START GAME",
-			[&]() { canvas->SetVisibilityStatus(false); }
+			[&]() { canvas->SetVisibilityStatus(false);
+					Game::GetPlayer()->SetVisibilityPlayerStats(true);}
 		),
 		ButtonData(
 			"   OPTIONS",
@@ -60,7 +62,7 @@ void TitleMenu::Init()
 		),
 		ButtonData(
 			" QUIT GAME",
-			[]() { Game::GetInstance().Close(); }
+			[]() { Game::Close(); }
 		)
 	};
 

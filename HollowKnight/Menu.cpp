@@ -23,7 +23,7 @@ void Menu::Init()
 {
 	mainMenu = new Canvas("MainMenu");
 
-	const Vector2f& _windowSize = Game::GetInstance().GetWindowSize();
+	const Vector2f& _windowSize = Game::GetWindowSize();
 	ShapeWidget* _image = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_MAIN_MENU));
 	mainMenu->AddWidget(_image);
 
