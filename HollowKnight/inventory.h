@@ -17,46 +17,51 @@ class Inventory : public IManager<int, Item>
 	Canvas* canvas;
 	Vector2i gridSize;
 	Vector2f cellSize;
+	Vector2f windowSize;
+	Vector2f halfSize;
+	float gridSizeX;
+	float gridSizeY;
+
 	vector<Button*> buttons;
 	int stackSize;
 
-	//TODO move
-	ShapeWidget* pointer = nullptr;
-	Label* descriptionTitle = nullptr;
-	Label* descriptionText = nullptr;
 
-	//TODO move
-	int maskCount = 0;
-	ShapeWidget* maskWidget = nullptr;
+	ShapeWidget* pointer;
+	Label* descriptionTitle;
+	Label* descriptionText;
 
-	int vesselCount = 0;
-	ShapeWidget* vesselWidget = nullptr;
 
-	int mirrorLevel = 0;
-	ShapeWidget* mirrorWidget = nullptr;
+	int maskCount;
+	ShapeWidget* maskWidget;
 
-	ShapeWidget* coreWidget = nullptr;
+	int vesselCount;
+	ShapeWidget* vesselWidget;
 
-	bool isVengefulActive = false;
-	ShapeWidget* vengefulWidget = nullptr;
+	int mirrorLevel;
+	ShapeWidget* mirrorWidget;
 
-	bool isSlamActive = false;
-	ShapeWidget* slamWidget = nullptr;
+	ShapeWidget* coreWidget;
 
-	bool isShriekActive = false;
-	ShapeWidget* shriekWidget = nullptr;
+	bool isVengefulActive;
+	ShapeWidget* vengefulWidget;
 
-	int swordLevel = 0;
-	ShapeWidget* swordWidget = nullptr;
+	bool isSlamActive;
+	ShapeWidget* slamWidget;
 
-	bool isWhirlwindUnlocked = false;
-	ShapeWidget* whirlwindWidget = nullptr;
+	bool isShriekActive;
+	ShapeWidget* shriekWidget;
 
-	bool isUppercutUnlocked = false;
-	ShapeWidget* uppercutWidget = nullptr;
+	int swordLevel;
+	ShapeWidget* swordWidget;
 
-	bool isDashActive = false;
-	ShapeWidget* dashWidget = nullptr;
+	bool isWhirlwindUnlocked;
+	ShapeWidget* whirlwindWidget;
+
+	bool isUppercutUnlocked;
+	ShapeWidget* uppercutWidget;
+
+	bool isDashActive;
+	ShapeWidget* dashWidget;
 
 private:
 	string ComputeHealthMaskPath() const
@@ -101,6 +106,12 @@ public:
 	{
 		canvas->SetVisibilityStatus(!canvas->IsVisible());
 	}
+
+	void Background();
+	void Grid();
+	void Equippements();
+	void Description();
+	void Separator();
 
 	void UpdateMaskCount(const int _factor);
 	void UpdateVesselCount(const int _factor);

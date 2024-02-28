@@ -20,8 +20,46 @@ Inventory::Inventory()
 	canvas = nullptr;
 	gridSize = Vector2i(4, 5);
 	cellSize = Vector2f(80.0f, 80.0f);
+
 	buttons = vector<Button*>();
 	stackSize = 5;
+
+	pointer = nullptr;
+	descriptionTitle = nullptr;
+	descriptionText = nullptr;
+
+
+	maskCount = 0;
+	maskWidget = nullptr;
+
+	vesselCount = 0;
+	vesselWidget = nullptr;
+
+	mirrorLevel = 0;
+	mirrorWidget = nullptr;
+
+	coreWidget = nullptr;
+
+	isVengefulActive = false;
+	vengefulWidget = nullptr;
+
+	isSlamActive = false;
+	slamWidget = nullptr;
+
+	isShriekActive = false;
+	shriekWidget = nullptr;
+
+	swordLevel = 0;
+	swordWidget = nullptr;
+
+	isWhirlwindUnlocked = false;
+	whirlwindWidget = nullptr;
+
+	isUppercutUnlocked = false;
+	uppercutWidget = nullptr;
+
+	isDashActive = false;
+	dashWidget = nullptr;
 }
 
 
@@ -57,24 +95,85 @@ void Inventory::Init()
 	canvas = new Canvas("PlayerInventory", FloatRect(0, 0, 1, 1));
 	canvas->SetVisibilityStatus(false);
 
-	const Vector2f& _windowSize = Game::GetWindowSize();
-	const Vector2f& _halfSize = _windowSize / 2.0f;
-	const float _borderSpacingX = _windowSize.x * 5.0f / 100.0f;
-	const float _gapX = _windowSize.x * 5.0f / 100.0f;
+	windowSize = Game::GetWindowSize();
+	halfSize = windowSize / 2.0f;
+	gridSizeX = gridSize.x * cellSize.x;
+	gridSizeY = gridSize.y * cellSize.y;
 
-	#pragma region Background
+	Background();
+	Grid();
+	Equippements();
+	Description();
+	Separator();
+}
 
-	ShapeWidget* _background = new ShapeWidget(ShapeData(_halfSize, _windowSize, PATH_BACKGROUND));
+
+void Inventory::UpdateMaskCount(const int _factor)
+{
+	if (!maskWidget) return;
+
+	maskCount += _factor;
+	maskCount %= 5; // TODO remove
+
+	const string& _path = ComputeHealthMaskPath();
+	Shape* _shape = maskWidget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	maskWidget->GetObject()->SetShape(_shape);
+}
+
+void Inventory::Background()
+{
+	ShapeWidget* _background = new ShapeWidget(ShapeData(halfSize, windowSize, PATH_BACKGROUND));
 	canvas->AddWidget(_background);
-	
-	#pragma endregion
+}
 
-	#pragma region Grid
+void Inventory::UpdateVesselCount(const int _factor)
+{
+	if (!vesselWidget) return;
 
-	const float _gridSizeX = gridSize.x * cellSize.x;
-	const float _gridSizeY = gridSize.y * cellSize.y;
-	const Vector2f& _gridSize = Vector2f(_gridSizeX - cellSize.x, _gridSizeY - cellSize.y);
-	const Vector2f& _gridPos = _halfSize - _gridSize / 2.0f;
+	vesselCount += _factor;
+	vesselCount %= 4; // TODO remove
+
+	const string& _path = ComputeVesselPath();
+	Shape* _shape = vesselWidget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	vesselWidget->GetObject()->SetShape(_shape);
+}
+
+void Inventory::UpdateMirrorLevel(const int _factor)
+{
+	if (!mirrorWidget) return;
+
+	mirrorLevel += _factor;
+	mirrorLevel %= 4; // TODO remove
+
+	const string& _path = ComputeMirrorPath();
+	Shape* _shape = mirrorWidget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	mirrorWidget->GetObject()->SetShape(_shape);
+}
+
+void Inventory::UpdateSwordLevel(const int _factor)
+{
+	if (!swordWidget) return;
+
+	swordLevel += _factor;
+	swordLevel %= 5; // TODO remove
+
+	const string& _path = ComputeSwordPath();
+	Shape* _shape = swordWidget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	swordWidget->GetObject()->SetShape(_shape);
+}
+
+void Inventory::Grid()
+{
+	const float _borderSpacingX = windowSize.x * 5.0f / 100.0f;
+	const float _gapX = windowSize.x * 5.0f / 100.0f;
+	const float gridSizeX = gridSize.x * cellSize.x;
+	const float gridSizeY = gridSize.y * cellSize.y;
+	const Vector2f& _gridSize = Vector2f(gridSizeX - cellSize.x, gridSizeY - cellSize.y);
+	const Vector2f& _gridPos = halfSize - _gridSize / 2.0f;
 
 	for (int _rowIndex = 0; _rowIndex < gridSize.y; _rowIndex++)
 	{
@@ -88,42 +187,31 @@ void Inventory::Init()
 			_button->GetDrawable()->setFillColor(Color::Transparent);
 
 			_button->GetData().hoveredCallback = [&]()
-			{ 
-				if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 				{
-					const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-					pointer->SetShapePosition(_position);
-
-					if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_hoveredButton->GetForeground()))
+					if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 					{
-						descriptionTitle->SetString(_itemWidget->GetTitle());
-						descriptionText->SetString(_itemWidget->GetText());
+						const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
+						pointer->SetShapePosition(_position);
+
+						if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_hoveredButton->GetForeground()))
+						{
+							descriptionTitle->SetString(_itemWidget->GetTitle());
+							descriptionText->SetString(_itemWidget->GetText());
+						}
 					}
-				}
-			};
+				};
 
 			buttons.push_back(_button);
 			canvas->AddWidget(_button);
 		}
 	}
-	
+
 	pointer = new ShapeWidget(ShapeData(_gridPos, cellSize, PATH_POINTER));
 	canvas->AddWidget(pointer);
+}
 
-	#pragma endregion
-
-	#pragma region Equipment
-
-	const float _equipmentSizeX = _gridPos.x - _borderSpacingX - _gapX * 2.0f - cellSize.x / 2.0f;
-	const Vector2f& _equipmentSize = Vector2f(_equipmentSizeX, _gridSizeY);
-
-	const float _equipmentPosX = _borderSpacingX + _gapX + _equipmentSizeX / 2.0f;
-	const float _equipmentPosY = _gridPos.y - cellSize.y / 2.0f + _gridSizeY / 2.0f;
-	const Vector2f& _equipmentPos = Vector2f(_equipmentPosX, _equipmentPosY);
-
-	/*ShapeWidget* _equipment = new ShapeWidget(ShapeData(_equipmentPos, _equipmentSize, ""));
-	canvas->AddWidget(_equipment);*/
-
+void Inventory::Equippements()
+{
 	// HealthMask
 	const Vector2f& _healthMaskPos = Vector2f(150.0f, 180.0f);
 	const Vector2f& _healthMaskSize = Vector2f(150.0f, 200.0f);
@@ -195,113 +283,89 @@ void Inventory::Init()
 	const Vector2f& _geoSize = Vector2f(40.0f, 40.0f);
 	ShapeWidget* _geoWidget = new ShapeWidget(ShapeData(_geoPos, _geoSize, PATH_GEO));
 	canvas->AddWidget(_geoWidget);
+}
 
-	#pragma endregion
+void Inventory::Description()
+{
+#pragma region Description
+	const float _borderSpacingX = windowSize.x * 5.0f / 100.0f;
+	const float _gapX = windowSize.x * 5.0f / 100.0f;
+	const Vector2f& _gridSize = Vector2f(gridSizeX - cellSize.x, gridSizeY - cellSize.y);
+	const Vector2f& _gridPos = halfSize - _gridSize / 2.0f;
 
-	#pragma region Description
+	const float _equipmentSizeX = _gridPos.x - _borderSpacingX - _gapX * 2.0f - cellSize.x / 2.0f;
+	const Vector2f& _equipmentSize = Vector2f(_equipmentSizeX, gridSizeY);
 
-	const float _endGridPosX = _gridPos.x + _gridSizeX - cellSize.x / 2.0f;
+	const float _equipmentPosX = _borderSpacingX + _gapX + _equipmentSizeX / 2.0f;
+	const float _equipmentPosY = _gridPos.y - cellSize.y / 2.0f + gridSizeY / 2.0f;
+	const Vector2f& _equipmentPos = Vector2f(_equipmentPosX, _equipmentPosY);
 
-	const float _descriptionSizeX = _windowSize.x - _borderSpacingX - _endGridPosX - _gapX * 2.0f;
-	const Vector2f& _descriptionSize = Vector2f(_descriptionSizeX, _gridSizeY);
+	const float _endGridPosX = _gridPos.x + gridSizeX - cellSize.x / 2.0f;
+
+	const float _descriptionSizeX = windowSize.x - _borderSpacingX - _endGridPosX - _gapX * 2.0f;
+	const Vector2f& _descriptionSize = Vector2f(_descriptionSizeX, gridSizeY);
 	const float _descriptionPosX = _endGridPosX + _gapX + _descriptionSizeX / 2.0f;
-	const float _descriptionPosY = _gridPos.y - cellSize.y / 2.0f + _gridSizeY / 2.0f;
+	const float _descriptionPosY = _gridPos.y - cellSize.y / 2.0f + gridSizeY / 2.0f;
 	const Vector2f& _descriptionPos = Vector2f(_descriptionPosX, _descriptionPosY);
 	/*ShapeWidget* _description = new ShapeWidget(ShapeData(_descriptionPos, _descriptionSize, ""));
 	canvas->AddWidget(_description);*/
 
-	#pragma region Title
+#pragma region Title
 
 	const float _descriptionTitlePosX = _descriptionPos.x - _descriptionSizeX * 20.0f / 100.0f;
-	const float _descriptionTitlePosY = _descriptionPos.y - _gridSizeY / 2.0f;
+	const float _descriptionTitlePosY = _descriptionPos.y - gridSizeY / 2.0f;
 	const Vector2f& _descriptionTitlePos = Vector2f(_descriptionTitlePosX, _descriptionTitlePosY);
 	descriptionTitle = new Label(TextData("Shade Cloak", _descriptionTitlePos, FONT, 26));
 	canvas->AddWidget(descriptionTitle);
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region Text
+#pragma region Text
 
 	const float _textSpacingX = _descriptionSizeX * 5.0f / 100.0f;
-	const float _textSpacingY = _gridSizeY * 25.0f / 100.0f;
+	const float _textSpacingY = gridSizeY * 25.0f / 100.0f;
 	const float _descriptionTextPosX = _descriptionPos.x - _descriptionSizeX / 2.0f + _textSpacingX;
 	const float _descriptionTextPosY = _descriptionTitlePosY + _textSpacingY;
 	const Vector2f& _descriptionLabelPos = Vector2f(_descriptionTextPosX, _descriptionTextPosY);
 	descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT));
 	canvas->AddWidget(descriptionText);
 
-	#pragma endregion
+#pragma endregion
+}
 
-	#pragma endregion
+void Inventory::Separator()
+{
+	const float _borderSpacingX = windowSize.x * 5.0f / 100.0f;
+	const float _gapX = windowSize.x * 5.0f / 100.0f;
+	const Vector2f& _gridSize = Vector2f(gridSizeX - cellSize.x, gridSizeY - cellSize.y);
+	const Vector2f& _gridPos = halfSize - _gridSize / 2.0f;
 
-	#pragma region Separators
+	const float _equipmentSizeX = _gridPos.x - _borderSpacingX - _gapX * 2.0f - cellSize.x / 2.0f;
+	const Vector2f& _equipmentSize = Vector2f(_equipmentSizeX, gridSizeY);
 
-	const Vector2f& _separatorSize = Vector2f(_gapX - 5.0f, _gridSizeY);
+	const float _equipmentPosX = _borderSpacingX + _gapX + _equipmentSizeX / 2.0f;
+	const float _equipmentPosY = _gridPos.y - cellSize.y / 2.0f + gridSizeY / 2.0f;
+	const Vector2f& _equipmentPos = Vector2f(_equipmentPosX, _equipmentPosY);
+
+	const float _endGridPosX = _gridPos.x + gridSizeX - cellSize.x / 2.0f;
+
+	const float _descriptionSizeX = windowSize.x - _borderSpacingX - _endGridPosX - _gapX * 2.0f;
+	const Vector2f& _descriptionSize = Vector2f(_descriptionSizeX, gridSizeY);
+	const float _descriptionPosX = _endGridPosX + _gapX + _descriptionSizeX / 2.0f;
+	const float _descriptionPosY = _gridPos.y - cellSize.y / 2.0f + gridSizeY / 2.0f;
+	const Vector2f& _descriptionPos = Vector2f(_descriptionPosX, _descriptionPosY);
+
+	const Vector2f& _separatorSize = Vector2f(_gapX - 5.0f, gridSizeY);
 
 	const float _separatorPosX1 = _gridPos.x - _separatorSize.x * 1.25f;
-	const Vector2f& _separatorPos1 = Vector2f(_separatorPosX1, _halfSize.y);
+	const Vector2f& _separatorPos1 = Vector2f(_separatorPosX1, halfSize.y);
 	ShapeWidget* _separator1 = new ShapeWidget(ShapeData(_separatorPos1, _separatorSize, PATH_SEPARATOR));
 	canvas->AddWidget(_separator1);
 
 	const float _separatorPosX2 = _descriptionPosX - _descriptionSizeX / 2.0f - _separatorSize.x / 2.0f;
-	const Vector2f& _separatorPos2 = Vector2f(_separatorPosX2, _gridSizeY);
+	const Vector2f& _separatorPos2 = Vector2f(_separatorPosX2, halfSize.y);
 	ShapeWidget* _separator2 = new ShapeWidget(ShapeData(_separatorPos2, _separatorSize, PATH_SEPARATOR));
 	canvas->AddWidget(_separator2);
-
-	#pragma endregion
-}
-
-
-void Inventory::UpdateMaskCount(const int _factor)
-{
-	if (!maskWidget) return;
-
-	maskCount += _factor;
-	maskCount %= 5; // TODO remove
-
-	const string& _path = ComputeHealthMaskPath();
-	Shape* _shape = maskWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	maskWidget->GetObject()->SetShape(_shape);
-}
-
-void Inventory::UpdateVesselCount(const int _factor)
-{
-	if (!vesselWidget) return;
-
-	vesselCount += _factor;
-	vesselCount %= 4; // TODO remove
-
-	const string& _path = ComputeVesselPath();
-	Shape* _shape = vesselWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	vesselWidget->GetObject()->SetShape(_shape);
-}
-
-void Inventory::UpdateMirrorLevel(const int _factor)
-{
-	if (!mirrorWidget) return;
-
-	mirrorLevel += _factor;
-	mirrorLevel %= 4; // TODO remove
-
-	const string& _path = ComputeMirrorPath();
-	Shape* _shape = mirrorWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	mirrorWidget->GetObject()->SetShape(_shape);
-}
-
-void Inventory::UpdateSwordLevel(const int _factor)
-{
-	if (!swordWidget) return;
-
-	swordLevel += _factor;
-	swordLevel %= 5; // TODO remove
-
-	const string& _path = ComputeSwordPath();
-	Shape* _shape = swordWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	swordWidget->GetObject()->SetShape(_shape);
 }
 
 void Inventory::SetVengefulStatus(const bool _status)
@@ -337,7 +401,6 @@ void Inventory::SetShriekStatus(const bool _status)
 	shriekWidget->GetObject()->SetShape(_shape);
 }
 
-
 void Inventory::AddItem(const int _count, const ItemData& _data)
 {
 	if (_count <= 0) return;
@@ -359,8 +422,8 @@ void Inventory::CreateItemData(const ItemData& _data)
 	if (!_button) return;
 
 	const ShapeData& _objectData = ShapeData(_button->GetObject()->GetShapePosition(),
-											 _button->GetObject()->GetShapeSize() * 70.0f / 100.0f,
-											 _data.path);
+		_button->GetObject()->GetShapeSize() * 70.0f / 100.0f,
+		_data.path);
 	ItemWidget* _widget = new ItemWidget(_objectData, _data.title, _data.text);
 	Item* _item = new Item(_widget, FONT);
 	Add(_item->GetID(), _item);

@@ -232,7 +232,7 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
     <ClCompile Include="CharmsMenu.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
