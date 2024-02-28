@@ -125,8 +125,12 @@ void Inventory::Init()
 		}
 	}
 	
+	#pragma region Pointer
+
 	pointer = new ShapeWidget(ShapeData(_gridPos, cellSize, PATH_POINTER));
 	canvas->AddWidget(pointer);
+
+	#pragma endregion
 
 	#pragma endregion
 
