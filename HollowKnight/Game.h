@@ -6,7 +6,7 @@
 #include "Camera.h"
 #include "Singleton.h"
 #include "NPC.h"
-
+#include "InteractableActor.h"
 
 using namespace std;
 using namespace sf;
@@ -21,7 +21,8 @@ class Game
 	static Camera* camera;
 
 	Menu* menu;
-	NPC* npc;
+	// NPC* npc;
+	InteractableActor* pnj;
 public:
 	static Vector2f GetWindowSize()
 	{

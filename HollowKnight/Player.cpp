@@ -41,7 +41,7 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 void Player::SetupPlayerInput()
 {
 	new ActionMap("Storages", {
-		ActionData("Inventory", [&]() { inventory->Toggle(); IsPlay(false); }, InputData({ActionType::KeyPressed, Keyboard::B})),
+		ActionData("Inventory", [&]() { inventory->Toggle(); /*IsPlay(false);*/  }, InputData({ActionType::KeyPressed, Keyboard::B})),
 		ActionData("AddItem", [&]() { inventory->AddItem(1, {
 			PATH_ITEM, "Item",
 			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"});
@@ -145,11 +145,10 @@ void Player::Up()
 
 void Player::SwitchStatue()
 {
-	/* bool _currentPlay = isPlay;
+	 bool _currentPlay = isPlay;
 	_currentPlay = true;
 	if (!isPlay)
 	{
 		isPlay = true;
-	}*/
-	// new ActionData("Inventory", [&]() {IsPlay(true); }, InputData({ ActionType::KeyPressed, Keyboard::B }));
+	}
 }
