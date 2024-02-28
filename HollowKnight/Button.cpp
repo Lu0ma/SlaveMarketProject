@@ -11,7 +11,7 @@ Button::Button(const ShapeData& _data, const ButtonData& _buttonData) : ShapeWid
 }
 
 
-void Button::OnPressed()
+bool Button::OnPressed()
 {
 	isSelected = true;
 	isHeld = true;
@@ -19,7 +19,10 @@ void Button::OnPressed()
 	if (data.pressedCallback)
 	{
 		data.pressedCallback();
+		return true;
 	}
+	
+	return false;
 }
 
 void Button::OnHeld()

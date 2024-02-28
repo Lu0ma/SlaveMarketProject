@@ -2,10 +2,9 @@
 #include "TimerManager.h"
 #include "InputManager.h"
 #include "ActorManager.h"
-#include "AnimationComponent.h"
 #include "HUD.h"
 #include "Widget.h"
-#include "Player.h"
+
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
 
@@ -14,16 +13,17 @@ Player* Game::player;
 
 Game::Game()
 {
-	player = new Player("Player", ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), ""));
-	camera = new Camera(TARGET_WINDOW);
 	menu = new Menu();
-	npc = new NPC();
+	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
+
+	//TODO move
+	merchand = new Merchand();
 }
 
 Game::~Game()
 {
-	//delete instance.camera;
-	delete camera;
+	delete menu;
+	//delete camera;
 }
 
 
@@ -36,8 +36,10 @@ void Game::Start()
 
 void Game::Init()
 {
-	player->Init();
 	menu->Init();
+
+	//TODO move
+	merchand->Init();
 }
 
 void Game::Update()
@@ -53,25 +55,19 @@ void Game::Update()
 void Game::UpdateWindow()
 {
 	window.clear();
-	View _defaultView;
-	if (camera->GetTargetStat() == TARGET_PLAYER)
-	{
-		_defaultView = camera->FollowPlayer();
-		window.setView(_defaultView);
-	}
-	else
-	{
-		_defaultView = window.getDefaultView();
-		window.setView(_defaultView);
-	}
+
+	// const View& _defaultView = window.getDefaultView();
+	//Deux façon de suivre le Player
+	//1:
+	//const View& _defaultView =  camera->FollowPlayer();
+	////2:
+	//const View& _defaultView = camera->GetView();
+
+	const View& _defaultView = window.getDefaultView();
+	window.setView(_defaultView);
 
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
-		/*if (AnimationComponent* _animation = _actor->GetComponent<AnimationComponent>())
-		{
-			window.draw(*_animation->GetCurrentAnimation()->GetSprite());
-			continue;
-		}*/
 		window.draw(*_actor->GetDrawable());
 	}
 
@@ -79,30 +75,20 @@ void Game::UpdateWindow()
 	View _view = _defaultView;
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{
-		
-  		if (!_canvas->IsVisible())
-		{
-		
-			camera->SetTarget(TARGET_PLAYER);
-			continue;
-		}
-		else
-		{
-			camera->SetTarget(TARGET_WINDOW);
-		}
+		if (!_canvas->IsVisible()) continue;
 
 		_view.setViewport(_canvas->GetRect());
 		window.setView(_view);
 
- 		for (Widget* _widget : _canvas->GetWidgets()) 
+		for (Widget* _widget : _canvas->GetWidgets()) 
 		{
-			if (!_widget->IsVisible())
-			{
-				continue;
-			}
+			if (!_widget->IsVisible()) continue;
 			window.draw(*_widget->GetDrawable());
- 		}
+		}
 	}
+
+	// camera->FollowPlayer;
+
 	window.display();
 }
 

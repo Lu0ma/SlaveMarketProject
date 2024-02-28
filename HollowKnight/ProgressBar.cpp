@@ -3,13 +3,12 @@
 #include "TextureManager.h"
 #include "HUD.h"
 
-ProgressBar::ProgressBar(const ShapeData& _data, Canvas* _canvas, const string& _path,
+ProgressBar::ProgressBar(const ShapeData& _data, const string& _path,
                          const ProgressType& _type, const float _maxValue)
                        : ShapeWidget(_data)
 {
     type = _type;
     foreground = new ShapeWidget(ShapeData(_data.position, _data.size, _path));
-    _canvas->AddWidget(foreground);
 
     UpdateOriginAndPosition(_data.size);
 
