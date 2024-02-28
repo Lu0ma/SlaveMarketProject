@@ -51,10 +51,28 @@ Item* Inventory::FindItemData(const string& _path)
 	return nullptr;
 }
 
+void Inventory::UpdateCount(ShapeWidget* _widget, int& _count, const string& _path,
+	const int _max, const int _factor)
+{
+	_count += _factor;
+	_count %= _max; // TODO remove
+
+	UpdateTexture(_widget, ComputePath(_path, _count));
+}
+
+void Inventory::UpdateTexture(ShapeWidget* _widget, const string& _path)
+{
+	if (!_widget) return;
+
+	Shape* _shape = _widget->GetDrawable();
+	TextureManager::GetInstance().Load(_shape, _path);
+	_widget->GetObject()->SetShape(_shape);
+}
+
 
 void Inventory::Init()
 {
-	canvas = new Canvas("PlayerInventory", FloatRect(0, 0, 1, 1));
+	canvas = new Canvas("PlayerInventory");
 	canvas->SetVisibilityStatus(false);
 
 	const Vector2f& _windowSize = Game::GetWindowSize();
@@ -107,8 +125,12 @@ void Inventory::Init()
 		}
 	}
 	
+	#pragma region Pointer
+
 	pointer = new ShapeWidget(ShapeData(_gridPos, cellSize, PATH_POINTER));
 	canvas->AddWidget(pointer);
+
+	#pragma endregion
 
 	#pragma endregion
 
@@ -127,25 +149,29 @@ void Inventory::Init()
 	// HealthMask
 	const Vector2f& _healthMaskPos = Vector2f(150.0f, 180.0f);
 	const Vector2f& _healthMaskSize = Vector2f(150.0f, 200.0f);
-	maskWidget = new ShapeWidget(ShapeData(_healthMaskPos, _healthMaskSize, ComputeHealthMaskPath()));
+	const string& _healthMaskPath = ComputePath(PATH_HEALTH_MASK, maskCount);
+	maskWidget = new ShapeWidget(ShapeData(_healthMaskPos, _healthMaskSize, _healthMaskPath));
 	canvas->AddWidget(maskWidget);
 
 	// Vessel
 	const Vector2f& _vesselPos = Vector2f(250.0f, 150.0f);
 	const Vector2f& _vesselSize = Vector2f(70.0f, 70.0f);
-	vesselWidget = new ShapeWidget(ShapeData(_vesselPos, _vesselSize, ComputeVesselPath()));
+	const string& _vesselPath = ComputePath(PATH_VESSEL, vesselCount);
+	vesselWidget = new ShapeWidget(ShapeData(_vesselPos, _vesselSize, _vesselPath));
 	canvas->AddWidget(vesselWidget);
 
 	// Mirror
 	const Vector2f& _mirrorPos = Vector2f(330.0f, 180.0f);
 	const Vector2f& _mirrorSize = Vector2f(90.0f, 130.0f);
-	mirrorWidget = new ShapeWidget(ShapeData(_mirrorPos, _mirrorSize, ComputeMirrorPath()));
+	const string& _mirrorPath = ComputePath(PATH_MIRROR, mirrorLevel);
+	mirrorWidget = new ShapeWidget(ShapeData(_mirrorPos, _mirrorSize, _mirrorPath));
 	canvas->AddWidget(mirrorWidget);
 
 	// Sword
 	const Vector2f& _swordPos = Vector2f(150.0f, 450.0f);
 	const Vector2f& _swordSize = Vector2f(70.0f, 300.0f);
-	swordWidget = new ShapeWidget(ShapeData(_swordPos, _swordSize, ComputeSwordPath()));
+	const string& _swordLevel = ComputePath(PATH_SWORD, swordLevel);
+	swordWidget = new ShapeWidget(ShapeData(_swordPos, _swordSize, _swordLevel));
 	canvas->AddWidget(swordWidget);
 
 	// Core
@@ -157,19 +183,22 @@ void Inventory::Init()
 	// Vengeful
 	const Vector2f& _vengefulPos = Vector2f(260.0f, 300.0f);
 	const Vector2f& _vengefulSize = Vector2f(45.0f, 40.0f);
-	vengefulWidget = new ShapeWidget(ShapeData(_vengefulPos, _vengefulSize, ComputeVengefulPath()));
+	const string& _vengefulPath = ComputePath(PATH_VENGEFUL, isVengefulActive);
+	vengefulWidget = new ShapeWidget(ShapeData(_vengefulPos, _vengefulSize, _vengefulPath));
 	canvas->AddWidget(vengefulWidget);
 
 	// Slam
 	const Vector2f& _slamPos = Vector2f(340.0f, 300.0f);
 	const Vector2f& _slamSize = Vector2f(40.0f, 40.0f);
-	slamWidget = new ShapeWidget(ShapeData(_slamPos, _slamSize, ComputeSlamPath()));
+	const string& _slamPath = ComputePath(PATH_SLAM, isSlamActive);
+	slamWidget = new ShapeWidget(ShapeData(_slamPos, _slamSize, _slamPath));
 	canvas->AddWidget(slamWidget);
 
 	// Shriek
 	const Vector2f& _shriekPos = Vector2f(300.0f, 415.0f);
 	const Vector2f& _shriekSize = Vector2f(40.0f, 40.0f);
-	shriekWidget = new ShapeWidget(ShapeData(_shriekPos, _shriekSize, ComputeShriekPath()));
+	const string& _shriekPath = ComputePath(PATH_SHRIEK, isShriekActive);
+	shriekWidget = new ShapeWidget(ShapeData(_shriekPos, _shriekSize, _shriekPath));
 	canvas->AddWidget(shriekWidget);
 
 	// Whirlwind
@@ -251,90 +280,45 @@ void Inventory::Init()
 	#pragma endregion
 }
 
-
 void Inventory::UpdateMaskCount(const int _factor)
 {
-	if (!maskWidget) return;
-
-	maskCount += _factor;
-	maskCount %= 5; // TODO remove
-
-	const string& _path = ComputeHealthMaskPath();
-	Shape* _shape = maskWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	maskWidget->GetObject()->SetShape(_shape);
+	UpdateCount(maskWidget, maskCount, PATH_HEALTH_MASK, 5, _factor);
 }
 
 void Inventory::UpdateVesselCount(const int _factor)
 {
-	if (!vesselWidget) return;
-
-	vesselCount += _factor;
-	vesselCount %= 4; // TODO remove
-
-	const string& _path = ComputeVesselPath();
-	Shape* _shape = vesselWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	vesselWidget->GetObject()->SetShape(_shape);
+	UpdateCount(vesselWidget, vesselCount, PATH_VESSEL, 4, _factor);
 }
 
 void Inventory::UpdateMirrorLevel(const int _factor)
 {
-	if (!mirrorWidget) return;
-
-	mirrorLevel += _factor;
-	mirrorLevel %= 4; // TODO remove
-
-	const string& _path = ComputeMirrorPath();
-	Shape* _shape = mirrorWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	mirrorWidget->GetObject()->SetShape(_shape);
+	UpdateCount(mirrorWidget, mirrorLevel, PATH_MIRROR, 4, _factor);
 }
 
 void Inventory::UpdateSwordLevel(const int _factor)
 {
-	if (!swordWidget) return;
-
-	swordLevel += _factor;
-	swordLevel %= 5; // TODO remove
-
-	const string& _path = ComputeSwordPath();
-	Shape* _shape = swordWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	swordWidget->GetObject()->SetShape(_shape);
+	UpdateCount(swordWidget, swordLevel, PATH_SWORD, 5, _factor);
 }
 
 void Inventory::SetVengefulStatus(const bool _status)
 {
 	isVengefulActive = !isVengefulActive; //TODO remove
 	//isSlamActive = _status;
-
-	const string& _path = ComputeVengefulPath();
-	Shape* _shape = vengefulWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	vengefulWidget->GetObject()->SetShape(_shape);
+	UpdateTexture(vengefulWidget, ComputePath(PATH_VENGEFUL, isVengefulActive));
 }
 
 void Inventory::SetSlamStatus(const bool _status)
 {
 	isSlamActive = !isSlamActive; //TODO remove
 	//isSlamActive = _status;
-
-	const string& _path = ComputeSlamPath();
-	Shape* _shape = slamWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	slamWidget->GetObject()->SetShape(_shape);
+	UpdateTexture(slamWidget, ComputePath(PATH_SLAM, isSlamActive));
 }
 
 void Inventory::SetShriekStatus(const bool _status)
 {
 	isShriekActive = !isShriekActive; //TODO remove
 	//isSlamActive = _status;
-
-	const string& _path = ComputeShriekPath();
-	Shape* _shape = shriekWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	shriekWidget->GetObject()->SetShape(_shape);
+	UpdateTexture(shriekWidget, ComputePath(PATH_SHRIEK, isShriekActive));
 }
 
 

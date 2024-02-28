@@ -34,10 +34,6 @@ public:
 	{
 		return shape;
 	}
-	Shape* GetShape() const
-	{
-		return shape;
-	}
 	Vector2f GetShapePosition() const
 	{
 		if (!shape) return Vector2f();

@@ -1,11 +1,16 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
+
 #include "Menu.h"
 #include "Player.h"
 #include "Camera.h"
+
+#include "Merchand.h"
 #include "Singleton.h"
 #include "NPC.h"
+#include "InteractableActor.h"
+
 using namespace std;
 using namespace sf;
 
@@ -15,10 +20,13 @@ using namespace sf;
 class Game
 {
 	static RenderWindow window;
-	Menu* menu;
 	static Player* player;
-	Camera* camera;
-	NPC* npc;
+	Merchand* merchand;
+	static Camera* camera;
+
+	Menu* menu;
+	// NPC* npc;
+	InteractableActor* pnj;
 public:
 	static Vector2f GetWindowSize()
 	{
@@ -27,6 +35,10 @@ public:
 	static Player* GetPlayer()
 	{
 		return player;
+	}
+	static Camera* GetCamera()
+	{
+		return camera;
 	}
 
 public:
@@ -42,5 +54,6 @@ public:
 
 public:
 	void Launch();
+	void CheckCameraState(View& _newView);
 	static void Close();
 };

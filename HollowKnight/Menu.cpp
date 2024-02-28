@@ -2,9 +2,11 @@
 #include "ShapeWidget.h"
 #include "Game.h"
 #include "ActionMap.h"
+#include "MusicManager.h"
 
 #define PATH_MAIN_MENU "UIs/Menus/MainMenu.png"
 #define FONT "Font.ttf"
+#define MUSIC "CityofTears.mp3"
 
 Menu::Menu()
 {
@@ -14,6 +16,7 @@ Menu::Menu()
 
 void Menu::OpenTitleMenu()
 {
+	
 	mainMenu->SetVisibilityStatus(false);
 	titleMenu->Init();
 }
@@ -35,6 +38,8 @@ void Menu::Init()
 									FONT, 26));
 	mainMenu->AddWidget(_mainMenuText);
 	new ActionMap("MenuInputs", { 
-		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu();  }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
+		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
 	});
+
+	MusicManager::GetInstance().Play(MUSIC);
 }

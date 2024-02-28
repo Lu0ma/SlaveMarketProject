@@ -13,48 +13,64 @@
 #include "Action.h"
 #include "ActionMap.h"
 #include "Timer.h"
+
 // UIs
 #include "Canvas.h"
 
 #include "Game.h"
-#include"Mob.h"
 
 #define PATH_ITEM "UIs/Inventory/Item.png"
 #define PATH_ITEM2 "test.png"
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
+	stats = new PlayerStat();
 	inventory = new Inventory();
 	movement = new PlayerMovementComponent(this);
 	components.push_back(movement);
 	//TODO move
 	//merchand = new Merchand();
-
 	canvas = nullptr;
 	healthBar = nullptr;
 	manaBar = nullptr;
 	geosCountText = nullptr;
-	stats = new PlayerStat(10, 10, 20, 20,10, 0);
-
+	stats = new PlayerStat(10, 10, 20, 20, 0);
+	isPlay = false;
 }
 
 
 void Player::SetupPlayerInput()
 {
+	new ActionMap("Stats", {
+		ActionData("AddMana", [&]() { stats->UseMana(10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Space  })),
+		ActionData("RemoveMana", [&]() { stats->UseMana(-10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
+		ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
+		ActionData("RemoveLife", [&]() { stats->UpdateLife(-1); }, InputData({ ActionType::KeyPressed, Keyboard::Num0 })),
+		ActionData("AddLifeSlot", [&]() { stats->AddLife(); }, InputData({ ActionType::KeyPressed, Keyboard::O })),
+		ActionData("AddGeos", [&]() { stats->AddGeos(12); }, InputData({ ActionType::KeyPressed, Keyboard::Num8 })),
+	});
+
+	new ActionMap("Inventory", {
+		ActionData("ToggleInventory", [&]() { 
+			stats->Toggle();
+			inventory->Toggle();
+			/*IsPlay(false);*/
+		}, InputData({ ActionType::KeyPressed, Keyboard::B })),
+
 	new ActionMap("Storages", {
-		ActionData("Inventory", [&]() { inventory->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::B })),
 		ActionData("AddItem", [&]() { inventory->AddItem(1, {
 			PATH_ITEM, "Item",
-			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"});
+			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"}); 
 		}, InputData({ActionType::KeyPressed, Keyboard::Q})),
 		ActionData("AddItem2", [&]() { inventory->AddItem(1, {
 			PATH_ITEM2, "Object",
-			"Ceci est un texte\nEt ça, c'est un saut de ligne"});
+			"Ceci est un texte\nEt ça, c'est un saut de ligne"}); 
 		}, InputData({ActionType::KeyPressed, Keyboard::W})),
+		ActionData("AddHealthMask", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num1 })),
 
 		ActionData("AddHealthMash", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::A })),
 		});
-	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab }))});
+	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle();  }, InputData({ ActionType::KeyPressed, Keyboard::Tab }))});
 
 	ActionData("AddHealthMask", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num1 })),
 		ActionData("AddVessel", [&]() { inventory->UpdateVesselCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num2 })),
@@ -63,32 +79,7 @@ void Player::SetupPlayerInput()
 		ActionData("ToggleSlam", [&]() { inventory->SetSlamStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num5 })),
 		ActionData("ToggleShriek", [&]() { inventory->SetShriekStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num6 })),
 		ActionData("UpgradeSword", [&]() { inventory->UpdateSwordLevel(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num7 })),
-
-	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab })) });
-	
-	new ActionMap("Movement", {
-		ActionData("Left", [&]()
-			{
-			 	movement->SetDirectionX(-1.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
-		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
-
-		ActionData("Right", [&]() { movement->SetDirectionX(1.0f); }, InputData({ ActionType::KeyPressed, Keyboard::D })),
-		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
-
- 		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
 	});
-	new ActionMap("Attack", {
-
-		ActionData("Slash", [&]() {
-			SpecialAttack();
-			cout << "Slash" << endl; },
-			InputData({ActionType::KeyPressed, Keyboard::R})),
-
-		ActionData("StopSlash", [&]() {
-			movement->SetDirectionX(0.0f); },
-			InputData({ActionType::KeyReleased, Keyboard::R})),
-
-		});
 }
 
 void Player::InitStats()
@@ -107,7 +98,6 @@ void Player::InitStats()
 	canvas->AddWidget(manaBar);
 	canvas->AddWidget(geosCountText);
 
-
 	//stats = new PlayerStats(stats->health, stats->health + 1, stats->mana, stats->maxMana + 1, stats->geosCount + 1);
 	//SetStat(stats->health);
 }
@@ -115,6 +105,7 @@ void Player::InitStats()
 
 void Player::Update(const float _deltaTime)
 {
+	if (!isPlay) return;
 	Actor::Update(_deltaTime);
 	// PlayerMovementComponent::Update(_deltaTime);
 	// movement->Update(_deltaTime);
@@ -132,9 +123,13 @@ void Player::Update(const float _deltaTime)
 
 void Player::Init()
 {
-	InitStats();
+	stats->Init();
 	inventory->Init();
 	SetupPlayerInput();
+	
+	shape->setFillColor(Color::Transparent);
+}
+
 }
 
 void Player::Right()
@@ -155,14 +150,13 @@ void Player::Up()
 	cout << "Je saute " << endl;
 }
 
-void Player::SpecialAttack()
+void Player::SwitchStatue()
 {
-		movement->SetDirectionX(10.0f);
-
-		const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(GetShapePosition(), 15.0f);
-		for (Mob* _mob : _mobs)
-		{
-			if (!_mob)continue;
-			_mob->TakeDamages(stats->damages);
-		}
+	 bool _currentPlay = isPlay;
+	_currentPlay = true;
+	if (!isPlay)
+	{
+		isPlay = true;
+	}
 }
+

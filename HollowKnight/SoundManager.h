@@ -1,8 +1,7 @@
 #pragma once
-
+#include "Singleton.h"
 #include "IManager.h"
 #include "SoundData.h"
-#include "Singleton.h"
 
 class SoundManager : public Singleton<SoundManager>, public IManager<string, SoundData>
 {

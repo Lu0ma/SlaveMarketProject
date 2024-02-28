@@ -2,28 +2,32 @@
 #include "TimerManager.h"
 #include "InputManager.h"
 #include "ActorManager.h"
-#include "AnimationComponent.h"
 #include "HUD.h"
 #include "Widget.h"
-#include "Player.h"
+
+#include "Spawner.h"
+
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
 
 RenderWindow Game::window;
 Player* Game::player;
+Camera* Game::camera;
 
 Game::Game()
 {
-	player = new Player("Player", ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), ""));
-	camera = new Camera(TARGET_WINDOW);
 	menu = new Menu();
-	npc = new NPC();
-}
+	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
+	//TODO move
+	merchand = new Merchand();
+	//npc = new NPC();
+	pnj = new InteractableActor("Villageois" , ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) , Vector2f(100.0f, 100.0f) ," ") , Vector2f(1000.0f , 1000.0f));
+} 
 
 Game::~Game()
 {
-	//delete instance.camera;
-	delete camera;
+	delete menu;
+	//delete camera;
 }
 
 
@@ -36,8 +40,16 @@ void Game::Start()
 
 void Game::Init()
 {
-	player->Init();
 	menu->Init();
+
+	//TODO move
+	merchand->Init();
+	new ActionMap("Merchand", {
+		ActionData("ToggleShop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Equal  })),
+	});
+
+	Spawner* _spawner = new Spawner();
+	_spawner->Spawn();
 }
 
 void Game::Update()
@@ -54,54 +66,25 @@ void Game::UpdateWindow()
 {
 	window.clear();
 	View _defaultView;
-	if (camera->GetTargetStat() == TARGET_PLAYER)
-	{
-		_defaultView = camera->FollowPlayer();
-		window.setView(_defaultView);
-	}
-	else
-	{
-		_defaultView = window.getDefaultView();
-		window.setView(_defaultView);
-	}
-
+	CheckCameraState(_defaultView);
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
-		/*if (AnimationComponent* _animation = _actor->GetComponent<AnimationComponent>())
-		{
-			window.draw(*_animation->GetCurrentAnimation()->GetSprite());
-			continue;
-		}*/
 		window.draw(*_actor->GetDrawable());
 	}
-
+	
 	// UI
-	View _view = _defaultView;
+	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{
-		
-  		if (!_canvas->IsVisible())
-		{
-		
-			camera->SetTarget(TARGET_PLAYER);
-			continue;
-		}
-		else
-		{
-			camera->SetTarget(TARGET_WINDOW);
-		}
-
+  		if (!_canvas->IsVisible()) continue;
 		_view.setViewport(_canvas->GetRect());
 		window.setView(_view);
 
- 		for (Widget* _widget : _canvas->GetWidgets()) 
+		for (Widget* _widget : _canvas->GetWidgets()) 
 		{
-			if (!_widget->IsVisible())
-			{
-				continue;
-			}
+			if (!_widget->IsVisible()) continue;
 			window.draw(*_widget->GetDrawable());
- 		}
+		}
 	}
 	window.display();
 }
@@ -117,6 +100,23 @@ void Game::Launch()
 	Start();
 	Update();
 	Stop();
+}
+
+void Game::CheckCameraState(View& _newView)
+{
+
+	if (camera->GetTargetStat() == TARGET_PLAYER)
+	{
+		_newView = camera->FollowPlayer();
+		window.setView(_newView);
+	}
+
+	else if (camera->GetTargetStat() == TARGET_WINDOW)
+	{
+		_newView = window.getDefaultView();
+		window.setView(_newView);
+	}
+
 }
 
 void Game::Close()

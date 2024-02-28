@@ -53,9 +53,13 @@ public:
 	{
 		return maxValue;
 	}
+	ShapeWidget* GetForeground() const
+	{
+		return foreground;
+	}
 
 public:
-	ProgressBar(const ShapeData& _data, Canvas* _canvas, const string& _path,
+	ProgressBar(const ShapeData& _data, const string& _path,
 				const ProgressType& _type, const float _maxValue = 100.0f);
 	~ProgressBar();
 

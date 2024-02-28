@@ -3,7 +3,7 @@
 #include "Item.h"
 #include "Canvas.h"
 #include "Button.h"
-
+//#include "Game.h"
 #define PATH_HEALTH_MASK "UIs/Inventory/HealthMasks/HealthMask_"
 #define PATH_VESSEL "UIs/Inventory/Vessels/Vessel_"
 #define PATH_MIRROR "UIs/Inventory/Mirrors/Mirror_"
@@ -20,12 +20,10 @@ class Inventory : public IManager<int, Item>
 	vector<Button*> buttons;
 	int stackSize;
 
-	//TODO move
 	ShapeWidget* pointer = nullptr;
 	Label* descriptionTitle = nullptr;
 	Label* descriptionText = nullptr;
 
-	//TODO move
 	int maskCount = 0;
 	ShapeWidget* maskWidget = nullptr;
 
@@ -59,33 +57,14 @@ class Inventory : public IManager<int, Item>
 	ShapeWidget* dashWidget = nullptr;
 
 private:
-	string ComputeHealthMaskPath() const
+	string ComputePath(const string& _path, const int _index) const
 	{
-		return PATH_HEALTH_MASK + to_string(maskCount) + ".png";
+		return _path + to_string(_index) + ".png";
 	}
-	string ComputeVesselPath() const
+public:
+	void Toggle()
 	{
-		return PATH_VESSEL + to_string(vesselCount) + ".png";
-	}
-	string ComputeMirrorPath() const
-	{
-		return PATH_MIRROR + to_string(mirrorLevel) + ".png";
-	}
-	string ComputeSwordPath() const
-	{
-		return PATH_SWORD + to_string(swordLevel) + ".png";
-	}
-	string ComputeVengefulPath() const
-	{
-		return PATH_VENGEFUL + to_string(isVengefulActive) + ".png";
-	}
-	string ComputeSlamPath() const
-	{
-		return PATH_SLAM + to_string(isSlamActive) + ".png";
-	}
-	string ComputeShriekPath() const
-	{
-		return PATH_SHRIEK + to_string(isShriekActive) + ".png";
+		canvas->SetVisibilityStatus(!canvas->IsVisible());
 	}
 
 public:
@@ -95,12 +74,12 @@ private:
 	Button* GetFirstAvailableButton() const;
 	Item* FindItemData(const string& _path);
 
+	void UpdateCount(ShapeWidget* _widget, int& _count, const string& _path,
+		const int _max, const int _factor = 1);
+	void UpdateTexture(ShapeWidget* _widget, const string& _path);
+
 public:
 	void Init();
-	void Toggle()
-	{
-		canvas->SetVisibilityStatus(!canvas->IsVisible());
-	}
 
 	void UpdateMaskCount(const int _factor);
 	void UpdateVesselCount(const int _factor);

@@ -17,6 +17,7 @@ TitleMenu::TitleMenu()
 
 void TitleMenu::Init()
 {
+	
 	canvas = new Canvas("Title");
 
 	#pragma region Title
@@ -45,8 +46,18 @@ void TitleMenu::Init()
 	{
 		ButtonData(
 			"START GAME",
+
+			[&]() { 
+				canvas->SetVisibilityStatus(false);
+				Game::GetPlayer()->Init();
+			}
+			
 			[&]() { canvas->SetVisibilityStatus(false);
-					Game::GetPlayer()->SetVisibilityPlayerStats(true);}
+					Game::GetPlayer()->SetVisibilityPlayerStats(true);
+					Game::GetPlayer()->IsPlay(true);
+					Game::GetCamera()->SetTarget(TARGET_PLAYER);
+					 }
+
 		),
 		ButtonData(
 			"   OPTIONS",

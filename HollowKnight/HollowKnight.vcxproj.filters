@@ -94,8 +94,44 @@
     <Filter Include="Objects\ShapeObjects\Actors\Player">
       <UniqueIdentifier>{89aee257-6703-436a-94cf-1c74b7b0af88}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mobs">
+    <Filter Include="Objects\ShapeObjects\NPCs">
+      <UniqueIdentifier>{207b97a8-7f70-48e1-92b9-69dd26516d31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\NPCs\Merchands">
+      <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Collision">
+      <UniqueIdentifier>{3f089dda-207d-4d08-a9db-06793e761f8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Animation">
+      <UniqueIdentifier>{97c513f2-fcdc-4723-bbee-b77632454dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Music">
+      <UniqueIdentifier>{389b7583-21d9-4df8-aeee-2f82172d46ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Sound">
+      <UniqueIdentifier>{b7758773-b234-4569-905d-7a3bf021e39d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Mobs">
       <UniqueIdentifier>{03b12366-449a-4d98-8f02-adb3ade85d29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Mobs\Belfly">
+      <UniqueIdentifier>{9ff6fbc8-1d14-4057-bfdd-6fdd8010d483}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Mobs\Boofly">
+      <UniqueIdentifier>{1ec1f361-cbfd-4bed-8838-1b3f1262f497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Mobs\HuskBully">
+      <UniqueIdentifier>{6073deba-f744-4215-b668-d7756e158c2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Interactables">
+      <UniqueIdentifier>{dec09a47-bff5-43f1-bc40-855022f78594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cameras">
+      <UniqueIdentifier>{299a1cdf-79e8-467b-a277-74c49aeb0dfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Spawner">
+      <UniqueIdentifier>{3b9d0632-28e4-47e5-ae3a-2ff66f4dcaee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -186,18 +222,6 @@
     <ClCompile Include="MovementComponent.cpp">
       <Filter>Components\Movement</Filter>
     </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="Merchand.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionComponent.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Inventory.cpp">
       <Filter>Managers\Inventory</Filter>
     </ClCompile>
@@ -217,37 +241,55 @@
       <Filter>Objects\ShapeObjects\Actors\Player</Filter>
     </ClCompile>
     <ClCompile Include="Mob.cpp">
-      <Filter>Mobs</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
     </ClCompile>
-    <ClCompile Include="InteractableActor.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Objects\ShapeObjects\NPCs</Filter>
+    </ClCompile>
+    <ClCompile Include="Merchand.cpp">
+      <Filter>Objects\ShapeObjects\NPCs\Merchands</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponent.cpp">
+      <Filter>Components\Collision</Filter>
     </ClCompile>
     <ClCompile Include="SoundData.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Managers\Sound</Filter>
     </ClCompile>
     <ClCompile Include="SoundManager.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Managers\Sound</Filter>
     </ClCompile>
     <ClCompile Include="MusicData.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Managers\Music</Filter>
     </ClCompile>
     <ClCompile Include="MusicManager.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimationComponent.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="HuskBully.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Boofly.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Managers\Music</Filter>
     </ClCompile>
     <ClCompile Include="Belfly.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Mobs\Belfly</Filter>
+    </ClCompile>
+    <ClCompile Include="Boofly.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Mobs\Boofly</Filter>
+    </ClCompile>
+    <ClCompile Include="HuskBully.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Mobs\HuskBully</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp">
+      <Filter>Components\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Components\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStat.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="InteractableActor.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Spawner</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -344,18 +386,6 @@
     <ClInclude Include="MovementComponent.h">
       <Filter>Components\Movement</Filter>
     </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Merchand.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Inventory.h">
       <Filter>Managers\Inventory</Filter>
     </ClInclude>
@@ -375,37 +405,55 @@
       <Filter>Objects\ShapeObjects\Actors\Player</Filter>
     </ClInclude>
     <ClInclude Include="Mob.h">
-      <Filter>Mobs</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
     </ClInclude>
-    <ClInclude Include="InteractableActor.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="NPC.h">
+      <Filter>Objects\ShapeObjects\NPCs</Filter>
     </ClInclude>
-    <ClInclude Include="SoundData.h">
-      <Filter>Fichiers sources</Filter>
+    <ClInclude Include="Merchand.h">
+      <Filter>Objects\ShapeObjects\NPCs\Merchands</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>Components\Collision</Filter>
     </ClInclude>
     <ClInclude Include="SoundManager.h">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Managers\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="MusicData.h">
-      <Filter>Fichiers sources</Filter>
+    <ClInclude Include="SoundData.h">
+      <Filter>Managers\Sound</Filter>
     </ClInclude>
     <ClInclude Include="MusicManager.h">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Managers\Music</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="HuskBully.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Boofly.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="MusicData.h">
+      <Filter>Managers\Music</Filter>
     </ClInclude>
     <ClInclude Include="Belfly.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Mobs\Belfly</Filter>
+    </ClInclude>
+    <ClInclude Include="Boofly.h">
+      <Filter>Objects\ShapeObjects\Actors\Mobs\Boofly</Filter>
+    </ClInclude>
+    <ClInclude Include="HuskBully.h">
+      <Filter>Objects\ShapeObjects\Actors\Mobs\HuskBully</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.h">
+      <Filter>Components\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Components\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStat.h">
+      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractableActor.h">
+      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Spawner</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
