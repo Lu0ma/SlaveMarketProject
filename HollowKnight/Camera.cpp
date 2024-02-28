@@ -32,7 +32,7 @@ View Camera::FollowPlayer()
 
 FloatRect Camera::GetPlayerRect()
 {
-	Player* _player = Game::GetPlayer();   // Ne pas creer de player mais le recuperer 
+	Player* _player = Game::GetPlayer();
 	const FloatRect& _rectPlayer = _player->GetShape()->getGlobalBounds();
 	return _rectPlayer;
 }

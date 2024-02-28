@@ -10,15 +10,17 @@
 
 RenderWindow Game::window;
 Player* Game::player;
+Camera* Game::camera;
 
 Game::Game()
 {
 	menu = new Menu();
 	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
-
 	//TODO move
 	merchand = new Merchand();
-}
+	//npc = new NPC();
+	pnj = new InteractableActor("Villageois" , ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) , Vector2f(100.0f, 100.0f) ," ") , Vector2f(1000.0f , 1000.0f));
+} 
 
 Game::~Game()
 {
@@ -58,28 +60,18 @@ void Game::Update()
 void Game::UpdateWindow()
 {
 	window.clear();
-
-	// const View& _defaultView = window.getDefaultView();
-	//Deux façon de suivre le Player
-	//1:
-	//const View& _defaultView =  camera->FollowPlayer();
-	////2:
-	//const View& _defaultView = camera->GetView();
-
-	const View& _defaultView = window.getDefaultView();
-	window.setView(_defaultView);
-
+	View _defaultView;
+	CheckCameraState(_defaultView);
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
 		window.draw(*_actor->GetDrawable());
 	}
-
+	
 	// UI
-	View _view = _defaultView;
+	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{
-		if (!_canvas->IsVisible()) continue;
-
+  		if (!_canvas->IsVisible()) continue;
 		_view.setViewport(_canvas->GetRect());
 		window.setView(_view);
 
@@ -89,9 +81,6 @@ void Game::UpdateWindow()
 			window.draw(*_widget->GetDrawable());
 		}
 	}
-
-	// camera->FollowPlayer;
-
 	window.display();
 }
 
@@ -106,6 +95,23 @@ void Game::Launch()
 	Start();
 	Update();
 	Stop();
+}
+
+void Game::CheckCameraState(View& _newView)
+{
+
+	if (camera->GetTargetStat() == TARGET_PLAYER)
+	{
+		_newView = camera->FollowPlayer();
+		window.setView(_newView);
+	}
+
+	else if (camera->GetTargetStat() == TARGET_WINDOW)
+	{
+		_newView = window.getDefaultView();
+		window.setView(_newView);
+	}
+
 }
 
 void Game::Close()
