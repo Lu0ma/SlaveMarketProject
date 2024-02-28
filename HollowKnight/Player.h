@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "PlayerStat.h"
 #include "Inventory.h"
+#include "PlayerMovementComponent.h"
 
 using namespace std;
 
@@ -9,17 +10,13 @@ class Player : public Actor
 {
 	PlayerStat* stats;
 	Inventory* inventory;
-
-	//TODO move
-	Merchand* merchand;
 	PlayerMovementComponent* movement;
-	Canvas* canvas;
-	Label* healthBar;
-	Label* manaBar;
-	Label* geosCountText;
-	bool isPlay;
 
 public:
+	void SetStatus(const bool _status)
+	{
+		movement->SetCanMove(_status);
+	}
 	PlayerStat* GetStats() const
 	{
 		return stats;
@@ -28,16 +25,7 @@ public:
 	{
 		return inventory;
 	}
-	
-	void SetVisibilityPlayerStats(bool _isVisible)
-	{
-		stats->isVisible = _isVisible;
-	}
 
-	bool IsPlay(bool _isPlay)
-	{
-		return isPlay = _isPlay;
-	}
 public:
 	Player(const string& _name, const ShapeData& _data);
 
@@ -46,11 +34,4 @@ private:
 
 public:
 	void Init();
-
-
-private:
-	void Right();
-	void Left();
-	void Up();
-	void SwitchStatue();
 };
