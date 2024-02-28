@@ -130,6 +130,9 @@
     <Filter Include="Cameras">
       <UniqueIdentifier>{299a1cdf-79e8-467b-a277-74c49aeb0dfa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Spawner">
+      <UniqueIdentifier>{3b9d0632-28e4-47e5-ae3a-2ff66f4dcaee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -284,6 +287,9 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Spawner</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -445,6 +451,9 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Spawner</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
