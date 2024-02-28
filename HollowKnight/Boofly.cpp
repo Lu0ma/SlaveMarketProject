@@ -4,10 +4,6 @@
 
 Boofly::Boofly(const ShapeData& _data) : Mob(_data)
 { 
-	//===================================
-	// TODO => aucune données correcte
-	//===================================
-
 	const Vector2f& _size = Vector2f(315.0f, 345.0f); 
 	const Vector2f& _sizeBounce = Vector2f(300.0f, 360.0f); 
 	const Vector2f& _sizeDeathAir = Vector2f(300.0f, 330.0f); 
