@@ -16,6 +16,10 @@ class MovementComponent : public Component
 	function<void()> callback;
 
 public:
+	void SetSpeed(const float _speed)
+	{
+		speed = _speed;
+	}
 	void SetCanMove(const bool _status)
 	{
 		canMove = _status;
@@ -30,7 +34,11 @@ public:
 	{
 		callback = _callback;
 	}
-	 Vector2f GetDestination() const
+	bool GetCanMove() const
+	{
+		return canMove;
+	}
+	Vector2f GetDestination() const
 	{
 		return destination;
 	}

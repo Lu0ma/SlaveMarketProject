@@ -33,9 +33,19 @@ void Animation::SetNext()
     currentIndex++;
 
     const Vector2i& _start = GetNewStart();
-    const int _sizeX = static_cast<int>(data.size.x);
-    const int _sizeY = static_cast<int>(data.size.y);
-    const IntRect& _rect = IntRect(_start.x, _start.y, _sizeX, _sizeY);
+    IntRect _rect;
+    if (data.displayFromLeftToRight)
+    {
+        const int _sizeX = static_cast<int>(data.size.x);
+        const int _sizeY = static_cast<int>(data.size.y);
+        _rect = IntRect(_start.x, _start.y, _sizeX, _sizeY);
+    }
+    else
+    {
+        const int _sizeX = static_cast<int>(data.size.x);
+        const int _sizeY = static_cast<int>(data.size.y);
+        _rect = IntRect(_start.x + _sizeX, _start.y, -_sizeX, _sizeY);
+    }
     shape->setTextureRect(_rect);
 }
 

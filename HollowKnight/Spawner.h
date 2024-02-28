@@ -1,12 +1,13 @@
 #pragma once
 #include "Mob.h"
-#include "BooFly.h"
+#include "Boofly.h"
+#include "Belfly.h"
 
 class Spawner
 {
 	Boofly* boofly;
+	Belfly* belfly;
 	int index;
-	vector<string> animationNames;
 
 public:
 	Spawner();

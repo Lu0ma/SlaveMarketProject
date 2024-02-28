@@ -4,8 +4,6 @@
 
 class Belfly : public Mob
 {
-	AnimationComponent* animation;
-
 public:
 	Belfly(const ShapeData& _data);
 };

@@ -1,25 +1,26 @@
 #include "Belfly.h"
+#include "MovementComponent.h"
 
-#define PATH_BELFLY "Animations/Belfly.png"
+#define PATH_BELFLY "Animations/belflyModif.png"
 
 Belfly::Belfly(const ShapeData& _data) : Mob(_data)
 {
-	const Vector2f& _sizeIdle = Vector2f(115.0f, 127.0f); // ratio fait de la taille d'une image dans le sheet
-	const Vector2f& _sizeAttack = Vector2f(192.0f, 218.0f); // ratio fait de la taille d'une image dans le sheet
+	const Vector2f& _sizeIdle = Vector2f(115.0f, 165.0f); // ratio fait de la taille d'une image dans le sheet
+	const Vector2f& _sizeAttack = Vector2f(195.0f, 200.0f); // ratio fait de la taille d'une image dans le sheet
 	//const Vector2f& _size = Vector2f(512.f, 256.0f); // ratio fait de la taille d'une image dans le sheet
 	const ReadDirection& _readDirection = READ_RIGHT;
 	const bool _toRepeat = true;
-	const int _countIdle = 9;
-	const int _countAttack = 6;
+	const int _countIdle = 10;
+	const int _countAttack = 12;
 	const float _speedIdle = 0.3f;
 	const float _speedAttack = 0.3f;
 
-	//animation = new AnimationComponent(this, PATH_BELFLY, {
-	//	/*AnimationData("Idle", Vector2f(2.0f, 22.0f), _sizeIdle, _readDirection, ANIM_DIR_UP, _toRepeat, _countIdle, _speedIdle),
-	//	AnimationData("Attack", Vector2f(4.0f, 173.0f), _sizeAttack, _readDirection, ANIM_DIR_DOWN, _toRepeat, _countAttack, _speedAttack),*/
-	//	AnimationData("Attack2", Vector2f(4.0f, 173.0f), _sizeAttack, _readDirection, ANIM_DIR_RIGHT, _toRepeat, _countAttack, _speedAttack),
-	//	AnimationData("Idle2", Vector2f(2.0f, 22.0f), _sizeIdle, _readDirection, ANIM_DIR_LEFT, _toRepeat, _countIdle, _speedIdle),
-	//	}, ANIM_DIR_RIGHT);
+	GetComponent<MovementComponent>()->SetCanMove(false);
 
-	//components.push_back(animation);
+	AnimationComponent* _animation = new AnimationComponent(this, {
+		AnimationData("Idle", Vector2f(0.0f, 0.0f), _sizeIdle, _readDirection, _toRepeat, _countIdle, _speedIdle),
+		AnimationData("DeathAttack", Vector2f(0.0f, 175.0f), _sizeAttack, _readDirection, _toRepeat, _countAttack, _speedAttack),
+		});
+
+	components.push_back(_animation);
 }
