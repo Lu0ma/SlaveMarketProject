@@ -3,43 +3,50 @@
 #include "TextureManager.h"
 #include "Actor.h"
 
-AnimationComponent::AnimationComponent(Actor* _owner, const string& _path, const vector<AnimationData>& _animationsData,
-    const AnimationDirection& _direction) : Component(_owner)
+AnimationComponent::AnimationComponent(Actor* _owner, const vector<AnimationData>& _animationsData)
+                                     : Component(_owner)
 {
-    InitAnimations(_path, _animationsData);
-    currentIndex = -1;
-    direction = _direction;
+    currentAnimation = nullptr;
+    InitAnimations(_animationsData);
 }
 
-void AnimationComponent::InitAnimations(const string& _path, const vector<AnimationData>& _animationsData)
+
+void AnimationComponent::InitAnimations(const vector<AnimationData>& _animationsData)
 {
+    Shape* _shape = owner->GetDrawable();
+
+    int _index = 0;
+
     for (const AnimationData& _data : _animationsData)
     {
-        Shape* _shape = owner->GetDrawable();
-        TextureManager::GetInstance().LoadWithRect(_shape, _path, IntRect(Vector2i(_data.start), Vector2i(_data.size)));
-        owner->SetShape(_shape);
-        new Animation(_data.name, this, _shape, _data);        
+        new Animation(_data.name, this, _shape, _data);
+
+        if (_index == 0)
+        {
+            RunAnimation(_data.name);
+        }
+
+        _index++;
     }
 }
 
-void AnimationComponent::Update(const float _deltaTime)
+
+void AnimationComponent::RunAnimation(const string& _name)
 {
-    const int _newIndex = GetNextIndex(direction);
-    if (currentIndex == _newIndex) return;
-
-    system("cls");
-
-    if (currentIndex != -1)
+    for (Animation* _animation : GetAllValues())
     {
-        Animation* _currentAnimation = GetCurrentAnimation();
-        if (!_currentAnimation) return;
-        cout << "Stop : " << _currentAnimation->GetData().name << endl;
-        _currentAnimation->Stop();
-        currentIndex = -1;
-    }
+        if (_name == _animation->GetID())
+        {
+            if (currentAnimation)
+            {
+                //system("cls");
+                //cout << "Stop : " << currentAnimation->GetID() << endl;
+                currentAnimation->Stop();
+            }
 
-    Animation* _animation = GetAllValues()[_newIndex];
-    cout << "Start : " << _animation->GetData().name << endl;
-    _animation->Start();
-    currentIndex = _newIndex;
+            //cout << "Start : " << _animation->GetData().name << endl;
+            currentAnimation = _animation;
+            _animation->Start();
+        }
+    }
 }
