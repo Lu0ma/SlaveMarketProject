@@ -23,6 +23,10 @@ public:
 		}
 		return nullptr;
 	}
+	Vector2f GetPosition()const
+	{
+		return shape->getPosition();
+	}
 
 public:
 	Actor(const string& _name, const ShapeData& _data);

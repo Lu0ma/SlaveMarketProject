@@ -75,16 +75,16 @@ void Player::SetupPlayerInput()
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f); }, InputData({ ActionType::KeyPressed, Keyboard::D })),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
 
-		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
+ 		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
 	});
 	new ActionMap("Attack", {
 
-		ActionData("Dash", [&]() {
+		ActionData("Slash", [&]() {
 			SpecialAttack();
-			cout << "Dash" << endl; },
+			cout << "Slash" << endl; },
 			InputData({ActionType::KeyPressed, Keyboard::R})),
 
-		ActionData("StopDash", [&]() {
+		ActionData("StopSlash", [&]() {
 			movement->SetDirectionX(0.0f); },
 			InputData({ActionType::KeyReleased, Keyboard::R})),
 

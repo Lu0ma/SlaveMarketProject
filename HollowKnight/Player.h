@@ -3,6 +3,7 @@
 #include "Inventory.h"
 #include "Merchand.h"
 #include "PlayerMovementComponent.h"
+#include"AnimationComponent.h"
 using namespace std;
 
 struct PlayerStat

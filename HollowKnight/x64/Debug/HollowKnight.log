@@ -1,2 +1,10 @@
-﻿  Player.cpp
+﻿  Camera.cpp
+  CollisionComponent.cpp
+  Game.cpp
+  Inventory.cpp
+  Main.cpp
+  Menu.cpp
+  Player.cpp
+  TitleMenu.cpp
+  Génération de code en cours...
   HollowKnight.vcxproj -> C:\Users\Utilisateur\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
