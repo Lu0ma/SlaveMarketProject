@@ -15,6 +15,10 @@ class Canvas : public IManagable<string>
 	vector<Widget*> widgets;
 
 public:
+	bool GetVisibilityStatus()
+	{
+		return isVisible;
+	}
 	void SetVisibilityStatus(const bool _status)
 	{
 		isVisible = _status;

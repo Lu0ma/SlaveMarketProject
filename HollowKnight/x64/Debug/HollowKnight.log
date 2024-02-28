@@ -1,3 +1,2 @@
 ﻿  InteractableActor.cpp
-D:\SlaveMarketProject\HollowKnight\InteractableActor.cpp(8,40): warning C4244: 'argument': conversion from 'float' to 'size_t', possible loss of data
   HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

@@ -23,7 +23,7 @@ Game::Game()
 	//TODO move
 	merchand = new Merchand();
 	//npc = new NPC();
-	pnj = new InteractableActor("Villageois" , ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), " ") , Vector2f(1000.0f , 1000.0f));
+	pnj = new InteractableActor("Villageois" , ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), " ") , Vector2f(100.0f , 100.0f));
 } 
 
 Game::~Game()
