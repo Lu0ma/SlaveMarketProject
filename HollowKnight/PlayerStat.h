@@ -3,11 +3,15 @@
 #include "ProgressBar.h"
 #include "Label.h"
 
+#define PATH_LIFE "UIs/Player/Life/Life_"
+
 class PlayerStat
 {
 	Canvas* canvas;
 	
 	// Life
+	int currentLifesCount;
+	int currentMaxLifesCount;
 	vector<ShapeWidget*> lifeWigets;
 
 	// Mana
@@ -18,9 +22,14 @@ class PlayerStat
 	Label* geosCountText;
 
 private:
-	int GetLifesCount() const
+	string ComputeLifePath(const bool _toAdd) const
 	{
-		return static_cast<int>(lifeWigets.size());
+		return PATH_LIFE + to_string(_toAdd) + ".png";
+	}
+public:
+	void Toggle()
+	{
+		canvas->SetVisibilityStatus(!canvas->IsVisible());
 	}
 
 public:
@@ -31,5 +40,6 @@ public:
 
 	void UseMana(const float _factor);
 	void UpdateLife(const int _count);
-	void AddGeos(const float _factor);
+	void AddLife();
+	void AddGeos(const int _factor);
 };

@@ -3,8 +3,6 @@
 #include "PlayerStat.h"
 #include "Inventory.h"
 
-#include "Merchand.h"
-
 using namespace std;
 
 class Player : public Actor

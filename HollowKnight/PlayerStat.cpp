@@ -1,15 +1,18 @@
 #include "PlayerStat.h"
+#include "TextureManager.h"
+#include "Timer.h"
+#include <iostream>
 
-#define PATH_LIFE "UIs/Player/Life.png"
-#define PATH_MANA_FULL "UIs/Player/ManaBar_Full.png"
-#define PATH_MANA_EMPTY "UIs/Player/ManaBar_Empty.png"
+#define PATH_MANA_FULL "UIs/Player/Mana/ManaBar_Full.png"
+#define PATH_MANA_EMPTY "UIs/Player/Mana/ManaBar_Empty.png"
 #define PATH_GEO "UIs/Inventory/Geo.png"
 #define FONT "Font.ttf"
 
 PlayerStat::PlayerStat()
 {
 	canvas = nullptr;
-	lifeCount = 3;
+	currentLifesCount = 0;
+	currentMaxLifesCount = 0;
 	lifeWigets = vector<ShapeWidget*>();
 	manaBar = nullptr;
 	geosCount = 0;
@@ -25,25 +28,18 @@ void PlayerStat::Init()
 
 	const Vector2f& _manaPos = Vector2f(150.0f, 80.0f);
 	const Vector2f& _manaSize = Vector2f(200.0f, 130.0f);
-	manaBar = new ProgressBar(ShapeData(_manaPos, _manaSize, PATH_MANA_FULL),
-							  canvas, PATH_MANA_EMPTY, ProgressType::PT_LEFT);
+	manaBar = new ProgressBar(ShapeData(_manaPos, _manaSize, PATH_MANA_EMPTY),
+							  PATH_MANA_FULL, ProgressType::PT_BOTTOM);
 	canvas->AddWidget(manaBar);
+	canvas->AddWidget(manaBar->GetForeground());
 
 	#pragma endregion
 
 	#pragma region Life
 
-	const Vector2f& _lifeSize = Vector2f(40.0f, 40.0f);
-	const float _startLifePosX = _lifeSize.x + 145.0f;
-	const float _lifePosY = _manaPos.y - 20.0f;
-	const float _lifeGapX = 10.0f;
-
-	for (int _index = 0; _index < lifeCount; _index++)
+	for (int _index = 0; _index < 3; _index++)
 	{
-		const float _lifePosX = _startLifePosX + _lifeSize.x * _index + _lifeGapX * _index;
-		ShapeWidget* _life = new ShapeWidget(ShapeData(Vector2f(_lifePosX, _lifePosY), _lifeSize, PATH_LIFE));
-		lifeWigets.push_back(_life);
-		canvas->AddWidget(_life);
+		AddLife();
 	}
 
 	#pragma endregion
@@ -62,16 +58,46 @@ void PlayerStat::Init()
 	#pragma endregion
 }
 
-void PlayerStat::UpdateLife(const int _count)
-{
-	const int _lifesCount = GetLifesCount();
-	const int _newLifesCount = + _count;
-	if (_newLifesCount >= _lifesCount) return;
 
-	lifeWigets.
+void PlayerStat::UseMana(const float _factor)
+{
+	manaBar->ChangeValue(_factor);
 }
 
-void PlayerStat::AddGeos(const float _factor)
+void PlayerStat::UpdateLife(const int _count)
+{
+	const int _currentLife = currentLifesCount + (_count < 0 ? -1 : 0);
+	if (_currentLife >= currentMaxLifesCount || _currentLife < 0) return;
+
+	if (ShapeWidget* _widget = lifeWigets[_currentLife])
+	{
+		Shape* _shape = _widget->GetDrawable();
+		const string& _path = ComputeLifePath(_count > 0);
+		TextureManager::GetInstance().Load(_shape, _path);
+		_widget->GetObject()->SetShape(_shape);
+	}
+
+	currentLifesCount += _count;
+}
+
+void PlayerStat::AddLife()
+{
+	const Vector2f& _manaPos = Vector2f(150.0f, 80.0f);
+	const Vector2f& _lifeSize = Vector2f(40.0f, 40.0f);
+	const float _startLifePosX = _lifeSize.x + 145.0f;
+	const float _lifePosY = _manaPos.y - 20.0f;
+	const float _lifeGapX = 10.0f;
+
+	const float _lifePosX = _startLifePosX + _lifeSize.x * currentMaxLifesCount + _lifeGapX * currentMaxLifesCount;
+	ShapeWidget* _life = new ShapeWidget(ShapeData(Vector2f(_lifePosX, _lifePosY), _lifeSize, ComputeLifePath(false)));
+	lifeWigets.push_back(_life);
+	canvas->AddWidget(_life);
+
+	currentMaxLifesCount++;
+	UpdateLife(1);
+}
+
+void PlayerStat::AddGeos(const int _factor)
 {
 	geosCount += _factor;
 	geosCountText->SetString(to_string(geosCount));

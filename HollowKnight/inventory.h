@@ -20,12 +20,10 @@ class Inventory : public IManager<int, Item>
 	vector<Button*> buttons;
 	int stackSize;
 
-	//TODO move
 	ShapeWidget* pointer = nullptr;
 	Label* descriptionTitle = nullptr;
 	Label* descriptionText = nullptr;
 
-	//TODO move
 	int maskCount = 0;
 	ShapeWidget* maskWidget = nullptr;
 

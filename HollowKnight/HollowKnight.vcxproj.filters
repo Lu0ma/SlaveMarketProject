@@ -97,6 +97,12 @@
     <Filter Include="Mobs">
       <UniqueIdentifier>{03b12366-449a-4d98-8f02-adb3ade85d29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\NPCs">
+      <UniqueIdentifier>{c8a91bcd-b96a-46c6-a5fa-f0a236da2bdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\NPCs\Merchands">
+      <UniqueIdentifier>{c1e4b60f-0ee1-4e8c-883e-b9aaf66aa33c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -186,12 +192,6 @@
     <ClCompile Include="MovementComponent.cpp">
       <Filter>Components\Movement</Filter>
     </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="Merchand.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -222,17 +222,14 @@
     <ClCompile Include="InteractableActor.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundData.cpp">
+    <ClCompile Include="PlayerStat.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundManager.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Objects\ShapeObjects\Actors\NPCs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicData.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicManager.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Merchand.cpp">
+      <Filter>Objects\ShapeObjects\Actors\NPCs\Merchands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -329,12 +326,6 @@
     <ClInclude Include="MovementComponent.h">
       <Filter>Components\Movement</Filter>
     </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Merchand.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -365,17 +356,14 @@
     <ClInclude Include="InteractableActor.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundData.h">
-      <Filter>Fichiers sources</Filter>
+    <ClInclude Include="PlayerStat.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundManager.h">
-      <Filter>Fichiers sources</Filter>
+    <ClInclude Include="NPC.h">
+      <Filter>Objects\ShapeObjects\Actors\NPCs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicData.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicManager.h">
-      <Filter>Fichiers sources</Filter>
+    <ClInclude Include="Merchand.h">
+      <Filter>Objects\ShapeObjects\Actors\NPCs\Merchands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

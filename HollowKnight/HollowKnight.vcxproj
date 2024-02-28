@@ -130,10 +130,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicData.cpp" />
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicManager.cpp" />
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundData.cpp" />
-    <ClCompile Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundManager.cpp" />
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="ActionMap.cpp" />
     <ClCompile Include="Actor.cpp" />
@@ -178,10 +174,6 @@
     <ClCompile Include="Widget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicData.h" />
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\MusicManager.h" />
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundData.h" />
-    <ClInclude Include="..\..\COURS\MultiGames\TowerDefense\RoyalRevolt2\SoundManager.h" />
     <ClInclude Include="Action.h" />
     <ClInclude Include="ActionMap.h" />
     <ClInclude Include="Actor.h" />

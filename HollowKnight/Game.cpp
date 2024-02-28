@@ -4,7 +4,6 @@
 #include "ActorManager.h"
 #include "HUD.h"
 #include "Widget.h"
-#include "Player.h"
 
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
@@ -16,11 +15,15 @@ Game::Game()
 {
 	menu = new Menu();
 	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
+
+	//TODO move
+	merchand = new Merchand();
 }
 
 Game::~Game()
 {
-	delete camera;
+	delete menu;
+	//delete camera;
 }
 
 
@@ -34,6 +37,9 @@ void Game::Start()
 void Game::Init()
 {
 	menu->Init();
+
+	//TODO move
+	merchand->Init();
 }
 
 void Game::Update()

@@ -1,20 +1,26 @@
 #pragma once
 #include "NPC.h"
 #include "Canvas.h"
-#include "Button.h"
+#include "ShapeWidget.h"
+#include "Label.h"
 
 class Merchand : public NPC
 {
-	//vector<Charms*> charms;
 	Canvas* canvas;
-	Vector2f cellSize;
+	ShapeWidget* pointer = nullptr;
+	Label* descriptionTitle = nullptr;
+	Label* descriptionText = nullptr;
+
+public:
+	void Toggle()
+	{
+		canvas->SetVisibilityStatus(!canvas->IsVisible());
+	}
 
 public:
 	Merchand();
 
 public:
-	void Toggle();
-	void OpenShop();
-	void BuyItem();
+	void Init();
+	//void BuyItem();
 };
-
