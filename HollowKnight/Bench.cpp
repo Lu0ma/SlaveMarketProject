@@ -3,6 +3,9 @@
 
 #define PATH_BENCH "Map/Bench.png"
 
-Bench::Bench() : Actor(STRING_ID("Bench"), ShapeData(Vector2f(700.0f,500.0f), Vector2f(176.0, 80.0f), PATH_BENCH))
+
+Bench::Bench() : Actor(STRING_ID("Bench"), ShapeData(Vector2f(640.0f,360.0f), Vector2f(176.0, 80.0f), PATH_BENCH))
 {
+
 }
+

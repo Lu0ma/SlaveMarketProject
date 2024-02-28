@@ -34,7 +34,11 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	manaBar = nullptr;
 	geosCountText = nullptr;
 	stats = new PlayerStat(10, 10, 20, 20, 0);
+
 	bench = new Bench();
+	charmsMenu = new CharmsMenu();
+
+	isStanding = true;
 
 }
 
@@ -54,7 +58,7 @@ void Player::SetupPlayerInput()
 
 		ActionData("AddHealthMash", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::A })),
 		});
-	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab }))});
+	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab })) });
 
 	ActionData("AddHealthMask", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num1 })),
 		ActionData("AddVessel", [&]() { inventory->UpdateVesselCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num2 })),
@@ -64,19 +68,60 @@ void Player::SetupPlayerInput()
 		ActionData("ToggleShriek", [&]() { inventory->SetShriekStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num6 })),
 		ActionData("UpgradeSword", [&]() { inventory->UpdateSwordLevel(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num7 })),
 
-	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab })) });
-	
+		new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab })) });
+
 	new ActionMap("Movement", {
 		ActionData("Left", [&]()
 			{
-			 	movement->SetDirectionX(-1.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
+				isStanding ? movement->SetDirectionX(-1.0f) : movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
 
-		ActionData("Right", [&]() { movement->SetDirectionX(1.0f); }, InputData({ ActionType::KeyPressed, Keyboard::D })),
+		ActionData("Right", [&]() {isStanding ? movement->SetDirectionX(1.0f) : movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyPressed, Keyboard::D })),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
 
-		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
-	});
+		ActionData("Jump", [&]() { isStanding ? movement->Jump() : movement->SetDirectionY(0.0f); }, InputData({ActionType::KeyPressed, Keyboard::Space}))
+		});
+
+	new ActionMap("Rest", {
+		ActionData("Sit", [&]() {
+			if (GetDrawable()->getGlobalBounds().contains(bench->GetShape()->getPosition()) && isStanding)
+			{
+				GetShape()->setPosition(GetShape()->getPosition().x, GetShape()->getPosition().y - 15.0f);
+				isStanding = false;
+			}
+			else
+			{
+				cout << "impossible de s'assoire" << endl;
+			}
+		}
+	, InputData({ActionType::KeyPressed, Keyboard::Up})) });
+	new ActionMap("Walk", {
+		ActionData("Stand", [&]() {
+			if (!isStanding)
+			{
+				GetShape()->setPosition(GetShape()->getPosition().x, GetShape()->getPosition().y + 15.0f);
+				isStanding = true;
+			}
+			else
+			{
+				cout << "impossible de ce levé" << endl;
+			}
+		}
+	, InputData({ActionType::KeyPressed, Keyboard::Down})) });
+
+	new ActionMap("Open Menu", {
+		ActionData("Menu", [&]() {
+			if (!isStanding)
+			{
+				charmsMenu->Toggle();
+			}
+			else
+			{
+				cout << "impossible d'ouvrir l'inventaire des charms" << endl;
+			}
+		}
+	, InputData({ActionType::KeyPressed, Keyboard::P})) });
+
 }
 
 void Player::InitStats()
@@ -106,7 +151,7 @@ void Player::Update(const float _deltaTime)
 	Actor::Update(_deltaTime);
 	// PlayerMovementComponent::Update(_deltaTime);
 	// movement->Update(_deltaTime);
-	if (!healthBar ||!manaBar||!geosCountText)
+	if (!healthBar || !manaBar || !geosCountText)
 	{
 		return;
 	}
@@ -122,12 +167,13 @@ void Player::Init()
 {
 	InitStats();
 	inventory->Init();
+	charmsMenu->Init();
 	SetupPlayerInput();
 }
 
 void Player::Right()
 {
- 	movement->SetDirectionX(1.0f);
+	movement->SetDirectionX(1.0f);
 	cout << "Je vais a droite " << endl;
 }
 

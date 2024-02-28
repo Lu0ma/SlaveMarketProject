@@ -4,6 +4,7 @@
 #include "Merchand.h"
 #include "Bench.h"
 #include "PlayerMovementComponent.h"
+#include "CharmsMenu.h"
 using namespace std;
 
 struct PlayerStat
@@ -59,7 +60,12 @@ class Player : public Actor
 	Label* healthBar;
 	Label* manaBar;
 	Label* geosCountText;
+
 	Bench* bench;
+	CharmsMenu* charmsMenu;
+
+	bool isStanding;
+
 public:
 	PlayerStat* GetStats() const
 	{
