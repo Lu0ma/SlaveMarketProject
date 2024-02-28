@@ -27,6 +27,7 @@ class Game
 	Menu* menu;
 	// NPC* npc;
 	InteractableActor* pnj;
+
 public:
 	static Vector2f GetWindowSize()
 	{

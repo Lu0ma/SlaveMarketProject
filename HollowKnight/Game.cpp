@@ -18,10 +18,12 @@ Game::Game()
 {
 	menu = new Menu();
 	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
+	camera = new Camera(TARGET_WINDOW);
+
 	//TODO move
 	merchand = new Merchand();
 	//npc = new NPC();
-	pnj = new InteractableActor("Villageois" , ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) , Vector2f(100.0f, 100.0f) ," ") , Vector2f(1000.0f , 1000.0f));
+	pnj = new InteractableActor("Villageois" , ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), " ") , Vector2f(1000.0f , 1000.0f));
 } 
 
 Game::~Game()
@@ -67,6 +69,7 @@ void Game::UpdateWindow()
 	window.clear();
 	View _defaultView;
 	CheckCameraState(_defaultView);
+
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
 		window.draw(*_actor->GetDrawable());
