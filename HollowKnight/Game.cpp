@@ -40,6 +40,9 @@ void Game::Init()
 
 	//TODO move
 	merchand->Init();
+	new ActionMap("Merchand", {
+		ActionData("ToggleShop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Equal  })),
+	});
 }
 
 void Game::Update()

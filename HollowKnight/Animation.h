@@ -63,7 +63,6 @@ class Animation : public IManagable<string>
     Shape* shape;
     Timer* timer;
 
-
 public:
     AnimationData GetData() const
     {

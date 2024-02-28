@@ -23,6 +23,8 @@ private:
             if (_animation->GetData().direction == _direction) return _index;
             _index++;
         }
+
+        return -1;
     }
 public:
     Animation* GetCurrentAnimation() const

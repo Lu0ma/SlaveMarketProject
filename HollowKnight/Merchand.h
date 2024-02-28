@@ -9,9 +9,9 @@ class Merchand : public NPC
 {
 	Canvas* canvas;
 	vector<Button*> buttons;
-	ShapeWidget* pointer = nullptr;
-	Label* descriptionTitle = nullptr;
-	Label* descriptionText = nullptr;
+	ShapeWidget* pointer;
+	Label* descriptionTitle;
+	Label* descriptionText;
 
 public:
 	void Toggle()
