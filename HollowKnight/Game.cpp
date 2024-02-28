@@ -13,6 +13,7 @@
 RenderWindow Game::window;
 Player* Game::player;
 Camera* Game::camera;
+InteractableActor* Game::pnj;
 
 Game::Game()
 {

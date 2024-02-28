@@ -25,4 +25,6 @@ public:
 public:
 	void Init();
 	//void BuyItem();
+
+	void Update();
 };

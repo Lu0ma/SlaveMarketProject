@@ -9,7 +9,7 @@ struct ShapeData : public Data
 	ShapeData() {}
 	ShapeData(const Vector2f& _position, const Vector2f& _size,
 			  const string& _path = "", const IntRect& _rect = IntRect())
-			: Data(_position, _path)
+: Data(_position, _path)
 	{
 		size = _size;
 		rect = _rect;
@@ -39,6 +39,11 @@ public:
 		if (!shape) return Vector2f();
 		return shape->getPosition();
 	}
+	Vector2f GetShapePositionMiddle() const
+	{
+		if (!shape) return Vector2f();
+		return Vector2f(shape->getPosition().x, shape->getPosition().y);
+	}
 	Vector2f GetShapeSize() const
 	{
 		if (!shape) return Vector2f();
@@ -48,3 +53,4 @@ public:
 public:
 	ShapeObject(const ShapeData& _data);
 };
+

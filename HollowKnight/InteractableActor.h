@@ -4,14 +4,14 @@
 class InteractableActor : public Actor
 {
 	CircleShape* sensorArea;
-	FloatRect detector;
-	Canvas* canvas;
+	static FloatRect detector;
+	static Canvas* canvas;
 public:
 	InteractableActor(const string& _name , const ShapeData& _data ,const Vector2f& _sizeDetector);
 public:
 	// virtual void Speak();
-
-	void Test();
 	virtual void Update(const float _deltaTime);
+
+	static void Verify();
 };
 

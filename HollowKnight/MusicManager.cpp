@@ -19,7 +19,7 @@ void MusicManager::Play(const string& _path)
 
 	if (_musicData)
 	{
-		_musicData->setVolume(5.0f);
+		_musicData->setVolume(0.0f);
 		_musicData->play();
 	}
 }

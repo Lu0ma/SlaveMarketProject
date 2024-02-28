@@ -11,7 +11,7 @@
 #include "Action.h"
 #include "ActionMap.h"
 #include "Timer.h"
-
+#include "InteractableActor.h"
 #define PATH_ITEM "UIs/Inventory/Item.png"
 #define PATH_ITEM2 "test.png"
 
@@ -72,6 +72,11 @@ void Player::SetupPlayerInput()
 		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
 		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
 	});
+
+	new ActionMap("Interact With a PNJ", {
+
+		ActionData("Talk " , [&]() {Game::GetPnj()->Verify();}, InputData({ActionType::KeyPressed , Keyboard::E})),
+		});
 }
 
 
