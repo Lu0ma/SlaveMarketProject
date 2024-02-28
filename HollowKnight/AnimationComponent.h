@@ -3,42 +3,40 @@
 #include "IManager.h"
 #include "Animation.h"
 
-class AnimationComponent : public Component, public IManager<string, Animation> // AnimInstance
+class AnimationComponent : public Component, public IManager<string, Animation>
 {
-	int currentIndex;
-	AnimationDirection direction;
+    int currentIndex;
+    AnimationDirection direction;
 
 public:
-	void SetDirection(const AnimationDirection& _direction)
-	{
-		direction = _direction;
-	}
+    void SetDirection(const AnimationDirection& _direction)
+    {
+        direction = _direction;
+    }
 
 private:
-	int GetNextIndex(const AnimationDirection& _direction) const
-	{
-		int _index = 0;
-		for (Animation* _animation : GetAllValues())
-		{
-			if (_animation->GetData().direction == _direction) return _index;
-			_index++;
-		}
-		return -1;
-	}
+    int GetNextIndex(const AnimationDirection& _direction) const
+    {
+        int _index = 0;
+        for (Animation* _animation : GetAllValues())
+        {
+            if (_animation->GetData().direction == _direction) return _index;
+            _index++;
+        }
+    }
 public:
-	Animation* GetCurrentAnimation() const
-	{
-		return GetAllValues()[currentIndex];
-	}
+    Animation* GetCurrentAnimation() const
+    {
+        return GetAllValues()[currentIndex];
+    }
 
 public:
-	AnimationComponent(Actor* _owner, const string& _path, const vector<AnimationData>& _animationsData,
-		const AnimationDirection& _direction);
+    AnimationComponent(Actor* _owner, const string& _path, const vector<AnimationData>& _animationsData,
+        const AnimationDirection& _direction);
 
 private:
-	void InitAnimations(const string& _path, const vector<AnimationData>& _animationsData);
+    void InitAnimations(const string& _path, const vector<AnimationData>& _animationsData);
 
 public:
-	virtual void Update(const float _deltaTime) override;
+    virtual void Update(const float _deltaTime) override;
 };
-

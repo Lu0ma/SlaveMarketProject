@@ -25,6 +25,7 @@ void Menu::Init()
 
 	const Vector2f& _windowSize = Game::GetWindowSize();
 	ShapeWidget* _image = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_MAIN_MENU));
+	// Camera::GetTargetStat()
 	mainMenu->AddWidget(_image);
 
 	const float _mainMenuTextPosX = _windowSize.x / 2.0f;
@@ -33,7 +34,6 @@ void Menu::Init()
 									Vector2f(_mainMenuTextPosX, _mainMenuTextPosY),
 									FONT, 26));
 	mainMenu->AddWidget(_mainMenuText);
-
 	new ActionMap("MenuInputs", { 
 		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu();  }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
 	});

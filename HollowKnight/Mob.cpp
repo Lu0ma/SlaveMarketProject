@@ -10,8 +10,8 @@ Mob::Mob(const ShapeData& _data) : Actor("Mob" + to_string(GetUniqueID()), _data
 	goalPosition = startPosition + Vector2f(500.0f, 0.0f);
 	life = 25;
 
-	components.push_back(new MovementComponent(this));
-	Move();
+	//components.push_back(new MovementComponent(this));
+	//Move();
 	InitTimer();
 }
 
@@ -45,5 +45,5 @@ void Mob::TakeDamages(const int _attack)
 
 void Mob::InitTimer()
 {
-	new Timer(this , &Mob::Patrol, seconds(1.5f), true, true);
+	//new Timer(this , &Mob::Patrol, seconds(1.5f), true, true);
 }

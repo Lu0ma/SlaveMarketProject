@@ -3,12 +3,17 @@
 using namespace sf;
 #include "Player.h"
 
+enum Target
+{
+	TARGET_NONE , TARGET_PLAYER , TARGET_WINDOW
+};
+
 class Camera
 {
 	View view;
 	Vector2f  center; // faudrait le centrer sur Le player
 	Vector2f  size; // ???
-
+	Target target;
 public:
 	View GetView() const
 	{
@@ -24,10 +29,20 @@ public:
 	{
 		return size;
 	}
+	Target GetTargetStat() const
+	{
+		return target;
+	}
 public:
 	Camera();
 	Camera(View _view);
+	Camera(const Target& _target);
+	//Camera();
 public:
+	void SetTarget(const Target& _target)
+	{
+		target = _target;
+	}
 	void SetView(const View& _view)
 	{
 		view = _view;
