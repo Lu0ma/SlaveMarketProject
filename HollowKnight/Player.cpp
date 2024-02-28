@@ -34,14 +34,14 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	manaBar = nullptr;
 	geosCountText = nullptr;
 	stats = new PlayerStat(10, 10, 20, 20, 0);
-
+	isPlay = false;
 }
 
 
 void Player::SetupPlayerInput()
 {
 	new ActionMap("Storages", {
-		ActionData("Inventory", [&]() { inventory->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::B })),
+		ActionData("Inventory", [&]() { inventory->Toggle(); IsPlay(false); }, InputData({ActionType::KeyPressed, Keyboard::B})),
 		ActionData("AddItem", [&]() { inventory->AddItem(1, {
 			PATH_ITEM, "Item",
 			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"});
@@ -53,7 +53,7 @@ void Player::SetupPlayerInput()
 
 		ActionData("AddHealthMash", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::A })),
 		});
-	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab }))});
+	new ActionMap("Diplay", { ActionData("Shop", [&]() { merchand->Toggle();  }, InputData({ ActionType::KeyPressed, Keyboard::Tab }))});
 
 	ActionData("AddHealthMask", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num1 })),
 		ActionData("AddVessel", [&]() { inventory->UpdateVesselCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num2 })),
@@ -102,6 +102,7 @@ void Player::InitStats()
 
 void Player::Update(const float _deltaTime)
 {
+	if (!isPlay) return;
 	Actor::Update(_deltaTime);
 	// PlayerMovementComponent::Update(_deltaTime);
 	// movement->Update(_deltaTime);
@@ -140,4 +141,15 @@ void Player::Up()
 {
 	movement->Jump();
 	cout << "Je saute " << endl;
+}
+
+void Player::SwitchStatue()
+{
+	/* bool _currentPlay = isPlay;
+	_currentPlay = true;
+	if (!isPlay)
+	{
+		isPlay = true;
+	}*/
+	// new ActionData("Inventory", [&]() {IsPlay(true); }, InputData({ ActionType::KeyPressed, Keyboard::B }));
 }

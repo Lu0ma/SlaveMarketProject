@@ -10,6 +10,7 @@
 
 RenderWindow Game::window;
 Player* Game::player;
+Camera* Game::camera;
 
 Game::Game()
 {
@@ -53,47 +54,26 @@ void Game::UpdateWindow()
 {
 	window.clear();
 	View _defaultView;
-	if (camera->GetTargetStat() == TARGET_PLAYER)
-	{
-		_defaultView = camera->FollowPlayer();
-		window.setView(_defaultView);
-	}
-	else
-	{
-		_defaultView = window.getDefaultView();
-		window.setView(_defaultView);
-	}
 
+	CheckCameraState(_defaultView);
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
 		window.draw(*_actor->GetDrawable());
 	}
 
+
 	// UI
-	View _view = _defaultView;
+	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{
 		
-  		if (!_canvas->IsVisible())
-		{
-		
-			camera->SetTarget(TARGET_PLAYER);
-			continue;
-		}
-		else
-		{
-			camera->SetTarget(TARGET_WINDOW);
-		}
-
+  		if (!_canvas->IsVisible()) continue;
 		_view.setViewport(_canvas->GetRect());
 		window.setView(_view);
 
  		for (Widget* _widget : _canvas->GetWidgets()) 
 		{
-			if (!_widget->IsVisible())
-			{
-				continue;
-			}
+			if (!_widget->IsVisible())continue;
 			window.draw(*_widget->GetDrawable());
  		}
 	}
@@ -111,6 +91,23 @@ void Game::Launch()
 	Start();
 	Update();
 	Stop();
+}
+
+void Game::CheckCameraState(View& _newView)
+{
+
+	if (camera->GetTargetStat() == TARGET_PLAYER)
+	{
+		_newView = camera->FollowPlayer();
+		window.setView(_newView);
+	}
+
+	else if (camera->GetTargetStat() == TARGET_WINDOW)
+	{
+		_newView = window.getDefaultView();
+		window.setView(_newView);
+	}
+
 }
 
 void Game::Close()

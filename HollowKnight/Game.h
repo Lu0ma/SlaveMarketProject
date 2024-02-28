@@ -6,6 +6,8 @@
 #include "Camera.h"
 #include "Singleton.h"
 #include "NPC.h"
+
+
 using namespace std;
 using namespace sf;
 
@@ -15,9 +17,10 @@ using namespace sf;
 class Game
 {
 	static RenderWindow window;
-	Menu* menu;
 	static Player* player;
-	Camera* camera;
+	static Camera* camera;
+
+	Menu* menu;
 	NPC* npc;
 public:
 	static Vector2f GetWindowSize()
@@ -27,6 +30,10 @@ public:
 	static Player* GetPlayer()
 	{
 		return player;
+	}
+	static Camera* GetCamera()
+	{
+		return camera;
 	}
 
 public:
@@ -42,5 +49,6 @@ public:
 
 public:
 	void Launch();
+	void CheckCameraState(View& _newView);
 	static void Close();
 };

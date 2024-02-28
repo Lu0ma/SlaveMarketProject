@@ -14,6 +14,7 @@ Menu::Menu()
 
 void Menu::OpenTitleMenu()
 {
+	
 	mainMenu->SetVisibilityStatus(false);
 	titleMenu->Init();
 }
@@ -35,6 +36,6 @@ void Menu::Init()
 									FONT, 26));
 	mainMenu->AddWidget(_mainMenuText);
 	new ActionMap("MenuInputs", { 
-		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu();  }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
+		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
 	});
 }

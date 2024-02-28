@@ -1,6 +1,2 @@
-﻿  MusicManager.cpp
-  NPC.cpp
-  SoundManager.cpp
-  Widget.cpp
-  Génération de code en cours...
-  HollowKnight.vcxproj -> D:\Visual Studio Code\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
+﻿  Player.cpp
+  HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

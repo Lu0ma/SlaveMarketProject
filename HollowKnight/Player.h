@@ -58,6 +58,8 @@ class Player : public Actor
 	Label* healthBar;
 	Label* manaBar;
 	Label* geosCountText;
+	bool isPlay;
+
 public:
 	PlayerStat* GetStats() const
 	{
@@ -73,6 +75,10 @@ public:
 		stats->isVisible = _isVisible;
 	}
 
+	bool IsPlay(bool _isPlay)
+	{
+		return isPlay = _isPlay;
+	}
 public:
 	Player(const string& _name, const ShapeData& _data);
 
@@ -88,4 +94,6 @@ private:
 	void Right();
 	void Left();
 	void Up();
+
+	void SwitchStatue();
 };
