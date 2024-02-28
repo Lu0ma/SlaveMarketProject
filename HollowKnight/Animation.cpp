@@ -23,6 +23,14 @@ void Animation::SetNext()
     {
         if (!data.canLoop)
         {
+            if (data.linkedAnimation != "")
+            {
+                Stop();
+                Reset();
+                owner->RunAnimation(data.linkedAnimation);
+                return;
+            }
+
             Stop();
             return;
         }
@@ -74,7 +82,7 @@ Vector2i Animation::GetNewStart()
 void Animation::Start()
 {
     //SetNext();
-    timer = new Timer(this, &Animation::SetNext, seconds(data.timeBetween), true, data.canLoop);
+    timer = new Timer(this, &Animation::SetNext, seconds(data.timeBetween), true, true);
 }
 
 void Animation::Reset()

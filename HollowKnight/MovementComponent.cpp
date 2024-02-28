@@ -1,4 +1,5 @@
 #include "MovementComponent.h"
+#include "AnimationComponent.h"
 #include "Actor.h"
 #include "Macro.h"
 
@@ -29,6 +30,16 @@ void MovementComponent::MoveToDestination(const float _deltaTime)
 	Vector2f _direction = destination - _shape->getPosition( );
 	//cout << destination->x << " " << destination->y << endl;
 	Normalize(_direction);
+
+	//AnimationComponent* _animationComponent = owner->GetComponent<AnimationComponent>();
+	//if (_direction.x > 0) // il va a droite
+	//{		
+	//	_animationComponent->RunAnimation("GoRight");
+	//}
+	//else
+	//{
+	//	_animationComponent->RunAnimation("GoLeft");
+	//}
 
 	const Vector2f& _position = _shape->getPosition() + _direction * speed * _deltaTime;
 	_shape->setPosition(_position);
