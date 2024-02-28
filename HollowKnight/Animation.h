@@ -58,12 +58,11 @@ class Animation : public IManagable<string>
 {
     AnimationComponent* owner;
     int currentIndex;
-    string path;
+    //string path;
     AnimationData data;
     Shape* shape;
     Timer* timer;
-
-
+    
 public:
     AnimationData GetData() const
     {

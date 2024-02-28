@@ -12,7 +12,6 @@ Animation::Animation(const string& _name, AnimationComponent* _owner, Shape* _sh
     Register();
 }
 
-
 void Animation::Register()
 {
     owner->Add(id, this);

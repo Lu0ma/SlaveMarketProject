@@ -240,14 +240,17 @@
     <ClCompile Include="AnimationComponent.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="HuskBully.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Belfly.cpp">
+      <Filter>Mobs</Filter>
     </ClCompile>
     <ClCompile Include="Boofly.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Mobs</Filter>
     </ClCompile>
-    <ClCompile Include="Belfly.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="HuskBully.cpp">
+      <Filter>Mobs</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Mobs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -398,14 +401,17 @@
     <ClInclude Include="AnimationComponent.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="HuskBully.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Belfly.h">
+      <Filter>Mobs</Filter>
     </ClInclude>
     <ClInclude Include="Boofly.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Mobs</Filter>
     </ClInclude>
-    <ClInclude Include="Belfly.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="HuskBully.h">
+      <Filter>Mobs</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Mobs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

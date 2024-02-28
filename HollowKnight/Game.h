@@ -6,6 +6,7 @@
 #include "Camera.h"
 #include "Singleton.h"
 #include "NPC.h"
+#include "Spawner.h"
 using namespace std;
 using namespace sf;
 
@@ -19,6 +20,7 @@ class Game
 	static Player* player;
 	Camera* camera;
 	NPC* npc;
+	Spawner spawn;
 public:
 	static Vector2f GetWindowSize()
 	{

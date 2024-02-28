@@ -38,6 +38,8 @@ void Game::Init()
 {
 	player->Init();
 	menu->Init();
+
+	spawn.Spawn();
 }
 
 void Game::Update()
@@ -56,6 +58,7 @@ void Game::UpdateWindow()
 	View _defaultView;
 	if (camera->GetTargetStat() == TARGET_PLAYER)
 	{
+		//_defaultView = window.getDefaultView();
 		_defaultView = camera->FollowPlayer();
 		window.setView(_defaultView);
 	}

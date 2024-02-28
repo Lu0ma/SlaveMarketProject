@@ -13,7 +13,7 @@ Boofly::Boofly(const ShapeData& _data) : Mob(_data)
 	const int _count = 4;
 	const float _speed = 0.15f;
 
-	animation = new AnimationComponent(this, PATH_BOOFLY, 
+ 	AnimationComponent* _animation = new AnimationComponent(this, PATH_BOOFLY, 
 		{
 			AnimationData("Idle", Vector2f(0.0f, 17.0f), _size, _readDirection, ANIM_DIR_NONE, _toRepeat, 5, _speed),
 			AnimationData("Right", Vector2f(0.0f, 380.0f), _size, _readDirection, ANIM_DIR_RIGHT, _toRepeat, 4, _speed),
@@ -22,5 +22,5 @@ Boofly::Boofly(const ShapeData& _data) : Mob(_data)
 			AnimationData("DeathLand", Vector2f(0.0f, 1480.0f), _sizeDeathLand, _readDirection, ANIM_DIR_DOWN, _toRepeat, 3, _speed),
 		}, ANIM_DIR_NONE);
 
-	components.push_back(animation);
+	components.push_back(_animation);
 }
