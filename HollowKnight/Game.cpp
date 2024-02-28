@@ -5,6 +5,8 @@
 #include "HUD.h"
 #include "Widget.h"
 
+#include "Spawner.h"
+
 #define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
 
@@ -43,6 +45,9 @@ void Game::Init()
 	new ActionMap("Merchand", {
 		ActionData("ToggleShop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Equal  })),
 	});
+
+	Spawner* _spawner = new Spawner();
+	_spawner->Spawn();
 }
 
 void Game::Update()
