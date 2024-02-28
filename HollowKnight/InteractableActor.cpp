@@ -20,7 +20,7 @@ void InteractableActor::Update(const float _deltaTime)
 	Player* _player = Game::GetPlayer();
 	if (detector.intersects(_player->GetShape()->getGlobalBounds()))
 	{
-		// cout << "Appueyer sur E pour parler" << endl;
+		cout << "Appuyer sur E pour parler" << endl;
 	}
 } 
 
