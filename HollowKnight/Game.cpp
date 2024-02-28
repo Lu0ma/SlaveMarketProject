@@ -29,23 +29,15 @@ Game::~Game()
 
 void Game::Start()
 {
-<<<<<<< HEAD
 	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
-=======
-	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Hollow Knight");
->>>>>>> Olivier
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
 }
 
 void Game::Init()
 {
-<<<<<<< HEAD
 	player->Init();
 	menu->Init();
-=======
-	spawner.Spawn();
->>>>>>> Olivier
 }
 
 void Game::Update()

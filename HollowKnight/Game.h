@@ -14,7 +14,6 @@ using namespace sf;
 
 class Game
 {
-<<<<<<< HEAD
 	static RenderWindow window;
 	Menu* menu;
 	static Player* player;
@@ -29,10 +28,6 @@ public:
 	{
 		return player;
 	}
-=======
-	RenderWindow window;
-	Spawner spawner;
->>>>>>> Olivier
 
 public:
 	Game();

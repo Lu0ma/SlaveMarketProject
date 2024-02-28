@@ -1,2 +1,3 @@
 D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
 D:\Visual Studio Code\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
+C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
