@@ -56,7 +56,7 @@ static vector<Class*> RetrieveAllMobsAround(const Vector2f& _position, const flo
 
 	for (Actor* _entity : _actor)
 	{
-		if (_circle->getGlobalBounds().intersects(_entity->GetShape()->getGlobalBounds()))
+		if (_circle->getGlobalBounds().intersects(_entity->GetDrawable()->getGlobalBounds()))
 		{
 			Class* _class = dynamic_cast<Class*>(_entity);
 			_classes.push_back(_class);

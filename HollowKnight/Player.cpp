@@ -12,17 +12,52 @@
 #include "ActionMap.h"
 #include "Timer.h"
 
+#include"Mob.h"
+
 #define PATH_ITEM "UIs/Inventory/Item.png"
 #define PATH_ITEM2 "test.png"
 
+
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
-	shape->setFillColor(Color::Red);
+	shape->setFillColor(Color::Magenta);
 
 	stats = new PlayerStat();
 	inventory = new Inventory();
 	movement = new PlayerMovementComponent(this);
 	components.push_back(movement);
+
+	const Vector2f& _size = Vector2f(80.0f, 80.0f);
+	const ReadDirection& _readDirection = READ_RIGHT;
+	const bool _toRepeat = true;
+	const int _count = 8;// a changer
+	const int _countAttack = 7;
+	const float _speed = 0.1f;
+
+	animation = new AnimationComponent(this, {
+	AnimationData("NONERIGHT",Vector2f(0.0f, 0.0f), _size, _readDirection,  _toRepeat, 1, _speed),
+	AnimationData("Special",Vector2f(0.0f, 320.0f), _size, _readDirection , _toRepeat, _countAttack, _speed),
+	AnimationData("Right",Vector2f(80.0f, 0.0f), _size, _readDirection,  _toRepeat, 3, _speed),
+	AnimationData("Left",Vector2f(80.0f, 0.0f), _size, _readDirection,  _toRepeat, 3, _speed, false),
+	AnimationData("NONELEFT",Vector2f(0.0f, 0.0f), _size, _readDirection,  _toRepeat, 1, _speed, false),
+	AnimationData("Dash",Vector2f(0.0f, 720.0f), _size, _readDirection, _toRepeat,9,_speed),
+	AnimationData("Jump",Vector2f(0.0f, 800.0f), _size, _readDirection, _toRepeat,10,_speed),// 560    12
+     });
+
+	components.push_back(animation);
+
+	animPlayer.resize(10);
+
+	animPlayer = {
+		"NONERIGHT",
+		"Special",
+		"Right",
+		"Left",
+		"Dash",
+		"Jump",
+		"NONELEFT"
+	};
+
 }
 
 
@@ -65,13 +100,30 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Movements", {
-		ActionData("Right", [&]() { movement->SetDirectionX(1.0f); }, InputData({ ActionType::KeyPressed, Keyboard::D })),
-		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
-		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
-		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
-		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
-		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
+		ActionData("Right", [&]() { movement->SetDirectionX(1.0f); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[2]); }, InputData({ActionType::KeyPressed, Keyboard::D})),
+		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[0]); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
+		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[3]); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
+		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[6]); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
+		ActionData("Jump", [&]() { movement->Jump();  this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[5]); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
+		ActionData("Dash", [&]() { movement->Dash(); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[4]); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
 	});
+
+	new ActionMap("Attack", {
+
+		ActionData("Slash", [&]() {
+			SpecialAttack();
+			this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[1]);
+			cout << "Slash" << endl;
+			},
+			InputData({ActionType::KeyPressed, Keyboard::R})),
+
+		ActionData("StopSlash", [&]() {
+			movement->SetDirectionX(0.0f);
+			this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[0]);
+			},
+			InputData({ActionType::KeyReleased, Keyboard::R})),
+
+		});
 }
 
 
@@ -80,4 +132,16 @@ void Player::Init()
 	stats->Init();
 	inventory->Init();
 	SetupPlayerInput();
+}
+
+void Player::SpecialAttack()
+{
+	movement->SetDirectionX(10.0f);
+
+	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(GetShapePosition(), 15.0f);
+	for (Mob* _mob : _mobs)
+	{
+		if (!_mob)continue;
+		_mob->TakeDamages(stats->GetDamages());
+	}
 }

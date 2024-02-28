@@ -7,8 +7,9 @@
 
 #include "Spawner.h"
 
-#define PATH_PLAYER "Player.png"
+//#define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
+#define PATH_PLAYER "Animations/knighModif.png"
 
 RenderWindow Game::window;
 Player* Game::player;
@@ -17,7 +18,7 @@ Camera* Game::camera;
 Game::Game()
 {
 	menu = new Menu();
-	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
+	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	camera = new Camera(TARGET_WINDOW);
 
 	//TODO move
@@ -52,6 +53,7 @@ void Game::Init()
 
 	Spawner* _spawner = new Spawner();
 	_spawner->Spawn();
+
 }
 
 void Game::Update()

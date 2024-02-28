@@ -39,12 +39,13 @@ void AnimationComponent::RunAnimation(const string& _name)
         {
             if (currentAnimation)
             {
+            if (_name == currentAnimation->GetID()) return;
                 //system("cls");
                 //cout << "Stop : " << currentAnimation->GetID() << endl;
                 currentAnimation->Stop();
             }
 
-            //cout << "Start : " << _animation->GetData().name << endl;
+            cout << "Start : " << _animation->GetData().name << endl;
             currentAnimation = _animation;
             _animation->Start();
         }

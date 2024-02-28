@@ -3,6 +3,8 @@
 #include "PlayerStat.h"
 #include "Inventory.h"
 #include "PlayerMovementComponent.h"
+#include"AnimationComponent.h"
+#include<vector>
 
 using namespace std;
 
@@ -11,6 +13,8 @@ class Player : public Actor
 	PlayerStat* stats;
 	Inventory* inventory;
 	PlayerMovementComponent* movement;
+	AnimationComponent* animation;
+	vector<string> animPlayer;
 
 public:
 	void SetStatus(const bool _status)
@@ -34,4 +38,5 @@ private:
 
 public:
 	void Init();
+	void SpecialAttack();
 };

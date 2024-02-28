@@ -21,6 +21,14 @@ class PlayerStat
 	int geosCount;
 	Label* geosCountText;
 
+	int damages;
+
+public:
+	int GetDamages()const
+	{
+		return damages;
+	}
+
 private:
 	string ComputeLifePath(const bool _toAdd) const
 	{
