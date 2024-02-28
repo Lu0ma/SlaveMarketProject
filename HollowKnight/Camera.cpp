@@ -6,7 +6,7 @@ Camera::Camera()
 	target = TARGET_NONE;
 	const FloatRect& _rect = Game::GetPlayer()->GetShape()->getGlobalBounds();
 	center = Vector2f(_rect.left, _rect.top /* rectPlayer.left , rectPlayer.top */);
-	size = Vector2f(1000 , 1000);
+	size = Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT);
 	view = View(center , size);
 }
 
@@ -20,7 +20,7 @@ Camera::Camera(const Target& _target)
 	target = _target;
 	const FloatRect& _rect = Game::GetPlayer()->GetShape()->getGlobalBounds();
 	center = Vector2f(_rect.left, _rect.top /* rectPlayer.left , rectPlayer.top */);
-	size = Vector2f(1000, 1000);
+	size = Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT);
 	view = View(center, size);
 }
 
