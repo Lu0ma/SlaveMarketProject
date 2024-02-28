@@ -1,12 +1,13 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
+
 #include "Menu.h"
 #include "Player.h"
 #include "Camera.h"
-#include "Singleton.h"
-#include "NPC.h"
-#include "Spawner.h"
+
+#include "Merchand.h"
+
 using namespace std;
 using namespace sf;
 
@@ -19,8 +20,10 @@ class Game
 	Menu* menu;
 	static Player* player;
 	Camera* camera;
-	NPC* npc;
-	Spawner spawn;
+
+	//TODO move
+	Merchand* merchand;
+
 public:
 	static Vector2f GetWindowSize()
 	{

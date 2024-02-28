@@ -5,39 +5,20 @@
 
 class AnimationComponent : public Component, public IManager<string, Animation>
 {
-    int currentIndex;
-    AnimationDirection direction;
+    Animation* currentAnimation;
 
-public:
-    void SetDirection(const AnimationDirection& _direction)
-    {
-        direction = _direction;
-    }
-
-private:
-    int GetNextIndex(const AnimationDirection& _direction) const
-    {
-        int _index = 0;
-        for (Animation* _animation : GetAllValues())
-        {
-            if (_animation->GetData().direction == _direction) return _index;
-            _index++;
-        }
-        return -1;
-    }
 public:
     Animation* GetCurrentAnimation() const
     {
-        return GetAllValues()[currentIndex];
+        return currentAnimation;
     }
 
 public:
-    AnimationComponent(Actor* _owner, const string& _path, const vector<AnimationData>& _animationsData,
-        const AnimationDirection& _direction);
+    AnimationComponent(Actor* _owner, const vector<AnimationData>& _animationsData);
 
 private:
-    void InitAnimations(const string& _path, const vector<AnimationData>& _animationsData);
+    void InitAnimations(const vector<AnimationData>& _animationsData);
 
 public:
-    virtual void Update(const float _deltaTime) override;
+    void RunAnimation(const string& _name);
 };

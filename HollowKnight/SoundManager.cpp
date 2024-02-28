@@ -1,4 +1,5 @@
 #include "SoundManager.h"
+#include <iostream>
 
 SoundManager::SoundManager()
 {
@@ -34,9 +35,9 @@ void SoundManager::Load(const string& _path)
 	if (!_soundData)
 	{
 		_soundData = new SoundData(_path);
-		if (!_soundData->loadFromFile(_path))
+		if (!_soundData->loadFromFile("Assets/Sounds/" + _path))
 		{
-			//cerr << "Le son n'a pas été correctement chargée !" << endl;
+			cerr << "Le son n'a pas été correctement chargée !" << endl;
 		}
 	}
 }

@@ -4,7 +4,7 @@
 #include "Macro.h"
 
 Animation::Animation(const string& _name, AnimationComponent* _owner, Shape* _shape,
-    const AnimationData& _data) : IManagable(_name)
+                     const AnimationData& _data) : IManagable(_name)
 {
     owner = _owner;
     shape = _shape;
@@ -63,7 +63,7 @@ Vector2i Animation::GetNewStart()
 
 void Animation::Start()
 {
-    SetNext();
+    //SetNext();
     timer = new Timer(this, &Animation::SetNext, seconds(data.timeBetween), true, data.canLoop);
 }
 
