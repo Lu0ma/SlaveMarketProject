@@ -3,11 +3,11 @@
 #include <SFML/Graphics.hpp>
 
 #include "Menu.h"
+#include "Map.h"
 #include "Player.h"
 #include "Camera.h"
 
 #include "Merchand.h"
-#include "Singleton.h"
 #include "NPC.h"
 #include "InteractableActor.h"
 
@@ -20,11 +20,12 @@ using namespace sf;
 class Game
 {
 	static RenderWindow window;
+	Menu* menu;
+	static Map* map;
 	static Player* player;
 	Merchand* merchand;
 	static Camera* camera;
 
-	Menu* menu;
 	// NPC* npc;
 	InteractableActor* pnj;
 

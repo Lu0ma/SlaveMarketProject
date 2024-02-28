@@ -11,6 +11,7 @@
 #define FONT "Assets/Fonts/Font.ttf"
 
 RenderWindow Game::window;
+Map* Game::map;
 Player* Game::player;
 Camera* Game::camera;
 
@@ -43,6 +44,7 @@ void Game::Start()
 void Game::Init()
 {
 	menu->Init();
+	map->Init();
 
 	//TODO move
 	merchand->Init();

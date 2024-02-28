@@ -133,6 +133,12 @@
     <Filter Include="Spawner">
       <UniqueIdentifier>{3b9d0632-28e4-47e5-ae3a-2ff66f4dcaee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Maps">
+      <UniqueIdentifier>{0acf75b2-8a61-43a2-9a7f-58bb1991c7a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\FileLoader">
+      <UniqueIdentifier>{0e5d0c03-b63f-44c3-9ead-1ec1a0039f2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -290,6 +296,12 @@
     </ClCompile>
     <ClCompile Include="Spawner.cpp">
       <Filter>Spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="FileLoader.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -454,6 +466,12 @@
     </ClInclude>
     <ClInclude Include="Spawner.h">
       <Filter>Spawner</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="FileLoader.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

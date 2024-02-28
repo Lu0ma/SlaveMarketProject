@@ -1,0 +1,34 @@
+BackgroundPath = Bonjour
+
+BackgroundPosX = 50
+BackgroundPosY = 50
+BackgroundSizeX = 500
+BackgroundSizeY = 500
+
+ClampCamMinX = 0
+ClampCamMinY = 0
+ClampCamMaxX = 500
+ClampCamMaxY = 500
+
+walls =
+{
+ pos
+ size
+ path
+}
+
+enemies = 
+{
+ TYPE
+ pos
+ size
+ path
+}
+
+npcs [] = 
+{
+ TYPE
+ pos
+ size
+ path
+}

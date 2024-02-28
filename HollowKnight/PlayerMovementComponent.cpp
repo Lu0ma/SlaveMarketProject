@@ -34,7 +34,6 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	dashSpeed = 0.75f;
 	dashDuration = 0.2f;
 	dashCooldown = 3.0f;
-
 }
 
 
