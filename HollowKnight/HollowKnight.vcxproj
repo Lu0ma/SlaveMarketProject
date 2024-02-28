@@ -134,6 +134,10 @@
     <ClCompile Include="ActionMap.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorManager.cpp" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="Belfly.cpp" />
+    <ClCompile Include="Boofly.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Canvas.cpp" />
@@ -143,6 +147,7 @@
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="HuskBully.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="InteractableActor.cpp" />
     <ClCompile Include="Inventory.cpp" />
@@ -181,6 +186,10 @@
     <ClInclude Include="ActionMap.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorManager.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationComponent.h" />
+    <ClInclude Include="Belfly.h" />
+    <ClInclude Include="Boofly.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Canvas.h" />
@@ -190,6 +199,7 @@
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="HUD.h" />
+    <ClInclude Include="HuskBully.h" />
     <ClInclude Include="IManagable.h" />
     <ClInclude Include="IManager.h" />
     <ClInclude Include="InputManager.h" />

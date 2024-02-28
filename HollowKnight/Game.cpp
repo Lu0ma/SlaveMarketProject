@@ -2,6 +2,7 @@
 #include "TimerManager.h"
 #include "InputManager.h"
 #include "ActorManager.h"
+#include "AnimationComponent.h"
 #include "HUD.h"
 #include "Widget.h"
 #include "Player.h"
@@ -28,15 +29,23 @@ Game::~Game()
 
 void Game::Start()
 {
+<<<<<<< HEAD
 	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
+=======
+	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Hollow Knight");
+>>>>>>> Olivier
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
 }
 
 void Game::Init()
 {
+<<<<<<< HEAD
 	player->Init();
 	menu->Init();
+=======
+	spawner.Spawn();
+>>>>>>> Olivier
 }
 
 void Game::Update()
@@ -66,6 +75,11 @@ void Game::UpdateWindow()
 
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
+		/*if (AnimationComponent* _animation = _actor->GetComponent<AnimationComponent>())
+		{
+			window.draw(*_animation->GetCurrentAnimation()->GetSprite());
+			continue;
+		}*/
 		window.draw(*_actor->GetDrawable());
 	}
 

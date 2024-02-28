@@ -1,4 +1,7 @@
 #include "Spawner.h"
+#include "HuskBully.h"
+#include "Belfly.h"
+#include "BooFly.h"
 
 Spawner::Spawner()
 {
@@ -11,5 +14,5 @@ void Spawner::Spawn()
 	string _path = "";
 
 	ShapeData _data = ShapeData(_position, _size, _path);
-	new Mob(_data);
+	new Boofly(_data);
 }
