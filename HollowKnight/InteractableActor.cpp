@@ -8,9 +8,9 @@
 InteractableActor::InteractableActor(const string& _name, const ShapeData& _data, const Vector2f& _sizeDetector) : Actor(_name , _data)
 {
 	// canvas = new Canvas("ee");
-	cursor = new Canvas("Ui");
+	canvas = nullptr;
 	canVerify = false;
-	textScript = new Canvas("TEXT");
+	//textScript = nullptr;
 	
 }
 
@@ -28,41 +28,27 @@ void InteractableActor::Verify()
 	// if (!canVerify) return ;
 	if (_rectPNJ.intersects(_player->GetDrawable()->getGlobalBounds()))
 	{
-	 	if (cursor->GetVisibilityStatus()) return;
-		cursor->SetVisibilityStatus(true);
+	 	if (canvas->GetVisibilityStatus()) return;
+		canvas->SetVisibilityStatus(true);
+
 	}
 	else
 	{
-		cursor->SetVisibilityStatus(false);
-		textScript->SetVisibilityStatus(false);
+		canvas->SetVisibilityStatus(false);
 	}
 
 }
 
 void InteractableActor::Init()
 {
+	canvas = new Canvas("CANVA");
  	ShapeWidget* _widget = new ShapeWidget(ShapeData(Vector2f(690.0f , 300.0f), Vector2f(303.0f, 66.0f), UI_BUTTON));
-	cursor->AddWidget(_widget);
+	canvas->AddWidget(_widget);
 
 	const Vector2f& _windowSize = Game::GetWindowSize();
 	const float _mainMenuTextPosY = _windowSize.y * 70.0f / 100.0f;
 	const float _mainMenuTextPosX = _windowSize.x / 2.0f;
 	Label* _text = new Label(TextData("Bienvenue à Shrek City !", Vector2f(_mainMenuTextPosX, _mainMenuTextPosY), FONT, 26));
-	textScript->AddWidget(_text);
+	canvas->AddWidget(_text);
 
-}
-
-string InteractableActor::Scrolling(const string& _text)
-{
-
-	//string ScrollingText(const string& _text)
-	//{
-
-	//	for (int _i = 0; _i < _text.size(); _i++)
-	//	{
-	//		cout << _text[_i]; 
-	//		sleep(time);
-	//	}
-	//}
-	return string();
 }

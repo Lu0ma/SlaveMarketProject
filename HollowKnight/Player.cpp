@@ -21,7 +21,7 @@
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
-	shape->setFillColor(Color::Red);
+	// shape->setFillColor(Color::Red);
 
 	stats = new PlayerStat();
 	inventory = new Inventory();
@@ -177,6 +177,7 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ActionType::KeyPressed, Keyboard::P}))
 	});
+
 }
 
 
