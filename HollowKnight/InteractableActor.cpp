@@ -1,45 +1,57 @@
 #include "InteractableActor.h"
 #include "Game.h"
 #include "Widget.h"
-
-#define PATH_HEALTH_MASK "UIs/Inventory/HealthMasks/HealthMask_"
-
-Canvas* InteractableActor::canvas;
-FloatRect InteractableActor::detector;
+#include "Label.h"
+#define FONT "Font.ttf"
+#define UI_BUTTON "UIs/Charms/bottom_fleur0002.png"
 
 InteractableActor::InteractableActor(const string& _name, const ShapeData& _data, const Vector2f& _sizeDetector) : Actor(_name , _data)
 {
-	sensorArea = new CircleShape(10.0f);
-	detector = sensorArea->getGlobalBounds();
+	// canvas = new Canvas("ee");
 	canvas = new Canvas("Ui");
-	ShapeWidget* _widget = new ShapeWidget(ShapeData(this->GetShapePosition(), Vector2f(100.0f, 100.0f), PATH_HEALTH_MASK));
-	canvas->AddWidget(_widget);
+	canVerify = false;
+	
+
+	
 }
 
 void InteractableActor::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
-	sensorArea->setPosition(this->GetShapePosition());
-	Player* _player = Game::GetPlayer();
-	if (detector.intersects(_player->GetDrawable()->getGlobalBounds()))
-	{
-		// cout << "Appuyer sur E pour parler" << endl;
-		if (canvas->GetVisibilityStatus()) return;
-		canvas->SetVisibilityStatus(true);
-	}
-	else
-	{
-		canvas->SetVisibilityStatus(false);
-
-	}
-	// Verify();
+	Verify();
 }
 
 void InteractableActor::Verify()
 {
-	if (canvas->GetVisibilityStatus())
+ 	Player* _player = Game::GetPlayer();
+	FloatRect _rectPNJ = shape->getGlobalBounds();
+
+	if (_rectPNJ.intersects(_player->GetDrawable()->getGlobalBounds()))
 	{
-		cout << "OUI" << endl; // Afficher le texte du personnage , ou la boutique 
-		//canvas->SetVisibilityStatus(false);
+	 	if (canvas->GetVisibilityStatus()) return;
+	 	canvas->SetVisibilityStatus(true);
 	}
+
+	else
+	{
+ 		canvas->SetVisibilityStatus(false);
+	}
+
+	if (!canVerify) return;
+	else if(canVerify)
+	{
+
+	}
+}
+
+void InteractableActor::Init()
+{
+ 	ShapeWidget* _widget = new ShapeWidget(ShapeData(Vector2f(690.0f , 300.0f), Vector2f(303.0f, 66.0f), UI_BUTTON));
+	canvas->AddWidget(_widget);
+
+	const Vector2f& _windowSize = Game::GetWindowSize();
+	const float _mainMenuTextPosY = _windowSize.y * 70.0f / 100.0f;
+	const float _mainMenuTextPosX = _windowSize.x / 2.0f;
+	Label* _text = new Label(TextData("Bienvenue à Shrek City !", Vector2f(_mainMenuTextPosX, _mainMenuTextPosY), FONT, 26));
+	canvas->AddWidget(_text);
 }

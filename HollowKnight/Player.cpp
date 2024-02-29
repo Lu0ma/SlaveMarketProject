@@ -75,7 +75,7 @@ void Player::SetupPlayerInput()
 
 	new ActionMap("Interact With a PNJ", {
 
-		ActionData("Talk " , [&]() {Game::GetPnj()->Verify();}, InputData({ActionType::KeyPressed , Keyboard::E})),
+		ActionData("Talk " , [&]() {Game::GetPnj()->SetCanVerify(true);}, InputData({ActionType::KeyPressed , Keyboard::E})),
 		});
 }
 

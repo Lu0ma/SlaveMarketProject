@@ -19,7 +19,7 @@ public:
 	{
 		return isVisible;
 	}
-	void SetVisibilityStatus(const bool _status)
+	void SetVisibilityStatus(bool _status)
 	{
 		isVisible = _status;
 	}

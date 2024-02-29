@@ -53,6 +53,8 @@ void Game::Init()
 
 	Spawner* _spawner = new Spawner();
 	_spawner->Spawn();
+
+	pnj->Init();
 }
 
 void Game::Update()
@@ -88,6 +90,7 @@ void Game::UpdateWindow()
 		{
 			if (!_widget->IsVisible()) continue;
 			window.draw(*_widget->GetDrawable());
+			window.setView(_view);
 		}
 	}
 	window.display();
