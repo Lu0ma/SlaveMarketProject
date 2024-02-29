@@ -43,17 +43,16 @@ void Mob::Move()
 void Mob::Patrol()
 {
 	MovementComponent* _movementComponent = GetComponent<MovementComponent>();
-	AnimationComponent* _animationComponent = GetComponent<AnimationComponent>();
-	const vector<string>& _animationNames = _animationComponent->GetAnimationNames();
+	const vector<string>& _animationNames = animation->GetAnimationNames();
 
 	if (isPatrolling)
 	{
 		if (_movementComponent->IsAtPosition())
 		{
-			if (Animation* _animation = _animationComponent->GetCurrentAnimation())
+			if (Animation* _animation = animation->GetCurrentAnimation())
 			{
 				const string& _linkedAnimation = _animation->GetData().linkedAnimation;
-				if (_linkedAnimation != "") RunLinkedAnimation(_linkedAnimation, _animationComponent);
+				if (_linkedAnimation != "") RunLinkedAnimation(_linkedAnimation, animation);
 
 				if (_movementComponent->GetDestination() == startPosition)
 				{

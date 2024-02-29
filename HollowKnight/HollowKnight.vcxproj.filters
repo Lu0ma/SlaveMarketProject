@@ -148,6 +148,12 @@
     <Filter Include="Objects\ShapeObjects\Actors\Mobs\DeathMob">
       <UniqueIdentifier>{bed64d59-cf8f-4a8c-a752-c920004a7ade}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Boss">
+      <UniqueIdentifier>{6dc1e86c-f7e8-4959-9f01-ab749e83c662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Boss\FalseKnight">
+      <UniqueIdentifier>{2de0fb28-0a7c-4dd4-af87-364aef696d5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -320,6 +326,12 @@
     </ClCompile>
     <ClCompile Include="DeathMob.cpp">
       <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="FalseKnight.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -499,6 +511,12 @@
     </ClInclude>
     <ClInclude Include="DeathMob.h">
       <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="FalseKnight.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

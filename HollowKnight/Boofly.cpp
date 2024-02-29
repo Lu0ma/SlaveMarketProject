@@ -10,13 +10,6 @@ Boofly::Boofly(const ShapeData& _data) : Mob(_data)
 	components.push_back(animation);
 }
 
-
-void Boofly::Attack()
-{
-	
-}
-
-
 void Boofly::Init()
 {
 	const Vector2f& _size = Vector2f(315.0f, 345.0f);
