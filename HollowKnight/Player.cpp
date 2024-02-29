@@ -12,10 +12,11 @@
 #include "ActionMap.h"
 #include "Timer.h"
 
-#include"Mob.h"
+#include"DeathMob.h"
 
 #define PATH_ITEM "UIs/Inventory/Item.png"
 #define PATH_ITEM2 "test.png"
+#define PATH_DEATHMOB "Animations/DeathMob.png"
 
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
@@ -40,10 +41,10 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	AnimationData("Right",Vector2f(80.0f, 0.0f), _size, _readDirection,  _toRepeat, 3, _speed),
 	AnimationData("Left",Vector2f(80.0f, 0.0f), _size, _readDirection,  _toRepeat, 3, _speed, false),
 	AnimationData("NONELEFT",Vector2f(0.0f, 0.0f), _size, _readDirection,  _toRepeat, 1, _speed, false),
-	AnimationData("Dash",Vector2f(0.0f, 720.0f), _size, _readDirection, _toRepeat,12,_speed),
+	AnimationData("Dash",Vector2f(0.0f, 560.0f), _size, _readDirection, _toRepeat,11,_speed),
 	//AnimationData("DashLeft",Vector2f(0.0f, 720.0f), _size, _readDirection, _toRepeat,12,_speed, false),
 	AnimationData("DarkSasuke",Vector2f(0.0f, 800.0f), _size, _readDirection, _toRepeat, 10, _speed),// 560    12
-	AnimationData("Jump",Vector2f(0.0f, 560.0f), Vector2f(79.0f, 71.0f), _readDirection, _toRepeat, 11, _speed),// Change size
+	AnimationData("Jump",Vector2f(0.0f, 720.0f), Vector2f(79.0f, 71.0f), _readDirection, _toRepeat, 9, _speed),// Change size
      });
 
 	components.push_back(animation);
@@ -61,11 +62,7 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 		//"DashLeft" 
 		"NONELEFT"
 	};
-
-	/*if (stats->GetCurrentLife() == 0)
-	{
-		Death();
-	}*/
+	
 }
 
 
@@ -73,7 +70,7 @@ void Player::SetupPlayerInput()
 {
 	new ActionMap("Stats", {
 		ActionData("AddMana", [&]() { stats->UseMana(10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Space  })),
-		ActionData("RemoveMana", [&]() { stats->UseMana(-10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
+		ActionData("RemoveMana", [&]() { stats->UseMana(-10.0f);}, InputData({ActionType::KeyPressed, Keyboard::J})),
 		ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
 		ActionData("RemoveLife", [&]() { stats->UpdateLife(-1); }, InputData({ ActionType::KeyPressed, Keyboard::Num0 })),
 		ActionData("AddLifeSlot", [&]() { stats->AddLife(); }, InputData({ ActionType::KeyPressed, Keyboard::O })),
@@ -135,6 +132,8 @@ void Player::SetupPlayerInput()
 			InputData({ActionType::KeyReleased, Keyboard::R})),
 
 		});
+
+	
 }
 
 
@@ -157,20 +156,39 @@ void Player::SpecialAttack()
 	}
 }
 
-void Player::Death()// TODO
+void Player::TakeDamages(const int _damages)
 {
-	//creer un mob qui va etre a la position de la mort du joueur
-	//il attack le joueur si celui-ci est proche de lui
+	int _newLife = stats->GetCurrentLife() - _damages;
+	stats->SetCurrentLife(_newLife);
+}
+
+void Player::Update()// TODO
+{
+	if (stats->GetCurrentLife() != 0)
+	{
+		return;
+	}
+
+	else if (stats->GetCurrentLife() == 0)
+	{
+		cout << "Tu es mort" << endl;
+		//creer un mob qui va etre a la position de la mort du joueur
+		ShapeData _data = ShapeData(GetShapePosition(),Vector2f(100.0f, 100.0f), PATH_DEATHMOB, IntRect(0, 18, 316, 346));
+		DeathMob* _death = new DeathMob(_data);
 
 	//Changement de l'anim du joueur pdt 3sec avant de respawn
-	function<void()> _callback = [&]() {
+		/*function<void()> _callback = [&]() {
 
-	this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[5]);
-		};
+			this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[5]);
+			};
 
-	deathTimer = new Timer(_callback, seconds(3.0f), true, false);
+		deathTimer = new Timer(_callback, seconds(3.0f), true, false);*/
 
-	//set la position au debut du niveau
+
+		//set la position au debut du niveau
+		//this->GetDrawable()->setPosition(//Checkpoint); 
+		stats->SetCurrentLife(stats->GetMaxLife()); // Lui redonner full vie
+	}
 }
 
 

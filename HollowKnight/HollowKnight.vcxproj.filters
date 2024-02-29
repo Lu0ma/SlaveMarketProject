@@ -291,6 +291,9 @@
     <ClCompile Include="Spawner.cpp">
       <Filter>Spawner</Filter>
     </ClCompile>
+    <ClCompile Include="DeathMob.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -454,6 +457,9 @@
     </ClInclude>
     <ClInclude Include="Spawner.h">
       <Filter>Spawner</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathMob.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

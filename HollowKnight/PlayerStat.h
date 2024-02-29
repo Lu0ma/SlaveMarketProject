@@ -29,10 +29,20 @@ public:
 		return damages;
 	}
 
-	int GetCurrentLife()
+	int GetCurrentLife()const
 	{
 		return currentLifesCount;
 	}
+
+	int GetMaxLife()const
+	{
+		return currentMaxLifesCount;
+	}
+	
+     void SetCurrentLife(const int _newLife)
+	 {
+		 currentLifesCount = _newLife;
+	 }
 
 private:
 	string ComputeLifePath(const bool _toAdd) const

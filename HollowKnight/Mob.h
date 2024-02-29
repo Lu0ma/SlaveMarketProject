@@ -13,6 +13,10 @@ public:
 	{
 		return life;
 	}
+	void SetLife(const int _life)
+	{
+		life = _life;
+	}
 	int GetDamages()const
 	{
 		return damages;
@@ -25,6 +29,7 @@ public:
 	void Move();
 	void Patrol();
 	void TakeDamages(const int _attack);
+	virtual void Death() = 0;
 
 private:
 	void InitTimer();

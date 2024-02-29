@@ -42,5 +42,6 @@ private:
 public:
 	void Init();
 	void SpecialAttack();
-	void Death();
+	void TakeDamages(const int _damages);
+	void Update();
 };

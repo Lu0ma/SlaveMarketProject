@@ -39,6 +39,7 @@ void Game::Start()
 	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
+	
 }
 
 void Game::Init()
@@ -68,7 +69,7 @@ void Game::Update()
 
 void Game::UpdateWindow()
 {
-	window.clear();
+	window.clear(); // Color(127, 127, 127, 0) gris
 	View _defaultView;
 	CheckCameraState(_defaultView);
 
