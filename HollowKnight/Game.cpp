@@ -19,23 +19,19 @@ Camera* Game::camera;
 Game::Game()
 {
 	menu = new Menu();
-
 	map = new Map();
-
 	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
-
 	camera = new Camera(TARGET_WINDOW);
 
 	//TODO move
 	merchand = new Merchand();
-	//npc = new NPC();
 	pnj = new InteractableActor("Villageois" , ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), " ") , Vector2f(1000.0f , 1000.0f));
 } 
 
 Game::~Game()
 {
 	delete menu;
-	//delete camera;
+	delete camera;
 }
 
 
@@ -56,6 +52,13 @@ void Game::Init()
 	merchand->Init();
 	new ActionMap("Merchand", {
 		ActionData("ToggleShop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Equal  })),
+	});
+
+	new ActionMap("Interact With a PNJ", {
+		ActionData("Talk ", [&]() {
+			pnj->GetTextScript()->SetVisibilityStatus(true);
+			pnj->GetCursor()->SetVisibilityStatus(false);
+		}, InputData({ActionType::KeyPressed , Keyboard::E})),
 	});
 
 	Spawner* _spawner = new Spawner();

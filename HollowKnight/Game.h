@@ -23,11 +23,10 @@ class Game
 	Menu* menu;
 	static Map* map;
 	static Player* player;
-	Merchand* merchand;
 	static Camera* camera;
 
-	// NPC* npc;
-	static InteractableActor* pnj;
+	Merchand* merchand;
+	InteractableActor* pnj;
 
 public:
 	static Vector2f GetWindowSize()
@@ -43,10 +42,6 @@ public:
 		return camera;
 	}
 
-	static InteractableActor* GetPnj()
-	{
-		return pnj; 
-	}
 public:
 	Game();
 	~Game();

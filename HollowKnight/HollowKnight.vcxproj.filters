@@ -145,6 +145,9 @@
     <Filter Include="Objects\ShapeObjects\Actors\Bench">
       <UniqueIdentifier>{ca00970b-1f77-4e0e-8b16-5535de072a96}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Mobs\DeathMob">
+      <UniqueIdentifier>{bed64d59-cf8f-4a8c-a752-c920004a7ade}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -314,6 +317,9 @@
     </ClCompile>
     <ClCompile Include="Bench.cpp">
       <Filter>Objects\ShapeObjects\Actors\Bench</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathMob.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -490,6 +496,9 @@
     </ClInclude>
     <ClInclude Include="Bench.h">
       <Filter>Objects\ShapeObjects\Actors\Bench</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathMob.h">
+      <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

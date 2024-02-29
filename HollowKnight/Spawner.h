@@ -1,19 +1,13 @@
 #pragma once
 #include "Mob.h"
-
-
-class Spawner
-{
-
 #include "BooFly.h"
-#include"DeathMob.h"
+#include "DeathMob.h"
 
 class Spawner
 {
+	int index;
 	Boofly* boofly;
 	DeathMob* deathMob;
-
-	int index;
 
 public:
 	Spawner();
@@ -21,4 +15,3 @@ public:
 public:
 	void Spawn();
 };
-

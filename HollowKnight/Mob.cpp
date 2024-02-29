@@ -18,6 +18,19 @@ Mob::Mob(const ShapeData& _data) : Actor("Mob" + to_string(GetUniqueID()), _data
 	InitTimerPatrol();
 }
 
+
+void Mob::InitTimerPatrol()
+{
+	new Timer(this, &Mob::Patrol, seconds(1.0f), true, true);
+}
+
+void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)
+{
+	_animationComponent->GetCurrentAnimation()->Stop();
+	_animationComponent->RunAnimation(_linkedAnimation);
+}
+
+
 void Mob::Move()
 {
 	MovementComponent* _movementComponent = GetComponent<MovementComponent>();
@@ -52,23 +65,7 @@ void Mob::Patrol()
 	}
 }
 
-
-void Mob::InitTimerPatrol()
-
 void Mob::TakeDamages(const int _attack)
 {
 	life -= _attack;
 }
-
-void Mob::InitTimer()
-
-{
-	new Timer(this , &Mob::Patrol, seconds(1.0f), true, true);
-}
-
-void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)
-{
-	_animationComponent->GetCurrentAnimation()->Stop();
-	_animationComponent->RunAnimation(_linkedAnimation);
-}
-

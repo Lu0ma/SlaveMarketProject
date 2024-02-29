@@ -145,6 +145,7 @@
     <ClCompile Include="CharmsMenu.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="DeathMob.cpp" />
     <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="FontData.cpp" />
     <ClCompile Include="FontManager.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="CharmsMenu.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="DeathMob.h" />
     <ClInclude Include="FileLoader.h" />
     <ClInclude Include="FontData.h" />
     <ClInclude Include="FontManager.h" />

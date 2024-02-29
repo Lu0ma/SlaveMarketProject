@@ -48,6 +48,7 @@ public:
 	Player(const string& _name, const ShapeData& _data);
 
 private:
+	void InitAnimations();
 	void SetupPlayerInput();
 
 public:

@@ -3,11 +3,9 @@
 #include "TextureManager.h"
 #include "Actor.h"
 
-AnimationComponent::AnimationComponent(Actor* _owner, const vector<AnimationData>& _animationsData)
-                                     : Component(_owner)
+AnimationComponent::AnimationComponent(Actor* _owner, const vector<AnimationData>& _animationsData) : Component(_owner)
 {
     currentAnimation = nullptr;
-    InitAnimations(_animationsData);
 }
 
 

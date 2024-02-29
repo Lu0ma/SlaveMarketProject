@@ -16,7 +16,7 @@ Belfly::Belfly(const ShapeData& _data) : Mob(_data)
 	AnimationComponent* _animation = new AnimationComponent(this, {
 		AnimationData("Idle", Vector2f(0.0f, 0.0f), _sizeIdle, _readDirection, _toRepeat, _countIdle, _speedIdle),
 		AnimationData("DeathAttack", Vector2f(0.0f, 175.0f), _sizeAttack, _readDirection, _toRepeat, _countAttack, _speedAttack),
-		});
+	});
 
 	components.push_back(_animation);
 }

@@ -29,15 +29,13 @@ protected:
 public:
 	Mob(const ShapeData& _data);
 
+private:
+	void InitTimerPatrol();
+	void RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent);
+
 public:
 	void Move();
 	void Patrol();
 	void TakeDamages(const int _attack);
 	virtual void Death() = 0;
-
-private:
-	void InitTimerPatrol();
-	void RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent);
-	virtual void Death() = 0;
 };
-
