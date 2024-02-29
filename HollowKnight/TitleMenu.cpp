@@ -17,6 +17,7 @@ TitleMenu::TitleMenu()
 
 void TitleMenu::Init()
 {
+	
 	canvas = new Canvas("Title");
 
 	#pragma region Title
@@ -41,31 +42,24 @@ void TitleMenu::Init()
 		}
 	};
 
-	const vector<ButtonData>& _allData =
-	{
-		ButtonData(
-			"START GAME",
-			[&]() { 
-				canvas->SetVisibilityStatus(false);
-				Game::GetPlayer()->Init();
-			}
-		),
-		ButtonData(
-			"   OPTIONS",
-			[]() { cout << "OPTIONS" << endl; }
-		),
-		ButtonData(
-			"ACHIVEMENTS",
-			[]() { cout << "ACHIVEMENTS" << endl; }
-		),
-		ButtonData(
-			"    EXTRAS",
-			[]() { cout << "EXTRAS" << endl; }
-		),
-		ButtonData(
-			" QUIT GAME",
-			[]() { Game::Close(); }
-		)
+	const vector<ButtonData>& _allData = {
+		ButtonData("START GAME", [&]() { 
+			canvas->SetVisibilityStatus(false);
+			Game::GetPlayer()->Init();
+			Game::GetCamera()->SetTarget(TARGET_PLAYER);
+		}),
+		ButtonData("   OPTIONS", []() {
+			cout << "OPTIONS" << endl;
+		}),
+		ButtonData("ACHIVEMENTS", []() {
+			cout << "ACHIVEMENTS" << endl;
+		}),
+		ButtonData("    EXTRAS", []() {
+			cout << "EXTRAS" << endl;
+		}),
+		ButtonData(" QUIT GAME", []() {
+			Game::Close();
+		})
 	};
 
 	const Vector2f& _buttonSize = Vector2f(200.0f, 50.0f);

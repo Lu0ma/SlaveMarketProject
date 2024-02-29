@@ -16,10 +16,9 @@ bool CollisionComponent::CheckCollision(Actor* _currentActor)
 		{
 			if (_actor != dynamic_cast<Actor*>(_actor))
 			{
-				cout << "je rentre dans le if" << endl;
-				// Execute callback
-				//_actor.
-	
+				//cout << "je rentre dans le if" << endl;
+				//// Execute callback
+				////_actor.
 			}
 		}
 	}

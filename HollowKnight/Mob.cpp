@@ -8,6 +8,7 @@ Mob::Mob(const ShapeData& _data) : Actor("Mob" + to_string(GetUniqueID()), _data
 {
 	startPosition = _data.position;
 	goalPosition = startPosition + Vector2f(500.0f, 0.0f);
+	life = 25;
 
 	isPatrolling = false;
 
@@ -16,6 +17,19 @@ Mob::Mob(const ShapeData& _data) : Actor("Mob" + to_string(GetUniqueID()), _data
 	components.push_back(_movement);
 	InitTimerPatrol();
 }
+
+
+void Mob::InitTimerPatrol()
+{
+	new Timer(this, &Mob::Patrol, seconds(1.0f), true, true);
+}
+
+void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)
+{
+	_animationComponent->GetCurrentAnimation()->Stop();
+	_animationComponent->RunAnimation(_linkedAnimation);
+}
+
 
 void Mob::Move()
 {
@@ -36,29 +50,25 @@ void Mob::Patrol()
 	{
 		if (_movementComponent->IsAtPosition())
 		{
-			const string& _linkedAnimation = _animationComponent->GetCurrentAnimation()->GetData().linkedAnimation;
-			if (_linkedAnimation != "") RunLinkedAnimation(_linkedAnimation, _animationComponent);
+			if (Animation* _animation = _animationComponent->GetCurrentAnimation())
+			{
+				const string& _linkedAnimation = _animation->GetData().linkedAnimation;
+				if (_linkedAnimation != "") RunLinkedAnimation(_linkedAnimation, _animationComponent);
 
-			if (_movementComponent->GetDestination() == startPosition)
-			{
-				_movementComponent->SetDestination(goalPosition);
-			}
-			else
-			{
-				_movementComponent->SetDestination(startPosition);
+				if (_movementComponent->GetDestination() == startPosition)
+				{
+					_movementComponent->SetDestination(goalPosition);
+				}
+				else
+				{
+					_movementComponent->SetDestination(startPosition);
+				}
 			}
 		}
 	}
 }
 
-void Mob::InitTimerPatrol()
+void Mob::TakeDamages(const int _attack)
 {
-	new Timer(this , &Mob::Patrol, seconds(1.0f), true, true);
+	life -= _attack;
 }
-
-void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)
-{
-	_animationComponent->GetCurrentAnimation()->Stop();
-	_animationComponent->RunAnimation(_linkedAnimation);
-}
-

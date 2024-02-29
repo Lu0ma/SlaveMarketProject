@@ -8,7 +8,7 @@ class PlayerMovementComponent : public MovementComponent
 	float speed;
 	Vector2f direction;
 
-	// Sprint
+	// Sprintç
 	bool isSprinting;
 	float sprintSpeed;
 

@@ -8,7 +8,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 {
 	// Movement
 	canMove = true;
-	speed = 0.1f;
+	speed = 0.45f;
 	direction = Vector2f();
 
 	// Sprint
@@ -34,7 +34,6 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	dashSpeed = 0.75f;
 	dashDuration = 0.2f;
 	dashCooldown = 3.0f;
-
 }
 
 

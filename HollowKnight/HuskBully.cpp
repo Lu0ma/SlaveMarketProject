@@ -7,6 +7,13 @@ HuskBully::HuskBully(const ShapeData& _data) : Mob(_data)
 {
 	isPatrolling = true;
 
+	animation = new AnimationComponent(this);
+	components.push_back(animation);
+}
+
+
+void HuskBully::Init()
+{
 	const Vector2f& _sizeIdle = Vector2f(105.0f, 135.0f); // ratio fait de la taille d'une image dans le sheet
 	const Vector2f& _sizeWalk = Vector2f(113.0f, 135.0f);
 	const Vector2f& _sizeAttack = Vector2f(123.0f, 139.0f);
@@ -18,8 +25,7 @@ HuskBully::HuskBully(const ShapeData& _data) : Mob(_data)
 	const float _speedIdle = 0.15f;
 	const float _speedWalk = 0.1f;
 
-	AnimationComponent* _animation = new AnimationComponent(this, {
-
+	animation->InitAnimations({
 		AnimationData("AttackLeft", Vector2f(0.0f, 474.0f), _sizeAttack, _readDirection, false, 4, _speedIdle, true, "AttackLunge_L"),
 		AnimationData("AttackRight", Vector2f(0.0f, 474.0f), _sizeAttack, _readDirection, false, 4, _speedIdle, false, "AttackLunge_R"),
 		AnimationData("WalkLeft", Vector2f(0.0f, 171.0f), _sizeWalk, _readDirection, true, 7, _speedWalk, true, "TurnToRight"),
@@ -36,9 +42,7 @@ HuskBully::HuskBully(const ShapeData& _data) : Mob(_data)
 		AnimationData("DeathAirRight", Vector2f(0.0f, 920.f), _sizeDeath, _readDirection, false, 1, 0.2f, false, "DeathLandRight"),
 		AnimationData("DeathLandLeft", Vector2f(16.0f, 1050.0f), _sizeDeathLand, _readDirection, true, 8, 0.2f),
 		AnimationData("DeathLandRight", Vector2f(16.0f, 1050.0f), _sizeDeathLand, _readDirection, true, 8, 0.15f, false),
-		});
-
-	components.push_back(_animation);
+	});
 }
 
 void HuskBully::Death()

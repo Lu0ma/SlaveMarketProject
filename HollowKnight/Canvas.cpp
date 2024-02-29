@@ -1,7 +1,6 @@
 #include "Canvas.h"
 #include "Widget.h"
 #include "HUD.h"
-
 Canvas::Canvas(const string& _name, const FloatRect& _rect, const vector<Widget*>& _widgets)
 				: IManagable(_name)
 {
@@ -25,3 +24,9 @@ void Canvas::AddWidget(Widget* _widget)
 	}
 	widgets.push_back(_widget);
 }
+
+void Canvas::DeleteWidget()
+{
+	widgets.pop_back();
+}
+

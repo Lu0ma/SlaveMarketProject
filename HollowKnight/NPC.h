@@ -2,10 +2,11 @@
 #include "Actor.h"
 #include "InteractableActor.h"
 
-
 class NPC : public Actor
 {
 	vector<string> texts;
+
+	
 
 public:
 

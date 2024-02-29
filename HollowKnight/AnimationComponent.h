@@ -19,11 +19,9 @@ public:
     }
 
 public:
-    AnimationComponent(Actor* _owner, const vector<AnimationData>& _animationsData);
-
-private:
-    void InitAnimations(const vector<AnimationData>& _animationsData);
+    AnimationComponent(Actor* _owner);
 
 public:
+    void InitAnimations(const vector<AnimationData>& _animationsData);
     void RunAnimation(const string& _name);
 };

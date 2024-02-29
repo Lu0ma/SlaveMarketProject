@@ -4,6 +4,8 @@
 #include <vector>
 #include <functional>
 #include <string>
+#include"Actor.h"
+#include"ActorManager.h"
 
 using namespace std;
 using namespace sf;
@@ -42,3 +44,25 @@ bool Contains(T* _valueToFind, const vector<T*>& _vector)
 
 	return false;
 }
+
+template<typename Class>
+static vector<Class*> RetrieveAllMobsAround(const Vector2f& _position, const float _radiusAction)
+{
+	vector<Class*> _classes = vector<Class*>();
+	CircleShape* _circle = new CircleShape(_radiusAction);
+	_circle->setPosition(_position);
+
+	const vector<Actor*> _actor = ActorManager::GetInstance().GetAllValues();
+
+	for (Actor* _entity : _actor)
+	{
+		if (_circle->getGlobalBounds().intersects(_entity->GetDrawable()->getGlobalBounds()))
+		{
+			Class* _class = dynamic_cast<Class*>(_entity);
+			_classes.push_back(_class);
+		}
+	}
+
+	return _classes;
+}
+

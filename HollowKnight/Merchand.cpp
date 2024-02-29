@@ -18,7 +18,7 @@ Merchand::Merchand() : NPC()
 	descriptionTitle = nullptr;
 	descriptionText = nullptr;
 
-	GetDrawable()->setFillColor(Color::Transparent);
+	GetDrawable()->setFillColor(Color::Blue);
 }
 
 

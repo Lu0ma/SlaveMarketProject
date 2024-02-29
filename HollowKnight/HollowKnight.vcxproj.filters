@@ -133,6 +133,21 @@
     <Filter Include="Spawner">
       <UniqueIdentifier>{3b9d0632-28e4-47e5-ae3a-2ff66f4dcaee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Maps">
+      <UniqueIdentifier>{0acf75b2-8a61-43a2-9a7f-58bb1991c7a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\FileLoader">
+      <UniqueIdentifier>{0e5d0c03-b63f-44c3-9ead-1ec1a0039f2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Charms">
+      <UniqueIdentifier>{27640059-3a16-43e1-871b-f98d6628656c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Bench">
+      <UniqueIdentifier>{ca00970b-1f77-4e0e-8b16-5535de072a96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Mobs\DeathMob">
+      <UniqueIdentifier>{bed64d59-cf8f-4a8c-a752-c920004a7ade}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -291,8 +306,20 @@
     <ClCompile Include="Spawner.cpp">
       <Filter>Spawner</Filter>
     </ClCompile>
-    <ClCompile Include="Boss.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Map.cpp">
+      <Filter>Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="FileLoader.cpp">
+      <Filter>Fichiers de ressources\FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="CharmsMenu.cpp">
+      <Filter>Managers\Charms</Filter>
+    </ClCompile>
+    <ClCompile Include="Bench.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Bench</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathMob.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -458,8 +485,20 @@
     <ClInclude Include="Spawner.h">
       <Filter>Spawner</Filter>
     </ClInclude>
-    <ClInclude Include="Boss.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Map.h">
+      <Filter>Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="FileLoader.h">
+      <Filter>Fichiers de ressources\FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="CharmsMenu.h">
+      <Filter>Managers\Charms</Filter>
+    </ClInclude>
+    <ClInclude Include="Bench.h">
+      <Filter>Objects\ShapeObjects\Actors\Bench</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathMob.h">
+      <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

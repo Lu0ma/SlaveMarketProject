@@ -23,12 +23,17 @@ public:
 		}
 		return nullptr;
 	}
+	Vector2f GetPosition()const
+	{
+		return shape->getPosition();
+	}
 
 public:
 	Actor(const string& _name, const ShapeData& _data);
 
 private:
 	virtual void Register() override;
+	virtual void Init() = 0;
 
 public:
 	virtual void Update(const float _deltaTime);

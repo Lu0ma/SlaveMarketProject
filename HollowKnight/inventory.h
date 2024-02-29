@@ -17,54 +17,80 @@ class Inventory : public IManager<int, Item>
 	Canvas* canvas;
 	Vector2i gridSize;
 	Vector2f cellSize;
+	Vector2f windowSize;
+	Vector2f halfSize;
+	float gridSizeX;
+	float gridSizeY;
+
 	vector<Button*> buttons;
 	int stackSize;
 
-	ShapeWidget* pointer = nullptr;
-	Label* descriptionTitle = nullptr;
-	Label* descriptionText = nullptr;
 
-	int maskCount = 0;
-	ShapeWidget* maskWidget = nullptr;
+	ShapeWidget* pointer;
+	Label* descriptionTitle;
+	Label* descriptionText;
 
-	int vesselCount = 0;
-	ShapeWidget* vesselWidget = nullptr;
 
-	int mirrorLevel = 0;
-	ShapeWidget* mirrorWidget = nullptr;
+	int maskCount;
+	ShapeWidget* maskWidget;
 
-	ShapeWidget* coreWidget = nullptr;
+	int vesselCount;
+	ShapeWidget* vesselWidget;
 
-	bool isVengefulActive = false;
-	ShapeWidget* vengefulWidget = nullptr;
+	int mirrorLevel;
+	ShapeWidget* mirrorWidget;
 
-	bool isSlamActive = false;
-	ShapeWidget* slamWidget = nullptr;
+	ShapeWidget* coreWidget;
 
-	bool isShriekActive = false;
-	ShapeWidget* shriekWidget = nullptr;
+	bool isVengefulActive;
+	ShapeWidget* vengefulWidget;
 
-	int swordLevel = 0;
-	ShapeWidget* swordWidget = nullptr;
+	bool isSlamActive;
+	ShapeWidget* slamWidget;
 
-	bool isWhirlwindUnlocked = false;
-	ShapeWidget* whirlwindWidget = nullptr;
+	bool isShriekActive;
+	ShapeWidget* shriekWidget;
 
-	bool isUppercutUnlocked = false;
-	ShapeWidget* uppercutWidget = nullptr;
+	int swordLevel;
+	ShapeWidget* swordWidget;
 
-	bool isDashActive = false;
-	ShapeWidget* dashWidget = nullptr;
+	bool isWhirlwindUnlocked;
+	ShapeWidget* whirlwindWidget;
+
+	bool isUppercutUnlocked;
+	ShapeWidget* uppercutWidget;
+
+	bool isDashActive;
+	ShapeWidget* dashWidget;
 
 private:
-	string ComputePath(const string& _path, const int _index) const
+	string ComputeHealthMaskPath() const
 	{
-		return _path + to_string(_index) + ".png";
+		return PATH_HEALTH_MASK + to_string(maskCount) + ".png";
 	}
-public:
-	void Toggle()
+	string ComputeVesselPath() const
 	{
-		canvas->SetVisibilityStatus(!canvas->IsVisible());
+		return PATH_VESSEL + to_string(vesselCount) + ".png";
+	}
+	string ComputeMirrorPath() const
+	{
+		return PATH_MIRROR + to_string(mirrorLevel) + ".png";
+	}
+	string ComputeSwordPath() const
+	{
+		return PATH_SWORD + to_string(swordLevel) + ".png";
+	}
+	string ComputeVengefulPath() const
+	{
+		return PATH_VENGEFUL + to_string(isVengefulActive) + ".png";
+	}
+	string ComputeSlamPath() const
+	{
+		return PATH_SLAM + to_string(isSlamActive) + ".png";
+	}
+	string ComputeShriekPath() const
+	{
+		return PATH_SHRIEK + to_string(isShriekActive) + ".png";
 	}
 
 public:
@@ -74,12 +100,18 @@ private:
 	Button* GetFirstAvailableButton() const;
 	Item* FindItemData(const string& _path);
 
-	void UpdateCount(ShapeWidget* _widget, int& _count, const string& _path,
-		const int _max, const int _factor = 1);
-	void UpdateTexture(ShapeWidget* _widget, const string& _path);
-
 public:
 	void Init();
+	void Toggle()
+	{
+		canvas->SetVisibilityStatus(!canvas->IsVisible());
+	}
+
+	void Background();
+	void Grid();
+	void Equippements();
+	void Description();
+	void Separator();
 
 	void UpdateMaskCount(const int _factor);
 	void UpdateVesselCount(const int _factor);

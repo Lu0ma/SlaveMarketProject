@@ -8,6 +8,7 @@ public:
 	Belfly(const ShapeData& _data);
 
 public:
+	virtual void Init() override;
 	virtual void Death() override;
 };
 
