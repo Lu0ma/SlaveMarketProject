@@ -27,7 +27,7 @@ class Game
 	static Camera* camera;
 
 	// NPC* npc;
-	InteractableActor* pnj;
+	static InteractableActor* pnj;
 
 public:
 	static Vector2f GetWindowSize()
@@ -43,6 +43,10 @@ public:
 		return camera;
 	}
 
+	static InteractableActor* GetPnj()
+	{
+		return pnj; 
+	}
 public:
 	Game();
 	~Game();
