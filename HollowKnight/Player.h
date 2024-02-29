@@ -1,8 +1,10 @@
 #pragma once
 #include "Actor.h"
 #include "PlayerStat.h"
+#include"PlayerAttackComponent.h"
 #include "Inventory.h"
 #include "PlayerMovementComponent.h"
+#include"PlayerAnimationComponent.h"
 
 #include "Merchand.h"
 #include "Bench.h"
@@ -19,11 +21,13 @@ using namespace std;
 class Player : public Actor
 {
 	PlayerStat* stats;
+	PlayerAttackComponent* attack;
+	PlayerAnimationComponent* animation;
 	Inventory* inventory;
 	CharmsMenu* charmsMenu;
 	PlayerMovementComponent* movement;
-	AnimationComponent* animation;
-	vector<string> animPlayer;
+	/*AnimationComponent* animation;
+	vector<string> animPlayer;*/
 	Timer* deathTimer;
 
 	Bench* bench;
@@ -52,6 +56,5 @@ private:
 
 public:
 	virtual void Init() override;
-	void SpecialAttack();
 	void Update();
 };

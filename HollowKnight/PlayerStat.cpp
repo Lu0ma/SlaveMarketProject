@@ -17,7 +17,6 @@ PlayerStat::PlayerStat()
 	manaBar = nullptr;
 	geosCount = 0;
 	geosCountText = nullptr;
-	damages = 1;
 }
 
 
