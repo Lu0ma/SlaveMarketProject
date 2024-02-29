@@ -15,7 +15,11 @@ class Canvas : public IManagable<string>
 	vector<Widget*> widgets;
 
 public:
-	void SetVisibilityStatus(const bool _status)
+	bool GetVisibilityStatus()
+	{
+		return isVisible;
+	}
+	void SetVisibilityStatus(bool _status)
 	{
 		isVisible = _status;
 	}
@@ -41,4 +45,6 @@ private:
 
 public:
 	void AddWidget(Widget* _widget);
+
+	void DeleteWidget();
 };

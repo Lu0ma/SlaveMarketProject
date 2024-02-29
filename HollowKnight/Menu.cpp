@@ -16,7 +16,7 @@ Menu::Menu()
 
 void Menu::OpenTitleMenu()
 {
-	
+	if (!mainMenu->GetVisibilityStatus()) return;
 	mainMenu->SetVisibilityStatus(false);
 	titleMenu->Init();
 }
