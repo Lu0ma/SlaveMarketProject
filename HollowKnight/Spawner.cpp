@@ -12,7 +12,6 @@ Spawner::Spawner()
 	index = -1;
 }
 
-
 void Spawner::Spawn()
 {
 	Vector2f _positionBoofly = Vector2f(500.0f, 300.0f);
@@ -28,7 +27,7 @@ void Spawner::Spawn()
 	ShapeData _dataBoofly = ShapeData(_positionBoofly, _sizeBoofly, _pathBoofly, IntRect(0, 17, 315, 345));
 	ShapeData _dataBelfly = ShapeData(_positionBelfly, _sizeBelfly, _pathBelfly);
 	ShapeData _dataHuskBully = ShapeData(_positionHuskBully, _sizeHuskBully, _pathHuskBully);
-	//new Boofly(_dataBoofly);
-	//new Belfly(_dataBelfly);
+	new Boofly(_dataBoofly);
+	new Belfly(_dataBelfly);
 	new HuskBully(_dataHuskBully);
 }

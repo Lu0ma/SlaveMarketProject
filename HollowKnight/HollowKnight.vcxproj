@@ -138,6 +138,7 @@
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Belfly.cpp" />
     <ClCompile Include="Boofly.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Canvas.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="Belfly.h" />
     <ClInclude Include="Boofly.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Canvas.h" />
