@@ -4,10 +4,10 @@
 
 class HuskBully : public Mob
 {
-	AnimationComponent* animation;
-
 public:
 	HuskBully(const ShapeData& _data);
 
+public:
+	virtual void Death() override;
 };
 

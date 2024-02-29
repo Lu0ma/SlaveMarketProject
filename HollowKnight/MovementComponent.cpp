@@ -1,4 +1,5 @@
 #include "MovementComponent.h"
+#include "AnimationComponent.h"
 #include "Actor.h"
 #include "Macro.h"
 

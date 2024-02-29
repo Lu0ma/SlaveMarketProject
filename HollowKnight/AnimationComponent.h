@@ -6,11 +6,16 @@
 class AnimationComponent : public Component, public IManager<string, Animation>
 {
     Animation* currentAnimation;
+    vector<string> animationNames;
 
 public:
     Animation* GetCurrentAnimation() const
     {
         return currentAnimation;
+    }
+    const vector<string>& GetAnimationNames()
+    {
+        return animationNames;
     }
 
 public:
