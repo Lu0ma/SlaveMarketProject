@@ -42,8 +42,10 @@ void Animation::SetNext()
 
     const Vector2i& _start = GetNewStart();
     const int _sizeX = static_cast<int>(data.size.x);
+
     const int _sizeY = static_cast<int>(data.size.y);
     IntRect _rect = IntRect(_start.x, _start.y, _sizeX, _sizeY);
+
 
     shape->setTextureRect(_rect);
     shape->setScale(data.displayFromLeftToRight ? 1.0f : -1.0f, 1.0f);

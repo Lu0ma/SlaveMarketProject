@@ -21,6 +21,29 @@ class PlayerStat
 	int geosCount;
 	Label* geosCountText;
 
+	int damages;
+
+public:
+	int GetDamages()const
+	{
+		return damages;
+	}
+
+	int GetCurrentLife()const
+	{
+		return currentLifesCount;
+	}
+
+	int GetMaxLife()const
+	{
+		return currentMaxLifesCount;
+	}
+	
+     void SetCurrentLife(const int _newLife)
+	 {
+		 currentLifesCount = _newLife;
+	 }
+
 private:
 	string ComputeLifePath(const bool _toAdd) const
 	{

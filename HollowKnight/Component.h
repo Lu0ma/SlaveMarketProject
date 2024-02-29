@@ -8,6 +8,9 @@ protected:
 	Actor* owner;
 
 public:
+	Actor* GetOwner() { return owner; }
+
+public:
 	Component(Actor* _owner);
 
 public:

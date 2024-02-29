@@ -7,8 +7,9 @@
 
 #include "Spawner.h"
 
-#define PATH_PLAYER "Player.png"
+//#define PATH_PLAYER "Player.png"
 #define FONT "Assets/Fonts/Font.ttf"
+#define PATH_PLAYER "Animations/knighModif.png"
 
 RenderWindow Game::window;
 Map* Game::map;
@@ -18,8 +19,11 @@ Camera* Game::camera;
 Game::Game()
 {
 	menu = new Menu();
+
 	map = new Map();
-	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
+
+	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
+
 	camera = new Camera(TARGET_WINDOW);
 
 	//TODO move
@@ -40,6 +44,7 @@ void Game::Start()
 	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
+	
 }
 
 void Game::Init()
@@ -55,6 +60,7 @@ void Game::Init()
 
 	Spawner* _spawner = new Spawner();
 	_spawner->Spawn();
+
 }
 
 void Game::Update()
@@ -69,7 +75,7 @@ void Game::Update()
 
 void Game::UpdateWindow()
 {
-	window.clear();
+	window.clear(); // Color(127, 127, 127, 0) gris
 	View _defaultView;
 	CheckCameraState(_defaultView);
 

@@ -29,10 +29,19 @@ Boofly::Boofly(const ShapeData& _data) : Mob(_data)
 		AnimationData("DeathLand", Vector2f(0.0f, 1480.0f), _sizeDeathLand, _readDirection, false, 3, _speed),
 	});
 
+
 	components.push_back(_animation);
+
 }
 
 void Boofly::Death()
 {
 
 }
+
+
+void Boofly::Attack()
+{
+
+}
+

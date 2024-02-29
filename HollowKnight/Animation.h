@@ -40,7 +40,11 @@ struct AnimationData
 
     AnimationData() = default;
     AnimationData(const string& _name, const Vector2f& _start, const Vector2f& _size, const ReadDirection& _readDirection,
+
         const bool _canLoop, const int _count, const float _timeBetween, const bool _displayFromLeftToRight = true, const string& _linkedAnimation = "")
+
+                  const bool _canLoop, const int _count, const float _timeBetween, const bool _displayFromLeftToRight = true)
+
     {
         name = _name;
         start = _start;
@@ -50,7 +54,9 @@ struct AnimationData
         count = _count;
         timeBetween = _timeBetween;
         displayFromLeftToRight = _displayFromLeftToRight;
+
         linkedAnimation = _linkedAnimation;
+
     }
 };
 

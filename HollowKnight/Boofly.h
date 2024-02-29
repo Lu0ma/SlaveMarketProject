@@ -8,6 +8,10 @@ public:
 	Boofly(const ShapeData& _data);
 
 public:
+
 	virtual void Death() override;
+
+	void Attack();
+
 };
 

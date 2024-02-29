@@ -3,9 +3,17 @@
 #include "PlayerStat.h"
 #include "Inventory.h"
 #include "PlayerMovementComponent.h"
+
 #include "Merchand.h"
 #include "Bench.h"
 #include "CharmsMenu.h"
+
+#include"AnimationComponent.h"
+#include<vector>
+#include"Timer.h"
+#include<functional>
+
+
 using namespace std;
 
 class Player : public Actor
@@ -13,6 +21,9 @@ class Player : public Actor
 	PlayerStat* stats;
 	Inventory* inventory;
 	PlayerMovementComponent* movement;
+	AnimationComponent* animation;
+	vector<string> animPlayer;
+	Timer* deathTimer;
 
 	Bench* bench;
 	CharmsMenu* charmsMenu;
@@ -41,4 +52,7 @@ private:
 
 public:
 	void Init();
+	void SpecialAttack();
+	void TakeDamages(const int _damages);
+	void Update();
 };
