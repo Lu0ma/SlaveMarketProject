@@ -18,6 +18,7 @@ Camera* Game::camera;
 Game::Game()
 {
 	menu = new Menu();
+	map = new Map();
 	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), ""));
 	camera = new Camera(TARGET_WINDOW);
 
@@ -44,7 +45,7 @@ void Game::Start()
 void Game::Init()
 {
 	menu->Init();
-	map->Init();
+	//map->Init();
 
 	//TODO move
 	merchand->Init();

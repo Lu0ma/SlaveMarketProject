@@ -5,7 +5,7 @@
 
 HuskBully::HuskBully(const ShapeData& _data) : Mob(_data)
 {
-	//isPatrolling = true;
+	isPatrolling = true;
 
 	const Vector2f& _sizeIdle = Vector2f(105.0f, 135.0f); // ratio fait de la taille d'une image dans le sheet
 	const Vector2f& _sizeWalk = Vector2f(113.0f, 135.0f);
