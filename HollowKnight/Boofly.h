@@ -4,9 +4,10 @@
 
 class Boofly : public Mob
 {
-	AnimationComponent* animation;
-
 public:
 	Boofly(const ShapeData& _data);
+
+public:
+	virtual void Death() override;
 };
 

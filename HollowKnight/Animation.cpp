@@ -12,7 +12,6 @@ Animation::Animation(const string& _name, AnimationComponent* _owner, Shape* _sh
     Register();
 }
 
-
 void Animation::Register()
 {
     owner->Add(id, this);
@@ -24,6 +23,14 @@ void Animation::SetNext()
     {
         if (!data.canLoop)
         {
+            if (data.linkedAnimation != "")
+            {
+                Stop();
+                Reset();
+                owner->RunAnimation(data.linkedAnimation);
+                return;
+            }
+
             Stop();
             return;
         }
@@ -36,8 +43,10 @@ void Animation::SetNext()
     const Vector2i& _start = GetNewStart();
     const int _sizeX = static_cast<int>(data.size.x);
     const int _sizeY = static_cast<int>(data.size.y);
-    const IntRect& _rect = IntRect(_start.x, _start.y, _sizeX, _sizeY);
+    IntRect _rect = IntRect(_start.x, _start.y, _sizeX, _sizeY);
+
     shape->setTextureRect(_rect);
+    shape->setScale(data.displayFromLeftToRight ? 1.0f : -1.0f, 1.0f);
 }
 
 Vector2i Animation::GetNewStart()
@@ -64,8 +73,7 @@ Vector2i Animation::GetNewStart()
 
 void Animation::Start()
 {
-    //SetNext();
-    timer = new Timer(this, &Animation::SetNext, seconds(data.timeBetween), true, data.canLoop);
+    timer = new Timer(this, &Animation::SetNext, seconds(data.timeBetween), true, true);
 }
 
 void Animation::Reset()

@@ -19,6 +19,7 @@ void AnimationComponent::InitAnimations(const vector<AnimationData>& _animations
 
     for (const AnimationData& _data : _animationsData)
     {
+        animationNames.push_back(_data.name);
         new Animation(_data.name, this, _shape, _data);
 
         if (_index == 0)
@@ -39,12 +40,13 @@ void AnimationComponent::RunAnimation(const string& _name)
         {
             if (currentAnimation)
             {
+                if(_name == currentAnimation->GetID()) return;
                 //system("cls");
-                //cout << "Stop : " << currentAnimation->GetID() << endl;
+                cout << "Stop : " << currentAnimation->GetID() << endl;
                 currentAnimation->Stop();
             }
 
-            //cout << "Start : " << _animation->GetData().name << endl;
+            cout << "Start : " << _animation->GetData().name << endl;
             currentAnimation = _animation;
             _animation->Start();
         }
