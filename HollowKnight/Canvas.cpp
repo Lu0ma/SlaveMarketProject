@@ -25,3 +25,8 @@ void Canvas::AddWidget(Widget* _widget)
 	widgets.push_back(_widget);
 }
 
+void Canvas::DeleteWidget()
+{
+	widgets.pop_back();
+}
+

@@ -10,9 +10,6 @@ InteractableActor::InteractableActor(const string& _name, const ShapeData& _data
 	// canvas = new Canvas("ee");
 	canvas = new Canvas("Ui");
 	canVerify = false;
-	
-
-	
 }
 
 void InteractableActor::Update(const float _deltaTime)
@@ -31,17 +28,11 @@ void InteractableActor::Verify()
 	 	if (canvas->GetVisibilityStatus()) return;
 	 	canvas->SetVisibilityStatus(true);
 	}
-
 	else
 	{
  		canvas->SetVisibilityStatus(false);
 	}
 
-	if (!canVerify) return;
-	else if(canVerify)
-	{
-
-	}
 }
 
 void InteractableActor::Init()

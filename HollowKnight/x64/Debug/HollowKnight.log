@@ -1,5 +1,9 @@
 ﻿  Camera.cpp
+  Canvas.cpp
+  CollisionComponent.cpp
   Game.cpp
+  HUD.cpp
+  InputManager.cpp
   InteractableActor.cpp
   Inventory.cpp
   Main.cpp
@@ -7,20 +11,8 @@
   Merchand.cpp
   NPC.cpp
   Player.cpp
+  PlayerStat.cpp
+  ProgressBar.cpp
   TitleMenu.cpp
   Generating Code...
-Action.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-ActionMap.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-FontData.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-FontManager.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-Label.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-Macro.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-Object.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-TextObject.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-TextureData.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-TextureManager.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-TextWidget.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-Timer.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-TimerManager.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-Widget.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
   HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

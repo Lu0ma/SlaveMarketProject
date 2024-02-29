@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "Game.h"
-
+#include "Timer.h"
 // System
 #include "Macro.h"
 #include "Kismet.h"
@@ -77,6 +77,8 @@ void Player::SetupPlayerInput()
 
 		ActionData("Talk " , [&]() {Game::GetPnj()->SetCanVerify(true);}, InputData({ActionType::KeyPressed , Keyboard::E})),
 		});
+
+	/*new Timer(,)*/
 }
 
 

@@ -45,4 +45,6 @@ private:
 
 public:
 	void AddWidget(Widget* _widget);
+
+	void DeleteWidget();
 };
