@@ -183,12 +183,15 @@ void Player::SetupPlayerInput()
 
 void Player::Init()
 {
+
 	stats->Init();
 	inventory->Init();
 	charmsMenu->Init();
 
 	InitAnimations();
 	SetupPlayerInput();
+
+
 }
 
 void Player::SpecialAttack()

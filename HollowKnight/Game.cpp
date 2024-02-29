@@ -47,7 +47,7 @@ void Game::Init()
 {
 	menu->Init();
 	//map->Init();
-
+	
 	//TODO move
 	merchand->Init();
 
