@@ -1,48 +1,34 @@
 #include "Spawner.h"
 #include "HuskBully.h"
+#include "Boofly.h"
 #include "Belfly.h"
 
 #define PATH_BOOFLY "Animations/Boofly.png"
 #define PATH_BELFLY "Animations/BelflyModif.png"
+#define PATH_HUSK_BULLY "Animations/HuskBully.png"
 
 Spawner::Spawner()
 {
 	index = -1;
-	boofly = nullptr;
-	belfly = nullptr;
-	/*animationNames = {
-		"FlyLeft",
-		"FlyRight",
-		"TurnToLeft", 
-		"TurnToRight",
-		"BounceLeft", 
-		"BounceRight",
-		"DeathAirLeft",
-		"DeathAirRight",
-		"DeathLand",
-	};*/
 }
 
 
 void Spawner::Spawn()
 {
-	Vector2f _position = Vector2f(500.0f, 600.0f);
+	Vector2f _positionBoofly = Vector2f(500.0f, 300.0f);
 	Vector2f _positionBelfly = Vector2f(500.0f, 25.0f);
-	Vector2f _size = Vector2f(120.0f, 100.0f);
+	Vector2f _positionHuskBully = Vector2f(200.0f, 600.0f);
+	Vector2f _sizeBoofly = Vector2f(120.0f, 100.0f);
 	Vector2f _sizeBelfly = Vector2f(50.0f, 50.0f);
-	string _path = PATH_BOOFLY;
+	Vector2f _sizeHuskBully = Vector2f(75.0f, 75.0f);
+	string _pathBoofly = PATH_BOOFLY;
 	string _pathBelfly = PATH_BELFLY;
+	string _pathHuskBully = PATH_HUSK_BULLY;
 
-	ShapeData _data = ShapeData(_position, _size, _path, IntRect(0, 17, 315, 345));
+	ShapeData _dataBoofly = ShapeData(_positionBoofly, _sizeBoofly, _pathBoofly, IntRect(0, 17, 315, 345));
 	ShapeData _dataBelfly = ShapeData(_positionBelfly, _sizeBelfly, _pathBelfly);
-	boofly = new Boofly(_data);
-	//belfly = new Belfly(_dataBelfly);
-	//const vector<string>& _animationNames = boofly->GetComponent<AnimationComponent>()->GetAnimationNames();
-
-	/*new Timer([&]() {
-		index++;
-		index %= (int)_animationNames.size();
-
-		boofly->GetComponent<AnimationComponent>()->RunAnimation(_animationNames[index]);
-	}, seconds(2.0f), true, true);*/
+	ShapeData _dataHuskBully = ShapeData(_positionHuskBully, _sizeHuskBully, _pathHuskBully);
+	//new Boofly(_dataBoofly);
+	//new Belfly(_dataBelfly);
+	new HuskBully(_dataHuskBully);
 }

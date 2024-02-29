@@ -20,5 +20,6 @@ public:
 private:
 	void InitTimerPatrol();
 	void RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent);
+	virtual void Death() = 0;
 };
 

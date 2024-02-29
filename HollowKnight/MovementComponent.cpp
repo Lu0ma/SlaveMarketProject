@@ -31,16 +31,6 @@ void MovementComponent::MoveToDestination(const float _deltaTime)
 	//cout << destination->x << " " << destination->y << endl;
 	Normalize(_direction);
 
-	//AnimationComponent* _animationComponent = owner->GetComponent<AnimationComponent>();
-	//if (_direction.x > 0) // il va a droite
-	//{		
-	//	_animationComponent->RunAnimation("GoRight");
-	//}
-	//else
-	//{
-	//	_animationComponent->RunAnimation("GoLeft");
-	//}
-
 	const Vector2f& _position = _shape->getPosition() + _direction * speed * _deltaTime;
 	_shape->setPosition(_position);
 	//cout << _position.x << " " << _position.y << endl;

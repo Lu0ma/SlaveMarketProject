@@ -1,8 +1,6 @@
 #include "Belfly.h"
 #include "MovementComponent.h"
 
-#define PATH_BELFLY "Animations/belflyModif.png"
-
 Belfly::Belfly(const ShapeData& _data) : Mob(_data)
 {
 	const Vector2f& _sizeIdle = Vector2f(115.0f, 165.0f); // ratio fait de la taille d'une image dans le sheet
@@ -21,4 +19,8 @@ Belfly::Belfly(const ShapeData& _data) : Mob(_data)
 		});
 
 	components.push_back(_animation);
+}
+
+void Belfly::Death()
+{
 }

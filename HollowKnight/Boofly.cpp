@@ -31,3 +31,8 @@ Boofly::Boofly(const ShapeData& _data) : Mob(_data)
 
 	components.push_back(_animation);
 }
+
+void Boofly::Death()
+{
+
+}

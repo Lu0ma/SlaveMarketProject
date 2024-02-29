@@ -62,7 +62,7 @@ void Game::Update()
 
 void Game::UpdateWindow()
 {
-	window.clear();
+	window.clear(Color(127, 127, 127));
 
 	// const View& _defaultView = window.getDefaultView();
 	//Deux façon de suivre le Player

@@ -6,5 +6,8 @@ class Belfly : public Mob
 {
 public:
 	Belfly(const ShapeData& _data);
+
+public:
+	virtual void Death() override;
 };
 

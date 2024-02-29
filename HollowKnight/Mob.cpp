@@ -46,16 +46,14 @@ void Mob::Patrol()
 			else
 			{
 				_movementComponent->SetDestination(startPosition);
-				//_animationComponent->RunAnimation("GoLeft");
 			}
 		}
 	}
 }
-//owner->GetComponent<AnimationComponent>()->GetCurrentAnimation()->GetData().linkedAnimation
 
 void Mob::InitTimerPatrol()
 {
-	new Timer(this , &Mob::Patrol, seconds(1.5f), true, true);
+	new Timer(this , &Mob::Patrol, seconds(1.0f), true, true);
 }
 
 void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)
@@ -63,3 +61,4 @@ void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent*
 	_animationComponent->GetCurrentAnimation()->Stop();
 	_animationComponent->RunAnimation(_linkedAnimation);
 }
+
