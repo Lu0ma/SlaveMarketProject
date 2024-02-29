@@ -7,11 +7,10 @@ class Boofly : public Mob
 public:
 	Boofly(const ShapeData& _data);
 
-public:
-
-	virtual void Death() override;
-
+private:
 	void Attack();
 
+public:
+	virtual void Init() override;
+	virtual void Death() override;
 };
-

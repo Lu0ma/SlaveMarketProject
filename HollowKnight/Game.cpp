@@ -25,7 +25,7 @@ Game::Game()
 
 	//TODO move
 	merchand = new Merchand();
-	pnj = new InteractableActor("Villageois" , ShapeData(Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), Vector2f(100.0f, 100.0f), " ") , Vector2f(1000.0f , 1000.0f));
+	pnj = new InteractableActor("Villageois", ShapeData(Vector2f(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f), Vector2f(100.0f, 100.0f), " ") , Vector2f(1000.0f , 1000.0f));
 } 
 
 Game::~Game()
@@ -63,7 +63,6 @@ void Game::Init()
 
 	Spawner* _spawner = new Spawner();
 	_spawner->Spawn();
-
 }
 
 void Game::Update()

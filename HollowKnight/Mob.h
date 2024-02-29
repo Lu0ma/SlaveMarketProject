@@ -9,6 +9,9 @@ class Mob : public Actor
 	int life;
 	int damages;
 
+protected:
+	AnimationComponent* animation;
+
 public:
 	int GetLife()const
 	{

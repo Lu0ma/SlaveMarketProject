@@ -20,14 +20,13 @@ class Player : public Actor
 {
 	PlayerStat* stats;
 	Inventory* inventory;
+	CharmsMenu* charmsMenu;
 	PlayerMovementComponent* movement;
 	AnimationComponent* animation;
 	vector<string> animPlayer;
 	Timer* deathTimer;
 
 	Bench* bench;
-	CharmsMenu* charmsMenu;
-
 	bool isStanding;
 
 public:
@@ -52,8 +51,7 @@ private:
 	void SetupPlayerInput();
 
 public:
-	void Init();
+	virtual void Init() override;
 	void SpecialAttack();
-	void TakeDamages(const int _damages);
 	void Update();
 };

@@ -25,12 +25,14 @@ void Spawner::Spawn()
 
 	ShapeData _dataBoofly = ShapeData(_positionBoofly, _sizeBoofly, PATH_BOOFLY, IntRect(0, 17, 315, 345));
 	boofly = new Boofly(_dataBoofly);
+	boofly->Init();
 
 	ShapeData _dataBelfly = ShapeData(_positionBelfly, _sizeBelfly, PATH_BELFLY);
 	//new Belfly(_dataBelfly);
 
 	ShapeData _dataHuskBully = ShapeData(_positionHuskBully, _sizeHuskBully, PATH_HUSK_BULLY);
-	new HuskBully(_dataHuskBully);
+	HuskBully* _huskBully = new HuskBully(_dataHuskBully);
+	_huskBully->Init();
 
 	//deathMob = new DeathMob(_data);
 }

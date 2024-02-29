@@ -33,6 +33,7 @@ public:
 
 private:
 	virtual void Register() override;
+	virtual void Init() = 0;
 
 public:
 	virtual void Update(const float _deltaTime);

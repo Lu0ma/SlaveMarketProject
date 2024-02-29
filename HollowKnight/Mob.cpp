@@ -50,16 +50,19 @@ void Mob::Patrol()
 	{
 		if (_movementComponent->IsAtPosition())
 		{
-			const string& _linkedAnimation = _animationComponent->GetCurrentAnimation()->GetData().linkedAnimation;
-			if (_linkedAnimation != "") RunLinkedAnimation(_linkedAnimation, _animationComponent);
+			if (Animation* _animation = _animationComponent->GetCurrentAnimation())
+			{
+				const string& _linkedAnimation = _animation->GetData().linkedAnimation;
+				if (_linkedAnimation != "") RunLinkedAnimation(_linkedAnimation, _animationComponent);
 
-			if (_movementComponent->GetDestination() == startPosition)
-			{
-				_movementComponent->SetDestination(goalPosition);
-			}
-			else
-			{
-				_movementComponent->SetDestination(startPosition);
+				if (_movementComponent->GetDestination() == startPosition)
+				{
+					_movementComponent->SetDestination(goalPosition);
+				}
+				else
+				{
+					_movementComponent->SetDestination(startPosition);
+				}
 			}
 		}
 	}

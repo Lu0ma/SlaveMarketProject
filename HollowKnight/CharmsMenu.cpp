@@ -9,7 +9,7 @@
 #define PATH_SELECTED_CHARMS "UIs/Charms/Select_Charms.png"
 #define PATH_SEPARATOR "UIs/Inventory/Separator.png"
 #define PATH_POINTER "UIs/Charms/Pointer.png"
-#define FONT "TrajanProRegular.ttf"
+#define FONT "Font.ttf"
 #define CHARMS "UIs/Charms/AllCharms/Charms_"
 
 CharmsMenu::CharmsMenu()
@@ -227,7 +227,7 @@ void CharmsMenu::EquippedText()
 
 	const float _spacingNotchTextY = halfSize.y * 0.7f;
 	const Vector2f& _posText = Vector2f(gridPos.x - 10.0f, _spacingNotchTextY);
-	TextWidget* _equippedText = new TextWidget(TextData("Equipped", Vector2f(_posText.x, _spacingY + slotSize.y - halfSize.y * 0.60f), "TrajanProRegular.ttf"));
+	TextWidget* _equippedText = new TextWidget(TextData("Equipped", Vector2f(_posText.x, _spacingY + slotSize.y - halfSize.y * 0.60f), FONT));
 
 	canvas->AddWidget(_equippedText);
 }

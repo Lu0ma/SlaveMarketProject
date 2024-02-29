@@ -19,7 +19,7 @@ public:
     }
 
 public:
-    AnimationComponent(Actor* _owner, const vector<AnimationData>& _animationsData = vector<AnimationData>());
+    AnimationComponent(Actor* _owner);
 
 public:
     void InitAnimations(const vector<AnimationData>& _animationsData);

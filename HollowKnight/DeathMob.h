@@ -13,6 +13,8 @@ public:
 	void StandBy();
 	void Action();
 	void Attack();
+
+	virtual void Init() override;
 	virtual void Death()override;
 };
 

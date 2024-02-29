@@ -67,6 +67,8 @@ string GetStringAfterSymbol(const string& _text, const string& _symbol)
 
         _index = 0;
     }
+
+    return string();
 }
 
 string GetStringAfterIndex(const string& _text, const int _index)

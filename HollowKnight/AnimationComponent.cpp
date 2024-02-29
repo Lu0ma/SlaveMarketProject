@@ -3,7 +3,7 @@
 #include "TextureManager.h"
 #include "Actor.h"
 
-AnimationComponent::AnimationComponent(Actor* _owner, const vector<AnimationData>& _animationsData) : Component(_owner)
+AnimationComponent::AnimationComponent(Actor* _owner) : Component(_owner)
 {
     currentAnimation = nullptr;
 }
@@ -42,11 +42,11 @@ void AnimationComponent::RunAnimation(const string& _name)
                 if(_name == currentAnimation->GetID()) return;
 
                 //system("cls");
-                cout << "Stop : " << currentAnimation->GetID() << endl;
+                //cout << "Stop : " << currentAnimation->GetID() << endl;
                 currentAnimation->Stop();
             }
 
-            cout << "Start : " << _animation->GetData().name << endl;
+            //cout << "Start : " << _animation->GetData().name << endl;
             currentAnimation = _animation;
             _animation->Start();
         }

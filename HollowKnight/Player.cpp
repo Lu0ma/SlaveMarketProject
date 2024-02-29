@@ -44,6 +44,7 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	components.push_back(animation);
 
 	bench = new Bench();
+	bench->Init();
 	isStanding = true;
 }
 
@@ -89,7 +90,7 @@ void Player::SetupPlayerInput()
 		ActionData("AddItem", [&]() { inventory->AddItem(1, {
 			PATH_ITEM, "Item",
 			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"}); 
-		}, InputData({ActionType::KeyPressed, Keyboard::Q })),
+		}, InputData({ActionType::KeyPressed, Keyboard::A })),
 		ActionData("AddItem2", [&]() { inventory->AddItem(1, {
 			PATH_ITEM2, "Object",
 			"Ceci est un texte\nEt ça, c'est un saut de ligne"}); 
@@ -201,36 +202,25 @@ void Player::SpecialAttack()
 	}
 }
 
-void Player::TakeDamages(const int _damages)
-{
-	int _newLife = stats->GetCurrentLife() - _damages;
-	stats->SetCurrentLife(_newLife);
-}
-
 void Player::Update()// TODO
 {
-	if (stats->GetCurrentLife() != 0)
-	{
-		return;
-	}
+	//else if (stats->GetCurrentLife() == 0)
+	//{
+	//	cout << "Tu es mort" << endl;
+	//	//creer un mob qui va etre a la position de la mort du joueur
+	//	ShapeData _data = ShapeData(GetShapePosition(), Vector2f(100.0f, 100.0f), PATH_DEATHMOB, IntRect(0, 18, 316, 346));
+	//	DeathMob* _death = new DeathMob(_data);
 
-	else if (stats->GetCurrentLife() == 0)
-	{
-		cout << "Tu es mort" << endl;
-		//creer un mob qui va etre a la position de la mort du joueur
-		ShapeData _data = ShapeData(GetShapePosition(), Vector2f(100.0f, 100.0f), PATH_DEATHMOB, IntRect(0, 18, 316, 346));
-		DeathMob* _death = new DeathMob(_data);
+	//	//Changement de l'anim du joueur pdt 3sec avant de respawn
+	//	function<void()> _callback = [&]() {
 
-		//Changement de l'anim du joueur pdt 3sec avant de respawn
-		function<void()> _callback = [&]() {
+	//		this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[5]);
+	//	};
 
-			this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[5]);
-		};
+	//	deathTimer = new Timer(_callback, seconds(3.0f), true, false);
 
-		deathTimer = new Timer(_callback, seconds(3.0f), true, false);
-
-		//set la position au debut du niveau
-		//this->GetDrawable()->setPosition(//Checkpoint); 
-		stats->SetCurrentLife(stats->GetMaxLife()); // Lui redonner full vie
-	}
+	//	//set la position au debut du niveau
+	//	//this->GetDrawable()->setPosition(//Checkpoint); 
+	//	stats->SetCurrentLife(stats->GetMaxLife()); // Lui redonner full vie
+	//}
 }
