@@ -139,6 +139,12 @@
     <Filter Include="Fichiers de ressources\FileLoader">
       <UniqueIdentifier>{0e5d0c03-b63f-44c3-9ead-1ec1a0039f2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers\Charms">
+      <UniqueIdentifier>{27640059-3a16-43e1-871b-f98d6628656c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Bench">
+      <UniqueIdentifier>{ca00970b-1f77-4e0e-8b16-5535de072a96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -301,7 +307,13 @@
       <Filter>Maps</Filter>
     </ClCompile>
     <ClCompile Include="FileLoader.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers de ressources\FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="CharmsMenu.cpp">
+      <Filter>Managers\Charms</Filter>
+    </ClCompile>
+    <ClCompile Include="Bench.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Bench</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -471,7 +483,13 @@
       <Filter>Maps</Filter>
     </ClInclude>
     <ClInclude Include="FileLoader.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers de ressources\FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="CharmsMenu.h">
+      <Filter>Managers\Charms</Filter>
+    </ClInclude>
+    <ClInclude Include="Bench.h">
+      <Filter>Objects\ShapeObjects\Actors\Bench</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
