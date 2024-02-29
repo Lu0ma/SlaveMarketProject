@@ -5,6 +5,8 @@
 #include "PlayerMovementComponent.h"
 #include"AnimationComponent.h"
 #include<vector>
+#include"Timer.h"
+#include<functional>
 
 using namespace std;
 
@@ -15,6 +17,7 @@ class Player : public Actor
 	PlayerMovementComponent* movement;
 	AnimationComponent* animation;
 	vector<string> animPlayer;
+	Timer* deathTimer;
 
 public:
 	void SetStatus(const bool _status)
@@ -39,4 +42,5 @@ private:
 public:
 	void Init();
 	void SpecialAttack();
+	void Death();
 };

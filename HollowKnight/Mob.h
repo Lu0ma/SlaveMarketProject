@@ -6,11 +6,16 @@ class Mob : public Actor
 	Vector2f startPosition;
 	Vector2f goalPosition;
 	int life;
+	int damages;
 
 public:
 	int GetLife()const
 	{
 		return life;
+	}
+	int GetDamages()const
+	{
+		return damages;
 	}
 
 public:

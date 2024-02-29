@@ -66,8 +66,3 @@ static vector<Class*> RetrieveAllMobsAround(const Vector2f& _position, const flo
 	return _classes;
 }
 
-template <typename Type>
-static void SetOriginCentered(Type* _element)
-{
-	_element->setOrigin(_element->getGlobalBounds().getSize() / 2.0f);
-}

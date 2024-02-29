@@ -40,13 +40,15 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	AnimationData("Right",Vector2f(80.0f, 0.0f), _size, _readDirection,  _toRepeat, 3, _speed),
 	AnimationData("Left",Vector2f(80.0f, 0.0f), _size, _readDirection,  _toRepeat, 3, _speed, false),
 	AnimationData("NONELEFT",Vector2f(0.0f, 0.0f), _size, _readDirection,  _toRepeat, 1, _speed, false),
-	AnimationData("Dash",Vector2f(0.0f, 720.0f), _size, _readDirection, _toRepeat,9,_speed),
-	AnimationData("Jump",Vector2f(0.0f, 800.0f), _size, _readDirection, _toRepeat,10,_speed),// 560    12
+	AnimationData("Dash",Vector2f(0.0f, 720.0f), _size, _readDirection, _toRepeat,12,_speed),
+	//AnimationData("DashLeft",Vector2f(0.0f, 720.0f), _size, _readDirection, _toRepeat,12,_speed, false),
+	AnimationData("DarkSasuke",Vector2f(0.0f, 800.0f), _size, _readDirection, _toRepeat, 10, _speed),// 560    12
+	AnimationData("Jump",Vector2f(0.0f, 560.0f), Vector2f(79.0f, 71.0f), _readDirection, _toRepeat, 11, _speed),// Change size
      });
 
 	components.push_back(animation);
 
-	animPlayer.resize(10);
+	animPlayer.resize(15);
 
 	animPlayer = {
 		"NONERIGHT",
@@ -54,10 +56,16 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 		"Right",
 		"Left",
 		"Dash",
+		"DarkSasuke",
 		"Jump",
+		//"DashLeft" 
 		"NONELEFT"
 	};
 
+	/*if (stats->GetCurrentLife() == 0)
+	{
+		Death();
+	}*/
 }
 
 
@@ -103,9 +111,12 @@ void Player::SetupPlayerInput()
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[2]); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[0]); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
 		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[3]); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
-		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[6]); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
-		ActionData("Jump", [&]() { movement->Jump();  this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[5]); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
+		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[7]); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
+		//ActionData("DarkSasuke", [&]() {  this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[5]); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
 		ActionData("Dash", [&]() { movement->Dash(); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[4]); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
+		
+		
+		ActionData("Jump", [&]() { movement->Jump(); this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[6]); }, InputData({ ActionType::KeyReleased, Keyboard::RControl })),//
 	});
 
 	new ActionMap("Attack", {
@@ -136,7 +147,7 @@ void Player::Init()
 
 void Player::SpecialAttack()
 {
-	movement->SetDirectionX(10.0f);
+	//movement->SetDirectionX(10.0f);
 
 	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(GetShapePosition(), 15.0f);
 	for (Mob* _mob : _mobs)
@@ -145,3 +156,21 @@ void Player::SpecialAttack()
 		_mob->TakeDamages(stats->GetDamages());
 	}
 }
+
+void Player::Death()// TODO
+{
+	//creer un mob qui va etre a la position de la mort du joueur
+	//il attack le joueur si celui-ci est proche de lui
+
+	//Changement de l'anim du joueur pdt 3sec avant de respawn
+	function<void()> _callback = [&]() {
+
+	this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[5]);
+		};
+
+	deathTimer = new Timer(_callback, seconds(3.0f), true, false);
+
+	//set la position au debut du niveau
+}
+
+

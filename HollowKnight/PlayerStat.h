@@ -29,6 +29,11 @@ public:
 		return damages;
 	}
 
+	int GetCurrentLife()
+	{
+		return currentLifesCount;
+	}
+
 private:
 	string ComputeLifePath(const bool _toAdd) const
 	{
