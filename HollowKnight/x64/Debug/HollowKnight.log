@@ -1,18 +1,2 @@
-﻿  Camera.cpp
-  Canvas.cpp
-  CollisionComponent.cpp
-  Game.cpp
-  HUD.cpp
-  InputManager.cpp
-  InteractableActor.cpp
-  Inventory.cpp
-  Main.cpp
-  Menu.cpp
-  Merchand.cpp
-  NPC.cpp
-  Player.cpp
-  PlayerStat.cpp
-  ProgressBar.cpp
-  TitleMenu.cpp
-  Generating Code...
+﻿  TextObject.cpp
   HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
