@@ -23,6 +23,20 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	inventory = new Inventory();
 	movement = new PlayerMovementComponent(this);
 	components.push_back(movement);
+	//TODO move
+	//merchand = new Merchand();
+
+	canvas = nullptr;
+	healthBar = nullptr;
+	manaBar = nullptr;
+	geosCountText = nullptr;
+	stats = new PlayerStat(10, 10, 20, 20, 0);
+
+	bench = new Bench();
+	charmsMenu = new CharmsMenu();
+
+	isStanding = true;
+
 }
 
 
@@ -42,16 +56,6 @@ void Player::SetupPlayerInput()
 			stats->Toggle();
 			inventory->Toggle();
 		}, InputData({ ActionType::KeyPressed, Keyboard::B })),
-		ActionData("AddHealthMask", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num1 })),
-		ActionData("AddVessel", [&]() { inventory->UpdateVesselCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num2 })),
-		ActionData("UpgradeMirror", [&]() { inventory->UpdateMirrorLevel(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num3 })),
-		ActionData("ToggleVengeful", [&]() { inventory->SetVengefulStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num4 })),
-		ActionData("ToggleSlam", [&]() { inventory->SetSlamStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num5 })),
-		ActionData("ToggleShriek", [&]() { inventory->SetShriekStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num6 })),
-		ActionData("UpgradeSword", [&]() { inventory->UpdateSwordLevel(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num7 })),
-	});
-
-	new ActionMap("Storages", {
 		ActionData("AddItem", [&]() { inventory->AddItem(1, {
 			PATH_ITEM, "Item",
 			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"}); 
@@ -61,8 +65,13 @@ void Player::SetupPlayerInput()
 			"Ceci est un texte\nEt ça, c'est un saut de ligne"}); 
 		}, InputData({ActionType::KeyPressed, Keyboard::W})),
 		ActionData("AddHealthMask", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num1 })),
-		ActionData("AddHealthMash", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::A })),
-	});
+		ActionData("AddVessel", [&]() { inventory->UpdateVesselCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num2 })),
+		ActionData("UpgradeMirror", [&]() { inventory->UpdateMirrorLevel(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num3 })),
+		ActionData("ToggleVengeful", [&]() { inventory->SetVengefulStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num4 })),
+		ActionData("ToggleSlam", [&]() { inventory->SetSlamStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num5 })),
+		ActionData("ToggleShriek", [&]() { inventory->SetShriekStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num6 })),
+		ActionData("UpgradeSword", [&]() { inventory->UpdateSwordLevel(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num7 })),
+	};
 
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f); }, InputData({ ActionType::KeyPressed, Keyboard::D })),
@@ -71,7 +80,46 @@ void Player::SetupPlayerInput()
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
 		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
 		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
+		ActionData("Sit", [&]() {
+			if (GetDrawable()->getGlobalBounds().contains(bench->GetShape()->getPosition()) && isStanding)
+			{
+				GetShape()->setPosition(GetShape()->getPosition().x, GetShape()->getPosition().y - 15.0f);
+				isStanding = false;
+			}
+			else
+			{
+				cout << "impossible de s'assoire" << endl;
+			}
+		}, InputData({ActionType::KeyPressed, Keyboard::Up})) });
+		ActionData("Stand", [&]() {
+			if (!isStanding)
+			{
+				GetShape()->setPosition(GetShape()->getPosition().x, GetShape()->getPosition().y + 15.0f);
+				isStanding = true;
+			}
+			else
+			{
+				cout << "impossible de ce levé" << endl;
+			}
+		}, InputData({ActionType::KeyPressed, Keyboard::Down}))
 	});
+
+
+	new ActionMap("Display", { ActionData("Shop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Tab })) });
+
+	new ActionMap("Open Menu", {
+		ActionData("Menu", [&]() {
+			if (!isStanding)
+			{
+				charmsMenu->Toggle();
+			}
+			else
+			{
+				cout << "impossible d'ouvrir l'inventaire des charms" << endl;
+			}
+		}, InputData({ActionType::KeyPressed, Keyboard::P}))
+	});
+
 }
 
 
@@ -79,5 +127,6 @@ void Player::Init()
 {
 	stats->Init();
 	inventory->Init();
+	charmsMenu->Init();
 	SetupPlayerInput();
 }

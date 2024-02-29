@@ -3,7 +3,9 @@
 #include "PlayerStat.h"
 #include "Inventory.h"
 #include "PlayerMovementComponent.h"
-
+#include "Merchand.h"
+#include "Bench.h"
+#include "CharmsMenu.h"
 using namespace std;
 
 class Player : public Actor
@@ -11,6 +13,11 @@ class Player : public Actor
 	PlayerStat* stats;
 	Inventory* inventory;
 	PlayerMovementComponent* movement;
+
+	Bench* bench;
+	CharmsMenu* charmsMenu;
+
+	bool isStanding;
 
 public:
 	void SetStatus(const bool _status)
