@@ -20,11 +20,9 @@ public:
 	}
 
 public:
-	Merchand();
+	Merchand(const vector<string>& _texts);
 
 public:
 	void Init();
 	//void BuyItem();
-
-	void Update();
 };

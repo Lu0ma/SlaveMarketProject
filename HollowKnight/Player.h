@@ -26,6 +26,8 @@ class Player : public Actor
 	vector<string> animPlayer;
 	Timer* deathTimer;
 
+	float interactRange;
+
 	Bench* bench;
 	bool isStanding;
 
@@ -49,6 +51,7 @@ public:
 private:
 	void InitAnimations();
 	void SetupPlayerInput();
+	void TryToInteract();
 
 public:
 	virtual void Init() override;

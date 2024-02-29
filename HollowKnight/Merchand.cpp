@@ -10,9 +10,9 @@
 #define PATH_GEO "UIs/Shop/Geo.png"
 #define FONT "Font.ttf"
 
-Merchand::Merchand() : NPC()
+Merchand::Merchand(const vector<string>& _texts) : NPC(_texts)
 {
-	canvas = nullptr;
+	canvas = new Canvas("Shop", FloatRect(0, 0, 1, 1));
 	buttons = vector<Button*>();
 	pointer = nullptr;
 	descriptionTitle = nullptr;
@@ -24,7 +24,6 @@ Merchand::Merchand() : NPC()
 
 void Merchand::Init()
 {
-	canvas = new Canvas("Shop", FloatRect(0, 0, 1, 1));
 	canvas->SetVisibilityStatus(false);
 
 	const Vector2f& _windowSize = Game::GetWindowSize();
