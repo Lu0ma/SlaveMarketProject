@@ -7,7 +7,6 @@ DeathMob::DeathMob(const ShapeData& _data) : Mob(_data)
 	animation = new AnimationComponent(this);
 	components.push_back(animation);
 
-	SetLife(1);
 	Action();
 }
 

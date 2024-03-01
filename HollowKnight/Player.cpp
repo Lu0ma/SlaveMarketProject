@@ -24,23 +24,13 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	shape->setFillColor(Color::Red);
 
 	stats = new PlayerStat();
+	attack = new PlayerAttackComponent(this,1);
+	animation = new PlayerAnimationComponent(this);
 	inventory = new Inventory();
 	charmsMenu = new CharmsMenu();
 	movement = new PlayerMovementComponent(this);
 
-	animPlayer.push_back("NONERIGHT");
-	animPlayer.push_back("Special");
-	animPlayer.push_back("Right");
-	animPlayer.push_back("Left");
-	animPlayer.push_back("Dash");
-	animPlayer.push_back("DarkSasuke");
-	animPlayer.push_back("Jump");
-	animPlayer.push_back("DashLeft");
-	animPlayer.push_back("NONELEFT");
-
 	components.push_back(movement);
-
-	animation = new AnimationComponent(this);
 	components.push_back(animation);
 
 	interactRange = 50.0f;
@@ -53,32 +43,16 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 
 void Player::InitAnimations()
 {
-	const Vector2f& _size = Vector2f(80.0f, 80.0f);
-	const ReadDirection& _readDirection = READ_RIGHT;
-	const bool _toRepeat = true;
-	const int _count = 8;// a changer
-	const int _countAttack = 7;
-	const float _speed = 0.1f;
-
-	animation->InitAnimations({
-		AnimationData("NONERIGHT", Vector2f(0.0f, 0.0f), _size, _readDirection, _toRepeat, 1, _speed),
-		AnimationData("Special", Vector2f(0.0f, 320.0f), _size, _readDirection, _toRepeat, _countAttack, _speed),
-		AnimationData("Right", Vector2f(80.0f, 0.0f), _size, _readDirection, _toRepeat, 3, _speed),
-		AnimationData("Left", Vector2f(80.0f, 0.0f), _size, _readDirection, _toRepeat, 3, _speed, false),
-		AnimationData("NONELEFT", Vector2f(0.0f, 0.0f), _size, _readDirection, _toRepeat, 1, _speed, false),
-		AnimationData("Dash", Vector2f(0.0f, 560.0f), _size, _readDirection, _toRepeat, 11, _speed),
-		//AnimationData("DashLeft",Vector2f(0.0f, 720.0f), _size, _readDirection, _toRepeat,12,_speed, false),
-		AnimationData("DarkSasuke", Vector2f(0.0f, 800.0f), _size, _readDirection, _toRepeat, 10, _speed),// 560    12
-		AnimationData("Jump", Vector2f(0.0f, 720.0f), Vector2f(79.0f, 71.0f), _readDirection, _toRepeat, 9, _speed),// Change size
-	});
+	animation->Init();
 }
 
 void Player::SetupPlayerInput()
 {
 	new ActionMap("Stats", {
 		ActionData("AddMana", [&]() { stats->UseMana(10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Space  })),
-		ActionData("RemoveMana", [&]() { stats->UseMana(-10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
-		ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
+		ActionData("RemoveMana", [&]() { stats->UseMana(-10.0f); stats->UpdateLife(1); animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[8]); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
+		ActionData("StopRemoveMana",[&]() { animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]); }, InputData({ ActionType::KeyReleased, Keyboard::Escape })),
+		//ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
 		ActionData("RemoveLife", [&]() { stats->UpdateLife(-1); }, InputData({ ActionType::KeyPressed, Keyboard::Num0 })),
 		ActionData("AddLifeSlot", [&]() { stats->AddLife(); }, InputData({ ActionType::KeyPressed, Keyboard::O })),
 		ActionData("AddGeos", [&]() { stats->AddGeos(12); }, InputData({ ActionType::KeyPressed, Keyboard::Num8 })),
@@ -87,32 +61,33 @@ void Player::SetupPlayerInput()
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { 
 			movement->SetDirectionX(1.0f);
-			animation->RunAnimation(animPlayer[2]);
+			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[2]);
 		}, InputData({ ActionType::KeyPressed, Keyboard::D })),
 		ActionData("StopRight", [&]() {
 			movement->SetDirectionX(0.0f);
-			animation->RunAnimation(animPlayer[0]);
+			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]);
 		}, InputData({ ActionType::KeyReleased, Keyboard::D })),
 		ActionData("Left", [&]() {
 			movement->SetDirectionX(-1.0f);
-			animation->RunAnimation(animPlayer[3]);
+			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[3]);
 		}, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() {
 			movement->SetDirectionX(0.0f);
-			animation->RunAnimation(animPlayer[7]);
+			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[9]);
 		}, InputData({ ActionType::KeyReleased, Keyboard::Q })),
 		ActionData("Jump", [&]() {
 			movement->Jump();
-			animation->RunAnimation(animPlayer[6]);
+			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[6]);
 		}, InputData({ ActionType::KeyReleased, Keyboard::Space })),
 		ActionData("Dash", [&]() {
 			movement->Dash();
-			animation->RunAnimation(animPlayer[4]);
+			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[4]);
 			}, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
 		ActionData("Sit", [&]() {
 			if (GetDrawable()->getGlobalBounds().contains(bench->GetShapePosition()) && isStanding)
 			{
-				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y - 15.0f);
+				animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[7]);
+				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y - 30.0f);
 				isStanding = false;
 			}
 			else
@@ -123,7 +98,8 @@ void Player::SetupPlayerInput()
 		ActionData("Stand", [&]() {
 			if (!isStanding)
 			{
-				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y + 15.0f);
+				animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]);
+				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y + 30.0f);
 				isStanding = true;
 			}
 			else
@@ -135,13 +111,13 @@ void Player::SetupPlayerInput()
 
 	new ActionMap("Attack", {
 		ActionData("Slash", [&]() {
-			SpecialAttack();
-			this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[1]);
+			attack->SpecialAttack();
+			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[1]);
 			cout << "Slash" << endl;
 		}, InputData({ActionType::KeyPressed, Keyboard::R})),
 		ActionData("StopSlash", [&]() {
 			movement->SetDirectionX(0.0f);
-			this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[0]);
+			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]);
 		}, InputData({ActionType::KeyReleased, Keyboard::R})),
 	});
 
@@ -222,17 +198,6 @@ void Player::Init()
 	SetupPlayerInput();
 }
 
-void Player::SpecialAttack()
-{
-	//movement->SetDirectionX(10.0f);
-
-	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(GetShapePosition(), 15.0f);
-	for (Mob* _mob : _mobs)
-	{
-		if (!_mob)continue;
-		_mob->TakeDamages(stats->GetDamages());
-	}
-}
 
 void Player::Update()// TODO
 {

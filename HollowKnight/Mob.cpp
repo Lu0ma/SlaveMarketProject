@@ -8,7 +8,8 @@ Mob::Mob(const ShapeData& _data) : Actor("Mob" + to_string(GetUniqueID()), _data
 {
 	startPosition = _data.position;
 	goalPosition = startPosition + Vector2f(500.0f, 0.0f);
-	life = 25;
+	attack = new MobAttackComponent(this, 1);
+	life = new MobLifeComponent(this, 3);
 
 	isPatrolling = false;
 
@@ -68,7 +69,3 @@ void Mob::Patrol()
 	}
 }
 
-void Mob::TakeDamages(const int _attack)
-{
-	life -= _attack;
-}

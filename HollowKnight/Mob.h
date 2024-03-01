@@ -1,33 +1,27 @@
 #pragma once
 #include "Actor.h"
 #include "AnimationComponent.h"
+#include"MobAttackComponent.h"
+#include"MobLifeComponent.h"
 
 class Mob : public Actor
 {
 	Vector2f startPosition;
 	Vector2f goalPosition;
-	int life;
-	int damages;
 
 protected:
 	AnimationComponent* animation;
-
-public:
-	int GetLife()const
-	{
-		return life;
-	}
-	void SetLife(const int _life)
-	{
-		life = _life;
-	}
-	int GetDamages()const
-	{
-		return damages;
-	}
+	MobAttackComponent* attack;
+	MobLifeComponent* life;
 
 protected:
 	bool isPatrolling;
+
+public:
+	MobLifeComponent* GetLife()const
+	{
+		return life;
+	}
 
 public:
 	Mob(const ShapeData& _data);
@@ -39,6 +33,5 @@ private:
 public:
 	void Move();
 	void Patrol();
-	void TakeDamages(const int _attack);
 	virtual void Death() = 0;
 };
