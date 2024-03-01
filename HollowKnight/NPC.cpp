@@ -1,7 +1,9 @@
 #include "NPC.h"
 #include "Macro.h"
 
-NPC::NPC(const Vector2f& _position, const Vector2f& _size) : Actor(STRING_ID("NPC"),ShapeData(Vector2f(_position),Vector2f(_size)))
+#define PATH_NPC "UIs/Shop/Stand.png"
+
+NPC::NPC(const Vector2f& _position, const Vector2f& _size) : Actor(STRING_ID("NPC"),ShapeData(Vector2f(_position),Vector2f(_size), PATH_NPC))
 {
 	texts = vector<string>();
 }

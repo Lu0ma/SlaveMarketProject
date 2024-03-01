@@ -18,7 +18,6 @@ Merchand::Merchand(const Vector2f& _position, const Vector2f& _size) : NPC(_posi
 	descriptionTitle = nullptr;
 	descriptionText = nullptr;
 
-	GetDrawable()->setFillColor(Color::Blue);
 
 }
 

@@ -13,7 +13,6 @@ class Merchand : public NPC
 	Label* descriptionTitle;
 	Label* descriptionText;
 
-
 public:
 	void Toggle()
 	{
