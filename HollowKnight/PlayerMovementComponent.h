@@ -30,7 +30,7 @@ class PlayerMovementComponent : public MovementComponent
 	float dashSpeed;
 	float dashDuration;
 	float dashCooldown;
-	Vector2f dashDirection;
+	float dashDirection;
 
 	// Sit
 	bool isStanding;
@@ -45,6 +45,25 @@ public:
 		if (!canMove) return;
 
 		direction.x = _directionX;
+
+		if (_directionX == 0.0f)
+		{
+			if (owner->GetDrawable()->getScale().x >= 0.0f)
+			{
+				dashDirection = 1.0f;
+			}
+
+			else
+			{
+				dashDirection = -1.0f;
+			}
+		}
+
+		else
+		{
+			dashDirection = _directionX;
+		}
+
 		animation->GetCurrentAnimation()->RunAnimation(_animName);
 	}
 	void SetDirectionY(const float _directionY)

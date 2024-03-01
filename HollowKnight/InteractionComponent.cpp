@@ -19,7 +19,7 @@ void InteractionComponent::TryToInteract()
 
 		if (Merchand* _merchand = dynamic_cast<Merchand*>(_interactable))
 		{
-			_merchand->Toggle();
+			_merchand->OpenDiscussion();
 		}
 
 		else if (NPC* _npc = dynamic_cast<NPC*>(_interactable))

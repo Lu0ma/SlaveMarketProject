@@ -33,15 +33,10 @@ struct MapData
 class Map
 {
 	Bench* bench;
-
 	Merchand* merchand;
-
 	InteractableActor* pnj;
-
 	ShapeObject* background;
-
 	ShapeObject* barrack;
-
 	vector<ShapeObject*> drawables;
 
 public:
@@ -56,6 +51,7 @@ public:
 
 public:
 	Map();
+
 private:
 	MapData LoadMapData(const string& _path);
 

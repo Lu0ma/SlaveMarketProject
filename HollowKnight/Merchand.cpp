@@ -13,17 +13,26 @@
 Merchand::Merchand(const ShapeData& _data, const vector<string>& _texts)
 				  : NPC(STRING_ID("Merchand"), _data, _texts)
 {
+	timeBeforeOpenShop = 3.0f;
 	canvas = new Canvas("Shop");
 	buttons = vector<Button*>();
 	pointer = nullptr;
 	descriptionTitle = nullptr;
 	descriptionText = nullptr;
-	 
+}
+
+
+void Merchand::CloseDiscussion()
+{
+	InteractableActor::CloseDiscussion();
+	CloseShop();
 }
 
 
 void Merchand::Init()
 {
+	NPC::Init();
+
 	canvas->SetVisibilityStatus(false);
 
 	const Vector2f& _windowSize = Game::GetWindowSize();
@@ -153,6 +162,16 @@ void Merchand::Init()
 	#pragma endregion
 
 	#pragma endregion
+}
+
+void Merchand::OpenDiscussion()
+{
+	InteractableActor::OpenDiscussion();
+
+	new Timer([&]() { 
+		Toggle();
+		InteractableActor::CloseDiscussion();
+	}, seconds(timeBeforeOpenShop));
 }
 
 //void Merchand::BuyItem()

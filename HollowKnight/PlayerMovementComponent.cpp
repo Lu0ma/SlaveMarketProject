@@ -23,9 +23,9 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 	// Jump
 	isJumping = false;
-	jumpForce = 0.1f;
-	jumpDuration = 5.0f;
-	gravity = 0.1f;
+	jumpForce = 0.5f;
+	jumpDuration = 0.2f;
+	gravity = 0.5f;
 
 	// Dash
 	canDash = true;
@@ -34,6 +34,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	dashSpeed = 0.75f;
 	dashDuration = 0.2f;
 	dashCooldown = 3.0f;
+	dashDirection = 1.0f;
 
 	// Sit
 	isStanding = true;
@@ -63,51 +64,51 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	const float _finalSpeed = isSprinting ? sprintSpeed : speed;
 	_offset = direction * _finalSpeed * _deltaTime;
 
-	//// Si je suis en l'air et que je ne saute pas
-	//if (!(isOnGround = CheckGround()) && !isJumping)
-	//{
-	//	// Application de la gravité
-	//	_offset = direction + Vector2f(0.0f, 1.0f);
-	//	Normalize(_offset);
-	//	_offset *= gravity * _deltaTime;
-	//}
+	// Si je suis en l'air et que je ne saute pas
+	if (!(isOnGround = CheckGround()) && !isJumping)
+	{
+		// Application de la gravité
+		_offset = direction + Vector2f(0.0f, 1.0f);
+		Normalize(_offset);
+		_offset *= gravity * _deltaTime;
+	}
 
-	//// Si je suis au sol
-	//else
-	//{
-	//	// Si je suis en train de dash
-	//	if (isDashing)
-	//	{
-	//		// Application de l'esquive
-	//		_offset = dashDirection * dashSpeed * _deltaTime;
-	//	}
+	// Si je suis au sol
+	else
+	{
+		// Si je suis en train de dash
+		if (isDashing)
+		{
+			// Application de l'esquive
+			_offset = Vector2f(dashDirection * dashSpeed * _deltaTime, 0.0f);
+ 		}
 
-	//	// Si je suis en train de jump et que je ne dash pas
-	//	else if (isJumping)
-	//	{
-	//		// Application du saut
-	//		_offset = direction + Vector2f(0.0f, -1.0f);
-	//		Normalize(_offset);
-	//		_offset *= jumpForce * _deltaTime;
-	//	}
+		// Si je suis en train de jump et que je ne dash pas
+		else if (isJumping)
+		{
+			// Application du saut
+			_offset = direction + Vector2f(0.0f, -1.0f);
+			Normalize(_offset);
+			_offset *= jumpForce * _deltaTime;
+		}
 
-	//	// S'il faut que je reset mon dash
-	//	if (!canDash && !isResetingDash)
-	//	{
-	//		isResetingDash = true;
-	//		new Timer([this]() {
-	//			canDash = true;
-	//			isResetingDash = false;
-	//		}, seconds(dashCooldown));
-	//	}
-	//}
+		// S'il faut que je reset mon dash
+		if (!canDash && !isResetingDash)
+		{
+			isResetingDash = true;
+			new Timer([this]() {
+				canDash = true;
+				isResetingDash = false;
+			}, seconds(dashCooldown));
+		}
+	}
 
 	owner->GetDrawable()->move(_offset);
 }
 
 void PlayerMovementComponent::Jump()
 {
-	if (!isOnGround || isJumping) return;
+	if (!canMove || !isOnGround || isJumping) return;
 
 	isJumping = true;
 	new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
@@ -120,7 +121,6 @@ void PlayerMovementComponent::Dash()
 
 	canDash = false;
 	isDashing = true;
-	dashDirection = direction;
 	new Timer([this]() { isDashing = false; }, seconds(dashDuration));
 	animation->GetCurrentAnimation()->RunAnimation("Dash");
 }

@@ -38,9 +38,14 @@ void InteractableActor::Verify()
 
 	else
 	{
-		cursor->SetVisible(false);
-		textScript->SetVisible(false);
+		CloseDiscussion();
 	}
+}
+
+void InteractableActor::CloseDiscussion()
+{
+	cursor->SetVisible(false);
+	textScript->SetVisible(false);
 }
 
 

@@ -33,8 +33,11 @@ private:
 	virtual void Register() override;
 	void Verify();
 
+protected:
+	virtual void CloseDiscussion();
+
 public:
 	virtual void Init() override;
 	virtual void Update(const float _deltaTime);
-	void OpenDiscussion();
+	virtual void OpenDiscussion();
 };
