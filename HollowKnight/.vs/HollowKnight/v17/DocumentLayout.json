@@ -7,20 +7,12 @@
       "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\InteractableActor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:InteractableActor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Bench.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Bench.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Merchand.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Merchand.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Merchand.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -31,8 +23,24 @@
       "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:NPC.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Merchand.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Merchand.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\NPC.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:NPC.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Bench.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Bench.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,20 +62,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Player.cpp",
               "RelativeDocumentMoniker": "Player.cpp",
               "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Player.cpp",
               "RelativeToolTip": "Player.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAAABAAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-01T10:36:11.567Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "Bench.cpp",
               "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Bench.cpp",
               "RelativeDocumentMoniker": "Bench.cpp",
@@ -75,12 +83,11 @@
               "RelativeToolTip": "Bench.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-01T10:35:40.193Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T10:35:40.193Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "Game.cpp",
               "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Game.cpp",
               "RelativeDocumentMoniker": "Game.cpp",
@@ -88,31 +95,30 @@
               "RelativeToolTip": "Game.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-01T09:50:38.291Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T09:50:38.291Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "NPC.cpp",
               "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\NPC.cpp",
               "RelativeDocumentMoniker": "NPC.cpp",
               "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\NPC.cpp",
               "RelativeToolTip": "NPC.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-01T09:18:26.148Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Merchand.cpp",
               "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Merchand.cpp",
               "RelativeDocumentMoniker": "Merchand.cpp",
               "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Merchand.cpp",
               "RelativeToolTip": "Merchand.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-01T08:44:47.053Z",
               "EditorCaption": ""
@@ -125,7 +131,7 @@
               "RelativeDocumentMoniker": "Map.cpp",
               "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Map.cpp",
               "RelativeToolTip": "Map.cpp",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAAEEAAABYAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-02-29T14:48:13.856Z",
               "EditorCaption": ""
@@ -134,7 +140,7 @@
         },
         {
           "DockedWidth": 172,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -142,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "Merchand.h",
               "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Merchand.h",
               "RelativeDocumentMoniker": "Merchand.h",
@@ -155,7 +161,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Map.h",
               "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Map.h",
               "RelativeDocumentMoniker": "Map.h",
@@ -164,6 +170,32 @@
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-02-29T14:48:18.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NPC.h",
+              "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\NPC.h",
+              "RelativeDocumentMoniker": "NPC.h",
+              "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\NPC.h",
+              "RelativeToolTip": "NPC.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-01T10:47:57.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InteractableActor.h",
+              "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\InteractableActor.h",
+              "RelativeDocumentMoniker": "InteractableActor.h",
+              "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\InteractableActor.h",
+              "RelativeToolTip": "InteractableActor.h",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAYAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-01T10:50:39.467Z",
               "EditorCaption": ""
             }
           ]
