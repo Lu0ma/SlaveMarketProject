@@ -43,6 +43,7 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 void Player::InitAnimations()
 {
 	animation->Init();
+	animation->GetCurrentAnimation()->RunAnimation("StopRight");
 }
 
 void Player::SetupPlayerInput()
