@@ -20,12 +20,13 @@ Game::Game()
 {
 	menu = new Menu();
 	map = new Map();
-	pnj = new InteractableActor("Villageois", ShapeData(Vector2f( 0.0f, 0.0f ), Vector2f(100.0f, 100.0f), " ") , Vector2f(1000.0f , 1000.0f));
 	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	camera = new Camera(TARGET_WINDOW);
 
 	//TODO move
-	merchand = new Merchand();
+	const vector<string>& _merchandTexts = { "Bonjour je suis un marchand" };
+	merchand = new Merchand(_merchandTexts);
+	pnj = new InteractableActor("Villageois", ShapeData(Vector2f(100.0f, 0.0f), Vector2f(100.0f, 100.0f), " "));
 } 
 
 Game::~Game()
@@ -47,7 +48,6 @@ void Game::Init()
 {
 	menu->Init();
 	//map->Init();
-	
 	//TODO move
 	merchand->Init();
 
@@ -64,7 +64,8 @@ void Game::Init()
 			cout << "Welcome to shrek City " << endl;
 		}, InputData({ActionType::KeyPressed , Keyboard::E})),
 	});
-
+	pnj->Init();
+	//TODO move
 	Spawner* _spawner = new Spawner();
 	_spawner->Spawn();
 

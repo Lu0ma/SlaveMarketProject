@@ -94,12 +94,6 @@
     <Filter Include="Objects\ShapeObjects\Actors\Player">
       <UniqueIdentifier>{89aee257-6703-436a-94cf-1c74b7b0af88}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects\ShapeObjects\NPCs">
-      <UniqueIdentifier>{207b97a8-7f70-48e1-92b9-69dd26516d31}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\NPCs\Merchands">
-      <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Collision">
       <UniqueIdentifier>{3f089dda-207d-4d08-a9db-06793e761f8c}</UniqueIdentifier>
     </Filter>
@@ -147,6 +141,12 @@
     </Filter>
     <Filter Include="Objects\ShapeObjects\Actors\Mobs\DeathMob">
       <UniqueIdentifier>{bed64d59-cf8f-4a8c-a752-c920004a7ade}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Interactables\NPCs">
+      <UniqueIdentifier>{207b97a8-7f70-48e1-92b9-69dd26516d31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands">
+      <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -259,10 +259,10 @@
       <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
     </ClCompile>
     <ClCompile Include="NPC.cpp">
-      <Filter>Objects\ShapeObjects\NPCs</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
     </ClCompile>
     <ClCompile Include="Merchand.cpp">
-      <Filter>Objects\ShapeObjects\NPCs\Merchands</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
     </ClCompile>
     <ClCompile Include="CollisionComponent.cpp">
       <Filter>Components\Collision</Filter>
@@ -438,10 +438,10 @@
       <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
     </ClInclude>
     <ClInclude Include="NPC.h">
-      <Filter>Objects\ShapeObjects\NPCs</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
     </ClInclude>
     <ClInclude Include="Merchand.h">
-      <Filter>Objects\ShapeObjects\NPCs\Merchands</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
     </ClInclude>
     <ClInclude Include="CollisionComponent.h">
       <Filter>Components\Collision</Filter>

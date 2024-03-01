@@ -43,6 +43,8 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	animation = new AnimationComponent(this);
 	components.push_back(animation);
 
+	interactRange = 50.0f;
+
 	bench = new Bench();
 	bench->Init();
 	isStanding = true;
@@ -80,28 +82,6 @@ void Player::SetupPlayerInput()
 		ActionData("RemoveLife", [&]() { stats->UpdateLife(-1); }, InputData({ ActionType::KeyPressed, Keyboard::Num0 })),
 		ActionData("AddLifeSlot", [&]() { stats->AddLife(); }, InputData({ ActionType::KeyPressed, Keyboard::O })),
 		ActionData("AddGeos", [&]() { stats->AddGeos(12); }, InputData({ ActionType::KeyPressed, Keyboard::Num8 })),
-	});
-
-	new ActionMap("Inventory", {
-		ActionData("ToggleInventory", [&]() { 
-			stats->Toggle();
-			inventory->Toggle();
-		}, InputData({ ActionType::KeyPressed, Keyboard::B })),
-		ActionData("AddItem", [&]() { inventory->AddItem(1, {
-			PATH_ITEM, "Item",
-			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"}); 
-		}, InputData({ActionType::KeyPressed, Keyboard::A })),
-		ActionData("AddItem2", [&]() { inventory->AddItem(1, {
-			PATH_ITEM2, "Object",
-			"Ceci est un texte\nEt ça, c'est un saut de ligne"}); 
-		}, InputData({ActionType::KeyPressed, Keyboard::W })),
-		ActionData("AddHealthMask", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num1 })),
-		ActionData("AddVessel", [&]() { inventory->UpdateVesselCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num2 })),
-		ActionData("UpgradeMirror", [&]() { inventory->UpdateMirrorLevel(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num3 })),
-		ActionData("ToggleVengeful", [&]() { inventory->SetVengefulStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num4 })),
-		ActionData("ToggleSlam", [&]() { inventory->SetSlamStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num5 })),
-		ActionData("ToggleShriek", [&]() { inventory->SetShriekStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num6 })),
-		ActionData("UpgradeSword", [&]() { inventory->UpdateSwordLevel(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num7 })),
 	});
 
 	new ActionMap("Movements", {
@@ -165,8 +145,30 @@ void Player::SetupPlayerInput()
 		}, InputData({ActionType::KeyReleased, Keyboard::R})),
 	});
 
-	new ActionMap("Open Menu", {
-		ActionData("Menu", [&]() {
+	new ActionMap("Inventory", {
+		ActionData("ToggleInventory", [&]() {
+			stats->Toggle();
+			inventory->Toggle();
+		}, InputData({ ActionType::KeyPressed, Keyboard::B })),
+		ActionData("AddItem", [&]() { inventory->AddItem(1, {
+			PATH_ITEM, "Item",
+			"Voici une description correcte\nMais je cherche surtout quoi dire..\n on va faire avec..\n\nnan ??"});
+		}, InputData({ActionType::KeyPressed, Keyboard::A })),
+		ActionData("AddItem2", [&]() { inventory->AddItem(1, {
+			PATH_ITEM2, "Object",
+			"Ceci est un texte\nEt ça, c'est un saut de ligne"});
+		}, InputData({ActionType::KeyPressed, Keyboard::W })),
+		ActionData("AddHealthMask", [&]() { inventory->UpdateMaskCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num1 })),
+		ActionData("AddVessel", [&]() { inventory->UpdateVesselCount(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num2 })),
+		ActionData("UpgradeMirror", [&]() { inventory->UpdateMirrorLevel(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num3 })),
+		ActionData("ToggleVengeful", [&]() { inventory->SetVengefulStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num4 })),
+		ActionData("ToggleSlam", [&]() { inventory->SetSlamStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num5 })),
+		ActionData("ToggleShriek", [&]() { inventory->SetShriekStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num6 })),
+		ActionData("UpgradeSword", [&]() { inventory->UpdateSwordLevel(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num7 })),
+		});
+
+	new ActionMap("CharmsMenu", {
+		ActionData("ToogleCharmsMenu", [&]() {
 			if (!isStanding)
 			{
 				charmsMenu->Toggle();
@@ -176,8 +178,38 @@ void Player::SetupPlayerInput()
 				cout << "impossible d'ouvrir l'inventaire des charms" << endl;
 			}
 		}, InputData({ActionType::KeyPressed, Keyboard::P}))
+		});
+
+	new ActionMap("Interaction", {
+		ActionData("TryToInteract", [&]() { TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E  })),
+		/*ActionData("ToggleShop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Equal  })),
+		ActionData("Talk", [&]() {
+			pnj->GetTextScript()->SetVisibilityStatus(true);
+			pnj->GetCursor()->SetVisibilityStatus(false);
+		}, InputData({ActionType::KeyPressed , Keyboard::E})),*/
 	});
 
+}
+
+void Player::TryToInteract()
+{
+	cout << "Romain c'est une SALOPE" << endl;
+	
+	for (InteractableActor* _interactable : ActorManager::GetInstance().GetInteractables())
+	{
+		const float _distance = Distance(GetShapePosition(), _interactable->GetShapePosition());
+		if (_distance > interactRange) continue;
+
+		if (Merchand* _merchand = dynamic_cast<Merchand*>(_interactable))
+		{
+			_merchand->Toggle();
+		}
+
+		else if (NPC* _npc = dynamic_cast<NPC*>(_interactable))
+		{
+			_npc->OpenDiscussion();
+		}
+	}
 }
 
 

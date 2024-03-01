@@ -1,44 +1,38 @@
 #pragma once
 #include "Actor.h"
 #include "Canvas.h"
-#include "Label.h"
 #include "ShapeWidget.h"
+#include "Label.h"
+
 class InteractableActor : public Actor
 {
-	bool canVerify;
 	Canvas* canvas;
-
-	//ShapeWidget* cursor;
-	//Label* textScript;
-private :
-	//bool NeedVerify()
-	//{
-	//	return cursor->IsVisible() || textScript->IsVisible();
-	//}
+	ShapeWidget* cursor;
+	Label* textScript;
+	
+private:
+	bool NeedToVerify() const
+	{
+		return cursor && cursor->IsVisible()
+			|| textScript && textScript->IsVisible();
+	}
 public:
-	void SetCanVerify(const bool _statue)
+	void OpenDiscussion()
 	{
-		canVerify = _statue;
-	}
-	void SetCursorStatue(const bool _statue)
-	{
-		//cursor->SetVisibilityStatus(_statue);
-	}
-	void SetTextStatue(const bool _statue)
-	{
-		// textScript->SetVisibilityStatus(_statue);
+		cursor->SetVisible(true);
+		textScript->SetVisible(false);
 	}
 	
-	Canvas* GetCanvas() const
-	{
-		return canvas;
-	}
 public:
-	InteractableActor(const string& _name , const ShapeData& _data ,const Vector2f& _sizeDetector);
+	InteractableActor(const string& _name, const ShapeData& _data);
 
-public:
-	// virtual void Speak();
-	virtual void Update(const float _deltaTime);
+private:
 	void Verify();
-	void Init();
+
+
+protected:
+	virtual void Register() override;
+public:
+	virtual void Init() override;
+	virtual void Update(const float _deltaTime);
 };
