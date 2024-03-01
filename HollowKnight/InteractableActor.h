@@ -10,11 +10,28 @@ class InteractableActor : public Actor
 	ShapeWidget* cursor;
 	Label* textScript;
 	
+	bool isPlay;
+
 private:
 	bool NeedToVerify() const
 	{
 		return cursor && cursor->IsVisible()
 			|| textScript && textScript->IsVisible();
+	}
+
+public:
+	ShapeWidget* GetCursor() const 
+	{
+		return cursor;
+	}
+	Label* GetTextScript() const 
+	{
+		return textScript;
+	}
+public:
+	void SetIsPlay(const bool _statue)
+	{
+		isPlay = _statue;
 	}
 public:
 	void OpenDiscussion()
