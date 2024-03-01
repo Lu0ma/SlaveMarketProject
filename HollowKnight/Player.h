@@ -26,8 +26,6 @@ class Player : public Actor
 	Inventory* inventory;
 	CharmsMenu* charmsMenu;
 	PlayerMovementComponent* movement;
-	/*AnimationComponent* animation;
-	vector<string> animPlayer;*/
 	Timer* deathTimer;
 
 	Bench* bench;

@@ -10,7 +10,7 @@ public:
 	{
 		life = _life;
 	}
-	int GetLife()const
+	int GetLife() const
 	{
 		return life;
 	}
