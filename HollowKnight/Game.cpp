@@ -22,8 +22,9 @@ Game::Game()
 	map = new Map();
 	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	camera = new Camera(TARGET_WINDOW);
-
-
+	const vector<string>& _merchandTexts = { "Bonjour je suis un marchand" };
+	merchand = new Merchand(_merchandTexts);
+	pnj = new InteractableActor("Villageois", ShapeData(Vector2f(100.0f, 0.0f), Vector2f(100.0f, 100.0f), " "));
 } 
 
 Game::~Game()
@@ -44,10 +45,26 @@ void Game::Start()
 void Game::Init()
 {
 	menu->Init();
-	map->Init();
+	//map->Init();
+	//TODO move
+	merchand->Init();
+
+	pnj->Init();
+
+	new ActionMap("Merchand", {
+		ActionData("ToggleShop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Equal  })),
+	});
+
+	new ActionMap("Interact With a PNJ", {
+		ActionData("Talk ", [&]() {
+			pnj->SetIsPlay(true);
+			cout << "Welcome to shrek City " << endl;
+		}, InputData({ActionType::KeyPressed , Keyboard::E})),
+	});
 
 	Spawner* _spawner = new Spawner();
 	_spawner->Spawn();
+
 }
 
 void Game::Update()
@@ -64,7 +81,7 @@ void Game::UpdateWindow()
 {
 	window.clear(); // Color(127, 127, 127, 0) gris
 	View _defaultView;
-	CheckCameraState(_defaultView);
+	camera->CheckCameraState(_defaultView);
 
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
@@ -99,23 +116,6 @@ void Game::Launch()
 	Start();
 	Update();
 	Stop();
-}
-
-void Game::CheckCameraState(View& _newView)
-{
-
-	if (camera->GetTargetStat() == TARGET_PLAYER)
-	{
-		_newView = camera->FollowPlayer();
-		window.setView(_newView);
-	}
-
-	else if (camera->GetTargetStat() == TARGET_WINDOW)
-	{
-		_newView = window.getDefaultView();
-		window.setView(_newView);
-	}
-
 }
 
 void Game::Close()

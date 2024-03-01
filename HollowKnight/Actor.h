@@ -31,8 +31,9 @@ public:
 public:
 	Actor(const string& _name, const ShapeData& _data);
 
-private:
+protected:
 	virtual void Register() override;
+private:
 	virtual void Init() = 0;
 
 public:

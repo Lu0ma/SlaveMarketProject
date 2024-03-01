@@ -1,44 +1,55 @@
 #pragma once
 #include "Actor.h"
 #include "Canvas.h"
+#include "ShapeWidget.h"
 #include "Label.h"
 
 class InteractableActor : public Actor
 {
-	bool canVerify;
-	bool Active;
-	Canvas* cursor;
-	Canvas* textScript;
+	Canvas* canvas;
+	ShapeWidget* cursor;
+	Label* textScript;
 	
+	bool isPlay;
+
+private:
+	bool NeedToVerify() const
+	{
+		return cursor && cursor->IsVisible()
+			|| textScript && textScript->IsVisible();
+	}
+
 public:
-	void SetCanVerify(const bool _statue)
-	{
-		canVerify = _statue;
-	}
-	void SetCursorStatue(const bool _statue)
-	{
-		cursor->SetVisibilityStatus(_statue);
-	}
-	void SetTextStatue(const bool _statue)
-	{
-		textScript->SetVisibilityStatus(_statue);
-	}
-	Canvas* GetCursor() const
+	ShapeWidget* GetCursor() const 
 	{
 		return cursor;
 	}
-	Canvas* GetTextScript()
+	Label* GetTextScript() const 
 	{
 		return textScript;
 	}
+public:
+	void SetIsPlay(const bool _statue)
+	{
+		isPlay = _statue;
+	}
+public:
+	void OpenDiscussion()
+	{
+		cursor->SetVisible(true);
+		textScript->SetVisible(false);
+	}
 	
 public:
-	InteractableActor(const string& _name , const ShapeData& _data ,const Vector2f& _sizeDetector);
+	InteractableActor(const string& _name, const ShapeData& _data);
 
-public:
-	// virtual void Speak();
-	virtual void Update(const float _deltaTime);
+private:
 	void Verify();
-	void Init();
-	string Scrolling(const string& _text);
+
+
+protected:
+	virtual void Register() override;
+public:
+	virtual void Init() override;
+	virtual void Update(const float _deltaTime);
 };

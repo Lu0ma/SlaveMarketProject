@@ -26,6 +26,9 @@ class Player : public Actor
 	PlayerMovementComponent* movement;
 	Timer* deathTimer;
 
+
+	float interactRange;
+	Bench* bench;
 	bool isStanding;
 
 public:
@@ -48,6 +51,7 @@ public:
 private:
 	void InitAnimations();
 	void SetupPlayerInput();
+	void TryToInteract();
 
 public:
 	virtual void Init() override;

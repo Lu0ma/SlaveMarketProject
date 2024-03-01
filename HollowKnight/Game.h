@@ -31,6 +31,10 @@ public:
 	{
 		return player;
 	}
+	static RenderWindow& GetWindow()
+	{
+		return window;
+	}
 	static Camera* GetCamera()
 	{
 		return camera;
@@ -53,6 +57,5 @@ public:
 
 public:
 	void Launch();
-	void CheckCameraState(View& _newView);
 	static void Close();
 };
