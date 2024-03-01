@@ -33,8 +33,7 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	components.push_back(movement);
 	components.push_back(animation);
 
-	bench = new Bench();
-	bench->Init();
+	
 	isStanding = true;
 }
 
@@ -104,7 +103,8 @@ void Player::SetupPlayerInput()
 			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[4]);
 			}, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
 		ActionData("Sit", [&]() {
-			if (GetDrawable()->getGlobalBounds().contains(bench->GetShapePosition()) && isStanding)
+			//TODO PLUSIEURS BENCH
+			if (GetDrawable()->getGlobalBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()) && isStanding)
 			{
 				animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[7]);
 				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y - 30.0f);

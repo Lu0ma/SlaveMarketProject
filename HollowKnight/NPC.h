@@ -6,12 +6,10 @@ class NPC : public Actor
 {
 	vector<string> texts;
 
-	
-
 public:
 
 public:
-	NPC();
+	NPC(const Vector2f& _position, const Vector2f& _size);
 	NPC(const vector<string>& _texts);
 
 public:
