@@ -6,6 +6,7 @@
 Animation::Animation(const string& _name, AnimationComponent* _owner, Shape* _shape,
                      const AnimationData& _data) : IManagable(_name)
 {
+    currentIndex = -1;
     owner = _owner;
     shape = _shape;
     data = _data;
