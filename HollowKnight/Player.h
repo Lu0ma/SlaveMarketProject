@@ -4,8 +4,6 @@
 #include "Inventory.h"
 #include "PlayerMovementComponent.h"
 
-#include "Merchand.h"
-#include "Bench.h"
 #include "CharmsMenu.h"
 
 #include"AnimationComponent.h"
@@ -26,7 +24,6 @@ class Player : public Actor
 	vector<string> animPlayer;
 	Timer* deathTimer;
 
-	Bench* bench;
 	bool isStanding;
 
 public:

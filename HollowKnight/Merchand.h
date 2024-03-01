@@ -13,6 +13,7 @@ class Merchand : public NPC
 	Label* descriptionTitle;
 	Label* descriptionText;
 
+
 public:
 	void Toggle()
 	{
@@ -20,7 +21,7 @@ public:
 	}
 
 public:
-	Merchand();
+	Merchand(const Vector2f& _position, const Vector2f& _size);
 
 public:
 	void Init();
