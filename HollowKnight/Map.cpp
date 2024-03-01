@@ -3,18 +3,20 @@
 #include "FileLoader.h"
 
 #define LEVEL "Assets/Levels/SubLevel_"
+#define PATH_MARCHAND "/UIs/Shop/Stand.png"
+#define PATH_PNJ "/UIs/PNJ/PNJ.png"
 
 Map::Map()
 {
 
 	bench = new Bench();
 
-	merchand = new Merchand(ShapeData(Vector2f(300.0f, 0.0f), Vector2f(100.0f, 100.0f), "PATH_MARCHAND"));
-	pnj = new NPC(STRING_ID("Villager"), ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), "PATH_PNJ"));
+	merchand = new Merchand(ShapeData(Vector2f(300.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_MARCHAND));
+	pnj = new NPC(STRING_ID("Villager"), ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PNJ));
 
-	pnj = new InteractableActor("Villageois", ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), " "), Vector2f(1000.0f, 1000.0f));
+	pnj = new InteractableActor(STRING_ID("Villageois"), ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), " "));
 
-	merchand = new Merchand(Vector2f(300.0f, 0.0f), Vector2f(100.0f, 100.0f));
+	merchand = new Merchand(ShapeData(Vector2f(300.0f, 0.0f), Vector2f(100.0f, 100.0f),""), vector<string>());
 
 	background = nullptr;
 
