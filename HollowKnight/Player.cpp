@@ -35,12 +35,6 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 
 	animation = new PlayerAnimationComponent(this);
 	components.push_back(animation);
-
-	interactRange = 50.0f;
-
-	bench = new Bench();
-	bench->Init();
-	isStanding = true;
 }
 
 
@@ -87,7 +81,9 @@ void Player::SetupPlayerInput()
 			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[4]);
 			}, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
 		ActionData("Sit", [&]() {
-			if (GetDrawable()->getGlobalBounds().contains(bench->GetShapePosition()) && isStanding)
+				movement->SitDown();
+			//TODO PLUSIEURS BENCH
+			if (GetDrawable()->getGlobalBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()) && isStanding)
 			{
 				animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[7]);
 				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y - 30.0f);
@@ -99,6 +95,7 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ActionType::KeyPressed, Keyboard::Up })),
 		ActionData("Stand", [&]() {
+			movement->StandUp();
 			if (!isStanding)
 			{
 				animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]);
@@ -113,15 +110,11 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Attack", {
-		ActionData("Slash", [&]() {
-			attack->SpecialAttack();
-			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[1]);
-			cout << "Slash" << endl;
-		}, InputData({ActionType::KeyPressed, Keyboard::R})),
-		ActionData("StopSlash", [&]() {
-			movement->SetDirectionX(0.0f);
-			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]);
-		}, InputData({ActionType::KeyReleased, Keyboard::R})),
+		ActionData("Slash", [&]() { attack->SpecialAttack(); }, InputData({ActionType::KeyPressed, Keyboard::R})),
+		//animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[1]);
+		//cout << "Slash" << endl;
+		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f); }, InputData({ActionType::KeyReleased, Keyboard::R})),
+		// animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]);
 	});
 
 	new ActionMap("Inventory", {
@@ -144,7 +137,7 @@ void Player::SetupPlayerInput()
 		ActionData("ToggleSlam", [&]() { inventory->SetSlamStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num5 })),
 		ActionData("ToggleShriek", [&]() { inventory->SetShriekStatus(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num6 })),
 		ActionData("UpgradeSword", [&]() { inventory->UpdateSwordLevel(true); }, InputData({ ActionType::KeyPressed, Keyboard::Num7 })),
-		});
+	});
 
 	new ActionMap("CharmsMenu", {
 		ActionData("ToogleCharmsMenu", [&]() {
@@ -157,7 +150,7 @@ void Player::SetupPlayerInput()
 				cout << "impossible d'ouvrir l'inventaire des charms" << endl;
 			}
 		}, InputData({ActionType::KeyPressed, Keyboard::P}))
-		});
+	});
 
 	new ActionMap("Interaction", {
 		ActionData("TryToInteract", [&]() { TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E  })),

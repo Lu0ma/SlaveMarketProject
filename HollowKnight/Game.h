@@ -7,10 +7,6 @@
 #include "Player.h"
 #include "Camera.h"
 
-#include "Merchand.h"
-#include "NPC.h"
-#include "InteractableActor.h"
-
 using namespace std;
 using namespace sf;
 
@@ -22,11 +18,9 @@ class Game
 	static RenderWindow window;
 	Menu* menu;
 	static Map* map;
+private:
 	static Player* player;
 	static Camera* camera;
-
-	Merchand* merchand;
-	InteractableActor* pnj;
 
 public:
 	static RenderWindow& GetWindow()
@@ -44,6 +38,10 @@ public:
 	static Camera* GetCamera()
 	{
 		return camera;
+	}
+	static Map* GetMap() 
+	{
+		return map;
 	}
 
 public:

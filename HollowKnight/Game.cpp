@@ -22,11 +22,6 @@ Game::Game()
 	map = new Map();
 	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	camera = new Camera(TARGET_WINDOW);
-
-	//TODO move
-	const vector<string>& _merchandTexts = { "Bonjour je suis un marchand" };
-	merchand = new Merchand(_merchandTexts);
-	pnj = new InteractableActor("Villageois", ShapeData(Vector2f(100.0f, 0.0f), Vector2f(100.0f, 100.0f), " "));
 } 
 
 Game::~Game()
@@ -41,16 +36,12 @@ void Game::Start()
 	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
-	
 }
 
 void Game::Init()
 {
 	menu->Init();
-	//map->Init();
-
-	merchand->Init();
-	pnj->Init();
+	map->Init();
 
 	//TODO move
 	Spawner* _spawner = new Spawner();
@@ -106,23 +97,6 @@ void Game::Launch()
 	Start();
 	Update();
 	Stop();
-}
-
-void Game::CheckCameraState(View& _newView)
-{
-
-	if (camera->GetTargetStat() == TARGET_PLAYER)
-	{
-		_newView = camera->FollowPlayer();
-		window.setView(_newView);
-	}
-
-	else if (camera->GetTargetStat() == TARGET_WINDOW)
-	{
-		_newView = window.getDefaultView();
-		window.setView(_newView);
-	}
-
 }
 
 void Game::Close()

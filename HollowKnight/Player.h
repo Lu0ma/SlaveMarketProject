@@ -6,8 +6,6 @@
 #include "PlayerMovementComponent.h"
 #include"PlayerAnimationComponent.h"
 
-#include "Merchand.h"
-#include "Bench.h"
 #include "CharmsMenu.h"
 
 #include"AnimationComponent.h"
@@ -29,7 +27,6 @@ class Player : public Actor
 
 	float interactRange;
 
-	Bench* bench;
 	bool isStanding;
 
 public:

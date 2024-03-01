@@ -1,8 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "ShapeObject.h"
+#include "Bench.h"
+#include "Merchand.h"
+#include "InteractableActor.h"
 
 using namespace std;
 using namespace sf;
+
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
 
 struct WallData
 {
@@ -25,7 +32,21 @@ struct MapData
 
 class Map
 {
+	Bench* bench;
 
+	Merchand* merchand;
+
+	InteractableActor* pnj;
+
+	ShapeObject* background;
+
+public:
+	Bench* GetBench() const
+	{
+		return bench;
+	}
+public:
+	Map();
 private:
 	MapData LoadMapData(const string& _path);
 

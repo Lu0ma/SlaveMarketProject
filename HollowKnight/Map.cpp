@@ -3,6 +3,21 @@
 
 #define LEVEL "Assets/Levels/SubLevel_"
 
+Map::Map()
+{
+
+	bench = new Bench();
+	bench->Init();
+
+	merchand = new Merchand(Vector2f(300.0f, 0.0f), Vector2f(100.0f, 100.0f));
+	merchand->Init();
+
+	pnj = new InteractableActor("Villageois", ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), " "), Vector2f(1000.0f, 1000.0f));
+	pnj->Init();
+
+	background = nullptr;
+}
+
 MapData Map::LoadMapData(const string& _path)
 {
 	MapData _data;
@@ -29,12 +44,13 @@ MapData Map::LoadMapData(const string& _path)
 	return _data;
 }
 
-
 void Map::Init()
 {
-	for (int _index = 1; _index <= 1; _index++)
-	{
-		const MapData& _data = LoadMapData(LEVEL + to_string(_index) + ".txt");
-		cout << _data.backgroundPath << endl;
-	}
+	//for (int _index = 1; _index <= 1; _index++)
+	//{
+	//	const MapData& _data = LoadMapData(LEVEL + to_string(_index) + ".txt");
+	//	cout << _data.backgroundPath << endl;
+	//}
+	
+	background = new ShapeObject(ShapeData(Vector2f(-640.0f, -360.0f), Vector2f(2340.0f, 985.0f), "/Levels/Environment_GROUND.png"));
 }
