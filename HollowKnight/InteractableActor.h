@@ -9,14 +9,11 @@ class InteractableActor : public Actor
 	Canvas* canvas;
 	ShapeWidget* cursor;
 	Label* textScript;
-	
-	bool isPlay;
 
 private:
 	bool NeedToVerify() const
 	{
-		return cursor && cursor->IsVisible()
-			|| textScript && textScript->IsVisible();
+		return textScript->IsVisible();
 	}
 
 public:
@@ -28,28 +25,16 @@ public:
 	{
 		return textScript;
 	}
-public:
-	void SetIsPlay(const bool _statue)
-	{
-		isPlay = _statue;
-	}
-public:
-	void OpenDiscussion()
-	{
-		cursor->SetVisible(true);
-		textScript->SetVisible(false);
-	}
 	
 public:
 	InteractableActor(const string& _name, const ShapeData& _data);
 
 private:
+	virtual void Register() override;
 	void Verify();
 
-
-protected:
-	virtual void Register() override;
 public:
 	virtual void Init() override;
 	virtual void Update(const float _deltaTime);
+	void OpenDiscussion();
 };

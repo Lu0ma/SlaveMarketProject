@@ -63,44 +63,44 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	const float _finalSpeed = isSprinting ? sprintSpeed : speed;
 	_offset = direction * _finalSpeed * _deltaTime;
 
-	// Si je suis en l'air et que je ne saute pas
-	if (!(isOnGround = CheckGround()) && !isJumping)
-	{
-		// Application de la gravité
-		_offset = direction + Vector2f(0.0f, 1.0f);
-		Normalize(_offset);
-		_offset *= gravity * _deltaTime;
-	}
+	//// Si je suis en l'air et que je ne saute pas
+	//if (!(isOnGround = CheckGround()) && !isJumping)
+	//{
+	//	// Application de la gravité
+	//	_offset = direction + Vector2f(0.0f, 1.0f);
+	//	Normalize(_offset);
+	//	_offset *= gravity * _deltaTime;
+	//}
 
-	// Si je suis au sol
-	else
-	{
-		// Si je suis en train de dash
-		if (isDashing)
-		{
-			// Application de l'esquive
-			_offset = dashDirection * dashSpeed * _deltaTime;
-		}
+	//// Si je suis au sol
+	//else
+	//{
+	//	// Si je suis en train de dash
+	//	if (isDashing)
+	//	{
+	//		// Application de l'esquive
+	//		_offset = dashDirection * dashSpeed * _deltaTime;
+	//	}
 
-		// Si je suis en train de jump et que je ne dash pas
-		else if (isJumping)
-		{
-			// Application du saut
-			_offset = direction + Vector2f(0.0f, -1.0f);
-			Normalize(_offset);
-			_offset *= jumpForce * _deltaTime;
-		}
+	//	// Si je suis en train de jump et que je ne dash pas
+	//	else if (isJumping)
+	//	{
+	//		// Application du saut
+	//		_offset = direction + Vector2f(0.0f, -1.0f);
+	//		Normalize(_offset);
+	//		_offset *= jumpForce * _deltaTime;
+	//	}
 
-		// S'il faut que je reset mon dash
-		if (!canDash && !isResetingDash)
-		{
-			isResetingDash = true;
-			new Timer([this]() {
-				canDash = true;
-				isResetingDash = false;
-			}, seconds(dashCooldown));
-		}
-	}
+	//	// S'il faut que je reset mon dash
+	//	if (!canDash && !isResetingDash)
+	//	{
+	//		isResetingDash = true;
+	//		new Timer([this]() {
+	//			canDash = true;
+	//			isResetingDash = false;
+	//		}, seconds(dashCooldown));
+	//	}
+	//}
 
 	owner->GetDrawable()->move(_offset);
 }
@@ -136,6 +136,7 @@ void PlayerMovementComponent::SitDown()
 	const Vector2f& _position = owner->GetShapePosition();
 	owner->GetDrawable()->setPosition(_position.x, _position.y - sitOffset);
 	isStanding = false;
+	canMove = false;
 
 	animation->GetCurrentAnimation()->RunAnimation("Sit");
 }
@@ -151,6 +152,7 @@ void PlayerMovementComponent::StandUp()
 	const Vector2f& _position = owner->GetShapePosition();
 	owner->GetDrawable()->setPosition(_position.x, _position.y + sitOffset);
 	isStanding = true;
+	canMove = true;
 
 	animation->GetCurrentAnimation()->RunAnimation("StopRight");
 }

@@ -42,11 +42,14 @@ class PlayerMovementComponent : public MovementComponent
 public:
 	void SetDirectionX(const float _directionX, const string& _animName)
 	{
+		if (!canMove) return;
+
 		direction.x = _directionX;
 		animation->GetCurrentAnimation()->RunAnimation(_animName);
 	}
 	void SetDirectionY(const float _directionY)
 	{
+		if (!canMove) return;
 		direction.y = _directionY;
 	}
 	void SetSprint(const bool _status)
@@ -57,7 +60,6 @@ public:
 	{
 		return isStanding;
 	}
-
 
 public:
 	PlayerMovementComponent(Actor* _owner);
