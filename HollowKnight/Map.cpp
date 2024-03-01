@@ -1,4 +1,5 @@
 #include "Map.h"
+#include "Macro.h"
 #include "FileLoader.h"
 
 #define LEVEL "Assets/Levels/SubLevel_"
@@ -9,10 +10,10 @@ Map::Map()
 	bench = new Bench();
 	bench->Init();
 
-	merchand = new Merchand(Vector2f(300.0f, 0.0f), Vector2f(100.0f, 100.0f));
+	merchand = new Merchand(ShapeData(Vector2f(300.0f, 0.0f), Vector2f(100.0f, 100.0f), "PATH_MARCHAND"));
 	merchand->Init();
 
-	pnj = new InteractableActor("Villageois", ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), " "), Vector2f(1000.0f, 1000.0f));
+	pnj = new NPC(STRING_ID("Villager"), ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), "PATH_PNJ"));
 	pnj->Init();
 
 	background = nullptr;

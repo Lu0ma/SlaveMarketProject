@@ -8,7 +8,7 @@ class PlayerAnimationComponent : public Component
 	vector<string> animPlayer;
 
 public:
-	AnimationComponent* GetAnimation()const
+	AnimationComponent* GetCurrentAnimation()const
 	{
 		return animation;
 	}

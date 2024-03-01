@@ -20,6 +20,4 @@ public:
 
 public:
 	void TakeDamages(const int _damages);
-
 };
-

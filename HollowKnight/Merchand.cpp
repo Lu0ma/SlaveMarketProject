@@ -10,7 +10,8 @@
 #define PATH_GEO "UIs/Shop/Geo.png"
 #define FONT "Font.ttf"
 
-Merchand::Merchand(const ShapeData& _data, const vector<string>& _texts) : NPC(_data, _texts)
+Merchand::Merchand(const ShapeData& _data, const vector<string>& _texts)
+				  : NPC(STRING_ID("Merchand"), _data, _texts)
 {
 	canvas = new Canvas("Shop");
 	buttons = vector<Button*>();

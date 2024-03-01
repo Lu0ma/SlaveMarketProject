@@ -1,5 +1,13 @@
 #pragma once
-class InteractionComponent
-{
-};
+#include "Component.h"
 
+class InteractionComponent : public Component
+{
+	float range;
+
+public:
+	InteractionComponent(Actor* _owner);
+
+public:
+	void TryToInteract();
+};

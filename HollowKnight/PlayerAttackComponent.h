@@ -1,19 +1,20 @@
 #pragma once
-#include<iostream>
-#include"Component.h"
+#include "Component.h"
+#include "PlayerAnimationComponent.h"
 
 using namespace std;
 
 class PlayerAttackComponent : public Component
 {
 	int damages;
+	PlayerAnimationComponent* animation;
 
 public:
 	void SetDamages(const int _damages)
 	{
 		damages = _damages;
 	}
-	int GetDamages()const
+	int GetDamages() const
 	{
 		return damages;
 	}

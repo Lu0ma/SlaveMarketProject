@@ -1,18 +1,12 @@
 #pragma once
 #include "Actor.h"
 #include "PlayerStat.h"
-#include"PlayerAttackComponent.h"
 #include "Inventory.h"
-#include "PlayerMovementComponent.h"
-#include"PlayerAnimationComponent.h"
-
 #include "CharmsMenu.h"
-
-#include"AnimationComponent.h"
-#include<vector>
-#include"Timer.h"
-#include<functional>
-
+#include "PlayerMovementComponent.h"
+#include "PlayerAttackComponent.h"
+#include "PlayerAnimationComponent.h"
+#include "InteractionComponent.h"
 
 using namespace std;
 
@@ -24,10 +18,7 @@ class Player : public Actor
 	PlayerMovementComponent* movement;
 	PlayerAttackComponent* attack;
 	PlayerAnimationComponent* animation;
-
-	float interactRange;
-
-	bool isStanding;
+	InteractionComponent* interaction;
 
 public:
 	void SetStatus(const bool _status)
@@ -49,9 +40,8 @@ public:
 private:
 	void InitAnimations();
 	void SetupPlayerInput();
-	void TryToInteract();
+	void TryToOpenCharmsMenu();
 
 public:
 	virtual void Init() override;
-	void Update();
 };

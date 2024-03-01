@@ -6,7 +6,7 @@
 #define FONT "Font.ttf"
 #define UI_BUTTON "UIs/Charms/bottom_fleur0002.png"
 
-InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name , _data)
+InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
 	canvas = new Canvas(STRING_ID("Interactable"));
 	cursor = nullptr;

@@ -62,7 +62,7 @@ void Game::UpdateWindow()
 {
 	window.clear(); // Color(127, 127, 127, 0) gris
 	View _defaultView;
-	CheckCameraState(_defaultView);
+	//CheckCameraState(_defaultView);
 
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{

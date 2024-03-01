@@ -27,6 +27,10 @@ public:
 	{
 		return shape->getPosition();
 	}
+	FloatRect GetBounds() const
+	{
+		return shape->getGlobalBounds();
+	}
 
 public:
 	Actor(const string& _name, const ShapeData& _data);

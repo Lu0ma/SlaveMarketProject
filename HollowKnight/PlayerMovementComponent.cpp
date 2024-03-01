@@ -1,5 +1,7 @@
 #include "PlayerMovementComponent.h"
 #include "Actor.h"
+#include "PlayerAnimationComponent.h"
+#include "Game.h"
 #include "Timer.h"
 #include "Macro.h"
 #include "Kismet.h"
@@ -19,8 +21,6 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	isOnGround = false;
 	checkGroundDistance = 1.7f;
 
-	canJumpAndDash = false;
-
 	// Jump
 	isJumping = false;
 	jumpForce = 0.1f;
@@ -34,6 +34,13 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	dashSpeed = 0.75f;
 	dashDuration = 0.2f;
 	dashCooldown = 3.0f;
+
+	// Sit
+	isStanding = true;
+	sitOffset = 30.0f;
+
+	// Components
+	animation = owner->GetComponent<PlayerAnimationComponent>();
 }
 
 
@@ -56,46 +63,42 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	const float _finalSpeed = isSprinting ? sprintSpeed : speed;
 	_offset = direction * _finalSpeed * _deltaTime;
 
-	// Si je suis en donjon
-	if (canJumpAndDash)
+	// Si je suis en l'air et que je ne saute pas
+	if (!(isOnGround = CheckGround()) && !isJumping)
 	{
-		// Si je suis en l'air et que je ne saute pas
-		if (!(isOnGround = CheckGround()) && !isJumping)
+		// Application de la gravité
+		_offset = direction + Vector2f(0.0f, 1.0f);
+		Normalize(_offset);
+		_offset *= gravity * _deltaTime;
+	}
+
+	// Si je suis au sol
+	else
+	{
+		// Si je suis en train de dash
+		if (isDashing)
 		{
-			// Application de la gravité
-			_offset = direction + Vector2f(0.0f, 1.0f);
-			Normalize(_offset);
-			_offset *= gravity * _deltaTime;
+			// Application de l'esquive
+			_offset = dashDirection * dashSpeed * _deltaTime;
 		}
 
-		// Si je suis au sol
-		else
+		// Si je suis en train de jump et que je ne dash pas
+		else if (isJumping)
 		{
-			// Si je suis en train de dash
-			if (isDashing)
-			{
-				// Application de l'esquive
-				_offset = dashDirection * dashSpeed * _deltaTime;
-			}
+			// Application du saut
+			_offset = direction + Vector2f(0.0f, -1.0f);
+			Normalize(_offset);
+			_offset *= jumpForce * _deltaTime;
+		}
 
-			// Si je suis en train de jump et que je ne dash pas
-			else if (isJumping)
-			{
-				// Application du saut
-				_offset = direction + Vector2f(0.0f, -1.0f);
-				Normalize(_offset);
-				_offset *= jumpForce * _deltaTime;
-			}
-
-			// S'il faut que je reset mon dash
-			if (!canDash && !isResetingDash)
-			{
-				isResetingDash = true;
-				new Timer([this]() {
-					canDash = true;
-					isResetingDash = false;
-				}, seconds(dashCooldown));
-			}
+		// S'il faut que je reset mon dash
+		if (!canDash && !isResetingDash)
+		{
+			isResetingDash = true;
+			new Timer([this]() {
+				canDash = true;
+				isResetingDash = false;
+			}, seconds(dashCooldown));
 		}
 	}
 
@@ -105,8 +108,10 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 void PlayerMovementComponent::Jump()
 {
 	if (!isOnGround || isJumping) return;
+
 	isJumping = true;
 	new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
+	animation->GetCurrentAnimation()->RunAnimation("Jump");
 }
 
 void PlayerMovementComponent::Dash()
@@ -117,4 +122,35 @@ void PlayerMovementComponent::Dash()
 	isDashing = true;
 	dashDirection = direction;
 	new Timer([this]() { isDashing = false; }, seconds(dashDuration));
+	animation->GetCurrentAnimation()->RunAnimation("Dash");
+}
+
+void PlayerMovementComponent::SitDown()
+{
+	if (!isStanding || !owner->GetBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()))
+	{
+		cout << "Impossible de se lever !" << endl;
+		return;
+	}
+
+	const Vector2f& _position = owner->GetShapePosition();
+	owner->GetDrawable()->setPosition(_position.x, _position.y - sitOffset);
+	isStanding = false;
+
+	animation->GetCurrentAnimation()->RunAnimation("Sit");
+}
+
+void PlayerMovementComponent::StandUp()
+{
+	if (isStanding)
+	{
+		cout << "impossible de ce lever !" << endl;
+		return;
+	}
+
+	const Vector2f& _position = owner->GetShapePosition();
+	owner->GetDrawable()->setPosition(_position.x, _position.y + sitOffset);
+	isStanding = true;
+
+	animation->GetCurrentAnimation()->RunAnimation("StopRight");
 }

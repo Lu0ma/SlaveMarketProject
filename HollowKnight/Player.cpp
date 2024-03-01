@@ -13,7 +13,6 @@
 #include "ActorManager.h"
 #include "InputManager.h"
 #include "Timer.h"
-#include "InteractableActor.h"
 
 #define PATH_ITEM "UIs/Inventory/Item.png"
 #define PATH_ITEM2 "test.png"
@@ -27,14 +26,17 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	inventory = new Inventory();
 	charmsMenu = new CharmsMenu();
 
+	animation = new PlayerAnimationComponent(this);
+	components.push_back(animation);
+
 	movement = new PlayerMovementComponent(this);
 	components.push_back(movement);
 
 	attack = new PlayerAttackComponent(this,1);
 	components.push_back(attack);
-
-	animation = new PlayerAnimationComponent(this);
-	components.push_back(animation);
+	
+	interaction = new InteractionComponent(this);
+	components.push_back(interaction);
 }
 
 
@@ -47,8 +49,8 @@ void Player::SetupPlayerInput()
 {
 	new ActionMap("Stats", {
 		ActionData("AddMana", [&]() { stats->UseMana(10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Space  })),
-		ActionData("RemoveMana", [&]() { stats->UseMana(-10.0f); stats->UpdateLife(1); animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[8]); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
-		ActionData("StopRemoveMana",[&]() { animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]); }, InputData({ ActionType::KeyReleased, Keyboard::Escape })),
+		ActionData("RemoveMana", [&]() { stats->UseMana(-10.0f); stats->UpdateLife(1); animation->GetCurrentAnimation()->RunAnimation(animation->GetAnimPlayer()[8]); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
+		ActionData("StopRemoveMana",[&]() { animation->GetCurrentAnimation()->RunAnimation(animation->GetAnimPlayer()[0]); }, InputData({ ActionType::KeyReleased, Keyboard::Escape })),
 		//ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
 		ActionData("RemoveLife", [&]() { stats->UpdateLife(-1); }, InputData({ ActionType::KeyPressed, Keyboard::Num0 })),
 		ActionData("AddLifeSlot", [&]() { stats->AddLife(); }, InputData({ ActionType::KeyPressed, Keyboard::O })),
@@ -56,65 +58,19 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Movements", {
-		ActionData("Right", [&]() { 
-			movement->SetDirectionX(1.0f);
-			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[2]);
-		}, InputData({ ActionType::KeyPressed, Keyboard::D })),
-		ActionData("StopRight", [&]() {
-			movement->SetDirectionX(0.0f);
-			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]);
-		}, InputData({ ActionType::KeyReleased, Keyboard::D })),
-		ActionData("Left", [&]() {
-			movement->SetDirectionX(-1.0f);
-			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[3]);
-		}, InputData({ ActionType::KeyPressed, Keyboard::Q })),
-		ActionData("StopLeft", [&]() {
-			movement->SetDirectionX(0.0f);
-			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[9]);
-		}, InputData({ ActionType::KeyReleased, Keyboard::Q })),
-		ActionData("Jump", [&]() {
-			movement->Jump();
-			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[6]);
-		}, InputData({ ActionType::KeyReleased, Keyboard::Space })),
-		ActionData("Dash", [&]() {
-			movement->Dash();
-			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[4]);
-			}, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
-		ActionData("Sit", [&]() {
-				movement->SitDown();
-			//TODO PLUSIEURS BENCH
-			if (GetDrawable()->getGlobalBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()) && isStanding)
-			{
-				animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[7]);
-				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y - 30.0f);
-				isStanding = false;
-			}
-			else
-			{
-				cout << "impossible de s'assoire" << endl;
-			}
-		}, InputData({ActionType::KeyPressed, Keyboard::Up })),
-		ActionData("Stand", [&]() {
-			movement->StandUp();
-			if (!isStanding)
-			{
-				animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]);
-				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y + 30.0f);
-				isStanding = true;
-			}
-			else
-			{
-				cout << "impossible de ce levé" << endl;
-			}
-		}, InputData({ActionType::KeyPressed, Keyboard::Down}))
+		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
+		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
+		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
+		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
+		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
+		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
+		ActionData("Sit", [&]() { movement->SitDown(); }, InputData({ActionType::KeyPressed, Keyboard::Up })),
+		ActionData("Stand", [&]() { movement->StandUp(); }, InputData({ActionType::KeyPressed, Keyboard::Down}))
 	});
 
 	new ActionMap("Attack", {
 		ActionData("Slash", [&]() { attack->SpecialAttack(); }, InputData({ActionType::KeyPressed, Keyboard::R})),
-		//animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[1]);
-		//cout << "Slash" << endl;
-		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f); }, InputData({ActionType::KeyReleased, Keyboard::R})),
-		// animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]);
+		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "Right"); }, InputData({ActionType::KeyReleased, Keyboard::R})),
 	});
 
 	new ActionMap("Inventory", {
@@ -140,47 +96,23 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("CharmsMenu", {
-		ActionData("ToogleCharmsMenu", [&]() {
-			if (!isStanding)
-			{
-				charmsMenu->Toggle();
-			}
-			else
-			{
-				cout << "impossible d'ouvrir l'inventaire des charms" << endl;
-			}
-		}, InputData({ActionType::KeyPressed, Keyboard::P}))
+		ActionData("ToogleCharmsMenu", [&]() { TryToOpenCharmsMenu(); }, InputData({ActionType::KeyPressed, Keyboard::P}))
 	});
 
 	new ActionMap("Interaction", {
-		ActionData("TryToInteract", [&]() { TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E  })),
-		/*ActionData("ToggleShop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Equal  })),
-		ActionData("Talk", [&]() {
-			pnj->GetTextScript()->SetVisibilityStatus(true);
-			pnj->GetCursor()->SetVisibilityStatus(false);
-		}, InputData({ActionType::KeyPressed , Keyboard::E})),*/
+		ActionData("TryToInteract", [&]() { interaction->TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E  })),
 	});
 }
 
-void Player::TryToInteract()
+void Player::TryToOpenCharmsMenu()
 {
-	cout << "Romain c'est une SALOPE" << endl;
-	
-	for (InteractableActor* _interactable : ActorManager::GetInstance().GetInteractables())
+	if (movement->IsStanding())
 	{
-		const float _distance = Distance(GetShapePosition(), _interactable->GetShapePosition());
-		if (_distance > interactRange) continue;
-
-		if (Merchand* _merchand = dynamic_cast<Merchand*>(_interactable))
-		{
-			_merchand->Toggle();
-		}
-
-		else if (NPC* _npc = dynamic_cast<NPC*>(_interactable))
-		{
-			_npc->OpenDiscussion();
-		}
+		cout << "Impossible d'ouvrir l'inventaire des charms !" << endl;
+		return;
 	}
+
+	charmsMenu->Toggle();
 }
 
 
@@ -192,28 +124,4 @@ void Player::Init()
 
 	InitAnimations();
 	SetupPlayerInput();
-}
-
-
-void Player::Update()// TODO
-{
-	//else if (stats->GetCurrentLife() == 0)
-	//{
-	//	cout << "Tu es mort" << endl;
-	//	//creer un mob qui va etre a la position de la mort du joueur
-	//	ShapeData _data = ShapeData(GetShapePosition(), Vector2f(100.0f, 100.0f), PATH_DEATHMOB, IntRect(0, 18, 316, 346));
-	//	DeathMob* _death = new DeathMob(_data);
-
-	//	//Changement de l'anim du joueur pdt 3sec avant de respawn
-	//	function<void()> _callback = [&]() {
-
-	//		this->GetComponent<AnimationComponent>()->RunAnimation(animPlayer[5]);
-	//	};
-
-	//	deathTimer = new Timer(_callback, seconds(3.0f), true, false);
-
-	//	//set la position au debut du niveau
-	//	//this->GetDrawable()->setPosition(//Checkpoint); 
-	//	stats->SetCurrentLife(stats->GetMaxLife()); // Lui redonner full vie
-	//}
 }

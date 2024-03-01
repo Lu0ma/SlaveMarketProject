@@ -1,5 +1,6 @@
 #pragma once
 #include "MovementComponent.h"
+#include "PlayerAnimationComponent.h"
 
 class PlayerMovementComponent : public MovementComponent
 {
@@ -16,10 +17,6 @@ class PlayerMovementComponent : public MovementComponent
 	bool isOnGround;
 	float checkGroundDistance;
 
-	#pragma region Jump & Dash
-
-	bool canJumpAndDash;
-
 	// Jump
 	bool isJumping;
 	float jumpForce;
@@ -35,12 +32,18 @@ class PlayerMovementComponent : public MovementComponent
 	float dashCooldown;
 	Vector2f dashDirection;
 
-	#pragma endregion
+	// Sit
+	bool isStanding;
+	float sitOffset;
+
+	// Components
+	PlayerAnimationComponent* animation;
 
 public:
-	void SetDirectionX(const float _directionX)
+	void SetDirectionX(const float _directionX, const string& _animName)
 	{
 		direction.x = _directionX;
+		animation->GetCurrentAnimation()->RunAnimation(_animName);
 	}
 	void SetDirectionY(const float _directionY)
 	{
@@ -50,10 +53,11 @@ public:
 	{
 		isSprinting = _status;
 	}
-	void SetCanJumpAndDash(const bool _status)
+	bool IsStanding() const
 	{
-		canJumpAndDash = _status;
+		return isStanding;
 	}
+
 
 public:
 	PlayerMovementComponent(Actor* _owner);
@@ -65,4 +69,6 @@ public:
 	virtual void Update(const float _deltaTime) override;
 	void Jump();
 	void Dash();
+	void SitDown();
+	void StandUp();
 };
