@@ -59,12 +59,10 @@ void Game::Init()
 
 	new ActionMap("Interact With a PNJ", {
 		ActionData("Talk ", [&]() {
-		/*	pnj->GetTextScript()->SetVisibilityStatus(true);
-			pnj->GetCursor()->SetVisibilityStatus(false);*/
+			pnj->SetIsPlay(true);
 			cout << "Welcome to shrek City " << endl;
 		}, InputData({ActionType::KeyPressed , Keyboard::E})),
 	});
-	pnj->Init();
 	//TODO move
 	Spawner* _spawner = new Spawner();
 	_spawner->Spawn();

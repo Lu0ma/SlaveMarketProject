@@ -1,13 +1,2 @@
-﻿  Camera.cpp
-  CharmsMenu.cpp
-  DeathMob.cpp
-  Game.cpp
-  InteractableActor.cpp
-  Inventory.cpp
-  Main.cpp
-  Menu.cpp
-  Merchand.cpp
-  Player.cpp
-  TitleMenu.cpp
-  Generating Code...
+﻿  InteractableActor.cpp
   HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

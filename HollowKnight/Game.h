@@ -29,10 +29,6 @@ class Game
 	InteractableActor* pnj;
 
 public:
-	static RenderWindow& GetWindow()
-	{
-		return window;
-	}
 	static Vector2f GetWindowSize()
 	{
 		return Vector2f(window.getSize());

@@ -11,7 +11,7 @@ InteractableActor::InteractableActor(const string& _name, const ShapeData& _data
 	canvas = new Canvas(STRING_ID("Interactable"));
 	cursor = nullptr;
 	textScript = nullptr;
-
+	isPlay = true;
 	Register();
 }
 
@@ -36,20 +36,27 @@ void InteractableActor::Init()
 void InteractableActor::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
-
 	Verify();
 }
 
 void InteractableActor::Verify()
 {
-	if (!NeedToVerify()) return;
-
+	if(!NeedToVerify()) return;
  	Player* _player = Game::GetPlayer();
 	FloatRect _rectPNJ = shape->getGlobalBounds();
-
-	if (!_rectPNJ.intersects(_player->GetDrawable()->getGlobalBounds()))
+	
+	if (_rectPNJ.intersects(_player->GetDrawable()->getGlobalBounds()))
+	{
+		cursor->SetVisible(true);
+		if (isPlay)
+		{
+			textScript->SetVisible(true);
+		}
+	}
+	else
 	{
 		cursor->SetVisible(false);
 		textScript->SetVisible(false);
+		isPlay = false;
 	}
 }
