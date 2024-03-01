@@ -30,6 +30,14 @@ struct MapData
 	vector<WallData> walls;
 };
 
+struct PlateformData
+{
+	Vector2f position;
+	Vector2f size;
+	string path;
+
+};
+
 class Map
 {
 	Bench* bench;
@@ -37,6 +45,9 @@ class Map
 	InteractableActor* pnj;
 	ShapeObject* background;
 	ShapeObject* barrack;
+
+	vector<PlateformData> plateformsData;
+
 	vector<ShapeObject*> drawables;
 
 public:
@@ -55,6 +66,7 @@ public:
 private:
 	MapData LoadMapData(const string& _path);
 
+	void InitPlateforms();
 public:
 	void Init();
 };

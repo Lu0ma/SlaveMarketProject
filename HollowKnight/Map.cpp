@@ -7,12 +7,18 @@
 #define PATH_MARCHAND "/UIs/Shop/Stand.png"
 #define PATH_PNJ "/UIs/PNJ/PNJ.png"
 
+#define PATH_THIN "Levels/Thin.png"
+#define PATH_MID "Levels/Mid.png"
+#define PATH_WIDE "Levels/Wide.png"
+
 Map::Map()
 {
 	bench = new Bench();
 	pnj = new NPC(STRING_ID("Villageois"), ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PNJ));
 	merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_MARCHAND), vector<string>());
 	background = nullptr;
+
+	//TODO move
 	barrack = nullptr;
 }
 
@@ -21,7 +27,7 @@ MapData Map::LoadMapData(const string& _path)
 {
 	MapData _data;
 	const string& _symbol = " = ";
-	
+
 	_data.backgroundPath = GetStringAfterSymbol(GetLineByText("BackgroundPath", _path), _symbol);
 
 	const float _bgPosX = stof(GetStringAfterSymbol(GetLineByText("BackgroundPosX", _path), _symbol));
@@ -41,6 +47,33 @@ MapData Map::LoadMapData(const string& _path)
 	_data.clampCamMax = Vector2f(_bgPosX, _bgPosY);
 
 	return _data;
+}
+
+void Map::InitPlateforms()
+{
+	plateformsData = {
+		{
+			Vector2f(0.0f, 85.0f),
+			Vector2f(134.0f, 84.0f),
+			PATH_THIN
+		},
+		{
+			Vector2f(0.0f, 0.0f),
+			Vector2f(198.0f, 85.0f),
+			PATH_MID
+		},
+		{
+			Vector2f(0.0f , -85.0f),
+			Vector2f(263.0f , 85.0f),
+			PATH_WIDE
+		}
+	};
+
+	for (int _index = 0, _count = 0; _index < plateformsData.size(); _index++, _count++)
+	{
+		Actor* _plateforms = new Actor("Ground", ShapeData(Vector2f(plateformsData[_index].position.x, plateformsData[_index].position.y), Vector2f(plateformsData[_index].size.x, plateformsData[_index].size.y), plateformsData[_index].path));
+		drawables.push_back(_plateforms);
+	}
 }
 
 
@@ -65,4 +98,7 @@ void Map::Init()
 	//TODO modify ?
 	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-150.0f, 49.5f), Vector2f(5550.0f, 50.0f), ""));
 	_ground->GetDrawable()->setFillColor(Color::Red);
+
+	InitPlateforms();
+
 }
