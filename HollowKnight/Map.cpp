@@ -8,15 +8,17 @@ Map::Map()
 {
 
 	bench = new Bench();
-	bench->Init();
 
 	merchand = new Merchand(ShapeData(Vector2f(300.0f, 0.0f), Vector2f(100.0f, 100.0f), "PATH_MARCHAND"));
-	merchand->Init();
-
 	pnj = new NPC(STRING_ID("Villager"), ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), "PATH_PNJ"));
-	pnj->Init();
+
+	pnj = new InteractableActor("Villageois", ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), " "), Vector2f(1000.0f, 1000.0f));
+
+	merchand = new Merchand(Vector2f(300.0f, 0.0f), Vector2f(100.0f, 100.0f));
 
 	background = nullptr;
+
+	barrack = nullptr;
 }
 
 MapData Map::LoadMapData(const string& _path)
@@ -52,6 +54,21 @@ void Map::Init()
 	//	const MapData& _data = LoadMapData(LEVEL + to_string(_index) + ".txt");
 	//	cout << _data.backgroundPath << endl;
 	//}
+	bench->Init();
+	pnj->Init();
+	merchand->Init();
+
+	background = new ShapeObject(ShapeData(Vector2f(-300.0f, -SCREEN_HEIGHT + 35.0f), Vector2f(2340.0f, 985.0f), "/Levels/Environment_GROUND.png"));
+	drawables.push_back(background);
+
+
+	//TODO move
+	barrack = new ShapeObject(ShapeData(Vector2f(1915.0f, -SCREEN_HEIGHT - 30.0f), Vector2f(3613.0f, 908.0f), "/Levels/Environment.png"));
+	drawables.push_back(barrack);
+
+	//TODO modify ?
+	ShapeObject* _ground = new ShapeObject(ShapeData(Vector2f(-150.0f, 49.5f), Vector2f(5550.0f, 10.0f), ""));
+	_ground->GetDrawable()->setFillColor(Color::Red);
+	drawables.push_back(_ground);
 	
-	background = new ShapeObject(ShapeData(Vector2f(-640.0f, -360.0f), Vector2f(2340.0f, 985.0f), "/Levels/Environment_GROUND.png"));
 }

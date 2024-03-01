@@ -40,11 +40,20 @@ class Map
 
 	ShapeObject* background;
 
+	ShapeObject* barrack;
+
+	vector<ShapeObject*> drawables;
+
 public:
 	Bench* GetBench() const
 	{
 		return bench;
 	}
+	vector<ShapeObject*> GetAllDrawables() const
+	{
+		return drawables;
+	}
+
 public:
 	Map();
 private:
