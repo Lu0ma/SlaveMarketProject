@@ -21,12 +21,11 @@ using namespace std;
 class Player : public Actor
 {
 	PlayerStat* stats;
-	PlayerAttackComponent* attack;
-	PlayerAnimationComponent* animation;
 	Inventory* inventory;
 	CharmsMenu* charmsMenu;
 	PlayerMovementComponent* movement;
-	Timer* deathTimer;
+	PlayerAttackComponent* attack;
+	PlayerAnimationComponent* animation;
 
 	float interactRange;
 

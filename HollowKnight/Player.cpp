@@ -24,13 +24,16 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	shape->setFillColor(Color::Red);
 
 	stats = new PlayerStat();
-	attack = new PlayerAttackComponent(this,1);
-	animation = new PlayerAnimationComponent(this);
 	inventory = new Inventory();
 	charmsMenu = new CharmsMenu();
-	movement = new PlayerMovementComponent(this);
 
+	movement = new PlayerMovementComponent(this);
 	components.push_back(movement);
+
+	attack = new PlayerAttackComponent(this,1);
+	components.push_back(attack);
+
+	animation = new PlayerAnimationComponent(this);
 	components.push_back(animation);
 
 	interactRange = 50.0f;

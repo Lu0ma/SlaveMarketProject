@@ -154,6 +154,7 @@
     <ClCompile Include="HuskBully.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="InteractableActor.cpp" />
+    <ClCompile Include="InteractionComponent.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemWidget.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="IManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="InteractableActor.h" />
+    <ClInclude Include="InteractionComponent.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemWidget.h" />

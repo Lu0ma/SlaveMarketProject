@@ -148,6 +148,33 @@
     <Filter Include="Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands">
       <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Interaction">
+      <UniqueIdentifier>{3225fdeb-e7a9-42da-8519-0d62a9e89aad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Attack">
+      <UniqueIdentifier>{8cb7d844-31b3-4fe2-b16c-e493927c78a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Movement\Player">
+      <UniqueIdentifier>{7b00bb23-9a83-48ca-933a-2bd082f363af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Animation\Player">
+      <UniqueIdentifier>{2d3f0cd4-362d-4210-b47c-2a10c5c54932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Attack\Mob">
+      <UniqueIdentifier>{1e3cd31c-2cd7-4c6d-b79d-59e1213ee00e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Life">
+      <UniqueIdentifier>{6e0d3714-c776-4b6b-8b93-384411cd869c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Life\Player">
+      <UniqueIdentifier>{8d99e0cb-dbad-4243-a67a-20fece2971be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Life\Mob">
+      <UniqueIdentifier>{967fb2e5-518c-4920-8618-1205cf29bdb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Attack\Player">
+      <UniqueIdentifier>{f618356d-8ecc-4588-a40f-a3a2ab95a440}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -231,9 +258,6 @@
     <ClCompile Include="ShapeWidget.cpp">
       <Filter>UIs\Widgets\ShapeWidgets</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMovementComponent.cpp">
-      <Filter>Components\Movement</Filter>
-    </ClCompile>
     <ClCompile Include="MovementComponent.cpp">
       <Filter>Components\Movement</Filter>
     </ClCompile>
@@ -294,9 +318,6 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Components\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerStat.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
-    </ClCompile>
     <ClCompile Include="InteractableActor.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
     </ClCompile>
@@ -321,17 +342,26 @@
     <ClCompile Include="DeathMob.cpp">
       <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerAttackComponent.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="InteractionComponent.cpp">
+      <Filter>Components\Interaction</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMovementComponent.cpp">
+      <Filter>Components\Movement\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerAnimationComponent.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Components\Animation\Player</Filter>
     </ClCompile>
     <ClCompile Include="MobAttackComponent.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Components\Attack\Mob</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStat.cpp">
+      <Filter>Components\Life\Player</Filter>
     </ClCompile>
     <ClCompile Include="MobLifeComponent.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Components\Life\Mob</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAttackComponent.cpp">
+      <Filter>Components\Attack\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -422,9 +452,6 @@
     <ClInclude Include="ShapeWidget.h">
       <Filter>UIs\Widgets\ShapeWidgets</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerMovementComponent.h">
-      <Filter>Components\Movement</Filter>
-    </ClInclude>
     <ClInclude Include="MovementComponent.h">
       <Filter>Components\Movement</Filter>
     </ClInclude>
@@ -485,9 +512,6 @@
     <ClInclude Include="Animation.h">
       <Filter>Components\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerStat.h">
-      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
-    </ClInclude>
     <ClInclude Include="InteractableActor.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
     </ClInclude>
@@ -512,17 +536,26 @@
     <ClInclude Include="DeathMob.h">
       <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerAttackComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="InteractionComponent.h">
+      <Filter>Components\Interaction</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovementComponent.h">
+      <Filter>Components\Movement\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerAnimationComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Components\Animation\Player</Filter>
     </ClInclude>
     <ClInclude Include="MobAttackComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Components\Attack\Mob</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStat.h">
+      <Filter>Components\Life\Player</Filter>
     </ClInclude>
     <ClInclude Include="MobLifeComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Components\Life\Mob</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAttackComponent.h">
+      <Filter>Components\Attack\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
