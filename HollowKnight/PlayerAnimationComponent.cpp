@@ -17,6 +17,8 @@ void PlayerAnimationComponent::Init()
 	animPlayer.push_back("DarkSasuke");
 	animPlayer.push_back("Jump");
 	//animPlayer.push_back("DashLeft");
+	animPlayer.push_back("Sit");
+	animPlayer.push_back("RemoveMana");
 	animPlayer.push_back("NONELEFT");
 
 
@@ -37,5 +39,7 @@ void PlayerAnimationComponent::Init()
 		//AnimationData("DashLeft",Vector2f(0.0f, 720.0f), _size, _readDirection, _toRepeat,12,_speed, false),
 		AnimationData("DarkSasuke", Vector2f(0.0f, 800.0f), _size, _readDirection, _toRepeat, 10, _speed),// 560    12
 		AnimationData("Jump", Vector2f(0.0f, 720.0f), Vector2f(79.0f, 71.0f), _readDirection, _toRepeat, 9, _speed),// Change size
+		AnimationData("Sit", Vector2f(485.0f, 400.0f), Vector2f(79.0f, 71.0f), _readDirection, _toRepeat, 1, _speed),
+		AnimationData("RemoveMana", Vector2f(330.0f, 240.0f), Vector2f(79.0f, 71.0f), _readDirection, _toRepeat, 3, _speed),
 		});
 }

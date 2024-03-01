@@ -48,8 +48,9 @@ void Player::SetupPlayerInput()
 {
 	new ActionMap("Stats", {
 		ActionData("AddMana", [&]() { stats->UseMana(10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Space  })),
-		ActionData("RemoveMana", [&]() { stats->UseMana(-10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
-		ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
+		ActionData("RemoveMana", [&]() { stats->UseMana(-10.0f); stats->UpdateLife(1); animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[8]); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
+		ActionData("StopRemoveMana",[&]() { animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]); }, InputData({ ActionType::KeyReleased, Keyboard::Escape })),
+		//ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
 		ActionData("RemoveLife", [&]() { stats->UpdateLife(-1); }, InputData({ ActionType::KeyPressed, Keyboard::Num0 })),
 		ActionData("AddLifeSlot", [&]() { stats->AddLife(); }, InputData({ ActionType::KeyPressed, Keyboard::O })),
 		ActionData("AddGeos", [&]() { stats->AddGeos(12); }, InputData({ ActionType::KeyPressed, Keyboard::Num8 })),
@@ -92,7 +93,7 @@ void Player::SetupPlayerInput()
 		}, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() {
 			movement->SetDirectionX(0.0f);
-			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[7]);
+			animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[9]);
 		}, InputData({ ActionType::KeyReleased, Keyboard::Q })),
 		ActionData("Jump", [&]() {
 			movement->Jump();
@@ -105,7 +106,8 @@ void Player::SetupPlayerInput()
 		ActionData("Sit", [&]() {
 			if (GetDrawable()->getGlobalBounds().contains(bench->GetShapePosition()) && isStanding)
 			{
-				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y - 15.0f);
+				animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[7]);
+				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y - 30.0f);
 				isStanding = false;
 			}
 			else
@@ -116,7 +118,8 @@ void Player::SetupPlayerInput()
 		ActionData("Stand", [&]() {
 			if (!isStanding)
 			{
-				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y + 15.0f);
+				animation->GetAnimation()->RunAnimation(animation->GetAnimPlayer()[0]);
+				GetDrawable()->setPosition(GetShapePosition().x, GetShapePosition().y + 30.0f);
 				isStanding = true;
 			}
 			else
