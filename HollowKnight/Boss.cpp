@@ -1,7 +1,6 @@
 #include "Boss.h"
 #include "Macro.h"
 #include "MovementComponent.h"
-#include "Game.h"
 
 Boss::Boss(const ShapeData& _data) : Actor("Boss" + to_string(GetUniqueID()), _data)
 {

@@ -1,6 +1,7 @@
 #pragma once
 #include "Actor.h"
 #include "AnimationComponent.h"
+#include "Game.h"
 
 class Boss : public Actor
 {
