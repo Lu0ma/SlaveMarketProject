@@ -20,7 +20,7 @@ Game::Game()
 {
 	menu = new Menu();
 	map = new Map();
-	player = new Player("Player", ShapeData(Vector2f(0.0f, 2.5f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
+	player = new Player("Player", ShapeData(Vector2f(0.0f, -100.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	camera = new Camera(TARGET_WINDOW);
 } 
 

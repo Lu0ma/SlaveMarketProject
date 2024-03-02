@@ -1,25 +1,32 @@
 #include "PlayerAttackComponent.h"
-#include "Macro.h"
-#include "Mob.h"
 #include "Game.h"
+#include "Lift.h"
+#include "Mob.h"
+#include "Macro.h"
 
 PlayerAttackComponent::PlayerAttackComponent(Actor* _owner, const int _damages) : Component(_owner)
 {
 	damages = _damages;
+	range = 50.0f;
 	animation = owner->GetComponent<PlayerAnimationComponent>();
 }
 
 
 void PlayerAttackComponent::SpecialAttack()
 {
-	Player* _player = Game::GetPlayer();
-	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(_player->GetShapePosition(), 15.0f);
-
+	const Vector2f& _ownerPosition = owner->GetShapePosition();
+	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(_ownerPosition, 15.0f);
 	for (Mob* _mob : _mobs)
 	{
-		if (!_mob)continue;
+		if (!_mob) continue;
 		_mob->GetLife()->TakeDamages(GetDamages());
 	}
 
-	animation->GetCurrentAnimation()->RunAnimation("Special");
+	const vector<Lift*>& _lifts = Game::GetMap()->GetAllLifts();
+	for (Lift* _lift : _lifts)
+	{
+		_lift->Interact();
+	}
+
+	animation->GetCurrentAnimation()->RunAnimation("Special", owner->GetDrawable()->getScale().x);
 }

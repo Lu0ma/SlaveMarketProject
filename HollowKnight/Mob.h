@@ -1,8 +1,9 @@
 #pragma once
 #include "Actor.h"
 #include "AnimationComponent.h"
-#include"MobAttackComponent.h"
-#include"MobLifeComponent.h"
+#include "MovementComponent.h"
+#include "MobAttackComponent.h"
+#include "MobLifeComponent.h"
 
 class Mob : public Actor
 {
@@ -10,12 +11,12 @@ class Mob : public Actor
 	Vector2f goalPosition;
 
 protected:
+	bool isPatrolling;
+
 	AnimationComponent* animation;
+	MovementComponent* movement;
 	MobAttackComponent* attack;
 	MobLifeComponent* life;
-
-protected:
-	bool isPatrolling;
 
 public:
 	MobLifeComponent* GetLife()const

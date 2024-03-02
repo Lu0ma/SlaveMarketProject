@@ -8,7 +8,7 @@
 #define PATH_GEO "UIs/Inventory/Geo.png"
 #define FONT "Font.ttf"
 
-PlayerStat::PlayerStat()
+PlayerStat::PlayerStat(Actor* _owner) : Component(_owner)
 {
 	canvas = nullptr;
 	currentLifesCount = 0;
@@ -17,6 +17,9 @@ PlayerStat::PlayerStat()
 	manaBar = nullptr;
 	geosCount = 0;
 	geosCountText = nullptr;
+
+	animation = owner->GetComponent<PlayerAnimationComponent>();
+	movement = owner->GetComponent<PlayerMovementComponent>();
 }
 
 
@@ -62,6 +65,11 @@ void PlayerStat::Init()
 void PlayerStat::UseMana(const float _factor)
 {
 	manaBar->ChangeValue(_factor);
+
+	if (_factor < 0.0f && animation && movement)
+	{
+		animation->GetCurrentAnimation()->RunAnimation("RemoveMana", movement->GetDirection().x);
+	}
 }
 
 void PlayerStat::UpdateLife(const int _count)

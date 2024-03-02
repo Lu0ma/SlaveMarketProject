@@ -7,25 +7,22 @@
 class InteractableActor : public Actor
 {
 	Canvas* canvas;
-	ShapeWidget* cursor;
-	Label* textScript;
+	bool isOpen;
 
-private:
-	bool NeedToVerify() const
-	{
-		return textScript->IsVisible();
-	}
+	// Interaction
+	ShapeWidget* interactionBG;
+	Label* interactionText;
+
+	// Discussion
+	ShapeWidget* discussionBG;
+	Label* discussionText;
 
 public:
-	ShapeWidget* GetCursor() const 
+	void SetIsOpen(const bool _status)
 	{
-		return cursor;
+		isOpen = _status;
 	}
-	Label* GetTextScript() const 
-	{
-		return textScript;
-	}
-	
+
 public:
 	InteractableActor(const string& _name, const ShapeData& _data);
 
@@ -33,11 +30,9 @@ private:
 	virtual void Register() override;
 	void Verify();
 
-protected:
-	virtual void CloseDiscussion();
-
 public:
 	virtual void Init() override;
 	virtual void Update(const float _deltaTime);
 	virtual void OpenDiscussion();
+	virtual void CloseDiscussion();
 };

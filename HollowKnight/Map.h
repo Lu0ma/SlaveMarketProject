@@ -4,6 +4,7 @@
 #include "Bench.h"
 #include "Merchand.h"
 #include "InteractableActor.h"
+#include "Lift.h"
 
 using namespace std;
 using namespace sf;
@@ -30,6 +31,14 @@ struct MapData
 	vector<WallData> walls;
 };
 
+struct PlateformData
+{
+	Vector2f position;
+	Vector2f size;
+	string path;
+
+};
+
 class Map
 {
 	Bench* bench;
@@ -37,7 +46,11 @@ class Map
 	InteractableActor* pnj;
 	ShapeObject* background;
 	ShapeObject* barrack;
+
+	vector<PlateformData> plateformsData;
+
 	vector<ShapeObject*> drawables;
+	vector<Lift*> lifts;
 
 public:
 	Bench* GetBench() const
@@ -48,6 +61,10 @@ public:
 	{
 		return drawables;
 	}
+	vector<Lift*> GetAllLifts() const
+	{
+		return lifts;
+	}
 
 public:
 	Map();
@@ -55,6 +72,7 @@ public:
 private:
 	MapData LoadMapData(const string& _path);
 
+	void InitPlateforms();
 public:
 	void Init();
 };

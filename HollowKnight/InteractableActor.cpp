@@ -3,14 +3,20 @@
 #include "Widget.h"
 #include "Label.h"
 
+#define PATH_INTERACTION "UIs/Discussions/Interaction.png"
+#define PATH_DISCUSSION "UIs/Discussions/Dialog.png"
 #define FONT "Font.ttf"
-#define UI_BUTTON "UIs/Charms/bottom_fleur0002.png"
 
 InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
 	canvas = new Canvas(STRING_ID("Interactable"));
-	cursor = nullptr;
-	textScript = nullptr;
+	isOpen = false;
+
+	interactionBG = nullptr;
+	interactionText = nullptr;
+
+	discussionBG = nullptr;
+	discussionText = nullptr;
 
 	Register();
 }
@@ -23,16 +29,20 @@ void InteractableActor::Register()
 
 void InteractableActor::Verify()
 {
-	if (!cursor || !textScript) return;
+	if (!interactionBG || !interactionText) return;
 
 	Player* _player = Game::GetPlayer();
 	FloatRect _rectPNJ = shape->getGlobalBounds();
 
 	if (_rectPNJ.intersects(_player->GetBounds()))
 	{
-		if (!NeedToVerify())
+		if (!isOpen)
 		{
-			cursor->SetVisible(true);
+			interactionBG->SetVisible(true);
+			interactionText->SetVisible(true);
+
+			/*discussionBG->SetVisible(false);
+			discussionText->SetVisible(false);*/
 		}
 	}
 
@@ -44,21 +54,35 @@ void InteractableActor::Verify()
 
 void InteractableActor::CloseDiscussion()
 {
-	cursor->SetVisible(false);
-	textScript->SetVisible(false);
+	isOpen = false;
+
+	interactionBG->SetVisible(false);
+	interactionText->SetVisible(false);
+
+	discussionBG->SetVisible(false);
+	discussionText->SetVisible(false);
 }
 
 
 void InteractableActor::Init()
 {
-	cursor = new ShapeWidget(ShapeData(Vector2f(690.0f, 300.0f), Vector2f(303.0f, 66.0f), UI_BUTTON));
-	canvas->AddWidget(cursor);
+	const Vector2f& _interactionBGPos = Vector2f(690.0f, 230.0f);
+	interactionBG = new ShapeWidget(ShapeData(_interactionBGPos, Vector2f(200.0f, 124.0f), PATH_INTERACTION));
+	canvas->AddWidget(interactionBG);
 
-	const Vector2f& _windowSize = Game::GetWindowSize();
-	const float _mainMenuTextPosY = _windowSize.y * 70.0f / 100.0f;
-	const float _mainMenuTextPosX = _windowSize.x / 2.0f;
-	textScript = new Label(TextData("Bienvenue à Shrek City !", Vector2f(_mainMenuTextPosX, _mainMenuTextPosY), FONT, 26));
-	canvas->AddWidget(textScript);
+	interactionText = new Label(TextData("LISTEN", _interactionBGPos + Vector2f(-60.0f, -20.0f), FONT, 32));
+	canvas->AddWidget(interactionText);
+
+	const Vector2f& _halfWindowSize = Game::GetWindowSize() / 2.0f;
+	const Vector2f& _discussionPos = Vector2f(_halfWindowSize.x - 50.0f, 80.0f);
+
+	discussionBG = new ShapeWidget(ShapeData(_discussionPos + Vector2f(50.0f, 0.0f), Vector2f(418.0f, 150.0f), PATH_DISCUSSION));
+	discussionBG->SetVisible(false);
+	canvas->AddWidget(discussionBG);
+
+	discussionText = new Label(TextData("Your words, are they repeating ?", _discussionPos + Vector2f(-100.0f, -20.0f), FONT, 16));
+	discussionText->SetVisible(false);
+	canvas->AddWidget(discussionText);
 }
 
 void InteractableActor::Update(const float _deltaTime)
@@ -69,6 +93,17 @@ void InteractableActor::Update(const float _deltaTime)
 
 void InteractableActor::OpenDiscussion()
 {
-	cursor->SetVisible(false);
-	textScript->SetVisible(true);
+	if (isOpen)
+	{
+		CloseDiscussion();
+		return;
+	}
+
+	isOpen = true;
+
+	interactionBG->SetVisible(false);
+	interactionText->SetVisible(false);
+
+	discussionBG->SetVisible(true);
+	discussionText->SetVisible(true);
 }

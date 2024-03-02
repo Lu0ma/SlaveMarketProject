@@ -64,6 +64,7 @@ class Animation : public IManagable<string>
     AnimationData data;
     Shape* shape;
     Timer* timer;
+    float directionX;
 
 public:
     AnimationData GetData() const
@@ -88,7 +89,7 @@ private:
     Vector2i GetNewStart();
 
 public:
-    void Start();
+    void Start(const float _directionX);
     void Reset();
     void Stop();
 };

@@ -61,7 +61,7 @@ void Merchand::Init()
 		{
 			PATH_ITEM,
 			300,
-			"Gathering Swarm",
+			"Swarm",
 			"Do you find yourself leaving a\n"
 			"lot of Geo behind as you hurry\n"
 			"through the caverns ?\n\n"
@@ -143,20 +143,20 @@ void Merchand::Init()
 
 	#pragma region Title
 
-	const float _descriptionTitlePosX = _descriptionPos.x - _descriptionSize.x * 0.2f;
+	const float _descriptionTitlePosX = _descriptionPos.x - _descriptionSize.x * 0.15f;
 	const float _descriptionTitlePosY = _descriptionPos.y - _descriptionPos.y / 2.0f;
 	const Vector2f& _descriptionTitlePos = Vector2f(_descriptionTitlePosX, _descriptionTitlePosY);
-	descriptionTitle = new Label(TextData("Shade Cloak", _descriptionTitlePos, FONT, 26));
+	descriptionTitle = new Label(TextData("Shade Cloak", _descriptionTitlePos, FONT, 22));
 	canvas->AddWidget(descriptionTitle);
 
 	#pragma endregion
 
 	#pragma region Text
 
-	const float _descriptionTextPosX = _descriptionTitlePosX - _descriptionSize.x * 0.2f;
+	const float _descriptionTextPosX = _descriptionTitlePosX - _descriptionSize.x * 0.3f;
 	const float _descriptionTextPosY = _descriptionTitlePosY + _descriptionSize.y * 0.15f;
 	const Vector2f& _descriptionLabelPos = Vector2f(_descriptionTextPosX, _descriptionTextPosY);
-	descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT, 18));
+	descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT, 13));
 	canvas->AddWidget(descriptionText);
 
 	#pragma endregion
@@ -168,10 +168,14 @@ void Merchand::OpenDiscussion()
 {
 	InteractableActor::OpenDiscussion();
 
-	new Timer([&]() { 
-		Toggle();
-		InteractableActor::CloseDiscussion();
-	}, seconds(timeBeforeOpenShop));
+	if (!timer)
+	{
+		timer = new Timer([&]() {
+			Toggle();
+			InteractableActor::CloseDiscussion();
+			SetIsOpen(true);
+		}, seconds(timeBeforeOpenShop));
+	}
 }
 
 //void Merchand::BuyItem()

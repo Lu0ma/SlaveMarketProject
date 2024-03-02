@@ -5,10 +5,7 @@
 
 HuskBully::HuskBully(const ShapeData& _data) : Mob(_data)
 {
-	isPatrolling = true;
 
-	animation = new AnimationComponent(this);
-	components.push_back(animation);
 }
 
 
