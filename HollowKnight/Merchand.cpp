@@ -10,21 +10,29 @@
 #define PATH_GEO "UIs/Shop/Geo.png"
 #define FONT "Font.ttf"
 
-Merchand::Merchand() : NPC()
+Merchand::Merchand(const ShapeData& _data, const vector<string>& _texts)
+				  : NPC(STRING_ID("Merchand"), _data, _texts)
 {
-	canvas = nullptr;
+	timeBeforeOpenShop = 3.0f;
+	canvas = new Canvas("Shop");
 	buttons = vector<Button*>();
 	pointer = nullptr;
 	descriptionTitle = nullptr;
 	descriptionText = nullptr;
+}
 
-	GetDrawable()->setFillColor(Color::Blue);
+
+void Merchand::CloseDiscussion()
+{
+	InteractableActor::CloseDiscussion();
+	CloseShop();
 }
 
 
 void Merchand::Init()
 {
-	canvas = new Canvas("Shop", FloatRect(0, 0, 1, 1));
+	NPC::Init();
+
 	canvas->SetVisibilityStatus(false);
 
 	const Vector2f& _windowSize = Game::GetWindowSize();
@@ -53,7 +61,7 @@ void Merchand::Init()
 		{
 			PATH_ITEM,
 			300,
-			"Gathering Swarm",
+			"Swarm",
 			"Do you find yourself leaving a\n"
 			"lot of Geo behind as you hurry\n"
 			"through the caverns ?\n\n"
@@ -135,25 +143,39 @@ void Merchand::Init()
 
 	#pragma region Title
 
-	const float _descriptionTitlePosX = _descriptionPos.x - _descriptionSize.x * 0.2f;
+	const float _descriptionTitlePosX = _descriptionPos.x - _descriptionSize.x * 0.15f;
 	const float _descriptionTitlePosY = _descriptionPos.y - _descriptionPos.y / 2.0f;
 	const Vector2f& _descriptionTitlePos = Vector2f(_descriptionTitlePosX, _descriptionTitlePosY);
-	descriptionTitle = new Label(TextData("Shade Cloak", _descriptionTitlePos, FONT, 26));
+	descriptionTitle = new Label(TextData("Shade Cloak", _descriptionTitlePos, FONT, 22));
 	canvas->AddWidget(descriptionTitle);
 
 	#pragma endregion
 
 	#pragma region Text
 
-	const float _descriptionTextPosX = _descriptionTitlePosX - _descriptionSize.x * 0.2f;
+	const float _descriptionTextPosX = _descriptionTitlePosX - _descriptionSize.x * 0.3f;
 	const float _descriptionTextPosY = _descriptionTitlePosY + _descriptionSize.y * 0.15f;
 	const Vector2f& _descriptionLabelPos = Vector2f(_descriptionTextPosX, _descriptionTextPosY);
-	descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT, 18));
+	descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT, 13));
 	canvas->AddWidget(descriptionText);
 
 	#pragma endregion
 
 	#pragma endregion
+}
+
+void Merchand::OpenDiscussion()
+{
+	InteractableActor::OpenDiscussion();
+
+	if (!timer)
+	{
+		timer = new Timer([&]() {
+			Toggle();
+			InteractableActor::CloseDiscussion();
+			SetIsOpen(true);
+		}, seconds(timeBeforeOpenShop));
+	}
 }
 
 //void Merchand::BuyItem()

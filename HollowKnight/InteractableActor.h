@@ -1,44 +1,38 @@
 #pragma once
 #include "Actor.h"
 #include "Canvas.h"
+#include "ShapeWidget.h"
 #include "Label.h"
 
 class InteractableActor : public Actor
 {
-	bool canVerify;
-	bool Active;
-	Canvas* cursor;
-	Canvas* textScript;
-	
-public:
-	void SetCanVerify(const bool _statue)
-	{
-		canVerify = _statue;
-	}
-	void SetCursorStatue(const bool _statue)
-	{
-		cursor->SetVisibilityStatus(_statue);
-	}
-	void SetTextStatue(const bool _statue)
-	{
-		textScript->SetVisibilityStatus(_statue);
-	}
-	Canvas* GetCursor() const
-	{
-		return cursor;
-	}
-	Canvas* GetTextScript()
-	{
-		return textScript;
-	}
-	
-public:
-	InteractableActor(const string& _name , const ShapeData& _data ,const Vector2f& _sizeDetector);
+	Canvas* canvas;
+	bool isOpen;
+
+	// Interaction
+	ShapeWidget* interactionBG;
+	Label* interactionText;
+
+	// Discussion
+	ShapeWidget* discussionBG;
+	Label* discussionText;
 
 public:
-	// virtual void Speak();
-	virtual void Update(const float _deltaTime);
+	void SetIsOpen(const bool _status)
+	{
+		isOpen = _status;
+	}
+
+public:
+	InteractableActor(const string& _name, const ShapeData& _data);
+
+private:
+	virtual void Register() override;
 	void Verify();
-	void Init();
-	string Scrolling(const string& _text);
+
+public:
+	virtual void Init() override;
+	virtual void Update(const float _deltaTime);
+	virtual void OpenDiscussion();
+	virtual void CloseDiscussion();
 };

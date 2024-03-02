@@ -2,16 +2,87 @@
 #include "Game.h"
 #include "Widget.h"
 #include "Label.h"
-#define FONT "Font.ttf"
-#define UI_BUTTON "UIs/Charms/bottom_fleur0002.png"
 
-InteractableActor::InteractableActor(const string& _name, const ShapeData& _data, const Vector2f& _sizeDetector) : Actor(_name , _data)
+#define PATH_INTERACTION "UIs/Discussions/Interaction.png"
+#define PATH_DISCUSSION "UIs/Discussions/Dialog.png"
+#define FONT "Font.ttf"
+
+InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
-	// canvas = new Canvas("ee");
-	cursor = new Canvas("Ui");
-	canVerify = false;
-	textScript = new Canvas("TEXT");
-	
+	canvas = new Canvas(STRING_ID("Interactable"));
+	isOpen = false;
+
+	interactionBG = nullptr;
+	interactionText = nullptr;
+
+	discussionBG = nullptr;
+	discussionText = nullptr;
+
+	Register();
+}
+
+
+void InteractableActor::Register()
+{
+	ActorManager::GetInstance().AddInteractable(this);
+}
+
+void InteractableActor::Verify()
+{
+	if (!interactionBG || !interactionText) return;
+
+	Player* _player = Game::GetPlayer();
+	FloatRect _rectPNJ = shape->getGlobalBounds();
+
+	if (_rectPNJ.intersects(_player->GetBounds()))
+	{
+		if (!isOpen)
+		{
+			interactionBG->SetVisible(true);
+			interactionText->SetVisible(true);
+
+			/*discussionBG->SetVisible(false);
+			discussionText->SetVisible(false);*/
+		}
+	}
+
+	else
+	{
+		CloseDiscussion();
+	}
+}
+
+void InteractableActor::CloseDiscussion()
+{
+	isOpen = false;
+
+	interactionBG->SetVisible(false);
+	interactionText->SetVisible(false);
+
+	discussionBG->SetVisible(false);
+	discussionText->SetVisible(false);
+}
+
+
+void InteractableActor::Init()
+{
+	const Vector2f& _interactionBGPos = Vector2f(690.0f, 230.0f);
+	interactionBG = new ShapeWidget(ShapeData(_interactionBGPos, Vector2f(200.0f, 124.0f), PATH_INTERACTION));
+	canvas->AddWidget(interactionBG);
+
+	interactionText = new Label(TextData("LISTEN", _interactionBGPos + Vector2f(-60.0f, -20.0f), FONT, 32));
+	canvas->AddWidget(interactionText);
+
+	const Vector2f& _halfWindowSize = Game::GetWindowSize() / 2.0f;
+	const Vector2f& _discussionPos = Vector2f(_halfWindowSize.x - 50.0f, 80.0f);
+
+	discussionBG = new ShapeWidget(ShapeData(_discussionPos + Vector2f(50.0f, 0.0f), Vector2f(418.0f, 150.0f), PATH_DISCUSSION));
+	discussionBG->SetVisible(false);
+	canvas->AddWidget(discussionBG);
+
+	discussionText = new Label(TextData("Your words, are they repeating ?", _discussionPos + Vector2f(-100.0f, -20.0f), FONT, 16));
+	discussionText->SetVisible(false);
+	canvas->AddWidget(discussionText);
 }
 
 void InteractableActor::Update(const float _deltaTime)
@@ -20,49 +91,19 @@ void InteractableActor::Update(const float _deltaTime)
 	Verify();
 }
 
-void InteractableActor::Verify()
+void InteractableActor::OpenDiscussion()
 {
- 	Player* _player = Game::GetPlayer();
-	FloatRect _rectPNJ = shape->getGlobalBounds();
-
-	// if (!canVerify) return ;
-	if (_rectPNJ.intersects(_player->GetDrawable()->getGlobalBounds()))
+	if (isOpen)
 	{
-	 	if (cursor->GetVisibilityStatus()) return;
-		cursor->SetVisibilityStatus(true);
-	}
-	else
-	{
-		cursor->SetVisibilityStatus(false);
-		textScript->SetVisibilityStatus(false);
+		CloseDiscussion();
+		return;
 	}
 
-}
+	isOpen = true;
 
-void InteractableActor::Init()
-{
- 	ShapeWidget* _widget = new ShapeWidget(ShapeData(Vector2f(690.0f , 300.0f), Vector2f(303.0f, 66.0f), UI_BUTTON));
-	cursor->AddWidget(_widget);
+	interactionBG->SetVisible(false);
+	interactionText->SetVisible(false);
 
-	const Vector2f& _windowSize = Game::GetWindowSize();
-	const float _mainMenuTextPosY = _windowSize.y * 70.0f / 100.0f;
-	const float _mainMenuTextPosX = _windowSize.x / 2.0f;
-	Label* _text = new Label(TextData("Bienvenue à Shrek City !", Vector2f(_mainMenuTextPosX, _mainMenuTextPosY), FONT, 26));
-	textScript->AddWidget(_text);
-
-}
-
-string InteractableActor::Scrolling(const string& _text)
-{
-
-	//string ScrollingText(const string& _text)
-	//{
-
-	//	for (int _i = 0; _i < _text.size(); _i++)
-	//	{
-	//		cout << _text[_i]; 
-	//		sleep(time);
-	//	}
-	//}
-	return string();
+	discussionBG->SetVisible(true);
+	discussionText->SetVisible(true);
 }

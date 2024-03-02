@@ -1,11 +1,10 @@
 #pragma once
 #include "MovementComponent.h"
+#include "PlayerAnimationComponent.h"
 
 class PlayerMovementComponent : public MovementComponent
 {
 	// Movement
-	bool canMove;
-	float speed;
 	Vector2f direction;
 
 	// Sprintç
@@ -15,10 +14,6 @@ class PlayerMovementComponent : public MovementComponent
 	// Ground
 	bool isOnGround;
 	float checkGroundDistance;
-
-	#pragma region Jump & Dash
-
-	bool canJumpAndDash;
 
 	// Jump
 	bool isJumping;
@@ -33,26 +28,58 @@ class PlayerMovementComponent : public MovementComponent
 	float dashSpeed;
 	float dashDuration;
 	float dashCooldown;
-	Vector2f dashDirection;
+	float dashDirection;
 
-	#pragma endregion
+	// Sit
+	bool isStanding;
+	float sitOffset;
+
+	// Components
+	PlayerAnimationComponent* animation;
 
 public:
-	void SetDirectionX(const float _directionX)
+	void SetDirectionX(const float _directionX, const string& _animName)
 	{
+		if (!canMove) return;
+
 		direction.x = _directionX;
+
+		if (_directionX == 0.0f)
+		{
+			if (owner->GetDrawable()->getScale().x >= 0.0f)
+			{
+				dashDirection = 1.0f;
+			}
+
+			else
+			{
+				dashDirection = -1.0f;
+			}
+		}
+
+		else
+		{
+			dashDirection = _directionX;
+		}
+
+		animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
 	}
 	void SetDirectionY(const float _directionY)
 	{
+		if (!canMove) return;
 		direction.y = _directionY;
 	}
 	void SetSprint(const bool _status)
 	{
 		isSprinting = _status;
 	}
-	void SetCanJumpAndDash(const bool _status)
+	bool IsStanding() const
 	{
-		canJumpAndDash = _status;
+		return isStanding;
+	}
+	Vector2f GetDirection() const
+	{
+		return direction;
 	}
 
 public:
@@ -65,4 +92,6 @@ public:
 	virtual void Update(const float _deltaTime) override;
 	void Jump();
 	void Dash();
+	void SitDown();
+	void StandUp();
 };

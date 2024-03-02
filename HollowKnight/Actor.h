@@ -27,13 +27,18 @@ public:
 	{
 		return shape->getPosition();
 	}
+	FloatRect GetBounds() const
+	{
+		return shape->getGlobalBounds();
+	}
 
 public:
 	Actor(const string& _name, const ShapeData& _data);
 
-private:
+protected:
 	virtual void Register() override;
-	virtual void Init() = 0;
+private:
+	virtual void Init() {};
 
 public:
 	virtual void Update(const float _deltaTime);

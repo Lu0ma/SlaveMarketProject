@@ -9,7 +9,7 @@
 
 TitleMenu::TitleMenu()
 {
-	canvas = nullptr;
+	canvas = new Canvas("Title");
 	pointer = nullptr;
 	buttons = vector<Button*>();
 }
@@ -17,8 +17,6 @@ TitleMenu::TitleMenu()
 
 void TitleMenu::Init()
 {
-	
-	canvas = new Canvas("Title");
 
 	#pragma region Title
 

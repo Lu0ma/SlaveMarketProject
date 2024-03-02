@@ -8,13 +8,22 @@ Mob::Mob(const ShapeData& _data) : Actor("Mob" + to_string(GetUniqueID()), _data
 {
 	startPosition = _data.position;
 	goalPosition = startPosition + Vector2f(500.0f, 0.0f);
-	life = 25;
 
 	isPatrolling = false;
 
-	MovementComponent* _movement = new MovementComponent(this);
-	_movement->SetSpeed(0.1f);
-	components.push_back(_movement);
+	animation = new AnimationComponent(this);
+	components.push_back(animation);
+
+	movement = new MovementComponent(this);
+	movement->SetSpeed(0.1f);
+	components.push_back(movement);
+	
+	attack = new MobAttackComponent(this, 1);
+	components.push_back(attack);
+
+	life = new MobLifeComponent(this, 3);
+	components.push_back(life);
+
 	InitTimerPatrol();
 }
 
@@ -27,47 +36,41 @@ void Mob::InitTimerPatrol()
 void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)
 {
 	_animationComponent->GetCurrentAnimation()->Stop();
-	_animationComponent->RunAnimation(_linkedAnimation);
+	_animationComponent->RunAnimation(_linkedAnimation, GetDrawable()->getScale().x);
 }
 
 
 void Mob::Move()
 {
-	MovementComponent* _movementComponent = GetComponent<MovementComponent>();
-	if (_movementComponent->GetCanMove())
+	if (movement->GetCanMove())
 	{
-		_movementComponent->SetDestination(startPosition);
+		movement->SetDestination(startPosition);
 	}
 }
 
 void Mob::Patrol()
 {
-	MovementComponent* _movementComponent = GetComponent<MovementComponent>();
 	const vector<string>& _animationNames = animation->GetAnimationNames();
 
 	if (isPatrolling)
 	{
-		if (_movementComponent->IsAtPosition())
+		if (movement->IsAtPosition())
 		{
 			if (Animation* _animation = animation->GetCurrentAnimation())
 			{
 				const string& _linkedAnimation = _animation->GetData().linkedAnimation;
 				if (_linkedAnimation != "") RunLinkedAnimation(_linkedAnimation, animation);
 
-				if (_movementComponent->GetDestination() == startPosition)
+				if (movement->GetDestination() == startPosition)
 				{
-					_movementComponent->SetDestination(goalPosition);
+					movement->SetDestination(goalPosition);
 				}
 				else
 				{
-					_movementComponent->SetDestination(startPosition);
+					movement->SetDestination(startPosition);
 				}
 			}
 		}
 	}
 }
 
-void Mob::TakeDamages(const int _attack)
-{
-	life -= _attack;
-}

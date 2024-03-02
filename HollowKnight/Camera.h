@@ -10,33 +10,10 @@ enum Target
 class Camera
 {
 	View view;
-	Vector2f  center; // faudrait le centrer sur Le player
-	Vector2f  size; // ???
+	Vector2f center;
+	Vector2f size;
 	Target target;
-public:
-	View GetView() const
-	{
-		return view;
-	}
 
-	Vector2f GetCenter() const
-	{
-		return center;
-	}
-
-	Vector2f GetSize() const
-	{
-		return size;
-	}
-	Target GetTargetStat() const
-	{
-		return target;
-	}
-public:
-	Camera();
-	Camera(View _view);
-	Camera(const Target& _target);
-	//Camera();
 public:
 	void SetTarget(const Target& _target)
 	{
@@ -46,7 +23,7 @@ public:
 	{
 		view = _view;
 	}
-	void setCenter(const Vector2f& _center)
+	void SetCenter(const Vector2f& _center)
 	{
 		center = _center;
 	}
@@ -54,10 +31,30 @@ public:
 	{
 		size = _size;
 	}
+	View GetView() const
+	{
+		return view;
+	}
+	Vector2f GetCenter() const
+	{
+		return center;
+	}
+	Vector2f GetSize() const
+	{
+		return size;
+	}
+	Target GetTargetStat() const
+	{
+		return target;
+	}
+
 public:
-	View FollowPlayer();
+	Camera(const Target& _target);
+
 private:
 	FloatRect GetPlayerRect();
+
+public:
+	View FollowPlayer();
+	void CheckCameraState(View& _newView);
 };
-
-

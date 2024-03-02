@@ -28,7 +28,7 @@ void Animation::SetNext()
             {
                 Stop();
                 Reset();
-                owner->RunAnimation(data.linkedAnimation);
+                owner->RunAnimation(data.linkedAnimation, directionX);
                 return;
             }
 
@@ -47,9 +47,9 @@ void Animation::SetNext()
     const int _sizeY = static_cast<int>(data.size.y);
     IntRect _rect = IntRect(_start.x, _start.y, _sizeX, _sizeY);
 
-
     shape->setTextureRect(_rect);
-    shape->setScale(data.displayFromLeftToRight ? 1.0f : -1.0f, 1.0f);
+    //shape->setScale(data.displayFromLeftToRight ? 1.0f : -1.0f, 1.0f);
+    shape->setScale(directionX, 1.0f);
 }
 
 Vector2i Animation::GetNewStart()
@@ -74,8 +74,9 @@ Vector2i Animation::GetNewStart()
     return Vector2i(_x, _y);
 }
 
-void Animation::Start()
+void Animation::Start(const float _directionX)
 {
+    directionX = _directionX;
     timer = new Timer(this, &Animation::SetNext, seconds(data.timeBetween), true, true);
 }
 

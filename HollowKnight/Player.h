@@ -2,17 +2,11 @@
 #include "Actor.h"
 #include "PlayerStat.h"
 #include "Inventory.h"
-#include "PlayerMovementComponent.h"
-
-#include "Merchand.h"
-#include "Bench.h"
 #include "CharmsMenu.h"
-
-#include"AnimationComponent.h"
-#include<vector>
-#include"Timer.h"
-#include<functional>
-
+#include "PlayerMovementComponent.h"
+#include "PlayerAttackComponent.h"
+#include "PlayerAnimationComponent.h"
+#include "InteractionComponent.h"
 
 using namespace std;
 
@@ -22,12 +16,9 @@ class Player : public Actor
 	Inventory* inventory;
 	CharmsMenu* charmsMenu;
 	PlayerMovementComponent* movement;
-	AnimationComponent* animation;
-	vector<string> animPlayer;
-	Timer* deathTimer;
-
-	Bench* bench;
-	bool isStanding;
+	PlayerAttackComponent* attack;
+	PlayerAnimationComponent* animation;
+	InteractionComponent* interaction;
 
 public:
 	void SetStatus(const bool _status)
@@ -49,9 +40,8 @@ public:
 private:
 	void InitAnimations();
 	void SetupPlayerInput();
+	void TryToOpenCharmsMenu();
 
 public:
 	virtual void Init() override;
-	void SpecialAttack();
-	void Update();
 };

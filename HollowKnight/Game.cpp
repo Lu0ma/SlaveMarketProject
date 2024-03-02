@@ -20,12 +20,8 @@ Game::Game()
 {
 	menu = new Menu();
 	map = new Map();
-	player = new Player("Player", ShapeData(Vector2f(0.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
+	player = new Player("Player", ShapeData(Vector2f(0.0f, -100.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	camera = new Camera(TARGET_WINDOW);
-
-	//TODO move
-	merchand = new Merchand();
-	pnj = new InteractableActor("Villageois", ShapeData(Vector2f(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f), Vector2f(100.0f, 100.0f), " ") , Vector2f(1000.0f , 1000.0f));
 } 
 
 Game::~Game()
@@ -40,27 +36,14 @@ void Game::Start()
 	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
-	
 }
 
 void Game::Init()
 {
 	menu->Init();
-	//map->Init();
+	map->Init();
 
 	//TODO move
-	merchand->Init();
-	new ActionMap("Merchand", {
-		ActionData("ToggleShop", [&]() { merchand->Toggle(); }, InputData({ ActionType::KeyPressed, Keyboard::Equal  })),
-	});
-
-	new ActionMap("Interact With a PNJ", {
-		ActionData("Talk ", [&]() {
-			pnj->GetTextScript()->SetVisibilityStatus(true);
-			pnj->GetCursor()->SetVisibilityStatus(false);
-		}, InputData({ActionType::KeyPressed , Keyboard::E})),
-	});
-
 	Spawner* _spawner = new Spawner();
 	_spawner->Spawn();
 }
@@ -79,7 +62,12 @@ void Game::UpdateWindow()
 {
 	window.clear(); // Color(127, 127, 127, 0) gris
 	View _defaultView;
-	CheckCameraState(_defaultView);
+	camera->CheckCameraState(_defaultView);
+
+	for (ShapeObject* _drawable : map->GetAllDrawables())
+	{
+		window.draw(*_drawable->GetDrawable());
+	}
 
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
@@ -114,23 +102,6 @@ void Game::Launch()
 	Start();
 	Update();
 	Stop();
-}
-
-void Game::CheckCameraState(View& _newView)
-{
-
-	if (camera->GetTargetStat() == TARGET_PLAYER)
-	{
-		_newView = camera->FollowPlayer();
-		window.setView(_newView);
-	}
-
-	else if (camera->GetTargetStat() == TARGET_WINDOW)
-	{
-		_newView = window.getDefaultView();
-		window.setView(_newView);
-	}
-
 }
 
 void Game::Close()
