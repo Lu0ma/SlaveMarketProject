@@ -1,11 +1,14 @@
 #pragma once
+#include "Component.h"
 #include "Canvas.h"
 #include "ProgressBar.h"
 #include "Label.h"
+#include "PlayerAnimationComponent.h"
+#include "PlayerMovementComponent.h"
 
 #define PATH_LIFE "UIs/Player/Life/Life_"
 
-class PlayerStat
+class PlayerStat : public Component
 {
 	Canvas* canvas;
 	
@@ -21,6 +24,9 @@ class PlayerStat
 	int geosCount;
 	Label* geosCountText;
 
+	// Components
+	PlayerAnimationComponent* animation;
+	PlayerMovementComponent* movement;
 
 public:
 	void SetCurrentLife(const int _newLife)
@@ -48,7 +54,7 @@ public:
 	}
 
 public:
-	PlayerStat();
+	PlayerStat(Actor* _owner);
 
 public:
 	void Init();

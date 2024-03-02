@@ -4,7 +4,7 @@
 class Bench : public Actor
 {
 public:
-	Bench();
+	Bench(const ShapeData& _data);
 
 public:
 	virtual void Init() override;

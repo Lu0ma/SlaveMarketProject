@@ -4,11 +4,20 @@
 #include "Button.h"
 #include "Label.h"
 
+enum ItemType
+{
+	IT_NONE,
+	IT_HEALTH,
+	IT_VESSEL,
+	IT_ITEM,
+};
+
 struct ItemData
 {
 	string path;
 	string title;
 	string text;
+	ItemType type;
 };
 
 class Item : public IManagable<int>

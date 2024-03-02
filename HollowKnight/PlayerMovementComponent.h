@@ -5,8 +5,6 @@
 class PlayerMovementComponent : public MovementComponent
 {
 	// Movement
-	bool canMove;
-	float speed;
 	Vector2f direction;
 
 	// Sprintç
@@ -64,7 +62,7 @@ public:
 			dashDirection = _directionX;
 		}
 
-		animation->GetCurrentAnimation()->RunAnimation(_animName);
+		animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
 	}
 	void SetDirectionY(const float _directionY)
 	{
@@ -78,6 +76,10 @@ public:
 	bool IsStanding() const
 	{
 		return isStanding;
+	}
+	Vector2f GetDirection() const
+	{
+		return direction;
 	}
 
 public:

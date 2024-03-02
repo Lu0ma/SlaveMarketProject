@@ -1,12 +1,13 @@
 #pragma once
 #include "IManagable.h"
+#include "Widget.h"
+
 #include <SFML/Graphics.hpp>
 #include <string>
 
 using namespace std;
 using namespace sf;
 
-class Widget;
 
 class Canvas : public IManagable<string>
 {
@@ -22,6 +23,11 @@ public:
 	void SetVisibilityStatus(bool _status)
 	{
 		isVisible = _status;
+
+		for (Widget* _widget : widgets)
+		{
+			_widget->SetVisible(_status);
+		}
 	}
 	bool IsVisible() const
 	{

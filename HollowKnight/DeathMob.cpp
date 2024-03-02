@@ -4,9 +4,6 @@
 
 DeathMob::DeathMob(const ShapeData& _data) : Mob(_data)
 {
-	animation = new AnimationComponent(this);
-	components.push_back(animation);
-
 	Action();
 }
 
@@ -36,7 +33,7 @@ void DeathMob::Death()
 
 void DeathMob::StandBy()
 {
-	animation->RunAnimation("StandBy");
+	animation->RunAnimation("StandBy", GetDrawable()->getScale().x);
 }
 
 void DeathMob::Action()
@@ -51,7 +48,7 @@ void DeathMob::Attack()
 	Player* _player = Game::GetPlayer();
 	if (GetDrawable()->getGlobalBounds().contains(_player->GetPosition()))
 	{
-		animation->RunAnimation("Explosion");
+		animation->RunAnimation("Explosion", GetDrawable()->getScale().x);
 		_player->GetStats()->UpdateLife(-1);
 	}
 }

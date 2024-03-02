@@ -175,6 +175,15 @@
     <Filter Include="Components\Attack\Player">
       <UniqueIdentifier>{f618356d-8ecc-4588-a40f-a3a2ab95a440}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers\UIs">
+      <UniqueIdentifier>{f79bc5c9-5c49-46d4-a171-039bc081c33a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Collectables">
+      <UniqueIdentifier>{dcbb7092-5f1c-49a0-bd1b-8799b29a5688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Lift">
+      <UniqueIdentifier>{6da06ae4-f2b5-4d28-9bc3-bebce02afba4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -222,9 +231,6 @@
     <ClCompile Include="Label.cpp">
       <Filter>UIs\Widgets\ShapeWidgets\Labels</Filter>
     </ClCompile>
-    <ClCompile Include="HUD.cpp">
-      <Filter>UIs</Filter>
-    </ClCompile>
     <ClCompile Include="TextureData.cpp">
       <Filter>Managers\Textures</Filter>
     </ClCompile>
@@ -248,9 +254,6 @@
     </ClCompile>
     <ClCompile Include="ShapeObject.cpp">
       <Filter>Objects\ShapeObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Objects</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Games</Filter>
@@ -363,6 +366,18 @@
     <ClCompile Include="PlayerAttackComponent.cpp">
       <Filter>Components\Attack\Player</Filter>
     </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Managers\UIs</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="CollectableActor.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Collectables</Filter>
+    </ClCompile>
+    <ClCompile Include="Lift.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Lift</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -415,9 +430,6 @@
     </ClInclude>
     <ClInclude Include="Label.h">
       <Filter>UIs\Widgets\ShapeWidgets\Labels</Filter>
-    </ClInclude>
-    <ClInclude Include="HUD.h">
-      <Filter>UIs</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>Managers\Textures</Filter>
@@ -556,6 +568,15 @@
     </ClInclude>
     <ClInclude Include="PlayerAttackComponent.h">
       <Filter>Components\Attack\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Managers\UIs</Filter>
+    </ClInclude>
+    <ClInclude Include="CollectableActor.h">
+      <Filter>Objects\ShapeObjects\Actors\Collectables</Filter>
+    </ClInclude>
+    <ClInclude Include="Lift.h">
+      <Filter>Objects\ShapeObjects\Actors\Lift</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

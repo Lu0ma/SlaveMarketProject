@@ -4,6 +4,7 @@
 #include "Bench.h"
 #include "Merchand.h"
 #include "InteractableActor.h"
+#include "Lift.h"
 
 using namespace std;
 using namespace sf;
@@ -49,6 +50,7 @@ class Map
 	vector<PlateformData> plateformsData;
 
 	vector<ShapeObject*> drawables;
+	vector<Lift*> lifts;
 
 public:
 	Bench* GetBench() const
@@ -58,6 +60,10 @@ public:
 	vector<ShapeObject*> GetAllDrawables() const
 	{
 		return drawables;
+	}
+	vector<Lift*> GetAllLifts() const
+	{
+		return lifts;
 	}
 
 public:

@@ -22,7 +22,7 @@ void AnimationComponent::InitAnimations(const vector<AnimationData>& _animations
 
         if (_index == 0)
         {
-            RunAnimation(_data.name);
+            RunAnimation(_data.name, 1.0f);
         }
 
         _index++;
@@ -30,7 +30,7 @@ void AnimationComponent::InitAnimations(const vector<AnimationData>& _animations
 }
 
 
-void AnimationComponent::RunAnimation(const string& _name)
+void AnimationComponent::RunAnimation(const string& _name, const float _directionX)
 {
     for (Animation* _animation : GetAllValues())
     {
@@ -48,7 +48,7 @@ void AnimationComponent::RunAnimation(const string& _name)
 
             //cout << "Start : " << _animation->GetData().name << endl;
             currentAnimation = _animation;
-            _animation->Start();
+            _animation->Start(_directionX);
         }
     }
 }
