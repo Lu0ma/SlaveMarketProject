@@ -13,7 +13,6 @@ public:
 	Boss(const ShapeData& _data);
 
 public:
-	void FacePlayer();
+	void FacePlayer(Player* _player);
 	virtual void Update(const float _deltaTime) override;
 };
-

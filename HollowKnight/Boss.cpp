@@ -11,18 +11,18 @@ Boss::Boss(const ShapeData& _data) : Actor("Boss" + to_string(GetUniqueID()), _d
 	components.push_back(_movement);
 }
 
-void Boss::FacePlayer()
+void Boss::FacePlayer(Player* _player)
 {
-
+	if (animation->GetCurrentAnimation()->GetData().name == "Idle")
+	{
+		const float _x = GetPosition().x < _player->GetPosition().x ? 1.0f : -1.0f;
+		animation->GetCurrentAnimation()->SetDirectionX(_x);
+	}
 }
 
 void Boss::Update(const float _deltaTime)
 {
 	Player* _player = Game::GetPlayer();
 
-	if (animation->GetCurrentAnimation()->GetData().name == "Idle")
-	{
-		const float _x = GetPosition().x < _player->GetPosition().x ? 1.0f : -1.0f;
-		animation->GetCurrentAnimation()->SetDirectionX(_x);
-	}
+	FacePlayer(_player);
 }
