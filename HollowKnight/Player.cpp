@@ -20,7 +20,7 @@
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
-	shape->setFillColor(Color::Red);
+	//shape->setFillColor(Color::Red);
 
 	animation = new PlayerAnimationComponent(this);
 	components.push_back(animation);

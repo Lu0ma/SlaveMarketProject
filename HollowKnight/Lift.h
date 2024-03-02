@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include"Lever.h"
 
 enum LiftMovementStatus
 {
@@ -14,7 +15,7 @@ class Lift : public Actor
 	float destinationUp;
 	float destinationDown;
 	LiftMovementStatus status;
-	Actor* lever;
+	Lever* lever;
 
 public:
 	Lift(const ShapeData& _data);
