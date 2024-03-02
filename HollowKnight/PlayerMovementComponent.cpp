@@ -9,7 +9,7 @@
 PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementComponent(_owner)
 {
 	// Movement
-	canMove = true;
+	canMove = false;
 	speed = 0.45f;
 	direction = Vector2f();
 
@@ -23,7 +23,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 	// Jump
 	isJumping = false;
-	jumpForce = 0.5f;
+	jumpForce = 0.4f;
 	jumpDuration = 0.2f;
 	gravity = 0.5f;
 
@@ -48,7 +48,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 bool PlayerMovementComponent::CheckGround()
 {
 	HitInfo _hit;
-	const bool _hasHit = Raycast(owner->GetShapePosition(), Vector2f(0.0f, 1.0f),
+	const bool _hasHit = Raycast(owner->GetShapePosition() + Vector2f(0.0f, 40.0f), Vector2f(0.0f, 1.0f),
 								 checkGroundDistance, _hit, { owner->GetDrawable() });
 
 	return _hasHit;
@@ -56,12 +56,11 @@ bool PlayerMovementComponent::CheckGround()
 
 void PlayerMovementComponent::Update(const float _deltaTime)
 {
-	if(!canMove) return;
-	MovementComponent::Update(_deltaTime);
-	Vector2f _offset;
-		
+	if (!canMove) return;
+
 	// Déplacement par défaut
 	const float _finalSpeed = isSprinting ? sprintSpeed : speed;
+	Vector2f _offset;
 	_offset = direction * _finalSpeed * _deltaTime;
 
 	// Si je suis en l'air et que je ne saute pas
@@ -112,7 +111,7 @@ void PlayerMovementComponent::Jump()
 
 	isJumping = true;
 	new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
-	animation->GetCurrentAnimation()->RunAnimation("Jump");
+	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
 }
 
 void PlayerMovementComponent::Dash()
@@ -122,7 +121,7 @@ void PlayerMovementComponent::Dash()
 	canDash = false;
 	isDashing = true;
 	new Timer([this]() { isDashing = false; }, seconds(dashDuration));
-	animation->GetCurrentAnimation()->RunAnimation("Dash");
+	animation->GetCurrentAnimation()->RunAnimation("Dash", dashDirection);
 }
 
 void PlayerMovementComponent::SitDown()
@@ -138,7 +137,7 @@ void PlayerMovementComponent::SitDown()
 	isStanding = false;
 	canMove = false;
 
-	animation->GetCurrentAnimation()->RunAnimation("Sit");
+	animation->GetCurrentAnimation()->RunAnimation("Sit", dashDirection);
 }
 
 void PlayerMovementComponent::StandUp()
@@ -154,5 +153,5 @@ void PlayerMovementComponent::StandUp()
 	isStanding = true;
 	canMove = true;
 
-	animation->GetCurrentAnimation()->RunAnimation("StopRight");
+	animation->GetCurrentAnimation()->RunAnimation("StopRight", dashDirection);
 }

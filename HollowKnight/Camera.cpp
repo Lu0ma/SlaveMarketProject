@@ -13,6 +13,7 @@ Camera::Camera(const Target& _target)
 View Camera::FollowPlayer()
 {
 	const FloatRect& _rect = GetPlayerRect();
+	//view.setCenter(_rect.left, _rect.top);
 	view.setCenter(_rect.left, view.getCenter().y);
 	return view;
 }
@@ -27,7 +28,7 @@ void Camera::CheckCameraState(View& _newView)
 	RenderWindow& _window = Game::GetWindow();
 	if (GetTargetStat() == TARGET_PLAYER)
 	{
-		_newView =	FollowPlayer();
+		_newView =FollowPlayer();
 		_window.setView(_newView);
 	}
 

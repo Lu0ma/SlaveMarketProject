@@ -405,15 +405,28 @@ void Inventory::AddItem(const int _count, const ItemData& _data)
 {
 	if (_count <= 0) return;
 
-	if (Item* _item = FindItemData(_data.path))
+	if (_data.type == IT_HEALTH)
 	{
-		_item->UpdateCount(1);
-		AddItem(_count - 1, _data);
-		return;
+		UpdateMaskCount(_count);
 	}
 
-	CreateItemData(_data);
-	AddItem(_count - 1, _data);
+	else if (_data.type == IT_VESSEL)
+	{
+		UpdateVesselCount(_count);
+	}
+	
+	else if (_data.type == IT_ITEM)
+	{
+		if (Item* _item = FindItemData(_data.path))
+		{
+			_item->UpdateCount(1);
+			AddItem(_count - 1, _data);
+			return;
+		}
+
+		CreateItemData(_data);
+		AddItem(_count - 1, _data);
+	}
 }
 
 void Inventory::CreateItemData(const ItemData& _data)

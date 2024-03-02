@@ -7,6 +7,7 @@ using namespace std;
 class PlayerAttackComponent : public Component
 {
 	int damages;
+	float range;
 	PlayerAnimationComponent* animation;
 
 public:

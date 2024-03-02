@@ -6,7 +6,7 @@
 
 InteractionComponent::InteractionComponent(Actor* _owner) : Component(_owner)
 {
-	range = 50.0f;
+	range = 200.0f;
 }
 
 

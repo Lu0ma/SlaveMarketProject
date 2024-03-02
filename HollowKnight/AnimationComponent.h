@@ -23,5 +23,5 @@ public:
 
 public:
     void InitAnimations(const vector<AnimationData>& _animationsData);
-    void RunAnimation(const string& _name);
+    void RunAnimation(const string& _name, const float _directionX);
 };

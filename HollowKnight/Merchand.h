@@ -4,6 +4,7 @@
 #include "Button.h"
 #include "ShapeWidget.h"
 #include "Label.h"
+#include "Timer.h"
 
 class Merchand : public NPC
 {
@@ -13,6 +14,7 @@ class Merchand : public NPC
 	ShapeWidget* pointer;
 	Label* descriptionTitle;
 	Label* descriptionText;
+	Timer* timer;
 
 public:
 	void Toggle()

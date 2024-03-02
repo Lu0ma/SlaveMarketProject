@@ -3,8 +3,7 @@
 
 Belfly::Belfly(const ShapeData& _data) : Mob(_data)
 {
-	animation = new AnimationComponent(this);
-	components.push_back(animation);
+
 }
 
 void Belfly::Init()
