@@ -12,6 +12,8 @@ protected:
 public:
 	Boss(const ShapeData& _data);
 
-
+public:
+	void FacePlayer();
+	virtual void Update(const float _deltaTime) override;
 };
 

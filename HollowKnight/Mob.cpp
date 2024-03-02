@@ -27,7 +27,6 @@ Mob::Mob(const ShapeData& _data) : Actor("Mob" + to_string(GetUniqueID()), _data
 	InitTimerPatrol();
 }
 
-
 void Mob::InitTimerPatrol()
 {
 	new Timer(this, &Mob::Patrol, seconds(1.0f), true, true);
@@ -36,9 +35,12 @@ void Mob::InitTimerPatrol()
 void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)
 {
 	_animationComponent->GetCurrentAnimation()->Stop();
-	_animationComponent->RunAnimation(_linkedAnimation, GetDrawable()->getScale().x);
-}
 
+	Vector2f _direction = movement->GetDestination();
+	_direction -= GetPosition();
+	Normalize(_direction);
+	_animationComponent->RunAnimation(_linkedAnimation, _direction.x);
+}
 
 void Mob::Move()
 {

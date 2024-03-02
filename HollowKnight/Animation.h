@@ -79,6 +79,11 @@ public:
     {
         return shape;
     }
+    // /!\ MUST BE 1 OR -1
+    void SetDirectionX(const float _directionX)
+    {
+        directionX = _directionX;
+    }
 public:
     Animation(const string& _name, AnimationComponent* _owner, Shape* _shape,
         const AnimationData& _data);

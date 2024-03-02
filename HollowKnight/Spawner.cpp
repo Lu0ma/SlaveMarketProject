@@ -2,11 +2,13 @@
 #include "HuskBully.h"
 #include "Boofly.h"
 #include "Belfly.h"
+#include "FalseKnight.h"
 
 #define PATH_BOOFLY "Animations/Boofly.png"
 #define PATH_BELFLY "Animations/BelflyModif.png"
 #define PATH_HUSK_BULLY "Animations/HuskBully.png"
 #define PATH_DEATHMOB "Animations/DeathMob.png"
+#define PATH_FALSE_KNIGHT "Animations/FalseKnight.png"
 
 Spawner::Spawner()
 {
@@ -16,7 +18,7 @@ Spawner::Spawner()
 
 void Spawner::Spawn()
 {
-	Vector2f _positionBoofly = Vector2f(0.0f, 250.0f);
+	Vector2f _positionBoofly = Vector2f(0.0f, -250.0f);
 	Vector2f _positionBelfly = Vector2f(200.0f, 225.0f);
 	Vector2f _positionHuskBully = Vector2f(400.0f, 250.0f);
 	Vector2f _sizeBoofly = Vector2f(120.0f, 100.0f);
@@ -27,12 +29,19 @@ void Spawner::Spawn()
 	boofly = new Boofly(_dataBoofly);
 	boofly->Init();
 
-	ShapeData _dataBelfly = ShapeData(_positionBelfly, _sizeBelfly, PATH_BELFLY);
+	Vector2f _positionFalseKnight = Vector2f(-800.0f, -150.0f);
+	Vector2f _sizeFalseKnight = Vector2f(600.0f, 400.0f);
+
+	ShapeData _data = ShapeData(_positionFalseKnight, _sizeFalseKnight, PATH_FALSE_KNIGHT);
+	FalseKnight* _falseKnight = new FalseKnight(_data);
+	_falseKnight->Init();
+
+	//ShapeData _dataBelfly = ShapeData(_positionBelfly, _sizeBelfly, PATH_BELFLY);
 	//new Belfly(_dataBelfly);
 
-	ShapeData _dataHuskBully = ShapeData(_positionHuskBully, _sizeHuskBully, PATH_HUSK_BULLY);
+	/*ShapeData _dataHuskBully = ShapeData(_positionHuskBully, _sizeHuskBully, PATH_HUSK_BULLY);
 	HuskBully* _huskBully = new HuskBully(_dataHuskBully);
-	_huskBully->Init();
+	_huskBully->Init();*/
 
 	//deathMob = new DeathMob(_data);
 }

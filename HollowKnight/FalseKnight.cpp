@@ -10,20 +10,6 @@ void FalseKnight::Init()
 {
 	const Vector2f& _size = Vector2f(655.0f, 586.0f);
 
-
-	const Vector2f& _sizeIdle = Vector2f(625.0f, 419.0f);
-	const Vector2f& _sizeTurn = Vector2f(555.0f, 410.0f);
-
-	const Vector2f& _sizeRun = Vector2f(610.0f, 400.0f);
-	const Vector2f& _sizeRunning = Vector2f(631.0f, 500.0f);
-
-	const Vector2f& _sizeJump = Vector2f(630.0f, 404.0f);
-	const Vector2f& _sizeJumping = Vector2f(607.0f, 349.0f);
-
-	const Vector2f& _sizeAttack = Vector2f(583.0f, 401.0f);
-	const Vector2f& _sizeAttackReach = Vector2f(732.0f, 603.0f);
-	const Vector2f& _sizeAttackCooldown = Vector2f(620.0f, 580.0f);
-
 	const float _speed = 0.15f;
 
 	//=====================================================================
@@ -32,19 +18,19 @@ void FalseKnight::Init()
 
 	animation->InitAnimations(
 	{
-		AnimationData("Idle", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, false, 5, _speed, true, "StunRoll"),
+		AnimationData("Idle", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, false, 5, _speed, true, "Attack"),
 		AnimationData("Turn", Vector2f(0.0f, 586.0f), _size, READ_RIGHT, false, 2, _speed, false, "Idle"),
 
 		AnimationData("Run", Vector2f(0.0f, 1172.0f), _size, READ_RIGHT, false, 3, _speed, true, "Running"),
-		AnimationData("Running", Vector2f(0.0f, 1758.0f), _size, READ_RIGHT, false, 4, _speed, true, "Run"),
+		AnimationData("Running", Vector2f(0.0f, 1758.0f), _size, READ_RIGHT, true, 4, _speed, true, "Idle"),
 
 		AnimationData("Jump", Vector2f(0.0f, 2344.0f), _size, READ_RIGHT, false, 3, 0.5f, true, "Jumping"),
-		AnimationData("Jumping", Vector2f(0.0f, 2930.0f), _size, READ_RIGHT, false, 4, _speed, true, "Land"),
-		AnimationData("Land", Vector2f(0.0f, 3516.0f), _size, READ_RIGHT, false, 3, 0.05f, true, "Jump"),
+		AnimationData("Jumping", Vector2f(0.0f, 2930.0f), _size, READ_RIGHT, true, 4, _speed, true, "Land"),
+		AnimationData("Land", Vector2f(0.0f, 3516.0f), _size, READ_RIGHT, false, 3, 0.05f, true, "Idle"),
 
 		AnimationData("Attack", Vector2f(0.0f, 4102.0f), _size, READ_RIGHT, false, 6, _speed, true, "AttackReach"),
 		AnimationData("AttackReach", Vector2f(0.0f, 4688.0f), _size, READ_RIGHT, false, 3, 0.1f, true, "AttackCooldown"),
-		AnimationData("AttackCooldown", Vector2f(0.0f, 5274.0f), _size, READ_RIGHT, false, 5, _speed, true, "Attack"),
+		AnimationData("AttackCooldown", Vector2f(0.0f, 5274.0f), _size, READ_RIGHT, false, 5, _speed, true, "Idle"),
 
 		AnimationData("PreJumpAttack", Vector2f(0.0f, 2344.0f), _size, READ_RIGHT, false, 3, 0.5f, true, "JumpAttack"),
 		AnimationData("JumpAttack", Vector2f(0.0f, 5860.0f), _size, READ_RIGHT, false, 5, _speed, true, "JumpAttackP1"),

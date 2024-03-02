@@ -1,6 +1,7 @@
 #include "Boss.h"
 #include "Macro.h"
 #include "MovementComponent.h"
+#include "Game.h"
 
 Boss::Boss(const ShapeData& _data) : Actor("Boss" + to_string(GetUniqueID()), _data)
 {
@@ -8,4 +9,20 @@ Boss::Boss(const ShapeData& _data) : Actor("Boss" + to_string(GetUniqueID()), _d
 
 	MovementComponent* _movement = new MovementComponent(this);
 	components.push_back(_movement);
+}
+
+void Boss::FacePlayer()
+{
+
+}
+
+void Boss::Update(const float _deltaTime)
+{
+	Player* _player = Game::GetPlayer();
+
+	if (animation->GetCurrentAnimation()->GetData().name == "Idle")
+	{
+		const float _x = GetPosition().x < _player->GetPosition().x ? 1.0f : -1.0f;
+		animation->GetCurrentAnimation()->SetDirectionX(_x);
+	}
 }

@@ -5,7 +5,7 @@
 
 Boofly::Boofly(const ShapeData& _data) : Mob(_data)
 { 
-
+	isPatrolling = true;
 }
 
 void Boofly::Init()
@@ -19,7 +19,13 @@ void Boofly::Init()
 	const float _speedTurn = 0.09f;
 
 	animation->InitAnimations({
-		AnimationData("GoLeft", Vector2f(0.0f, 17.0f), _size, READ_RIGHT, true, 5, _speed, true, "TurnToRight"),
+		AnimationData("Go", Vector2f(0.0f, 17.0f), _size, READ_RIGHT, true, 5, _speed, true, "Turn"),
+		AnimationData("Turn", Vector2f(0.0f, 380.0f), _size, READ_RIGHT, false, 4, _speedTurn, true, "Go"),
+		AnimationData("Bounce", Vector2f(42.0f, 745.0f), _sizeBounce, READ_RIGHT, false, 2, _speed),
+		AnimationData("DeathAir", Vector2f(0.0f, 1120.0f), _sizeDeathAir, READ_RIGHT, true, 4, _speed, true),
+		AnimationData("DeathLand", Vector2f(0.0f, 1480.0f), _sizeDeathLand, READ_RIGHT, false, 3, _speed),
+
+		/*AnimationData("GoLeft", Vector2f(0.0f, 17.0f), _size, READ_RIGHT, true, 5, _speed, true, "TurnToRight"),
 		AnimationData("GoRight", Vector2f(0.0f, 17.0f), _size, READ_RIGHT, true, 5, _speed, false, "TurnToLeft"),
 		AnimationData("TurnToLeft", Vector2f(0.0f, 380.0f), _size, READ_RIGHT, false, 4, _speedTurn, true, "GoLeft"),
 		AnimationData("TurnToRight", Vector2f(0.0f, 380.0f), _size, READ_RIGHT, false, 4, _speedTurn, false, "GoRight"),
@@ -27,7 +33,8 @@ void Boofly::Init()
 		AnimationData("BounceRight", Vector2f(42.0f, 745.0f), _sizeBounce, READ_RIGHT, false, 2, _speed, false),
 		AnimationData("DeathAirLeft", Vector2f(0.0f, 1120.0f), _sizeDeathAir, READ_RIGHT, true, 4, _speed),
 		AnimationData("DeathAirRight", Vector2f(0.0f, 1120.0f), _sizeDeathAir, READ_RIGHT, true, 4, _speed, false),
-		AnimationData("DeathLand", Vector2f(0.0f, 1480.0f), _sizeDeathLand, READ_RIGHT, false, 3, _speed),
+		AnimationData("DeathLand", Vector2f(0.0f, 1480.0f), _sizeDeathLand, READ_RIGHT, false, 3, _speed),*/
+
 	});
 }
 

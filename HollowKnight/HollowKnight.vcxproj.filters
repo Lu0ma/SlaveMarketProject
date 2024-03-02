@@ -184,6 +184,12 @@
     <Filter Include="Objects\ShapeObjects\Actors\Lift">
       <UniqueIdentifier>{6da06ae4-f2b5-4d28-9bc3-bebce02afba4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Boss">
+      <UniqueIdentifier>{da02973d-de1c-40da-88e2-55e6bea5f75c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Boss\FalseKnight">
+      <UniqueIdentifier>{8ddb3033-574c-4c24-946c-e91d0e2f47c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -377,6 +383,12 @@
     </ClCompile>
     <ClCompile Include="Lift.cpp">
       <Filter>Objects\ShapeObjects\Actors\Lift</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="FalseKnight.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Boss\FalseKnight</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -577,6 +589,12 @@
     </ClInclude>
     <ClInclude Include="Lift.h">
       <Filter>Objects\ShapeObjects\Actors\Lift</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Objects\ShapeObjects\Actors\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="FalseKnight.h">
+      <Filter>Objects\ShapeObjects\Actors\Boss\FalseKnight</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
