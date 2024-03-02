@@ -20,6 +20,21 @@ Map::Map()
 
 	//TODO move
 	barrack = nullptr;
+
+	plateformsData = {
+		{
+			Vector2f(0.0f, 85.0f),
+			PT_THIN,
+		},
+		{
+			Vector2f(0.0f, 0.0f),
+			PT_MID,
+		},
+		{
+			Vector2f(0.0f , -85.0f),
+			PT_WIDE,
+		}
+	};
 }
 
 
@@ -28,6 +43,7 @@ MapData Map::LoadMapData(const string& _path)
 	MapData _data;
 	const string& _symbol = " = ";
 
+	//background
 	_data.backgroundPath = GetStringAfterSymbol(GetLineByText("BackgroundPath", _path), _symbol);
 
 	const float _bgPosX = stof(GetStringAfterSymbol(GetLineByText("BackgroundPosX", _path), _symbol));
@@ -46,34 +62,34 @@ MapData Map::LoadMapData(const string& _path)
 	const float _clampCamMaxY = stof(GetStringAfterSymbol(GetLineByText("ClampCamMaxY", _path), _symbol));
 	_data.clampCamMax = Vector2f(_bgPosX, _bgPosY);
 
+	//walls
+	const string& _wallSymbol = "walls = [";
+	const int _wallIndex = GetIndexByText(_wallSymbol, _path);
+
+	//analyser toutes les lignes, ligne par ligne a partir de _wallIndex + 1
+	for (int _index = _wallIndex + 1, char _char = 0; _index < _path.size(); _index++)
+	{
+		const int _clampCamMaxY = stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+
+	}
+
+	
 	return _data;
 }
 
 void Map::InitPlateforms()
 {
-	plateformsData = {
-		{
-			Vector2f(0.0f, 85.0f),
-			Vector2f(134.0f, 84.0f),
-			PATH_THIN
-		},
-		{
-			Vector2f(0.0f, 0.0f),
-			Vector2f(198.0f, 85.0f),
-			PATH_MID
-		},
-		{
-			Vector2f(0.0f , -85.0f),
-			Vector2f(263.0f , 85.0f),
-			PATH_WIDE
-		}
-	};
 
-	for (int _index = 0, _count = 0; _index < plateformsData.size(); _index++, _count++)
+	for (int _index = 0; _index < plateformsData.size(); _index++)
 	{
-		Actor* _plateforms = new Actor("Ground", ShapeData(Vector2f(plateformsData[_index].position.x, plateformsData[_index].position.y), Vector2f(plateformsData[_index].size.x, plateformsData[_index].size.y), plateformsData[_index].path));
-		drawables.push_back(_plateforms);
+		Actor* _plateform = new Actor(STRING_ID("Plateform"), ShapeData(Vector2f(plateformsData[_index].position), Vector2f(plateformsData[_index].), plateformsData[_index].));
+		drawables.push_back(_plateform);
 	}
+}
+
+void Map::RetrievePlatformData(Vector2f& _size, string& _path)
+{
+
 }
 
 
@@ -84,6 +100,7 @@ void Map::Init()
 	//	const MapData& _data = LoadMapData(LEVEL + to_string(_index) + ".txt");
 	//	cout << _data.backgroundPath << endl;
 	//}
+
 	bench->Init();
 	pnj->Init();
 	merchand->Init();
@@ -96,8 +113,8 @@ void Map::Init()
 	drawables.push_back(barrack);
 
 	//TODO modify ?
-	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-150.0f, 49.5f), Vector2f(5550.0f, 50.0f), ""));
-	_ground->GetDrawable()->setFillColor(Color::Red);
+	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-150.0f, 49.5f), Vector2f(5550.0f, 10.0f), ""));
+	_ground->GetDrawable()->setFillColor(Color::Transparent);
 
 	InitPlateforms();
 

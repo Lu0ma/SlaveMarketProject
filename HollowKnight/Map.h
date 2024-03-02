@@ -30,12 +30,17 @@ struct MapData
 	vector<WallData> walls;
 };
 
+enum PlatformType
+{
+	PT_THIN,
+	PT_MID,
+	PT_WIDE,
+};
+
 struct PlateformData
 {
 	Vector2f position;
-	Vector2f size;
-	string path;
-
+	PlatformType type;
 };
 
 class Map
@@ -67,6 +72,8 @@ private:
 	MapData LoadMapData(const string& _path);
 
 	void InitPlateforms();
+	void RetrievePlatformData(Vector2f& _size, string& _path);
+
 public:
 	void Init();
 };

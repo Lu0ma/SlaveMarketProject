@@ -12,3 +12,4 @@ string GetStringAfterSymbol(const string& _text, const string& _symbol);
 string GetStringAfterIndex(const string& _text, const int _index);
 void ReadAllFile(const string& _path, vector<string>& _array);
 bool ContainsText(const string& _text, const string& _word);
+int GetIndexByText(const string& _text, const string& _path);
