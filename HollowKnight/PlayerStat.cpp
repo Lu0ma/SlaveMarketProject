@@ -68,8 +68,13 @@ void PlayerStat::UseMana(const float _factor)
 
 	if (_factor < 0.0f && animation && movement)
 	{
-		animation->GetCurrentAnimation()->RunAnimation("RemoveMana", movement->GetDirection().x);
+		animation->GetCurrentAnimation()->RunAnimation("RemoveMana", 1/*movement->GetDirection().x*/);
 	}
+}
+
+void PlayerStat::StopUsingMana()
+{
+	animation->GetCurrentAnimation()->RunAnimation("StopRight", 1);
 }
 
 void PlayerStat::UpdateLife(const int _count)

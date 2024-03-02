@@ -45,7 +45,6 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 void Player::InitAnimations()
 {
 	animation->Init();
-	animation->GetCurrentAnimation()->RunAnimation("StopRight");
 }
 
 void Player::SetupPlayerInput()
@@ -56,13 +55,14 @@ void Player::SetupPlayerInput()
 			stats->UseMana(-10.0f); 
 			stats->UpdateLife(1); 
 		}, InputData({ActionType::KeyPressed, Keyboard::Escape})),
+		ActionData("StopMana", [&]() { stats->StopUsingMana(); }, InputData({ ActionType::KeyReleased, Keyboard::Escape  })),
 		//ActionData("StopRemoveMana",[&]() { animation->GetCurrentAnimation()->RunAnimation(animation->GetAnimPlayer()[0]); }, InputData({ ActionType::KeyReleased, Keyboard::Escape })),
 		//ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
 		ActionData("RemoveLife", [&]() { stats->UpdateLife(-1); }, InputData({ ActionType::KeyPressed, Keyboard::Num0 })),
 		ActionData("AddLifeSlot", [&]() { stats->AddLife(); }, InputData({ ActionType::KeyPressed, Keyboard::O })),
 		ActionData("AddGeos", [&]() { stats->AddGeos(12); }, InputData({ ActionType::KeyPressed, Keyboard::Num8 })),
 	});
-
+	            
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
