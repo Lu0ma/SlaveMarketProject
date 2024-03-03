@@ -9,7 +9,7 @@
 #define LEVEL "Assets/Levels/SubLevel_"
 #define PATH_BENCH "Map/Bench.png"
 #define PATH_STAND "/UIs/Shop/Stand.png"
-#define PATH_PNJ "/Characters/PNJ/PNJ.png"
+#define PATH_PNJ "/Characters/PNJ/PNJA.png"
 
 #define PATH_THIN "Levels/Thin.png"
 #define PATH_MID "Levels/Mid.png"

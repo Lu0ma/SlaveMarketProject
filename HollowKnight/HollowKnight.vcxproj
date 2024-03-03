@@ -181,6 +181,7 @@
     <ClCompile Include="MusicData.cpp" />
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="NPCAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -256,6 +257,7 @@
     <ClInclude Include="MusicData.h" />
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="NPC.h" />
+    <ClInclude Include="NPCAnimationComponent.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OptionsMenu.h" />
     <ClInclude Include="Player.h" />

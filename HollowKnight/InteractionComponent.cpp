@@ -28,6 +28,7 @@ void InteractionComponent::TryToInteract()
 		else if (NPC* _npc = dynamic_cast<NPC*>(_interactable))
 		{
 			_npc->OpenDiscussion();
+			_npc->GetAnimation()->GetCurrentAnimation()->RunAnimation("Talk", 1);
 			inventory->SetStatus(false);
 		}
 	}
@@ -35,5 +36,6 @@ void InteractionComponent::TryToInteract()
 
 void InteractionComponent::StopInteract()
 {
+	if (!merchand)return;
 	merchand->CloseDiscussion();
 }
