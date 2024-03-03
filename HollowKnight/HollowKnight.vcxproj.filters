@@ -417,14 +417,23 @@
     <ClCompile Include="AchievementsMenu.cpp">
       <Filter>Menus\AchievementsMenu</Filter>
     </ClCompile>
-    <ClCompile Include="Lever.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="DragonAnimationComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="LeverAnimationComponent.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MerchandAnimationComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="NPCAnimationComponent.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Dragon.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="Lever.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -644,14 +653,23 @@
     <ClInclude Include="AchievementsMenu.h">
       <Filter>Menus\AchievementsMenu</Filter>
     </ClInclude>
-    <ClInclude Include="Lever.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="DragonAnimationComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="LeverAnimationComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="NPCAnimationComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MerchandAnimationComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Dragon.h">
+      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Lever.h">
+      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

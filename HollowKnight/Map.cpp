@@ -10,6 +10,8 @@
 #define PATH_BENCH "Map/Bench.png"
 #define PATH_STAND "/UIs/Shop/Stand.png"
 #define PATH_PNJ "/Characters/PNJ/PNJA.png"
+#define PATH_MERCHAND "/Characters/PNJ/Merchand.png"
+#define PATH_DRAGON "/Animations/walla.png"
 
 #define PATH_THIN "Levels/Thin.png"
 #define PATH_MID "Levels/Mid.png"
@@ -17,9 +19,10 @@
 
 Map::Map()
 {
+	dragon = new Dragon("Dragon", ShapeData(Vector2f(700.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
 	bench = new Bench(ShapeData(Vector2f(300.0f, 5.0f), Vector2f(176.0, 80.0f), PATH_BENCH));
 	pnj = new NPC(STRING_ID("Villageois"), ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PNJ));
-	merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_STAND), vector<string>());
+	merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_MERCHAND), vector<string>());
 	background = nullptr;
 
 	//TODO move

@@ -5,6 +5,7 @@
 #include "Merchand.h"
 #include "InteractableActor.h"
 #include "Lift.h"
+#include"Dragon.h"
 
 using namespace std;
 using namespace sf;
@@ -41,6 +42,7 @@ struct PlateformData
 
 class Map
 {
+	Dragon* dragon;
 	Bench* bench;
 	Merchand* merchand;
 	InteractableActor* pnj;

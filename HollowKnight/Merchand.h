@@ -5,6 +5,7 @@
 #include "ShapeWidget.h"
 #include "Label.h"
 #include "Timer.h"
+#include"MerchandAnimationComponent.h"
 
 class Merchand : public NPC
 {
@@ -15,6 +16,13 @@ class Merchand : public NPC
 	Label* descriptionTitle;
 	Label* descriptionText;
 	Timer* timer;
+	MerchandAnimationComponent* animations;
+
+public:
+	MerchandAnimationComponent* GetAnimations()const
+	{
+		return animations;
+	}
 
 public:
 	void Toggle()

@@ -22,6 +22,7 @@ void InteractionComponent::TryToInteract()
 		if (merchand = dynamic_cast<Merchand*>(_interactable))
 		{
 			merchand->OpenDiscussion();
+			merchand->GetAnimations()->GetCurrentAnimation()->RunAnimation("Sell", 1);
 			inventory->SetStatus(false);
 		}
 
