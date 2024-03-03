@@ -149,6 +149,8 @@
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DeathMob.cpp" />
+    <ClCompile Include="Dragon.cpp" />
+    <ClCompile Include="DragonAnimationComponent.cpp" />
     <ClCompile Include="ExtrasMenu.cpp" />
     <ClCompile Include="FalseKnight.cpp" />
     <ClCompile Include="FileLoader.cpp" />
@@ -174,6 +176,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Merchand.cpp" />
+    <ClCompile Include="MerchandAnimationComponent.cpp" />
     <ClCompile Include="Mob.cpp" />
     <ClCompile Include="MobAttackComponent.cpp" />
     <ClCompile Include="MobLifeComponent.cpp" />
@@ -181,6 +184,7 @@
     <ClCompile Include="MusicData.cpp" />
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="NPCAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -223,6 +227,8 @@
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="DeathMob.h" />
+    <ClInclude Include="Dragon.h" />
+    <ClInclude Include="DragonAnimationComponent.h" />
     <ClInclude Include="ExtrasMenu.h" />
     <ClInclude Include="FalseKnight.h" />
     <ClInclude Include="FileLoader.h" />
@@ -249,6 +255,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Merchand.h" />
+    <ClInclude Include="MerchandAnimationComponent.h" />
     <ClInclude Include="Mob.h" />
     <ClInclude Include="MobAttackComponent.h" />
     <ClInclude Include="MobLifeComponent.h" />
@@ -256,6 +263,7 @@
     <ClInclude Include="MusicData.h" />
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="NPC.h" />
+    <ClInclude Include="NPCAnimationComponent.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OptionsMenu.h" />
     <ClInclude Include="Player.h" />

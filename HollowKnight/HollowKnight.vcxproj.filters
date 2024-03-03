@@ -417,6 +417,24 @@
     <ClCompile Include="AchievementsMenu.cpp">
       <Filter>Menus\AchievementsMenu</Filter>
     </ClCompile>
+    <ClCompile Include="DragonAnimationComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="LeverAnimationComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MerchandAnimationComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCAnimationComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Dragon.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="Lever.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -634,6 +652,24 @@
     </ClInclude>
     <ClInclude Include="AchievementsMenu.h">
       <Filter>Menus\AchievementsMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="DragonAnimationComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="LeverAnimationComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCAnimationComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MerchandAnimationComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Dragon.h">
+      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Lever.h">
+      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
