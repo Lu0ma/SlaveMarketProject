@@ -112,6 +112,6 @@ void Map::Init()
 	new CollectableActor(STRING_ID("Item"), ShapeData(Vector2f(-350.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Item.png"),
 														  30.0f, "Item", "Ceci est un item", IT_ITEM);
 
-	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(150.0f, 100.0f), "Lift.png"));
+	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(250.0f, 250.0f), "Lift.png"));
 	lifts.push_back(_lift);
 }

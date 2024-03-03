@@ -60,6 +60,7 @@ public:
 	void Init();
 
 	void UseMana(const float _factor);
+	void StopUsingMana();
 	void UpdateLife(const int _count);
 	void AddLife();
 	void AddGeos(const int _factor);

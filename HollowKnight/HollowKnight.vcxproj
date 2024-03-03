@@ -165,6 +165,8 @@
     <ClCompile Include="ItemWidget.cpp" />
     <ClCompile Include="Kismet.cpp" />
     <ClCompile Include="Label.cpp" />
+    <ClCompile Include="Lever.cpp" />
+    <ClCompile Include="LeverAnimationComponent.cpp" />
     <ClCompile Include="Lift.cpp" />
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -239,6 +241,8 @@
     <ClInclude Include="ItemWidget.h" />
     <ClInclude Include="Kismet.h" />
     <ClInclude Include="Label.h" />
+    <ClInclude Include="Lever.h" />
+    <ClInclude Include="LeverAnimationComponent.h" />
     <ClInclude Include="Lift.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="MainMenu.h" />

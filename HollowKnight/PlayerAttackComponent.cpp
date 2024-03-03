@@ -3,6 +3,7 @@
 #include "Lift.h"
 #include "Mob.h"
 #include "Macro.h"
+#include"Game.h"
 
 PlayerAttackComponent::PlayerAttackComponent(Actor* _owner, const int _damages) : Component(_owner)
 {
@@ -19,7 +20,12 @@ void PlayerAttackComponent::SpecialAttack()
 	for (Mob* _mob : _mobs)
 	{
 		if (!_mob) continue;
-		_mob->GetLife()->TakeDamages(GetDamages());
+		
+		else
+		{
+			_mob->GetLife()->TakeDamages(GetDamages());
+			Game::GetPlayer()->GetStats()->UseMana(1.0f);
+		}
 	}
 
 	const vector<Lift*>& _lifts = Game::GetMap()->GetAllLifts();
