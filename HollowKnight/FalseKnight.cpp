@@ -4,6 +4,7 @@ FalseKnight::FalseKnight(const ShapeData& _data) : Boss(_data)
 {
 	animation = new AnimationComponent(this);
 	components.push_back(animation);
+
 }
 
 void FalseKnight::Init()
@@ -18,7 +19,7 @@ void FalseKnight::Init()
 
 	animation->InitAnimations(
 	{
-		AnimationData("Idle", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, false, 5, _speed, true, "Attack"),
+		AnimationData("Idle", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, true, 5, _speed, true, ""),
 		AnimationData("Turn", Vector2f(0.0f, 586.0f), _size, READ_RIGHT, false, 2, _speed, false, "Idle"),
 
 		AnimationData("Run", Vector2f(0.0f, 1172.0f), _size, READ_RIGHT, false, 3, _speed, true, "Running"),
@@ -50,4 +51,14 @@ void FalseKnight::Init()
 		AnimationData("Body", Vector2f(0.0f, 12306.0f), _size, READ_RIGHT, false, 1, _speed, true, "DeathFall"),
 
 	});
+}
+
+void FalseKnight::Attack(Player* _player)
+{
+	Vector2f _playerPos = _player->GetDrawable()->getGlobalBounds().getPosition();
+	if (GetDrawable()->getGlobalBounds().contains(_playerPos))
+	{
+		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
+		animation->RunAnimation("Attack", _directionX);
+	}
 }
