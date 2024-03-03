@@ -390,6 +390,9 @@
     <ClCompile Include="FalseKnight.cpp">
       <Filter>Objects\ShapeObjects\Actors\Boss\FalseKnight</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -595,6 +598,9 @@
     </ClInclude>
     <ClInclude Include="FalseKnight.h">
       <Filter>Objects\ShapeObjects\Actors\Boss\FalseKnight</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

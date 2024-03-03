@@ -1,11 +1,11 @@
 #pragma once
-#include "Actor.h"
+#include "Enemy.h"
 #include "AnimationComponent.h"
 #include "MovementComponent.h"
 #include "MobAttackComponent.h"
 #include "MobLifeComponent.h"
 
-class Mob : public Actor
+class Mob : public Enemy
 {
 	Vector2f startPosition;
 	Vector2f goalPosition;

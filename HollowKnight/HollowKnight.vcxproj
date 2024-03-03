@@ -148,6 +148,7 @@
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DeathMob.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FalseKnight.cpp" />
     <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="FontData.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="DeathMob.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="FalseKnight.h" />
     <ClInclude Include="FileLoader.h" />
     <ClInclude Include="FontData.h" />
