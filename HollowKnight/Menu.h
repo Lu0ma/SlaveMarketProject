@@ -1,20 +1,31 @@
 #pragma once
-#include "TitleMenu.h"
 #include "Canvas.h"
-#include "MusicData.h"
+#include "ShapeWidget.h"
+#include "Label.h"
 
 class Menu
 {
-	Canvas* mainMenu;
-	TitleMenu* titleMenu;
-	MusicData* music;
+	bool isInit;
+
+protected:
+	Canvas* canvas;
+	Menu* owner;
 
 public:
-	Menu();
+	void SetStatus(const bool _status)
+	{
+		if (!isInit)
+		{
+			Init();
+			isInit = true;
+		}
 
-private:
-	void OpenTitleMenu();
+		canvas->SetVisibilityStatus(_status);
+	}
 
 public:
-	void Init();
+	Menu(const string& _name, Menu* _owner = nullptr);
+
+public:
+	virtual void Init() = 0;
 };

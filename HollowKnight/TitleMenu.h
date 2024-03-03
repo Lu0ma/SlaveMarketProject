@@ -1,17 +1,20 @@
 #pragma once
-#include "Canvas.h"
+#include "Menu.h"
 #include "ShapeWidget.h"
 #include "Button.h"
+#include "OptionsMenu.h"
+#include "AchievementsMenu.h"
 
-class TitleMenu
+class TitleMenu : public Menu
 {
-	Canvas* canvas;
-	ShapeWidget* pointer;
 	vector<Button*> buttons;
+	ShapeWidget* pointer;
+	OptionsMenu* options;
+	AchievementsMenu* achievement;
 
 public:
-	TitleMenu();
+	TitleMenu(Menu* _owner);
 
 public:
-	void Init();
+	virtual void Init() override;
 };

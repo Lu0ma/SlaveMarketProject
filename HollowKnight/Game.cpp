@@ -18,9 +18,9 @@ Camera* Game::camera;
 
 Game::Game()
 {
-	menu = new Menu();
+	menu = new MainMenu();
 	map = new Map();
-	player = new Player("Player", ShapeData(Vector2f(0.0f, -100.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
+	player = new Player("Player", ShapeData(Vector2f(0.0f, -300.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	camera = new Camera(TARGET_WINDOW);
 } 
 

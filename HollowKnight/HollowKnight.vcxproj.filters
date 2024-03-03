@@ -190,6 +190,21 @@
     <Filter Include="Objects\ShapeObjects\Actors\Boss\FalseKnight">
       <UniqueIdentifier>{8ddb3033-574c-4c24-946c-e91d0e2f47c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menus\MainMenu">
+      <UniqueIdentifier>{c3ab491c-dc2f-40e4-a1aa-f3abab5f56b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\TitleMenu">
+      <UniqueIdentifier>{1b5a3670-d415-4d5d-bb57-1abe056be83d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\OptionsMenu">
+      <UniqueIdentifier>{fcf986cf-b9d9-4a7c-887e-bda1e60eabff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\ExtrasMenu">
+      <UniqueIdentifier>{cd58e658-e6f5-494d-b992-835990dfb474}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\AchievementsMenu">
+      <UniqueIdentifier>{e41bcd9c-f187-444f-ae2d-b8c9949d9de8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -278,9 +293,6 @@
     </ClCompile>
     <ClCompile Include="ItemWidget.cpp">
       <Filter>UIs\Widgets\ShapeWidgets\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleMenu.cpp">
-      <Filter>Menus</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>Menus</Filter>
@@ -390,6 +402,21 @@
     <ClCompile Include="FalseKnight.cpp">
       <Filter>Objects\ShapeObjects\Actors\Boss\FalseKnight</Filter>
     </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Menus\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleMenu.cpp">
+      <Filter>Menus\TitleMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsMenu.cpp">
+      <Filter>Menus\OptionsMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtrasMenu.cpp">
+      <Filter>Menus\ExtrasMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="AchievementsMenu.cpp">
+      <Filter>Menus\AchievementsMenu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -487,9 +514,6 @@
     </ClInclude>
     <ClInclude Include="ItemWidget.h">
       <Filter>UIs\Widgets\ShapeWidgets\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleMenu.h">
-      <Filter>Menus</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Menus</Filter>
@@ -595,6 +619,21 @@
     </ClInclude>
     <ClInclude Include="FalseKnight.h">
       <Filter>Objects\ShapeObjects\Actors\Boss\FalseKnight</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Menus\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleMenu.h">
+      <Filter>Menus\TitleMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsMenu.h">
+      <Filter>Menus\OptionsMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtrasMenu.h">
+      <Filter>Menus\ExtrasMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="AchievementsMenu.h">
+      <Filter>Menus\AchievementsMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -24,16 +24,15 @@ public:
 	void CloseShop()
 	{
 		canvas->SetVisibilityStatus(false);
+		timer = nullptr;
 	}
 
 public:
 	Merchand(const ShapeData& _data, const vector<string>& _texts = {});
 
-protected:
-	virtual void CloseDiscussion() override;
-
 public:
 	virtual void Init() override;
 	virtual void OpenDiscussion() override;
+	virtual void CloseDiscussion() override;
 	//void BuyItem();
 };

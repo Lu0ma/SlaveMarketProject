@@ -2,7 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-#include "Menu.h"
+#include "MainMenu.h"
 #include "Map.h"
 #include "Player.h"
 #include "Camera.h"
@@ -16,7 +16,7 @@ using namespace sf;
 class Game
 {
 	static RenderWindow window;
-	Menu* menu;
+	MainMenu* menu;
 	static Map* map;
 private:
 	static Player* player;

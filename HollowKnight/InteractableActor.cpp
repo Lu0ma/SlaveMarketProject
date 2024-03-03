@@ -70,17 +70,17 @@ void InteractableActor::Init()
 	interactionBG = new ShapeWidget(ShapeData(_interactionBGPos, Vector2f(200.0f, 124.0f), PATH_INTERACTION));
 	canvas->AddWidget(interactionBG);
 
-	interactionText = new Label(TextData("LISTEN", _interactionBGPos + Vector2f(-60.0f, -20.0f), FONT, 32));
+	interactionText = new Label(TextData("LISTEN", _interactionBGPos + Vector2f(0.0f, -10.0f), FONT, 32));
 	canvas->AddWidget(interactionText);
 
 	const Vector2f& _halfWindowSize = Game::GetWindowSize() / 2.0f;
-	const Vector2f& _discussionPos = Vector2f(_halfWindowSize.x - 50.0f, 80.0f);
+	const Vector2f& _discussionPos = Vector2f(_halfWindowSize.x, 80.0f);
 
-	discussionBG = new ShapeWidget(ShapeData(_discussionPos + Vector2f(50.0f, 0.0f), Vector2f(418.0f, 150.0f), PATH_DISCUSSION));
+	discussionBG = new ShapeWidget(ShapeData(_discussionPos, Vector2f(418.0f, 150.0f), PATH_DISCUSSION));
 	discussionBG->SetVisible(false);
 	canvas->AddWidget(discussionBG);
 
-	discussionText = new Label(TextData("Your words, are they repeating ?", _discussionPos + Vector2f(-100.0f, -20.0f), FONT, 16));
+	discussionText = new Label(TextData("Your words, are they repeating ?", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16));
 	discussionText->SetVisible(false);
 	canvas->AddWidget(discussionText);
 }

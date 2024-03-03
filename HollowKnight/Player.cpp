@@ -22,6 +22,9 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 {
 	shape->setFillColor(Color::Red);
 
+	inventory = new Inventory();
+	charmsMenu = new CharmsMenu();
+
 	animation = new PlayerAnimationComponent(this);
 	components.push_back(animation);
 
@@ -36,9 +39,6 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 
 	stats = new PlayerStat(this);
 	components.push_back(stats);
-
-	inventory = new Inventory();
-	charmsMenu = new CharmsMenu();
 }
 
 
@@ -82,6 +82,7 @@ void Player::SetupPlayerInput()
 		ActionData("ToggleInventory", [&]() {
 			stats->Toggle();
 			inventory->Toggle();
+			interaction->StopInteract();
 		}, InputData({ ActionType::KeyPressed, Keyboard::B })),
 	});
 

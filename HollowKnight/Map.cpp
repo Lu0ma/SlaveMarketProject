@@ -106,10 +106,10 @@ void Map::Init()
 
 	InitPlateforms();
 
-	new CollectableActor(STRING_ID("Vessel"), ShapeData(Vector2f(-250.0f, 49.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Vessels/Vessel_3.png"),
+	new CollectableActor(STRING_ID("Vessel"), ShapeData(Vector2f(-250.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Vessels/Vessel_3.png"),
 														  30.0f, "Vessel", "Le truc qui regen la mana", IT_VESSEL);
 
-	new CollectableActor(STRING_ID("Item"), ShapeData(Vector2f(-350.0f, 49.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Item.png"),
+	new CollectableActor(STRING_ID("Item"), ShapeData(Vector2f(-350.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Item.png"),
 														  30.0f, "Item", "Ceci est un item", IT_ITEM);
 
 	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(150.0f, 100.0f), "Lift.png"));

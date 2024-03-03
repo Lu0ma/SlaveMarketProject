@@ -288,7 +288,8 @@ void Inventory::Equippements()
 void Inventory::Description()
 {
 #pragma region Description
-	const float _borderSpacingX = windowSize.x * 5.0f / 100.0f;
+
+	const float _borderSpacingX = windowSize.x * 2.0f / 100.0f;
 	const float _gapX = windowSize.x * 5.0f / 100.0f;
 	const Vector2f& _gridSize = Vector2f(gridSizeX - cellSize.x, gridSizeY - cellSize.y);
 	const Vector2f& _gridPos = halfSize - _gridSize / 2.0f;
@@ -307,12 +308,12 @@ void Inventory::Description()
 	const float _descriptionPosX = _endGridPosX + _gapX + _descriptionSizeX / 2.0f;
 	const float _descriptionPosY = _gridPos.y - cellSize.y / 2.0f + gridSizeY / 2.0f;
 	const Vector2f& _descriptionPos = Vector2f(_descriptionPosX, _descriptionPosY);
-	/*ShapeWidget* _description = new ShapeWidget(ShapeData(_descriptionPos, _descriptionSize, ""));
-	canvas->AddWidget(_description);*/
+	//ShapeWidget* _description = new ShapeWidget(ShapeData(_descriptionPos, _descriptionSize, ""));
+	//canvas->AddWidget(_description);
 
 #pragma region Title
 
-	const float _descriptionTitlePosX = _descriptionPos.x - _descriptionSizeX * 20.0f / 100.0f;
+	const float _descriptionTitlePosX = _descriptionPos.x;
 	const float _descriptionTitlePosY = _descriptionPos.y - gridSizeY / 2.0f;
 	const Vector2f& _descriptionTitlePos = Vector2f(_descriptionTitlePosX, _descriptionTitlePosY);
 	descriptionTitle = new Label(TextData("Shade Cloak", _descriptionTitlePos, FONT, 26));
@@ -327,7 +328,7 @@ void Inventory::Description()
 	const float _descriptionTextPosX = _descriptionPos.x - _descriptionSizeX / 2.0f + _textSpacingX;
 	const float _descriptionTextPosY = _descriptionTitlePosY + _textSpacingY;
 	const Vector2f& _descriptionLabelPos = Vector2f(_descriptionTextPosX, _descriptionTextPosY);
-	descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT));
+	descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT), AT_LEFT);
 	canvas->AddWidget(descriptionText);
 
 #pragma endregion

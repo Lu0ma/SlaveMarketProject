@@ -22,13 +22,6 @@ Merchand::Merchand(const ShapeData& _data, const vector<string>& _texts)
 }
 
 
-void Merchand::CloseDiscussion()
-{
-	InteractableActor::CloseDiscussion();
-	CloseShop();
-}
-
-
 void Merchand::Init()
 {
 	NPC::Init();
@@ -61,7 +54,7 @@ void Merchand::Init()
 		{
 			PATH_ITEM,
 			300,
-			"Swarm",
+			"Gathering Swarm",
 			"Do you find yourself leaving a\n"
 			"lot of Geo behind as you hurry\n"
 			"through the caverns ?\n\n"
@@ -119,7 +112,7 @@ void Merchand::Init()
 		ShapeWidget* _geo = new ShapeWidget(ShapeData(Vector2f(_geoPosX, _posY), _geoSize, PATH_GEO));
 		canvas->AddWidget(_geo);
 
-		Label* _geoText = new Label(TextData(to_string(_item.price), Vector2f(_geoTextPosX, _posY - 8.5f), FONT));
+		Label* _geoText = new Label(TextData(to_string(_item.price), Vector2f(_geoTextPosX, _posY - 3.5f), FONT), AT_LEFT);
 		canvas->AddWidget(_geoText);
 
 		_index++;
@@ -136,14 +129,14 @@ void Merchand::Init()
 
 	#pragma region Description
 
-	const Vector2f& _descriptionPos = Vector2f(_shopPos.x + _shopSize.x * 0.15f, _shopPos.y);
 	const Vector2f& _descriptionSize = Vector2f(_shopSize.x / 2.0f, _shopSize.y * 0.6f);
+	const Vector2f& _descriptionPos = _shopPos + Vector2f(_descriptionSize.x * 0.3, 0.0f);
 	/*ShapeWidget* _description = new ShapeWidget(ShapeData(_descriptionPos, _descriptionSize, ""));
 	canvas->AddWidget(_description);*/
 
 	#pragma region Title
 
-	const float _descriptionTitlePosX = _descriptionPos.x - _descriptionSize.x * 0.15f;
+	const float _descriptionTitlePosX = _descriptionPos.x;
 	const float _descriptionTitlePosY = _descriptionPos.y - _descriptionPos.y / 2.0f;
 	const Vector2f& _descriptionTitlePos = Vector2f(_descriptionTitlePosX, _descriptionTitlePosY);
 	descriptionTitle = new Label(TextData("Shade Cloak", _descriptionTitlePos, FONT, 22));
@@ -153,10 +146,10 @@ void Merchand::Init()
 
 	#pragma region Text
 
-	const float _descriptionTextPosX = _descriptionTitlePosX - _descriptionSize.x * 0.3f;
+	const float _descriptionTextPosX = _descriptionTitlePosX - _descriptionSize.x * 0.45f;
 	const float _descriptionTextPosY = _descriptionTitlePosY + _descriptionSize.y * 0.15f;
 	const Vector2f& _descriptionLabelPos = Vector2f(_descriptionTextPosX, _descriptionTextPosY);
-	descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT, 13));
+	descriptionText = new Label(TextData("coucou\nc'est moi", _descriptionLabelPos, FONT, 13), AT_LEFT);
 	canvas->AddWidget(descriptionText);
 
 	#pragma endregion
@@ -176,6 +169,12 @@ void Merchand::OpenDiscussion()
 			SetIsOpen(true);
 		}, seconds(timeBeforeOpenShop));
 	}
+}
+
+void Merchand::CloseDiscussion()
+{
+	InteractableActor::CloseDiscussion();
+	CloseShop();
 }
 
 //void Merchand::BuyItem()

@@ -63,6 +63,15 @@ class Inventory : public IManager<int, Item>
 	bool isDashActive;
 	ShapeWidget* dashWidget;
 
+public:
+	void Toggle()
+	{
+		canvas->SetVisibilityStatus(!canvas->IsVisible());
+	}
+	void SetStatus(const bool _status)
+	{
+		canvas->SetVisibilityStatus(_status);
+	}
 private:
 	string ComputeHealthMaskPath() const
 	{
@@ -102,10 +111,6 @@ private:
 
 public:
 	void Init();
-	void Toggle()
-	{
-		canvas->SetVisibilityStatus(!canvas->IsVisible());
-	}
 
 	void Background();
 	void Grid();

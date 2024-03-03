@@ -54,8 +54,8 @@ void PlayerStat::Init()
 	ShapeWidget* _geoIcon = new ShapeWidget(ShapeData(_geoPos, _geoSize, PATH_GEO));
 	canvas->AddWidget(_geoIcon);
 
-	const Vector2f& _geoTextPos = _geoPos + Vector2f(25.0f, -15.0f);
-	geosCountText = new Label(TextData(to_string(geosCount), _geoTextPos, FONT, 22));
+	const Vector2f& _geoTextPos = _geoPos + Vector2f(25.0f, -5.0f);
+	geosCountText = new Label(TextData(to_string(geosCount), _geoTextPos, FONT, 22), AT_LEFT);
 	canvas->AddWidget(geosCountText);
 
 	#pragma endregion

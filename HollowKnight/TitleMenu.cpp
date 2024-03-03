@@ -3,24 +3,27 @@
 #include "HUD.h"
 #include "ActorManager.h"
 
-#define PATH_TITLE_MENU "UIs/Menus/TitleMenu.png"
-#define PATH_POINTER "UIs/Menus/TitleMenuPointer.png"
+#define PATH_TITLE_MENU "UIs/Menus/TitleMenu/Background.png"
+#define PATH_POINTER "UIs/Menus/TitleMenu/Pointer.png"
 #define FONT "Font.ttf"
 
-TitleMenu::TitleMenu()
+TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
 {
 	canvas = new Canvas("Title");
-	pointer = nullptr;
 	buttons = vector<Button*>();
+	pointer = nullptr;
+	options = new OptionsMenu(this);
+	achievement = new AchievementsMenu(this);
 }
 
 
 void TitleMenu::Init()
 {
+	const Vector2f& _windowSize = Game::GetWindowSize();
+	const float _halfWindowX = _windowSize.x / 2.0f;
 
 	#pragma region Title
 
-	const Vector2f& _windowSize = Game::GetWindowSize();
 	ShapeWidget* _image = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_TITLE_MENU));
 	canvas->AddWidget(_image);
 
@@ -42,27 +45,30 @@ void TitleMenu::Init()
 
 	const vector<ButtonData>& _allData = {
 		ButtonData("START GAME", [&]() { 
-			canvas->SetVisibilityStatus(false);
 			Game::GetPlayer()->Init();
 			Game::GetCamera()->SetTarget(TARGET_PLAYER);
+			canvas->SetVisibilityStatus(false);
 		}),
-		ButtonData("   OPTIONS", []() {
-			cout << "OPTIONS" << endl;
+		ButtonData("OPTIONS", [&]() {
+			options->SetStatus(true);
+			canvas->SetVisibilityStatus(false);
 		}),
-		ButtonData("ACHIVEMENTS", []() {
-			cout << "ACHIVEMENTS" << endl;
+		ButtonData("ACHIVEMENTS", [&]() {
+			achievement->SetStatus(true);
+			canvas->SetVisibilityStatus(false);
 		}),
-		ButtonData("    EXTRAS", []() {
+		ButtonData("EXTRAS", [&]() {
 			cout << "EXTRAS" << endl;
+			//canvas->SetVisibilityStatus(false);
 		}),
-		ButtonData(" QUIT GAME", []() {
+		ButtonData("QUIT GAME", []() {
 			Game::Close();
 		})
 	};
 
 	const Vector2f& _buttonSize = Vector2f(200.0f, 50.0f);
 	const float _gapY = _buttonSize.y * 5.0f / 100.0f;
-	const float _gridPosX = _windowSize.x / 2.0f + _buttonSize.x * 5.0f / 100.0f;
+	const float _gridPosX = _halfWindowX + _buttonSize.x * 5.0f / 100.0f;
 	const float _gridPosY = _windowSize.y * 55.0f / 100.0f;
 
 	for (int _index = 0; _index < 5; _index++)
@@ -84,14 +90,12 @@ void TitleMenu::Init()
 		buttons.push_back(_button);
 		canvas->AddWidget(_button);
 
-		const float _titlePosX = _buttonPos.x - _buttonSize.x * 40.0f / 100.0f;
-		const float _titlePosY = _buttonPos.y - _buttonSize.y * 30.0f / 100.0f;
-		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_titlePosX, _titlePosY), FONT, 24));
+		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 24));
 		_button->SetForeground(_title);
 		canvas->AddWidget(_title);
 	}
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_gridPosX, _gridPosY), Vector2f(_buttonSize.x * 1.75f, _buttonSize.y * 2.0f), PATH_POINTER));
+	pointer = new ShapeWidget(ShapeData(Vector2f(_gridPosX, _gridPosY), Vector2f(_buttonSize.x * 2.0f, _buttonSize.y * 2.0f), PATH_POINTER));
 	canvas->AddWidget(pointer);
 	
 	#pragma endregion

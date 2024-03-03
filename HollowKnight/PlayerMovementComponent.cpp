@@ -25,7 +25,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	isJumping = false;
 	jumpForce = 0.4f;
 	jumpDuration = 0.2f;
-	gravity = 0.5f;
+	gravity = 0.3f;
 
 	// Dash
 	canDash = true;
