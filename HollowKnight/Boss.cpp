@@ -5,6 +5,7 @@ Boss::Boss(const ShapeData& _data) : Enemy("Boss" + to_string(GetUniqueID()), _d
 {
 	startPosition = _data.position;
 	goalPosition = startPosition + Vector2f(2000.0f, 0.0f);
+	isDead = false;
 
 	MovementComponent* _movement = new MovementComponent(this);
 	components.push_back(_movement);
@@ -31,16 +32,21 @@ void Boss::FacePlayer(Player* _player)
 void Boss::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
-	Player* _player = Game::GetPlayer();
 
-	if (animation->GetCurrentAnimation()->GetData().name == "Idle")
+	Death();
+
+	if (!isDead)
 	{
-		FacePlayer(_player);
-		Attack(_player);
-	}
-	else if(movement->IsAtPosition() && animation->GetCurrentAnimation()->GetData().name == "Running")
-	{
-		RunLinkedAnimation("Idle", animation);
+		Player* _player = Game::GetPlayer();
+		if (animation->GetCurrentAnimation()->GetData().name == "Idle")
+		{
+			FacePlayer(_player);
+			Attack(_player);
+		}
+		else if (movement->IsAtPosition() && animation->GetCurrentAnimation()->GetData().name == "Running")
+		{
+			RunLinkedAnimation("Idle", animation);
+		}
 	}
 }
 
@@ -69,7 +75,7 @@ void Boss::Patrol()
 
 void Boss::InitTimerPatrol()
 {
-	new Timer(this, &Boss::Patrol, seconds(10.0f), true, true);
+	timer = new Timer(this, &Boss::Patrol, seconds(10.0f), true, true);
 }
 
 void Boss::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)

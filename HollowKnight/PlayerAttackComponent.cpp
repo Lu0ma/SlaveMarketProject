@@ -1,7 +1,7 @@
 #include "PlayerAttackComponent.h"
 #include "Game.h"
 #include "Lift.h"
-#include "Mob.h"
+#include "Enemy.h"
 #include "Macro.h"
 #include"Game.h"
 
@@ -16,8 +16,8 @@ PlayerAttackComponent::PlayerAttackComponent(Actor* _owner, const int _damages) 
 void PlayerAttackComponent::SpecialAttack()
 {
 	const Vector2f& _ownerPosition = owner->GetShapePosition();
-	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(_ownerPosition, 15.0f);
-	for (Mob* _mob : _mobs)
+	const vector<Enemy*>& _mobs = RetrieveAllMobsAround<Enemy>(_ownerPosition, 15.0f);
+	for (Enemy* _mob : _mobs)
 	{
 		if (!_mob) continue;
 		

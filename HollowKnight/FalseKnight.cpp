@@ -48,7 +48,7 @@ void FalseKnight::Init()
 
 		AnimationData("DeathFall", Vector2f(0.0f, 11134.0f), _size, READ_RIGHT, false, 3, _speed, true, "DeathLand"),
 		AnimationData("DeathLand", Vector2f(0.0f, 11720.0f), _size, READ_RIGHT, false, 5, _speed, true, "Body"),
-		AnimationData("Body", Vector2f(0.0f, 12306.0f), _size, READ_RIGHT, false, 1, _speed, true, "DeathFall"),
+		AnimationData("Body", Vector2f(0.0f, 12306.0f), _size, READ_RIGHT, true, 1, _speed, true, ""),
 
 	});
 }
@@ -61,5 +61,16 @@ void FalseKnight::Attack(Player* _player)
 		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
 		animation->RunAnimation("Attack", _directionX);
 		_player->GetStats()->UpdateLife(-1);
+	}
+}
+
+void FalseKnight::Death()
+{
+	if (life->GetLife() <= 0 && !isDead)
+	{
+		isDead = true;
+		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
+		animation->RunAnimation("DeathFall", _directionX);
+		timer->Stop();
 	}
 }
