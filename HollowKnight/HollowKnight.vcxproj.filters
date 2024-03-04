@@ -142,12 +142,6 @@
     <Filter Include="Objects\ShapeObjects\Actors\Mobs\DeathMob">
       <UniqueIdentifier>{bed64d59-cf8f-4a8c-a752-c920004a7ade}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Interactables\NPCs">
-      <UniqueIdentifier>{207b97a8-7f70-48e1-92b9-69dd26516d31}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands">
-      <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Interaction">
       <UniqueIdentifier>{3225fdeb-e7a9-42da-8519-0d62a9e89aad}</UniqueIdentifier>
     </Filter>
@@ -204,6 +198,21 @@
     </Filter>
     <Filter Include="Menus\AchievementsMenu">
       <UniqueIdentifier>{e41bcd9c-f187-444f-ae2d-b8c9949d9de8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\OptionsMenu\ControllerMenu">
+      <UniqueIdentifier>{97166542-72c1-4916-a0b3-77ecec2e383a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\OptionsMenu\KeyboardMenu">
+      <UniqueIdentifier>{c82a20e3-a6f7-4815-9204-a69bb72b1d7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\ShopMenu">
+      <UniqueIdentifier>{0c23fea2-c910-4ab8-8199-b03bbec18768}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\PurchaseMenu">
+      <UniqueIdentifier>{008c4164-0250-4deb-a783-c22513fa009d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Interactables\Merchands">
+      <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -303,11 +312,8 @@
     <ClCompile Include="Mob.cpp">
       <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
     </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
-    </ClCompile>
     <ClCompile Include="Merchand.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Merchands</Filter>
     </ClCompile>
     <ClCompile Include="CollisionComponent.cpp">
       <Filter>Components\Collision</Filter>
@@ -417,6 +423,18 @@
     <ClCompile Include="AchievementsMenu.cpp">
       <Filter>Menus\AchievementsMenu</Filter>
     </ClCompile>
+    <ClCompile Include="KeyboardMenu.cpp">
+      <Filter>Menus\OptionsMenu\KeyboardMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerMenu.cpp">
+      <Filter>Menus\OptionsMenu\ControllerMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopMenu.cpp">
+      <Filter>Menus\ShopMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="PurchaseMenu.cpp">
+      <Filter>Menus\PurchaseMenu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -524,11 +542,8 @@
     <ClInclude Include="Mob.h">
       <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
     </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
-    </ClInclude>
     <ClInclude Include="Merchand.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Merchands</Filter>
     </ClInclude>
     <ClInclude Include="CollisionComponent.h">
       <Filter>Components\Collision</Filter>
@@ -634,6 +649,18 @@
     </ClInclude>
     <ClInclude Include="AchievementsMenu.h">
       <Filter>Menus\AchievementsMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardMenu.h">
+      <Filter>Menus\OptionsMenu\KeyboardMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerMenu.h">
+      <Filter>Menus\OptionsMenu\ControllerMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopMenu.h">
+      <Filter>Menus\ShopMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="PurchaseMenu.h">
+      <Filter>Menus\PurchaseMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

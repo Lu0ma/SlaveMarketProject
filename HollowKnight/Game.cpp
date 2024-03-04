@@ -74,7 +74,6 @@ void Game::UpdateWindow()
 		window.draw(*_actor->GetDrawable());
 	}
 	
-	// UI
 	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{

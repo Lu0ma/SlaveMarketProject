@@ -116,9 +116,7 @@ void Inventory::UpdateMaskCount(const int _factor)
 	maskCount %= 5; // TODO remove
 
 	const string& _path = ComputeHealthMaskPath();
-	Shape* _shape = maskWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	maskWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(maskWidget->GetObject(), _path);
 }
 
 void Inventory::Background()
@@ -135,9 +133,7 @@ void Inventory::UpdateVesselCount(const int _factor)
 	vesselCount %= 4; // TODO remove
 
 	const string& _path = ComputeVesselPath();
-	Shape* _shape = vesselWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	vesselWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(vesselWidget->GetObject(), _path);
 }
 
 void Inventory::UpdateMirrorLevel(const int _factor)
@@ -148,9 +144,7 @@ void Inventory::UpdateMirrorLevel(const int _factor)
 	mirrorLevel %= 4; // TODO remove
 
 	const string& _path = ComputeMirrorPath();
-	Shape* _shape = mirrorWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	mirrorWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(mirrorWidget->GetObject(), _path);
 }
 
 void Inventory::UpdateSwordLevel(const int _factor)
@@ -161,9 +155,7 @@ void Inventory::UpdateSwordLevel(const int _factor)
 	swordLevel %= 5; // TODO remove
 
 	const string& _path = ComputeSwordPath();
-	Shape* _shape = swordWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	swordWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(swordWidget->GetObject(), _path);
 }
 
 void Inventory::Grid()
@@ -375,9 +367,7 @@ void Inventory::SetVengefulStatus(const bool _status)
 	//isSlamActive = _status;
 
 	const string& _path = ComputeVengefulPath();
-	Shape* _shape = vengefulWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	vengefulWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(vengefulWidget->GetObject(), _path);
 }
 
 void Inventory::SetSlamStatus(const bool _status)
@@ -386,9 +376,7 @@ void Inventory::SetSlamStatus(const bool _status)
 	//isSlamActive = _status;
 
 	const string& _path = ComputeSlamPath();
-	Shape* _shape = slamWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	slamWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(slamWidget->GetObject(), _path);
 }
 
 void Inventory::SetShriekStatus(const bool _status)
@@ -397,9 +385,7 @@ void Inventory::SetShriekStatus(const bool _status)
 	//isSlamActive = _status;
 
 	const string& _path = ComputeShriekPath();
-	Shape* _shape = shriekWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	shriekWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(shriekWidget->GetObject(), _path);
 }
 
 void Inventory::AddItem(const int _count, const ItemData& _data)

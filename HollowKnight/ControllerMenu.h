@@ -2,12 +2,11 @@
 #include "Menu.h"
 #include "Button.h"
 
-class AchievementsMenu : public Menu
+class ControllerMenu : public Menu
 {
-	Button* backButton;
 
 public:
-	AchievementsMenu(Menu* _owner);
+	ControllerMenu(Menu* _owner);
 
 public:
 	virtual void Init() override;

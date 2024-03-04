@@ -43,9 +43,6 @@ void CharmsMenu::Init()
 	charmsSelectSize = Vector2f(30.0f, 30.0f);
 	notches = 11;
 	charms = 6;
-	pointer = nullptr;
-	descriptionItem = nullptr;
-	titleItem = nullptr;
 	windowSize = Game::GetWindowSize();
 	gridPos = Vector2f(windowSize.x / 12.0f, windowSize.y / 8.0f);
 	halfSize = windowSize / 2.0f;

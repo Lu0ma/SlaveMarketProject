@@ -79,10 +79,8 @@ void PlayerStat::UpdateLife(const int _count)
 
 	if (ShapeWidget* _widget = lifeWigets[_currentLife])
 	{
-		Shape* _shape = _widget->GetDrawable();
 		const string& _path = ComputeLifePath(_count > 0);
-		TextureManager::GetInstance().Load(_shape, _path);
-		_widget->GetObject()->SetShape(_shape);
+		TextureManager::GetInstance().Load(_widget->GetObject(), _path);
 	}
 
 	currentLifesCount += _count;
@@ -105,7 +103,7 @@ void PlayerStat::AddLife()
 	UpdateLife(1);
 }
 
-void PlayerStat::AddGeos(const int _factor)
+void PlayerStat::UpdateGeos(const int _factor)
 {
 	geosCount += _factor;
 	geosCountText->SetString(to_string(geosCount));

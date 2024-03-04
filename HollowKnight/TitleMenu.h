@@ -8,7 +8,6 @@
 class TitleMenu : public Menu
 {
 	vector<Button*> buttons;
-	ShapeWidget* pointer;
 	OptionsMenu* options;
 	AchievementsMenu* achievement;
 

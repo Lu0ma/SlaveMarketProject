@@ -33,15 +33,18 @@ public:
 	{
 		currentLifesCount = _newLife;
 	}
-	int GetCurrentLife()const
+	int GetCurrentLife() const
 	{
 		return currentLifesCount;
 	}
-	int GetMaxLife()const
+	int GetMaxLife() const
 	{
 		return currentMaxLifesCount;
 	}
-
+	int GetGeos() const
+	{
+		return geosCount;
+	}
 private:
 	string ComputeLifePath(const bool _toAdd) const
 	{
@@ -62,5 +65,5 @@ public:
 	void UseMana(const float _factor);
 	void UpdateLife(const int _count);
 	void AddLife();
-	void AddGeos(const int _factor);
+	void UpdateGeos(const int _factor);
 };

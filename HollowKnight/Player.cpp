@@ -50,16 +50,10 @@ void Player::InitAnimations()
 void Player::SetupPlayerInput()
 {
 	new ActionMap("Stats", {
-		ActionData("AddMana", [&]() { stats->UseMana(10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Space  })),
-		ActionData("RemoveMana", [&]() { 
+		ActionData("ConvertManaToLife", [&]() { 
 			stats->UseMana(-10.0f); 
 			stats->UpdateLife(1); 
 		}, InputData({ActionType::KeyPressed, Keyboard::Escape})),
-		//ActionData("StopRemoveMana",[&]() { animation->GetCurrentAnimation()->RunAnimation(animation->GetAnimPlayer()[0]); }, InputData({ ActionType::KeyReleased, Keyboard::Escape })),
-		//ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
-		ActionData("RemoveLife", [&]() { stats->UpdateLife(-1); }, InputData({ ActionType::KeyPressed, Keyboard::Num0 })),
-		ActionData("AddLifeSlot", [&]() { stats->AddLife(); }, InputData({ ActionType::KeyPressed, Keyboard::O })),
-		ActionData("AddGeos", [&]() { stats->AddGeos(12); }, InputData({ ActionType::KeyPressed, Keyboard::Num8 })),
 	});
 
 	new ActionMap("Movements", {

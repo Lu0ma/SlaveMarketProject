@@ -28,7 +28,7 @@ void Camera::CheckCameraState(View& _newView)
 	RenderWindow& _window = Game::GetWindow();
 	if (GetTargetStat() == TARGET_PLAYER)
 	{
-		_newView =FollowPlayer();
+		_newView = FollowPlayer();
 		_window.setView(_newView);
 	}
 

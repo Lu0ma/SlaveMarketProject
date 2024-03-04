@@ -3,16 +3,22 @@
 #include "ShapeWidget.h"
 #include "Label.h"
 
+#define PATH_BACKGROUND "UIs/Menus/Background.png"
+#define PATH_TITLE_ICON "UIs/Menus/TitleIcon.png"
+#define PATH_POINTER "UIs/Menus/Pointer.png"
+#define FONT "Font.ttf"
+
 class Menu
 {
 	bool isInit;
 
 protected:
 	Canvas* canvas;
+	ShapeWidget* pointer;
 	Menu* owner;
 
 public:
-	void SetStatus(const bool _status)
+	virtual void SetStatus(const bool _status)
 	{
 		if (!isInit)
 		{

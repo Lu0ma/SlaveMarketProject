@@ -5,7 +5,6 @@
 #include "MusicManager.h"
 
 #define PATH_MAIN_MENU "UIs/Menus/MainMenu/Background.png"
-#define FONT "Font.ttf"
 #define MUSIC "CityofTears.mp3"
 
 MainMenu::MainMenu() : Menu("MainMenu")

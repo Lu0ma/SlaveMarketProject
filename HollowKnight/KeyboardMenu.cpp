@@ -1,20 +1,22 @@
-#include "ExtrasMenu.h"
+#include "KeyboardMenu.h"
 #include "Game.h"
 
-ExtrasMenu::ExtrasMenu(Menu* _owner) : Menu("Controller", _owner)
+#define PATH_KEYBOARD "UIs/Menus/Options/Keyboard/Background.png"
+
+KeyboardMenu::KeyboardMenu(Menu* _owner) : Menu("Keyboard", _owner)
 {
 	backButton = nullptr;
 }
 
 
-void ExtrasMenu::Init()
+void KeyboardMenu::Init()
 {
 	const Vector2f& _windowSize = Game::GetWindowSize();
 	const float _halfWindowX = _windowSize.x / 2.0f;
 
 	#pragma region Background
 
-	ShapeWidget* _background = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_BACKGROUND));
+	ShapeWidget* _background = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_KEYBOARD));
 	canvas->AddWidget(_background);
 
 	#pragma endregion
