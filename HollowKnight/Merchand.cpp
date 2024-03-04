@@ -177,6 +177,7 @@ void Merchand::CloseDiscussion()
 {
 	InteractableActor::CloseDiscussion();
 	CloseShop();
+	GetAnimations()->GetCurrentAnimation()->RunAnimation("Wait", 1);
 }
 
 //void Merchand::BuyItem()

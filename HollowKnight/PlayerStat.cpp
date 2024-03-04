@@ -141,16 +141,16 @@ void PlayerStat::Death()
 
 	DeathMob* _deathMob = new DeathMob("DeathMob",ShapeData(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), PATH_DEATHMOB));
 	int _life = _deathMob->GetLife()->GetLife();
+	cout << _life << endl;
 	if (numberOfDeath == 1)
 	{
 		_deathMob = new DeathMob("DeathMob1",ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
 	}
-	 if (numberOfDeath > 1 && _life > 0)
+	 if(!_deathMob->Dead() /*if (numberOfDeath > 1 && _life > 0)*/)
 	{
-
 		 _deathMob->GetDrawable()->setPosition(_lastPos);
 	}
-	else if (numberOfDeath > 1 && _life <= 0)
+	  if (_deathMob->Dead()/*numberOfDeath > 1 && _life <= 0*/)
 	{
 		  _deathMob = new DeathMob("DeathMob" + to_string(numberOfDeath), ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
 	}
@@ -162,5 +162,4 @@ void PlayerStat::Death()
 	{
 		_player->GetStats()->UpdateLife(1);
 	} 
-
 }

@@ -20,5 +20,6 @@ public:
 	virtual void Init() override;
 	virtual void Death()override;
 	virtual void Update(const float _deltaTime)override;
+	bool Dead();
 };
 

@@ -43,6 +43,12 @@ void DeathMob::Update(const float _deltaTime)
 	Action();
 }
 
+bool DeathMob::Dead()
+{
+	Death();
+	return false;
+}
+
 
 void DeathMob::StandBy()
 {
@@ -53,7 +59,7 @@ void DeathMob::Action()
 {
 	StandBy();
 	Attack();
-	Death();
+	Death();//
 }
 
 void DeathMob::Attack()
