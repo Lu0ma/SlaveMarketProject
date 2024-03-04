@@ -435,6 +435,12 @@
     <ClCompile Include="Lever.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInfo.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -671,5 +677,8 @@
     <ClInclude Include="Lever.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Assets\Levels\SubLevel_1.txt" />
   </ItemGroup>
 </Project>
