@@ -45,9 +45,34 @@ string GetLineByText(const string& _text, const string& _path)
     return string();
 }
 
+int GetIndexByText(const string& _text, const string& _path)
+{
+    ifstream _stream = ifstream(_path);
+
+    if (!_stream)
+    {
+        cerr << "Le flux n'a pas été correctement construit !" << endl;
+        return int();
+    }
+
+    string _line;
+    int _index = 0;
+
+    while (getline(_stream, _line))
+    {
+        if (ContainsText(_line, _text))
+        {
+            return _index;
+        }
+        _index++;
+    }
+
+    return int();
+}
+
 string GetStringAfterSymbol(const string& _text, const string& _symbol)
 {
-    const int _symbolSize = (int)_symbol.size();
+    const int _symbolSize = static_cast<int>(_symbol.size());
     int _index = 0;
 
     for (int _charIndex = 0; _charIndex < _symbolSize; _charIndex++)
