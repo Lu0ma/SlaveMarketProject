@@ -17,6 +17,7 @@ class InteractableActor : public Actor
 	ShapeWidget* discussionBG;
 	Label* discussionText;
 
+
 public:
 	void SetIsOpen(const bool _status)
 	{

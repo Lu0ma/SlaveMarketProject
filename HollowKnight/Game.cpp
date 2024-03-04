@@ -19,8 +19,8 @@ Camera* Game::camera;
 Game::Game()
 {
 	menu = new MainMenu();
-	map = new Map();
 	player = new Player("Player", ShapeData(Vector2f(0.0f, -300.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
+	map = new Map();
 	camera = new Camera(TARGET_WINDOW);
 } 
 
@@ -54,6 +54,7 @@ void Game::Update()
 	{
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
+		map->GetDragon()->PlayMusic();
 		ActorManager::GetInstance().Update();
 	}
 }

@@ -14,5 +14,8 @@ public:
 
 public:
 	Dragon(const string& _name, const ShapeData& _data, const vector<string>& _texts = {});
+
+public:
+	void PlayMusic();
 };
 

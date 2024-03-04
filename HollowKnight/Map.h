@@ -69,6 +69,10 @@ class Map
 	vector<Lift*> lifts;
 
 public:
+	Dragon* GetDragon()const
+	{
+		return dragon;
+	}
 	Bench* GetBench() const
 	{
 		return bench;
