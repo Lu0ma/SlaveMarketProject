@@ -6,16 +6,16 @@
 class Merchand : public InteractableActor
 {
 	ShopMenu* shop;
-	MerchandAnimationComponent* animations;
+	MerchandAnimationComponent* animation;
 
 public:
 	void SetShopStatus(const bool _status)
 	{
 		shop->SetStatus(_status);
 	}
-	MerchandAnimationComponent* GetAnimations() const
+	MerchandAnimationComponent* GetAnimation() const
 	{
-		return animations;
+		return animation;
 	}
 
 public:

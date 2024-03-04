@@ -142,12 +142,6 @@
     <Filter Include="Objects\ShapeObjects\Actors\Mobs\DeathMob">
       <UniqueIdentifier>{bed64d59-cf8f-4a8c-a752-c920004a7ade}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Interactables\NPCs">
-      <UniqueIdentifier>{207b97a8-7f70-48e1-92b9-69dd26516d31}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands">
-      <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Interaction">
       <UniqueIdentifier>{3225fdeb-e7a9-42da-8519-0d62a9e89aad}</UniqueIdentifier>
     </Filter>
@@ -204,6 +198,21 @@
     </Filter>
     <Filter Include="Menus\AchievementsMenu">
       <UniqueIdentifier>{e41bcd9c-f187-444f-ae2d-b8c9949d9de8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Interactables\Merchands">
+      <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\OptionsMenu\ControllerMenu">
+      <UniqueIdentifier>{cd151a25-72b1-4ac2-9ec5-f1a7dfe2d182}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\OptionsMenu\KeyboardMenu">
+      <UniqueIdentifier>{64ebf8be-8954-4921-9dec-61b4f4bf39fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\ShopMenu">
+      <UniqueIdentifier>{df12e13b-952e-4691-83cb-0fea061fc6b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\PurchaseMenu">
+      <UniqueIdentifier>{1c4bc7c7-9679-423d-bc49-b298068d7193}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -303,11 +312,8 @@
     <ClCompile Include="Mob.cpp">
       <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
     </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
-    </ClCompile>
     <ClCompile Include="Merchand.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Merchands</Filter>
     </ClCompile>
     <ClCompile Include="CollisionComponent.cpp">
       <Filter>Components\Collision</Filter>
@@ -432,14 +438,26 @@
     <ClCompile Include="Dragon.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
     </ClCompile>
-    <ClCompile Include="Lever.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="PlayerInfo.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Lever.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardMenu.cpp">
+      <Filter>Menus\OptionsMenu\KeyboardMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerMenu.cpp">
+      <Filter>Menus\OptionsMenu\ControllerMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopMenu.cpp">
+      <Filter>Menus\ShopMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="PurchaseMenu.cpp">
+      <Filter>Menus\PurchaseMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -548,11 +566,8 @@
     <ClInclude Include="Mob.h">
       <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
     </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
-    </ClInclude>
     <ClInclude Include="Merchand.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Merchands</Filter>
     </ClInclude>
     <ClInclude Include="CollisionComponent.h">
       <Filter>Components\Collision</Filter>
@@ -688,6 +703,18 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardMenu.h">
+      <Filter>Menus\OptionsMenu\KeyboardMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerMenu.h">
+      <Filter>Menus\OptionsMenu\ControllerMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopMenu.h">
+      <Filter>Menus\ShopMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="PurchaseMenu.h">
+      <Filter>Menus\PurchaseMenu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

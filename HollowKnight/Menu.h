@@ -1,6 +1,7 @@
 #pragma once
 #include "Canvas.h"
 #include "ShapeWidget.h"
+#include "Button.h"
 #include "Label.h"
 
 #define PATH_BACKGROUND "UIs/Menus/Background.png"

@@ -1,7 +1,5 @@
 #pragma once
 #include "Menu.h"
-#include "Button.h"
-#include "Label.h"
 #include "Timer.h"
 #include "PurchaseMenu.h"
 
