@@ -5,12 +5,11 @@ Boss::Boss(const ShapeData& _data) : Enemy("Boss" + to_string(GetUniqueID()), _d
 {
 	startPosition = _data.position;
 	goalPosition = startPosition + Vector2f(2000.0f, 0.0f);
-	isDead = false;
 
 	MovementComponent* _movement = new MovementComponent(this);
 	components.push_back(_movement);
 
-	movement = new MovementComponent(this);
+	movement = new MobMovementComponent(this);
 	movement->SetSpeed(0.5f);
 	components.push_back(movement);
 

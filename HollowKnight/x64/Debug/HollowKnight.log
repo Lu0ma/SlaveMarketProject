@@ -1,2 +1,52 @@
-﻿  Boofly.cpp
+﻿  AchievementsMenu.cpp
+  Animation.cpp
+  AnimationComponent.cpp
+  Belfly.cpp
+  Boofly.cpp
+  Boss.cpp
+  Camera.cpp
+  CharmsMenu.cpp
+  CollectableActor.cpp
+  CollisionComponent.cpp
+  DeathMob.cpp
+  Dragon.cpp
+  DragonAnimationComponent.cpp
+  FalseKnight.cpp
+  Game.cpp
+  HuskBully.cpp
+  InteractableActor.cpp
+  InteractionComponent.cpp
+  Inventory.cpp
+  Lever.cpp
+  Generating Code...
+  Compiling...
+  LeverAnimationComponent.cpp
+  Lift.cpp
+  Main.cpp
+  MainMenu.cpp
+  Map.cpp
+  Merchand.cpp
+C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\Merchand.cpp(135,75): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  MerchandAnimationComponent.cpp
+  Mob.cpp
+  MobMovementComponent.cpp
+  MovementComponent.cpp
+  NPC.cpp
+  NPCAnimationComponent.cpp
+  OptionsMenu.cpp
+  Player.cpp
+  PlayerAnimationComponent.cpp
+  PlayerAttackComponent.cpp
+  PlayerInfo.cpp
+  PlayerMovementComponent.cpp
+  PlayerStat.cpp
+  Spawner.cpp
+  Generating Code...
+  Compiling...
+  TitleMenu.cpp
+  Generating Code...
   HollowKnight.vcxproj -> C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

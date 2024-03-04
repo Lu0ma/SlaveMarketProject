@@ -5,6 +5,7 @@ FalseKnight::FalseKnight(const ShapeData& _data) : Boss(_data)
 	animation = new AnimationComponent(this);
 	components.push_back(animation);
 
+	movement->SetIsFlying(true);
 }
 
 void FalseKnight::Init()
@@ -12,10 +13,6 @@ void FalseKnight::Init()
 	const Vector2f& _size = Vector2f(655.0f, 586.0f);
 
 	const float _speed = 0.15f;
-
-	//=====================================================================
-	// 
-	//=====================================================================
 
 	animation->InitAnimations(
 	{

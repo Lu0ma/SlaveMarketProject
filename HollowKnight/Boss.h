@@ -1,6 +1,6 @@
 #pragma once
 #include "Enemy.h"
-#include "MovementComponent.h"
+#include "MobMovementComponent.h"
 #include "AnimationComponent.h"
 #include "MobAttackComponent.h"
 #include "Game.h"
@@ -12,7 +12,7 @@ class Boss : public Enemy
 
 protected:
 	AnimationComponent* animation;
-	MovementComponent* movement;
+	MobMovementComponent* movement;
 	MobAttackComponent* attack;
 	bool isDead;
 	Timer* timer;

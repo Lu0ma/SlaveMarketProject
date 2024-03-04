@@ -6,6 +6,8 @@
 Boofly::Boofly(const ShapeData& _data) : Mob(_data)
 { 
 	isPatrolling = true;
+	
+	movement->SetIsFlying(true);
 }
 
 void Boofly::Init()
@@ -22,7 +24,7 @@ void Boofly::Init()
 		AnimationData("Go", Vector2f(0.0f, 17.0f), _size, READ_RIGHT, true, 5, _speed, true, "Turn"),
 		AnimationData("Turn", Vector2f(0.0f, 380.0f), _size, READ_RIGHT, false, 4, _speedTurn, true, "Go"),
 		AnimationData("Bounce", Vector2f(42.0f, 745.0f), _sizeBounce, READ_RIGHT, false, 2, _speed),
-		AnimationData("DeathAir", Vector2f(0.0f, 1120.0f), _sizeDeathAir, READ_RIGHT, false, 4, _speed, true, "DeathLand"),
+		AnimationData("DeathAir", Vector2f(0.0f, 1120.0f), _sizeDeathAir, READ_RIGHT, true, 4, _speed, true, "DeathLand"),
 		AnimationData("DeathLand", Vector2f(0.0f, 1480.0f), _sizeDeathLand, READ_RIGHT, false, 3, _speed),
 
 		/*AnimationData("GoLeft", Vector2f(0.0f, 17.0f), _size, READ_RIGHT, true, 5, _speed, true, "TurnToRight"),
@@ -40,11 +42,23 @@ void Boofly::Init()
 
 void Boofly::Death()
 {
-	if (life->GetLife() <= 0 && isPatrolling)
+	if (life->GetLife() <= 0 && !isDead)
 	{
 		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
-		animation->RunAnimation("DeathAir", _directionX);
-		isPatrolling = false;
+		animation->RunAnimation("DeathAir", -_directionX);
+		isDead = true;
+		movement->SetIsFlying(false);
 		movement->SetCanMove(false);
 	}
+}
+
+void Boofly::Attack(Player* _player)
+{
+	if (!cooldownAttack) return;
+	FloatRect _playerPos = _player->GetDrawable()->getGlobalBounds();
+	if (GetDrawable()->getGlobalBounds().intersects(_playerPos))
+	{
+		_player->GetStats()->UpdateLife(-1);
+		cooldownAttack = false;
+	}	
 }

@@ -10,11 +10,12 @@ Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data
 	goalPosition = startPosition + Vector2f(500.0f, 0.0f);
 
 	isPatrolling = false;
+	cooldownAttack = false;
 
 	animation = new AnimationComponent(this);
 	components.push_back(animation);
 
-	movement = new MovementComponent(this);
+	movement = new MobMovementComponent(this);
 	movement->SetSpeed(0.1f);
 	components.push_back(movement);
 	
@@ -25,11 +26,22 @@ Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data
 	components.push_back(life);
 
 	InitTimerPatrol();
+	InitTimerCooldownAttack();
 }
 
 void Mob::InitTimerPatrol()
 {
 	new Timer(this, &Mob::Patrol, seconds(1.0f), true, true);
+}
+
+void Mob::InitTimerCooldownAttack()
+{
+	new Timer(this, &Mob::CooldownAttack, seconds(0.765f), true, true);
+}
+
+void Mob::CooldownAttack()
+{
+	cooldownAttack = true;
 }
 
 void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)
@@ -79,5 +91,10 @@ void Mob::Update(const float _deltaTime)
 	Actor::Update(_deltaTime);
 
 	Death();
+	if (life->GetLife() > 0)
+	{
+		Player* _player = Game::GetPlayer();
+		Attack(_player);
+	}
 }
 

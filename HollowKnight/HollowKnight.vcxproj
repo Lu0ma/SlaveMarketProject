@@ -181,6 +181,7 @@
     <ClCompile Include="Mob.cpp" />
     <ClCompile Include="MobAttackComponent.cpp" />
     <ClCompile Include="MobLifeComponent.cpp" />
+    <ClCompile Include="MobMovementComponent.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="MusicData.cpp" />
     <ClCompile Include="MusicManager.cpp" />
@@ -262,6 +263,7 @@
     <ClInclude Include="Mob.h" />
     <ClInclude Include="MobAttackComponent.h" />
     <ClInclude Include="MobLifeComponent.h" />
+    <ClInclude Include="MobMovementComponent.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="MusicData.h" />
     <ClInclude Include="MusicManager.h" />
