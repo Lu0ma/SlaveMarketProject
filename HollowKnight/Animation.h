@@ -79,6 +79,10 @@ public:
     {
         return shape;
     }
+    float GetDirectionX()
+    {
+        return directionX;
+    }
     // /!\ MUST BE 1 OR -1
     void SetDirectionX(const float _directionX)
     {

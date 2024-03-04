@@ -10,13 +10,23 @@ ClampCamMinY = 0
 ClampCamMaxX = 500
 ClampCamMaxY = 500
 
-walls =
+walls = [
 {
- pos
- size
- path
+ WallPosX = 0
+ WallPosY = 85
+ WallType = PT_THIN
 }
-
+{
+ WallPosX = 0
+ WallPosY = 0
+ WallType = PT_MID
+}
+{
+ WallPosX = 0
+ WallPosY = -85
+ WallType = PT_WIDE
+}
+]
 enemies = 
 {
  TYPE

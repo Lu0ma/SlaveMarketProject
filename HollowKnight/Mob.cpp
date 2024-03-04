@@ -4,7 +4,7 @@
 #include "TextureManager.h"
 #include "Timer.h"
 
-Mob::Mob(const ShapeData& _data) : Actor("Mob" + to_string(GetUniqueID()), _data)
+Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data)
 {
 	startPosition = _data.position;
 	goalPosition = startPosition + Vector2f(500.0f, 0.0f);
@@ -52,8 +52,6 @@ void Mob::Move()
 
 void Mob::Patrol()
 {
-	const vector<string>& _animationNames = animation->GetAnimationNames();
-
 	if (isPatrolling)
 	{
 		if (movement->IsAtPosition())
@@ -74,5 +72,12 @@ void Mob::Patrol()
 			}
 		}
 	}
+}
+
+void Mob::Update(const float _deltaTime)
+{
+	Actor::Update(_deltaTime);
+
+	Death();
 }
 

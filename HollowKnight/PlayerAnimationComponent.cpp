@@ -17,6 +17,8 @@ void PlayerAnimationComponent::Init()
 	animPlayer.push_back("Sit");
 	animPlayer.push_back("RemoveMana");
 	animPlayer.push_back("Special");
+	animPlayer.push_back("DoubleJump");
+	animPlayer.push_back("Wall");
 
 	const Vector2f& _size = Vector2f(80.0f, 80.0f);
 	const float _speed = 0.1f;
@@ -31,5 +33,7 @@ void PlayerAnimationComponent::Init()
 		AnimationData("Sit", Vector2f(485.0f, 400.0f), Vector2f(79.0f, 71.0f), READ_RIGHT, true, 1, _speed),
 		AnimationData("RemoveMana", Vector2f(330.0f, 240.0f), Vector2f(79.0f, 71.0f), READ_RIGHT, true, 3, _speed),
 		AnimationData("Special", Vector2f(0.0f, 320.0f), _size, READ_RIGHT, true, 7, _speed),
+		AnimationData("DoubleJump", Vector2f(0.0f, 965.0f), Vector2f(126.0f, 89.0f), READ_RIGHT, false, 5, _speed,false, "StopRight"),
+		AnimationData("Wall", Vector2f(640.0f,240.0f), _size, READ_RIGHT, true, 4, _speed),
 	});
 }

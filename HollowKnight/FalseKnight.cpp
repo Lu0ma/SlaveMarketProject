@@ -4,6 +4,7 @@ FalseKnight::FalseKnight(const ShapeData& _data) : Boss(_data)
 {
 	animation = new AnimationComponent(this);
 	components.push_back(animation);
+
 }
 
 void FalseKnight::Init()
@@ -18,9 +19,9 @@ void FalseKnight::Init()
 
 	animation->InitAnimations(
 	{
-		AnimationData("Idle", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, false, 5, _speed, true, "Attack"),
-		AnimationData("Turn", Vector2f(0.0f, 586.0f), _size, READ_RIGHT, false, 2, _speed, false, "Idle"),
+		AnimationData("Idle", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, true, 5, _speed, true, ""),
 
+		AnimationData("Turn", Vector2f(0.0f, 586.0f), _size, READ_RIGHT, false, 2, _speed, true, "Run"),
 		AnimationData("Run", Vector2f(0.0f, 1172.0f), _size, READ_RIGHT, false, 3, _speed, true, "Running"),
 		AnimationData("Running", Vector2f(0.0f, 1758.0f), _size, READ_RIGHT, true, 4, _speed, true, "Idle"),
 
@@ -47,7 +48,29 @@ void FalseKnight::Init()
 
 		AnimationData("DeathFall", Vector2f(0.0f, 11134.0f), _size, READ_RIGHT, false, 3, _speed, true, "DeathLand"),
 		AnimationData("DeathLand", Vector2f(0.0f, 11720.0f), _size, READ_RIGHT, false, 5, _speed, true, "Body"),
-		AnimationData("Body", Vector2f(0.0f, 12306.0f), _size, READ_RIGHT, false, 1, _speed, true, "DeathFall"),
+		AnimationData("Body", Vector2f(0.0f, 12306.0f), _size, READ_RIGHT, true, 1, _speed, true, ""),
 
 	});
+}
+
+void FalseKnight::Attack(Player* _player)
+{
+	Vector2f _playerPos = _player->GetDrawable()->getGlobalBounds().getPosition();
+	if (GetDrawable()->getGlobalBounds().contains(_playerPos))
+	{
+		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
+		animation->RunAnimation("Attack", _directionX);
+		_player->GetStats()->UpdateLife(-1);
+	}
+}
+
+void FalseKnight::Death()
+{
+	if (life->GetLife() <= 0 && !isDead)
+	{
+		isDead = true;
+		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
+		animation->RunAnimation("DeathFall", _directionX);
+		timer->Stop();
+	}
 }

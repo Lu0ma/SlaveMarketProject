@@ -20,8 +20,6 @@
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
-	shape->setFillColor(Color::Red);
-
 	inventory = new Inventory();
 	charmsMenu = new CharmsMenu();
 
@@ -55,7 +53,7 @@ void Player::SetupPlayerInput()
 			stats->UpdateLife(1); 
 		}, InputData({ActionType::KeyPressed, Keyboard::Escape})),
 	});
-
+	            
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),

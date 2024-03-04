@@ -9,7 +9,7 @@ Lift::Lift(const ShapeData& _data) : Actor(STRING_ID("Lift"), _data)
 	destinationUp = _data.position.y - 500.0f;
 	destinationDown = _data.position.y;
 	status = LMS_NONE;
-	lever = new Actor(STRING_ID("Lever"), ShapeData(Vector2f(_data.position + Vector2f(-200.0f, -450.0f)), Vector2f(60.0f, 60.0f), "Lever.png"));
+	lever = new Lever( STRING_ID("Lever"), ShapeData(Vector2f(_data.position + Vector2f(-200.0f, -450.0f)), Vector2f(100.0f, 100.0f) , "Animations/Lever.png"));
 	lever->GetDrawable()->setFillColor(Color::Green);
 }
 
@@ -56,5 +56,6 @@ void Lift::Interact()
 	else if (Distance(_playerPos, lever->GetShapePosition()) <= 50.0f)
 	{
 		status = LMS_UP;
+		lever->GetAnimations()->GetCurrentAnimation()->RunAnimation("Down", 1.0f);
 	}
 }

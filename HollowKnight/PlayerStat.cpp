@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "Timer.h"
 #include <iostream>
+#include"Game.h"
 
 #define PATH_MANA_FULL "UIs/Player/Mana/ManaBar_Full.png"
 #define PATH_MANA_EMPTY "UIs/Player/Mana/ManaBar_Empty.png"
@@ -65,11 +66,17 @@ void PlayerStat::Init()
 void PlayerStat::UseMana(const float _factor)
 {
 	manaBar->ChangeValue(_factor);
+	float _dir = Game::GetPlayer()->GetDrawable()->getScale().x;
 
 	if (_factor < 0.0f && animation && movement)
 	{
-		animation->GetCurrentAnimation()->RunAnimation("RemoveMana", movement->GetDirection().x);
+		animation->GetCurrentAnimation()->RunAnimation("RemoveMana", _dir/*movement->GetDirection().x*/);
 	}
+}
+
+void PlayerStat::StopUsingMana()
+{
+	animation->GetCurrentAnimation()->RunAnimation("StopRight", 1);
 }
 
 void PlayerStat::UpdateLife(const int _count)

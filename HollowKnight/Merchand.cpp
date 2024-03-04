@@ -4,6 +4,10 @@
 Merchand::Merchand(const ShapeData& _data) : InteractableActor(STRING_ID("Merchand"), _data)
 {
 	shop = new ShopMenu(nullptr, this);
+
+	animation = new MerchandAnimationComponent(this);
+	components.push_back(animation);
+	animation->GetCurrentAnimation()->RunAnimation("Wait", 1);
 }
 
 
