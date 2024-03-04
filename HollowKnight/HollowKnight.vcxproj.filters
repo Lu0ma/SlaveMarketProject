@@ -214,6 +214,18 @@
     <Filter Include="Menus\PurchaseMenu">
       <UniqueIdentifier>{1c4bc7c7-9679-423d-bc49-b298068d7193}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menus\QuitGameMenu">
+      <UniqueIdentifier>{d81b3d8e-d113-47cd-a3ac-eddfe33ff5c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\PauseMenu">
+      <UniqueIdentifier>{8624f0cd-92f6-41a5-bf4f-114bed85cede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\QuitToMenu">
+      <UniqueIdentifier>{36b16e0c-71d4-40c7-bed2-b74af690d0ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Menus">
+      <UniqueIdentifier>{1f8871bc-6e5d-4198-b682-344ab9d98194}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -459,6 +471,18 @@
     <ClCompile Include="PurchaseMenu.cpp">
       <Filter>Menus\PurchaseMenu</Filter>
     </ClCompile>
+    <ClCompile Include="QuitGameMenu.cpp">
+      <Filter>Menus\QuitGameMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitToMenu.cpp">
+      <Filter>Menus\QuitToMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
+      <Filter>Menus\PauseMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuManager.cpp">
+      <Filter>Managers\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -698,12 +722,6 @@
     <ClInclude Include="PlayerInfo.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerStats.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="KeyboardMenu.h">
       <Filter>Menus\OptionsMenu\KeyboardMenu</Filter>
     </ClInclude>
@@ -715,6 +733,18 @@
     </ClInclude>
     <ClInclude Include="PurchaseMenu.h">
       <Filter>Menus\PurchaseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitGameMenu.h">
+      <Filter>Menus\QuitGameMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitToMenu.h">
+      <Filter>Menus\QuitToMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMenu.h">
+      <Filter>Menus\PauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuManager.h">
+      <Filter>Managers\Menus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

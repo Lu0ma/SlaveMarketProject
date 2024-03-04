@@ -11,6 +11,7 @@ TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
 	buttons = vector<Button*>();
 	options = new OptionsMenu(this);
 	achievement = new AchievementsMenu(this);
+	quitGame = new QuitGameMenu(this);
 }
 
 
@@ -56,10 +57,11 @@ void TitleMenu::Init()
 		}),
 		ButtonData("EXTRAS", [&]() {
 			cout << "EXTRAS" << endl;
-			SetStatus(false);
+			//TODO easter
 		}),
-		ButtonData("QUIT GAME", []() {
-			Game::Close();
+		ButtonData("QUIT GAME", [&]() {
+			quitGame->SetStatus(true);
+			SetStatus(false);
 		})
 	};
 

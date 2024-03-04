@@ -141,6 +141,6 @@ void PurchaseMenu::SetItem(const SellItem& _item)
 	const int _geosCount = Game::GetPlayer()->GetStats()->GetGeos();
 	canBuy = item.price <= _geosCount;
 
-	buyLabel->GetDrawable()->setFillColor(canBuy ? Color::White : Color(96.0f, 96.0f, 96.0f));
+	buyLabel->GetDrawable()->setFillColor(canBuy ? Color::White : Color(96, 96, 96));
 	warnMessage->SetVisible(!canBuy);
 }

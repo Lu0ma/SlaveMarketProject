@@ -178,6 +178,7 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuManager.cpp" />
     <ClCompile Include="Merchand.cpp" />
     <ClCompile Include="MerchandAnimationComponent.cpp" />
     <ClCompile Include="Mob.cpp" />
@@ -189,6 +190,7 @@
     <ClCompile Include="NPCAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
+    <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAnimationComponent.cpp" />
     <ClCompile Include="PlayerAttackComponent.cpp" />
@@ -197,6 +199,8 @@
     <ClCompile Include="PlayerStat.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="PurchaseMenu.cpp" />
+    <ClCompile Include="QuitGameMenu.cpp" />
+    <ClCompile Include="QuitToMenu.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
     <ClCompile Include="ShapeWidget.cpp" />
     <ClCompile Include="ShopMenu.cpp" />
@@ -262,6 +266,7 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuManager.h" />
     <ClInclude Include="Merchand.h" />
     <ClInclude Include="MerchandAnimationComponent.h" />
     <ClInclude Include="Mob.h" />
@@ -273,16 +278,17 @@
     <ClInclude Include="NPCAnimationComponent.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OptionsMenu.h" />
+    <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAnimationComponent.h" />
     <ClInclude Include="PlayerAttackComponent.h" />
     <ClInclude Include="PlayerInfo.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
     <ClInclude Include="PlayerStat.h" />
-    <ClInclude Include="PlayerStats.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="PurchaseMenu.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="QuitGameMenu.h" />
+    <ClInclude Include="QuitToMenu.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="ShapeWidget.h" />
     <ClInclude Include="ShopMenu.h" />

@@ -1,17 +1,17 @@
 #include "PlayerStat.h"
+#include "PlayerAnimationComponent.h"
+#include "PlayerMovementComponent.h"
+#include "Game.h"
 #include "TextureManager.h"
 #include "Timer.h"
-#include <iostream>
-#include"Game.h"
 
 #define PATH_MANA_FULL "UIs/Player/Mana/ManaBar_Full.png"
 #define PATH_MANA_EMPTY "UIs/Player/Mana/ManaBar_Empty.png"
 #define PATH_GEO "UIs/Inventory/Geo.png"
 #define FONT "Font.ttf"
 
-PlayerStat::PlayerStat(Actor* _owner) : Component(_owner)
+PlayerStat::PlayerStat(Player* _player) : Menu("PlayerStat", nullptr)
 {
-	canvas = nullptr;
 	currentLifesCount = 0;
 	currentMaxLifesCount = 0;
 	lifeWigets = vector<ShapeWidget*>();
@@ -19,15 +19,13 @@ PlayerStat::PlayerStat(Actor* _owner) : Component(_owner)
 	geosCount = 0;
 	geosCountText = nullptr;
 
-	animation = owner->GetComponent<PlayerAnimationComponent>();
-	movement = owner->GetComponent<PlayerMovementComponent>();
+	animation = _player->GetComponent<PlayerAnimationComponent>();
+	movement = _player->GetComponent<PlayerMovementComponent>();
 }
 
 
 void PlayerStat::Init()
 {
-	canvas = new Canvas("PlayerStats");
-
 	#pragma region Mana
 
 	const Vector2f& _manaPos = Vector2f(150.0f, 80.0f);
@@ -66,11 +64,11 @@ void PlayerStat::Init()
 void PlayerStat::UseMana(const float _factor)
 {
 	manaBar->ChangeValue(_factor);
-	float _dir = Game::GetPlayer()->GetDrawable()->getScale().x;
+	const float _direction = Game::GetPlayer()->GetDrawable()->getScale().x;
 
 	if (_factor < 0.0f && animation && movement)
 	{
-		animation->GetCurrentAnimation()->RunAnimation("RemoveMana", _dir/*movement->GetDirection().x*/);
+		animation->GetCurrentAnimation()->RunAnimation("RemoveMana", _direction/*movement->GetDirection().x*/);
 	}
 }
 

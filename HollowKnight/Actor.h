@@ -21,6 +21,7 @@ public:
 				return _component;
 			}
 		}
+
 		return nullptr;
 	}
 	Vector2f GetPosition()const

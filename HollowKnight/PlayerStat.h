@@ -1,17 +1,15 @@
 #pragma once
-#include "Component.h"
-#include "Canvas.h"
+#include "Menu.h"
 #include "ProgressBar.h"
-#include "Label.h"
-#include "PlayerAnimationComponent.h"
-#include "PlayerMovementComponent.h"
 
 #define PATH_LIFE "UIs/Player/Life/Life_"
 
-class PlayerStat : public Component
+class Player;
+class PlayerAnimationComponent;
+class PlayerMovementComponent;
+
+class PlayerStat : public Menu
 {
-	Canvas* canvas;
-	
 	// Life
 	int currentLifesCount;
 	int currentMaxLifesCount;
@@ -25,6 +23,7 @@ class PlayerStat : public Component
 	Label* geosCountText;
 
 	// Components
+	Player* player;
 	PlayerAnimationComponent* animation;
 	PlayerMovementComponent* movement;
 
@@ -50,14 +49,9 @@ private:
 	{
 		return PATH_LIFE + to_string(_toAdd) + ".png";
 	}
-public:
-	void Toggle()
-	{
-		canvas->SetVisibilityStatus(!canvas->IsVisible());
-	}
 
 public:
-	PlayerStat(Actor* _owner);
+	PlayerStat(Player* _player);
 
 public:
 	void Init();

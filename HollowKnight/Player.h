@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include "PauseMenu.h"
 #include "PlayerStat.h"
 #include "Inventory.h"
 #include "CharmsMenu.h"
@@ -12,6 +13,7 @@ using namespace std;
 
 class Player : public Actor
 {
+	PauseMenu* pauseMenu;
 	PlayerStat* stats;
 	Inventory* inventory;
 	CharmsMenu* charmsMenu;
@@ -40,7 +42,8 @@ public:
 private:
 	void InitAnimations();
 	void SetupPlayerInput();
-	void TryToOpenCharmsMenu();
+	void TryToOpen(Menu* _menu);
+	void CloseAllMenus();
 
 public:
 	virtual void Init() override;

@@ -1,4 +1,5 @@
 #pragma once
+#include "IManagable.h"
 #include "Canvas.h"
 #include "ShapeWidget.h"
 #include "Button.h"
@@ -9,7 +10,7 @@
 #define PATH_POINTER "UIs/Menus/Pointer.png"
 #define FONT "Font.ttf"
 
-class Menu
+class Menu : public IManagable<string>
 {
 	bool isInit;
 
@@ -28,6 +29,10 @@ public:
 		}
 
 		canvas->SetVisibilityStatus(_status);
+	}
+	bool IsActive()
+	{
+		return isInit && canvas->GetVisibilityStatus();
 	}
 
 public:

@@ -2,19 +2,17 @@
 #include "Game.h"
 #include "HUD.h"
 
-#define PATH_BACKGROUND "UIs/Charms/Charms.png"
+#define PATH_CHARMS "UIs/Charms/Charms.png"
 #define PATH_SKILL_SLOT "UIs/Charms/SkillSlot.png"
 #define PATH_NOTCH_UNUSED "UIs/Charms/Notch_0.png"
 #define PATH_NOTCH_USED "UIs/Charms/Notch_1.png"
 #define PATH_SELECTED_CHARMS "UIs/Charms/Select_Charms.png"
 #define PATH_SEPARATOR "UIs/Inventory/Separator.png"
-#define PATH_POINTER "UIs/Charms/Pointer.png"
-#define FONT "Font.ttf"
+#define PATH_CHARM_POINTER "UIs/Charms/Pointer.png"
 #define CHARMS "UIs/Charms/AllCharms/Charms_"
 
-CharmsMenu::CharmsMenu()
+CharmsMenu::CharmsMenu() : Menu("CharmsMenu", nullptr)
 {
-	canvas = nullptr;
 	gridSize = Vector2i();
 	slotSize = Vector2f();
 	notchSize = Vector2f();
@@ -24,8 +22,7 @@ CharmsMenu::CharmsMenu()
 	windowSize = Vector2f();
 	halfSize = Vector2f();
 	notches = 0;
-	charms = 0;
-	pointer = nullptr;
+	charmsCount = 0;
 	slotsCharms = vector<Button*>();
 	slotsEquippedCharms = vector<Button*>();
 	descriptionItem = nullptr;
@@ -34,7 +31,6 @@ CharmsMenu::CharmsMenu()
 
 void CharmsMenu::Init()
 {
-	canvas = new Canvas("PlayerCharms", FloatRect(0, 0, 1, 1));
 	canvas->SetVisibilityStatus(false);
 
 	gridSize = Vector2i(9, 4);
@@ -42,7 +38,7 @@ void CharmsMenu::Init()
 	notchSize = Vector2f(20.0f, 20.0f);
 	charmsSelectSize = Vector2f(30.0f, 30.0f);
 	notches = 11;
-	charms = 6;
+	charmsCount = 6;
 	windowSize = Game::GetWindowSize();
 	gridPos = Vector2f(windowSize.x / 12.0f, windowSize.y / 8.0f);
 	halfSize = windowSize / 2.0f;
@@ -60,7 +56,7 @@ void CharmsMenu::Init()
 
 void CharmsMenu::Background()
 {
-	ShapeWidget* _background = new ShapeWidget(ShapeData(halfSize, windowSize, PATH_BACKGROUND));
+	ShapeWidget* _background = new ShapeWidget(ShapeData(halfSize, windowSize, PATH_CHARMS));
 	canvas->AddWidget(_background);
 }
 
@@ -77,40 +73,41 @@ void CharmsMenu::SelectedCharms()
 {
 	const float _spacingY = halfSize.y * 0.8f;
 
-	for (int _row = 0; _row < charms; _row++)
+	for (int _row = 0; _row < charmsCount; _row++)
 	{
-		Button* _charms = new Button(ShapeData(Vector2f(gridPos.x + 35.0f + _row * (charmsSelectSize.y + 50.0f), _spacingY - halfSize.y * 0.30f), charmsSelectSize, PATH_SELECTED_CHARMS));
-		_charms->GetData().hoveredCallback = [&]()
+		Button* _charm = new Button(ShapeData(Vector2f(gridPos.x + 35.0f + _row * (charmsSelectSize.y + 50.0f), _spacingY - halfSize.y * 0.30f), charmsSelectSize, PATH_SELECTED_CHARMS));
+		_charm->GetData().hoveredCallback = [&]()
+		{
+			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(slotsEquippedCharms))
 			{
-				if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(slotsEquippedCharms))
-				{
-					const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-					pointer->SetShapePosition(_position);
-				}
-			};
+				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
+				pointer->SetShapePosition(_position);
+				pointer->SetVisible(true);
+			}
+		};
 
-		_charms->GetData().pressedCallback = [&]()
+		_charm->GetData().pressedCallback = [&]()
+		{
+			if (Button* _pressedButton = HUD::GetInstance().GetPressedButton(slotsEquippedCharms))
 			{
-				if (Button* _pressedButton = HUD::GetInstance().GetPressedButton(slotsEquippedCharms))
+				if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_pressedButton->GetForeground()))
 				{
-					if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_pressedButton->GetForeground()))
+					_pressedButton->SetForeground(nullptr);
+					if (Button* _slotCharms = GetFirstAvailableSlotCharms())
 					{
-						_pressedButton->SetForeground(nullptr);
-						if (Button* _slotCharms = GetFirstAvailableSlotCharms())
-						{
-							_slotCharms->SetForeground(_itemWidget);
-							_itemWidget->GetDrawable()->setPosition(_slotCharms->GetDrawable()->getPosition());
-						}
+						_slotCharms->SetForeground(_itemWidget);
+						_itemWidget->GetDrawable()->setPosition(_slotCharms->GetDrawable()->getPosition());
 					}
 				}
-			};
-		//_charms->SetForeground();
+			}
+		};
 
-		slotsEquippedCharms.push_back(_charms);
-		canvas->AddWidget(_charms);
+		slotsEquippedCharms.push_back(_charm);
+		canvas->AddWidget(_charm);
 	}
 
-	pointer = new ShapeWidget(ShapeData(gridPos, Vector2f(80.0f, 80.0f), PATH_POINTER));
+	pointer = new ShapeWidget(ShapeData(Vector2f(gridPos.x + 35.0f, _spacingY - halfSize.y * 0.30f), Vector2f(80.0f, 80.0f), PATH_CHARM_POINTER));
+	pointer->SetVisible(false);
 	canvas->AddWidget(pointer);
 }
 

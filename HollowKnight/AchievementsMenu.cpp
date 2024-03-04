@@ -5,7 +5,7 @@
 
 AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achivements", _owner)
 {
-	backButton = nullptr;
+
 }
 
 
@@ -100,16 +100,16 @@ void AchievementsMenu::Init()
 	const float _buttonPosY = _windowSize.y * 0.9f;
 	const Vector2f& _buttonPos = Vector2f(_halfWindowX, _buttonPosY);
 
-	backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
-	backButton->GetData().pressedCallback = [&]() {
+	Button* _backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
+	_backButton->GetData().pressedCallback = [&]() {
 		owner->SetStatus(true);
 		canvas->SetVisibilityStatus(false);
 	};
-	backButton->GetDrawable()->setFillColor(Color::Transparent);
-	canvas->AddWidget(backButton);
+	_backButton->GetDrawable()->setFillColor(Color::Transparent);
+	canvas->AddWidget(_backButton);
 
 	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
-	backButton->SetForeground(_buttonText);
+	_backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
 	pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));

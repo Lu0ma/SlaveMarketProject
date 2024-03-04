@@ -4,9 +4,9 @@
 #include "TextureManager.h"
 #include "HUD.h"
 
-#define PATH_BACKGROUND "UIs/Inventory/Inventory.png"
+#define PATH_INVENTORY "UIs/Inventory/Inventory.png"
 #define PATH_CELL "UIs/Inventory/Cell.png"
-#define PATH_POINTER "UIs/Inventory/Pointer.png"
+#define PATH_INVENTORY_POINTER "UIs/Inventory/Pointer.png"
 #define PATH_SEPARATOR "UIs/Inventory/Separator.png"
 
 #define PATH_CORE "UIs/Inventory/Core.png"
@@ -15,19 +15,16 @@
 
 #define FONT "Font.ttf"
 
-Inventory::Inventory()
+Inventory::Inventory() : Menu("Inventory", nullptr)
 {
-	canvas = nullptr;
 	gridSize = Vector2i(4, 5);
 	cellSize = Vector2f(80.0f, 80.0f);
 
 	buttons = vector<Button*>();
 	stackSize = 5;
 
-	pointer = nullptr;
 	descriptionTitle = nullptr;
 	descriptionText = nullptr;
-
 
 	maskCount = 0;
 	maskWidget = nullptr;
@@ -92,7 +89,6 @@ Item* Inventory::FindItemData(const string& _path)
 
 void Inventory::Init()
 {
-	canvas = new Canvas("PlayerInventory", FloatRect(0, 0, 1, 1));
 	canvas->SetVisibilityStatus(false);
 
 	windowSize = Game::GetWindowSize();
@@ -121,7 +117,7 @@ void Inventory::UpdateMaskCount(const int _factor)
 
 void Inventory::Background()
 {
-	ShapeWidget* _background = new ShapeWidget(ShapeData(halfSize, windowSize, PATH_BACKGROUND));
+	ShapeWidget* _background = new ShapeWidget(ShapeData(halfSize, windowSize, PATH_INVENTORY));
 	canvas->AddWidget(_background);
 }
 
@@ -198,7 +194,7 @@ void Inventory::Grid()
 		}
 	}
 
-	pointer = new ShapeWidget(ShapeData(_gridPos, cellSize, PATH_POINTER));
+	pointer = new ShapeWidget(ShapeData(_gridPos, cellSize, PATH_INVENTORY_POINTER));
 	canvas->AddWidget(pointer);
 }
 

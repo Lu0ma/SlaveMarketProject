@@ -8,7 +8,6 @@
 #include "Spawner.h"
 
 //#define PATH_PLAYER "Player.png"
-#define FONT "Assets/Fonts/Font.ttf"
 #define PATH_PLAYER "Animations/knighModif.png"
 
 RenderWindow Game::window;
