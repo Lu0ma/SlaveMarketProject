@@ -7,9 +7,7 @@
 #define PATH_MARCHAND "/UIs/Shop/Stand.png"
 #define PATH_PNJ "/UIs/PNJ/PNJ.png"
 
-#define PATH_THIN "Levels/Thin.png"
-#define PATH_MID "Levels/Mid.png"
-#define PATH_WIDE "Levels/Wide.png"
+
 
 Map::Map()
 {
@@ -21,20 +19,6 @@ Map::Map()
 	//TODO move
 	barrack = nullptr;
 
-	plateformsData = {
-		{
-			Vector2f(0.0f, 85.0f),
-			PT_THIN,
-		},
-		{
-			Vector2f(0.0f, 0.0f),
-			PT_MID,
-		},
-		{
-			Vector2f(0.0f , -85.0f),
-			PT_WIDE,
-		}
-	};
 }
 
 
@@ -67,31 +51,29 @@ MapData Map::LoadMapData(const string& _path)
 	const int _wallIndex = GetIndexByText(_wallSymbol, _path);
 
 	//analyser toutes les lignes, ligne par ligne a partir de _wallIndex + 1
-	for (int _index = _wallIndex + 1, char _char = 0; _index < _path.size(); _index++)
+	for (int _index = _wallIndex + 1; _index < _path.size(); _index++)
 	{
-		const int _clampCamMaxY = stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
-
+		const int _wallPositionX = stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		const int _wallPositionY = stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		PlatformType _wallType = static_cast<PlatformType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
+		PlateformData _platform = PlateformData(Vector2f((float)_wallPositionX, (float)_wallPositionY), _wallType);
+		plateformsData.push_back(_platform);
 	}
 
-	
 	return _data;
 }
 
 void Map::InitPlateforms()
 {
-
+	Vector2f _size;
+	string _path;
 	for (int _index = 0; _index < plateformsData.size(); _index++)
 	{
-		Actor* _plateform = new Actor(STRING_ID("Plateform"), ShapeData(Vector2f(plateformsData[_index].position), Vector2f(plateformsData[_index].), plateformsData[_index].));
+		ComputePlatformType(plateformsData[_index].type, _size, _path);
+		Actor* _plateform = new Actor(STRING_ID("Plateform"), ShapeData(plateformsData[_index].position, _size, _path));
 		drawables.push_back(_plateform);
 	}
 }
-
-void Map::RetrievePlatformData(Vector2f& _size, string& _path)
-{
-
-}
-
 
 void Map::Init()
 {
@@ -114,8 +96,24 @@ void Map::Init()
 
 	//TODO modify ?
 	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-150.0f, 49.5f), Vector2f(5550.0f, 10.0f), ""));
-	_ground->GetDrawable()->setFillColor(Color::Transparent);
+	//_ground->GetDrawable()->setFillColor(Color::Transparent);
 
-	InitPlateforms();
+	//InitPlateforms();
+	InitPlateformsGUEZ();
+}
 
+void Map::InitPlateformsGUEZ()
+{
+	Actor* _wall0 = new Actor(STRING_ID("Wall"), ShapeData(Vector2f(-400.0f, -100.0f), Vector2f(134.0f, 85.0f), PATH_THIN));
+	Actor* _wall1 = new Actor(STRING_ID("Wall"), ShapeData(Vector2f(-300.0f, -200.0f), Vector2f(198.0f, 85.0f), PATH_MID));
+	Actor* _wall2 = new Actor(STRING_ID("Wall"), ShapeData(Vector2f(-200.0f, -300.0f), Vector2f(263.0f, 85.0f), PATH_WIDE));
+	Actor* _wall3 = new Actor(STRING_ID("Wall"), ShapeData(Vector2f(0.0f, -300.0f), Vector2f(134.0f, 85.0f), PATH_THIN));
+	Actor* _wall4 = new Actor(STRING_ID("Wall"), ShapeData(Vector2f(100.0f, -200.0f), Vector2f(134.0f, 85.0f), PATH_THIN));
+	Actor* _wall5 = new Actor(STRING_ID("Wall"), ShapeData(Vector2f(200.0f, -100.0f), Vector2f(198.0f, 85.0f), PATH_MID));
+	drawables.push_back(_wall0);
+	drawables.push_back(_wall1);
+	drawables.push_back(_wall2);
+	drawables.push_back(_wall3);
+	drawables.push_back(_wall4);
+	drawables.push_back(_wall5);
 }

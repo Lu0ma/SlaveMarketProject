@@ -175,6 +175,9 @@
     <Filter Include="Components\Attack\Player">
       <UniqueIdentifier>{f618356d-8ecc-4588-a40f-a3a2ab95a440}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Text">
+      <UniqueIdentifier>{a01cd447-7bc2-4fd5-9919-cd3a2154420a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -557,5 +560,10 @@
     <ClInclude Include="PlayerAttackComponent.h">
       <Filter>Components\Attack\Player</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Assets\Levels\SubLevel_1.txt">
+      <Filter>Text</Filter>
+    </Text>
   </ItemGroup>
 </Project>
