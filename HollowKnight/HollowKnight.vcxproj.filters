@@ -306,9 +306,6 @@
     <ClCompile Include="NPC.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
     </ClCompile>
-    <ClCompile Include="Merchand.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
-    </ClCompile>
     <ClCompile Include="CollisionComponent.cpp">
       <Filter>Components\Collision</Filter>
     </ClCompile>
@@ -441,6 +438,9 @@
     <ClCompile Include="PlayerInfo.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Merchand.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -550,9 +550,6 @@
     </ClInclude>
     <ClInclude Include="NPC.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
-    </ClInclude>
-    <ClInclude Include="Merchand.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
     </ClInclude>
     <ClInclude Include="CollisionComponent.h">
       <Filter>Components\Collision</Filter>
@@ -676,6 +673,9 @@
     </ClInclude>
     <ClInclude Include="Lever.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Merchand.h">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

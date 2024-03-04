@@ -21,7 +21,7 @@ Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data
 	attack = new MobAttackComponent(this, 1);
 	components.push_back(attack);
 
-	life = new MobLifeComponent(this, 3);
+	life = new MobLifeComponent(this, 1);
 	components.push_back(life);
 
 	InitTimerPatrol();

@@ -13,12 +13,12 @@ Dragon::Dragon(const string& _name, const ShapeData& _data, const vector<string>
 void Dragon::PlayMusic()
 {
 	Player* _player = Game::GetPlayer();
-	if (GetDrawable()->getGlobalBounds().contains(_player->GetPosition()))
+	if (!GetDrawable()->getGlobalBounds().intersects(_player->GetBounds()))
 	{
 	    MusicManager::GetInstance().Play(MUSIC);
 	}
 	
-	//MusicManager::GetInstance().Stop(MUSIC);
+	
 	
 	
 }

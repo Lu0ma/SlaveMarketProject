@@ -8,5 +8,5 @@ MobLifeComponent::MobLifeComponent(Actor* _owner, const int _life) : Component(_
 
 void MobLifeComponent::TakeDamages(const int _damages)
 {
-	life -= _damages;
+	SetLife(-_damages);
 }

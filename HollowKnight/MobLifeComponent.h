@@ -8,7 +8,7 @@ class MobLifeComponent : public Component
 public:
 	void SetLife(const int _life)
 	{
-		life = _life;
+		life += _life;
 	}
 	int GetLife() const
 	{

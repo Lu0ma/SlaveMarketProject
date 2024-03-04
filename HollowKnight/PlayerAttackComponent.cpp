@@ -16,14 +16,14 @@ PlayerAttackComponent::PlayerAttackComponent(Actor* _owner, const int _damages) 
 void PlayerAttackComponent::SpecialAttack()
 {
 	const Vector2f& _ownerPosition = owner->GetShapePosition();
-	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(_ownerPosition, 15.0f);
+	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(_ownerPosition, 45.0f);
 	for (Mob* _mob : _mobs)
 	{
 		if (!_mob) continue;
 		
 		else
 		{
-			_mob->GetLife()->TakeDamages(GetDamages());
+			_mob->GetLife()->TakeDamages(1);
 			Game::GetPlayer()->GetStats()->UseMana(1.0f);
 		}
 	}

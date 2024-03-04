@@ -7,5 +7,4 @@ class MusicManager : public Singleton<MusicManager>, public IManager<string, Mus
 {
 public:
 	void Play(const string& _path);
-	void Stop(const string& _path);
 };
