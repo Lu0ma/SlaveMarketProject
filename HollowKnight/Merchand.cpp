@@ -11,7 +11,7 @@
 #define FONT "Font.ttf"
 
 Merchand::Merchand(const ShapeData& _data, const vector<string>& _texts)
-				  : NPC(STRING_ID("Merchand"), _data, _texts)
+				  : InteractableActor(STRING_ID("Merchand"), _data)
 {
 	timeBeforeOpenShop = 3.0f;
 	canvas = new Canvas("Shop");
@@ -26,7 +26,7 @@ Merchand::Merchand(const ShapeData& _data, const vector<string>& _texts)
 
 void Merchand::Init()
 {
-	NPC::Init();
+	InteractableActor::Init();
 
 	canvas->SetVisibilityStatus(false);
 

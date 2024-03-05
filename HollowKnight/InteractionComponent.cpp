@@ -26,12 +26,12 @@ void InteractionComponent::TryToInteract()
 			inventory->SetStatus(false);
 		}
 
-		else if (NPC* _npc = dynamic_cast<NPC*>(_interactable))
+		/*else if (NPC* _npc = dynamic_cast<NPC*>(_interactable))
 		{
 			_npc->OpenDiscussion();
 			_npc->GetAnimation()->GetCurrentAnimation()->RunAnimation("Talk", 1);
 			inventory->SetStatus(false);
-		}
+		}*/
 	}
 }
 

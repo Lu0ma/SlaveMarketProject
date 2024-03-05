@@ -4,6 +4,7 @@
 #include "ShapeWidget.h"
 #include "Label.h"
 
+
 class InteractableActor : public Actor
 {
 	Canvas* canvas;

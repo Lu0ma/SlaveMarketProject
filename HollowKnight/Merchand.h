@@ -7,7 +7,7 @@
 #include "Timer.h"
 #include"MerchandAnimationComponent.h"
 
-class Merchand : public NPC
+class Merchand : public InteractableActor
 {
 	float timeBeforeOpenShop;
 	Canvas* canvas;
