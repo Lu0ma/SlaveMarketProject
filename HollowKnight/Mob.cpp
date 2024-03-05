@@ -74,3 +74,10 @@ void Mob::Patrol()
 	}
 }
 
+void Mob::Update(const float _deltaTime)
+{
+	Actor::Update(_deltaTime);
+
+	Death();
+}
+

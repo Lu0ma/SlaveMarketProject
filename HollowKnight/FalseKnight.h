@@ -10,5 +10,6 @@ public:
 public:
 	virtual void Init() override;
 	virtual void Attack(Player* _player) override;
+	virtual void Death() override;
 };
 

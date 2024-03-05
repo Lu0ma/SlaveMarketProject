@@ -16,13 +16,8 @@ protected:
 	AnimationComponent* animation;
 	MovementComponent* movement;
 	MobAttackComponent* attack;
-	MobLifeComponent* life;
 
 public:
-	MobLifeComponent* GetLife()const
-	{
-		return life;
-	}
 
 public:
 	Mob(const ShapeData& _data);
@@ -35,4 +30,5 @@ public:
 	void Move();
 	void Patrol();
 	virtual void Death() = 0;
+	virtual void Update(const float _deltaTime) override;
 };

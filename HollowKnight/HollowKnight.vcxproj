@@ -231,6 +231,7 @@
     <ClInclude Include="DeathMob.h" />
     <ClInclude Include="Dragon.h" />
     <ClInclude Include="DragonAnimationComponent.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="ExtrasMenu.h" />
     <ClInclude Include="FalseKnight.h" />
     <ClInclude Include="FileLoader.h" />
@@ -271,9 +272,12 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAnimationComponent.h" />
     <ClInclude Include="PlayerAttackComponent.h" />
+    <ClInclude Include="PlayerInfo.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
     <ClInclude Include="PlayerStat.h" />
+    <ClInclude Include="PlayerStats.h" />
     <ClInclude Include="ProgressBar.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="ShapeWidget.h" />
     <ClInclude Include="Singleton.h" />
