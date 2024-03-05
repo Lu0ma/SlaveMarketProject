@@ -88,7 +88,11 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("CharmsMenu", {
-		ActionData("ToogleCharmsMenu", [&]() { TryToOpenCharmsMenu(); }, InputData({ActionType::KeyPressed, Keyboard::P}))
+		ActionData("ToogleCharmsMenu", [&]() { 
+			stats->Toggle();
+			TryToOpenCharmsMenu(); 
+			interaction->StopInteract();
+			}, InputData({ActionType::KeyPressed, Keyboard::P}))
 	});
 
 	new ActionMap("Interaction", {

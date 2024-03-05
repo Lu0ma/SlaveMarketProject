@@ -4,7 +4,7 @@
 #include "TextureManager.h"
 #include "Timer.h"
 
-Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data)
+Mob::Mob(const ShapeData& _data) : Enemy(STRING_ID("Mob"), _data)
 {
 	startPosition = _data.position;
 	goalPosition = startPosition + Vector2f(500.0f, 0.0f);

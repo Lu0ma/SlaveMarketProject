@@ -132,7 +132,7 @@ void Merchand::Init()
 	#pragma region Description
 
 	const Vector2f& _descriptionSize = Vector2f(_shopSize.x / 2.0f, _shopSize.y * 0.6f);
-	const Vector2f& _descriptionPos = _shopPos + Vector2f(_descriptionSize.x * 0.3, 0.0f);
+	const Vector2f& _descriptionPos = _shopPos + Vector2f(_descriptionSize.x * 0.3f, 0.0f);
 	/*ShapeWidget* _description = new ShapeWidget(ShapeData(_descriptionPos, _descriptionSize, ""));
 	canvas->AddWidget(_description);*/
 

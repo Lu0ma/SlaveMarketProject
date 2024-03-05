@@ -3,6 +3,11 @@
 
 bool InputManager::Update(RenderWindow& _window)
 {
+	if (!Joystick::isConnected(0))
+	{
+		cerr << "manette non connecter" << endl;
+	}
+
 	const Vector2i& _mousePosition = Mouse::getPosition(_window);
 	mousePosition = Vector2f(_mousePosition);
 	worldPosition = _window.mapPixelToCoords(_mousePosition);

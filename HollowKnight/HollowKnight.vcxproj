@@ -151,6 +151,7 @@
     <ClCompile Include="DeathMob.cpp" />
     <ClCompile Include="Dragon.cpp" />
     <ClCompile Include="DragonAnimationComponent.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="ExtrasMenu.cpp" />
     <ClCompile Include="FalseKnight.cpp" />
     <ClCompile Include="FileLoader.cpp" />
@@ -190,6 +191,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAnimationComponent.cpp" />
     <ClCompile Include="PlayerAttackComponent.cpp" />
+    <ClCompile Include="PlayerInfo.cpp" />
     <ClCompile Include="PlayerMovementComponent.cpp" />
     <ClCompile Include="PlayerStat.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
@@ -229,6 +231,7 @@
     <ClInclude Include="DeathMob.h" />
     <ClInclude Include="Dragon.h" />
     <ClInclude Include="DragonAnimationComponent.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="ExtrasMenu.h" />
     <ClInclude Include="FalseKnight.h" />
     <ClInclude Include="FileLoader.h" />
@@ -269,8 +272,10 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAnimationComponent.h" />
     <ClInclude Include="PlayerAttackComponent.h" />
+    <ClInclude Include="PlayerInfo.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
     <ClInclude Include="PlayerStat.h" />
+    <ClInclude Include="PlayerStats.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="ShapeWidget.h" />

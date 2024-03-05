@@ -42,12 +42,12 @@ enum PlatformType
 	PT_WIDE,
 };
 
-struct PlateformData
+struct PlatformData
 {
 	Vector2f position;
 	PlatformType type;
 
-	PlateformData(const Vector2f& _position, const PlatformType& _type)
+	PlatformData(const Vector2f& _position, const PlatformType& _type)
 	{
 		position = _position;
 		type = _type;
@@ -63,7 +63,7 @@ class Map
 	ShapeObject* background;
 	ShapeObject* barrack;
 
-	vector<PlateformData> plateformsData;
+	vector<PlatformData> platformsData;
 
 	vector<ShapeObject*> drawables;
 	vector<Lift*> lifts;
@@ -89,9 +89,6 @@ private:
 	MapData LoadMapData(const string& _path);
 
 	void InitPlateforms();
-	 
-	//TODO REMOVE ABSOLUTLY
-	void InitPlateformsGUEZ();
 
 	void ComputePlatformType(const PlatformType& _type, Vector2f& _size, string& _path)
 	{
@@ -99,6 +96,16 @@ private:
 		{
 			_size = Vector2f(134.0f, 85.0f);
 			_path = PATH_THIN;
+		}
+		else if (_type == PT_MID)
+		{
+			_size = Vector2f(198.0f, 85.0f);
+			_path = PATH_MID;
+		}
+		else
+		{
+			_size = Vector2f(263.0f, 85.0f);
+			_path = PATH_WIDE;
 		}
 	}
 
