@@ -47,7 +47,7 @@ void PauseMenu::Init()
 		ButtonData("OPTIONS", [&]() {
 			SetStatus(false);
 			// Open options menu
-			MenuManager::GetInstance()->GetMenu<OptionsMenu>()->SetStatus(true);
+			MenuManager::GetInstance().GetMenu<OptionsMenu>()->SetStatus(true);
 		}),
 		ButtonData("QUIT TO MENU", [&]() {
 			SetStatus(false);

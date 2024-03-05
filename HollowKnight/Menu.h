@@ -35,6 +35,9 @@ public:
 		return isInit && canvas->GetVisibilityStatus();
 	}
 
+private:
+	virtual void Register() override;
+
 public:
 	Menu(const string& _name, Menu* _owner = nullptr);
 

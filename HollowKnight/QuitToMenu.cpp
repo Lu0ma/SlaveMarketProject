@@ -43,7 +43,7 @@ void QuitToMenu::Init()
 		ButtonData("Yes", [&]() {
 			// open titleMenu
 			SetStatus(false);
-			MenuManager::GetInstance()->GetMenu<TitleMenu>()->SetStatus(true);
+			MenuManager::GetInstance().GetMenu<TitleMenu>()->SetStatus(true);
 		}),
 		ButtonData("No", [&]() {
 			SetStatus(false);
