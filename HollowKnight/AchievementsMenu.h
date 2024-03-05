@@ -4,8 +4,6 @@
 
 class AchievementsMenu : public Menu
 {
-	Button* backButton;
-	ShapeWidget* pointer;
 
 public:
 	AchievementsMenu(Menu* _owner);

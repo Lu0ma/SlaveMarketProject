@@ -40,9 +40,6 @@ void InteractableActor::Verify()
 		{
 			interactionBG->SetVisible(true);
 			interactionText->SetVisible(true);
-
-			/*discussionBG->SetVisible(false);
-			discussionText->SetVisible(false);*/
 		}
 	}
 

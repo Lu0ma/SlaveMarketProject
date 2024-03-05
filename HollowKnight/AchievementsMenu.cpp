@@ -1,10 +1,7 @@
 #include "AchievementsMenu.h"
 #include "Game.h"
 
-#define PATH_BACKGROUND "UIs/Menus/Background.png"
-#define PATH_TITLE_ICON "UIs/Menus/TitleIcon.png"
-#define PATH_POINTER "UIs/Menus/Options/Pointer.png"
-#define FONT "Font.ttf"
+#define PATH_ACHIEVEMENTS "UIs/Menus/Achievements/Achievement_"
 
 AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achivements", _owner)
 {
@@ -41,33 +38,41 @@ void AchievementsMenu::Init()
 
 	struct AchievementData
 	{
-		string path;
 		string title;
 		string description;
 	};
 
 	const vector<AchievementData>& _allData = {
 		{
-			"PORTECTED_PATH"
 			"PROTECTED",
 			"Acquire 4 Mask Shards"
 		},
 		{
-			"MASKED_PATH"
 			"MASKED",
 			"Acquire all Mask Shards"
 		},
 		{
-			"CHARMED_PATH"
 			"CHARMED",
 			"Acquire your first Charm"
 		},
+		{
+			"ENCHANTED",
+			"Acquire half of Hallownest's Charms"
+		},
+		{
+			"BLESSED",
+			"Acquire all Charms and received Salubra's blessing"
+		},
+		{
+			"SOULFUL",
+			"Acquire 3 Vessel Fragments"
+		},
 	};
 
-	const float _firstAchievementPosY = _windowSize.y * 0.35f;
+	const float _firstAchievementPosY = _windowSize.y * 0.3f;
 	const float _iconPosX = _windowSize.x * 0.25f;
 	const Vector2f& _iconSize = Vector2f(50.0f, 50.0f);
-	const float _achievementPosX = _iconPosX + _iconSize.x;
+	const float _achievementPosX = _iconPosX + 70.0f;
 	const float _gapY = _iconSize.y * 0.25f;
 
 	const int _dataCount = (int)_allData.size();
@@ -76,17 +81,18 @@ void AchievementsMenu::Init()
 		const AchievementData& _data = _allData[_index];
 		const float _achievementPosY = _firstAchievementPosY + _iconSize.y * _index + _gapY * _index;
 
-		ShapeWidget* _icon = new ShapeWidget(ShapeData(Vector2f(_iconPosX, _achievementPosY), _iconSize, _data.path));
+		const string& _path = PATH_ACHIEVEMENTS + to_string(_index + 1) + ".png";
+		ShapeWidget* _icon = new ShapeWidget(ShapeData(Vector2f(_iconPosX, _achievementPosY), _iconSize, _path));
 		canvas->AddWidget(_icon);
 
-		Label* _achievementTitle = new Label(TextData(_data.title, Vector2f(_achievementPosX, _achievementPosY), FONT, 20), AT_LEFT);
+		Label* _achievementTitle = new Label(TextData(_data.title, Vector2f(_achievementPosX, _achievementPosY - 10.0f), FONT, 20), AT_LEFT);
 		canvas->AddWidget(_achievementTitle);
 
-		Label* _achievementDescrition = new Label(TextData(_data.description, Vector2f(_achievementPosX, _achievementPosY + 10.0f), FONT, 16), AT_LEFT);
+		Label* _achievementDescrition = new Label(TextData(_data.description, Vector2f(_achievementPosX, _achievementPosY + 10.0f), FONT, 14), AT_LEFT);
 		canvas->AddWidget(_achievementDescrition);
 	}
 
-	#pragma endregion
+	#pragma endregion 
 
 	#pragma region Back
 
@@ -94,16 +100,16 @@ void AchievementsMenu::Init()
 	const float _buttonPosY = _windowSize.y * 0.9f;
 	const Vector2f& _buttonPos = Vector2f(_halfWindowX, _buttonPosY);
 
-	backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
-	backButton->GetData().pressedCallback = [&]() {
+	Button* _backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
+	_backButton->GetData().pressedCallback = [&]() {
 		owner->SetStatus(true);
 		canvas->SetVisibilityStatus(false);
 	};
-	backButton->GetDrawable()->setFillColor(Color::Transparent);
-	canvas->AddWidget(backButton);
+	_backButton->GetDrawable()->setFillColor(Color::Transparent);
+	canvas->AddWidget(_backButton);
 
 	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
-	backButton->SetForeground(_buttonText);
+	_backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
 	pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));

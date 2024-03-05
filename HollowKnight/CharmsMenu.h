@@ -1,12 +1,8 @@
 #pragma once
-#include "Canvas.h"
-#include "Button.h"
-#include "Label.h"
-#include "ItemWidget.h"
+#include "Menu.h"
 
-class CharmsMenu
+class CharmsMenu : public Menu
 {
-	Canvas* canvas;
 	Vector2i gridSize;
 	Vector2f slotSize;
 	Vector2f notchSize;
@@ -17,8 +13,7 @@ class CharmsMenu
 	Vector2f halfSize;
 
 	int notches;
-	int charms;
-	ShapeWidget* pointer;
+	int charmsCount;
 
 	vector<Button*> slotsCharms;
 	vector<Button*> slotsEquippedCharms;
@@ -27,7 +22,6 @@ class CharmsMenu
 	Label* titleItem;
 
 public:
-
 	Button* GetFirstAvailableEquippedSlot() const
 	{
 		for (Button* _button : slotsEquippedCharms)
@@ -56,13 +50,7 @@ public:
 public:
 	CharmsMenu();
 
-public:
-	void Init();
-	void Toggle()
-	{
-		canvas->SetVisibilityStatus(!canvas->IsVisible());
-	}
-
+private:
 	void Background();
 	void Separator();
 	void SelectedCharms();
@@ -72,4 +60,7 @@ public:
 	void EquippedText();
 	void Title();
 	void Description();
+
+public:
+	void Init();
 };

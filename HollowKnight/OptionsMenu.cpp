@@ -2,15 +2,11 @@
 #include "Game.h"
 #include "HUD.h"
 
-#define PATH_BACKGROUND "UIs/Menus/Background.png"
-#define PATH_TITLE_ICON "UIs/Menus/TitleIcon.png"
-#define PATH_POINTER "UIs/Menus/Options/Pointer.png"
-#define FONT "Font.ttf"
-
 OptionsMenu::OptionsMenu(Menu* _owner) : Menu("OptionsMenu", _owner)
 {
 	buttons = vector<Button*>();
-	pointer = nullptr;
+	controller = new ControllerMenu(this);
+	keyboard = new KeyboardMenu(this);
 }
 
 
@@ -67,12 +63,12 @@ void OptionsMenu::Init()
 			//canvas->SetVisibilityStatus(false);
 		}),
 		ButtonData("CONTROLLER", [&]() {
-			cout << "CONTROLLER" << endl;
-			//canvas->SetVisibilityStatus(false);
+			controller->SetStatus(true);
+			canvas->SetVisibilityStatus(false);
 		}),
 		ButtonData("KEYBOARD", [&]() {
-			cout << "KEYBOARD" << endl;
-			//canvas->SetVisibilityStatus(false);
+			keyboard->SetStatus(true);
+			canvas->SetVisibilityStatus(false);
 		}),
 		ButtonData("BACK", [&]() {
 			owner->SetStatus(true);

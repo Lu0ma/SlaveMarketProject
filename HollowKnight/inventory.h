@@ -1,8 +1,7 @@
 #pragma once
+#include "Menu.h"
 #include "IManager.h"
 #include "Item.h"
-#include "Canvas.h"
-#include "Button.h"
 
 #define PATH_HEALTH_MASK "UIs/Inventory/HealthMasks/HealthMask_"
 #define PATH_VESSEL "UIs/Inventory/Vessels/Vessel_"
@@ -12,9 +11,8 @@
 #define PATH_SLAM "UIs/Inventory/Slams/Slam_"
 #define PATH_SHRIEK "UIs/Inventory/Shrieks/Shriek_"
 
-class Inventory : public IManager<int, Item>
+class Inventory : public Menu, public IManager<int, Item>
 {
-	Canvas* canvas;
 	Vector2i gridSize;
 	Vector2f cellSize;
 	Vector2f windowSize;
@@ -25,11 +23,8 @@ class Inventory : public IManager<int, Item>
 	vector<Button*> buttons;
 	int stackSize;
 
-
-	ShapeWidget* pointer;
 	Label* descriptionTitle;
 	Label* descriptionText;
-
 
 	int maskCount;
 	ShapeWidget* maskWidget;
@@ -63,15 +58,6 @@ class Inventory : public IManager<int, Item>
 	bool isDashActive;
 	ShapeWidget* dashWidget;
 
-public:
-	void Toggle()
-	{
-		canvas->SetVisibilityStatus(!canvas->IsVisible());
-	}
-	void SetStatus(const bool _status)
-	{
-		canvas->SetVisibilityStatus(_status);
-	}
 private:
 	string ComputeHealthMaskPath() const
 	{

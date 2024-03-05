@@ -8,7 +8,6 @@
 #include "Spawner.h"
 
 //#define PATH_PLAYER "Player.png"
-#define FONT "Assets/Fonts/Font.ttf"
 #define PATH_PLAYER "Animations/knighModif.png"
 
 RenderWindow Game::window;
@@ -74,7 +73,6 @@ void Game::UpdateWindow()
 		window.draw(*_actor->GetDrawable());
 	}
 	
-	// UI
 	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{

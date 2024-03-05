@@ -10,20 +10,24 @@ enum AligmentText
 
 class Label : public TextWidget
 {
+	AligmentText alignement;
+		 
 public:
 	void SetString(const string& _text)
 	{
 		textObject->GetDrawable()->setString(_text);
+		SetAlignement(alignement);
 	}
-	void SetAlignement(const AligmentText& _aligment)
+	void SetAlignement(const AligmentText& _aligement)
 	{
+		alignement = _aligement;
 		const FloatRect& _bounds = textObject->GetDrawable()->getLocalBounds();
-		const float _originX = _aligment == AT_LEFT ? _bounds.left
-							 : _aligment == AT_CENTER ? _bounds.width / 2.0f
+		const float _originX = _aligement == AT_LEFT ? _bounds.left
+							 : _aligement == AT_CENTER ? _bounds.width / 2.0f
 							 : _bounds.width;
-		textObject->GetDrawable()->setOrigin(_originX, _bounds.height / 2.0f);
+		textObject->GetDrawable()->setOrigin(_originX, _bounds.top); // alignement Y
 	}
 
 public:
-	Label(const TextData& _data, const AligmentText& _aligment = AT_CENTER);
+	Label(const TextData& _data, const AligmentText& _aligement = AT_CENTER);
 };

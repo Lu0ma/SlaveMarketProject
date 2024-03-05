@@ -1,46 +1,28 @@
 #pragma once
-#include "NPC.h"
-#include "Canvas.h"
-#include "Button.h"
-#include "ShapeWidget.h"
-#include "Label.h"
-#include "Timer.h"
-#include"MerchandAnimationComponent.h"
+#include "InteractableActor.h"
+#include "ShopMenu.h"
+#include "MerchandAnimationComponent.h"
 
-class Merchand : public NPC
+class Merchand : public InteractableActor
 {
-	float timeBeforeOpenShop;
-	Canvas* canvas;
-	vector<Button*> buttons;
-	ShapeWidget* pointer;
-	Label* descriptionTitle;
-	Label* descriptionText;
-	Timer* timer;
-	MerchandAnimationComponent* animations;
+	ShopMenu* shop;
+	MerchandAnimationComponent* animation;
 
 public:
-	MerchandAnimationComponent* GetAnimations()const
+	void SetShopStatus(const bool _status)
 	{
-		return animations;
+		shop->SetStatus(_status);
+	}
+	MerchandAnimationComponent* GetAnimation() const
+	{
+		return animation;
 	}
 
 public:
-	void Toggle()
-	{
-		canvas->SetVisibilityStatus(!canvas->IsVisible());
-	}
-	void CloseShop()
-	{
-		canvas->SetVisibilityStatus(false);
-		timer = nullptr;
-	}
-
-public:
-	Merchand(const ShapeData& _data, const vector<string>& _texts = {});
+	Merchand(const ShapeData& _data);
 
 public:
 	virtual void Init() override;
 	virtual void OpenDiscussion() override;
 	virtual void CloseDiscussion() override;
-	//void BuyItem();
 };

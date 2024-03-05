@@ -20,11 +20,6 @@
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
 {
-	//shape->setFillColor(Color::Red);
-
-	inventory = new Inventory();
-	charmsMenu = new CharmsMenu();
-
 	animation = new PlayerAnimationComponent(this);
 	components.push_back(animation);
 
@@ -34,11 +29,14 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	attack = new PlayerAttackComponent(this, 1);
 	components.push_back(attack);
 	
+	inventory = new Inventory(); // before interaction
+
 	interaction = new InteractionComponent(this);
 	components.push_back(interaction);
 
 	stats = new PlayerStat(this);
-	components.push_back(stats);
+	charmsMenu = new CharmsMenu();
+	pauseMenu = new PauseMenu();
 }
 
 
@@ -50,17 +48,10 @@ void Player::InitAnimations()
 void Player::SetupPlayerInput()
 {
 	new ActionMap("Stats", {
-		ActionData("AddMana", [&]() { stats->UseMana(10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Space  })),
-		ActionData("RemoveMana", [&]() { 
+		ActionData("ConvertManaToLife", [&]() { 
 			stats->UseMana(-10.0f); 
 			stats->UpdateLife(1); 
-		}, InputData({ActionType::KeyPressed, Keyboard::Escape})),
-		ActionData("StopMana", [&]() { stats->StopUsingMana(); }, InputData({ ActionType::KeyReleased, Keyboard::Escape  })),
-		//ActionData("StopRemoveMana",[&]() { animation->GetCurrentAnimation()->RunAnimation(animation->GetAnimPlayer()[0]); }, InputData({ ActionType::KeyReleased, Keyboard::Escape })),
-		//ActionData("AddLife", [&]() { stats->UpdateLife(1); }, InputData({ ActionType::KeyPressed, Keyboard::Num9 })),
-		ActionData("RemoveLife", [&]() { stats->UpdateLife(-1); }, InputData({ ActionType::KeyPressed, Keyboard::Num0 })),
-		ActionData("AddLifeSlot", [&]() { stats->AddLife(); }, InputData({ ActionType::KeyPressed, Keyboard::O })),
-		ActionData("AddGeos", [&]() { stats->AddGeos(12); }, InputData({ ActionType::KeyPressed, Keyboard::Num8 })),
+		}, InputData({ActionType::KeyPressed, Keyboard::A})),
 	});
 	            
 	new ActionMap("Movements", {
@@ -70,41 +61,52 @@ void Player::SetupPlayerInput()
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
 		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space })),
 		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyPressed, Keyboard::LControl })),
-		ActionData("Sit", [&]() { movement->SitDown(); }, InputData({ActionType::KeyPressed, Keyboard::Up })),
-		ActionData("Stand", [&]() { movement->StandUp(); }, InputData({ActionType::KeyPressed, Keyboard::Down}))
+		ActionData("Sit", [&]() {
+			movement->SitDown();
+			attack->SetCanAttack(false);
+		}, InputData({ ActionType::KeyPressed, Keyboard::Z })),
+		ActionData("Stand", [&]() {
+			movement->StandUp();
+			attack->SetCanAttack(true);
+		}, InputData({ ActionType::KeyPressed, Keyboard::S }))
 	});
 
 	new ActionMap("Attack", {
-		ActionData("Slash", [&]() { attack->SpecialAttack(); }, InputData({ActionType::KeyPressed, Keyboard::R})),
-		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "Right"); }, InputData({ActionType::KeyReleased, Keyboard::R})),
+		ActionData("Slash", [&]() { attack->SpecialAttack(); }, InputData({ActionType::MouseButtonPressed, Mouse::Left})),
+		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "Right"); }, InputData({ ActionType::MouseButtonPressed, Mouse::Left })),
 	});
 
-	new ActionMap("Inventory", {
-		ActionData("ToggleInventory", [&]() {
-			stats->Toggle();
-			inventory->Toggle();
-			interaction->StopInteract();
-		}, InputData({ ActionType::KeyPressed, Keyboard::B })),
-	});
-
-	new ActionMap("CharmsMenu", {
-		ActionData("ToogleCharmsMenu", [&]() { TryToOpenCharmsMenu(); }, InputData({ActionType::KeyPressed, Keyboard::P}))
-	});
-
-	new ActionMap("Interaction", {
-		ActionData("TryToInteract", [&]() { interaction->TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E  })),
+	new ActionMap("Menu", {
+		ActionData("Pause", [&]() { TryToOpen(pauseMenu); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
+		ActionData("Inventory", [&]() { TryToOpen(inventory); }, InputData({ ActionType::KeyPressed, Keyboard::B })),
+		ActionData("CharmsMenu", [&]() { 
+			if (!movement->IsStanding())
+			{
+				TryToOpen(charmsMenu);
+			}
+		}, InputData({ ActionType::KeyPressed, Keyboard::P })),
+		ActionData("Interact", [&]() { interaction->TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E })),
 	});
 }
 
-void Player::TryToOpenCharmsMenu()
+void Player::TryToOpen(Menu* _menu)
 {
-	if (movement->IsStanding())
-	{
-		cout << "Impossible d'ouvrir l'inventaire des charms !" << endl;
-		return;
-	}
+	const bool _isActive = _menu->IsActive();
+	CloseAllMenus();
 
-	charmsMenu->Toggle();
+	if (!_isActive)
+	{
+		_menu->SetStatus(true);
+		stats->SetStatus(false);
+	}
+}
+
+void Player::CloseAllMenus()
+{
+	charmsMenu->SetStatus(false);
+	stats->SetStatus(true);
+	inventory->SetStatus(false);
+	interaction->StopInteract();
 }
 
 

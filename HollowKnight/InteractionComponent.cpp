@@ -22,21 +22,19 @@ void InteractionComponent::TryToInteract()
 		if (merchand = dynamic_cast<Merchand*>(_interactable))
 		{
 			merchand->OpenDiscussion();
-			merchand->GetAnimations()->GetCurrentAnimation()->RunAnimation("Sell", 1);
-			inventory->SetStatus(false);
 		}
 
-		else if (NPC* _npc = dynamic_cast<NPC*>(_interactable))
+		else
 		{
-			_npc->OpenDiscussion();
-			_npc->GetAnimation()->GetCurrentAnimation()->RunAnimation("Talk", 1);
-			inventory->SetStatus(false);
+			_interactable->OpenDiscussion();
 		}
+
+		inventory->SetStatus(false);
 	}
 }
 
 void InteractionComponent::StopInteract()
 {
-	if (!merchand)return;
+	if (!merchand) return;
 	merchand->CloseDiscussion();
 }

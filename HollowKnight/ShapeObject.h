@@ -24,6 +24,7 @@ protected:
 public:
 	void SetShape(Shape* _shape)
 	{
+		if (shape) delete shape;
 		shape = _shape;
 	}
 	void SetShapePosition(const Vector2f& _position)

@@ -7,7 +7,7 @@ class Lever : public Actor
 	LeverAnimationComponent* animation;
 
 public:
-	LeverAnimationComponent* GetAnimations()
+	LeverAnimationComponent* GetAnimation()
 	{
 		return animation;
 	}
