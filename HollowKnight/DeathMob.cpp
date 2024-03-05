@@ -31,11 +31,16 @@ void DeathMob::Init()
 
 void DeathMob::Death()
 {
-	if (GetLife()->GetLife() <= 0)
+	if (GetLife()->GetLife() > 0)
+	{
+		return;
+	}
+	else if (GetLife()->GetLife() == 0)
 	{
 		animation->RunAnimation("Death", GetDrawable()->getScale().x);
 		GetDrawable()->setScale(Vector2f(0.0f, 0.0f));
 	}
+	
 }
 
 void DeathMob::Update(const float _deltaTime)
@@ -59,7 +64,7 @@ void DeathMob::Action()
 {
 	StandBy();
 	Attack();
-	Death();//
+	//Dead();//
 }
 
 void DeathMob::Attack()

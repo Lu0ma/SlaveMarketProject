@@ -139,22 +139,21 @@ void PlayerStat::Death()
 	/*DeathMob* _deathMob = new DeathMob(ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
 	_deathMob->Init();*/
 
-	DeathMob* _deathMob = new DeathMob("DeathMob",ShapeData(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), PATH_DEATHMOB));
+	/*DeathMob* _deathMob = new DeathMob("DeathMob",ShapeData(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), PATH_DEATHMOB));
 	int _life = _deathMob->GetLife()->GetLife();
-	cout << _life << endl;
-	if (numberOfDeath == 1)
+	cout << _life << endl;*/
+	
+	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
-		_deathMob = new DeathMob("DeathMob1",ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
+		if (DeathMob* _death = dynamic_cast<DeathMob*>(_actor))
+		{
+			// _death->SetToRemove(true);
+			_death->GetDrawable()->setScale(Vector2f(0.0f, 0.0f)); ///TODO CHANGE
+		}
 	}
-	 if(!_deathMob->Dead() /*if (numberOfDeath > 1 && _life > 0)*/)
-	{
-		 _deathMob->GetDrawable()->setPosition(_lastPos);
-	}
-	  if (_deathMob->Dead()/*numberOfDeath > 1 && _life <= 0*/)
-	{
-		  _deathMob = new DeathMob("DeathMob" + to_string(numberOfDeath), ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
-	}
-		_deathMob->Init();
+
+	DeathMob* _deathMob = new DeathMob("Death" + to_string(numberOfDeath), ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
+	_deathMob->Init();
 
 	_player->SetShapePosition(_benchPos);
 

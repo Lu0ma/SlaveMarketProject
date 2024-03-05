@@ -23,7 +23,8 @@ void PlayerAttackComponent::SpecialAttack()
 		
 		else
 		{
-			_mob->GetLife()->TakeDamages(1);
+			_mob->GetLife()->SetLife(0);
+			_mob->Death();
 			Game::GetPlayer()->GetStats()->UseMana(1.0f);
 		}
 	}
