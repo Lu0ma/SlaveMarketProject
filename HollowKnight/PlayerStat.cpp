@@ -161,4 +161,6 @@ void PlayerStat::Death()
 	{
 		_player->GetStats()->UpdateLife(1);
 	} 
+
+	AddGeos(-geosCount);
 }

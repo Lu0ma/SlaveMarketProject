@@ -1,6 +1,7 @@
 #include "DeathMob.h"
 #include"Game.h"
 #include"Player.h"
+#include"CollectableActor.h"
 
 DeathMob::DeathMob(const string& _name, const ShapeData& _data) : Mob(_data)
 {
@@ -39,10 +40,11 @@ void DeathMob::Death()
 	{
 		animation->RunAnimation("Death", GetDrawable()->getScale().x);
 		GetDrawable()->setScale(Vector2f(0.0f, 0.0f));
+		new CollectableActor("Geo", ShapeData(Vector2f(GetPosition().x, GetPosition().y + 30.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, IT_GEOS);
 	}
 	
 }
-
+ 
 void DeathMob::Update(const float _deltaTime)
 {
 	Action();

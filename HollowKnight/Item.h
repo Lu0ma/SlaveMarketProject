@@ -10,6 +10,7 @@ enum ItemType
 	IT_HEALTH,
 	IT_VESSEL,
 	IT_ITEM,
+	IT_GEOS,
 };
 
 struct ItemData
