@@ -4,13 +4,12 @@
 #include "AnimationComponent.h"
 #include "MobAttackComponent.h"
 #include "Game.h"
+#include "BossBrain.h"
 
 class Boss : public Enemy
 {
-	Vector2f startPosition;
-	Vector2f goalPosition;
-
 protected:
+	BossBrain* brain;
 	AnimationComponent* animation;
 	MobMovementComponent* movement;
 	MobAttackComponent* attack;

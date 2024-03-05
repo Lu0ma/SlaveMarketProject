@@ -46,7 +46,7 @@ bool Contains(T* _valueToFind, const vector<T*>& _vector)
 }
 
 template<typename Class>
-static vector<Class*> RetrieveAllMobsAround(const Vector2f& _position, const float _radiusAction)
+vector<Class*> RetrieveAllMobsAround(const Vector2f& _position, const float _radiusAction)
 {
 	vector<Class*> _classes = vector<Class*>();
 	CircleShape* _circle = new CircleShape(_radiusAction);
@@ -66,3 +66,8 @@ static vector<Class*> RetrieveAllMobsAround(const Vector2f& _position, const flo
 	return _classes;
 }
 
+template <typename T>
+void EraseElement(vector<T*>& _vector, const T* _element)
+{
+	_vector.erase(remove(_vector.begin(), _vector.end(), _element), _vector.end());
+}

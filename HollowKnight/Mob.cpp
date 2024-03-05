@@ -6,8 +6,8 @@
 
 Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data)
 {
-	startPosition = _data.position;
-	goalPosition = startPosition + Vector2f(500.0f, 0.0f);
+	/*startPosition = _data.position;
+	goalPosition = startPosition + Vector2f(500.0f, 0.0f);*/
 
 	isPatrolling = false;
 	cooldownAttack = false;
@@ -25,18 +25,21 @@ Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data
 	life = new MobLifeComponent(this, 3);
 	components.push_back(life);
 
+	brain = new MobBrain(this);
+	components.push_back(brain);
+
 	InitTimerPatrol();
 	InitTimerCooldownAttack();
 }
 
 void Mob::InitTimerPatrol()
 {
-	new Timer(this, &Mob::Patrol, seconds(1.0f), true, true);
+	//new Timer(this, &Mob::Patrol, seconds(1.0f), true, true);
 }
 
 void Mob::InitTimerCooldownAttack()
 {
-	new Timer(this, &Mob::CooldownAttack, seconds(0.765f), true, true);
+	//new Timer(this, &Mob::CooldownAttack, seconds(0.765f), true, true);
 }
 
 void Mob::CooldownAttack()
@@ -56,45 +59,45 @@ void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent*
 
 void Mob::Move()
 {
-	if (movement->GetCanMove())
+	/*if (movement->GetCanMove())
 	{
 		movement->SetDestination(startPosition);
-	}
+	}*/
 }
 
 void Mob::Patrol()
 {
-	if (isPatrolling)
-	{
-		if (movement->IsAtPosition())
-		{
-			if (Animation* _animation = animation->GetCurrentAnimation())
-			{
-				const string& _linkedAnimation = _animation->GetData().linkedAnimation;
-				if (_linkedAnimation != "") RunLinkedAnimation(_linkedAnimation, animation);
+	//if (isPatrolling)
+	//{
+	//	if (movement->IsAtPosition())
+	//	{
+	//		if (Animation* _animation = animation->GetCurrentAnimation())
+	//		{
+	//			const string& _linkedAnimation = _animation->GetData().linkedAnimation;
+	//			if (_linkedAnimation != "") RunLinkedAnimation(_linkedAnimation, animation);
 
-				if (movement->GetDestination() == startPosition)
-				{
-					movement->SetDestination(goalPosition);
-				}
-				else
-				{
-					movement->SetDestination(startPosition);
-				}
-			}
-		}
-	}
+	//			if (movement->GetDestination() == startPosition)
+	//			{
+	//				movement->SetDestination(goalPosition);
+	//			}
+	//			else
+	//			{
+	//				movement->SetDestination(startPosition);
+	//			}
+	//		}
+	//	}
+	//}
 }
 
 void Mob::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
 
-	Death();
+	/*Death();
 	if (life->GetLife() > 0)
 	{
 		Player* _player = Game::GetPlayer();
 		Attack(_player);
-	}
+	}*/
 }
 

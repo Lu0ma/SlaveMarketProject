@@ -5,13 +5,13 @@
 #include "MobAttackComponent.h"
 #include "MobLifeComponent.h"
 #include "Game.h"
+#include "MobBrain.h"
 
 class Mob : public Enemy
 {
-	Vector2f startPosition;
-	Vector2f goalPosition;
-
 protected:
+	MobBrain* brain;
+
 	bool isPatrolling;
 	bool cooldownAttack;
 

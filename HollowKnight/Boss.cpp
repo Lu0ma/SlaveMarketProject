@@ -3,11 +3,8 @@
 
 Boss::Boss(const ShapeData& _data) : Enemy("Boss" + to_string(GetUniqueID()), _data)
 {
-	startPosition = _data.position;
-	goalPosition = startPosition + Vector2f(2000.0f, 0.0f);
-
-	MovementComponent* _movement = new MovementComponent(this);
-	components.push_back(_movement);
+	animation = new AnimationComponent(this);
+	components.push_back(animation);
 
 	movement = new MobMovementComponent(this);
 	movement->SetSpeed(0.5f);
@@ -18,6 +15,9 @@ Boss::Boss(const ShapeData& _data) : Enemy("Boss" + to_string(GetUniqueID()), _d
 
 	life = new MobLifeComponent(this, 3);
 	components.push_back(life);
+
+	brain = new BossBrain(this);
+	components.push_back(brain);
 
 	InitTimerPatrol();
 }
@@ -32,49 +32,32 @@ void Boss::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
 
-	Death();
+	//Death();
 
-	if (!isDead)
-	{
-		Player* _player = Game::GetPlayer();
-		if (animation->GetCurrentAnimation()->GetData().name == "Idle")
-		{
-			FacePlayer(_player);
-			Attack(_player);
-		}
-		else if (movement->IsAtPosition() && animation->GetCurrentAnimation()->GetData().name == "Running")
-		{
-			RunLinkedAnimation("Idle", animation);
-		}
-	}
+	//if (!isDead)
+	//{
+	//	Player* _player = Game::GetPlayer();
+	//	if (animation->GetCurrentAnimation()->GetData().name == "Idle")
+	//	{
+	//		FacePlayer(_player);
+	//		Attack(_player);
+	//	}
+	//	else if (movement->IsAtPosition() && animation->GetCurrentAnimation()->GetData().name == "Running")
+	//	{
+	//		RunLinkedAnimation("Idle", animation);
+	//	}
+	//}
 }
 
 void Boss::Patrol()
 {
-	if (animation->GetCurrentAnimation()->GetData().name == "Idle")
-	{
-		if (Animation* _animation = animation->GetCurrentAnimation())
-		{
-			const float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
-			animation->RunAnimation("Run", _directionX);
 
-			if (movement->GetDestination() == startPosition)
-			{
-				movement->SetDestination(goalPosition);
-				animation->GetCurrentAnimation()->SetDirectionX(1.0f);
-			}
-			else
-			{
-				movement->SetDestination(startPosition);
-				animation->GetCurrentAnimation()->SetDirectionX(-1.0f);
-			}
-		}
-	}
 }
 
 void Boss::InitTimerPatrol()
 {
-	timer = new Timer(this, &Boss::Patrol, seconds(10.0f), true, true);
+	//timer = new Timer(this, &Boss::Patrol, seconds(10.0f), true, true);
+	//new Timer([&]() {brain->GetBlackBoard().hasTarget = !brain->GetBlackBoard().hasTarget; }, seconds(3.0f), true, true);
 }
 
 void Boss::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)

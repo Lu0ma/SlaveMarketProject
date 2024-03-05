@@ -3,16 +3,21 @@
 #include <SFML/Graphics.hpp>
 #include <functional>
 #include <iostream>
+#include "AnimationComponent.h"
 
 using namespace std;
 using namespace sf;
 
 class MovementComponent : public Component
 {
+	AnimationComponent* animation;
+
 protected:
 	bool canMove;
 	float speed;
 	float gravity;
+	
+	Vector2f lastDirection;
 
 public:
 	void SetSpeed(const float _speed)
@@ -22,6 +27,20 @@ public:
 	void SetCanMove(const bool _status)
 	{
 		canMove = _status;
+		if (!animation)
+		{
+			animation = owner->GetComponent<AnimationComponent>();
+			if (!animation) return;
+		}
+
+		if (!canMove)
+		{
+			animation->RunAnimation("Idle", lastDirection.x);
+		}
+		else
+		{
+			animation->RunAnimation("Turn", lastDirection.x);
+		}
 	}	
 	bool GetCanMove() const
 	{

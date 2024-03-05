@@ -38,6 +38,7 @@ void MobMovementComponent::MoveToDestination(const float _deltaTime)
 	Vector2f _direction = destination - _shape->getPosition();
 	//cout << destination->x << " " << destination->y << endl;
 	Normalize(_direction);
+	lastDirection = _direction;
 
 	const Vector2f& _position = _shape->getPosition() + _direction * speed * _deltaTime;
 	_shape->setPosition(_position);

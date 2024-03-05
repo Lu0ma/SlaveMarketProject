@@ -2,9 +2,6 @@
 
 FalseKnight::FalseKnight(const ShapeData& _data) : Boss(_data)
 {
-	animation = new AnimationComponent(this);
-	components.push_back(animation);
-
 	movement->SetIsFlying(true);
 }
 
