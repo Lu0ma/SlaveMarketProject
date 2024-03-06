@@ -199,6 +199,7 @@
     <ClCompile Include="PlayerInfo.cpp" />
     <ClCompile Include="PlayerMovementComponent.cpp" />
     <ClCompile Include="PlayerStat.cpp" />
+    <ClCompile Include="PNJ.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="ProgressLabel.cpp" />
     <ClCompile Include="PurchaseMenu.cpp" />
@@ -291,6 +292,7 @@
     <ClInclude Include="PlayerMovementComponent.h" />
     <ClInclude Include="PlayerStat.h" />
     <ClInclude Include="PlayerStats.h" />
+    <ClInclude Include="PNJ.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="ProgressLabel.h" />
     <ClInclude Include="PurchaseMenu.h" />
