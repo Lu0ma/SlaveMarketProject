@@ -5,6 +5,7 @@
 #include "Label.h"
 #include "ProgressLabel.h"
 
+
 class InteractableActor : public Actor
 {
 	Canvas* canvas;
@@ -17,6 +18,7 @@ class InteractableActor : public Actor
 	// Discussion
 	ShapeWidget* discussionBG;
 	ProgressLabel* discussionText;
+
 
 public:
 	void SetIsOpen(const bool _status)

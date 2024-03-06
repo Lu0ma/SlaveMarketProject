@@ -1,16 +1,25 @@
 #include "DeathMob.h"
 #include"Game.h"
 #include"Player.h"
+#include"CollectableActor.h"
+#include"Macro.h"
 
-DeathMob::DeathMob(const ShapeData& _data) : Mob(_data)
+DeathMob::DeathMob(const string& _name, const ShapeData& _data) : Mob(_data)
 {
-	Action();
+	animation = new AnimationComponent(this);
+	animDeath = vector<string>();
+	name = _name;
+	death = 0;
+	//Action();
 }
 
 
 void DeathMob::Init()
 {
-	const Vector2f& _size = Vector2f(110.0f, 150.1f);
+	animDeath.push_back("StandBy");
+	animDeath.push_back("Explosion");
+
+	const Vector2f& _size = Vector2f(110.0f, 148.1f);
 	const ReadDirection& _readDirection = READ_DOWN;
 	const bool _toRepeat = true;
 	const int _count = 5;
@@ -19,15 +28,36 @@ void DeathMob::Init()
 	animation->InitAnimations({
 		AnimationData("StandBy", Vector2f(0.0f, 0.0f), _size, _readDirection, _toRepeat, _count, _speed),
 		AnimationData("Explosion", Vector2f(490.0f, 1103.0f), Vector2f(99.0f, 228.0f), _readDirection, _toRepeat, 3, _speed),
+		AnimationData("Death", Vector2f(0.0f, 0.0f), Vector2f(0.0f,0.0f), _readDirection, _toRepeat, 1, _speed),
 	});
 }
 
 void DeathMob::Death()
 {
-	if (GetLife() == 0)
+	if (GetLife()->GetLife() > 0)
 	{
-		GetDrawable()->setScale(Vector2f(0.0f, 0.0f));
+		return;
 	}
+ 	else if (GetLife()->GetLife() == 0)
+	{
+		death++; 
+		animation->RunAnimation("Death", GetDrawable()->getScale().x);
+		GetDrawable()->setScale(Vector2f(0.0f, 0.0f));
+		int _newDeath = Random<int>(10000000000000000000 , 0);
+		new CollectableActor("Geo"+ to_string(_newDeath), ShapeData(Vector2f(GetPosition().x, GetPosition().y + 20.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, IT_GEOS);
+	}
+	
+}
+ 
+void DeathMob::Update(const float _deltaTime)
+{
+	Action();
+}
+
+bool DeathMob::Dead()
+{
+	Death();
+	return false;
 }
 
 
@@ -40,7 +70,7 @@ void DeathMob::Action()
 {
 	StandBy();
 	Attack();
-	Death();
+	//Dead();//
 }
 
 void DeathMob::Attack()

@@ -1,13 +1,17 @@
 #pragma once
 #include"Mob.h"
 #include "AnimationComponent.h"
+#include<vector>
 
 class DeathMob : public Mob
 {
 	AnimationComponent* animation;
+	vector<string> animDeath;
+	string name;
+	int death;
 
 public:
-	DeathMob(const ShapeData& _data);
+	DeathMob(const string& _name,const ShapeData& _data);
 
 public:
 	void StandBy();
@@ -16,5 +20,7 @@ public:
 
 	virtual void Init() override;
 	virtual void Death()override;
+	virtual void Update(const float _deltaTime)override;
+	bool Dead();
 };
 

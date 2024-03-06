@@ -410,6 +410,10 @@ void Inventory::AddItem(const int _count, const ItemData& _data)
 		CreateItemData(_data);
 		AddItem(_count - 1, _data);
 	}
+	else if (_data.type == IT_GEOS)
+	{
+		Game::GetPlayer()->GetStats()->AddGeos(50);
+	}
 }
 
 void Inventory::CreateItemData(const ItemData& _data)

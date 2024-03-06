@@ -18,8 +18,8 @@ Camera* Game::camera;
 Game::Game()
 {
 	menu = new MainMenu();
-	map = new Map();
 	player = new Player("Player", ShapeData(Vector2f(0.0f, -300.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
+	map = new Map();
 	camera = new Camera(TARGET_WINDOW);
 } 
 
@@ -52,6 +52,8 @@ void Game::Update()
 	{
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
+		map->GetDragon()->PlayMusic();
+		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
 		ActorManager::GetInstance().Update();
 	}
 }
@@ -71,6 +73,7 @@ void Game::UpdateWindow()
 	{
 		window.draw(*_actor->GetDrawable());
 	}
+	window.draw(*player->GetLight());
 	
 	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())

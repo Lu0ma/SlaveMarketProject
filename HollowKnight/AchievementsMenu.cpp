@@ -44,6 +44,7 @@ void AchievementsMenu::Init()
 
 	const vector<AchievementData>& _allData = {
 		{
+
 			"PROTECTED",
 			"Acquire 4 Mask Shards"
 		},
@@ -67,6 +68,37 @@ void AchievementsMenu::Init()
 			"SOULFUL",
 			"Acquire 3 Vessel Fragments"
 		},
+
+			"PROTECTED_PATH"
+			"PROTECTED.png",
+			"Acquire 4 Mask Shards"
+		},
+		{
+			"MASKED_PATH"
+			"MASKED.png",
+			"Acquire all Mask Shards"
+		},
+		{
+			"CHARMED_PATH"
+			"CHARMED.png",
+			"Acquire your first Charm"
+		},
+		{
+			"SOULFUL_PATH"
+			"SOULFUL.png",
+			"Acquire 3 Vessel Fragments"
+		},
+		{
+			"WORLDFUL_PATH"
+			"WORLDFUL.png",
+			"Acquire all Vessel Fragments"
+		},
+		{
+			"FALSEHOOD_PATH"
+			"FALSEHOOD.png",
+			"Defeat the False Knight"
+		},
+
 	};
 
 	const float _firstAchievementPosY = _windowSize.y * 0.3f;
