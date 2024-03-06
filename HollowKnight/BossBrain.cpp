@@ -8,3 +8,4 @@ BossBrain::BossBrain(Actor* _owner) : EnemyBrain(_owner)
 	currentState = patrol;
 	currentState->Start();
 }
+

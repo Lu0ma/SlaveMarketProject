@@ -19,29 +19,23 @@ void PatrolState::Init()
 void PatrolState::Start()
 {
 	startPosition = brain->GetOwner()->GetShapePosition();
-	goalPosition = startPosition + Vector2f(1500.0f, 0.0f);
+	goalPosition = startPosition + Vector2f(1000.0f, 0.0f);
 
 	animation = brain->GetOwner()->GetComponent<AnimationComponent>();
 	movement = brain->GetOwner()->GetComponent<MobMovementComponent>();
 	movement->SetCallback([&]() 
 		{
 			movement->SetCanMove(false);
-			new Timer([&]() {
-				movement->SetCanMove(true);
-				if (movement->GetDestination() == startPosition)
-				{
-					movement->SetDestination(goalPosition);/*
-					const float _x = animation->GetCurrentAnimation()->GetDirectionX();
-					animation->GetCurrentAnimation()->SetDirectionX(_x);*/
-					//animation->GetCurrentAnimation()->SetDirectionX(1.0f);
-				}
-				else
-				{
-					movement->SetDestination(startPosition);/*
-					const float _x = animation->GetCurrentAnimation()->GetDirectionX();
-					animation->GetCurrentAnimation()->SetDirectionX(_x);*/
-					//animation->GetCurrentAnimation()->SetDirectionX(-1.0f);
-				}
+			new Timer([&]() 
+				{				
+					if (movement->GetDestination() == startPosition)
+					{
+						movement->SetDestination(goalPosition);
+					}
+					else
+					{
+						movement->SetDestination(startPosition);
+					}
 				}, seconds(2.0f), true, false);
 		});
 
@@ -51,26 +45,6 @@ void PatrolState::Start()
 void PatrolState::Update(const float _deltaTime)
 {
 	State::Update(_deltaTime);
-
-	/*if (animation->GetCurrentAnimation()->GetData().name == "Idle")
-	{
-		if (Animation* _animation = animation->GetCurrentAnimation())
-		{
-			const float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
-			animation->RunAnimation("Run", _directionX);
-
-			if (movement->GetDestination() == startPosition)
-			{
-				movement->SetDestination(goalPosition);
-				animation->GetCurrentAnimation()->SetDirectionX(1.0f);
-			}
-			else
-			{
-				movement->SetDestination(startPosition);
-				animation->GetCurrentAnimation()->SetDirectionX(-1.0f);
-			}
-		}
-	}*/
 
 	//cout << "Update Patrol" << endl;
 }

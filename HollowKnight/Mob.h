@@ -20,17 +20,15 @@ protected:
 	MobAttackComponent* attack;
 
 public:
-	Mob(const ShapeData& _data);
-
-private:
-	void InitTimerPatrol();
-	void InitTimerCooldownAttack();
-	void CooldownAttack();
-	void RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent);
+	MobBrain* GetBrain()
+	{
+		return brain;
+	}
 
 public:
-	void Move();
-	void Patrol();
+	Mob(const ShapeData& _data);
+
+public:
 	virtual void Attack(Player* _player) = 0;
 	virtual void Death() = 0;
 	virtual void Update(const float _deltaTime) override;

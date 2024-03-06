@@ -32,20 +32,11 @@ public:
 			animation = owner->GetComponent<AnimationComponent>();
 			if (!animation) return;
 		}
-
-		if (!animation->GetCurrentAnimation()->GetData().displayFromLeftToRight)
-		{
-			lastDirection *= -1.0f;
-		}
-
 		if (!canMove)
 		{
 			animation->RunAnimation("Idle", lastDirection.x);
 		}
-		else
-		{
-			animation->RunAnimation("Turn", lastDirection.x);
-		}
+
 	}	
 	bool GetCanMove() const
 	{

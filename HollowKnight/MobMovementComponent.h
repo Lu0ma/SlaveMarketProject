@@ -22,6 +22,18 @@ public:
 		destination = _destination;
 		//cout << destination.x << " " << destination.y << endl;
 		canMove = _canMove;
+
+		Vector2f _newDirection = _destination - owner->GetShapePosition();
+		Normalize(_newDirection);
+		if (_newDirection.x != lastDirection.x)
+		{
+			canMove = false;
+			owner->GetComponent<AnimationComponent>()->RunAnimation("Turn", _newDirection.x);
+			new Timer([&]() 
+				{
+					SetCanMove(true);
+				}, seconds(0.75f), true, false);
+		}
 	}
 	void SetCallback(const function<void()>& _callback)
 	{

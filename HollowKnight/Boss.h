@@ -13,24 +13,18 @@ protected:
 	AnimationComponent* animation;
 	MobMovementComponent* movement;
 	MobAttackComponent* attack;
-	bool isDead;
-	Timer* timer;
 	
+public:
+	BossBrain* GetBrain()
+	{
+		return brain;
+	}
+
 public:
 	Boss(const ShapeData& _data);
 
 public:
-	void FacePlayer(Player* _player);
 	virtual void Update(const float _deltaTime) override;
 	virtual void Attack(Player* _player) = 0;
 	virtual void Death() = 0;
-	void Patrol();
-
-private:
-	void InitTimerPatrol();
-
-protected:
-	void RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent);
-
-
 };
