@@ -16,7 +16,7 @@ PlayerAttackComponent::PlayerAttackComponent(Actor* _owner, const int _damages) 
 
 void PlayerAttackComponent::SpecialAttack()
 {
-	if (!canAttack) return;
+	//if (!canAttack) return;
 
 	const Vector2f& _ownerPosition = owner->GetShapePosition();
 	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(_ownerPosition, 45.0f);

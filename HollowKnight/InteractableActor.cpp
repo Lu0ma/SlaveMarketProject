@@ -18,7 +18,7 @@ InteractableActor::InteractableActor(const string& _name, const ShapeData& _data
 	discussionBG = nullptr;
 	discussionText = nullptr;
 
-
+	Init();
 	Register();
 }
 

@@ -14,14 +14,14 @@ void AchievementsMenu::Init()
 	const Vector2f& _windowSize = Game::GetWindowSize();
 	const float _halfWindowX = _windowSize.x / 2.0f;
 
-	#pragma region Background
+#pragma region Background
 
 	ShapeWidget* _background = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_BACKGROUND));
 	canvas->AddWidget(_background);
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region Title
+#pragma region Title
 
 	const float _tilePosY = _windowSize.y * 0.15f;
 	Label* _title = new Label(TextData("ACHIEVEMENTS", Vector2f(_halfWindowX, _tilePosY), FONT, 32));
@@ -32,9 +32,9 @@ void AchievementsMenu::Init()
 	_titleIcon->GetDrawable()->setScale(0.6f, 0.6f);
 	canvas->AddWidget(_titleIcon);
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region Grid
+#pragma region Grid
 
 	struct AchievementData
 	{
@@ -68,12 +68,16 @@ void AchievementsMenu::Init()
 			"SOULFUL",
 			"Acquire 3 Vessel Fragments"
 		},
-
-			"PROTECTED_PATH"
+		/*{   
+			"PROTECTED_PATH",
 			"PROTECTED.png",
 			"Acquire 4 Mask Shards"
-		},
-		{
+	     }*/
+			
+	     //},
+
+
+		/*{
 			"MASKED_PATH"
 			"MASKED.png",
 			"Acquire all Mask Shards"
@@ -91,13 +95,13 @@ void AchievementsMenu::Init()
 		{
 			"WORLDFUL_PATH"
 			"WORLDFUL.png",
-			"Acquire all Vessel Fragments"
+			"Acquire all Vessel Fragments",
 		},
 		{
-			"FALSEHOOD_PATH"
+          	"FALSEHOOD_PATH"
 			"FALSEHOOD.png",
 			"Defeat the False Knight"
-		},
+		},*/
 
 	};
 

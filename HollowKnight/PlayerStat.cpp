@@ -131,6 +131,7 @@ void PlayerStat::UpdateGeos(const int _factor)
 	geosCountText->SetString(to_string(geosCount));
 }
 
+
 void PlayerStat::Death()
 {
 	numberOfDeath++;
@@ -164,5 +165,5 @@ void PlayerStat::Death()
 		_player->GetStats()->UpdateLife(1);
 	} 
 
-	AddGeos(-geosCount);
+	UpdateGeos(-geosCount);
 }
