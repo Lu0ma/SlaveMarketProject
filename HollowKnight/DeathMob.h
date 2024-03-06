@@ -16,11 +16,10 @@ public:
 public:
 	void StandBy();
 	void Action();
-	void Attack();
 
 	virtual void Init() override;
-	virtual void Death()override;
-	virtual void Update(const float _deltaTime)override;
-	bool Dead();
+	virtual void Update (const float _deltaTime)override;
+	virtual void Attack(Player* _player) override;
+	virtual void Death() override;
+	bool IsDead();
 };
-

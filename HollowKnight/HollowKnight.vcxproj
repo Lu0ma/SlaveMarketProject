@@ -137,13 +137,10 @@
     <ClCompile Include="ActorManager.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationComponent.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="Audio.cpp" />
-=======
     <ClCompile Include="AttackState.cpp" />
     <ClCompile Include="AttackToChase.cpp" />
     <ClCompile Include="AttackToPatrol.cpp" />
->>>>>>> Olivier
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Belfly.cpp" />
     <ClCompile Include="Bench.cpp" />
     <ClCompile Include="Boofly.cpp" />
@@ -206,12 +203,9 @@
     <ClCompile Include="NPCAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="PauseMenu.cpp" />
-=======
     <ClCompile Include="PatrolState.cpp" />
     <ClCompile Include="PatrolToChase.cpp" />
->>>>>>> Olivier
+    <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAnimationComponent.cpp" />
     <ClCompile Include="PlayerAttackComponent.cpp" />
@@ -248,16 +242,12 @@
     <ClInclude Include="ActorManager.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationComponent.h" />
-<<<<<<< HEAD
-    <ClInclude Include="Audio.h" />
-=======
     <ClInclude Include="AttackState.h" />
     <ClInclude Include="AttackToChase.h" />
     <ClInclude Include="AttackToPatrol.h" />
->>>>>>> Olivier
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="Belfly.h" />
     <ClInclude Include="Bench.h" />
-    <ClInclude Include="BlackBoard.h" />
     <ClInclude Include="Boofly.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BossBrain.h" />
@@ -319,12 +309,9 @@
     <ClInclude Include="NPCAnimationComponent.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OptionsMenu.h" />
-<<<<<<< HEAD
-    <ClInclude Include="PauseMenu.h" />
-=======
     <ClInclude Include="PatrolState.h" />
     <ClInclude Include="PatrolToChase.h" />
->>>>>>> Olivier
+    <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAnimationComponent.h" />
     <ClInclude Include="PlayerAttackComponent.h" />
@@ -354,9 +341,6 @@
     <ClInclude Include="TitleMenu.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="Widget.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Assets\Levels\SubLevel_1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -16,8 +16,7 @@ Grub::Grub(const string& _name, const ShapeData& _data, const vector<string>& _t
 
 	animation->InitAnimations({
 		AnimationData("Jail", Vector2f(16.0f, 18.0f), _sizeJail, READ_RIGHT, true, 13, _speed),
-		AnimationData("Escape", Vector2f(2.0f, 175.0f), _sizeEscape, READ_RIGHT, false, 9, _speed,true, "Escape2"),
+		AnimationData("Escape", Vector2f(2.0f, 175.0f), _sizeEscape, READ_RIGHT, false, 9, _speed, "Escape2"),
 		AnimationData("Escape2", Vector2f(0.0f, 388.0f), _sizeEscape2, READ_RIGHT, false, 5, _speed),
-
-		});
+	});
 }

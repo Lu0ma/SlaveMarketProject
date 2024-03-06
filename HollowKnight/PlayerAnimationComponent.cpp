@@ -27,22 +27,15 @@ void PlayerAnimationComponent::Init()
 	animation->InitAnimations({
 		AnimationData("Right", Vector2f(80.0f, 0.0f), _size, READ_RIGHT, true, 3, _speed),
 		AnimationData("StopRight", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, true, 1, _speed), //TODO put FIRST
-<<<<<<< HEAD
-		AnimationData("Left", Vector2f(80.0f, 0.0f), _size, READ_RIGHT, true, 3, _speed, false),
-		AnimationData("StopLeft", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, true, 1, _speed, false),
-		AnimationData("Jump", Vector2f(0.0f, 720.0f), Vector2f(79.0f, 71.0f), READ_RIGHT, false, 9, 0.045f, false, "StopRight"),
-		AnimationData("Dash", Vector2f(0.0f, 560.0f), _size, READ_RIGHT, false, 7, 0.045f, false, "StopRight"),
-=======
 		AnimationData("Left", Vector2f(80.0f, 0.0f), _size, READ_RIGHT, true, 3, _speed),
 		AnimationData("StopLeft", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, true, 1, _speed),
 		AnimationData("Jump", Vector2f(0.0f, 720.0f), Vector2f(79.0f, 71.0f), READ_RIGHT, false, 9, 0.03f, "StopRight"),
 		AnimationData("Dash", Vector2f(0.0f, 560.0f), _size, READ_RIGHT, false, 7, _speed, "StopRight"),
->>>>>>> Olivier
 		AnimationData("Sit", Vector2f(485.0f, 400.0f), Vector2f(79.0f, 71.0f), READ_RIGHT, true, 1, _speed),
 		AnimationData("RemoveMana", Vector2f(330.0f, 240.0f), Vector2f(79.0f, 71.0f), READ_RIGHT, true, 3, _speed),
 		AnimationData("Special", Vector2f(0.0f, 320.0f), _size, READ_RIGHT, true, 7, _speed),
 		AnimationData("DoubleJump", Vector2f(0.0f, 965.0f), Vector2f(126.0f, 89.0f), READ_RIGHT, false, 5, _speed, "StopRight"),
 		AnimationData("Wall", Vector2f(640.0f,240.0f), _size, READ_RIGHT, true, 4, _speed),
-		AnimationData("Fall", Vector2f(632.0f, 720.0f), Vector2f(79.0f, 71.0f), READ_RIGHT, false, 1, 0.03f, false, "StopRight"),
+		AnimationData("Fall", Vector2f(632.0f, 720.0f), Vector2f(79.0f, 71.0f), READ_RIGHT, false, 1, 0.03f, "StopRight"),
 	});
 }

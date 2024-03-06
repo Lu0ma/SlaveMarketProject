@@ -54,7 +54,7 @@ void DeathMob::Update(const float _deltaTime)
 	Action();
 }
 
-bool DeathMob::Dead()
+bool DeathMob::IsDead()
 {
 	Death();
 	return false;
@@ -69,13 +69,12 @@ void DeathMob::StandBy()
 void DeathMob::Action()
 {
 	StandBy();
-	Attack();
+	Attack(Game::GetPlayer());
 	//Dead();//
 }
 
-void DeathMob::Attack()
+void DeathMob::Attack(Player* _player)
 {
-	Player* _player = Game::GetPlayer();
 	if (GetDrawable()->getGlobalBounds().contains(_player->GetPosition()))
 	{
 		animation->RunAnimation("Explosion", GetDrawable()->getScale().x);
