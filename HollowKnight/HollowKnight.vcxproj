@@ -137,15 +137,26 @@
     <ClCompile Include="ActorManager.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationComponent.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Audio.cpp" />
+=======
+    <ClCompile Include="AttackState.cpp" />
+    <ClCompile Include="AttackToChase.cpp" />
+    <ClCompile Include="AttackToPatrol.cpp" />
+>>>>>>> Olivier
     <ClCompile Include="Belfly.cpp" />
     <ClCompile Include="Bench.cpp" />
     <ClCompile Include="Boofly.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossBrain.cpp" />
+    <ClCompile Include="Brain.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="CharmsMenu.cpp" />
+    <ClCompile Include="ChaseState.cpp" />
+    <ClCompile Include="ChaseToAttack.cpp" />
+    <ClCompile Include="ChaseToPatrol.cpp" />
     <ClCompile Include="CollectableActor.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -154,6 +165,7 @@
     <ClCompile Include="Dragon.cpp" />
     <ClCompile Include="DragonAnimationComponent.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyBrain.cpp" />
     <ClCompile Include="ExtrasMenu.cpp" />
     <ClCompile Include="FalseKnight.cpp" />
     <ClCompile Include="FileLoader.cpp" />
@@ -185,14 +197,21 @@
     <ClCompile Include="MerchandAnimationComponent.cpp" />
     <ClCompile Include="Mob.cpp" />
     <ClCompile Include="MobAttackComponent.cpp" />
+    <ClCompile Include="MobBrain.cpp" />
     <ClCompile Include="MobLifeComponent.cpp" />
+    <ClCompile Include="MobMovementComponent.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="MusicData.cpp" />
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="NPCAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="PauseMenu.cpp" />
+=======
+    <ClCompile Include="PatrolState.cpp" />
+    <ClCompile Include="PatrolToChase.cpp" />
+>>>>>>> Olivier
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAnimationComponent.cpp" />
     <ClCompile Include="PlayerAttackComponent.cpp" />
@@ -210,6 +229,7 @@
     <ClCompile Include="SoundData.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Spawner.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="TextureData.cpp" />
     <ClCompile Include="TextureManager.cpp" />
@@ -217,6 +237,7 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TimerManager.cpp" />
     <ClCompile Include="TitleMenu.cpp" />
+    <ClCompile Include="Transition.cpp" />
     <ClCompile Include="Widget.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -227,15 +248,27 @@
     <ClInclude Include="ActorManager.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationComponent.h" />
+<<<<<<< HEAD
     <ClInclude Include="Audio.h" />
+=======
+    <ClInclude Include="AttackState.h" />
+    <ClInclude Include="AttackToChase.h" />
+    <ClInclude Include="AttackToPatrol.h" />
+>>>>>>> Olivier
     <ClInclude Include="Belfly.h" />
     <ClInclude Include="Bench.h" />
+    <ClInclude Include="BlackBoard.h" />
     <ClInclude Include="Boofly.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossBrain.h" />
+    <ClInclude Include="Brain.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="CharmsMenu.h" />
+    <ClInclude Include="ChaseState.h" />
+    <ClInclude Include="ChaseToAttack.h" />
+    <ClInclude Include="ChaseToPatrol.h" />
     <ClInclude Include="CollectableActor.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="Component.h" />
@@ -244,6 +277,7 @@
     <ClInclude Include="Dragon.h" />
     <ClInclude Include="DragonAnimationComponent.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyBrain.h" />
     <ClInclude Include="ExtrasMenu.h" />
     <ClInclude Include="FalseKnight.h" />
     <ClInclude Include="FileLoader.h" />
@@ -276,14 +310,21 @@
     <ClInclude Include="MerchandAnimationComponent.h" />
     <ClInclude Include="Mob.h" />
     <ClInclude Include="MobAttackComponent.h" />
+    <ClInclude Include="MobBrain.h" />
     <ClInclude Include="MobLifeComponent.h" />
+    <ClInclude Include="MobMovementComponent.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="MusicData.h" />
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="NPCAnimationComponent.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OptionsMenu.h" />
+<<<<<<< HEAD
     <ClInclude Include="PauseMenu.h" />
+=======
+    <ClInclude Include="PatrolState.h" />
+    <ClInclude Include="PatrolToChase.h" />
+>>>>>>> Olivier
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAnimationComponent.h" />
     <ClInclude Include="PlayerAttackComponent.h" />
@@ -303,6 +344,7 @@
     <ClInclude Include="SoundData.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Spawner.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="TextureData.h" />
     <ClInclude Include="TextureManager.h" />
@@ -310,6 +352,7 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TimerManager.h" />
     <ClInclude Include="TitleMenu.h" />
+    <ClInclude Include="Transition.h" />
     <ClInclude Include="Widget.h" />
   </ItemGroup>
   <ItemGroup>

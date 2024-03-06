@@ -1,6 +1,7 @@
 #pragma once
 #include "Mob.h"
 #include "AnimationComponent.h"
+#include "Player.h"
 
 class Boofly : public Mob
 {
@@ -10,4 +11,5 @@ public:
 public:
 	virtual void Init() override;
 	virtual void Death() override;
+	virtual void Attack(Player* _player) override;
 };

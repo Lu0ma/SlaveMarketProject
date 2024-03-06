@@ -1,5 +1,6 @@
 #include "Animation.h"
 #include "AnimationComponent.h"
+#include "MovementComponent.h"
 #include "Timer.h"
 #include "Macro.h"
 
@@ -38,7 +39,6 @@ void Animation::SetNext()
 
         Reset();
     }
-
     currentIndex++;
 
     const Vector2i& _start = GetNewStart();
@@ -77,6 +77,7 @@ Vector2i Animation::GetNewStart()
 void Animation::Start(const float _directionX)
 {
     directionX = _directionX;
+
     timer = new Timer(this, &Animation::SetNext, seconds(data.timeBetween), true, true);
 }
 
