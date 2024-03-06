@@ -16,7 +16,7 @@ void MusicData::Register()
 
 void MusicData::Play()
 {
-	setVolume(50.0f);
+	setVolume(0.5f);
 	play();
 }
 

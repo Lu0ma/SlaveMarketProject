@@ -65,6 +65,6 @@ void FalseKnight::Death()
 		isDead = true;
 		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
 		animation->RunAnimation("DeathFall", _directionX);
-		timer->Stop();
+		//timer->Stop();
 	}
 }
