@@ -13,9 +13,9 @@ void FalseKnight::Init()
 
 	animation->InitAnimations(
 	{
-		AnimationData("Idle", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, true, 5, _speed, true, ""),
+		AnimationData("Idle", Vector2f(0.0f, 0.0f), _size, READ_RIGHT, true, 5, _speed, false, ""),
 
-		AnimationData("Turn", Vector2f(0.0f, 586.0f), _size, READ_RIGHT, false, 2, _speed, true, "Run"),
+		AnimationData("Turn", Vector2f(0.0f, 586.0f), _size, READ_RIGHT, false, 2, _speed, false, "Run"),
 		AnimationData("Run", Vector2f(0.0f, 1172.0f), _size, READ_RIGHT, false, 3, _speed, true, "Running"),
 		AnimationData("Running", Vector2f(0.0f, 1758.0f), _size, READ_RIGHT, true, 4, _speed, true, "Idle"),
 

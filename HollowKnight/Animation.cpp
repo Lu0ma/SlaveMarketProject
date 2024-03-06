@@ -38,7 +38,6 @@ void Animation::SetNext()
 
         Reset();
     }
-
     currentIndex++;
 
     const Vector2i& _start = GetNewStart();

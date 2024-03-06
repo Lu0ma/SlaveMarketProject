@@ -1,4 +1,5 @@
 #include "State.h"
+#include "Brain.h"
 
 State::State(Brain* _brain)
 {

@@ -1,5 +1,4 @@
 #include "Transition.h"
-#include "State.h"
 #include "Brain.h"
 
 Transition::Transition(Brain* _brain)

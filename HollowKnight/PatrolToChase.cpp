@@ -1,7 +1,7 @@
 #include "PatrolToChase.h"
 #include "ChaseState.h"
 #include "BlackBoard.h"
-#include "BossBrain.h"
+#include "Brain.h"
 
 PatrolToChase::PatrolToChase(Brain* _brain) : Transition(_brain)
 {

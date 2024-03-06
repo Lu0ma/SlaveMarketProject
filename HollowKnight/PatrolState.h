@@ -4,7 +4,6 @@
 #include "MobMovementComponent.h"
 
 #include "PatrolToChase.h"
-#include "Brain.h"
 
 class PatrolState : public State
 {

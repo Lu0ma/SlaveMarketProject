@@ -44,17 +44,17 @@ void Mob::InitTimerCooldownAttack()
 
 void Mob::CooldownAttack()
 {
-	cooldownAttack = true;
+	/*cooldownAttack = true;*/
 }
 
 void Mob::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)
 {
-	_animationComponent->GetCurrentAnimation()->Stop();
+	/*_animationComponent->GetCurrentAnimation()->Stop();
 
 	Vector2f _direction = movement->GetDestination();
 	_direction -= GetPosition();
 	Normalize(_direction);
-	_animationComponent->RunAnimation(_linkedAnimation, _direction.x);
+	_animationComponent->RunAnimation(_linkedAnimation, _direction.x);*/
 }
 
 void Mob::Move()

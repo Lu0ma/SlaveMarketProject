@@ -1,9 +1,10 @@
 #pragma once
-#include "BlackBoard.h"
 #include "Component.h"
-#include "AttackState.h"
+#include "BlackBoard.h"
+
 #include "PatrolState.h"
 #include "ChaseState.h"
+#include "AttackState.h"
 
 class Brain : public Component
 {
@@ -36,6 +37,7 @@ public:
 
 public:
 	Brain(Actor* _owner);
+	~Brain();
 
 public:
 	virtual void Update(const float _deltaTime) override;

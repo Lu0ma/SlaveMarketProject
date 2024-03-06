@@ -24,8 +24,8 @@ Boss::Boss(const ShapeData& _data) : Enemy("Boss" + to_string(GetUniqueID()), _d
 
 void Boss::FacePlayer(Player* _player)
 {
-		const float _x = GetPosition().x < _player->GetPosition().x ? 1.0f : -1.0f;
-		animation->GetCurrentAnimation()->SetDirectionX(_x);
+		//const float _x = GetPosition().x < _player->GetPosition().x ? 1.0f : -1.0f;
+		//animation->GetCurrentAnimation()->SetDirectionX(_x);
 }
 
 void Boss::Update(const float _deltaTime)
@@ -62,10 +62,10 @@ void Boss::InitTimerPatrol()
 
 void Boss::RunLinkedAnimation(const string& _linkedAnimation, AnimationComponent* _animationComponent)
 {
-	_animationComponent->GetCurrentAnimation()->Stop();
+	/*_animationComponent->GetCurrentAnimation()->Stop();
 
 	Vector2f _direction = movement->GetDestination();
 	_direction -= GetPosition();
 	Normalize(_direction);
-	_animationComponent->RunAnimation(_linkedAnimation, _direction.x);
+	_animationComponent->RunAnimation(_linkedAnimation, _direction.x);*/
 }

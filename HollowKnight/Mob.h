@@ -20,8 +20,6 @@ protected:
 	MobAttackComponent* attack;
 
 public:
-
-public:
 	Mob(const ShapeData& _data);
 
 private:

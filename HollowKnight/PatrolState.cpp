@@ -1,5 +1,6 @@
 #include "PatrolState.h"
 #include "Macro.h"
+#include "Brain.h"
 
 PatrolState::PatrolState(Brain* _brain) : State(_brain)
 {
@@ -17,9 +18,8 @@ void PatrolState::Init()
 
 void PatrolState::Start()
 {
-
 	startPosition = brain->GetOwner()->GetShapePosition();
-	goalPosition = startPosition + Vector2f(500.0f, 0.0f);
+	goalPosition = startPosition + Vector2f(1500.0f, 0.0f);
 
 	animation = brain->GetOwner()->GetComponent<AnimationComponent>();
 	movement = brain->GetOwner()->GetComponent<MobMovementComponent>();
@@ -30,13 +30,17 @@ void PatrolState::Start()
 				movement->SetCanMove(true);
 				if (movement->GetDestination() == startPosition)
 				{
-					movement->SetDestination(goalPosition);
-					animation->GetCurrentAnimation()->SetDirectionX(1.0f);
+					movement->SetDestination(goalPosition);/*
+					const float _x = animation->GetCurrentAnimation()->GetDirectionX();
+					animation->GetCurrentAnimation()->SetDirectionX(_x);*/
+					//animation->GetCurrentAnimation()->SetDirectionX(1.0f);
 				}
 				else
 				{
-					movement->SetDestination(startPosition);
-					animation->GetCurrentAnimation()->SetDirectionX(-1.0f);
+					movement->SetDestination(startPosition);/*
+					const float _x = animation->GetCurrentAnimation()->GetDirectionX();
+					animation->GetCurrentAnimation()->SetDirectionX(_x);*/
+					//animation->GetCurrentAnimation()->SetDirectionX(-1.0f);
 				}
 				}, seconds(2.0f), true, false);
 		});

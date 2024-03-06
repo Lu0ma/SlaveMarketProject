@@ -33,6 +33,11 @@ public:
 			if (!animation) return;
 		}
 
+		if (!animation->GetCurrentAnimation()->GetData().displayFromLeftToRight)
+		{
+			lastDirection *= -1.0f;
+		}
+
 		if (!canMove)
 		{
 			animation->RunAnimation("Idle", lastDirection.x);

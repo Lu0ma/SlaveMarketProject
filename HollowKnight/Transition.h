@@ -1,8 +1,8 @@
 #pragma once
+#include "BlackBoard.h"
 
 class State;
 class Brain;
-struct BlackBoard;
 
 class Transition
 {

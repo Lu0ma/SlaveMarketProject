@@ -1,6 +1,7 @@
 #pragma once
 #include "Transition.h"
-#include "Brain.h"
+
+class Brain;
 
 class ChaseToPatrol : public Transition
 {
