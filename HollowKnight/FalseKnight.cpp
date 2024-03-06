@@ -49,22 +49,22 @@ void FalseKnight::Init()
 
 void FalseKnight::Attack(Player* _player)
 {
-	Vector2f _playerPos = _player->GetDrawable()->getGlobalBounds().getPosition();
-	if (GetDrawable()->getGlobalBounds().contains(_playerPos))
-	{
-		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
-		animation->RunAnimation("Attack", _directionX);
-		_player->GetStats()->UpdateLife(-1);
-	}
+	//Vector2f _playerPos = _player->GetDrawable()->getGlobalBounds().getPosition();
+	//if (GetDrawable()->getGlobalBounds().contains(_playerPos))
+	//{
+	//	float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
+	//	animation->RunAnimation("Attack", _directionX);
+	//	_player->GetStats()->UpdateLife(-1);
+	//}
 }
 
 void FalseKnight::Death()
 {
-	if (life->GetLife() <= 0 && !isDead)
-	{
-		isDead = true;
-		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
-		animation->RunAnimation("DeathFall", _directionX);
-		timer->Stop();
-	}
+	//if (life->GetLife() <= 0 && !isDead)
+	//{
+	//	isDead = true;
+	//	float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
+	//	animation->RunAnimation("DeathFall", _directionX);
+	//	timer->Stop();
+	//}
 }

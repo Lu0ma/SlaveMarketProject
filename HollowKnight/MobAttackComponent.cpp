@@ -13,7 +13,7 @@ void MobAttackComponent::Attack() // TODO
 {	
 	if (Mob* _mob = dynamic_cast<Mob*>(owner))
 	{
-		_mob->GetBrain()->GetBlackBoard().hasTarget;
+		_mob->GetBrain()->GetBlackBoard().hasTarget; // faire les condition avec RayCast ou Distance
 	}
 
 	else if (Boss* _boss = dynamic_cast<Boss*>(owner))
