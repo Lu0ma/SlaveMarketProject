@@ -6,7 +6,6 @@
 
 #define PATH_BACKGROUND "UIs/Menus/Background.png"
 #define PATH_TITLE_ICON "UIs/Menus/TitleIcon.png"
-#define PATH_POINTER "../Menu/Audio/Pointer.png"
 #define FONT "Font.ttf"
 #define PATH_MINUS "../Menu/Audio/Minus.png"
 #define PATH_PLUS "../Menu/Audio/Plus.png"

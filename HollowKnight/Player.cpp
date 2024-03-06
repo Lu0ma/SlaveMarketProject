@@ -45,16 +45,15 @@ void Player::InitAnimations()
 	animation->Init();
 }
 
-void Player::SetupPlayerInput() 
+void Player::SetupPlayerInput()
 {
-
 	new ActionMap("Stats", {
-		ActionData("ConvertManaToLife", [&]() { 
-			stats->UseMana(-10.0f); 
-			stats->UpdateLife(1); 
+		ActionData("ConvertManaToLife", [&]() {
+			stats->UseMana(-10.0f);
+			stats->UpdateLife(1);
 		}, InputData({ActionType::KeyPressed, Keyboard::A})),
 	});
-	            
+
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
@@ -79,26 +78,14 @@ void Player::SetupPlayerInput()
 
 	new ActionMap("Menu", {
 		ActionData("Pause", [&]() { TryToOpen(pauseMenu); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
-	});
-
-	new ActionMap("Inventory", {
-		ActionData("ToggleInventory", [&]() {
-			stats->Toggle();
-			inventory->Toggle();
-			interaction->StopInteract();
-		}, InputData({ ActionType::KeyPressed, Keyboard::B })),
-	});
-
-	new ActionMap("CharmsMenu", {
-		ActionData("ToogleCharmsMenu", [&]() { 
-			stats->Toggle();
-			TryToOpenCharmsMenu(); 
-			interaction->StopInteract();
-			}, InputData({ActionType::KeyPressed, Keyboard::P}))
-	});
-
-	new ActionMap("Interaction", {
-		ActionData("TryToInteract", [&]() { interaction->TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E  })),
+		ActionData("Inventory", [&]() { TryToOpen(inventory); }, InputData({ ActionType::KeyPressed, Keyboard::B })),
+		ActionData("CharmsMenu", [&]() {
+			if (!movement->IsStanding())
+			{
+				TryToOpen(charmsMenu);
+			}
+		}, InputData({ ActionType::KeyPressed, Keyboard::P })),
+		ActionData("Interact", [&]() { interaction->TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E })),
 	});
 }
 
