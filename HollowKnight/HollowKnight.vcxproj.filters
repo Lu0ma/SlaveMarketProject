@@ -226,6 +226,9 @@
     <Filter Include="Managers\Menus">
       <UniqueIdentifier>{1f8871bc-6e5d-4198-b682-344ab9d98194}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\Labels\ProgressLabel">
+      <UniqueIdentifier>{93c075fb-ca08-48ea-86ff-ee2dc19fa82f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -482,6 +485,9 @@
     </ClCompile>
     <ClCompile Include="MenuManager.cpp">
       <Filter>Managers\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressLabel.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -745,6 +751,9 @@
     </ClInclude>
     <ClInclude Include="MenuManager.h">
       <Filter>Managers\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressLabel.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

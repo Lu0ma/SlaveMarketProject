@@ -6,7 +6,7 @@ class Widget
 	bool isVisible;
 
 public:
-	void SetVisible(const bool _status)
+	virtual void SetVisible(const bool _status)
 	{
 		isVisible = _status;
 	}

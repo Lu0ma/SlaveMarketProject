@@ -17,11 +17,6 @@ ProgressBar::ProgressBar(const ShapeData& _data, const string& _path,
     currentValue = maxValue;
 }
 
-ProgressBar::~ProgressBar()
-{
-    delete foreground;
-}
-
 
 void ProgressBar::UpdateOriginAndPosition(const Vector2f& _size)
 {

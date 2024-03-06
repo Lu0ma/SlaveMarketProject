@@ -11,3 +11,8 @@ TextObject::TextObject(const TextData& _data)
 	text->setCharacterSize(_data.size);
 	text->setFillColor(_data.color);
 }
+
+TextObject::~TextObject()
+{
+	delete text;
+}

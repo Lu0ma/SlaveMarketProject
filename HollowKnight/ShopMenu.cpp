@@ -11,7 +11,7 @@
 
 ShopMenu::ShopMenu(Menu* _owner, Merchand* _merchand) : Menu("Shop", _owner)
 {
-	timeBeforeOpenShop = 3.0f;
+	timeBeforeOpenShop = 8.0f;
 	buttons = vector<Button*>();
 	descriptionTitle = nullptr;
 	descriptionText = nullptr;
