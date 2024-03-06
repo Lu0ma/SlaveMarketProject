@@ -137,6 +137,7 @@
     <ClCompile Include="ActorManager.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Belfly.cpp" />
     <ClCompile Include="Bench.cpp" />
     <ClCompile Include="Boofly.cpp" />
@@ -217,6 +218,7 @@
     <ClInclude Include="ActorManager.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationComponent.h" />
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="Belfly.h" />
     <ClInclude Include="Bench.h" />
     <ClInclude Include="Boofly.h" />

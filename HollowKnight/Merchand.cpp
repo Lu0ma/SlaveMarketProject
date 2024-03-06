@@ -21,6 +21,7 @@ Merchand::Merchand(const ShapeData& _data, const vector<string>& _texts)
 	descriptionText = nullptr;
 	animations = new MerchandAnimationComponent(this);
 	animations->GetCurrentAnimation()->RunAnimation("Wait", 1);
+	timer = nullptr;
 }
 
 

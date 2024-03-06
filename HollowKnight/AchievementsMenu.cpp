@@ -8,7 +8,8 @@
 
 AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achivements", _owner)
 {
-
+	backButton = nullptr;
+	pointer = nullptr;
 }
 
 

@@ -47,8 +47,9 @@ void Player::InitAnimations()
 	animation->Init();
 }
 
-void Player::SetupPlayerInput()
+void Player::SetupPlayerInput() 
 {
+
 	new ActionMap("Stats", {
 		ActionData("AddMana", [&]() { stats->UseMana(10.0f); }, InputData({ ActionType::KeyPressed, Keyboard::Space  })),
 		ActionData("RemoveMana", [&]() { 
@@ -76,7 +77,7 @@ void Player::SetupPlayerInput()
 
 	new ActionMap("Attack", {
 		ActionData("Slash", [&]() { attack->SpecialAttack(); }, InputData({ActionType::KeyPressed, Keyboard::R})),
-		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "Right"); }, InputData({ActionType::KeyReleased, Keyboard::R})),
+		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::R})),
 	});
 
 	new ActionMap("Inventory", {

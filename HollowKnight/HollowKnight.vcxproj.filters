@@ -214,6 +214,12 @@
     <Filter Include="Objects\ShapeObjects\Actors\Player\Stats">
       <UniqueIdentifier>{46439b5d-28d6-4559-86a9-4419a7bcbcae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menus\OptionsMenu\Options">
+      <UniqueIdentifier>{294b737e-a397-439c-9fcd-b345b2d1fcb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\OptionsMenu\Options\Audio">
+      <UniqueIdentifier>{e55b8a95-d489-40ef-9295-84daea717c78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -449,6 +455,9 @@
     </ClCompile>
     <ClCompile Include="PlayerInfo.cpp">
       <Filter>Objects\ShapeObjects\Actors\Player\Info</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Menus\OptionsMenu\Options\Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -694,6 +703,9 @@
     </ClInclude>
     <ClInclude Include="PlayerStats.h">
       <Filter>Objects\ShapeObjects\Actors\Player\Stats</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Menus\OptionsMenu\Options\Audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
