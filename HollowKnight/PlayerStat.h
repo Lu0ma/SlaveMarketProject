@@ -27,6 +27,8 @@ class PlayerStat : public Menu
 	PlayerAnimationComponent* animation;
 	PlayerMovementComponent* movement;
 
+	int numberOfDeath;
+
 public:
 	void SetCurrentLife(const int _newLife)
 	{
@@ -61,4 +63,6 @@ public:
 	void UpdateLife(const int _count);
 	void AddLife();
 	void UpdateGeos(const int _factor);
+	void Death();
+
 };
