@@ -23,17 +23,17 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 	// Jump
 	isJumping = false;
-	jumpForce = 0.4f;
-	jumpDuration = 0.2f;
-	gravity = 0.3f;
+	jumpForce = 0.65f;
+	jumpDuration = 0.45f;
+	gravity = 0.66f;
 
 	// Dash
 	canDash = true;
 	isDashing = false;
 	isResetingDash = false;
-	dashSpeed = 0.75f;
-	dashDuration = 0.2f;
-	dashCooldown = 3.0f;
+	dashSpeed = 1.50f;
+	dashDuration = 0.25f;
+	dashCooldown = 0.60f;
 	dashDirection = 1.0f;
 
 	// Sit

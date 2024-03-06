@@ -7,7 +7,7 @@ Camera::Camera(const Target& _target)
 	const FloatRect& _rect = Game::GetPlayer()->GetDrawable()->getGlobalBounds();
 	center = Vector2f(_rect.left, _rect.top);
 	size = Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT);
-	view = View(center, size);
+	view = View(center, size * 1.25f);
 }
 
 View Camera::FollowPlayer()
