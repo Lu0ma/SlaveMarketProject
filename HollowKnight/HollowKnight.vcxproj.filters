@@ -97,9 +97,6 @@
     <Filter Include="Components\Collision">
       <UniqueIdentifier>{3f089dda-207d-4d08-a9db-06793e761f8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Animation">
-      <UniqueIdentifier>{97c513f2-fcdc-4723-bbee-b77632454dda}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Managers\Music">
       <UniqueIdentifier>{389b7583-21d9-4df8-aeee-2f82172d46ba}</UniqueIdentifier>
     </Filter>
@@ -150,9 +147,6 @@
     </Filter>
     <Filter Include="Components\Movement\Player">
       <UniqueIdentifier>{7b00bb23-9a83-48ca-933a-2bd082f363af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Animation\Player">
-      <UniqueIdentifier>{2d3f0cd4-362d-4210-b47c-2a10c5c54932}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components\Attack\Mob">
       <UniqueIdentifier>{1e3cd31c-2cd7-4c6d-b79d-59e1213ee00e}</UniqueIdentifier>
@@ -228,6 +222,12 @@
     </Filter>
     <Filter Include="UIs\Widgets\ShapeWidgets\Labels\ProgressLabel">
       <UniqueIdentifier>{93c075fb-ca08-48ea-86ff-ee2dc19fa82f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Animations">
+      <UniqueIdentifier>{97c513f2-fcdc-4723-bbee-b77632454dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Animations\Player">
+      <UniqueIdentifier>{2d3f0cd4-362d-4210-b47c-2a10c5c54932}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -355,10 +355,10 @@
       <Filter>Objects\ShapeObjects\Actors\Mobs\HuskBully</Filter>
     </ClCompile>
     <ClCompile Include="AnimationComponent.cpp">
-      <Filter>Components\Animation</Filter>
+      <Filter>Components\Animations</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>Components\Animation</Filter>
+      <Filter>Components\Animations</Filter>
     </ClCompile>
     <ClCompile Include="InteractableActor.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
@@ -391,7 +391,7 @@
       <Filter>Components\Movement\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerAnimationComponent.cpp">
-      <Filter>Components\Animation\Player</Filter>
+      <Filter>Components\Animations\Player</Filter>
     </ClCompile>
     <ClCompile Include="MobAttackComponent.cpp">
       <Filter>Components\Attack\Mob</Filter>
@@ -438,18 +438,6 @@
     <ClCompile Include="AchievementsMenu.cpp">
       <Filter>Menus\AchievementsMenu</Filter>
     </ClCompile>
-    <ClCompile Include="DragonAnimationComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="LeverAnimationComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="MerchandAnimationComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCAnimationComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="Dragon.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
     </ClCompile>
@@ -488,6 +476,21 @@
     </ClCompile>
     <ClCompile Include="ProgressLabel.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DragonAnimationComponent.cpp">
+      <Filter>Components\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="LeverAnimationComponent.cpp">
+      <Filter>Components\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="MerchandAnimationComponent.cpp">
+      <Filter>Components\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCAnimationComponent.cpp">
+      <Filter>Components\Animations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -624,10 +627,10 @@
       <Filter>Objects\ShapeObjects\Actors\Mobs\HuskBully</Filter>
     </ClInclude>
     <ClInclude Include="AnimationComponent.h">
-      <Filter>Components\Animation</Filter>
+      <Filter>Components\Animations</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Components\Animation</Filter>
+      <Filter>Components\Animations</Filter>
     </ClInclude>
     <ClInclude Include="InteractableActor.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
@@ -660,7 +663,7 @@
       <Filter>Components\Movement\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerAnimationComponent.h">
-      <Filter>Components\Animation\Player</Filter>
+      <Filter>Components\Animations\Player</Filter>
     </ClInclude>
     <ClInclude Include="MobAttackComponent.h">
       <Filter>Components\Attack\Mob</Filter>
@@ -704,18 +707,6 @@
     <ClInclude Include="AchievementsMenu.h">
       <Filter>Menus\AchievementsMenu</Filter>
     </ClInclude>
-    <ClInclude Include="DragonAnimationComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="LeverAnimationComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCAnimationComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MerchandAnimationComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Dragon.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
     </ClInclude>
@@ -754,6 +745,24 @@
     </ClInclude>
     <ClInclude Include="ProgressLabel.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStats.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCAnimationComponent.h">
+      <Filter>Components\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="DragonAnimationComponent.h">
+      <Filter>Components\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="LeverAnimationComponent.h">
+      <Filter>Components\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="MerchandAnimationComponent.h">
+      <Filter>Components\Animations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

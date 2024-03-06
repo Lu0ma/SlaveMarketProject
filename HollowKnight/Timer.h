@@ -11,6 +11,10 @@ class Timer : public IManagable<int>
 	bool isLoop;
 
 public:
+	void AddDuration(const float _duration)
+	{
+		duration += _duration;
+	}
 	bool IsRunning() const
 	{
 		return isRunning;
@@ -49,4 +53,3 @@ public:
 	void Reset();
 	void Stop();
 };
-

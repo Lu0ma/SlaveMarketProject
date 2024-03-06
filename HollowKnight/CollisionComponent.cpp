@@ -1,27 +1,16 @@
 #include "CollisionComponent.h"
-#include "ActorManager.h"
-#include "Player.h"
+#include "Actor.h"
 
-bool CollisionComponent::CheckCollision(Actor* _currentActor)
+CollisionComponent::CollisionComponent(Actor* _owner) : Component(_owner)
 {
-	const vector<Actor*>& _allActors = ActorManager::GetInstance().GetAllValues();
-	Shape* _currentShape = _currentActor->GetDrawable();
-	FloatRect _rect = _currentShape->getGlobalBounds();
+	boxCollision = new ShapeObject(ShapeData(_owner->GetBounds().getPosition(),
+											 _owner->GetBounds().getSize(),
+											 ""));
+	boxCollision->GetDrawable()->setOutlineThickness(5.0f);
+	boxCollision->GetDrawable()->setOutlineColor(Color::Red);
+}
 
-	for (Actor* _actor : _allActors)
-	{
-		Shape* _shape = _actor->GetDrawable();
-		if (_shape == _currentShape) continue;
-		if (_rect.intersects(_shape->getGlobalBounds()))
-		{
-			if (_actor != dynamic_cast<Actor*>(_actor))
-			{
-				//cout << "je rentre dans le if" << endl;
-				//// Execute callback
-				////_actor.
-			}
-		}
-	}
+void CollisionComponent::CheckCollision(Actor* _owner)
+{
 
-	return false;
 }

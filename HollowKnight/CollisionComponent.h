@@ -1,11 +1,14 @@
 #pragma once
 #include "Component.h"
-#include <iostream>
-using namespace std;
+#include "ShapeObject.h"
+
 class CollisionComponent : public Component
 {
+	ShapeObject* boxCollision;
 
 public:
-	bool CheckCollision(Actor* _currentActor);
-};
+	CollisionComponent(Actor* _owner);
 
+public:
+	void CheckCollision(Actor* _owner);
+};

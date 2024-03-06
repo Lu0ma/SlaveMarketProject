@@ -8,6 +8,7 @@
 #include "PlayerAttackComponent.h"
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
+#include "CollisionComponent.h"
 
 using namespace std;
 
@@ -21,7 +22,7 @@ class Player : public Actor
 	PlayerAttackComponent* attack;
 	PlayerAnimationComponent* animation;
 	InteractionComponent* interaction;
-
+	CollisionComponent* collision;
 public:
 	void SetStatus(const bool _status)
 	{

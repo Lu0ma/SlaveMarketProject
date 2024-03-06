@@ -17,9 +17,12 @@ class PlayerMovementComponent : public MovementComponent
 
 	// Jump
 	bool isJumping;
+	bool canIncreaseJump;
 	float jumpForce;
 	float jumpDuration;
+	float jumpDurationFactor;
 	float gravity;
+	Timer* jumpTimer;
 
 	// Dash
 	bool canDash;
@@ -87,10 +90,12 @@ public:
 
 private:
 	bool CheckGround();
+	void Jump();
 
 public:
 	virtual void Update(const float _deltaTime) override;
-	void Jump();
+	void StartJump();
+	void StopJump();
 	void Dash();
 	void SitDown();
 	void StandUp();
