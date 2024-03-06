@@ -8,6 +8,7 @@ class DeathMob : public Mob
 	AnimationComponent* animation;
 	vector<string> animDeath;
 	string name;
+	int death;
 
 public:
 	DeathMob(const string& _name,const ShapeData& _data);

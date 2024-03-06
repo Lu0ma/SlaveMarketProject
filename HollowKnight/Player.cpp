@@ -39,6 +39,10 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 
 	stats = new PlayerStat(this);
 	components.push_back(stats);
+
+	light = new CircleShape(55.0f);
+	light->setFillColor(Color(255, 255, 255, 20)); 
+	light->setOrigin(100.0f, 100.0f);
 }
 
 

@@ -55,6 +55,7 @@ void Game::Update()
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
 		map->GetDragon()->PlayMusic();
+		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
 		ActorManager::GetInstance().Update();
 	}
 }
@@ -74,6 +75,7 @@ void Game::UpdateWindow()
 	{
 		window.draw(*_actor->GetDrawable());
 	}
+	window.draw(*player->GetLight());
 	
 	// UI
 	View _view = window.getDefaultView();

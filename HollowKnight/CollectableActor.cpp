@@ -22,14 +22,12 @@ CollectableActor::CollectableActor(const string& _name, const ShapeData& _data, 
 	animCollectable = vector<string>();
 
 	animCollectable.push_back("Spawn");
-	animCollectable.push_back("Take");
 
-	const Vector2f& _size = Vector2f(182.0f, 178.0f);
+	const Vector2f& _size = Vector2f(50.0f, 41.0f);
 	const float _speed = 0.1f;
 
 	animation->InitAnimations({
-		AnimationData("Spawn", Vector2f(0.0f, 23.0f), _size, READ_RIGHT, false, 1, _speed),
-		AnimationData("Take", Vector2f(0.0f, 23.0f), _size, READ_RIGHT, false, 4, _speed), 
+		AnimationData("Spawn", Vector2f(0.0f, 92.0f), _size, READ_RIGHT, true, 6, _speed), 
 		
 		});
 }

@@ -158,6 +158,7 @@
     <ClCompile Include="FontData.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Grub.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="HuskBully.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -238,6 +239,7 @@
     <ClInclude Include="FontData.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Grub.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HuskBully.h" />
     <ClInclude Include="IManagable.h" />

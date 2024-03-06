@@ -12,11 +12,13 @@
 #define PATH_PNJ "/Characters/PNJ/PNJA.png"
 #define PATH_MERCHAND "/Characters/PNJ/Merchand.png"
 #define PATH_DRAGON "/Animations/walla.png"
+#define PATH_GRUB "/Animations/Grub.png"
 
-
+Grub* Map::grub;
 
 Map::Map()
 {
+	grub = new Grub("Grub", ShapeData(Vector2f(950.0f, 0.0f), Vector2f(75.0f, 100.0f), PATH_GRUB));
 	dragon = new Dragon("Dragon", ShapeData(Vector2f(700.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
 	bench = new Bench(ShapeData(Vector2f(300.0f, 5.0f), Vector2f(176.0, 80.0f), PATH_BENCH));
 	pnj = new NPC(STRING_ID("Villageois"), ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PNJ));

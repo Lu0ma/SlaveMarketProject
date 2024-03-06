@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Lift.h"
 #include "Mob.h"
+#include "Grub.h"
 #include "Macro.h"
 #include"Game.h"
 
@@ -35,6 +36,17 @@ void PlayerAttackComponent::SpecialAttack()
 	{
 		_lift->Interact();
 	}
+	const vector<Grub*>& _grubs = RetrieveAllMobsAround<Grub>(_ownerPosition, 45.0f);
+	for (Grub* _grub : _grubs)
+	{
+		if (!_grub) continue;
+
+		else
+		{
+			Map::GetGrub()->GetCurrentAnimation()->RunAnimation("Escape", -1);
+		}
+	}
+
 
 	animation->GetCurrentAnimation()->RunAnimation("Special", owner->GetDrawable()->getScale().x);
 }

@@ -6,6 +6,7 @@
 #include "InteractableActor.h"
 #include "Lift.h"
 #include"Dragon.h"
+#include"Grub.h"
 
 using namespace std;
 using namespace sf;
@@ -56,6 +57,7 @@ struct PlateformData
 
 class Map
 {
+	static Grub* grub;
 	Dragon* dragon;
 	Bench* bench;
 	Merchand* merchand;
@@ -84,6 +86,10 @@ public:
 	vector<Lift*> GetAllLifts() const
 	{
 		return lifts;
+	}
+	static Grub* GetGrub()
+	{
+		return grub;
 	}
 
 public:
