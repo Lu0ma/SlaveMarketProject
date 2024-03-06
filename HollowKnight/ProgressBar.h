@@ -8,7 +8,9 @@ enum ProgressType
 	PT_LEFT,
 	PT_TOP,
 	PT_RIGHT,
-	PT_BOTTOM
+	PT_BOTTOM,
+
+	PT_COUNT
 };
 
 class ProgressBar : public ShapeWidget
@@ -17,12 +19,18 @@ class ProgressBar : public ShapeWidget
 	ShapeWidget* foreground;
 	float currentValue;
 	float maxValue;
+	Vector2f size;
 
 public:
 	virtual void SetShapePosition(const Vector2f& _position) override
 	{
 		ShapeWidget::SetShapePosition(_position);
 		foreground->SetShapePosition(_position - Vector2f(GetDrawable()->getGlobalBounds().getSize().x / 2.0f, 0.0f));
+	}
+	void SetType(const ProgressType& _type)
+	{
+		type = _type;
+		UpdateOriginAndPosition(size);
 	}
 	void SetValue(const float _newValue)
 	{

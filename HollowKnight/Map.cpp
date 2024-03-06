@@ -27,6 +27,14 @@ Map::Map()
 	barrack = nullptr;
 }
 
+Map::~Map()
+{
+	for (ShapeObject* _object : drawables)
+	{
+		delete _object;
+	}
+}
+
 
 MapData Map::LoadMapData(const string& _path)
 {

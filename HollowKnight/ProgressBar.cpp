@@ -10,7 +10,8 @@ ProgressBar::ProgressBar(const ShapeData& _data, const string& _path,
     type = _type;
     foreground = new ShapeWidget(ShapeData(_data.position, _data.size, _path));
 
-    UpdateOriginAndPosition(_data.size);
+    size = _data.size;
+    UpdateOriginAndPosition(size);
 
     maxValue = _maxValue;
     currentValue = maxValue;

@@ -9,6 +9,13 @@ Actor::Actor(const string& _name, const ShapeData& _data)
 	SetOriginAtMiddle(GetDrawable());
 }
 
+Actor::~Actor()
+{
+	for (Component* _component : components)
+	{
+		delete _component;
+	}
+}
 
 void Actor::Register()
 {

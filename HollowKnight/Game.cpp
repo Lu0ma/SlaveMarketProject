@@ -25,7 +25,6 @@ Game::Game()
 
 Game::~Game()
 {
-	delete menu;
 	delete camera;
 }
 
