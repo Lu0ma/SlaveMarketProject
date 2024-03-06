@@ -8,6 +8,7 @@
 
 class InteractableActor : public Actor
 {
+protected:
 	Canvas* canvas;
 	bool isOpen;
 

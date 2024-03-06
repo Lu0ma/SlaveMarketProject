@@ -63,7 +63,6 @@ public:
 	void UpdateLife(const int _count);
 	void AddLife();
 	void UpdateGeos(const int _factor);
-	void AddGeos(const int _factor);
 	void Death();
 
 };
