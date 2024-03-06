@@ -25,6 +25,15 @@ Map::Map()
 	barrack = nullptr;
 }
 
+Map::~Map()
+{
+	for (ShapeObject* _object : drawables)
+	{
+		delete _object;
+	}
+}
+
+
 MapData Map::LoadMapData(const string& _path)
 {
 	MapData _data;
@@ -88,11 +97,6 @@ void Map::InitPlateforms()
 
 void Map::Init()
 {
-	//for (int _index = 1; _index <= 1; _index++)
-	//{
-	//	const MapData& _data = LoadMapData(LEVEL + to_string(_index) + ".txt");
-	//	cout << _data.backgroundPath << endl;
-	//}
 	LoadMapData(LEVEL);
 
 	bench->Init();

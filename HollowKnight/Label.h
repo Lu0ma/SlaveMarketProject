@@ -13,7 +13,7 @@ class Label : public TextWidget
 	AligmentText alignement;
 		 
 public:
-	void SetString(const string& _text)
+	virtual void SetString(const string& _text)
 	{
 		textObject->GetDrawable()->setString(_text);
 		SetAlignement(alignement);

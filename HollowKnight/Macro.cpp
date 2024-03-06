@@ -26,3 +26,32 @@ void SetOriginAtMiddle(Shape* _shape)
 	const Vector2f& _size = _shape->getGlobalBounds().getSize();
 	_shape->setOrigin(_size / 2.0f);
 }
+
+vector<string> GetWords(const string& _text, const bool _withSpaces)
+{
+	vector<string> _words;
+	string _word;
+
+	for (const char _letter : _text)
+	{
+		if (_letter == ' ' || _letter == ',' || _letter == '\n')
+		{
+			if (_word != "")
+			{
+				_words.push_back(_word);
+				_word = "";
+			}
+
+			if (!_withSpaces)
+			{
+				continue;
+			}
+		}
+
+		_word += _letter;
+	}
+
+	_words.push_back(_word);
+
+	return _words;
+}

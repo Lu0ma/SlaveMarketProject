@@ -77,7 +77,7 @@ void InteractableActor::Init()
 	discussionBG->SetVisible(false);
 	canvas->AddWidget(discussionBG);
 
-	discussionText = new Label(TextData("Your words, are they repeating ?", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16));
+	discussionText = new ProgressLabel(TextData("Your words, are they repeating ?", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16), 0.1f);
 	discussionText->SetVisible(false);
 	canvas->AddWidget(discussionText);
 }

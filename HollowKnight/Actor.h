@@ -32,9 +32,10 @@ public:
 	{
 		return shape->getGlobalBounds();
 	}
-
+	
 public:
 	Actor(const string& _name, const ShapeData& _data);
+	~Actor();
 
 protected:
 	virtual void Register() override;

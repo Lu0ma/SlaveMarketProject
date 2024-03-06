@@ -84,6 +84,7 @@ public:
 
 public:
 	Map();
+	~Map();
 
 private:
 	MapData LoadMapData(const string& _path);

@@ -44,4 +44,5 @@ public:
 
 public:
 	TextObject(const TextData& _data);
+	~TextObject();
 };
