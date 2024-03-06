@@ -1,40 +1,80 @@
 #include "Camera.h"
 #include "Game.h"
 
-Camera::Camera(const Target& _target)
+Camera::Camera()
 {
-	target = _target;
-	const FloatRect& _rect = Game::GetPlayer()->GetDrawable()->getGlobalBounds();
-	center = Vector2f(_rect.left, _rect.top);
-	size = Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT);
-	view = View(center, size * 1.25f);
+	damp = 100.0f;
+	position = Vector2f(0.0f, 0.0f);
+	offset = Vector2f(10.0f, 0.0f);
+	window = nullptr;
 }
 
-View Camera::FollowPlayer()
-{
-	const FloatRect& _rect = GetPlayerRect();
-	//view.setCenter(_rect.left, _rect.top);
-	view.setCenter(_rect.left, view.getCenter().y);
-	return view;
-}
 
 FloatRect Camera::GetPlayerRect()
 {
 	return Game::GetPlayer()->GetDrawable()->getGlobalBounds();
 }
 
-void Camera::CheckCameraState(View& _newView)
+void Camera::FollowPlayer()
 {
-	RenderWindow& _window = Game::GetWindow();
-	if (GetTargetStat() == TARGET_PLAYER)
-	{
-		_newView = FollowPlayer();
-		_window.setView(_newView);
-	}
+	const FloatRect& _rectPlayer = GetPlayerRect();
+	Player* _player = Game::GetPlayer();
 
-	else if (GetTargetStat() == TARGET_WINDOW)
+	View _view = window->getDefaultView();
+
+	const float _offset = _rectPlayer.left > 0.0f ? offset.x : -offset.x;
+	_view.setCenter(_rectPlayer.left + _offset, _rectPlayer.top);
+	position = Vector2f(_rectPlayer.left + _offset, _rectPlayer.top);
+	SetView(_view);
+}
+
+
+void Camera::Init(RenderWindow* _window)
+{
+	window = _window;
+	position = window->getView().getCenter();
+
+	const Vector2f& _halfWindowSize = Game::GetWindowSize() / 2.0f;
+	Canvas* _canvas = new Canvas("Camera");
+
+	ShapeWidget* _ligneLeft = new ShapeWidget(ShapeData(_halfWindowSize + Vector2f(-damp, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
+	_ligneLeft->GetDrawable()->setFillColor(Color::Magenta);
+	_canvas->AddWidget(_ligneLeft);
+
+	ligneMiddle = new ShapeWidget(ShapeData(_halfWindowSize, Vector2f(1, SCREEN_HEIGHT)));
+	ligneMiddle->GetDrawable()->setFillColor(Color::Red);
+	_canvas->AddWidget(ligneMiddle);
+
+	ShapeWidget* _ligneRight = new ShapeWidget(ShapeData(_halfWindowSize + Vector2f(damp, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
+	_ligneRight->GetDrawable()->setFillColor(Color::Magenta);
+	_canvas->AddWidget(_ligneRight);
+}
+
+void Camera::Update()
+{
+	if (!window) return;
+
+	Player* _player = Game::GetPlayer();
+	View _view = GetView();
+
+	//cout << "position" << " " << position.x << " " << position.y << endl;
+	//cout << "getViewport" << " " << _view.getViewport().left << " " << _view.getViewport().top << endl;
+
+
+	/*cout << "Position" << " " << _player->GetShapePosition().x << endl;
+	cout << window->getSize().x + window->getView().getCenter().x << endl;*/
+
+	//const float _centerX = _view.getCenter().x;
+	// const float _centerX = _view->getTransform().transformRect(GetPlayerRect()).getPosition().x;
+	const float _distance = Distance(_player->GetShapePosition(), window->getDefaultView().getCenter());
+	cout << _player->GetShapePosition().x << " " << _distance << " " << window->getDefaultView().getCenter().x << endl;
+
+	if (_distance > damp)
 	{
-		_newView = _window.getDefaultView();
-		_window.setView(_newView);
+		//cout << "_distance" << " " << _distance << endl;
+		//cout << "Position" << " " << _player->GetShapePosition().x << endl;
+		//_newView = View(_player->GetShapePosition() + Vector2f(_player->GetComponent<PlayerMovementComponent>()->GetDirection().x * 10.0f, 0.0f) , view->getSize());
+
+		FollowPlayer();
 	}
 }

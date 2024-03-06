@@ -1,60 +1,33 @@
 #pragma once
-#include<SFML/Graphics.hpp>
-using namespace sf;
-
-enum Target
-{
-	TARGET_NONE , TARGET_PLAYER , TARGET_WINDOW
-};
+#include "ShapeWidget.h"
 
 class Camera
 {
-	View view;
-	Vector2f center;
-	Vector2f size;
-	Target target;
+	float damp;
+	Vector2f position;
+	Vector2f offset;
+	RenderWindow* window;
 
-public:
-	void SetTarget(const Target& _target)
-	{
-		target = _target;
-	}
+	ShapeWidget* ligneMiddle;
+
+private:
 	void SetView(const View& _view)
 	{
-		view = _view;
+		window->setView(_view);
 	}
-	void SetCenter(const Vector2f& _center)
+	View GetView()
 	{
-		center = _center;
+		return window->getView();
 	}
-	void SetSize(const Vector2f& _size)
-	{
-		size = _size;
-	}
-	View GetView() const
-	{
-		return view;
-	}
-	Vector2f GetCenter() const
-	{
-		return center;
-	}
-	Vector2f GetSize() const
-	{
-		return size;
-	}
-	Target GetTargetStat() const
-	{
-		return target;
-	}
-
+	
 public:
-	Camera(const Target& _target);
+	Camera();
 
 private:
 	FloatRect GetPlayerRect();
+	void FollowPlayer();
 
 public:
-	View FollowPlayer();
-	void CheckCameraState(View& _newView);
+	void Init(RenderWindow* _window);
+	void Update();
 };

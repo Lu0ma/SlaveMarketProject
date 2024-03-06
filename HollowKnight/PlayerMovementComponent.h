@@ -90,7 +90,7 @@ public:
 
 private:
 	bool CheckGround();
-	void Jump();
+	void Jump(const float _deltaTime);
 
 public:
 	virtual void Update(const float _deltaTime) override;

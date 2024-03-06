@@ -20,7 +20,7 @@ Game::Game()
 	menu = new MainMenu();
 	player = new Player("Player", ShapeData(Vector2f(0.0f, -300.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	map = new Map();
-	camera = new Camera(TARGET_WINDOW);
+	camera = new Camera();
 } 
 
 Game::~Game()
@@ -40,6 +40,7 @@ void Game::Init()
 {
 	menu->Init();
 	map->Init();
+	camera->Init(&window);
 
 	//TODO move
 	Spawner* _spawner = new Spawner();
@@ -61,8 +62,7 @@ void Game::Update()
 void Game::UpdateWindow()
 {
 	window.clear(); // Color(127, 127, 127, 0) gris
-	View _defaultView;
-	camera->CheckCameraState(_defaultView);
+	camera->Update();
 
 	for (ShapeObject* _drawable : map->GetAllDrawables())
 	{
