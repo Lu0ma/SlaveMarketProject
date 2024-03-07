@@ -44,6 +44,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	sitOffset = 30.0f;
 
 	// Components
+	collision = owner->GetComponent<CollisionComponent>();
 	animation = owner->GetComponent<PlayerAnimationComponent>();
 
 	//TODO remove
@@ -63,24 +64,6 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 
 	TryToMove(_deltaTime);
 	rayCastLine->GetDrawable()->setPosition(owner->GetShapePosition() + (owner->GetDrawable()->getScale().x > 0.0f ? Vector2f(rayCastLine->GetShapeSize().x / 2.0f, rayCastLine->GetShapeSize().y): Vector2f(-rayCastLine->GetShapeSize().x / 2.0f, rayCastLine->GetShapeSize().y)));
-}
-
-void PlayerMovementComponent::StartJump()
-{
-	if (!canMove || isJumping || !isOnGround) return;
-
-	cout << "StartJump" << endl;
-	isJumping = true;
-	canIncreaseJump = true;
-
-	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
-	jumpTimer = new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
-}
-
-void PlayerMovementComponent::Jump()
-{
-	if (!canIncreaseJump) return;
-	jumpTimer->AddDuration(jumpDurationFactor);
 }
 
 void PlayerMovementComponent::TryToMove(const float _deltaTime)
@@ -133,7 +116,6 @@ void PlayerMovementComponent::TryToMove(const float _deltaTime)
 	if (!collision->CheckCollision(owner->GetShapePosition(), owner->GetShapePosition() + Vector2f(_offset.x * 100.0f, 0.0f)))
 	{
 		owner->GetDrawable()->move(_offset);
-		
 	}
 }
 

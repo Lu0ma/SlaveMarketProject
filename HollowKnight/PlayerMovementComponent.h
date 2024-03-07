@@ -38,6 +38,7 @@ class PlayerMovementComponent : public MovementComponent
 	float sitOffset;
 
 	// Components
+	CollisionComponent* collision;
 	PlayerAnimationComponent* animation;
 
 	Actor* rayCastLine;
@@ -93,6 +94,7 @@ public:
 	PlayerMovementComponent(Actor* _owner);
 
 private:
+	void TryToMove(const float _deltaTime);
 	bool CheckGround();
 	void Jump(const float _deltaTime);
 

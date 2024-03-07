@@ -58,7 +58,7 @@ void Camera::Init()
 
 void Camera::Shake(const float _trauma, const float _duration)
 {
-	shake.max = milliseconds(_duration);
+	shake.max = milliseconds((Int32)_duration);
 	shake.current = seconds(0);
 	shake.trauma += _trauma;
 }
@@ -98,8 +98,8 @@ void Camera::Update(const float _deltaTime)
 	shake.trauma *= 1.0 - _ratio * _ratio;*/
 }
 
-void Camera::Down()
-{
-
-
-}
+//void Camera::Down()
+//{
+//
+//
+//}
