@@ -1,0 +1,123 @@
+﻿  AchievementsMenu.cpp
+  Action.cpp
+  ActionMap.cpp
+  Actor.cpp
+  ActorManager.cpp
+  Animation.cpp
+  AnimationComponent.cpp
+  AttackState.cpp
+  AttackToChase.cpp
+  AttackToPatrol.cpp
+  Audio.cpp
+  Belfly.cpp
+  Bench.cpp
+  Boofly.cpp
+  Boss.cpp
+  BossBrain.cpp
+  Brain.cpp
+  Button.cpp
+  Camera.cpp
+  Canvas.cpp
+  Generating Code...
+  Compiling...
+  CharmsMenu.cpp
+  ChaseState.cpp
+  ChaseToAttack.cpp
+  ChaseToPatrol.cpp
+  CollectableActor.cpp
+  CollisionComponent.cpp
+  Component.cpp
+  ControllerMenu.cpp
+  DeathMob.cpp
+D:\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4305: 'argument': truncation from 'unsigned __int64' to 'const T'
+          with
+          [
+              T=int
+          ]
+D:\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4309: 'argument': truncation of constant value
+  Dragon.cpp
+  DragonAnimationComponent.cpp
+  Enemy.cpp
+  EnemyBrain.cpp
+  ExtrasMenu.cpp
+  FalseKnight.cpp
+  FileLoader.cpp
+  FontData.cpp
+  FontManager.cpp
+  Game.cpp
+  Grub.cpp
+  Generating Code...
+  Compiling...
+  HUD.cpp
+  HuskBully.cpp
+  InputManager.cpp
+  InteractableActor.cpp
+  InteractionComponent.cpp
+  Inventory.cpp
+  Item.cpp
+  ItemWidget.cpp
+  KeyboardMenu.cpp
+  Kismet.cpp
+  Label.cpp
+  Lever.cpp
+  LeverAnimationComponent.cpp
+  Lift.cpp
+  Macro.cpp
+  Main.cpp
+  MainMenu.cpp
+  Map.cpp
+  Menu.cpp
+  MenuManager.cpp
+  Generating Code...
+  Compiling...
+  Merchand.cpp
+D:\SlaveMarketProject\HollowKnight\Merchand.cpp(11,1): warning C4005: 'PATH_POINTER': macro redefinition
+D:\SlaveMarketProject\HollowKnight\Menu.h(10,1): message : see previous definition of 'PATH_POINTER'
+  MerchandAnimationComponent.cpp
+  Mob.cpp
+  MobAttackComponent.cpp
+  MobBrain.cpp
+  MobLifeComponent.cpp
+  MobMovementComponent.cpp
+  MovementComponent.cpp
+  MusicData.cpp
+  MusicManager.cpp
+  NPCAnimationComponent.cpp
+  Object.cpp
+  OptionsMenu.cpp
+  PatrolState.cpp
+  PatrolToChase.cpp
+  PauseMenu.cpp
+  Player.cpp
+  PlayerAnimationComponent.cpp
+  PlayerAttackComponent.cpp
+  PlayerInfo.cpp
+  Generating Code...
+  Compiling...
+  PlayerMovementComponent.cpp
+  PlayerStat.cpp
+  ProgressBar.cpp
+  ProgressLabel.cpp
+  PurchaseMenu.cpp
+  QuitGameMenu.cpp
+  QuitToMenu.cpp
+  ShapeObject.cpp
+  ShapeWidget.cpp
+  ShopMenu.cpp
+  SoundData.cpp
+  SoundManager.cpp
+  Spawner.cpp
+  State.cpp
+  TextObject.cpp
+  TextureData.cpp
+  TextureManager.cpp
+  TextWidget.cpp
+  Timer.cpp
+  TimerManager.cpp
+  Generating Code...
+  Compiling...
+  TitleMenu.cpp
+  Transition.cpp
+  Widget.cpp
+  Generating Code...
+  HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
