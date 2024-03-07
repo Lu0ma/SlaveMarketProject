@@ -1,33 +1,31 @@
 #pragma once
-#include "ShapeWidget.h"
+#include <SFML/Graphics.hpp>
+
+using namespace sf;
 
 class Camera
 {
+	float speed;
 	float damp;
-	Vector2f position;
+	float oldScaleX;
+	Vector2f targetPosition;
 	Vector2f offset;
-	RenderWindow* window;
+	View view;
 
-	ShapeWidget* ligneMiddle;
-
-private:
-	void SetView(const View& _view)
+public:
+	View GetView() const
 	{
-		window->setView(_view);
-	}
-	View GetView()
-	{
-		return window->getView();
+		return view;
 	}
 	
 public:
 	Camera();
 
 private:
-	FloatRect GetPlayerRect();
-	void FollowPlayer();
+	void MoveToTarget(const float _deltaTime);
+	bool IsAtDestination(float& _distance);
 
 public:
-	void Init(RenderWindow* _window);
-	void Update();
+	void Init();
+	void Update(const float _deltaTime);
 };

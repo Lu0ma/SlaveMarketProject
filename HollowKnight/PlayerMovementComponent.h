@@ -49,6 +49,8 @@ public:
 
 		if (_directionX == 0.0f)
 		{
+			cout << owner->GetDrawable()->getScale().x << endl;
+
 			if (owner->GetDrawable()->getScale().x >= 0.0f)
 			{
 				dashDirection = 1.0f;

@@ -40,7 +40,7 @@ void Game::Init()
 {
 	menu->Init();
 	map->Init();
-	camera->Init(&window);
+	camera->Init();
 
 	//TODO move
 	Spawner* _spawner = new Spawner();
@@ -62,13 +62,16 @@ void Game::Update()
 void Game::UpdateWindow()
 {
 	window.clear(); // Color(127, 127, 127, 0) gris
-	camera->Update();
+
+	const float _deltaTime = TimerManager::GetInstance().GetDeltaTime();
+	camera->Update(_deltaTime);
+
+	window.setView(camera->GetView());
 
 	for (ShapeObject* _drawable : map->GetAllDrawables())
 	{
 		window.draw(*_drawable->GetDrawable());
 	}
-
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
 		window.draw(*_actor->GetDrawable());
