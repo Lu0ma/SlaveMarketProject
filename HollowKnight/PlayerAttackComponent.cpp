@@ -33,6 +33,20 @@ void PlayerAttackComponent::SpecialAttack()
 		}
 	}
 
+	const vector<Mob*>& _mobss = RetrieveAllMobsAround<Mob>(_ownerPosition, -45.0f);
+	for (Mob* _mob : _mobss)
+	{
+		if (!_mob) continue;
+
+		else
+		{
+			//_mob->GetLife()->TakeDamages(GetDamages());
+			_mob->GetLife()->SetLife(0);
+			_mob->Death();
+			Game::GetPlayer()->GetStats()->UseMana(1.0f);
+		}
+	}
+
 	const vector<Lift*>& _lifts = Game::GetMap()->GetAllLifts();
 	for (Lift* _lift : _lifts)
 	{

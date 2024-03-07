@@ -21,7 +21,7 @@ void MusicManager::Play(const string& _path)
 	if (_musicData)
 	{
 
-		_musicData->Play();
+		//_musicData->Play();
 	}
 }
 

@@ -4,11 +4,54 @@
 
 typedef Event::EventType ActionType;
 
+enum  GameControllerButtons 
+{
+	Cross = 1 ,
+	Circle,
+	Triangle,
+	Square,
+	L1,
+	R1,
+	L2,
+	R2,
+	LeftStick,
+	RightStick,
+};
+
+enum  GameControllerAxes 
+{
+	LeftStickX,
+	LeftStickY, 
+};
+
 struct InputData
 {
 	ActionType type;
 	int key;
+	function<void()> callback;
+	GameControllerButtons buttons;
+	GameControllerAxes axes;
+
+	InputData() = default;
+
+	InputData(ActionType _type, GameControllerButtons _buttons, function<void()> _callback)
+	{
+		type = _type;
+		buttons = _buttons;
+		callback = callback;
+	}
+	InputData(ActionType _type, int _key)
+	{
+		type = _type;
+		key = _key;
+	}
+	InputData(ActionType _type, GameControllerAxes _axes)
+	{
+		type = _type;
+		axes = _axes;
+	}
 };
+
 
 struct ActionData
 {
