@@ -31,7 +31,7 @@ Game::~Game()
 
 void Game::Start()
 {
-	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
+	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Hollow Knight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer(this, &Game::Init, seconds(1.0f), true, false);
 }
@@ -55,6 +55,8 @@ void Game::Update()
 		if (!InputManager::GetInstance().Update(window)) break;
 		map->GetDragon()->PlayMusic();
 		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
+		const float _deltaTime = TimerManager::GetInstance().GetDeltaTime();
+		camera->Update(_deltaTime);
 		ActorManager::GetInstance().Update();
 	}
 }
@@ -63,11 +65,9 @@ void Game::UpdateWindow()
 {
 	window.clear(); // Color(127, 127, 127, 0) gris
 
-	const float _deltaTime = TimerManager::GetInstance().GetDeltaTime();
-	camera->Update(_deltaTime);
+
 
 	window.setView(camera->GetView());
-
 	for (ShapeObject* _drawable : map->GetAllDrawables())
 	{
 		window.draw(*_drawable->GetDrawable());
