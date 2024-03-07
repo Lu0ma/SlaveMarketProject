@@ -63,18 +63,29 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Movements", {
-		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})/*,  InputData({ActionType::JoystickMoved, GameControllerAxes::LeftStickX})*/),
+		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
 		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
-		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }), InputData({ActionType::JoystickButtonPressed,GameControllerButtons::Cross, [&]() {
-			
-			if (Joystick::isButtonPressed(0, static_cast<unsigned int>(GameControllerButtons::Cross))) {
+
+		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space })),
+		ActionData("ControllerJump", [&]() { 
+			 
+			if (Joystick::isButtonPressed(0, 1)) { 
 				movement->Jump();
 			}
 			
-			}})),
-		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyPressed,Keyboard::LControl })/*, InputData({ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, static_cast<unsigned int>(GameControllerButtons::R2))})*/),
+			}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,1) })),
+
+		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyPressed,Keyboard::LControl })),
+		ActionData("ControllerDash", [&]() {
+
+			if (Joystick::isButtonPressed(0, 7)) {
+				movement->Dash();
+			}
+
+			}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,7) })),
+
 		ActionData("Sit", [&]() {
 			movement->SitDown();
 			attack->SetCanAttack(false);
@@ -87,7 +98,16 @@ void Player::SetupPlayerInput()
 
 	new ActionMap("Attack", {
 		ActionData("Special", [&]() { attack->SpecialAttack(); }, InputData({ActionType::MouseButtonPressed, Mouse::Left})),
+		ActionData("ControllerSpecial", [&]() {
+
+			if (Joystick::isButtonPressed(0, 0)) {
+				attack->SpecialAttack();
+			}
+
+			}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,0) })),
+
 		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "Right"); }, InputData({ ActionType::MouseButtonReleased, Mouse::Left })),
+
 	});
 
 	new ActionMap("Menu", {
