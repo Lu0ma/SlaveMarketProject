@@ -104,6 +104,7 @@
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="Grub.cpp" />
     <ClCompile Include="PatrolState.cpp" />
+    <ClCompile Include="ScrollBar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AchievementsMenu.h" />
@@ -212,5 +213,6 @@
     <ClInclude Include="Transition.h" />
     <ClInclude Include="Grub.h" />
     <ClInclude Include="PatrolState.h" />
+    <ClInclude Include="ScrollBar.h" />
   </ItemGroup>
 </Project>
