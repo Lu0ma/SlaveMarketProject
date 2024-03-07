@@ -4,7 +4,6 @@
 #include "ActorManager.h"
 #include "HUD.h"
 #include "Widget.h"
-
 #include "Spawner.h"
 
 //#define PATH_PLAYER "Player.png"
@@ -19,7 +18,7 @@ Game::Game()
 {
 	menu = new MainMenu();
 	map = new Map();
-	player = new Player("Player", ShapeData(Vector2f(0.0f, -300.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
+	player = new Player("Player", ShapeData(Vector2f(-1000.0f, -400.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	camera = new Camera(TARGET_WINDOW);
 } 
 
@@ -70,6 +69,7 @@ void Game::UpdateWindow()
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
 		window.draw(*_actor->GetDrawable());
+		//window.draw(*_actor->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable());
 	}
 	
 	View _view = window.getDefaultView();

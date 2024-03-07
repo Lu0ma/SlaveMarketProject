@@ -7,7 +7,7 @@
 #define PATH_DISCUSSION "UIs/Discussions/Dialog.png"
 #define FONT "Font.ttf"
 
-InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data)
+InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_NONE)
 {
 	canvas = new Canvas(STRING_ID("Interactable"));
 	isOpen = false;

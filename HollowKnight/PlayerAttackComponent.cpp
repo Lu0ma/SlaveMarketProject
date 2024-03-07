@@ -7,6 +7,7 @@
 
 PlayerAttackComponent::PlayerAttackComponent(Actor* _owner, const int _damages) : Component(_owner)
 {
+	canAttack = true;
 	damages = _damages;
 	range = 50.0f;
 	animation = owner->GetComponent<PlayerAnimationComponent>();

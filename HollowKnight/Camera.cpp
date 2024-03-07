@@ -13,8 +13,8 @@ Camera::Camera(const Target& _target)
 View Camera::FollowPlayer()
 {
 	const FloatRect& _rect = GetPlayerRect();
-	//view.setCenter(_rect.left, _rect.top);
-	view.setCenter(_rect.left, view.getCenter().y);
+	view.setCenter(_rect.left, _rect.top);
+	//view.setCenter(_rect.left, view.getCenter().y);
 	return view;
 }
 

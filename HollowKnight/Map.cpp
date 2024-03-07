@@ -2,7 +2,6 @@
 #include "Actor.h"
 #include "CollectableActor.h"
 #include "Lift.h"
-
 #include "Macro.h"
 #include "FileLoader.h"
 
@@ -17,7 +16,7 @@ Map::Map()
 {
 	dragon = new Dragon("Dragon", ShapeData(Vector2f(700.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
 	bench = new Bench(ShapeData(Vector2f(300.0f, 5.0f), Vector2f(176.0, 80.0f), PATH_BENCH));
-	pnj = new InteractableActor(STRING_ID("Villageois"), ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PNJ));
+	pnj = new InteractableActor(STRING_ID("Villageois"), ShapeData(Vector2f(-150.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PNJ));
 	merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_STAND));
 	background = nullptr;
 
@@ -90,7 +89,7 @@ void Map::InitPlateforms()
 	for (int _index = 0; _index < platformsData.size(); _index++)
 	{
 		ComputePlatformType(platformsData[_index].type, _size, _filePath);
-		Actor* _plateform = new Actor(STRING_ID("Plateform"), ShapeData(platformsData[_index].position, _size, _filePath));
+		Actor* _plateform = new Actor(STRING_ID("Plateform"), ShapeData(platformsData[_index].position, _size, _filePath), CT_BLOCK);
 		drawables.push_back(_plateform);
 	}
 }
@@ -111,8 +110,8 @@ void Map::Init()
 	drawables.push_back(barrack);
 
 	//TODO modify ?
-	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-150.0f, 49.5f), Vector2f(5550.0f, 10.0f), ""));
-	_ground->GetDrawable()->setFillColor(Color::Red);
+	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-150.0f, 49.5f), Vector2f(5550.0f, 10.0f), ""), CT_BLOCK);
+	//_ground->GetDrawable()->setFillColor(Color::Transparent);
 
 	new CollectableActor(STRING_ID("Vessel"), ShapeData(Vector2f(-250.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Vessels/Vessel_3.png"),
 		30.0f, "Vessel", "Le truc qui regen la mana", IT_VESSEL);

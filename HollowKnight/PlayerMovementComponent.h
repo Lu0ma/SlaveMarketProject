@@ -40,6 +40,8 @@ class PlayerMovementComponent : public MovementComponent
 	// Components
 	PlayerAnimationComponent* animation;
 
+	Actor* rayCastLine;
+
 public:
 	void SetDirectionX(const float _directionX, const string& _animName)
 	{
@@ -91,7 +93,8 @@ public:
 private:
 	bool CheckGround();
 	void Jump();
-
+	void TryToMove(const float _deltaTime);
+	
 public:
 	virtual void Update(const float _deltaTime) override;
 	void StartJump();

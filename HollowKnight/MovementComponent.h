@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include <SFML/Graphics.hpp>
+#include "CollisionComponent.h"
 #include <functional>
 #include <iostream>
 
@@ -15,6 +16,7 @@ protected:
 	float minRange;
 	Vector2f destination;
 	function<void()> callback;
+	CollisionComponent* collision;
 
 public:
 	void SetSpeed(const float _speed)
@@ -49,8 +51,8 @@ public:
 
 private:
 	void MoveToDestination(const float _deltaTime);
-
 public:
 	virtual void Update(const float _deltaTime) override;
 	bool IsAtPosition() const;
+
 };

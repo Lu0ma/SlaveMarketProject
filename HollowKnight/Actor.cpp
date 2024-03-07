@@ -3,13 +3,13 @@
 #include "Timer.h"
 #include "CollisionComponent.h"
 
-Actor::Actor(const string& _name, const ShapeData& _data)
+Actor::Actor(const string& _name, const ShapeData& _data, const CollisionType& _collisionType)
 		   : ShapeObject(_data), IManagable(_name)
 {
 	Register();
 	SetOriginAtMiddle(GetDrawable());
 
-	CollisionComponent* _collision = new CollisionComponent(this);
+	CollisionComponent* _collision = new CollisionComponent(this, _collisionType);
 	components.push_back(_collision);
 }
 

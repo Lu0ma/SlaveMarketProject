@@ -3,7 +3,7 @@
 
 #include "Game.h"
 
-Lift::Lift(const ShapeData& _data) : Actor(STRING_ID("Lift"), _data)
+Lift::Lift(const ShapeData& _data) : Actor(STRING_ID("Lift"), _data, CT_NONE)
 {
 	moveSpeed = 2.0f;
 	destinationUp = _data.position.y - 500.0f;

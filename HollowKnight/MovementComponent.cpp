@@ -9,6 +9,7 @@ MovementComponent::MovementComponent(Actor* _owner) : Component(_owner)
 	speed = 0.5f;
 	minRange = 0.5f;
 	destination = _owner->GetShapePosition();
+	collision = _owner->GetComponent<CollisionComponent>();
 }
 
 
@@ -41,8 +42,11 @@ bool MovementComponent::IsAtPosition() const
 	return Distance(owner->GetShapePosition(), destination) <= minRange;
 }
 
-
 void MovementComponent::Update(const float _deltaTime)
 {
 	MoveToDestination(_deltaTime);
+	if (collision->CheckCollision())
+	{
+		MoveToDestination(-_deltaTime);
+	}
 }

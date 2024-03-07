@@ -18,7 +18,7 @@
 #define PATH_ITEM2 "test.png"
 #define PATH_DEATHMOB "Animations/DeathMob.png"
 
-Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data)
+Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_OVERLAP)
 {
 	animation = new PlayerAnimationComponent(this);
 	components.push_back(animation);
@@ -38,9 +38,10 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	charmsMenu = new CharmsMenu();
 	pauseMenu = new PauseMenu();
 
-	collision = new CollisionComponent
-}
+	collision = new CollisionComponent(this, CT_OVERLAP);
+	components.push_back(collision);
 
+}
 
 void Player::InitAnimations()
 {
@@ -57,7 +58,7 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Movements", {
-		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right");  }, InputData({ActionType::KeyPressed, Keyboard::D})),
+		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
 		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
@@ -111,7 +112,6 @@ void Player::CloseAllMenus()
 	inventory->SetStatus(false);
 	interaction->StopInteract();
 }
-
 
 void Player::Init()
 {

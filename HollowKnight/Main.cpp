@@ -17,7 +17,7 @@ int main()
     Game _game;
     _game.Launch();
 
-    #pragma region EsterEgg
+   /* #pragma region EasterEgg
 
    sf::RenderWindow window(sf::VideoMode(1200, 800), "Olivier....", Style::Titlebar);
     sf::CircleShape shape(100.f);
@@ -47,7 +47,7 @@ int main()
         window.display();
     }
 
-    #pragma endregion
+    #pragma endregion*/
 
 	return 0;
 }

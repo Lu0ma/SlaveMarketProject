@@ -2,6 +2,7 @@
 #include "ShapeObject.h"
 #include "IManagable.h"
 #include "Component.h"
+#include "CollisionComponent.h"
 
 using namespace std;
 
@@ -9,7 +10,6 @@ class Actor : public ShapeObject, public IManagable<string>
 {
 protected:
 	vector<Component*> components;
-
 public:
 	template <typename T>
 	T* GetComponent() const
@@ -32,9 +32,8 @@ public:
 	{
 		return shape->getGlobalBounds();
 	}
-	
 public:
-	Actor(const string& _name, const ShapeData& _data);
+	Actor(const string& _name, const ShapeData& _data, const CollisionType& _collisionType = CT_NONE);
 	~Actor();
 
 protected:
