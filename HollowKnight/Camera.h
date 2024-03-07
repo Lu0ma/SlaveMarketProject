@@ -157,9 +157,5 @@ public:
 	//View MoveSlowlyLeft();
 	View Stop();
 	void Init();
-	//void Reset();
 	void ShakeCamera();
-private:
-
-	FloatRect GetPlayerRect();
 };

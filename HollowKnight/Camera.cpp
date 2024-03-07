@@ -71,7 +71,6 @@ void Camera::TargetPlayer(View& _view)
 	if (_view.getCenter() != _player->GetShapePosition())
 	{
 		_view.move(offset, 0.0f);
-		cout << "BlaBla " << endl;
 	}
 	const float _offset = _rectPlayer.left > 0.0f ? offset : -offset;
 	_view.setCenter(_rectPlayer.left + _offset, _rectPlayer.top);
@@ -224,17 +223,10 @@ void Camera::Update()
 	//}
 
 	_window.setView(_view);
-
-	Player* _player = Game::GetPlayer();
-
-
-
-	const float _distance = Distance(_player->GetPosition(), _view.getCenter().x);
 	if (_distance < _window.getDefaultView().getSize().x)
 	{
 		cout << "Tu as depasser les limites " << endl;
-		//_newView.setCenter(_window.getDefaultView(), _rectPlayer.top);
-		_view = View(GetCenter(), _view.getSize());
+		_view = View(_player->GetShapePosition(), _view.getSize());
 		// _newView.move(Vector2f(10.f, 0.0f));
 		_window.setView(_view);
 	}

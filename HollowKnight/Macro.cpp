@@ -21,9 +21,9 @@ float Distance(const Vector2f& _first, const Vector2f& _second)
 	return sqrtf(pow(_second.x - _first.x, 2.0f) + pow(_second.y - _first.y, 2.0f));
 }
 
-float Distance(const Vector2f& _first, const Vector2f& _second)
+float Distance(const float _first, const float _second)
 {
-	return sqrtf(pow(_second.x - _first.x, 2.0f) + pow(_second.y - _first.y, 2.0f));
+	return abs(_first - _second);
 }
 
 void SetOriginAtMiddle(Shape* _shape)

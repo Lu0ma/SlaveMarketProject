@@ -1,34 +1,28 @@
 ﻿  AchievementsMenu.cpp
-  Action.cpp
-  ActionMap.cpp
-  Actor.cpp
-  ActorManager.cpp
-  Animation.cpp
-  AnimationComponent.cpp
-  AttackState.cpp
-  AttackToChase.cpp
-  AttackToPatrol.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Audio.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Belfly.cpp
-  Bench.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Boofly.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Boss.cpp
-  BossBrain.cpp
-  Brain.cpp
-  Button.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Camera.cpp
-  Canvas.cpp
-  Generating Code...
-  Compiling...
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+D:\SlaveMarketProject\HollowKnight\Camera.cpp(62,11): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\SlaveMarketProject\HollowKnight\Camera.cpp(73,14): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\SlaveMarketProject\HollowKnight\Camera.cpp(76,41): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\SlaveMarketProject\HollowKnight\Camera.cpp(76,22): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+D:\SlaveMarketProject\HollowKnight\Camera.cpp(239,31): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
   CharmsMenu.cpp
-  ChaseState.cpp
-  ChaseToAttack.cpp
-  ChaseToPatrol.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   CollectableActor.cpp
-  CollisionComponent.cpp
-  Component.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   ControllerMenu.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   DeathMob.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
 D:\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4305: 'argument': truncation from 'unsigned __int64' to 'const T'
           with
           [
@@ -36,88 +30,62 @@ D:\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4305: 'argument
           ]
 D:\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4309: 'argument': truncation of constant value
   Dragon.cpp
-  DragonAnimationComponent.cpp
-  Enemy.cpp
-  EnemyBrain.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   ExtrasMenu.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   FalseKnight.cpp
-  FileLoader.cpp
-  FontData.cpp
-  FontManager.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Game.cpp
-  Grub.cpp
-  Generating Code...
-  Compiling...
-  HUD.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   HuskBully.cpp
-  InputManager.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   InteractableActor.cpp
-  InteractionComponent.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Inventory.cpp
-  Item.cpp
-  ItemWidget.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   KeyboardMenu.cpp
-  Kismet.cpp
-  Label.cpp
-  Lever.cpp
-  LeverAnimationComponent.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Lift.cpp
-  Macro.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Main.cpp
-  MainMenu.cpp
-  Map.cpp
-  Menu.cpp
-  MenuManager.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Generating Code...
   Compiling...
+  MainMenu.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Merchand.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
 D:\SlaveMarketProject\HollowKnight\Merchand.cpp(11,1): warning C4005: 'PATH_POINTER': macro redefinition
 D:\SlaveMarketProject\HollowKnight\Menu.h(10,1): message : see previous definition of 'PATH_POINTER'
-  MerchandAnimationComponent.cpp
   Mob.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   MobAttackComponent.cpp
-  MobBrain.cpp
-  MobLifeComponent.cpp
-  MobMovementComponent.cpp
-  MovementComponent.cpp
-  MusicData.cpp
-  MusicManager.cpp
-  NPCAnimationComponent.cpp
-  Object.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   OptionsMenu.cpp
-  PatrolState.cpp
-  PatrolToChase.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   PauseMenu.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Player.cpp
-  PlayerAnimationComponent.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   PlayerAttackComponent.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   PlayerInfo.cpp
-  Generating Code...
-  Compiling...
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   PlayerMovementComponent.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   PlayerStat.cpp
-  ProgressBar.cpp
-  ProgressLabel.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   PurchaseMenu.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   QuitGameMenu.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   QuitToMenu.cpp
-  ShapeObject.cpp
-  ShapeWidget.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   ShopMenu.cpp
-  SoundData.cpp
-  SoundManager.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Spawner.cpp
-  State.cpp
-  TextObject.cpp
-  TextureData.cpp
-  TextureManager.cpp
-  TextWidget.cpp
-  Timer.cpp
-  TimerManager.cpp
-  Generating Code...
-  Compiling...
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   TitleMenu.cpp
-  Transition.cpp
-  Widget.cpp
+D:\SlaveMarketProject\HollowKnight\Camera.h(94,12): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
   Generating Code...
   HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

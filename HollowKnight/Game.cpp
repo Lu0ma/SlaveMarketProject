@@ -61,8 +61,8 @@ void Game::Update()
 void Game::UpdateWindow()
 {
 	window.clear(); // Color(127, 127, 127, 0) gris
-	View _defaultView;
-	camera->CheckCameraState(_defaultView);
+	//View _defaultView;
+	camera->Update();
 
 	for (ShapeObject* _drawable : map->GetAllDrawables())
 	{
