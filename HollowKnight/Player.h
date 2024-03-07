@@ -8,6 +8,7 @@
 #include "PlayerAttackComponent.h"
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
+#include "CollisionComponent.h"
 
 using namespace std;
 

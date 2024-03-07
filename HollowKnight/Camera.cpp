@@ -1,241 +1,66 @@
-//#include "Camera.h"
-//#include "Game.h"
-//
-//Camera::Camera(const Target& _target)
-//{
-//	target = _target;
-//	const FloatRect& _rect = Game::GetPlayer()->GetDrawable()->getGlobalBounds();
-//	center = Vector2f(_rect.left, _rect.top);
-//	size = Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT);
-//	view = View(center, size * 1.25f);
-//}
-//
-//View Camera::FollowPlayer()
-//{
-//	const FloatRect& _rect = GetPlayerRect();
-//	view.setCenter(_rect.left, _rect.top);
-//	//view.setCenter(_rect.left, view.getCenter().y);
-//	return view;
-//}
-//
-//FloatRect Camera::GetPlayerRect()
-//{
-//	return Game::GetPlayer()->GetDrawable()->getGlobalBounds();
-//}
-//
-//void Camera::CheckCameraState(View& _newView)
-//{
-//	RenderWindow& _window = Game::GetWindow();
-//	if (GetTargetStat() == TARGET_PLAYER)
-//	{
-//		_newView = FollowPlayer();
-//		_window.setView(_newView);
-//	}
-//
-//	else if (GetTargetStat() == TARGET_WINDOW)
-//	{
-//		_newView = _window.getDefaultView();
-//		_window.setView(_newView);
-//	}
-//}
 #include "Camera.h"
 #include "Game.h"
-#include "Timer.h"
-#include "Macro.h"
-#include <functional>
+#include "ShapeWidget.h"
 
-
-FloatRect Camera::GetPlayerRect()
+Camera::Camera()
 {
-	return Game::GetPlayer()->GetDrawable()->getGlobalBounds();
-}
-
-Camera::Camera(const Target& _target)
-{
-	const RenderWindow& _window = Game::GetWindow();
-	target = _target;
-	center = Vector2f(static_cast<Vector2f>(_window.getPosition()));
-	size = Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT);
-	//view = View(center, size);
-	//invisibleView = View(center, size);
-	//invisibleView = View(view.getCenter() + Vector2f(50.0, 0.0f) , Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
-	offset = 10.0f;
-	damp = 500.0f;
-	defaultView = View(center, size);
-}
-
-void Camera::TargetPlayer(View& _view)
-{
-	const FloatRect& _rectPlayer = GetPlayerRect();
-	Player* _player = Game::GetPlayer();
-	if (_view.getCenter() != _player->GetShapePosition())
-	{
-		_view.move(offset, 0.0f);
-	}
-	const float _offset = _rectPlayer.left > 0.0f ? offset : -offset;
-	_view.setCenter(_rectPlayer.left + _offset, _rectPlayer.top);
+	speed = 0.5f;
+	damp = 100.0f;
+	targetPosition = Vector2f();
+	offset = Vector2f(damp * 0.75f, 0.0f);
+	view = View();
 }
 
 
+void Camera::MoveToTarget(const float _deltaTime)
+{
+	float _distance;
+	if (IsAtDestination(_distance)) return;
 
-//View Camera::MoveSlowly()
-//{
-//	Vector2f _currentView = view.getCenter();
-//	const FloatRect& _rectPlayer = GetPlayerRect();
-//	Player* _player = Game::GetPlayer();
-//
-//	Vector2f _lastPositionPlayer = _player->GetLastPosition();
-//	_lastPositionPlayer.x;
-//
-//	//if(_lastPositionPlayer.x < view.getCenter().x + 10)
-//	//{
-//	//	// view.move(-1.0f, 0.0f);
-//	//}
-//	//else if (_lastPositionPlayer.x > view.getCenter().x)
-//	//{
-//	//	view.move(3.0f, 0.0f);
-//	//}
-//	//if (view.getCenter().x <= _player->GetShapePosition().x)
-//	//{
-//	//}
-//	if (view.getCenter().x >= invisibleView.getCenter().x + 300)
-//	{
-//		cout << "detecter" << endl;
-//		return view;
-//	}
-//		view.move(3.0f, 0.0f);
-//		return view;
-//
-//	//else if (view.getCenter().x >= _player->GetShapePosition().x)
-//	//{
-//	//	view.move(-3.0f, 0.0f);
-//	//	return view;
-//	//}
-//
-//}
+	Vector2f _direction = targetPosition - view.getCenter();
+	Normalize(_direction);
+	view.move(_direction * speed * _deltaTime * abs(_distance * 0.01f));
+}
 
-//View Camera::MoveSlowlyLeft()
-//{
-//	Vector2f _currentView = view.getCenter();
-//	const FloatRect& _rectPlayer = GetPlayerRect();
-//	Player* _player = Game::GetPlayer();
-//
-//	Vector2f _lastPositionPlayer = _player->GetLastPosition();
-//	_lastPositionPlayer.x;
-//
-//	//if(_lastPositionPlayer.x < view.getCenter().x + 10)
-//	//{
-//	//	// view.move(-1.0f, 0.0f);
-//	//}
-//	//else if (_lastPositionPlayer.x > view.getCenter().x)
-//	//{
-//	//	view.move(3.0f, 0.0f);
-//	//}
-//	if (view.getCenter().x <= _player->GetShapePosition().x)
-//	{
-//		view.move(-3.0f, 0.0f);
-//		return view;
-//	}
-//	//else if (view.getCenter().x >= _player->GetShapePosition().x)
-//	//{
-//	//	view.move(-3.0f, 0.0f);
-//	//	return view;
-//	//}
-//
-//}
+bool Camera::IsAtDestination(float& _distance)
+{
+	_distance = Distance(view.getCenter().x, targetPosition.x);
 
-//View Camera::Stop()
-//{
-//}
+	return Distance(view.getCenter().x, targetPosition.x) <= 10.0f;
+}
+
 
 void Camera::Init()
 {
-	Vector2f _size = Game::GetWindowSize();
-	ShapeWidget* _ligneMiddle = new ShapeWidget(ShapeData(_size / 2.0f + Vector2f(50.0f, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
-	ShapeWidget* _ligneRight = new ShapeWidget(ShapeData(_size / 2.0f + Vector2f(150.0f, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
-	ShapeWidget* _ligneLeft = new ShapeWidget(ShapeData(_size / 2.0f + Vector2f(-50.0f, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
+	const Vector2f& _halfWindowSize = Game::GetWindowSize() / 2.0f;
 	Canvas* _canvas = new Canvas("Camera");
-	_canvas->AddWidget(_ligneMiddle);
-	_canvas->AddWidget(_ligneRight);
+
+	ShapeWidget* _ligneLeft = new ShapeWidget(ShapeData(_halfWindowSize + Vector2f(-damp, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
+	_ligneLeft->GetDrawable()->setFillColor(Color::Magenta);
 	_canvas->AddWidget(_ligneLeft);
+
+	ShapeWidget* _ligneMiddle = new ShapeWidget(ShapeData(_halfWindowSize, Vector2f(1, SCREEN_HEIGHT)));
+	_ligneMiddle->GetDrawable()->setFillColor(Color::Red);
+	_canvas->AddWidget(_ligneMiddle);
+
+	ShapeWidget* _ligneRight = new ShapeWidget(ShapeData(_halfWindowSize + Vector2f(damp, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
+	_ligneRight->GetDrawable()->setFillColor(Color::Magenta);
+	_canvas->AddWidget(_ligneRight);
 }
 
-//void Camera::Reset()
-//{
-//	view.reset(FloatRect(center, size));
-//}
-
-
-void Camera::Update()
+void Camera::Update(const float _deltaTime)
 {
-	RenderWindow& _window = Game::GetWindow();
-	View _view = _window.getView();
-	View _windowView = _window.getView();
 	Player* _player = Game::GetPlayer();
+	View _view = GetView();
+	const float _distance = Distance(_player->GetShapePosition().x, view.getCenter().x);
+	const float _newScaleX = Game::GetPlayer()->GetDrawable()->getScale().x;
 
-	//if (GetTargetStat() == TARGET_PLAYER)
-	//{
-	//	//_newView = TargetPlayer();
-	//	//_window.setView(_newView);
-	//
-	//	if (_player->GetDirection() == D_RIGHT)
-	//	{
-	//		const FloatRect& _rectPlayer = GetPlayerRect();
-
-	//		 _newView = MoveSlowly();
-	//		 _window.setView(_newView);
-	//	}
-	//	else if (_player->GetDirection() == D_LEFT)
-	//	{
-	//		_newView = MoveSlowlyLeft();
-	// 		_window.setView(_newView);
-	//	}
-	//	else if (_player->GetDirection() == D_NONE)
-	//	{
-	// 		_newView = TargetPlayer();
-	//		_newView = Stop();
-	// 		_window.setView(_newView);
-	//		//Reset();
-	//	}
-
-	//}
-	//else if (GetTargetStat() == TARGET_WINDOW)
-	//{
-	//	_newView = _window.getDefaultView();
-	//	_window.setView(_newView);
-	//}
-
-	const float _centerX = _view.getCenter().x;
-	// const float _centerX = _view.getTransform().transformRect(GetPlayerRect()).getPosition().x;
-	const float _distance = Distance(_player->GetShapePosition().x, _centerX);
-	if (_distance > damp)
+	if (_distance > damp || oldScaleX != _newScaleX)
 	{
-		//cout << _distance << endl;
-		cout << _player->GetShapePosition().x << endl;
-		//_newView = View(_player->GetShapePosition() + Vector2f(_player->GetComponent<PlayerMovementComponent>()->GetDirection().x * 10.0f, 0.0f) , view.getSize());
-
-		TargetPlayer(_view);
+		const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offset.x : -offset.x;
+		targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, offset.y));
+		oldScaleX = _newScaleX;
 	}
-	//else
-	//{
-	//	_newView = _window.getDefaultView();
-	//	_window.setView(_newView);
-	//}
 
-	_window.setView(_view);
-	if (_distance < _window.getDefaultView().getSize().x)
-	{
-		cout << "Tu as depasser les limites " << endl;
-		_view = View(_player->GetShapePosition(), _view.getSize());
-		// _newView.move(Vector2f(10.f, 0.0f));
-		_window.setView(_view);
-	}
+	MoveToTarget(_deltaTime);
 }
-
-void Camera::ShakeCamera(float _trauma, float _duration)
-{
-	animation.max = milliseconds(_duration);
-	animation.current = seconds(0);
-	animation.trauma += _trauma;
-}
-

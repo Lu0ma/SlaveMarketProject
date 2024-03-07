@@ -7,6 +7,4 @@ MovementComponent::MovementComponent(Actor* _owner) : Component(_owner)
 {
 	canMove = true;
 	speed = 0.5f;
-	gravity = 0.3f;
-	animation = nullptr;
 }

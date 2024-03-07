@@ -17,9 +17,12 @@ class PlayerMovementComponent : public MovementComponent
 
 	// Jump
 	bool isJumping;
+	bool canIncreaseJump;
 	float jumpForce;
 	float jumpDuration;
+	float jumpDurationFactor;
 	float gravity;
+	Timer* jumpTimer;
 
 	// Dash
 	bool canDash;
@@ -46,6 +49,8 @@ public:
 
 		if (_directionX == 0.0f)
 		{
+			cout << owner->GetDrawable()->getScale().x << endl;
+
 			if (owner->GetDrawable()->getScale().x >= 0.0f)
 			{
 				dashDirection = 1.0f;
@@ -87,10 +92,12 @@ public:
 
 private:
 	bool CheckGround();
+	void Jump(const float _deltaTime);
 
 public:
 	virtual void Update(const float _deltaTime) override;
-	void Jump();
+	void StartJump();
+	void StopJump();
 	void Dash();
 	void SitDown();
 	void StandUp();

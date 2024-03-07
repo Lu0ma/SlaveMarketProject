@@ -39,12 +39,9 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	charmsMenu = new CharmsMenu();
 	pauseMenu = new PauseMenu();
 
-	//components.push_back(stats);
-
 	light = new CircleShape(55.0f);
 	light->setFillColor(Color(255, 255, 255, 20)); 
 	light->setOrigin(100.0f, 100.0f);
-
 }
 
 
@@ -63,11 +60,12 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Movements", {
-		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
+		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right");  }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
 		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
-		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space })),
+		ActionData("Jump", [&]() { movement->StartJump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space })),
+		ActionData("StopJump", [&]() { movement->StopJump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
 		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyPressed, Keyboard::LControl })),
 		ActionData("Sit", [&]() {
 			movement->SitDown();

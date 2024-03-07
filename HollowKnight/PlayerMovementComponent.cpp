@@ -23,9 +23,12 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 	// Jump
 	isJumping = false;
-	jumpForce = 0.65f;
-	jumpDuration = 0.45f;
-	gravity = 0.66f;
+	canIncreaseJump = false;
+	jumpForce = 0.5f;
+	jumpDuration = 0.2f;
+	jumpDurationFactor = 0.75f;
+	gravity = 0.6f;
+	jumpTimer = nullptr;
 
 	// Dash
 	canDash = true;
@@ -58,6 +61,8 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 {
 	if (!canMove) return;
 
+	Jump(_deltaTime);
+
 	// Déplacement par défaut
 	const float _finalSpeed = isSprinting ? sprintSpeed : speed;
 	Vector2f _offset;
@@ -68,7 +73,6 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	{
 		// Application de la gravité
 		_offset = direction + Vector2f(0.0f, 1.0f);
-		Normalize(_offset);
 		_offset *= gravity * _deltaTime;
 	}
 
@@ -105,13 +109,27 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	owner->GetDrawable()->move(_offset);
 }
 
-void PlayerMovementComponent::Jump()
+void PlayerMovementComponent::StartJump()
 {
-	if (!canMove || !isOnGround || isJumping) return;
+	if (!canMove || isJumping || !isOnGround) return;
 
+	cout << "StartJump" << endl;
 	isJumping = true;
-	new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
+	canIncreaseJump = true;
+
 	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
+	jumpTimer = new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
+}
+
+void PlayerMovementComponent::Jump(const float _deltaTime)
+{
+	if (!canIncreaseJump) return;
+	jumpTimer->AddDuration(jumpDurationFactor * _deltaTime);
+}
+
+void PlayerMovementComponent::StopJump()
+{
+	canIncreaseJump = false;
 }
 
 void PlayerMovementComponent::Dash()
