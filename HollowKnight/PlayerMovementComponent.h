@@ -51,6 +51,8 @@ public:
 
 		if (_directionX == 0.0f)
 		{
+			cout << owner->GetDrawable()->getScale().x << endl;
+
 			if (owner->GetDrawable()->getScale().x >= 0.0f)
 			{
 				dashDirection = 1.0f;
@@ -92,9 +94,8 @@ public:
 
 private:
 	bool CheckGround();
-	void Jump();
-	void TryToMove(const float _deltaTime);
-	
+	void Jump(const float _deltaTime);
+
 public:
 	virtual void Update(const float _deltaTime) override;
 	void StartJump();

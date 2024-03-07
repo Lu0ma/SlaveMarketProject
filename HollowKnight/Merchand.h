@@ -2,6 +2,7 @@
 #include "InteractableActor.h"
 #include "ShopMenu.h"
 #include "MerchandAnimationComponent.h"
+#include"HUD.h"
 
 class Merchand : public InteractableActor
 {

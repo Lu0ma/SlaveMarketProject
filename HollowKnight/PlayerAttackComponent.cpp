@@ -1,7 +1,8 @@
 #include "PlayerAttackComponent.h"
 #include "Game.h"
 #include "Lift.h"
-#include "Enemy.h"
+#include "Mob.h"
+#include "Grub.h"
 #include "Macro.h"
 #include"Game.h"
 
@@ -16,17 +17,19 @@ PlayerAttackComponent::PlayerAttackComponent(Actor* _owner, const int _damages) 
 
 void PlayerAttackComponent::SpecialAttack()
 {
-	if (!canAttack) return;
+	//if (!canAttack) return;
 
 	const Vector2f& _ownerPosition = owner->GetShapePosition();
-	const vector<Enemy*>& _mobs = RetrieveAllMobsAround<Enemy>(_ownerPosition, 15.0f);
-	for (Enemy* _mob : _mobs)
+	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(_ownerPosition, 45.0f);
+	for (Mob* _mob : _mobs)
 	{
 		if (!_mob) continue;
 		
 		else
 		{
-			_mob->GetLife()->TakeDamages(GetDamages());
+			//_mob->GetLife()->TakeDamages(GetDamages());
+			_mob->GetLife()->SetLife(0);
+			_mob->Death();
 			Game::GetPlayer()->GetStats()->UseMana(1.0f);
 		}
 	}
@@ -36,6 +39,17 @@ void PlayerAttackComponent::SpecialAttack()
 	{
 		_lift->Interact();
 	}
+	const vector<Grub*>& _grubs = RetrieveAllMobsAround<Grub>(_ownerPosition, 45.0f);
+	for (Grub* _grub : _grubs)
+	{
+		if (!_grub) continue;
+
+		else
+		{
+			Map::GetGrub()->GetCurrentAnimation()->RunAnimation("Escape", -1);
+		}
+	}
+
 
 	animation->GetCurrentAnimation()->RunAnimation("Special", owner->GetDrawable()->getScale().x);
 }

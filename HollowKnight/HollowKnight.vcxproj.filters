@@ -1,771 +1,216 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Fichiers sources">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Fichiers de ressources">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Fichiers de ressources\Macros">
-      <UniqueIdentifier>{3b70fdc2-533f-4071-b107-a38247ad5d7f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers de ressources\Kismet">
-      <UniqueIdentifier>{b2e88baa-88e0-498c-8e14-d42122b374fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components">
-      <UniqueIdentifier>{3291a3c2-c0e0-4ae8-bad8-09178d0ea0ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects">
-      <UniqueIdentifier>{d18e7fd2-a1d8-42ea-a9d2-bda89f9dd455}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\TextObjects">
-      <UniqueIdentifier>{0fdc9212-805c-4b6d-8960-600015a50621}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects">
-      <UniqueIdentifier>{11c1311d-247d-409b-bfae-7c4c6a2b9b64}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors">
-      <UniqueIdentifier>{0ff71419-aed1-41d5-b9bd-f7f970a96171}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers">
-      <UniqueIdentifier>{7d016800-8e5c-45da-94b5-bcf853d6ffb9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\Inputs">
-      <UniqueIdentifier>{bdf0566b-9dc1-4694-90a1-5ab1008e54b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\Fonts">
-      <UniqueIdentifier>{7265aa95-e0b8-4754-a3e4-2a4558a38fbb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\Actors">
-      <UniqueIdentifier>{de9d6cf3-4b3a-40e8-ab5f-11417969c3bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\Textures">
-      <UniqueIdentifier>{3cc47af8-9f44-4fd5-99a0-8a9f37ccc23b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\Timers">
-      <UniqueIdentifier>{ff0e07d0-27db-4be3-be26-5d773cf54f56}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UIs">
-      <UniqueIdentifier>{65c358c9-7301-4333-879f-06cb406d9e68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UIs\Widgets">
-      <UniqueIdentifier>{7b6df82d-60f1-49e3-a0c8-421822c0e2c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UIs\Widgets\TextWidgets">
-      <UniqueIdentifier>{eb09ccc3-94eb-43c3-85b3-af6515ffdbbe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UIs\Widgets\ShapeWidgets">
-      <UniqueIdentifier>{bb2363d5-d2ad-41fb-a0a1-69da9cc51dd6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UIs\Widgets\ShapeWidgets\Buttons">
-      <UniqueIdentifier>{c5bc071c-a7a8-4a42-ba85-9245d1780b29}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UIs\Widgets\ShapeWidgets\ProgressBars">
-      <UniqueIdentifier>{9f2ea531-c1fc-4bc2-9244-877e426c0aec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UIs\Widgets\ShapeWidgets\Labels">
-      <UniqueIdentifier>{e4f31552-37cf-44a8-a60c-d7e4902d2bc8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UIs\Canvas">
-      <UniqueIdentifier>{03190bf5-bbd5-4671-8dac-20ba49f692c8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Games">
-      <UniqueIdentifier>{1cfa9301-bc39-4e55-9a1e-6e9c5ce7adfd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Movement">
-      <UniqueIdentifier>{51a7a8f9-3dc1-48ca-8574-2d01ac573be2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\Inventory">
-      <UniqueIdentifier>{53bbd895-9d03-4743-81a3-5c00db2049c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UIs\Widgets\ShapeWidgets\Items">
-      <UniqueIdentifier>{56eb58f9-0645-4860-921e-d705ae9e8764}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus">
-      <UniqueIdentifier>{58031b06-6ac4-444a-9216-52110532dbd8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Player">
-      <UniqueIdentifier>{89aee257-6703-436a-94cf-1c74b7b0af88}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Collision">
-      <UniqueIdentifier>{3f089dda-207d-4d08-a9db-06793e761f8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\Music">
-      <UniqueIdentifier>{389b7583-21d9-4df8-aeee-2f82172d46ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\Sound">
-      <UniqueIdentifier>{b7758773-b234-4569-905d-7a3bf021e39d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Mobs">
-      <UniqueIdentifier>{03b12366-449a-4d98-8f02-adb3ade85d29}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Mobs\Belfly">
-      <UniqueIdentifier>{9ff6fbc8-1d14-4057-bfdd-6fdd8010d483}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Mobs\Boofly">
-      <UniqueIdentifier>{1ec1f361-cbfd-4bed-8838-1b3f1262f497}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Mobs\HuskBully">
-      <UniqueIdentifier>{6073deba-f744-4215-b668-d7756e158c2f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Interactables">
-      <UniqueIdentifier>{dec09a47-bff5-43f1-bc40-855022f78594}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Cameras">
-      <UniqueIdentifier>{299a1cdf-79e8-467b-a277-74c49aeb0dfa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Spawner">
-      <UniqueIdentifier>{3b9d0632-28e4-47e5-ae3a-2ff66f4dcaee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Maps">
-      <UniqueIdentifier>{0acf75b2-8a61-43a2-9a7f-58bb1991c7a7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers de ressources\FileLoader">
-      <UniqueIdentifier>{0e5d0c03-b63f-44c3-9ead-1ec1a0039f2c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\Charms">
-      <UniqueIdentifier>{27640059-3a16-43e1-871b-f98d6628656c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Bench">
-      <UniqueIdentifier>{ca00970b-1f77-4e0e-8b16-5535de072a96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Mobs\DeathMob">
-      <UniqueIdentifier>{bed64d59-cf8f-4a8c-a752-c920004a7ade}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Interaction">
-      <UniqueIdentifier>{3225fdeb-e7a9-42da-8519-0d62a9e89aad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Attack">
-      <UniqueIdentifier>{8cb7d844-31b3-4fe2-b16c-e493927c78a7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Movement\Player">
-      <UniqueIdentifier>{7b00bb23-9a83-48ca-933a-2bd082f363af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Attack\Mob">
-      <UniqueIdentifier>{1e3cd31c-2cd7-4c6d-b79d-59e1213ee00e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Life">
-      <UniqueIdentifier>{6e0d3714-c776-4b6b-8b93-384411cd869c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Life\Player">
-      <UniqueIdentifier>{8d99e0cb-dbad-4243-a67a-20fece2971be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Life\Mob">
-      <UniqueIdentifier>{967fb2e5-518c-4920-8618-1205cf29bdb5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Attack\Player">
-      <UniqueIdentifier>{f618356d-8ecc-4588-a40f-a3a2ab95a440}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\UIs">
-      <UniqueIdentifier>{f79bc5c9-5c49-46d4-a171-039bc081c33a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Collectables">
-      <UniqueIdentifier>{dcbb7092-5f1c-49a0-bd1b-8799b29a5688}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Lift">
-      <UniqueIdentifier>{6da06ae4-f2b5-4d28-9bc3-bebce02afba4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Boss">
-      <UniqueIdentifier>{da02973d-de1c-40da-88e2-55e6bea5f75c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Boss\FalseKnight">
-      <UniqueIdentifier>{8ddb3033-574c-4c24-946c-e91d0e2f47c8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\MainMenu">
-      <UniqueIdentifier>{c3ab491c-dc2f-40e4-a1aa-f3abab5f56b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\TitleMenu">
-      <UniqueIdentifier>{1b5a3670-d415-4d5d-bb57-1abe056be83d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\OptionsMenu">
-      <UniqueIdentifier>{fcf986cf-b9d9-4a7c-887e-bda1e60eabff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\ExtrasMenu">
-      <UniqueIdentifier>{cd58e658-e6f5-494d-b992-835990dfb474}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\AchievementsMenu">
-      <UniqueIdentifier>{e41bcd9c-f187-444f-ae2d-b8c9949d9de8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Interactables\Merchands">
-      <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\OptionsMenu\ControllerMenu">
-      <UniqueIdentifier>{cd151a25-72b1-4ac2-9ec5-f1a7dfe2d182}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\OptionsMenu\KeyboardMenu">
-      <UniqueIdentifier>{64ebf8be-8954-4921-9dec-61b4f4bf39fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\ShopMenu">
-      <UniqueIdentifier>{df12e13b-952e-4691-83cb-0fea061fc6b7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\PurchaseMenu">
-      <UniqueIdentifier>{1c4bc7c7-9679-423d-bc49-b298068d7193}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\QuitGameMenu">
-      <UniqueIdentifier>{d81b3d8e-d113-47cd-a3ac-eddfe33ff5c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\PauseMenu">
-      <UniqueIdentifier>{8624f0cd-92f6-41a5-bf4f-114bed85cede}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menus\QuitToMenu">
-      <UniqueIdentifier>{36b16e0c-71d4-40c7-bed2-b74af690d0ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Managers\Menus">
-      <UniqueIdentifier>{1f8871bc-6e5d-4198-b682-344ab9d98194}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UIs\Widgets\ShapeWidgets\Labels\ProgressLabel">
-      <UniqueIdentifier>{93c075fb-ca08-48ea-86ff-ee2dc19fa82f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Animations">
-      <UniqueIdentifier>{97c513f2-fcdc-4723-bbee-b77632454dda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Animations\Player">
-      <UniqueIdentifier>{2d3f0cd4-362d-4210-b47c-2a10c5c54932}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="AchievementsMenu.cpp" />
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="ActionMap.cpp" />
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="ActorManager.cpp" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="Audio.cpp" />
+    <ClCompile Include="Belfly.cpp" />
+    <ClCompile Include="Bench.cpp" />
+    <ClCompile Include="Boofly.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="CharmsMenu.cpp" />
+    <ClCompile Include="CollectableActor.cpp" />
+    <ClCompile Include="CollisionComponent.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ControllerMenu.cpp" />
+    <ClCompile Include="DeathMob.cpp" />
+    <ClCompile Include="Dragon.cpp" />
+    <ClCompile Include="DragonAnimationComponent.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="ExtrasMenu.cpp" />
+    <ClCompile Include="FalseKnight.cpp" />
+    <ClCompile Include="FileLoader.cpp" />
+    <ClCompile Include="FontData.cpp" />
+    <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="HuskBully.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="InteractableActor.cpp" />
+    <ClCompile Include="InteractionComponent.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemWidget.cpp" />
+    <ClCompile Include="KeyboardMenu.cpp" />
+    <ClCompile Include="Kismet.cpp" />
+    <ClCompile Include="Label.cpp" />
+    <ClCompile Include="Lever.cpp" />
+    <ClCompile Include="LeverAnimationComponent.cpp" />
+    <ClCompile Include="Lift.cpp" />
+    <ClCompile Include="Macro.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuManager.cpp" />
+    <ClCompile Include="Merchand.cpp" />
+    <ClCompile Include="MerchandAnimationComponent.cpp" />
+    <ClCompile Include="Mob.cpp" />
+    <ClCompile Include="MobAttackComponent.cpp" />
+    <ClCompile Include="MobLifeComponent.cpp" />
+    <ClCompile Include="MovementComponent.cpp" />
+    <ClCompile Include="MusicData.cpp" />
+    <ClCompile Include="MusicManager.cpp" />
+    <ClCompile Include="NPCAnimationComponent.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="OptionsMenu.cpp" />
+    <ClCompile Include="PauseMenu.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerAnimationComponent.cpp" />
+    <ClCompile Include="PlayerAttackComponent.cpp" />
+    <ClCompile Include="PlayerInfo.cpp" />
+    <ClCompile Include="PlayerMovementComponent.cpp" />
+    <ClCompile Include="PlayerStat.cpp" />
+    <ClCompile Include="ProgressBar.cpp" />
+    <ClCompile Include="ProgressLabel.cpp" />
+    <ClCompile Include="PurchaseMenu.cpp" />
+    <ClCompile Include="QuitGameMenu.cpp" />
+    <ClCompile Include="QuitToMenu.cpp" />
+    <ClCompile Include="ShapeObject.cpp" />
+    <ClCompile Include="ShapeWidget.cpp" />
+    <ClCompile Include="ShopMenu.cpp" />
+    <ClCompile Include="SoundData.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="Spawner.cpp" />
+    <ClCompile Include="TextObject.cpp" />
+    <ClCompile Include="TextureData.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="TextWidget.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TimerManager.cpp" />
+    <ClCompile Include="TitleMenu.cpp" />
+    <ClCompile Include="Widget.cpp" />
+    <ClCompile Include="MobBrain.cpp" />
+    <ClCompile Include="BossBrain.cpp" />
+    <ClCompile Include="MobMovementComponent.cpp" />
+    <ClCompile Include="Brain.cpp" />
+    <ClCompile Include="EnemyBrain.cpp" />
+    <ClCompile Include="AttackState.cpp" />
+    <ClCompile Include="AttackToChase.cpp" />
+    <ClCompile Include="AttackToPatrol.cpp" />
+    <ClCompile Include="ChaseState.cpp" />
+    <ClCompile Include="ChaseToAttack.cpp" />
+    <ClCompile Include="ChaseToPatrol.cpp" />
+    <ClCompile Include="PatrolToChase.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="Transition.cpp" />
+    <ClCompile Include="Grub.cpp" />
+    <ClCompile Include="PatrolState.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Action.cpp">
-      <Filter>Managers\Inputs</Filter>
-    </ClCompile>
-    <ClCompile Include="ActionMap.cpp">
-      <Filter>Managers\Inputs</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorManager.cpp">
-      <Filter>Managers\Actors</Filter>
-    </ClCompile>
-    <ClCompile Include="FontData.cpp">
-      <Filter>Managers\Fonts</Filter>
-    </ClCompile>
-    <ClCompile Include="FontManager.cpp">
-      <Filter>Managers\Fonts</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>UIs\Widgets\ShapeWidgets\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="Canvas.cpp">
-      <Filter>UIs\Canvas</Filter>
-    </ClCompile>
-    <ClCompile Include="Macro.cpp">
-      <Filter>Fichiers de ressources\Macros</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Objects\ShapeObjects\Actors</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Kismet.cpp">
-      <Filter>Fichiers de ressources\Kismet</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Managers\Inputs</Filter>
-    </ClCompile>
-    <ClCompile Include="ProgressBar.cpp">
-      <Filter>UIs\Widgets\ShapeWidgets\ProgressBars</Filter>
-    </ClCompile>
-    <ClCompile Include="Label.cpp">
-      <Filter>UIs\Widgets\ShapeWidgets\Labels</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureData.cpp">
-      <Filter>Managers\Textures</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
-      <Filter>Managers\Textures</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Managers\Timers</Filter>
-    </ClCompile>
-    <ClCompile Include="TimerManager.cpp">
-      <Filter>Managers\Timers</Filter>
-    </ClCompile>
-    <ClCompile Include="Widget.cpp">
-      <Filter>UIs\Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="TextWidget.cpp">
-      <Filter>UIs\Widgets\TextWidgets</Filter>
-    </ClCompile>
-    <ClCompile Include="TextObject.cpp">
-      <Filter>Objects\TextObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeObject.cpp">
-      <Filter>Objects\ShapeObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Games</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeWidget.cpp">
-      <Filter>UIs\Widgets\ShapeWidgets</Filter>
-    </ClCompile>
-    <ClCompile Include="MovementComponent.cpp">
-      <Filter>Components\Movement</Filter>
-    </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <Filter>Managers\Inventory</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Managers\Inventory</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemWidget.cpp">
-      <Filter>UIs\Widgets\ShapeWidgets\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Mob.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
-    </ClCompile>
-    <ClCompile Include="Merchand.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\Merchands</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionComponent.cpp">
-      <Filter>Components\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundData.cpp">
-      <Filter>Managers\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundManager.cpp">
-      <Filter>Managers\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="MusicData.cpp">
-      <Filter>Managers\Music</Filter>
-    </ClCompile>
-    <ClCompile Include="MusicManager.cpp">
-      <Filter>Managers\Music</Filter>
-    </ClCompile>
-    <ClCompile Include="Belfly.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\Belfly</Filter>
-    </ClCompile>
-    <ClCompile Include="Boofly.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\Boofly</Filter>
-    </ClCompile>
-    <ClCompile Include="HuskBully.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\HuskBully</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimationComponent.cpp">
-      <Filter>Components\Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Components\Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="InteractableActor.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="Spawner.cpp">
-      <Filter>Spawner</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Maps</Filter>
-    </ClCompile>
-    <ClCompile Include="FileLoader.cpp">
-      <Filter>Fichiers de ressources\FileLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="CharmsMenu.cpp">
-      <Filter>Managers\Charms</Filter>
-    </ClCompile>
-    <ClCompile Include="Bench.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Bench</Filter>
-    </ClCompile>
-    <ClCompile Include="DeathMob.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
-    </ClCompile>
-    <ClCompile Include="InteractionComponent.cpp">
-      <Filter>Components\Interaction</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerMovementComponent.cpp">
-      <Filter>Components\Movement\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerAnimationComponent.cpp">
-      <Filter>Components\Animations\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="MobAttackComponent.cpp">
-      <Filter>Components\Attack\Mob</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerStat.cpp">
-      <Filter>Components\Life\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="MobLifeComponent.cpp">
-      <Filter>Components\Life\Mob</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerAttackComponent.cpp">
-      <Filter>Components\Attack\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="HUD.cpp">
-      <Filter>Managers\UIs</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Spawner</Filter>
-    </ClCompile>
-    <ClCompile Include="CollectableActor.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Collectables</Filter>
-    </ClCompile>
-    <ClCompile Include="Lift.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Lift</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="FalseKnight.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Boss\FalseKnight</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Menus\MainMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleMenu.cpp">
-      <Filter>Menus\TitleMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="OptionsMenu.cpp">
-      <Filter>Menus\OptionsMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="ExtrasMenu.cpp">
-      <Filter>Menus\ExtrasMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="AchievementsMenu.cpp">
-      <Filter>Menus\AchievementsMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="Dragon.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerInfo.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Lever.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyboardMenu.cpp">
-      <Filter>Menus\OptionsMenu\KeyboardMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="ControllerMenu.cpp">
-      <Filter>Menus\OptionsMenu\ControllerMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="ShopMenu.cpp">
-      <Filter>Menus\ShopMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="PurchaseMenu.cpp">
-      <Filter>Menus\PurchaseMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="QuitGameMenu.cpp">
-      <Filter>Menus\QuitGameMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="QuitToMenu.cpp">
-      <Filter>Menus\QuitToMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="PauseMenu.cpp">
-      <Filter>Menus\PauseMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuManager.cpp">
-      <Filter>Managers\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="ProgressLabel.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Audio.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="DragonAnimationComponent.cpp">
-      <Filter>Components\Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="LeverAnimationComponent.cpp">
-      <Filter>Components\Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="MerchandAnimationComponent.cpp">
-      <Filter>Components\Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCAnimationComponent.cpp">
-      <Filter>Components\Animations</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ActionMap.h">
-      <Filter>Managers\Inputs</Filter>
-    </ClInclude>
-    <ClInclude Include="Action.h">
-      <Filter>Managers\Inputs</Filter>
-    </ClInclude>
-    <ClInclude Include="ActorManager.h">
-      <Filter>Managers\Actors</Filter>
-    </ClInclude>
-    <ClInclude Include="FontManager.h">
-      <Filter>Managers\Fonts</Filter>
-    </ClInclude>
-    <ClInclude Include="FontData.h">
-      <Filter>Managers\Fonts</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>UIs\Widgets\ShapeWidgets\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="Canvas.h">
-      <Filter>UIs\Canvas</Filter>
-    </ClInclude>
-    <ClInclude Include="Macro.h">
-      <Filter>Fichiers de ressources\Macros</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>Objects\ShapeObjects\Actors</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Kismet.h">
-      <Filter>Fichiers de ressources\Kismet</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Managers\Inputs</Filter>
-    </ClInclude>
-    <ClInclude Include="IManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="IManagable.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="ProgressBar.h">
-      <Filter>UIs\Widgets\ShapeWidgets\ProgressBars</Filter>
-    </ClInclude>
-    <ClInclude Include="Label.h">
-      <Filter>UIs\Widgets\ShapeWidgets\Labels</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>Managers\Textures</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureData.h">
-      <Filter>Managers\Textures</Filter>
-    </ClInclude>
-    <ClInclude Include="TimerManager.h">
-      <Filter>Managers\Timers</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Managers\Timers</Filter>
-    </ClInclude>
-    <ClInclude Include="Widget.h">
-      <Filter>UIs\Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="TextWidget.h">
-      <Filter>UIs\Widgets\TextWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="TextObject.h">
-      <Filter>Objects\TextObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeObject.h">
-      <Filter>Objects\ShapeObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Games</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeWidget.h">
-      <Filter>UIs\Widgets\ShapeWidgets</Filter>
-    </ClInclude>
-    <ClInclude Include="MovementComponent.h">
-      <Filter>Components\Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="Inventory.h">
-      <Filter>Managers\Inventory</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Managers\Inventory</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemWidget.h">
-      <Filter>UIs\Widgets\ShapeWidgets\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Mob.h">
-      <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
-    </ClInclude>
-    <ClInclude Include="Merchand.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\Merchands</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionComponent.h">
-      <Filter>Components\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundManager.h">
-      <Filter>Managers\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundData.h">
-      <Filter>Managers\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="MusicManager.h">
-      <Filter>Managers\Music</Filter>
-    </ClInclude>
-    <ClInclude Include="MusicData.h">
-      <Filter>Managers\Music</Filter>
-    </ClInclude>
-    <ClInclude Include="Belfly.h">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\Belfly</Filter>
-    </ClInclude>
-    <ClInclude Include="Boofly.h">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\Boofly</Filter>
-    </ClInclude>
-    <ClInclude Include="HuskBully.h">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\HuskBully</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationComponent.h">
-      <Filter>Components\Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Components\Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="InteractableActor.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Cameras</Filter>
-    </ClInclude>
-    <ClInclude Include="Spawner.h">
-      <Filter>Spawner</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Maps</Filter>
-    </ClInclude>
-    <ClInclude Include="FileLoader.h">
-      <Filter>Fichiers de ressources\FileLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="CharmsMenu.h">
-      <Filter>Managers\Charms</Filter>
-    </ClInclude>
-    <ClInclude Include="Bench.h">
-      <Filter>Objects\ShapeObjects\Actors\Bench</Filter>
-    </ClInclude>
-    <ClInclude Include="DeathMob.h">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
-    </ClInclude>
-    <ClInclude Include="InteractionComponent.h">
-      <Filter>Components\Interaction</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerMovementComponent.h">
-      <Filter>Components\Movement\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerAnimationComponent.h">
-      <Filter>Components\Animations\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="MobAttackComponent.h">
-      <Filter>Components\Attack\Mob</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerStat.h">
-      <Filter>Components\Life\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="MobLifeComponent.h">
-      <Filter>Components\Life\Mob</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerAttackComponent.h">
-      <Filter>Components\Attack\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="HUD.h">
-      <Filter>Managers\UIs</Filter>
-    </ClInclude>
-    <ClInclude Include="CollectableActor.h">
-      <Filter>Objects\ShapeObjects\Actors\Collectables</Filter>
-    </ClInclude>
-    <ClInclude Include="Lift.h">
-      <Filter>Objects\ShapeObjects\Actors\Lift</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss.h">
-      <Filter>Objects\ShapeObjects\Actors\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="FalseKnight.h">
-      <Filter>Objects\ShapeObjects\Actors\Boss\FalseKnight</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Menus\MainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleMenu.h">
-      <Filter>Menus\TitleMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="OptionsMenu.h">
-      <Filter>Menus\OptionsMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="ExtrasMenu.h">
-      <Filter>Menus\ExtrasMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="AchievementsMenu.h">
-      <Filter>Menus\AchievementsMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="Dragon.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="Lever.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerInfo.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyboardMenu.h">
-      <Filter>Menus\OptionsMenu\KeyboardMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="ControllerMenu.h">
-      <Filter>Menus\OptionsMenu\ControllerMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="ShopMenu.h">
-      <Filter>Menus\ShopMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="PurchaseMenu.h">
-      <Filter>Menus\PurchaseMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="QuitGameMenu.h">
-      <Filter>Menus\QuitGameMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="QuitToMenu.h">
-      <Filter>Menus\QuitToMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="PauseMenu.h">
-      <Filter>Menus\PauseMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuManager.h">
-      <Filter>Managers\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="ProgressLabel.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Audio.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerStats.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCAnimationComponent.h">
-      <Filter>Components\Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="DragonAnimationComponent.h">
-      <Filter>Components\Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="LeverAnimationComponent.h">
-      <Filter>Components\Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="MerchandAnimationComponent.h">
-      <Filter>Components\Animations</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Assets\Levels\SubLevel_1.txt" />
+    <ClInclude Include="AchievementsMenu.h" />
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="ActionMap.h" />
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="ActorManager.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationComponent.h" />
+    <ClInclude Include="Audio.h" />
+    <ClInclude Include="Belfly.h" />
+    <ClInclude Include="Bench.h" />
+    <ClInclude Include="Boofly.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Canvas.h" />
+    <ClInclude Include="CharmsMenu.h" />
+    <ClInclude Include="CollectableActor.h" />
+    <ClInclude Include="CollisionComponent.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="ControllerMenu.h" />
+    <ClInclude Include="DeathMob.h" />
+    <ClInclude Include="Dragon.h" />
+    <ClInclude Include="DragonAnimationComponent.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="ExtrasMenu.h" />
+    <ClInclude Include="FalseKnight.h" />
+    <ClInclude Include="FileLoader.h" />
+    <ClInclude Include="FontData.h" />
+    <ClInclude Include="FontManager.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="HUD.h" />
+    <ClInclude Include="HuskBully.h" />
+    <ClInclude Include="IManagable.h" />
+    <ClInclude Include="IManager.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="InteractableActor.h" />
+    <ClInclude Include="InteractionComponent.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemWidget.h" />
+    <ClInclude Include="KeyboardMenu.h" />
+    <ClInclude Include="Kismet.h" />
+    <ClInclude Include="Label.h" />
+    <ClInclude Include="Lever.h" />
+    <ClInclude Include="LeverAnimationComponent.h" />
+    <ClInclude Include="Lift.h" />
+    <ClInclude Include="Macro.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuManager.h" />
+    <ClInclude Include="Merchand.h" />
+    <ClInclude Include="MerchandAnimationComponent.h" />
+    <ClInclude Include="Mob.h" />
+    <ClInclude Include="MobAttackComponent.h" />
+    <ClInclude Include="MobLifeComponent.h" />
+    <ClInclude Include="MovementComponent.h" />
+    <ClInclude Include="MusicData.h" />
+    <ClInclude Include="MusicManager.h" />
+    <ClInclude Include="NPCAnimationComponent.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="OptionsMenu.h" />
+    <ClInclude Include="PauseMenu.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerAnimationComponent.h" />
+    <ClInclude Include="PlayerAttackComponent.h" />
+    <ClInclude Include="PlayerInfo.h" />
+    <ClInclude Include="PlayerMovementComponent.h" />
+    <ClInclude Include="PlayerStat.h" />
+    <ClInclude Include="PlayerStats.h" />
+    <ClInclude Include="ProgressBar.h" />
+    <ClInclude Include="ProgressLabel.h" />
+    <ClInclude Include="PurchaseMenu.h" />
+    <ClInclude Include="QuitGameMenu.h" />
+    <ClInclude Include="QuitToMenu.h" />
+    <ClInclude Include="ShapeObject.h" />
+    <ClInclude Include="ShapeWidget.h" />
+    <ClInclude Include="ShopMenu.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="SoundData.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="Spawner.h" />
+    <ClInclude Include="TextObject.h" />
+    <ClInclude Include="TextureData.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TextWidget.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="TimerManager.h" />
+    <ClInclude Include="TitleMenu.h" />
+    <ClInclude Include="Widget.h" />
+    <ClInclude Include="MobBrain.h" />
+    <ClInclude Include="BossBrain.h" />
+    <ClInclude Include="MobMovementComponent.h" />
+    <ClInclude Include="Brain.h" />
+    <ClInclude Include="EnemyBrain.h" />
+    <ClInclude Include="AttackState.h" />
+    <ClInclude Include="AttackToChase.h" />
+    <ClInclude Include="AttackToPatrol.h" />
+    <ClInclude Include="ChaseState.h" />
+    <ClInclude Include="ChaseToAttack.h" />
+    <ClInclude Include="ChaseToPatrol.h" />
+    <ClInclude Include="PatrolToChase.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="Transition.h" />
+    <ClInclude Include="Grub.h" />
+    <ClInclude Include="PatrolState.h" />
   </ItemGroup>
 </Project>
