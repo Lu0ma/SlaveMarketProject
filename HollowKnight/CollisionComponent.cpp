@@ -8,6 +8,7 @@ CollisionComponent::CollisionComponent(Actor* _owner, const CollisionType& _type
 	boxCollision = new ShapeObject(ShapeData(_owner->GetBounds().getPosition(),
 											 _owner->GetBounds().getSize(),
 											 ""));
+	boxCollision->GetDrawable()->setFillColor(Color::Transparent);
 	boxCollision->GetDrawable()->setOutlineThickness(5.0f);
 	boxCollision->GetDrawable()->setOutlineColor(Color::Red);
 	type = _type;
@@ -46,7 +47,7 @@ bool CollisionComponent::CheckCollision(const Vector2f& _position, const Vector2
 	{
 		if (CollisionComponent* _collisionComponent = _hitInfo.actor->GetComponent<CollisionComponent>())
 		{
-			if (_collisionComponent->GetType() == CT_BLOCK) //ne passe jamais dans ce if
+			if (_collisionComponent->GetType() == CT_BLOCK)
 			{
 				cout << _collisionComponent->owner->GetID() << endl;
 				return true;

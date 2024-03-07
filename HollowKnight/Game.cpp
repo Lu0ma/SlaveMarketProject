@@ -69,7 +69,7 @@ void Game::UpdateWindow()
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
 		window.draw(*_actor->GetDrawable());
-		//window.draw(*_actor->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable());
+		window.draw(*_actor->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable());
 	}
 	
 	View _view = window.getDefaultView();
