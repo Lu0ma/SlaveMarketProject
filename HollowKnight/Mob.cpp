@@ -1,8 +1,7 @@
 #include "Mob.h"
 #include "Macro.h"
 #include "MovementComponent.h"
-#include "TextureManager.h"
-#include "Timer.h"
+#include "MobBrain.h"
 
 Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data)
 {

@@ -3,22 +3,16 @@
 #include "MobMovementComponent.h"
 #include "AnimationComponent.h"
 #include "MobAttackComponent.h"
+#include "InspectComponent.h"
 #include "Game.h"
-#include "BossBrain.h"
 
 class Boss : public Enemy
 {
 protected:
-	BossBrain* brain;
 	AnimationComponent* animation;
 	MobMovementComponent* movement;
 	MobAttackComponent* attack;
-	
-public:
-	BossBrain* GetBrain()
-	{
-		return brain;
-	}
+	InspectComponent* inspect;
 
 public:
 	Boss(const ShapeData& _data);

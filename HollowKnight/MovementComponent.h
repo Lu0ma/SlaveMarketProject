@@ -24,6 +24,7 @@ public:
 	{
 		speed = _speed;
 	}
+
 	void SetCanMove(const bool _status)
 	{
 		canMove = _status;
@@ -36,8 +37,8 @@ public:
 		{
 			animation->RunAnimation("Idle", lastDirection.x);
 		}
+	}
 
-	}	
 	bool GetCanMove() const
 	{
 		return canMove;

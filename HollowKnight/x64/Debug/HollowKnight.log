@@ -1,2 +1,12 @@
-﻿  MobAttackComponent.cpp
-  HollowKnight.vcxproj -> C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
+﻿  AchievementsMenu.cpp
+  Boss.cpp
+  BossBrain.cpp
+  EnemyBrain.cpp
+  FalseKnight.cpp
+  InspectComponent.cpp
+C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\InspectComponent.cpp(17,47): error C2561: 'InspectComponent::HasTarget': function must return a value
+C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\InspectComponent.cpp(14,24): message : see declaration of 'InspectComponent::HasTarget'
+  InteractableActor.cpp
+  PatrolToChase.cpp
+  Transition.cpp
+  Generating Code...

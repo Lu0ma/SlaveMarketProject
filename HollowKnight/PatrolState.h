@@ -2,6 +2,7 @@
 #include "State.h"
 #include "AnimationComponent.h"
 #include "MobMovementComponent.h"
+#include "InspectComponent.h"
 
 #include "PatrolToChase.h"
 
@@ -9,11 +10,13 @@ class PatrolState : public State
 {
 	AnimationComponent* animation;
 	MobMovementComponent* movement;
+	InspectComponent* inspect;
 
 	Vector2f startPosition;
 	Vector2f goalPosition;
 
 	PatrolToChase* patrolToChase;
+
 
 public:
 	PatrolState(Brain* _brain);

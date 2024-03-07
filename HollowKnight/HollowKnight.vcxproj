@@ -170,6 +170,7 @@
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="HuskBully.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="InspectComponent.cpp" />
     <ClCompile Include="InteractableActor.cpp" />
     <ClCompile Include="InteractionComponent.cpp" />
     <ClCompile Include="Inventory.cpp" />
@@ -268,6 +269,7 @@
     <ClInclude Include="IManagable.h" />
     <ClInclude Include="IManager.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="InspectComponent.h" />
     <ClInclude Include="InteractableActor.h" />
     <ClInclude Include="InteractionComponent.h" />
     <ClInclude Include="Inventory.h" />
