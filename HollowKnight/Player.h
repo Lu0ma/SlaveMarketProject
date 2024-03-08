@@ -40,6 +40,10 @@ public:
 	{
 		return light;
 	}
+	PlayerMovementComponent* GetPlayerMovement()const
+	{
+		return movement;
+	}
 
 public:
 	Player(const string& _name, const ShapeData& _data);

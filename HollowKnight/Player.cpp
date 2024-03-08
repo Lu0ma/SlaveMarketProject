@@ -63,7 +63,10 @@ void Player::SetupPlayerInput()
 			stats->UpdateLife(1);
 			FxManager::GetInstance().Run("FxMana");
 		}, InputData({ActionType::KeyPressed, Keyboard::A})),
+		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
+
 	});
+
 
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
@@ -79,7 +82,7 @@ void Player::SetupPlayerInput()
 		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
 
-		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space })),
+		ActionData("Jump", [&]() { movement->Jump(); FxManager::GetInstance().Run("FxDoubleJump"); }, InputData({ActionType::KeyPressed, Keyboard::Space})),
 		ActionData("ControllerJump", [&]() { 
 			 
 			if (Joystick::isButtonPressed(0, 1)) { 
@@ -108,7 +111,7 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Attack", {
-		ActionData("Special", [&]() { attack->SpecialAttack(); }, InputData({ActionType::MouseButtonPressed, Mouse::Left})),
+		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial"); }, InputData({ActionType::MouseButtonPressed, Mouse::Left})),
 		ActionData("ControllerSpecial", [&]() {
 
 			if (Joystick::isButtonPressed(0, 0)) {
