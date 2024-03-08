@@ -14,7 +14,8 @@ InspectComponent::InspectComponent(Actor* _owner, const float _viewRange) : Comp
 bool InspectComponent::HasTarget(const Vector2f& _position, const Vector2f& _destination)
 {
 	Enemy* _enemy;
-	if (!(_enemy = dynamic_cast<Enemy*>(owner))) return;
+	hitInfo = HitInfo();
+	if (!(_enemy = dynamic_cast<Enemy*>(owner))) return false;
 
 	Vector2f _direction = _destination - _position;
 	Normalize(_direction);
