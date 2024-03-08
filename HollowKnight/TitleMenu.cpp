@@ -44,7 +44,7 @@ void TitleMenu::Init()
 	const vector<ButtonData>& _allData = {
 		ButtonData("START GAME", [&]() { 
 			Game::GetPlayer()->Init();
-			Game::GetCamera()->SetTarget(TARGET_PLAYER);
+			//Game::GetCamera()->SetTarget(TARGET_PLAYER);
 			SetStatus(false);
 		}),
 		ButtonData("OPTIONS", [&]() {

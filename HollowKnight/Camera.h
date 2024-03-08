@@ -1,60 +1,47 @@
 #pragma once
-#include<SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
+
 using namespace sf;
 
-enum Target
+#define CAMERA_SHAKE_ANGLE 10.0f
+#define CAMERA_SHAKE_OFFSET 20.0f
+
+struct Shake
 {
-	TARGET_NONE , TARGET_PLAYER , TARGET_WINDOW
+	Time current;
+	Time max;
+	float trauma;
 };
 
 class Camera
 {
+	float speed;
+	float damp;
+	float oldScaleX;
+	Vector2f targetPosition;
+	Vector2f offset;
 	View view;
+	Shake shake;
 	Vector2f center;
-	Vector2f size;
-	Target target;
 
 public:
-	void SetTarget(const Target& _target)
-	{
-		target = _target;
-	}
-	void SetView(const View& _view)
-	{
-		view = _view;
-	}
-	void SetCenter(const Vector2f& _center)
-	{
-		center = _center;
-	}
-	void SetSize(const Vector2f& _size)
-	{
-		size = _size;
-	}
 	View GetView() const
 	{
 		return view;
 	}
-	Vector2f GetCenter() const
-	{
-		return center;
-	}
-	Vector2f GetSize() const
-	{
-		return size;
-	}
-	Target GetTargetStat() const
-	{
-		return target;
-	}
 
 public:
-	Camera(const Target& _target);
+	Camera();
 
 private:
-	FloatRect GetPlayerRect();
+	void MoveToTarget(const float _deltaTime);
+	bool IsAtDestination(float& _distance);
 
 public:
-	View FollowPlayer();
-	void CheckCameraState(View& _newView);
+	void Init();
+	void Shake(const float _trauma, const float _duration);
+	void Update(const float _deltaTime);
+
+	//TODO move in macro
+	static inline float randn();
 };

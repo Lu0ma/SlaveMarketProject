@@ -1,5 +1,4 @@
 #include "Merchand.h"
-#include "Game.h"
 
 Merchand::Merchand(const ShapeData& _data) : InteractableActor(STRING_ID("Merchand"), _data)
 {
@@ -15,6 +14,7 @@ Merchand::Merchand(const ShapeData& _data) : InteractableActor(STRING_ID("Mercha
 void Merchand::Init()
 {
 	InteractableActor::Init();
+
 	shop->SetStatus(false);
 }
 
@@ -27,5 +27,8 @@ void Merchand::OpenDiscussion()
 void Merchand::CloseDiscussion()
 {
 	InteractableActor::CloseDiscussion();
+
 	shop->SetStatus(false);
+
+	GetAnimation()->GetCurrentAnimation()->RunAnimation("Wait", 1);
 }

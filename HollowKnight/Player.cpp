@@ -35,12 +35,13 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	components.push_back(interaction);
 
 	stats = new PlayerStat(this);
+
 	charmsMenu = new CharmsMenu();
 	pauseMenu = new PauseMenu();
 
-	collision = new CollisionComponent(this, CT_OVERLAP);
-	components.push_back(collision);
-
+	light = new CircleShape(55.0f);
+	light->setFillColor(Color(255, 255, 255, 20)); 
+	light->setOrigin(100.0f, 100.0f);
 }
 
 void Player::InitAnimations()
@@ -76,8 +77,8 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Attack", {
-		ActionData("Slash", [&]() { attack->SpecialAttack(); }, InputData({ActionType::MouseButtonPressed, Mouse::Left})),
-		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "Right"); }, InputData({ ActionType::MouseButtonPressed, Mouse::Left })),
+		ActionData("Special", [&]() { attack->SpecialAttack(); }, InputData({ActionType::MouseButtonPressed, Mouse::Left})),
+		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "Right"); }, InputData({ ActionType::MouseButtonReleased, Mouse::Left })),
 	});
 
 	new ActionMap("Menu", {

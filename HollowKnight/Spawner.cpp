@@ -29,7 +29,7 @@ void Spawner::Spawn()
 	boofly = new Boofly(_dataBoofly);
 	boofly->Init();
 
-	Vector2f _positionFalseKnight = Vector2f(1800.0f, -190.0f);
+	Vector2f _positionFalseKnight = Vector2f(-1000.0f, -190.0f);
 	Vector2f _sizeFalseKnight = Vector2f(700.0f, 500.0f);
 
 	ShapeData _data = ShapeData(_positionFalseKnight, _sizeFalseKnight, PATH_FALSE_KNIGHT);
