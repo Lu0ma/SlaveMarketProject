@@ -65,8 +65,6 @@ void Game::UpdateWindow()
 {
 	window.clear(); // Color(127, 127, 127, 0) gris
 
-
-
 	window.setView(camera->GetView());
 	for (ShapeObject* _drawable : map->GetAllDrawables())
 	{

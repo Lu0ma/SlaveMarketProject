@@ -11,6 +11,13 @@ struct Shake
 	Time current;
 	Time max;
 	float trauma;
+
+	Shake()
+	{
+		current = Time();
+		max = Time();
+		trauma = 0;
+	}
 };
 class Camera
 {
@@ -21,7 +28,6 @@ class Camera
 	Vector2f offset;
 	View view;
 	Shake shake;
-	Vector2f center;
 
 public:
 	View GetView() const
@@ -40,6 +46,6 @@ public:
 	void Init();
 	void Shake(const float _trauma, const float _duration);
 	void Update(const float _deltaTime);
-
+	void Down();
 	static inline float randn();
 };

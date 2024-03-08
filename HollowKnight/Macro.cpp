@@ -1,5 +1,6 @@
 #include "Macro.h"
-
+#include <ctime>
+#include <cstdlib>
 int GetUniqueID()
 {
 	static int _id = 0;
@@ -10,6 +11,11 @@ float Length(Vector2f& _vector)
 {
 	return sqrt(_vector.x * _vector.x + _vector.y * _vector.y);
 }
+
+//inline float Randn()
+//{
+//	return -1 + 2 * ((float)rand()) / RAND_MAX;
+//}
 
 void Normalize(Vector2f& _vector)
 {

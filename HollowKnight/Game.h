@@ -57,6 +57,5 @@ public:
 
 public:
 	void Launch();
-	//void CheckCameraState(View& _newView);
 	static void Close();
 };

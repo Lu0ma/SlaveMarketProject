@@ -1,7 +1,2 @@
-﻿  Camera.cpp
-D:\SlaveMarketProject\HollowKnight\Camera.cpp(67,27): warning C4244: 'argument': conversion from 'const float' to 'sf::Int32', possible loss of data
-D:\SlaveMarketProject\HollowKnight\Camera.cpp(99,20): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\SlaveMarketProject\HollowKnight\Camera.cpp(106,22): warning C4244: '*=': conversion from 'double' to 'float', possible loss of data
-  Game.cpp
-  Generating Code...
+﻿  Player.cpp
   HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
