@@ -12,12 +12,11 @@ PatrolState::PatrolState(Brain* _brain) : State(_brain)
 	goalPosition = Vector2f();
 }
 
-
 void PatrolState::Start()
 {
 	startPosition = brain->GetOwner()->GetShapePosition();
 	goalPosition = startPosition + Vector2f(1000.0f, 0.0f);
-
+	
 	Actor* _owner = brain->GetOwner();
 
 	inspect = _owner->GetComponent<InspectComponent>();
@@ -52,13 +51,10 @@ void PatrolState::Update(const float _deltaTime)
 		brain->GetBlackBoard()->hasTarget = inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetDestination());
 		brain->GetBlackBoard()->isInRange = inspect->IsInRange();
 	}
-
-	// faire un component inspect avec le rayCast etc
-
-	//cout << "Update Patrol" << endl;
 }
 
 void PatrolState::Stop()
 {
+	movement->SetCallback([&](){});
 	cout << "Stop Patrol" << endl;
 }

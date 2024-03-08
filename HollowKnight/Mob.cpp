@@ -30,6 +30,5 @@ Mob::Mob(const ShapeData& _data) : Enemy(STRING_ID("Mob"), _data)
 
 void Mob::Update(const float _deltaTime)
 {
-	Actor::Update(_deltaTime);
+	Enemy::Update(_deltaTime);
 }
-

@@ -11,6 +11,7 @@ class InspectComponent : public Component
 {
 	HitInfo hitInfo;
 	float viewRange;
+	Actor* raycast;
 
 public:
 	InspectComponent(Actor* _owner, const float _viewRange);

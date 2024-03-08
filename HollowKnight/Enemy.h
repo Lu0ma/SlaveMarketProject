@@ -9,6 +9,7 @@ protected:
 	EnemyBrain* brain;
 	MobLifeComponent* life;
 	bool isDead;
+	Actor* raycast;
 
 public:
 	Enemy(const string& _name, const ShapeData& _data);
@@ -26,5 +27,8 @@ public:
 	{
 		return isDead;
 	}
+
+public:
+	virtual void Update(const float _deltaTime);
 };
 

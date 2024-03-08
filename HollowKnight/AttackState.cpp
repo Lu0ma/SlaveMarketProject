@@ -15,9 +15,12 @@ void AttackState::Start()
 void AttackState::Update(const float _deltaTime)
 {
 	State::Update(_deltaTime);
+
+	Stop();
 }
 
 void AttackState::Stop()
 {
+	brain->GetBlackBoard()->hasTarget = false;
 	cout << "Stop Attack" << endl;
 }

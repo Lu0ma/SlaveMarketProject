@@ -22,9 +22,10 @@ bool InspectComponent::HasTarget(const Vector2f& _position, const Vector2f& _des
 	HitInfo _hitInfo;
 
 	const bool _hasHit = Raycast(_position, _direction, _maxDistance, _hitInfo, { owner->GetDrawable() });
-
-	if (_hasHit && dynamic_cast<Player*>(hitInfo.actor))
+	if (_hasHit && dynamic_cast<Player*>(_hitInfo.actor))
 	{
+		cout << owner->GetID() << " : " << _hitInfo.actor->GetID() << endl;
+		cout << _maxDistance << endl;
 		hitInfo = _hitInfo;
 		return true;
 	}

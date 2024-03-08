@@ -55,7 +55,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 bool PlayerMovementComponent::CheckGround()
 {
-	return owner->GetComponent<CollisionComponent>()->CheckCollision(owner->GetShapePosition(), Vector2f(0.0f, 1.0f) * checkGroundDistance);
+	return true;//owner->GetComponent<CollisionComponent>()->CheckCollision(owner->GetShapePosition(), Vector2f(0.0f, 1.0f) * checkGroundDistance);
 }
 
 void PlayerMovementComponent::Update(const float _deltaTime)
@@ -113,10 +113,10 @@ void PlayerMovementComponent::TryToMove(const float _deltaTime)
 		}
 	}
 
-	if (!collision->CheckCollision(owner->GetShapePosition(), owner->GetShapePosition() + Vector2f(_offset.x * 100.0f, 0.0f)))
+	owner->GetDrawable()->move(_offset);
+	/*if (!collision->CheckCollision(owner->GetShapePosition(), owner->GetShapePosition() + Vector2f(_offset.x * 100.0f, 0.0f)))
 	{
-		owner->GetDrawable()->move(_offset);
-	}
+	}*/
 }
 
 void PlayerMovementComponent::StartJump()

@@ -11,13 +11,11 @@ ChaseState::ChaseState(Brain* _brain) : State(_brain)
 	transitions.push_back(chaseToAttack);
 }
 
-
 void ChaseState::Init()
 {
 	chaseToPatrol->Init(dynamic_cast<BossBrain*>(brain)->GetPatrolState());
 	chaseToAttack->Init(dynamic_cast<BossBrain*>(brain)->GetAttackState());
 }
-
 
 void ChaseState::Start()
 {

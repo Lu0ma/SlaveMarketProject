@@ -26,5 +26,5 @@ Boss::Boss(const ShapeData& _data) : Enemy("Boss" + to_string(GetUniqueID()), _d
 
 void Boss::Update(const float _deltaTime)
 {
-	Actor::Update(_deltaTime);
+	Enemy::Update(_deltaTime);
 }
