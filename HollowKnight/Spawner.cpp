@@ -26,15 +26,15 @@ void Spawner::Spawn()
 	Vector2f _sizeHuskBully = Vector2f(75.0f, 75.0f);
 
 	ShapeData _dataBoofly = ShapeData(_positionBoofly, _sizeBoofly, PATH_BOOFLY, IntRect(0, 17, 315, 345));
-	boofly = new Boofly(_dataBoofly);
-	boofly->Init();
+	/*boofly = new Boofly(_dataBoofly);
+	boofly->Init();*/
 
 	Vector2f _positionFalseKnight = Vector2f(-1000.0f, -190.0f);
 	Vector2f _sizeFalseKnight = Vector2f(700.0f, 500.0f);
 
 	ShapeData _data = ShapeData(_positionFalseKnight, _sizeFalseKnight, PATH_FALSE_KNIGHT);
-	FalseKnight* _falseKnight = new FalseKnight(_data);
-	_falseKnight->Init();
+	//FalseKnight* _falseKnight = new FalseKnight(_data);
+	//_falseKnight->Init();
 
 	//ShapeData _dataBelfly = ShapeData(_positionBelfly, _sizeBelfly, PATH_BELFLY);
 	//new Belfly(_dataBelfly);

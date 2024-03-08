@@ -8,8 +8,11 @@ using namespace std;
 
 class Actor : public ShapeObject, public IManagable<string>
 {
+
 protected:
 	vector<Component*> components;
+	CollisionComponent* collision;
+
 public:
 	template <typename T>
 	T* GetComponent() const

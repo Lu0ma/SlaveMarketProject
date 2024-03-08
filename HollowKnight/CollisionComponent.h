@@ -14,7 +14,8 @@ class CollisionComponent : public Component
 {
 	ShapeObject* boxCollision;
 	CollisionType type;
-public: 
+
+public:
 	ShapeObject* GetBoxCollision() const
 	{
 		return boxCollision;
@@ -23,12 +24,11 @@ public:
 	{
 		return type;
 	}
+
 public:
 	CollisionComponent(Actor* _owner, const CollisionType& _type);
+	~CollisionComponent();
 
 public:
-	Actor* CheckCollision();
-
-	bool CheckCollision(const Vector2f& _position, const Vector2f& _destination);
-
+	bool CheckCollision(const vector<Actor*>& _ignoredActors = vector<Actor*>());
 };
