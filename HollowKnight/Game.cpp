@@ -4,11 +4,8 @@
 #include "ActorManager.h"
 #include "HUD.h"
 #include "Widget.h"
-
 #include "Spawner.h"
 
-//#define PATH_PLAYER "Player.png"
-#define FONT "Assets/Fonts/Font.ttf"
 #define PATH_PLAYER "Animations/knighModif.png"
 
 RenderWindow Game::window;
@@ -19,14 +16,13 @@ Camera* Game::camera;
 Game::Game()
 {
 	menu = new MainMenu();
-	map = new Map();
 	player = new Player("Player", ShapeData(Vector2f(0.0f, -300.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
-	camera = new Camera(TARGET_WINDOW);
+	map = new Map();
+	camera = new Camera();
 } 
 
 Game::~Game()
 {
-	delete menu;
 	delete camera;
 }
 
@@ -42,6 +38,7 @@ void Game::Init()
 {
 	menu->Init();
 	map->Init();
+	camera->Init();
 
 	//TODO move
 	Spawner* _spawner = new Spawner();
@@ -54,6 +51,8 @@ void Game::Update()
 	{
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
+		map->GetDragon()->PlayMusic();
+		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
 		ActorManager::GetInstance().Update();
 	}
 }
@@ -61,20 +60,22 @@ void Game::Update()
 void Game::UpdateWindow()
 {
 	window.clear(); // Color(127, 127, 127, 0) gris
-	View _defaultView;
-	camera->CheckCameraState(_defaultView);
+
+	const float _deltaTime = TimerManager::GetInstance().GetDeltaTime();
+	camera->Update(_deltaTime);
+
+	window.setView(camera->GetView());
 
 	for (ShapeObject* _drawable : map->GetAllDrawables())
 	{
 		window.draw(*_drawable->GetDrawable());
 	}
-
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
 		window.draw(*_actor->GetDrawable());
 	}
+	window.draw(*player->GetLight());
 	
-	// UI
 	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{

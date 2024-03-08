@@ -11,7 +11,6 @@ DragonAnimationComponent::DragonAnimationComponent(Actor* _owner) : Component(_o
 	animation->InitAnimations({
 		AnimationData("DanceLeft", Vector2f(0.0f, 476.0f), Vector2f(275.0f, 286.0f), READ_RIGHT, true, 8, _speed, "DanceRight"),
 		AnimationData("DanceRight", Vector2f(0.0f, 53.0f), Vector2f(267.0f, 286.0f), READ_RIGHT, true, 8, _speed, "DanceLeft"),
-
-		});
+	});
 }
 

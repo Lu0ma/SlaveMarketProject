@@ -3,9 +3,12 @@
 #include "Canvas.h"
 #include "ShapeWidget.h"
 #include "Label.h"
+#include "ProgressLabel.h"
+
 
 class InteractableActor : public Actor
 {
+protected:
 	Canvas* canvas;
 	bool isOpen;
 
@@ -15,7 +18,8 @@ class InteractableActor : public Actor
 
 	// Discussion
 	ShapeWidget* discussionBG;
-	Label* discussionText;
+	ProgressLabel* discussionText;
+
 
 public:
 	void SetIsOpen(const bool _status)

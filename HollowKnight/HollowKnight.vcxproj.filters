@@ -97,26 +97,11 @@
     <Filter Include="Components\Collision">
       <UniqueIdentifier>{3f089dda-207d-4d08-a9db-06793e761f8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Animation">
-      <UniqueIdentifier>{97c513f2-fcdc-4723-bbee-b77632454dda}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Managers\Music">
       <UniqueIdentifier>{389b7583-21d9-4df8-aeee-2f82172d46ba}</UniqueIdentifier>
     </Filter>
     <Filter Include="Managers\Sound">
       <UniqueIdentifier>{b7758773-b234-4569-905d-7a3bf021e39d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Mobs">
-      <UniqueIdentifier>{03b12366-449a-4d98-8f02-adb3ade85d29}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Mobs\Belfly">
-      <UniqueIdentifier>{9ff6fbc8-1d14-4057-bfdd-6fdd8010d483}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Mobs\Boofly">
-      <UniqueIdentifier>{1ec1f361-cbfd-4bed-8838-1b3f1262f497}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Mobs\HuskBully">
-      <UniqueIdentifier>{6073deba-f744-4215-b668-d7756e158c2f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Objects\ShapeObjects\Actors\Interactables">
       <UniqueIdentifier>{dec09a47-bff5-43f1-bc40-855022f78594}</UniqueIdentifier>
@@ -139,15 +124,6 @@
     <Filter Include="Objects\ShapeObjects\Actors\Bench">
       <UniqueIdentifier>{ca00970b-1f77-4e0e-8b16-5535de072a96}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Mobs\DeathMob">
-      <UniqueIdentifier>{bed64d59-cf8f-4a8c-a752-c920004a7ade}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Interactables\NPCs">
-      <UniqueIdentifier>{207b97a8-7f70-48e1-92b9-69dd26516d31}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands">
-      <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Interaction">
       <UniqueIdentifier>{3225fdeb-e7a9-42da-8519-0d62a9e89aad}</UniqueIdentifier>
     </Filter>
@@ -156,9 +132,6 @@
     </Filter>
     <Filter Include="Components\Movement\Player">
       <UniqueIdentifier>{7b00bb23-9a83-48ca-933a-2bd082f363af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Animation\Player">
-      <UniqueIdentifier>{2d3f0cd4-362d-4210-b47c-2a10c5c54932}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components\Attack\Mob">
       <UniqueIdentifier>{1e3cd31c-2cd7-4c6d-b79d-59e1213ee00e}</UniqueIdentifier>
@@ -184,12 +157,6 @@
     <Filter Include="Objects\ShapeObjects\Actors\Lift">
       <UniqueIdentifier>{6da06ae4-f2b5-4d28-9bc3-bebce02afba4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Boss">
-      <UniqueIdentifier>{da02973d-de1c-40da-88e2-55e6bea5f75c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Objects\ShapeObjects\Actors\Boss\FalseKnight">
-      <UniqueIdentifier>{8ddb3033-574c-4c24-946c-e91d0e2f47c8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Menus\MainMenu">
       <UniqueIdentifier>{c3ab491c-dc2f-40e4-a1aa-f3abab5f56b5}</UniqueIdentifier>
     </Filter>
@@ -205,26 +172,116 @@
     <Filter Include="Menus\AchievementsMenu">
       <UniqueIdentifier>{e41bcd9c-f187-444f-ae2d-b8c9949d9de8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FSM">
-      <UniqueIdentifier>{9fb836cd-f8d2-427a-96f6-3976371496b7}</UniqueIdentifier>
+    <Filter Include="Objects\ShapeObjects\Actors\Interactables\Merchands">
+      <UniqueIdentifier>{f31971e6-689a-44a1-b329-3dbb9e00c7e3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FSM\States">
-      <UniqueIdentifier>{58c8dfd1-2c8c-4328-a65c-3d7457d81740}</UniqueIdentifier>
+    <Filter Include="Menus\OptionsMenu\ControllerMenu">
+      <UniqueIdentifier>{cd151a25-72b1-4ac2-9ec5-f1a7dfe2d182}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FSM\Transitions">
-      <UniqueIdentifier>{3918c0d8-690c-497d-8830-9a7ef49c0f24}</UniqueIdentifier>
+    <Filter Include="Menus\OptionsMenu\KeyboardMenu">
+      <UniqueIdentifier>{64ebf8be-8954-4921-9dec-61b4f4bf39fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FSM\Brains">
-      <UniqueIdentifier>{6365650e-1978-420e-a33d-060b0ed9f9bd}</UniqueIdentifier>
+    <Filter Include="Menus\ShopMenu">
+      <UniqueIdentifier>{df12e13b-952e-4691-83cb-0fea061fc6b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FSM\States\Chases">
-      <UniqueIdentifier>{5e40165a-1954-420e-ad80-d9a14709d6b0}</UniqueIdentifier>
+    <Filter Include="Menus\PurchaseMenu">
+      <UniqueIdentifier>{1c4bc7c7-9679-423d-bc49-b298068d7193}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FSM\States\Attacks">
-      <UniqueIdentifier>{fc43e63f-0009-4611-96d8-47beaa4e9506}</UniqueIdentifier>
+    <Filter Include="Menus\QuitGameMenu">
+      <UniqueIdentifier>{d81b3d8e-d113-47cd-a3ac-eddfe33ff5c7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FSM\States\Patrols">
-      <UniqueIdentifier>{1152045f-2eb7-4825-bd02-b2661f8b84ac}</UniqueIdentifier>
+    <Filter Include="Menus\PauseMenu">
+      <UniqueIdentifier>{8624f0cd-92f6-41a5-bf4f-114bed85cede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\QuitToMenu">
+      <UniqueIdentifier>{36b16e0c-71d4-40c7-bed2-b74af690d0ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Menus">
+      <UniqueIdentifier>{1f8871bc-6e5d-4198-b682-344ab9d98194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\Labels\ProgressLabel">
+      <UniqueIdentifier>{93c075fb-ca08-48ea-86ff-ee2dc19fa82f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Animations">
+      <UniqueIdentifier>{97c513f2-fcdc-4723-bbee-b77632454dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Animations\Player">
+      <UniqueIdentifier>{2d3f0cd4-362d-4210-b47c-2a10c5c54932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\AudioMenu">
+      <UniqueIdentifier>{5202f3b7-9667-46e5-8fa7-e715fe6b2d77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs">
+      <UniqueIdentifier>{c6ad7a74-6458-4e13-a3dd-34a33b888765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\Brains">
+      <UniqueIdentifier>{d9625f52-781a-47ee-9d67-8ffe45ecbb96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\Transitions">
+      <UniqueIdentifier>{eea4a9c0-1821-4acd-b1aa-78f8edc65a52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\States">
+      <UniqueIdentifier>{b7e11339-41e3-453d-a7d5-72b8dbcc3f5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\States\Patrol">
+      <UniqueIdentifier>{6c416a25-8d79-4a0e-98c0-5cf4bb865330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\States\Attack">
+      <UniqueIdentifier>{b5099caa-3a97-462c-aa82-2b14ebd4eff3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\States\Chase">
+      <UniqueIdentifier>{e6d3fff4-d598-47ce-879d-44c8c104f829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\Transitions\Attack">
+      <UniqueIdentifier>{9fe42934-9980-4e76-a105-104859eb92ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\Transitions\Chase">
+      <UniqueIdentifier>{40268263-99a1-4f5a-b14e-3bfb6dc7d159}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\Transitions\Patrol">
+      <UniqueIdentifier>{67cef096-81f7-4c03-9c59-49dcb30c57d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\Brains\EnemyBrains">
+      <UniqueIdentifier>{ca11068b-cc8a-4a23-bf15-c3ffdb57acc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\Brains\EnemyBrains\BossBrain">
+      <UniqueIdentifier>{ad7180ec-971a-4ca6-ae1c-af2f92420700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IAs\Brains\EnemyBrains\MobBrain">
+      <UniqueIdentifier>{3bd3af7e-7395-4f70-a5ad-ad0e99ea7fbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Interactables\Grub">
+      <UniqueIdentifier>{6966dbdd-775e-4ee0-9924-fa7608969e48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Interactables\Dragon">
+      <UniqueIdentifier>{f6575235-86a6-4c3a-9666-af838cbd22bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Interactables\Lever">
+      <UniqueIdentifier>{28976965-5065-401a-8a51-dbdf0fb92616}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Enemies">
+      <UniqueIdentifier>{bdcab1ea-ff7f-4421-b106-9d0dbf9d7bc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Enemies\Boss">
+      <UniqueIdentifier>{da02973d-de1c-40da-88e2-55e6bea5f75c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Enemies\Boss\FalseKnight">
+      <UniqueIdentifier>{8ddb3033-574c-4c24-946c-e91d0e2f47c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Enemies\Mobs">
+      <UniqueIdentifier>{03b12366-449a-4d98-8f02-adb3ade85d29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Enemies\Mobs\Belfly">
+      <UniqueIdentifier>{9ff6fbc8-1d14-4057-bfdd-6fdd8010d483}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Enemies\Mobs\Boofly">
+      <UniqueIdentifier>{1ec1f361-cbfd-4bed-8838-1b3f1262f497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Enemies\Mobs\HuskBully">
+      <UniqueIdentifier>{6073deba-f744-4215-b668-d7756e158c2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Enemies\Mobs\DeathMob">
+      <UniqueIdentifier>{bed64d59-cf8f-4a8c-a752-c920004a7ade}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -322,13 +379,10 @@
       <Filter>Objects\ShapeObjects\Actors\Player</Filter>
     </ClCompile>
     <ClCompile Include="Mob.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
-    </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Mobs</Filter>
     </ClCompile>
     <ClCompile Include="Merchand.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Merchands</Filter>
     </ClCompile>
     <ClCompile Include="CollisionComponent.cpp">
       <Filter>Components\Collision</Filter>
@@ -346,19 +400,19 @@
       <Filter>Managers\Music</Filter>
     </ClCompile>
     <ClCompile Include="Belfly.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\Belfly</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Mobs\Belfly</Filter>
     </ClCompile>
     <ClCompile Include="Boofly.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\Boofly</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Mobs\Boofly</Filter>
     </ClCompile>
     <ClCompile Include="HuskBully.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\HuskBully</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Mobs\HuskBully</Filter>
     </ClCompile>
     <ClCompile Include="AnimationComponent.cpp">
-      <Filter>Components\Animation</Filter>
+      <Filter>Components\Animations</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>Components\Animation</Filter>
+      <Filter>Components\Animations</Filter>
     </ClCompile>
     <ClCompile Include="InteractableActor.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
@@ -382,7 +436,7 @@
       <Filter>Objects\ShapeObjects\Actors\Bench</Filter>
     </ClCompile>
     <ClCompile Include="DeathMob.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Mobs\DeathMob</Filter>
     </ClCompile>
     <ClCompile Include="InteractionComponent.cpp">
       <Filter>Components\Interaction</Filter>
@@ -391,7 +445,7 @@
       <Filter>Components\Movement\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerAnimationComponent.cpp">
-      <Filter>Components\Animation\Player</Filter>
+      <Filter>Components\Animations\Player</Filter>
     </ClCompile>
     <ClCompile Include="MobAttackComponent.cpp">
       <Filter>Components\Attack\Mob</Filter>
@@ -418,10 +472,10 @@
       <Filter>Objects\ShapeObjects\Actors\Lift</Filter>
     </ClCompile>
     <ClCompile Include="Boss.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Boss</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Boss</Filter>
     </ClCompile>
     <ClCompile Include="FalseKnight.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Boss\FalseKnight</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Boss\FalseKnight</Filter>
     </ClCompile>
     <ClCompile Include="MainMenu.cpp">
       <Filter>Menus\MainMenu</Filter>
@@ -438,92 +492,104 @@
     <ClCompile Include="AchievementsMenu.cpp">
       <Filter>Menus\AchievementsMenu</Filter>
     </ClCompile>
+    <ClCompile Include="KeyboardMenu.cpp">
+      <Filter>Menus\OptionsMenu\KeyboardMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerMenu.cpp">
+      <Filter>Menus\OptionsMenu\ControllerMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopMenu.cpp">
+      <Filter>Menus\ShopMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="PurchaseMenu.cpp">
+      <Filter>Menus\PurchaseMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitGameMenu.cpp">
+      <Filter>Menus\QuitGameMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitToMenu.cpp">
+      <Filter>Menus\QuitToMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
+      <Filter>Menus\PauseMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuManager.cpp">
+      <Filter>Managers\Menus</Filter>
+    </ClCompile>
     <ClCompile Include="DragonAnimationComponent.cpp">
-      <Filter>Components</Filter>
+      <Filter>Components\Animations</Filter>
     </ClCompile>
     <ClCompile Include="LeverAnimationComponent.cpp">
-      <Filter>Components</Filter>
+      <Filter>Components\Animations</Filter>
     </ClCompile>
     <ClCompile Include="MerchandAnimationComponent.cpp">
-      <Filter>Components</Filter>
+      <Filter>Components\Animations</Filter>
     </ClCompile>
     <ClCompile Include="NPCAnimationComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Dragon.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="Lever.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerInfo.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Components\Animations</Filter>
     </ClCompile>
     <ClCompile Include="MobMovementComponent.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Components\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Menus\AudioMenu</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
-      <Filter>FSM\States</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackToChase.cpp">
-      <Filter>FSM\Transitions</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackToPatrol.cpp">
-      <Filter>FSM\Transitions</Filter>
-    </ClCompile>
-    <ClCompile Include="ChaseToAttack.cpp">
-      <Filter>FSM\Transitions</Filter>
-    </ClCompile>
-    <ClCompile Include="ChaseToPatrol.cpp">
-      <Filter>FSM\Transitions</Filter>
-    </ClCompile>
-    <ClCompile Include="PatrolToChase.cpp">
-      <Filter>FSM\Transitions</Filter>
+      <Filter>IAs\States</Filter>
     </ClCompile>
     <ClCompile Include="Transition.cpp">
-      <Filter>FSM\Transitions</Filter>
-    </ClCompile>
-    <ClCompile Include="InspectComponent.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Brain.cpp">
-      <Filter>FSM\Brains</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyBrain.cpp">
-      <Filter>FSM\Brains</Filter>
-    </ClCompile>
-    <ClCompile Include="BossBrain.cpp">
-      <Filter>FSM\Brains</Filter>
-    </ClCompile>
-    <ClCompile Include="MobBrain.cpp">
-      <Filter>FSM\Brains</Filter>
-    </ClCompile>
-    <ClCompile Include="PatrolToAttack.cpp">
-      <Filter>FSM\Transitions</Filter>
+      <Filter>IAs\Transitions</Filter>
     </ClCompile>
     <ClCompile Include="PatrolState.cpp">
-      <Filter>FSM\States\Patrols</Filter>
-    </ClCompile>
-    <ClCompile Include="BossPatrolState.cpp">
-      <Filter>FSM\States\Patrols</Filter>
-    </ClCompile>
-    <ClCompile Include="MobPatrolState.cpp">
-      <Filter>FSM\States\Patrols</Filter>
+      <Filter>IAs\States\Patrol</Filter>
     </ClCompile>
     <ClCompile Include="ChaseState.cpp">
-      <Filter>FSM\States\Chases</Filter>
+      <Filter>IAs\States\Chase</Filter>
     </ClCompile>
     <ClCompile Include="AttackState.cpp">
-      <Filter>FSM\States\Attacks</Filter>
+      <Filter>IAs\States\Attack</Filter>
     </ClCompile>
-    <ClCompile Include="BossAttackState.cpp">
-      <Filter>FSM\States\Attacks</Filter>
+    <ClCompile Include="AttackToChase.cpp">
+      <Filter>IAs\Transitions\Attack</Filter>
     </ClCompile>
-    <ClCompile Include="MobAttackState.cpp">
-      <Filter>FSM\States\Attacks</Filter>
+    <ClCompile Include="AttackToPatrol.cpp">
+      <Filter>IAs\Transitions\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="ChaseToAttack.cpp">
+      <Filter>IAs\Transitions\Chase</Filter>
+    </ClCompile>
+    <ClCompile Include="ChaseToPatrol.cpp">
+      <Filter>IAs\Transitions\Chase</Filter>
+    </ClCompile>
+    <ClCompile Include="PatrolToChase.cpp">
+      <Filter>IAs\Transitions\Patrol</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBrain.cpp">
+      <Filter>IAs\Brains\EnemyBrains</Filter>
+    </ClCompile>
+    <ClCompile Include="Brain.cpp">
+      <Filter>IAs\Brains</Filter>
+    </ClCompile>
+    <ClCompile Include="BossBrain.cpp">
+      <Filter>IAs\Brains\EnemyBrains\BossBrain</Filter>
+    </ClCompile>
+    <ClCompile Include="MobBrain.cpp">
+      <Filter>IAs\Brains\EnemyBrains\MobBrain</Filter>
+    </ClCompile>
+    <ClCompile Include="Grub.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Grub</Filter>
+    </ClCompile>
+    <ClCompile Include="Dragon.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Dragon</Filter>
+    </ClCompile>
+    <ClCompile Include="Lever.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Lever</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressLabel.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets\Labels\ProgressLabel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -630,13 +696,10 @@
       <Filter>Objects\ShapeObjects\Actors\Player</Filter>
     </ClInclude>
     <ClInclude Include="Mob.h">
-      <Filter>Objects\ShapeObjects\Actors\Mobs</Filter>
-    </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Mobs</Filter>
     </ClInclude>
     <ClInclude Include="Merchand.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\NPCs\Merchands</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Merchands</Filter>
     </ClInclude>
     <ClInclude Include="CollisionComponent.h">
       <Filter>Components\Collision</Filter>
@@ -654,19 +717,19 @@
       <Filter>Managers\Music</Filter>
     </ClInclude>
     <ClInclude Include="Belfly.h">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\Belfly</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Mobs\Belfly</Filter>
     </ClInclude>
     <ClInclude Include="Boofly.h">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\Boofly</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Mobs\Boofly</Filter>
     </ClInclude>
     <ClInclude Include="HuskBully.h">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\HuskBully</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Mobs\HuskBully</Filter>
     </ClInclude>
     <ClInclude Include="AnimationComponent.h">
-      <Filter>Components\Animation</Filter>
+      <Filter>Components\Animations</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Components\Animation</Filter>
+      <Filter>Components\Animations</Filter>
     </ClInclude>
     <ClInclude Include="InteractableActor.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
@@ -690,7 +753,7 @@
       <Filter>Objects\ShapeObjects\Actors\Bench</Filter>
     </ClInclude>
     <ClInclude Include="DeathMob.h">
-      <Filter>Objects\ShapeObjects\Actors\Mobs\DeathMob</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Mobs\DeathMob</Filter>
     </ClInclude>
     <ClInclude Include="InteractionComponent.h">
       <Filter>Components\Interaction</Filter>
@@ -699,7 +762,7 @@
       <Filter>Components\Movement\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerAnimationComponent.h">
-      <Filter>Components\Animation\Player</Filter>
+      <Filter>Components\Animations\Player</Filter>
     </ClInclude>
     <ClInclude Include="MobAttackComponent.h">
       <Filter>Components\Attack\Mob</Filter>
@@ -723,10 +786,10 @@
       <Filter>Objects\ShapeObjects\Actors\Lift</Filter>
     </ClInclude>
     <ClInclude Include="Boss.h">
-      <Filter>Objects\ShapeObjects\Actors\Boss</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Boss</Filter>
     </ClInclude>
     <ClInclude Include="FalseKnight.h">
-      <Filter>Objects\ShapeObjects\Actors\Boss\FalseKnight</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Boss\FalseKnight</Filter>
     </ClInclude>
     <ClInclude Include="MainMenu.h">
       <Filter>Menus\MainMenu</Filter>
@@ -743,98 +806,104 @@
     <ClInclude Include="AchievementsMenu.h">
       <Filter>Menus\AchievementsMenu</Filter>
     </ClInclude>
-    <ClInclude Include="DragonAnimationComponent.h">
-      <Filter>Components</Filter>
+    <ClInclude Include="KeyboardMenu.h">
+      <Filter>Menus\OptionsMenu\KeyboardMenu</Filter>
     </ClInclude>
-    <ClInclude Include="LeverAnimationComponent.h">
-      <Filter>Components</Filter>
+    <ClInclude Include="ControllerMenu.h">
+      <Filter>Menus\OptionsMenu\ControllerMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopMenu.h">
+      <Filter>Menus\ShopMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="PurchaseMenu.h">
+      <Filter>Menus\PurchaseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitGameMenu.h">
+      <Filter>Menus\QuitGameMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitToMenu.h">
+      <Filter>Menus\QuitToMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMenu.h">
+      <Filter>Menus\PauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuManager.h">
+      <Filter>Managers\Menus</Filter>
     </ClInclude>
     <ClInclude Include="NPCAnimationComponent.h">
-      <Filter>Components</Filter>
+      <Filter>Components\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="DragonAnimationComponent.h">
+      <Filter>Components\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="LeverAnimationComponent.h">
+      <Filter>Components\Animations</Filter>
     </ClInclude>
     <ClInclude Include="MerchandAnimationComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Dragon.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="Lever.h">
-      <Filter>Objects\ShapeObjects\Actors\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerInfo.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerStats.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Components\Animations</Filter>
     </ClInclude>
     <ClInclude Include="MobMovementComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Components\Movement</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>FSM\States</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackToChase.h">
-      <Filter>FSM\Transitions</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackToPatrol.h">
-      <Filter>FSM\Transitions</Filter>
-    </ClInclude>
-    <ClInclude Include="ChaseToAttack.h">
-      <Filter>FSM\Transitions</Filter>
-    </ClInclude>
-    <ClInclude Include="ChaseToPatrol.h">
-      <Filter>FSM\Transitions</Filter>
-    </ClInclude>
-    <ClInclude Include="PatrolToChase.h">
-      <Filter>FSM\Transitions</Filter>
+      <Filter>IAs\States</Filter>
     </ClInclude>
     <ClInclude Include="Transition.h">
-      <Filter>FSM\Transitions</Filter>
-    </ClInclude>
-    <ClInclude Include="BlackBoard.h">
-      <Filter>FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="InspectComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Brain.h">
-      <Filter>FSM\Brains</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyBrain.h">
-      <Filter>FSM\Brains</Filter>
-    </ClInclude>
-    <ClInclude Include="BossBrain.h">
-      <Filter>FSM\Brains</Filter>
-    </ClInclude>
-    <ClInclude Include="MobBrain.h">
-      <Filter>FSM\Brains</Filter>
-    </ClInclude>
-    <ClInclude Include="PatrolToAttack.h">
-      <Filter>FSM\Transitions</Filter>
+      <Filter>IAs\Transitions</Filter>
     </ClInclude>
     <ClInclude Include="PatrolState.h">
-      <Filter>FSM\States\Patrols</Filter>
-    </ClInclude>
-    <ClInclude Include="BossPatrolState.h">
-      <Filter>FSM\States\Patrols</Filter>
-    </ClInclude>
-    <ClInclude Include="MobPatrolState.h">
-      <Filter>FSM\States\Patrols</Filter>
+      <Filter>IAs\States\Patrol</Filter>
     </ClInclude>
     <ClInclude Include="ChaseState.h">
-      <Filter>FSM\States\Chases</Filter>
-    </ClInclude>
-    <ClInclude Include="MobAttackState.h">
-      <Filter>FSM\States\Attacks</Filter>
+      <Filter>IAs\States\Chase</Filter>
     </ClInclude>
     <ClInclude Include="AttackState.h">
-      <Filter>FSM\States\Attacks</Filter>
+      <Filter>IAs\States\Attack</Filter>
     </ClInclude>
-    <ClInclude Include="BossAttackState.h">
-      <Filter>FSM\States\Attacks</Filter>
+    <ClInclude Include="AttackToPatrol.h">
+      <Filter>IAs\Transitions\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackToChase.h">
+      <Filter>IAs\Transitions\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="ChaseToPatrol.h">
+      <Filter>IAs\Transitions\Chase</Filter>
+    </ClInclude>
+    <ClInclude Include="ChaseToAttack.h">
+      <Filter>IAs\Transitions\Chase</Filter>
+    </ClInclude>
+    <ClInclude Include="PatrolToChase.h">
+      <Filter>IAs\Transitions\Patrol</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBrain.h">
+      <Filter>IAs\Brains\EnemyBrains</Filter>
+    </ClInclude>
+    <ClInclude Include="Brain.h">
+      <Filter>IAs\Brains</Filter>
+    </ClInclude>
+    <ClInclude Include="BossBrain.h">
+      <Filter>IAs\Brains\EnemyBrains\BossBrain</Filter>
+    </ClInclude>
+    <ClInclude Include="MobBrain.h">
+      <Filter>IAs\Brains\EnemyBrains\MobBrain</Filter>
+    </ClInclude>
+    <ClInclude Include="Grub.h">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Grub</Filter>
+    </ClInclude>
+    <ClInclude Include="Dragon.h">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Dragon</Filter>
+    </ClInclude>
+    <ClInclude Include="Lever.h">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Lever</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Objects\ShapeObjects\Actors\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressLabel.h">
+      <Filter>UIs\Widgets\ShapeWidgets\Labels\ProgressLabel</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Menus\AudioMenu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

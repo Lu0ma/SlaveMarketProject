@@ -4,9 +4,9 @@
 #include "TextureManager.h"
 #include "HUD.h"
 
-#define PATH_BACKGROUND "UIs/Inventory/Inventory.png"
+#define PATH_INVENTORY "UIs/Inventory/Inventory.png"
 #define PATH_CELL "UIs/Inventory/Cell.png"
-#define PATH_POINTER "UIs/Inventory/Pointer.png"
+#define PATH_INVENTORY_POINTER "UIs/Inventory/Pointer.png"
 #define PATH_SEPARATOR "UIs/Inventory/Separator.png"
 
 #define PATH_CORE "UIs/Inventory/Core.png"
@@ -15,19 +15,16 @@
 
 #define FONT "Font.ttf"
 
-Inventory::Inventory()
+Inventory::Inventory() : Menu("Inventory", nullptr)
 {
-	canvas = nullptr;
 	gridSize = Vector2i(4, 5);
 	cellSize = Vector2f(80.0f, 80.0f);
 
 	buttons = vector<Button*>();
 	stackSize = 5;
 
-	pointer = nullptr;
 	descriptionTitle = nullptr;
 	descriptionText = nullptr;
-
 
 	maskCount = 0;
 	maskWidget = nullptr;
@@ -92,7 +89,6 @@ Item* Inventory::FindItemData(const string& _path)
 
 void Inventory::Init()
 {
-	canvas = new Canvas("PlayerInventory", FloatRect(0, 0, 1, 1));
 	canvas->SetVisibilityStatus(false);
 
 	windowSize = Game::GetWindowSize();
@@ -116,14 +112,12 @@ void Inventory::UpdateMaskCount(const int _factor)
 	maskCount %= 5; // TODO remove
 
 	const string& _path = ComputeHealthMaskPath();
-	Shape* _shape = maskWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	maskWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(maskWidget->GetObject(), _path);
 }
 
 void Inventory::Background()
 {
-	ShapeWidget* _background = new ShapeWidget(ShapeData(halfSize, windowSize, PATH_BACKGROUND));
+	ShapeWidget* _background = new ShapeWidget(ShapeData(halfSize, windowSize, PATH_INVENTORY));
 	canvas->AddWidget(_background);
 }
 
@@ -135,9 +129,7 @@ void Inventory::UpdateVesselCount(const int _factor)
 	vesselCount %= 4; // TODO remove
 
 	const string& _path = ComputeVesselPath();
-	Shape* _shape = vesselWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	vesselWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(vesselWidget->GetObject(), _path);
 }
 
 void Inventory::UpdateMirrorLevel(const int _factor)
@@ -148,9 +140,7 @@ void Inventory::UpdateMirrorLevel(const int _factor)
 	mirrorLevel %= 4; // TODO remove
 
 	const string& _path = ComputeMirrorPath();
-	Shape* _shape = mirrorWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	mirrorWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(mirrorWidget->GetObject(), _path);
 }
 
 void Inventory::UpdateSwordLevel(const int _factor)
@@ -161,9 +151,7 @@ void Inventory::UpdateSwordLevel(const int _factor)
 	swordLevel %= 5; // TODO remove
 
 	const string& _path = ComputeSwordPath();
-	Shape* _shape = swordWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	swordWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(swordWidget->GetObject(), _path);
 }
 
 void Inventory::Grid()
@@ -206,7 +194,7 @@ void Inventory::Grid()
 		}
 	}
 
-	pointer = new ShapeWidget(ShapeData(_gridPos, cellSize, PATH_POINTER));
+	pointer = new ShapeWidget(ShapeData(_gridPos, cellSize, PATH_INVENTORY_POINTER));
 	canvas->AddWidget(pointer);
 }
 
@@ -375,9 +363,7 @@ void Inventory::SetVengefulStatus(const bool _status)
 	//isSlamActive = _status;
 
 	const string& _path = ComputeVengefulPath();
-	Shape* _shape = vengefulWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	vengefulWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(vengefulWidget->GetObject(), _path);
 }
 
 void Inventory::SetSlamStatus(const bool _status)
@@ -386,9 +372,7 @@ void Inventory::SetSlamStatus(const bool _status)
 	//isSlamActive = _status;
 
 	const string& _path = ComputeSlamPath();
-	Shape* _shape = slamWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	slamWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(slamWidget->GetObject(), _path);
 }
 
 void Inventory::SetShriekStatus(const bool _status)
@@ -397,9 +381,7 @@ void Inventory::SetShriekStatus(const bool _status)
 	//isSlamActive = _status;
 
 	const string& _path = ComputeShriekPath();
-	Shape* _shape = shriekWidget->GetDrawable();
-	TextureManager::GetInstance().Load(_shape, _path);
-	shriekWidget->GetObject()->SetShape(_shape);
+	TextureManager::GetInstance().Load(shriekWidget->GetObject(), _path);
 }
 
 void Inventory::AddItem(const int _count, const ItemData& _data)
@@ -427,6 +409,10 @@ void Inventory::AddItem(const int _count, const ItemData& _data)
 
 		CreateItemData(_data);
 		AddItem(_count - 1, _data);
+	}
+	else if (_data.type == IT_GEOS)
+	{
+		Game::GetPlayer()->GetStats()->UpdateGeos(50);
 	}
 }
 

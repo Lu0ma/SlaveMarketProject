@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include "PauseMenu.h"
 #include "PlayerStat.h"
 #include "Inventory.h"
 #include "CharmsMenu.h"
@@ -7,11 +8,13 @@
 #include "PlayerAttackComponent.h"
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
+#include "CollisionComponent.h"
 
 using namespace std;
 
 class Player : public Actor
 {
+	PauseMenu* pauseMenu;
 	PlayerStat* stats;
 	Inventory* inventory;
 	CharmsMenu* charmsMenu;
@@ -19,6 +22,7 @@ class Player : public Actor
 	PlayerAttackComponent* attack;
 	PlayerAnimationComponent* animation;
 	InteractionComponent* interaction;
+	CircleShape* light;
 
 public:
 	void SetStatus(const bool _status)
@@ -33,6 +37,10 @@ public:
 	{
 		return inventory;
 	}
+	CircleShape* GetLight()const
+	{
+		return light;
+	}
 
 public:
 	Player(const string& _name, const ShapeData& _data);
@@ -40,7 +48,8 @@ public:
 private:
 	void InitAnimations();
 	void SetupPlayerInput();
-	void TryToOpenCharmsMenu();
+	void TryToOpen(Menu* _menu);
+	void CloseAllMenus();
 
 public:
 	virtual void Init() override;

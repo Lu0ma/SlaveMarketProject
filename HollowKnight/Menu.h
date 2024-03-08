@@ -1,18 +1,26 @@
 #pragma once
+#include "IManagable.h"
 #include "Canvas.h"
 #include "ShapeWidget.h"
+#include "Button.h"
 #include "Label.h"
 
-class Menu
+#define PATH_BACKGROUND "UIs/Menus/Background.png"
+#define PATH_TITLE_ICON "UIs/Menus/TitleIcon.png"
+#define PATH_POINTER "UIs/Menus/Pointer.png"
+#define FONT "Font.ttf"
+
+class Menu : public IManagable<string>
 {
 	bool isInit;
 
 protected:
 	Canvas* canvas;
+	ShapeWidget* pointer;
 	Menu* owner;
 
 public:
-	void SetStatus(const bool _status)
+	virtual void SetStatus(const bool _status)
 	{
 		if (!isInit)
 		{
@@ -22,6 +30,13 @@ public:
 
 		canvas->SetVisibilityStatus(_status);
 	}
+	bool IsActive()
+	{
+		return isInit && canvas->GetVisibilityStatus();
+	}
+
+private:
+	virtual void Register() override;
 
 public:
 	Menu(const string& _name, Menu* _owner = nullptr);

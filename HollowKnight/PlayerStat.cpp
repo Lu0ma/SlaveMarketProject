@@ -1,17 +1,24 @@
 #include "PlayerStat.h"
+#include "PlayerAnimationComponent.h"
+#include "PlayerMovementComponent.h"
+#include "Game.h"
 #include "TextureManager.h"
 #include "Timer.h"
+
 #include <iostream>
 #include"Game.h"
+#include"DeathMob.h"
+
+
 
 #define PATH_MANA_FULL "UIs/Player/Mana/ManaBar_Full.png"
 #define PATH_MANA_EMPTY "UIs/Player/Mana/ManaBar_Empty.png"
 #define PATH_GEO "UIs/Inventory/Geo.png"
 #define FONT "Font.ttf"
+#define PATH_DEATHMOB "Animations/DeathMob.png"
 
-PlayerStat::PlayerStat(Actor* _owner) : Component(_owner)
+PlayerStat::PlayerStat(Player* _player) : Menu("PlayerStat", nullptr)
 {
-	canvas = nullptr;
 	currentLifesCount = 0;
 	currentMaxLifesCount = 0;
 	lifeWigets = vector<ShapeWidget*>();
@@ -19,15 +26,17 @@ PlayerStat::PlayerStat(Actor* _owner) : Component(_owner)
 	geosCount = 0;
 	geosCountText = nullptr;
 
-	animation = owner->GetComponent<PlayerAnimationComponent>();
-	movement = owner->GetComponent<PlayerMovementComponent>();
+
+	animation = _player->GetComponent<PlayerAnimationComponent>();
+	movement = _player->GetComponent<PlayerMovementComponent>();
+
+	numberOfDeath = 0;
+
 }
 
 
 void PlayerStat::Init()
 {
-	canvas = new Canvas("PlayerStats");
-
 	#pragma region Mana
 
 	const Vector2f& _manaPos = Vector2f(150.0f, 80.0f);
@@ -66,11 +75,11 @@ void PlayerStat::Init()
 void PlayerStat::UseMana(const float _factor)
 {
 	manaBar->ChangeValue(_factor);
-	float _dir = Game::GetPlayer()->GetDrawable()->getScale().x;
+	const float _direction = Game::GetPlayer()->GetDrawable()->getScale().x;
 
 	if (_factor < 0.0f && animation && movement)
 	{
-		animation->GetCurrentAnimation()->RunAnimation("RemoveMana", _dir/*movement->GetDirection().x*/);
+		animation->GetCurrentAnimation()->RunAnimation("RemoveMana", _direction/*movement->GetDirection().x*/);
 	}
 }
 
@@ -86,13 +95,17 @@ void PlayerStat::UpdateLife(const int _count)
 
 	if (ShapeWidget* _widget = lifeWigets[_currentLife])
 	{
-		Shape* _shape = _widget->GetDrawable();
 		const string& _path = ComputeLifePath(_count > 0);
-		TextureManager::GetInstance().Load(_shape, _path);
-		_widget->GetObject()->SetShape(_shape);
+		TextureManager::GetInstance().Load(_widget->GetObject(), _path);
 	}
 
 	currentLifesCount += _count;
+	cout << currentLifesCount << endl;
+
+	if (currentLifesCount == 0)
+	{
+		Death();
+	}
 }
 
 void PlayerStat::AddLife()
@@ -112,8 +125,45 @@ void PlayerStat::AddLife()
 	UpdateLife(1);
 }
 
-void PlayerStat::AddGeos(const int _factor)
+void PlayerStat::UpdateGeos(const int _factor)
 {
 	geosCount += _factor;
 	geosCountText->SetString(to_string(geosCount));
+}
+
+
+void PlayerStat::Death()
+{
+	numberOfDeath++;
+	Player* _player = Game::GetPlayer();
+	Vector2f _benchPos = Game::GetMap()->GetBench()->GetPosition();
+
+	Vector2f _lastPos = _player->GetPosition();
+	/*DeathMob* _deathMob = new DeathMob(ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
+	_deathMob->Init();*/
+
+	/*DeathMob* _deathMob = new DeathMob("DeathMob",ShapeData(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), PATH_DEATHMOB));
+	int _life = _deathMob->GetLife()->GetLife();
+	cout << _life << endl;*/
+	
+	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
+	{
+		if (DeathMob* _death = dynamic_cast<DeathMob*>(_actor))
+		{
+			// _death->SetToRemove(true);
+			_death->GetDrawable()->setScale(Vector2f(0.0f, 0.0f)); ///TODO CHANGE
+		}
+	}
+
+	DeathMob* _deathMob = new DeathMob("Death" + to_string(numberOfDeath), ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
+	_deathMob->Init();
+
+	_player->SetShapePosition(_benchPos);
+
+	for (int _index = 0; _index < currentMaxLifesCount; _index++)
+	{
+		_player->GetStats()->UpdateLife(1);
+	} 
+
+	UpdateGeos(-geosCount);
 }

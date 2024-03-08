@@ -3,7 +3,7 @@
 #include "MovementComponent.h"
 #include "MobBrain.h"
 
-Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data)
+Mob::Mob(const ShapeData& _data) : Enemy(STRING_ID("Mob"), _data)
 {
 	isPatrolling = false;
 	cooldownAttack = false;
@@ -18,7 +18,7 @@ Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data
 	attack = new MobAttackComponent(this, 1);
 	components.push_back(attack);
 
-	life = new MobLifeComponent(this, 3);
+	life = new MobLifeComponent(this, 1);
 	components.push_back(life);
 
 	inspect = new InspectComponent(this, 100.0f);

@@ -23,4 +23,5 @@ public:
 
 public:
 	ShapeWidget(const ShapeData& _data);
+	~ShapeWidget();
 };

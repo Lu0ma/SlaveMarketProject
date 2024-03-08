@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include <SFML/Graphics.hpp>
+#include "CollisionComponent.h"
 #include <functional>
 #include <iostream>
 #include "AnimationComponent.h"
@@ -16,7 +17,6 @@ protected:
 	bool canMove;
 	float speed;
 	float gravity;
-	
 	Vector2f lastDirection;
 
 public:
@@ -28,11 +28,13 @@ public:
 	void SetCanMove(const bool _status)
 	{
 		canMove = _status;
+
 		if (!animation)
 		{
 			animation = owner->GetComponent<AnimationComponent>();
 			if (!animation) return;
 		}
+
 		if (!canMove)
 		{
 			animation->RunAnimation("Idle", lastDirection.x);
@@ -46,5 +48,4 @@ public:
 
 public:
 	MovementComponent(Actor* _owner);
-
 };

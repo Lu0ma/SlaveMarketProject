@@ -4,15 +4,18 @@
 
 class Dragon : public InteractableActor
 {
-	DragonAnimationComponent* animations;
+	DragonAnimationComponent* animation;
 
 public:
-	DragonAnimationComponent* GetAnimations()const
+	DragonAnimationComponent* GetAnimation() const
 	{
-		return animations;
+		return animation;
 	}
 
 public:
 	Dragon(const string& _name, const ShapeData& _data, const vector<string>& _texts = {});
+
+public:
+	void PlayMusic();
 };
 

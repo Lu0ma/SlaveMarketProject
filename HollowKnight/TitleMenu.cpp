@@ -4,16 +4,14 @@
 #include "ActorManager.h"
 
 #define PATH_TITLE_MENU "UIs/Menus/TitleMenu/Background.png"
-#define PATH_POINTER "UIs/Menus/TitleMenu/Pointer.png"
-#define FONT "Font.ttf"
 
 TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
 {
 	canvas = new Canvas("Title");
 	buttons = vector<Button*>();
-	pointer = nullptr;
 	options = new OptionsMenu(this);
 	achievement = new AchievementsMenu(this);
+	quitGame = new QuitGameMenu(this);
 }
 
 
@@ -46,23 +44,24 @@ void TitleMenu::Init()
 	const vector<ButtonData>& _allData = {
 		ButtonData("START GAME", [&]() { 
 			Game::GetPlayer()->Init();
-			Game::GetCamera()->SetTarget(TARGET_PLAYER);
-			canvas->SetVisibilityStatus(false);
+			//Game::GetCamera()->SetTarget(TARGET_PLAYER);
+			SetStatus(false);
 		}),
 		ButtonData("OPTIONS", [&]() {
 			options->SetStatus(true);
-			canvas->SetVisibilityStatus(false);
+			SetStatus(false);
 		}),
-		ButtonData("ACHIVEMENTS", [&]() {
+		ButtonData("ACHIEVEMENTS", [&]() {
 			achievement->SetStatus(true);
-			canvas->SetVisibilityStatus(false);
+			SetStatus(false);
 		}),
 		ButtonData("EXTRAS", [&]() {
 			cout << "EXTRAS" << endl;
-			//canvas->SetVisibilityStatus(false);
+			//TODO easter
 		}),
-		ButtonData("QUIT GAME", []() {
-			Game::Close();
+		ButtonData("QUIT GAME", [&]() {
+			quitGame->SetStatus(true);
+			SetStatus(false);
 		})
 	};
 
@@ -71,6 +70,7 @@ void TitleMenu::Init()
 	const float _gridPosX = _halfWindowX + _buttonSize.x * 5.0f / 100.0f;
 	const float _gridPosY = _windowSize.y * 55.0f / 100.0f;
 
+	const int _buttonsCount = (int)_allData.size();
 	for (int _index = 0; _index < 5; _index++)
 	{
 		const float _buttonPosY = _gridPosY + _buttonSize.y * _index + _gapY * _index;

@@ -1,11 +1,9 @@
 #include "MainMenu.h"
-#include "ShapeWidget.h"
 #include "Game.h"
 #include "ActionMap.h"
 #include "MusicManager.h"
 
 #define PATH_MAIN_MENU "UIs/Menus/MainMenu/Background.png"
-#define FONT "Font.ttf"
 #define MUSIC "CityofTears.mp3"
 
 MainMenu::MainMenu() : Menu("MainMenu")
@@ -31,9 +29,7 @@ void MainMenu::Init()
 
 	const float _mainMenuTextPosX = _windowSize.x * 0.80f;
 	const float _mainMenuTextPosY = _windowSize.y * 0.75f;
-	Label* _mainMenuText = new Label(TextData("Press space key to continue..",
-									 Vector2f(_mainMenuTextPosX, _mainMenuTextPosY),
-									 FONT, 26), AT_RIGHT);
+	Label* _mainMenuText = new Label(TextData("Press space key to continue..", Vector2f(_mainMenuTextPosX, _mainMenuTextPosY), FONT, 26), AT_RIGHT);
 
 	canvas->AddWidget(_mainMenuText);
 	new ActionMap("MenuInputs", {

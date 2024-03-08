@@ -5,7 +5,7 @@
 
 class SoundManager : public Singleton<SoundManager>, public IManager<string, SoundData>
 {
-	Sound sound;
+	
 
 public:
 	SoundManager();
@@ -15,4 +15,5 @@ private:
 
 public:
 	void Play(const string& _path);
+	void AdjustAllVolume(const float _volume);
 };

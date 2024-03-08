@@ -21,7 +21,7 @@ public:
 	Mob(const ShapeData& _data);
 
 public:
+	virtual void Update(const float _deltaTime) override;
 	virtual void Attack(Player* _player) = 0;
 	virtual void Death() = 0;
-	virtual void Update(const float _deltaTime) override;
 };

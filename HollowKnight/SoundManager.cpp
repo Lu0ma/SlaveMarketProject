@@ -3,8 +3,7 @@
 
 SoundManager::SoundManager()
 {
-	sound = Sound();
-	sound.setVolume(25.0f);
+
 }
 
 void SoundManager::Play(const string& _path)
@@ -21,8 +20,15 @@ void SoundManager::Play(const string& _path)
 
 	if (_soundData)
 	{
-		sound.setBuffer(*_soundData);
-		sound.play();
+		_soundData->Play();
+	}
+}
+
+void SoundManager::AdjustAllVolume(const float _volume)
+{ 
+	for (SoundData* _sound : SoundManager::GetInstance().GetAllValues())
+	{
+		_sound->AdjustVolume(_volume);
 	}
 }
 
@@ -34,7 +40,7 @@ void SoundManager::Load(const string& _path)
 
 	if (!_soundData)
 	{
-		_soundData = new SoundData(_path);
+		_soundData = new SoundData(_path, 100.0f);
 		if (!_soundData->loadFromFile("Assets/Sounds/" + _path))
 		{
 			cerr << "Le son n'a pas été correctement chargée !" << endl;

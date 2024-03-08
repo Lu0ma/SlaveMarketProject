@@ -7,7 +7,7 @@
 #define PATH_DISCUSSION "UIs/Discussions/Dialog.png"
 #define FONT "Font.ttf"
 
-InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data)
+InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_NONE)
 {
 	canvas = new Canvas(STRING_ID("Interactable"));
 	isOpen = false;
@@ -18,6 +18,7 @@ InteractableActor::InteractableActor(const string& _name, const ShapeData& _data
 	discussionBG = nullptr;
 	discussionText = nullptr;
 
+	Init();
 	Register();
 }
 
@@ -40,9 +41,6 @@ void InteractableActor::Verify()
 		{
 			interactionBG->SetVisible(true);
 			interactionText->SetVisible(true);
-
-			/*discussionBG->SetVisible(false);
-			discussionText->SetVisible(false);*/
 		}
 	}
 
@@ -80,7 +78,7 @@ void InteractableActor::Init()
 	discussionBG->SetVisible(false);
 	canvas->AddWidget(discussionBG);
 
-	discussionText = new Label(TextData("Your words, are they repeating ?", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16));
+	discussionText = new ProgressLabel(TextData("Your words, are they repeating ?", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16), 0.1f);
 	discussionText->SetVisible(false);
 	canvas->AddWidget(discussionText);
 }
