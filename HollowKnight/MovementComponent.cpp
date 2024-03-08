@@ -10,7 +10,6 @@ MovementComponent::MovementComponent(Actor* _owner) : Component(_owner)
 	minRange = 0.5f;
 	destination = _owner->GetShapePosition();
 	collision = _owner->GetComponent<CollisionComponent>();
-
 }
 
 
