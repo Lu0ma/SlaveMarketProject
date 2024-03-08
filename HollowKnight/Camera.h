@@ -26,10 +26,12 @@ class Camera
 	float oldScaleX;
 	Vector2f targetPosition;
 	Vector2f offset;
+	Vector2f defaultSize;
 	View view;
 	Shake shake;
 	bool isDown;
 
+	bool isZoom;
 	float axeX;
 	float axeY;
 
@@ -48,6 +50,11 @@ public:
 	{
 		axeY = _axeY;
 	}
+
+	void SetIsZoom(const bool _isZoom)
+	{
+		isZoom = _isZoom;
+	}
 public:
 	Camera();
 
@@ -62,5 +69,11 @@ public:
 
 	void MoveCamera(const float _axeX , const float _axeY);
 	void CheckIsDown();
-	static inline float randn();
+
+	void Zoom();
+	void ResetZoom();
+	void UpdateSizeView();
+
+
 };
+
