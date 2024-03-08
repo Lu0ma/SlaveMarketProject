@@ -179,7 +179,7 @@ void Inventory::Grid()
 					if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 					{
 						const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-						pointer->SetShapePosition(_position);
+						//pointer->SetShapePosition(_position);
 
 						if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_hoveredButton->GetForeground()))
 						{
@@ -194,8 +194,8 @@ void Inventory::Grid()
 		}
 	}
 
-	pointer = new ShapeWidget(ShapeData(_gridPos, cellSize, PATH_INVENTORY_POINTER));
-	canvas->AddWidget(pointer);
+	pointerLeft = new ShapeWidget(ShapeData(_gridPos, cellSize, PATH_INVENTORY_POINTER));
+	canvas->AddWidget(pointerLeft);
 }
 
 void Inventory::Equippements()

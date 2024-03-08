@@ -37,8 +37,11 @@ void ExtrasMenu::Init()
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	const Vector2f& _pointerPos = Vector2f(_halfWindowX, _buttonPos.y);
+	const Vector2f& _halfButtonSize = Vector2f(_buttonSize.x / 2.0f, 0.0f);
+	pointerLeft->SetShapePosition(_pointerPos - _halfButtonSize);
+	pointerRight->SetShapePosition(_pointerPos + _halfButtonSize);
 
 	#pragma endregion
 }

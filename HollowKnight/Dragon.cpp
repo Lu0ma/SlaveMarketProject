@@ -15,10 +15,6 @@ void Dragon::PlayMusic()
 	Player* _player = Game::GetPlayer();
 	if (!GetDrawable()->getGlobalBounds().intersects(_player->GetBounds()))
 	{
-	    MusicManager::GetInstance().Play(MUSIC);
+	    //MusicManager::GetInstance().Play(MUSIC);
 	}
-	
-	
-	
-	
 }

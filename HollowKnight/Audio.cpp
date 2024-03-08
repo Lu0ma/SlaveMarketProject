@@ -15,26 +15,12 @@
 Audio::Audio(Menu* _owner) : Menu("Audio", _owner)
 {
 	buttons = vector<Button*>();
-	pointer = nullptr;
 	value = 0;
 	maxValue = 0;
 	minValue = 0;
 	factor = 0;
 }
 
-Audio::~Audio()
-{
-	delete pointer;
-
-	for (Button* _button : buttons)
-	{
-		delete _button;
-	}
-	for (auto& _widget : indicators)
-	{
-		delete _widget.second;
-	}
-}
 
 void Audio::Init()
 {
@@ -140,13 +126,12 @@ void Audio::Init()
 		Button* _button = new Button(ShapeData(_buttonPos, _hoverSize, ""));
 
 		_button->GetData().hoveredCallback = [&]()
+		{
+			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
-				if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
-				{
-					const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-					pointer->SetShapePosition(_position);
-				}
-			};
+				MovePointers(_hoveredButton);
+			}
+		};
 		Button* _buttonMinus = new Button(ShapeData(Vector2f(_buttonPos.x, _buttonPos.y), _buttonSize, PATH_MINUS));
 		_buttonMinus->GetData().pressedCallback = _audioButtonsData[_i].minusButton.callback;
 
@@ -185,10 +170,16 @@ void Audio::Init()
 #pragma endregion
 
 #pragma region Pointer
+
 	const Vector2f& _pointerSize = Vector2f(647.0f , 67.0f);
 	const float _gridPosX = _halfWindowX + _buttonSize.x * 5.0f / 100.0f;
-	pointer = new ShapeWidget(ShapeData(Vector2f(_gridPosX, _gridPosY), Vector2f(_pointerSize.x, _pointerSize.y), PATH_POINTER));
-	canvas->AddWidget(pointer);
+
+	Menu::Init();
+	const Vector2f& _pointerPos = Vector2f(_gridPosX, _gridPosY);
+	const Vector2f& _halfButtonSize = Vector2f(_buttonSize.x / 2.0f, 0.0f);
+	pointerLeft->SetShapePosition(_pointerPos - _halfButtonSize);
+	pointerRight->SetShapePosition(_pointerPos + _halfButtonSize);
+
 #pragma endregion
 
 #pragma region Back
@@ -208,9 +199,6 @@ void Audio::Init()
 	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
-
-	ShapeWidget* pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_backSize.x, _backSize.y), PATH_POINTER));
-	canvas->AddWidget(pointer);
 
 #pragma endregion
 }

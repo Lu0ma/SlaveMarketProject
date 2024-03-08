@@ -16,7 +16,8 @@ class Menu : public IManagable<string>
 
 protected:
 	Canvas* canvas;
-	ShapeWidget* pointer;
+	ShapeWidget* pointerLeft;
+	ShapeWidget* pointerRight;
 	Menu* owner;
 
 public:
@@ -35,12 +36,17 @@ public:
 		return isInit && canvas->GetVisibilityStatus();
 	}
 
-private:
-	virtual void Register() override;
+
 
 public:
 	Menu(const string& _name, Menu* _owner = nullptr);
 
+private:
+	virtual void Register() override;
+
+protected:
+	void MovePointers(Button* _button);
+
 public:
-	virtual void Init() = 0;
+	virtual void Init();
 };

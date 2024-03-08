@@ -65,8 +65,7 @@ void QuitToMenu::Init()
 		{
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
-				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-				pointer->SetShapePosition(_position);
+				MovePointers(_hoveredButton);
 			}
 		};
 		_button->GetData().pressedCallback = _allData[_index].callback;
@@ -83,8 +82,11 @@ void QuitToMenu::Init()
 
 	#pragma region Pointer
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _gridPosY), _buttonSize, PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	const Vector2f& _pointerPos = Vector2f(_halfWindowX, _gridPosY);
+	const Vector2f& _halfButtonSize = Vector2f(_buttonSize.x / 2.0f, 0.0f);
+	pointerLeft->SetShapePosition(_pointerPos - _halfButtonSize);
+	pointerRight->SetShapePosition(_pointerPos + _halfButtonSize);
 
 	#pragma endregion
 }

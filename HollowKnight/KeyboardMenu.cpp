@@ -39,8 +39,12 @@ void KeyboardMenu::Init()
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	const Vector2f& _pointerPos = Vector2f(_halfWindowX, _buttonPos.y);
+	const float _pointerSizeX = _buttonSize.x * 0.25f;
+	const float _pointerSizeY = _buttonSize.y * 0.15f;
+	pointerLeft->SetShapePosition(_pointerPos + Vector2f(-_pointerSizeX, _pointerSizeY));
+	pointerRight->SetShapePosition(_pointerPos + Vector2f(_pointerSizeX, _pointerSizeY));
 
 	#pragma endregion
 }
