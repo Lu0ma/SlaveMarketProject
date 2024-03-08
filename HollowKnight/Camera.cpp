@@ -114,7 +114,7 @@ void Camera::UpdateSizeView()
 	}
 	else if(isZoom)
 	{
-		if (view.getSize().x <= 925) return;
+		if (view.getSize().x <= defaultSize.x - 35) return;
 		view.zoom(0.999f);
 	}
 }

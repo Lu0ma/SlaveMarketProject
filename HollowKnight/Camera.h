@@ -69,7 +69,5 @@ public:
 
 
 	void UpdateSizeView();
-
-
 };
 
