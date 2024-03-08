@@ -4,7 +4,9 @@
 #include "MobMovementComponent.h"
 #include "InspectComponent.h"
 
-#include "PatrolToChase.h"
+#include "PatrolToAttack.h"
+
+class MobBrain;
 
 class PatrolState : public State
 {
@@ -15,11 +17,10 @@ class PatrolState : public State
 	Vector2f startPosition;
 	Vector2f goalPosition;
 
-	PatrolToChase* patrolToChase;
-
+	PatrolToAttack* patrolToAttack;
 
 public:
-	PatrolState(Brain* _brain);
+	PatrolState(MobBrain* _brain);
 
 public:
 	virtual void Init() override;
@@ -27,4 +28,3 @@ public:
 	virtual void Update(const float _deltaTime) override;
 	virtual void Stop() override;
 };
-

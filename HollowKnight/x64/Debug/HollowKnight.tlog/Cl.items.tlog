@@ -12,7 +12,9 @@ C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\Belfly.cpp;C:
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\Bench.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\Bench.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\Boofly.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\Boofly.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\Boss.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\Boss.obj
+C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\BossAttackState.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\BossAttackState.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\BossBrain.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\BossBrain.obj
+C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\BossPatrolState.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\BossPatrolState.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\Brain.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\Brain.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\Button.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\Button.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\Camera.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\Camera.obj
@@ -69,6 +71,7 @@ C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\NPCAnimationC
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\Object.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\Object.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\OptionsMenu.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\OptionsMenu.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\PatrolState.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\PatrolState.obj
+C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\PatrolToAttack.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\PatrolToAttack.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\PatrolToChase.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\PatrolToChase.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\Player.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\Player.obj
 C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\PlayerAnimationComponent.cpp;C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\PlayerAnimationComponent.obj

@@ -21,6 +21,9 @@ Mob::Mob(const ShapeData& _data) : Enemy("Mob" + to_string(GetUniqueID()), _data
 	life = new MobLifeComponent(this, 3);
 	components.push_back(life);
 
+	inspect = new InspectComponent(this, 100.0f);
+	components.push_back(inspect);
+
 	brain = new MobBrain(this);
 	components.push_back(brain);
 }

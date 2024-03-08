@@ -1,20 +1,21 @@
 #include "PatrolState.h"
 #include "Macro.h"
-#include "Brain.h"
+#include "MobBrain.h"
 
-PatrolState::PatrolState(Brain* _brain) : State(_brain)
+PatrolState::PatrolState(MobBrain* _brain) : State(_brain)
 {
 	animation = nullptr;
 	movement = nullptr;
 	inspect = nullptr;
 
-	patrolToChase = new PatrolToChase(brain);
-	transitions.push_back(patrolToChase);
+
+	patrolToAttack = new PatrolToAttack(_brain);
+	transitions.push_back(patrolToAttack);
 }
 
 void PatrolState::Init()
 {
-	patrolToChase->Init();
+	patrolToAttack->Init();
 }
 
 void PatrolState::Start()

@@ -1,14 +1,14 @@
 #include "AttackToChase.h"
 #include "BlackBoard.h"
-#include "Brain.h"
+#include "BossBrain.h"
 
-AttackToChase::AttackToChase(Brain* _brain) : Transition(_brain)
+AttackToChase::AttackToChase(BossBrain* _brain) : Transition(_brain)
 {
 }
 
 void AttackToChase::Init()
 {
-    nextState = brain->GetChaseState();
+    nextState = dynamic_cast<BossBrain*>(brain)->GetChaseState();
 }
 
 bool AttackToChase::CanNext() const

@@ -3,13 +3,15 @@
 #include "AttackToChase.h"
 #include "AttackToPatrol.h"
 
+class EnemyBrain;
+
 class AttackState : public State
 {
-	AttackToChase* attackToChase;
+protected:
 	AttackToPatrol* attackToPatrol;
 
 public:
-	AttackState(Brain* _brain); 
+	AttackState(EnemyBrain* _brain);
 
 public:
 	virtual void Init() override;

@@ -3,6 +3,7 @@
 #include "AnimationComponent.h"
 #include "MobMovementComponent.h"
 #include "MobAttackComponent.h"
+#include "InspectComponent.h"
 #include "Game.h"
 
 class Mob : public Enemy
@@ -14,6 +15,7 @@ protected:
 	AnimationComponent* animation;
 	MobMovementComponent* movement;
 	MobAttackComponent* attack;
+	InspectComponent* inspect;
 
 public:
 	Mob(const ShapeData& _data);

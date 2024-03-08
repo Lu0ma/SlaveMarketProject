@@ -1,18 +1,14 @@
 #include "AttackState.h"
-#include "Brain.h"
+#include "EnemyBrain.h"
 
-AttackState::AttackState(Brain* _brain) : State(_brain)
+AttackState::AttackState(EnemyBrain* _brain) : State(_brain)
 {
-	attackToChase = new AttackToChase(_brain);
-	transitions.push_back(attackToChase);
-
 	attackToPatrol = new AttackToPatrol(_brain);
 	transitions.push_back(attackToPatrol);
 }
 
 void AttackState::Init()
 {
-	attackToChase->Init();
 	attackToPatrol->Init();
 }
 

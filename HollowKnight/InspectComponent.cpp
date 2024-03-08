@@ -7,7 +7,6 @@
 InspectComponent::InspectComponent(Actor* _owner, const float _viewRange) : Component(_owner)
 {
 	hitInfo = HitInfo();
-
 	viewRange = _viewRange;
 }
 
@@ -24,7 +23,7 @@ bool InspectComponent::HasTarget(const Vector2f& _position, const Vector2f& _des
 
 	const bool _hasHit = Raycast(_position, _direction, _maxDistance, _hitInfo, { owner->GetDrawable() });
 
-	if (_hasHit)
+	if (_hasHit && dynamic_cast<Player*>(hitInfo.actor))
 	{
 		hitInfo = _hitInfo;
 		return true;

@@ -9,7 +9,7 @@ ChaseToPatrol::ChaseToPatrol(Brain* _brain) : Transition(_brain)
 
 void ChaseToPatrol::Init()
 {
-    nextState = brain->GetPatrolState();
+    nextState = brain->GetState<PatrolState>();
 }
 
 bool ChaseToPatrol::CanNext() const

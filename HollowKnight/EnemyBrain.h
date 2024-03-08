@@ -4,7 +4,6 @@
 class EnemyBrain : public Brain
 {
 
-
 public:
 	EnemyBrain(Actor* _owner);
 	~EnemyBrain();

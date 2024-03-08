@@ -1,12 +1,12 @@
 #pragma once
 #include "Transition.h"
 
-class Brain;
+class BossBrain;
 
 class ChaseToAttack : public Transition
 {
 public:
-	ChaseToAttack(Brain* _brain);
+	ChaseToAttack(BossBrain* _brain);
 
 public:
 	virtual void Init() override;
