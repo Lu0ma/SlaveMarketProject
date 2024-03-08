@@ -28,13 +28,26 @@ class Camera
 	Vector2f offset;
 	View view;
 	Shake shake;
+	bool isDown;
+
+	float axeX;
+	float axeY;
 
 public:
 	View GetView() const
 	{
 		return view;
 	}
-	
+public:
+	void SetIsDown(const bool _isDown)
+	{
+		isDown = _isDown;
+	}
+
+	void SetAxeY(const float _axeY)
+	{
+		axeY = _axeY;
+	}
 public:
 	Camera();
 
@@ -46,6 +59,8 @@ public:
 	void Init();
 	void Shake(const float _trauma, const float _duration);
 	void Update(const float _deltaTime);
-	void Down();
+
+	void MoveCamera(const float _axeX , const float _axeY);
+	void CheckIsDown();
 	static inline float randn();
 };

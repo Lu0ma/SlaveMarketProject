@@ -1,2 +1,13 @@
-﻿  Player.cpp
+﻿  AchievementsMenu.cpp
+  Camera.cpp
+  Canvas.cpp
+  ChaseToPatrol.cpp
+  CollectableActor.cpp
+  InteractionComponent.cpp
+  Inventory.cpp
+  MobMovementComponent.cpp
+  MovementComponent.cpp
+  ShopMenu.cpp
+  Transition.cpp
+  Generating Code...
   HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

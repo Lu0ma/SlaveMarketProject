@@ -67,7 +67,9 @@ void Player::SetupPlayerInput()
 		ActionData("Jump", [&]() { movement->StartJump(); }, InputData({ ActionType::KeyPressed, Keyboard::Space })),
 		ActionData("StopJump", [&]() { movement->StopJump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
 		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyPressed, Keyboard::LControl })),
-		ActionData("Down", [&]() { Game::GetCamera()->Down(); }, InputData({ActionType::KeyPressed, Keyboard::Down})),
+		ActionData("Down", [&]() { Game::GetCamera()->SetAxeY(-500.0f);  }, InputData({ActionType::KeyPressed, Keyboard::Down})),
+		ActionData("Up", [&]() { Game::GetCamera()->SetAxeY(500.0f); }, InputData({ActionType::KeyPressed, Keyboard::Up})),
+		ActionData("StopDown", [&]() { /*Game::GetCamera()->SetIsDown(false); */}, InputData({ActionType::KeyReleased, Keyboard::Down})),
 		ActionData("Sit", [&]() {
 			movement->SitDown();
 			attack->SetCanAttack(false);
@@ -80,7 +82,7 @@ void Player::SetupPlayerInput()
 
 	new ActionMap("Attack", {
 		ActionData("Special", [&]() { attack->SpecialAttack(); }, InputData({ActionType::MouseButtonPressed, Mouse::Left})),
-		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "Right"); }, InputData({ ActionType::MouseButtonReleased, Mouse::Left })),
+		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "Right");}, InputData({ ActionType::MouseButtonReleased, Mouse::Left })),
 		ActionData("Tremblement ", [&]() {Game::GetCamera()->Shake(0.14f,10000.0f); cout << "tremblement " << endl; }, InputData({ActionType::KeyPressed, Keyboard::C})),
 	});
 
