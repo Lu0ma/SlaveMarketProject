@@ -6,8 +6,6 @@
 #include "Macro.h"
 #include "Kismet.h"
 
-#define PI 3.14159265359f
-
 PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementComponent(_owner)
 {
 	// Movement
@@ -21,7 +19,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 	// Ground
 	isOnGround = false;
-	checkGroundDistance = owner->GetShapeSize().y / 2.0f;
+	checkGroundDistance = owner->GetShapeSize().y * 0.3f;
 
 	// Jump
 	isJumping = false;
@@ -51,58 +49,21 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	// Components
 	animation = owner->GetComponent<PlayerAnimationComponent>();
 
-	//TODO remove
-	rayCastLineX = new Actor("raycastlineX", ShapeData(owner->GetShapePosition(), Vector2f(checkWallDistance, 5.0f), ""));
-	rayCastLineX->GetDrawable()->setFillColor(Color::Red);
-	rayCastLineX->GetDrawable()->setOrigin(checkWallDistance * 0.5f, 0.0f);
-
 	rayCastLineY = new Actor("raycastlineY", ShapeData(owner->GetShapePosition(), Vector2f(5.0f, checkGroundDistance) , ""));
-	rayCastLineY->GetDrawable()->setFillColor(Color::Green);
-
-	boxCast = new Actor("BoxCast", ShapeData(owner->GetShapePosition(), owner->GetShapeSize(), ""));
-	boxCast->GetDrawable()->setFillColor(Color::Magenta);
-	boxCast->GetDrawable()->setOutlineThickness(-2.0f);
-	boxCast->GetDrawable()->setOutlineColor(Color::Red);
+	rayCastLineY->GetDrawable()->setFillColor(Color::Blue);
+	rayCastLineY->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable()->setFillColor(Color::Transparent);
 }
 
 bool PlayerMovementComponent::CheckGround()
 {
-	return owner->GetComponent<CollisionComponent>()->CheckCollision(owner->GetShapePosition(), owner->GetShapePosition() + (Vector2f(0.0f, 1.0f) * checkGroundDistance), { rayCastLineX->GetDrawable() , rayCastLineY->GetDrawable(), boxCast->GetDrawable() });
+	HitInfo _info;
+	rayCastLineY->GetDrawable()->setPosition(owner->GetShapePosition() + Vector2f(0.0f, owner->GetShapeSize().y / 2.0f));
+	return Raycast(owner->GetShapePosition(), Vector2f(0.0f, 1.0f), checkGroundDistance, _info, { owner, rayCastLineY });
 }
 
 void PlayerMovementComponent::Update(const float _deltaTime)
 {
 	if (!canMove) return;
-	TryToMove(_deltaTime);
-
-	rayCastLineX->GetDrawable()->setPosition(owner->GetShapePosition() + (owner->GetDrawable()->getScale().x > 0.0f ? Vector2f(rayCastLineX->GetShapeSize().x / 2.0f, rayCastLineX->GetShapeSize().y) : Vector2f(-rayCastLineX->GetShapeSize().x / 2.0f, rayCastLineX->GetShapeSize().y)));
-
-	rayCastLineY->GetDrawable()->setPosition(owner->GetShapePosition() + (owner->GetDrawable()->getScale().x > 0.0f ? Vector2f(rayCastLineY->GetShapeSize().x, rayCastLineY->GetShapeSize().y / 2.0f) : Vector2f(-rayCastLineY->GetShapeSize().x, rayCastLineY->GetShapeSize().y / 2.0f)));
-
-	boxCast->GetDrawable()->setPosition(owner->GetShapePosition() + (owner->GetDrawable()->getScale().x > 0.0f ? Vector2f(boxCast->GetShapeSize().x, 0.0f) : Vector2f(-boxCast->GetShapeSize().x, 0.0f)));
-}
-
-void PlayerMovementComponent::StartJump()
-{
-	if (!canMove || isJumping || !isOnGround) return;
-
-	cout << "StartJump" << endl;
-	isJumping = true;
-	canIncreaseJump = true;
-
-	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
-	jumpTimer = new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
-}
-
-void PlayerMovementComponent::Jump()
-{
-	if (!canIncreaseJump) return;
-	jumpTimer->AddDuration(jumpDurationFactor);
-
-}
-
-void PlayerMovementComponent::TryToMove(const float _deltaTime)
-{
 
 	Jump();
 
@@ -119,6 +80,8 @@ void PlayerMovementComponent::TryToMove(const float _deltaTime)
 		_offset *= gravity * _deltaTime;
 		//owner->GetDrawable()->move(_offset);
 		//return;
+
+		//TODO double jump
 	}
 
 	// Si je suis au sol
@@ -147,19 +110,42 @@ void PlayerMovementComponent::TryToMove(const float _deltaTime)
 			new Timer([this]() {
 				canDash = true;
 				isResetingDash = false;
-				}, seconds(dashCooldown));
+			}, seconds(dashCooldown));
 		}
 	}
 
-	Vector2f _position = owner->GetDrawable()->getPosition();
-	//Normalize(_position);
-	Vector2f _direction = _offset - _position;
-	boxCast->GetDrawable()->setRotation(atan2f(_direction.y, _direction.x) * 180.0f / PI);
-	
-	if (!collision->CheckCollision(owner->GetShapePosition(), owner->GetShapePosition() + Vector2f(_offset.x * checkWallDistance, 0.0f), { rayCastLineX->GetDrawable() , rayCastLineY->GetDrawable(), boxCast->GetDrawable() }))
+	const Vector2f& _collisionOffset = Vector2f(0.0f, -5.0f);
+	const Vector2f& _destination = _offset + _collisionOffset;
+	collision->GetBoxCollision()->GetDrawable()->setPosition(owner->GetShapePosition() + Vector2f(_destination.x * checkWallDistance, _destination.y));
+
+	/*
+	const float _collisionOffsetY = 5.0f;
+	collision->GetBoxCollision()->GetDrawable()->setPosition(owner->GetShapePosition() + Vector2f(_offset.x * checkWallDistance, _offset.y * checkWallDistance - _collisionOffsetY));
+	*/
+
+	if (!collision->CheckCollision({ rayCastLineY }))
 	{
 		owner->GetDrawable()->move(_offset);
 	}
+}
+
+void PlayerMovementComponent::StartJump()
+{
+	if (!canMove || isJumping || !isOnGround) return;
+
+	cout << "StartJump" << endl;
+	isJumping = true;
+	canIncreaseJump = true;
+
+	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
+	jumpTimer = new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
+}
+
+void PlayerMovementComponent::Jump()
+{
+	if (!canIncreaseJump) return;
+
+	jumpTimer->AddDuration(jumpDurationFactor);
 }
 
 void PlayerMovementComponent::StopJump()

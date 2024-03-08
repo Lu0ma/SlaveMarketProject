@@ -3,48 +3,44 @@
 #include "ActorManager.h"
 #include "Kismet.h"
 
+#include "Player.h"
+
 CollisionComponent::CollisionComponent(Actor* _owner, const CollisionType& _type) : Component(_owner)
 {
-	boxCollision = new ShapeObject(ShapeData(_owner->GetBounds().getPosition(),
-											 _owner->GetBounds().getSize(),
-											 ""));
+	boxCollision = new ShapeObject(ShapeData(_owner->GetShapePosition(), _owner->GetShapeSize() * 0.8f, ""));
+	boxCollision->GetDrawable()->setOrigin(_owner->GetBounds().getSize() / 2.0f);
 	boxCollision->GetDrawable()->setFillColor(Color::Transparent);
 	boxCollision->GetDrawable()->setOutlineThickness(-2.0f);
-	boxCollision->GetDrawable()->setOutlineColor(Color::Red);
+
+	if (_owner->GetID() == "Player")
+	{
+		boxCollision->GetDrawable()->setOutlineColor(Color::Blue);
+	}
+	else if (_owner->GetID() == "raycastlineY")
+	{
+		boxCollision->GetDrawable()->setOutlineColor(Color::Magenta);
+	}
+
+	else
+	{
+		boxCollision->GetDrawable()->setOutlineColor(Color::Red);
+	}
+
 	type = _type;
 }
 
-Actor* CollisionComponent::CheckCollision()
+CollisionComponent::~CollisionComponent()
 {
-	Shape* _shape = owner->GetDrawable();
-
-	//test tous les actors
-	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
-	{
-		//si c'est le player, continue
-		if (_actor == owner) continue;
-		//FloatRect _currentShape = _actor->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable()->getGlobalBounds();
-		FloatRect _currentShape = _actor->GetDrawable()->getGlobalBounds();
-		//si un entity collisionne avec le joueur
-		if (_currentShape.intersects(_shape->getGlobalBounds()))
-		{
-			return _actor;
-		}
-	}
-	return nullptr;
+	delete boxCollision;
 }
 
-bool CollisionComponent::CheckCollision(const Vector2f& _position, const Vector2f& _destination, const vector<Shape*>& _ignoredShapes)
-{
-	Shape* _xLine = _ignoredShapes[0];
-	Shape* _yLine = _ignoredShapes[1];
 
-	Vector2f _direction = _destination - _position;
-	Normalize(_direction);
-	const float _distance = Distance(_position, _destination);
+bool CollisionComponent::CheckCollision(const vector<Actor*>& _ignoredActors)
+{
+	vector<Actor*> _actors = { owner };
+	_actors.insert(_actors.end(), _ignoredActors.begin(), _ignoredActors.end());
 	HitInfo _hitInfo;
-	
-	const bool _hasHit = Raycast(_position, _direction, _distance, _hitInfo, { owner->GetDrawable(), _xLine, _yLine });
+	const bool _hasHit = BoxCast(boxCollision->GetDrawable()->getGlobalBounds(), _hitInfo, _actors);
 
 	if (_hasHit)
 	{
@@ -55,9 +51,8 @@ bool CollisionComponent::CheckCollision(const Vector2f& _position, const Vector2
 				cout << _collisionComponent->owner->GetID() << endl;
 				return true;
 			}
-			
 		}	
 	}
+
 	return false;	
 }
-

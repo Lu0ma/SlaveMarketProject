@@ -45,9 +45,9 @@ bool MovementComponent::IsAtPosition() const
 
 void MovementComponent::Update(const float _deltaTime)
 {
-	MoveToDestination(_deltaTime);
+	/*MoveToDestination(_deltaTime);
 	if (collision->CheckCollision())
 	{
 		MoveToDestination(-_deltaTime);
-	}
+	}*/
 }

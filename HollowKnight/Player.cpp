@@ -18,7 +18,7 @@
 #define PATH_ITEM2 "test.png"
 #define PATH_DEATHMOB "Animations/DeathMob.png"
 
-Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_OVERLAP)
+Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_BLOCK)
 {
 	animation = new PlayerAnimationComponent(this);
 	components.push_back(animation);
@@ -37,10 +37,6 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	stats = new PlayerStat(this);
 	charmsMenu = new CharmsMenu();
 	pauseMenu = new PauseMenu();
-
-	collision = new CollisionComponent(this, CT_OVERLAP);
-	components.push_back(collision);
-
 }
 
 void Player::InitAnimations()

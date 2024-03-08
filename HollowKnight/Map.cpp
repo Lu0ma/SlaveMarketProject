@@ -110,7 +110,7 @@ void Map::Init()
 	drawables.push_back(barrack);
 
 	//TODO modify ?
-	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-150.0f, 200.0f), Vector2f(5550.0f, 10.0f), ""), CT_BLOCK);
+	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-100.0f, 200.0f), Vector2f(5550.0f, 10.0f), ""), CT_BLOCK);
 	//_ground->GetDrawable()->setFillColor(Color::Transparent);
 
 	new CollectableActor(STRING_ID("Vessel"), ShapeData(Vector2f(-250.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Vessels/Vessel_3.png"),
