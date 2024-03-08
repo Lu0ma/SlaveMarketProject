@@ -30,7 +30,6 @@ void Camera::MoveToTarget(const float _deltaTime)
 	{
 		return;
 	}
-	//targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(axeX, axeY));
 	Vector2f _direction = targetPosition - view.getCenter();
 	Normalize(_direction);
 	view.move(_direction * speed * _deltaTime * abs(_distance * 0.01f));
@@ -38,11 +37,10 @@ void Camera::MoveToTarget(const float _deltaTime)
 
 bool Camera::IsAtDestination(float& _distance)
 {
-	_distance = Distance(view.getCenter().x, targetPosition.x);
+	_distance = Distance(view.getCenter(), targetPosition);
 
-	return Distance(view.getCenter().x, targetPosition.x) <= 11.0f;
+	return _distance <= 10.5f;
 }
-
 
 void Camera::Init()
 {
@@ -79,15 +77,14 @@ void Camera::Update(const float _deltaTime)
 	const float _distance = Distance(_player->GetShapePosition().x, view.getCenter().x);
 	const float _newScaleX = Game::GetPlayer()->GetDrawable()->getScale().x;
 #pragma endregion
-
 	MoveToTarget(_deltaTime);
+	UpdateSizeView();
 	if (_distance > damp || oldScaleX != _newScaleX)
 	{
 		 const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offset.x : -offset.x;
 		 targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, offset.y));
 		 oldScaleX = _newScaleX;
 	}
-	UpdateSizeView();
 
 #pragma region ShakeUpdate
 	// Le tremblement est terminer 
@@ -104,69 +101,8 @@ void Camera::Update(const float _deltaTime)
 
 }
 
-
-void Camera::MoveCamera(const float _axeX, const float _axeY)
-{
-	Player* _player = Game::GetPlayer();
-	const float _deltaTime = TimerManager::GetInstance().GetDeltaTime();
-	float _distance;
-	if (IsAtDestination(_distance)) return;
-	targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_axeX, -_axeY));
-	Vector2f _direction = targetPosition - view.getCenter();
-	Normalize(_direction);
-	view.move(_direction * (speed + 2.0f) * _deltaTime * abs(_distance * 0.01f));
-}
-
-void Camera::CheckIsDown()
-{
-	if (isDown)
-	{
-		isDown = false;
-	}
-	else
-	{
-		isDown = true;
-	}
-}
-
-void Camera::Zoom()
-{
-	view.zoom(0.5f);
-}
-
-void Camera::ResetZoom()
-{
-	if (view.getSize() != defaultSize)
-	{
-		//if (view.getSize().x >= defaultSize.x && view.getSize().y >= defaultSize.y)
-		//{
-		//	view.setSize(view.getSize().x - axeX, view.getSize().y - axeY);
-		//	axeX += 1.0f;
-		//	axeY += 1.0f;
-		//}
-		/*else*/ if (view.getSize().x <= defaultSize.x && view.getSize().y <= defaultSize.y)
-		{
-			view.setSize(view.getSize().x +  axeX , view.getSize().y + axeY);
-			axeX += 0.3f;
-			axeY += 0.3f;
-		}
-		//cout << "Y : " << view.getSize().y << endl;
-		//cout << "X : " << view.getSize().x << endl;
-	}
-
-	//cout << "Vue par defaut " << endl;
-	//cout << "X :" << defaultSize.x << endl;
-	//cout << "Y :" << defaultSize.y << endl;
-
-	//cout << "Vue Actuelle " << endl;
-	//cout << "X : " << view.getCenter().x << endl;
-	//cout << "Y : " << view.getCenter().y << endl;
-	
-}
-
 void Camera::UpdateSizeView()
 {
-
 	if (!isZoom)
 	{
 		if (view.getSize().x <= defaultSize.x)
@@ -179,11 +115,8 @@ void Camera::UpdateSizeView()
 	else if(isZoom)
 	{
 		if (view.getSize().x <= 925) return;
-		view.zoom(0.999);
+		view.zoom(0.999f);
 	}
-
-
-
 }
 
 

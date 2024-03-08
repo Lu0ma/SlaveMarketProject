@@ -67,11 +67,7 @@ public:
 	void Shake(const float _trauma, const float _duration);
 	void Update(const float _deltaTime);
 
-	void MoveCamera(const float _axeX , const float _axeY);
-	void CheckIsDown();
 
-	void Zoom();
-	void ResetZoom();
 	void UpdateSizeView();
 
 
