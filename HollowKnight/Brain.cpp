@@ -3,7 +3,6 @@
 Brain::Brain(Actor* _owner) : Component(_owner)
 {
 	blackBoard = new BlackBoard();
-	currentState = nullptr;
 }
 
 Brain::~Brain()
