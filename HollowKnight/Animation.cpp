@@ -1,5 +1,6 @@
 #include "Animation.h"
 #include "AnimationComponent.h"
+#include "MovementComponent.h"
 #include "Timer.h"
 #include "Macro.h"
 
@@ -38,7 +39,6 @@ void Animation::SetNext()
 
         Reset();
     }
-
     currentIndex++;
 
     const Vector2i& _start = GetNewStart();
@@ -49,7 +49,6 @@ void Animation::SetNext()
 
     shape->setTextureRect(_rect);
     //shape->setScale(data.displayFromLeftToRight ? 1.0f : -1.0f, 1.0f);
-    shape->setScale(directionX, 1.0f);
 }
 
 Vector2i Animation::GetNewStart()
@@ -77,6 +76,8 @@ Vector2i Animation::GetNewStart()
 void Animation::Start(const float _directionX)
 {
     directionX = _directionX;
+    shape->setScale(directionX, 1.0f);
+
     timer = new Timer(this, &Animation::SetNext, seconds(data.timeBetween), true, true);
 }
 

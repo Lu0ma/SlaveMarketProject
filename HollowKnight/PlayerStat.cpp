@@ -5,10 +5,17 @@
 #include "TextureManager.h"
 #include "Timer.h"
 
+#include <iostream>
+#include"Game.h"
+#include"DeathMob.h"
+
+
+
 #define PATH_MANA_FULL "UIs/Player/Mana/ManaBar_Full.png"
 #define PATH_MANA_EMPTY "UIs/Player/Mana/ManaBar_Empty.png"
 #define PATH_GEO "UIs/Inventory/Geo.png"
 #define FONT "Font.ttf"
+#define PATH_DEATHMOB "Animations/DeathMob.png"
 
 PlayerStat::PlayerStat(Player* _player) : Menu("PlayerStat", nullptr)
 {
@@ -19,8 +26,12 @@ PlayerStat::PlayerStat(Player* _player) : Menu("PlayerStat", nullptr)
 	geosCount = 0;
 	geosCountText = nullptr;
 
+
 	animation = _player->GetComponent<PlayerAnimationComponent>();
 	movement = _player->GetComponent<PlayerMovementComponent>();
+
+	numberOfDeath = 0;
+
 }
 
 
@@ -89,6 +100,12 @@ void PlayerStat::UpdateLife(const int _count)
 	}
 
 	currentLifesCount += _count;
+	cout << currentLifesCount << endl;
+
+	if (currentLifesCount == 0)
+	{
+		Death();
+	}
 }
 
 void PlayerStat::AddLife()
@@ -112,4 +129,41 @@ void PlayerStat::UpdateGeos(const int _factor)
 {
 	geosCount += _factor;
 	geosCountText->SetString(to_string(geosCount));
+}
+
+
+void PlayerStat::Death()
+{
+	numberOfDeath++;
+	Player* _player = Game::GetPlayer();
+	Vector2f _benchPos = Game::GetMap()->GetBench()->GetPosition();
+
+	Vector2f _lastPos = _player->GetPosition();
+	/*DeathMob* _deathMob = new DeathMob(ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
+	_deathMob->Init();*/
+
+	/*DeathMob* _deathMob = new DeathMob("DeathMob",ShapeData(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), PATH_DEATHMOB));
+	int _life = _deathMob->GetLife()->GetLife();
+	cout << _life << endl;*/
+	
+	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
+	{
+		if (DeathMob* _death = dynamic_cast<DeathMob*>(_actor))
+		{
+			// _death->SetToRemove(true);
+			_death->GetDrawable()->setScale(Vector2f(0.0f, 0.0f)); ///TODO CHANGE
+		}
+	}
+
+	DeathMob* _deathMob = new DeathMob("Death" + to_string(numberOfDeath), ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
+	_deathMob->Init();
+
+	_player->SetShapePosition(_benchPos);
+
+	for (int _index = 0; _index < currentMaxLifesCount; _index++)
+	{
+		_player->GetStats()->UpdateLife(1);
+	} 
+
+	UpdateGeos(-geosCount);
 }
