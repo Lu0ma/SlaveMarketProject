@@ -13,9 +13,8 @@
 #define PATH_DRAGON "/Animations/walla.png"
 #define PATH_GRUB "/Animations/Grub.png"
 
-
+//TODO remove
 Grub* Map::grub;
-
 
 Map::Map()
 {

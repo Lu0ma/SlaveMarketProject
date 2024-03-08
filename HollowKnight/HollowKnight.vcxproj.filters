@@ -907,6 +907,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Assets\Levels\SubLevel_1.txt" />
+    <Text Include="Assets\Levels\.txt" />
   </ItemGroup>
 </Project>

@@ -49,7 +49,7 @@ bool MobMovementComponent::CheckGround()
 {
 	HitInfo _hit;
 	const bool _hasHit = Raycast(owner->GetShapePosition() + Vector2f(0.0f, 40.0f), Vector2f(0.0f, 1.0f),
-		checkGroundDistance, _hit, { owner->GetDrawable() });
+		checkGroundDistance, _hit, { owner });
 
 	return _hasHit;
 }

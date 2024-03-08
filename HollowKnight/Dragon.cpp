@@ -1,6 +1,6 @@
 #include "Dragon.h"
-#include"Game.h"
-#include"MusicManager.h"
+#include "Game.h"
+#include "MusicManager.h"
 
 #define MUSIC "Dance.wav"
 
@@ -15,6 +15,6 @@ void Dragon::PlayMusic()
 	Player* _player = Game::GetPlayer();
 	if (!GetDrawable()->getGlobalBounds().intersects(_player->GetBounds()))
 	{
-	    //MusicManager::GetInstance().Play(MUSIC);
+	    MusicManager::GetInstance().Play(MUSIC);
 	}
 }
