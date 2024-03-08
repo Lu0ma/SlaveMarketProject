@@ -6,7 +6,6 @@
 #include "Widget.h"
 #include "Spawner.h"
 
-//#define PATH_PLAYER "Player.png"
 #define PATH_PLAYER "Animations/knighModif.png"
 
 RenderWindow Game::window;
