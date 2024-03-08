@@ -19,10 +19,7 @@ protected:
 	float gravity;
 	Vector2f lastDirection;
 
-
-
 public:
-
 	void SetSpeed(const float _speed)
 	{
 		speed = _speed;
