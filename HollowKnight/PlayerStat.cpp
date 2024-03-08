@@ -3,6 +3,7 @@
 #include "PlayerMovementComponent.h"
 #include "Game.h"
 #include "TextureManager.h"
+#include"FxManager.h"
 #include "Timer.h"
 
 #include <iostream>
@@ -81,6 +82,7 @@ void PlayerStat::UseMana(const float _factor)
 	{
 		animation->GetCurrentAnimation()->RunAnimation("RemoveMana", _direction/*movement->GetDirection().x*/);
 	}
+	
 }
 
 void PlayerStat::StopUsingMana()

@@ -5,6 +5,7 @@
 #include "Timer.h"
 #include "Macro.h"
 #include "Kismet.h"
+#include"FxManager.h"
 
 PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementComponent(_owner)
 {

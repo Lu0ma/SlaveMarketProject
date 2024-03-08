@@ -12,6 +12,7 @@
 // Managers
 #include "ActorManager.h"
 #include "InputManager.h"
+#include"FxManager.h"
 #include "Timer.h"
 
 #define PATH_ITEM "UIs/Inventory/Item.png"
@@ -60,6 +61,7 @@ void Player::SetupPlayerInput()
 		ActionData("ConvertManaToLife", [&]() {
 			stats->UseMana(-10.0f);
 			stats->UpdateLife(1);
+			FxManager::GetInstance().Run("FxMana");
 		}, InputData({ActionType::KeyPressed, Keyboard::A})),
 	});
 
@@ -67,7 +69,7 @@ void Player::SetupPlayerInput()
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("ControllerRight", [&]() {
 
-			if (_event.joystickMove.axis == Joystick::Axis::X && _event.joystickMove.position > 0) {
+			if (_event.joystickMove.axis == Joystick::Axis::X && _event.joystickMove.position > 100) {
 				movement->SetDirectionX(1.0f, "Right");
 			}
 
@@ -86,7 +88,7 @@ void Player::SetupPlayerInput()
 			
 			}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,1) })),
 
-		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyPressed,Keyboard::LControl })),
+		ActionData("Dash", [&]() { movement->Dash(); FxManager::GetInstance().Run("FxDash"); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
 		ActionData("ControllerDash", [&]() {
 
 			if (Joystick::isButtonPressed(0, 7)) {
@@ -95,7 +97,7 @@ void Player::SetupPlayerInput()
 
 			}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,7) })),
 
-		ActionData("Sit", [&]() {
+		ActionData("Sit", [&]() { 
 			movement->SitDown();
 			attack->SetCanAttack(false);
 		}, InputData({ ActionType::KeyPressed, Keyboard::Z })),

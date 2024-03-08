@@ -159,6 +159,9 @@
     <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="FontData.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="Fx.cpp" />
+    <ClCompile Include="FxData.cpp" />
+    <ClCompile Include="FxManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grub.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -250,6 +253,9 @@
     <ClInclude Include="FileLoader.h" />
     <ClInclude Include="FontData.h" />
     <ClInclude Include="FontManager.h" />
+    <ClInclude Include="Fx.h" />
+    <ClInclude Include="FxData.h" />
+    <ClInclude Include="FxManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Grub.h" />
     <ClInclude Include="HUD.h" />
