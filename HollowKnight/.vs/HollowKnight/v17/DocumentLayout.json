@@ -33,7 +33,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 2433,
+          "DockedWidth": 3319,
           "SelectedChildIndex": 4,
           "Children": [
             {
@@ -96,7 +96,7 @@
           ]
         },
         {
-          "DockedWidth": 881,
+          "DockedWidth": 2550,
           "SelectedChildIndex": 2,
           "Children": [
             {
@@ -123,7 +123,7 @@
               "RelativeDocumentMoniker": "PlayerMovementComponent.h",
               "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\PlayerMovementComponent.h",
               "RelativeToolTip": "PlayerMovementComponent.h",
-              "ViewState": "AQIAABQAAAAAAAAAAAAuwCoAAAARAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAuwCoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-06T15:13:48.969Z",
               "EditorCaption": ""
