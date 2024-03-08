@@ -1,26 +1,13 @@
 #include "BossAttackState.h"
 #include "BossBrain.h"
 
-BossAttackState::BossAttackState(BossBrain* _brain) : AttackState(_brain)
+BossAttackState::BossAttackState(Brain* _brain) : AttackState(_brain)
 {
-	attackToChase = new AttackToChase(_brain);
+	attackToChase = new AttackToChase(_brain->GetBlackBoard());
 	transitions.push_back(attackToChase);
 }
 
 void BossAttackState::Init()
 {
-	AttackState::Init();
-	attackToChase->Init();
-}
-
-void BossAttackState::Start()
-{
-}
-
-void BossAttackState::Update(const float _deltaTime)
-{
-}
-
-void BossAttackState::Stop()
-{
+	attackToChase->Init(dynamic_cast<BossBrain*>(brain)->GetChaseState());
 }

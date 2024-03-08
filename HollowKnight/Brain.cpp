@@ -2,14 +2,16 @@
 
 Brain::Brain(Actor* _owner) : Component(_owner)
 {
-	blackBoard = BlackBoard();
-
+	blackBoard = new BlackBoard();
 	currentState = nullptr;
 }
 
 Brain::~Brain()
 {
+	delete blackBoard;
+	delete currentState;
 }
+
 
 void Brain::Update(const float _deltaTime)
 {

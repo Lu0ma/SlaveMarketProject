@@ -208,11 +208,23 @@
     <Filter Include="FSM">
       <UniqueIdentifier>{9fb836cd-f8d2-427a-96f6-3976371496b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FSM\State">
+    <Filter Include="FSM\States">
       <UniqueIdentifier>{58c8dfd1-2c8c-4328-a65c-3d7457d81740}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FSM\Transition">
+    <Filter Include="FSM\Transitions">
       <UniqueIdentifier>{3918c0d8-690c-497d-8830-9a7ef49c0f24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FSM\Brains">
+      <UniqueIdentifier>{6365650e-1978-420e-a33d-060b0ed9f9bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FSM\States\Chases">
+      <UniqueIdentifier>{5e40165a-1954-420e-ad80-d9a14709d6b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FSM\States\Attacks">
+      <UniqueIdentifier>{fc43e63f-0009-4611-96d8-47beaa4e9506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FSM\States\Patrols">
+      <UniqueIdentifier>{1152045f-2eb7-4825-bd02-b2661f8b84ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -453,62 +465,65 @@
     <ClCompile Include="MobMovementComponent.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Brain.cpp">
-      <Filter>FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackState.cpp">
-      <Filter>FSM\State</Filter>
-    </ClCompile>
-    <ClCompile Include="ChaseState.cpp">
-      <Filter>FSM\State</Filter>
-    </ClCompile>
-    <ClCompile Include="PatrolState.cpp">
-      <Filter>FSM\State</Filter>
-    </ClCompile>
     <ClCompile Include="State.cpp">
-      <Filter>FSM\State</Filter>
+      <Filter>FSM\States</Filter>
     </ClCompile>
     <ClCompile Include="AttackToChase.cpp">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClCompile>
     <ClCompile Include="AttackToPatrol.cpp">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClCompile>
     <ClCompile Include="ChaseToAttack.cpp">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClCompile>
     <ClCompile Include="ChaseToPatrol.cpp">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClCompile>
     <ClCompile Include="PatrolToChase.cpp">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClCompile>
     <ClCompile Include="Transition.cpp">
-      <Filter>FSM\Transition</Filter>
-    </ClCompile>
-    <ClCompile Include="BossBrain.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="MobBrain.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyBrain.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClCompile>
     <ClCompile Include="InspectComponent.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Brain.cpp">
+      <Filter>FSM\Brains</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBrain.cpp">
+      <Filter>FSM\Brains</Filter>
+    </ClCompile>
+    <ClCompile Include="BossBrain.cpp">
+      <Filter>FSM\Brains</Filter>
+    </ClCompile>
+    <ClCompile Include="MobBrain.cpp">
+      <Filter>FSM\Brains</Filter>
+    </ClCompile>
     <ClCompile Include="PatrolToAttack.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>FSM\Transitions</Filter>
+    </ClCompile>
+    <ClCompile Include="PatrolState.cpp">
+      <Filter>FSM\States\Patrols</Filter>
     </ClCompile>
     <ClCompile Include="BossPatrolState.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>FSM\States\Patrols</Filter>
+    </ClCompile>
+    <ClCompile Include="MobPatrolState.cpp">
+      <Filter>FSM\States\Patrols</Filter>
+    </ClCompile>
+    <ClCompile Include="ChaseState.cpp">
+      <Filter>FSM\States\Chases</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackState.cpp">
+      <Filter>FSM\States\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="BossAttackState.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>FSM\States\Attacks</Filter>
     </ClCompile>
-    <ClCompile Include="AttackToBossPatrol.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="MobAttackState.cpp">
+      <Filter>FSM\States\Attacks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -755,71 +770,71 @@
     <ClInclude Include="PlayerStats.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="MobMovementComponent.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Brain.h">
-      <Filter>FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackState.h">
-      <Filter>FSM\State</Filter>
-    </ClInclude>
-    <ClInclude Include="ChaseState.h">
-      <Filter>FSM\State</Filter>
-    </ClInclude>
-    <ClInclude Include="PatrolState.h">
-      <Filter>FSM\State</Filter>
-    </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>FSM\State</Filter>
+      <Filter>FSM\States</Filter>
     </ClInclude>
     <ClInclude Include="AttackToChase.h">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClInclude>
     <ClInclude Include="AttackToPatrol.h">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClInclude>
     <ClInclude Include="ChaseToAttack.h">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClInclude>
     <ClInclude Include="ChaseToPatrol.h">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClInclude>
     <ClInclude Include="PatrolToChase.h">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClInclude>
     <ClInclude Include="Transition.h">
-      <Filter>FSM\Transition</Filter>
+      <Filter>FSM\Transitions</Filter>
     </ClInclude>
     <ClInclude Include="BlackBoard.h">
       <Filter>FSM</Filter>
     </ClInclude>
-    <ClInclude Include="BossBrain.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="MobBrain.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyBrain.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="InspectComponent.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Brain.h">
+      <Filter>FSM\Brains</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBrain.h">
+      <Filter>FSM\Brains</Filter>
+    </ClInclude>
+    <ClInclude Include="BossBrain.h">
+      <Filter>FSM\Brains</Filter>
+    </ClInclude>
+    <ClInclude Include="MobBrain.h">
+      <Filter>FSM\Brains</Filter>
+    </ClInclude>
     <ClInclude Include="PatrolToAttack.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>FSM\Transitions</Filter>
+    </ClInclude>
+    <ClInclude Include="PatrolState.h">
+      <Filter>FSM\States\Patrols</Filter>
     </ClInclude>
     <ClInclude Include="BossPatrolState.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>FSM\States\Patrols</Filter>
+    </ClInclude>
+    <ClInclude Include="MobPatrolState.h">
+      <Filter>FSM\States\Patrols</Filter>
+    </ClInclude>
+    <ClInclude Include="ChaseState.h">
+      <Filter>FSM\States\Chases</Filter>
+    </ClInclude>
+    <ClInclude Include="MobAttackState.h">
+      <Filter>FSM\States\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackState.h">
+      <Filter>FSM\States\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="BossAttackState.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackToBossPatrol.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>FSM\States\Attacks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,15 +1,13 @@
 #pragma once
 #include "Transition.h"
 
-class BossBrain;
-
 class AttackToChase : public Transition
 {
-public:
-	AttackToChase(BossBrain* _brain);
 
 public:
-	virtual void Init() override;
+	AttackToChase(BlackBoard* _blackBoard);
+
+public:
+	virtual void Init(State* _nextState) override;
 	virtual bool CanNext() const override;
 };
-

@@ -1,18 +1,23 @@
 #include "ChaseState.h"
-#include "Brain.h"
-#include "InspectComponent.h"
-#include "MovementComponent.h"
+#include "BossBrain.h"
 
 ChaseState::ChaseState(Brain* _brain) : State(_brain)
 {
-	chaseToPatrol = new ChaseToPatrol(_brain);
+	BlackBoard* _blackboard = _brain->GetBlackBoard();
+	chaseToPatrol = new ChaseToPatrol(_blackboard);
 	transitions.push_back(chaseToPatrol);
+	
+	chaseToAttack = new ChaseToAttack(_blackboard);
+	transitions.push_back(chaseToAttack);
 }
+
 
 void ChaseState::Init()
 {
-	chaseToPatrol->Init();
+	chaseToPatrol->Init(dynamic_cast<BossBrain*>(brain)->GetPatrolState());
+	chaseToAttack->Init(dynamic_cast<BossBrain*>(brain)->GetAttackState());
 }
+
 
 void ChaseState::Start()
 {

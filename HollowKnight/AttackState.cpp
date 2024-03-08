@@ -1,16 +1,11 @@
 #include "AttackState.h"
-#include "EnemyBrain.h"
+#include "Brain.h"
 
-AttackState::AttackState(EnemyBrain* _brain) : State(_brain)
+AttackState::AttackState(Brain* _brain) : State(_brain)
 {
-	attackToPatrol = new AttackToPatrol(_brain);
-	transitions.push_back(attackToPatrol);
+
 }
 
-void AttackState::Init()
-{
-	attackToPatrol->Init();
-}
 
 void AttackState::Start()
 {
@@ -20,7 +15,6 @@ void AttackState::Start()
 void AttackState::Update(const float _deltaTime)
 {
 	State::Update(_deltaTime);
-
 }
 
 void AttackState::Stop()

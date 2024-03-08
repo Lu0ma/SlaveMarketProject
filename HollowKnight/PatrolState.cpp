@@ -1,26 +1,20 @@
 #include "PatrolState.h"
+#include "Brain.h"
 #include "Macro.h"
-#include "MobBrain.h"
 
-PatrolState::PatrolState(MobBrain* _brain) : State(_brain)
+PatrolState::PatrolState(Brain* _brain) : State(_brain)
 {
 	animation = nullptr;
 	movement = nullptr;
 	inspect = nullptr;
 
-
-	patrolToAttack = new PatrolToAttack(_brain);
-	transitions.push_back(patrolToAttack);
+	startPosition = Vector2f();
+	goalPosition = Vector2f();
 }
 
-void PatrolState::Init()
-{
-	patrolToAttack->Init();
-}
 
 void PatrolState::Start()
 {
-
 	startPosition = brain->GetOwner()->GetShapePosition();
 	goalPosition = startPosition + Vector2f(1000.0f, 0.0f);
 
@@ -55,8 +49,8 @@ void PatrolState::Update(const float _deltaTime)
 
 	if (inspect)
 	{
-		brain->GetBlackBoard().hasTarget = inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetDestination());
-		brain->GetBlackBoard().isInRange = inspect->IsInRange();
+		brain->GetBlackBoard()->hasTarget = inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetDestination());
+		brain->GetBlackBoard()->isInRange = inspect->IsInRange();
 	}
 
 	// faire un component inspect avec le rayCast etc

@@ -2,15 +2,20 @@
 
 MobBrain::MobBrain(Actor* _owner) : EnemyBrain(_owner)
 {
-	attack = new AttackState(this);
+	attack = new MobAttackState(this);
 	states.push_back(attack);
 
-	patrol = new PatrolState(this);
+	patrol = new MobPatrolState(this);
 	states.push_back(patrol);
 
+	currentState = patrol;
+}
+
+
+void MobBrain::Init()
+{
 	attack->Init();
 	patrol->Init();
 
-	currentState = patrol;
 	currentState->Start();
 }

@@ -5,18 +5,18 @@
 
 class BossBrain : public EnemyBrain
 {
-	ChaseState* chase;
 	BossPatrolState* patrol;
+	ChaseState* chase;
 	BossAttackState* attack;
 
 public:
-	ChaseState* GetChaseState() const
-	{
-		return chase;
-	}
 	BossPatrolState* GetPatrolState() const
 	{
 		return patrol;
+	}
+	ChaseState* GetChaseState() const
+	{
+		return chase;
 	}
 	BossAttackState* GetAttackState() const
 	{
@@ -26,4 +26,7 @@ public:
 public:
 	BossBrain(Actor* _owner);
 	~BossBrain();
+
+public:
+	virtual void Init() override;
 };

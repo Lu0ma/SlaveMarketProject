@@ -11,14 +11,14 @@ using namespace std;
 
 class Brain : public Component
 {
-	BlackBoard blackBoard;
+	BlackBoard* blackBoard;
 
 protected:
 	State* currentState;
 	vector<State*> states;
 
 public:
-	BlackBoard& GetBlackBoard()
+	BlackBoard* GetBlackBoard()
 	{
 		return blackBoard;
 	}
@@ -41,6 +41,6 @@ public:
 	~Brain();
 
 public:
+	virtual void Init() = 0;
 	virtual void Update(const float _deltaTime) override;
 };
-

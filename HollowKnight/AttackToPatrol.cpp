@@ -1,14 +1,14 @@
 #include "AttackToPatrol.h"
-#include "BlackBoard.h"
-#include "EnemyBrain.h"
 
-AttackToPatrol::AttackToPatrol(EnemyBrain* _brain) : Transition(_brain)
+AttackToPatrol::AttackToPatrol(BlackBoard* _blackBoard) : Transition(_blackBoard)
 {
+
 }
 
-void AttackToPatrol::Init()
+
+void AttackToPatrol::Init(State* _nextState)
 {
-    nextState = dynamic_cast<EnemyBrain*>(brain)->GetPatrolState();
+    nextState = _nextState;
 }
 
 bool AttackToPatrol::CanNext() const

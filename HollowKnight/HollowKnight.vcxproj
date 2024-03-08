@@ -138,7 +138,6 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="AttackState.cpp" />
-    <ClCompile Include="AttackToBossPatrol.cpp" />
     <ClCompile Include="AttackToChase.cpp" />
     <ClCompile Include="AttackToPatrol.cpp" />
     <ClCompile Include="Belfly.cpp" />
@@ -193,9 +192,11 @@
     <ClCompile Include="MerchandAnimationComponent.cpp" />
     <ClCompile Include="Mob.cpp" />
     <ClCompile Include="MobAttackComponent.cpp" />
+    <ClCompile Include="MobAttackState.cpp" />
     <ClCompile Include="MobBrain.cpp" />
     <ClCompile Include="MobLifeComponent.cpp" />
     <ClCompile Include="MobMovementComponent.cpp" />
+    <ClCompile Include="MobPatrolState.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="MusicData.cpp" />
     <ClCompile Include="MusicManager.cpp" />
@@ -238,7 +239,6 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="AttackState.h" />
-    <ClInclude Include="AttackToBossPatrol.h" />
     <ClInclude Include="AttackToChase.h" />
     <ClInclude Include="AttackToPatrol.h" />
     <ClInclude Include="Belfly.h" />
@@ -295,9 +295,11 @@
     <ClInclude Include="MerchandAnimationComponent.h" />
     <ClInclude Include="Mob.h" />
     <ClInclude Include="MobAttackComponent.h" />
+    <ClInclude Include="MobAttackState.h" />
     <ClInclude Include="MobBrain.h" />
     <ClInclude Include="MobLifeComponent.h" />
     <ClInclude Include="MobMovementComponent.h" />
+    <ClInclude Include="MobPatrolState.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="MusicData.h" />
     <ClInclude Include="MusicManager.h" />
@@ -316,7 +318,6 @@
     <ClInclude Include="PlayerStat.h" />
     <ClInclude Include="PlayerStats.h" />
     <ClInclude Include="ProgressBar.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="ShapeWidget.h" />
     <ClInclude Include="Singleton.h" />

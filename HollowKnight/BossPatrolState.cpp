@@ -3,30 +3,12 @@
 
 BossPatrolState::BossPatrolState(BossBrain* _brain) : PatrolState(_brain)
 {
-	patrolToChase = new PatrolToChase(_brain);
+	patrolToChase = new PatrolToChase(_brain->GetBlackBoard());
 	transitions.push_back(patrolToChase);
 }
 
+
 void BossPatrolState::Init()
 {
-	PatrolState::Init();
-	patrolToChase->Init();
-}
-
-void BossPatrolState::Start()
-{
-	PatrolState::Start();
-
-}
-
-void BossPatrolState::Update(const float _deltaTime)
-{
-	PatrolState::Update(_deltaTime);
-
-}
-
-void BossPatrolState::Stop()
-{
-	PatrolState::Stop();
-
+	patrolToChase->Init(dynamic_cast<BossBrain*>(brain)->GetChaseState());
 }

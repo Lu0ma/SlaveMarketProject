@@ -1,10 +1,12 @@
 #pragma once
 #include "EnemyBrain.h"
+#include "MobPatrolState.h"
+#include "MobAttackState.h"
 
 class MobBrain : public EnemyBrain
 {
-	PatrolState* patrol;
-	AttackState* attack;
+	MobPatrolState* patrol;
+	MobAttackState* attack;
 
 public:
 	PatrolState* GetPatrolState() const
@@ -18,5 +20,7 @@ public:
 
 public:
 	MobBrain(Actor* _owner);
-};
 
+public:
+	virtual void Init() override;
+};

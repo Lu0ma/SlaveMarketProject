@@ -1,14 +1,14 @@
 #include "PatrolToAttack.h"
-#include "MobBrain.h"
 
-PatrolToAttack::PatrolToAttack(MobBrain* _brain) : Transition(_brain)
+PatrolToAttack::PatrolToAttack(BlackBoard* _blackBoard) : Transition(_blackBoard)
 {
 
 }
 
-void PatrolToAttack::Init()
+
+void PatrolToAttack::Init(State* _nextState)
 {
-	nextState = dynamic_cast<MobBrain*>(brain)->GetAttackState();
+	nextState = _nextState;
 }
 
 bool PatrolToAttack::CanNext() const
