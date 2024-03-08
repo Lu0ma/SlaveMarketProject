@@ -37,10 +37,15 @@ class PlayerMovementComponent : public MovementComponent
 	bool isStanding;
 	float sitOffset;
 
+	//Distance
+	float checkWallDistance;
+
 	// Components
 	PlayerAnimationComponent* animation;
 
-	Actor* rayCastLine;
+	Actor* rayCastLineX;
+	Actor* rayCastLineY;
+	Actor* boxCast;
 
 public:
 	void SetDirectionX(const float _directionX, const string& _animName)

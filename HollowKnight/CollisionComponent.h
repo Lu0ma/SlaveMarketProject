@@ -29,6 +29,6 @@ public:
 public:
 	Actor* CheckCollision();
 
-	bool CheckCollision(const Vector2f& _position, const Vector2f& _destination);
+	bool CheckCollision(const Vector2f& _position, const Vector2f& _destination, const vector<Shape*>& _ignoredShapes = vector<Shape*>());
 
 };

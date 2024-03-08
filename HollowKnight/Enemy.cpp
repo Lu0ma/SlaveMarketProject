@@ -1,5 +1,5 @@
 #include "Enemy.h"
 
-Enemy::Enemy(const string& _name, const ShapeData& _data) : Actor(_name, _data)
+Enemy::Enemy(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_OVERLAP)
 {
 }

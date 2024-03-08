@@ -6,6 +6,8 @@
 #include "Macro.h"
 #include "Kismet.h"
 
+#define PI 3.14159265359f
+
 PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementComponent(_owner)
 {
 	// Movement
@@ -19,7 +21,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 	// Ground
 	isOnGround = false;
-	checkGroundDistance = 110.0f;
+	checkGroundDistance = owner->GetShapeSize().y / 2.0f;
 
 	// Jump
 	isJumping = false;
@@ -43,26 +45,41 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	isStanding = true;
 	sitOffset = 30.0f;
 
+	//Distance
+	checkWallDistance = owner->GetShapeSize().x / 2.0f;
+
 	// Components
 	animation = owner->GetComponent<PlayerAnimationComponent>();
 
 	//TODO remove
-	rayCastLine = new Actor("raycastline", ShapeData(owner->GetShapePosition(), Vector2f(200.0f, 5.0f), ""));
-	rayCastLine->GetDrawable()->setFillColor(Color::Red);
-}
+	rayCastLineX = new Actor("raycastlineX", ShapeData(owner->GetShapePosition(), Vector2f(checkWallDistance, 5.0f), ""));
+	rayCastLineX->GetDrawable()->setFillColor(Color::Red);
+	rayCastLineX->GetDrawable()->setOrigin(checkWallDistance * 0.5f, 0.0f);
 
+	rayCastLineY = new Actor("raycastlineY", ShapeData(owner->GetShapePosition(), Vector2f(5.0f, checkGroundDistance) , ""));
+	rayCastLineY->GetDrawable()->setFillColor(Color::Green);
+
+	boxCast = new Actor("BoxCast", ShapeData(owner->GetShapePosition(), owner->GetShapeSize(), ""));
+	boxCast->GetDrawable()->setFillColor(Color::Magenta);
+	boxCast->GetDrawable()->setOutlineThickness(-2.0f);
+	boxCast->GetDrawable()->setOutlineColor(Color::Red);
+}
 
 bool PlayerMovementComponent::CheckGround()
 {
-	return owner->GetComponent<CollisionComponent>()->CheckCollision(owner->GetShapePosition(), Vector2f(0.0f, 1.0f) * checkGroundDistance);
+	return owner->GetComponent<CollisionComponent>()->CheckCollision(owner->GetShapePosition(), owner->GetShapePosition() + (Vector2f(0.0f, 1.0f) * checkGroundDistance), { rayCastLineX->GetDrawable() , rayCastLineY->GetDrawable(), boxCast->GetDrawable() });
 }
 
 void PlayerMovementComponent::Update(const float _deltaTime)
 {
 	if (!canMove) return;
 	TryToMove(_deltaTime);
-	rayCastLine->GetDrawable()->setPosition(owner->GetShapePosition() + (owner->GetDrawable()->getScale().x > 0.0f ? Vector2f(rayCastLine->GetShapeSize().x / 2.0f, rayCastLine->GetShapeSize().y): Vector2f(-rayCastLine->GetShapeSize().x / 2.0f, rayCastLine->GetShapeSize().y)));
 
+	rayCastLineX->GetDrawable()->setPosition(owner->GetShapePosition() + (owner->GetDrawable()->getScale().x > 0.0f ? Vector2f(rayCastLineX->GetShapeSize().x / 2.0f, rayCastLineX->GetShapeSize().y) : Vector2f(-rayCastLineX->GetShapeSize().x / 2.0f, rayCastLineX->GetShapeSize().y)));
+
+	rayCastLineY->GetDrawable()->setPosition(owner->GetShapePosition() + (owner->GetDrawable()->getScale().x > 0.0f ? Vector2f(rayCastLineY->GetShapeSize().x, rayCastLineY->GetShapeSize().y / 2.0f) : Vector2f(-rayCastLineY->GetShapeSize().x, rayCastLineY->GetShapeSize().y / 2.0f)));
+
+	boxCast->GetDrawable()->setPosition(owner->GetShapePosition() + (owner->GetDrawable()->getScale().x > 0.0f ? Vector2f(boxCast->GetShapeSize().x, 0.0f) : Vector2f(-boxCast->GetShapeSize().x, 0.0f)));
 }
 
 void PlayerMovementComponent::StartJump()
@@ -81,11 +98,12 @@ void PlayerMovementComponent::Jump()
 {
 	if (!canIncreaseJump) return;
 	jumpTimer->AddDuration(jumpDurationFactor);
+
 }
 
 void PlayerMovementComponent::TryToMove(const float _deltaTime)
 {
-	
+
 	Jump();
 
 	// Déplacement par défaut
@@ -99,6 +117,8 @@ void PlayerMovementComponent::TryToMove(const float _deltaTime)
 		// Application de la gravité
 		_offset = direction + Vector2f(0.0f, 1.0f);
 		_offset *= gravity * _deltaTime;
+		//owner->GetDrawable()->move(_offset);
+		//return;
 	}
 
 	// Si je suis au sol
@@ -130,10 +150,15 @@ void PlayerMovementComponent::TryToMove(const float _deltaTime)
 				}, seconds(dashCooldown));
 		}
 	}
-	if (!collision->CheckCollision(owner->GetShapePosition(), owner->GetShapePosition() + Vector2f(_offset.x * 100.0f, 0.0f)))
+
+	Vector2f _position = owner->GetDrawable()->getPosition();
+	//Normalize(_position);
+	Vector2f _direction = _offset - _position;
+	boxCast->GetDrawable()->setRotation(atan2f(_direction.y, _direction.x) * 180.0f / PI);
+	
+	if (!collision->CheckCollision(owner->GetShapePosition(), owner->GetShapePosition() + Vector2f(_offset.x * checkWallDistance, 0.0f), { rayCastLineX->GetDrawable() , rayCastLineY->GetDrawable(), boxCast->GetDrawable() }))
 	{
 		owner->GetDrawable()->move(_offset);
-		
 	}
 }
 

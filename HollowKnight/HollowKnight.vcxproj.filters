@@ -408,9 +408,6 @@
     <ClCompile Include="HUD.cpp">
       <Filter>Managers\UIs</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Spawner</Filter>
-    </ClCompile>
     <ClCompile Include="CollectableActor.cpp">
       <Filter>Objects\ShapeObjects\Actors\Collectables</Filter>
     </ClCompile>
@@ -491,6 +488,9 @@
     </ClCompile>
     <ClCompile Include="NPCAnimationComponent.cpp">
       <Filter>Components\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

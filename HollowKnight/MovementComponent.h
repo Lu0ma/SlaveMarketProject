@@ -18,7 +18,10 @@ protected:
 	function<void()> callback;
 	CollisionComponent* collision;
 
+
+
 public:
+
 	void SetSpeed(const float _speed)
 	{
 		speed = _speed;
