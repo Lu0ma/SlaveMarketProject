@@ -22,6 +22,7 @@ class Player : public Actor
 	PlayerAttackComponent* attack;
 	PlayerAnimationComponent* animation;
 	InteractionComponent* interaction;
+	CircleShape* light;
 
 public:
 	void SetStatus(const bool _status)
@@ -35,6 +36,14 @@ public:
 	Inventory* GetInventory() const
 	{
 		return inventory;
+	}
+	CircleShape* GetLight()const
+	{
+		return light;
+	}
+	PlayerMovementComponent* GetPlayerMovement()const
+	{
+		return movement;
 	}
 
 public:

@@ -7,6 +7,7 @@
 #include "Lift.h"
 #include"Dragon.h"
 #include"Grub.h"
+#include"PNJ.h"
 
 using namespace std;
 using namespace sf;
@@ -61,7 +62,7 @@ class Map
 	Dragon* dragon;
 	Bench* bench;
 	Merchand* merchand;
-	InteractableActor* pnj;
+	PNJ* pnj;
 	vector<PlatformData> platformsData;
 	vector<ShapeObject*> drawables;
 	vector<Lift*> lifts;

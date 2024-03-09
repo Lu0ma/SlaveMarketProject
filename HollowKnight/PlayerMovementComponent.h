@@ -91,6 +91,10 @@ public:
 	{
 		return direction;
 	}
+	float GetDashDirection()const
+	{
+		return dashDirection;
+	}
 
 public:
 	PlayerMovementComponent(Actor* _owner);
