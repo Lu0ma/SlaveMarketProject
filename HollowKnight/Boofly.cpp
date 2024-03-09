@@ -1,5 +1,6 @@
 #include "Boofly.h"
 #include "MovementComponent.h"
+#include"CollectableActor.h"
 
 #define PATH_BOOFLY "Animations/Boofly.png"
 
@@ -48,6 +49,8 @@ void Boofly::Death()
 		isPatrolling = false;
 		movement->SetCanMove(false);
 		cout << "Moooort" << endl;
-		//Destroy(2.0f);
+		new Timer([&]() { GetDrawable()->setScale(0.0f, 0.0f); }, seconds(2.0f));
+		int _newDeath = Random<int>(10000000000000000000, 0);
+		new CollectableActor("Geo" + to_string(_newDeath), ShapeData(Vector2f(GetPosition().x, GetPosition().y + 20.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, IT_GEOS);
 	}
 }

@@ -112,7 +112,7 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Attack", {
-		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial"); }, InputData({ActionType::MouseButtonPressed, Mouse::Left})),
+		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial"); }, InputData({ActionType::MouseButtonPressed, Mouse::Right})),
 		ActionData("ControllerSpecial", [&]() {
 
 			if (Joystick::isButtonPressed(0, 0)) {
