@@ -11,6 +11,7 @@
 #define PATH_PNJ "/Characters/PNJ/PNJA.png"
 #define PATH_MERCHAND "/Characters/PNJ/Merchand.png"
 #define PATH_DRAGON "/Animations/walla.png"
+#define PATH_GRUB "/Animations/Grub.png"
 
 Map::Map()
 {

@@ -60,7 +60,7 @@ void PlayerAttackComponent::SpecialAttack()
 
 		else
 		{
-			Game::GetMap()->GetGrub()->GetCurrentAnimation()->RunAnimation("Escape", -1);
+			Game::GetMap()->GetGrub()->GetComponent<AnimationComponent>()->RunAnimation("Escape", -1);
             Game::GetMap()->GetGrub()->Destroy(3.0f);
 		}
 	}

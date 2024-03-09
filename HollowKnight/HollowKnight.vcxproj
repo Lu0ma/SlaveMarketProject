@@ -160,7 +160,6 @@
     <ClCompile Include="ControllerMenu.cpp" />
     <ClCompile Include="DeathMob.cpp" />
     <ClCompile Include="Dragon.cpp" />
-    <ClCompile Include="DragonAnimationComponent.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBrain.cpp" />
     <ClCompile Include="ExtrasMenu.cpp" />
@@ -267,7 +266,6 @@
     <ClInclude Include="ControllerMenu.h" />
     <ClInclude Include="DeathMob.h" />
     <ClInclude Include="Dragon.h" />
-    <ClInclude Include="DragonAnimationComponent.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBrain.h" />
     <ClInclude Include="ExtrasMenu.h" />

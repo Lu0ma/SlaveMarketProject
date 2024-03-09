@@ -3,9 +3,6 @@
 
 Boss::Boss(const ShapeData& _data) : Enemy("Boss" + to_string(GetUniqueID()), _data)
 {
-	animation = new AnimationComponent(this);
-	components.push_back(animation);
-
 	movement = new MobMovementComponent(this);
 	movement->SetSpeed(0.5f);
 	components.push_back(movement);

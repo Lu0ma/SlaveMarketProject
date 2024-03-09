@@ -10,7 +10,6 @@ class Boss : public Enemy
 {
 protected:
 	BossBrain* brain;
-	AnimationComponent* animation;
 	MobMovementComponent* movement;
 	MobAttackComponent* attack;
 	

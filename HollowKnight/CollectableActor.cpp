@@ -18,7 +18,6 @@ CollectableActor::CollectableActor(const string& _name, const ShapeData& _data, 
 	range = _range;
 	data = { _data.path, "", "", _type};
 
-	animation = new AnimationComponent(this);
 	animCollectable = vector<string>();
 
 	animCollectable.push_back("Spawn");
@@ -28,8 +27,7 @@ CollectableActor::CollectableActor(const string& _name, const ShapeData& _data, 
 
 	animation->InitAnimations({
 		AnimationData("Spawn", Vector2f(0.0f, 92.0f), _size, READ_RIGHT, true, 6, _speed), 
-		
-		});
+	});
 }
 
 

@@ -1,16 +1,14 @@
 #include "DeathMob.h"
-#include"Game.h"
-#include"Player.h"
-#include"CollectableActor.h"
-#include"Macro.h"
+#include "Game.h"
+#include "Player.h"
+#include "CollectableActor.h"
+#include "Macro.h"
 
 DeathMob::DeathMob(const string& _name, const ShapeData& _data) : Mob(_data)
 {
-	animation = new AnimationComponent(this);
 	animDeath = vector<string>();
 	name = _name;
 	death = 0;
-	//Action();
 }
 
 

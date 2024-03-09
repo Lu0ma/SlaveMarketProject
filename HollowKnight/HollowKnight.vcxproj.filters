@@ -522,9 +522,6 @@
     <ClCompile Include="MenuManager.cpp">
       <Filter>Managers\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="DragonAnimationComponent.cpp">
-      <Filter>Components\Animations</Filter>
-    </ClCompile>
     <ClCompile Include="LeverAnimationComponent.cpp">
       <Filter>Components\Animations</Filter>
     </ClCompile>
@@ -847,9 +844,6 @@
     </ClInclude>
     <ClInclude Include="MenuManager.h">
       <Filter>Managers\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="DragonAnimationComponent.h">
-      <Filter>Components\Animations</Filter>
     </ClInclude>
     <ClInclude Include="LeverAnimationComponent.h">
       <Filter>Components\Animations</Filter>
