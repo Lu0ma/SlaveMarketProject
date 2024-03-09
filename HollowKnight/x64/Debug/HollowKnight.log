@@ -5,9 +5,6 @@
   ActorManager.cpp
   Animation.cpp
   AnimationComponent.cpp
-  AttackState.cpp
-  AttackToChase.cpp
-  AttackToPatrol.cpp
   Audio.cpp
   Belfly.cpp
   Bench.cpp
@@ -18,47 +15,44 @@
   Button.cpp
   Camera.cpp
   Canvas.cpp
-  Génération de code en cours...
-  Compilation en cours...
   CharmsMenu.cpp
   ChaseState.cpp
-  ChaseToAttack.cpp
   ChaseToPatrol.cpp
+  Génération de code en cours...
+  Compilation en cours...
   CollectableActor.cpp
   CollisionComponent.cpp
   Component.cpp
   ControllerMenu.cpp
   DeathMob.cpp
-C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4305: 'argument' : troncation de 'unsigned __int64' à 'const T'
-C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4305:         with
-C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4305:         [
-C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4305:             T=int
-C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4305:         ]
-C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4309: 'argument' : troncation de valeur de constante
+C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,32): warning C4305: 'argument' : troncation de 'unsigned __int64' à 'const T'
+C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,32): warning C4305:         with
+C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,32): warning C4305:         [
+C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,32): warning C4305:             T=int
+C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,32): warning C4305:         ]
+C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,32): warning C4309: 'argument' : troncation de valeur de constante
   Dragon.cpp
   DragonAnimationComponent.cpp
   Enemy.cpp
   EnemyBrain.cpp
   ExtrasMenu.cpp
   FalseKnight.cpp
-  FileLoader.cpp
   FontData.cpp
   FontManager.cpp
   Game.cpp
   Grub.cpp
-  Génération de code en cours...
-  Compilation en cours...
   HUD.cpp
   HuskBully.cpp
   InputManager.cpp
   InteractableActor.cpp
   InteractionComponent.cpp
+  Génération de code en cours...
+  Compilation en cours...
   Inventory.cpp
   Item.cpp
   ItemWidget.cpp
   KeyboardMenu.cpp
   Kismet.cpp
-  Label.cpp
   Lever.cpp
   LeverAnimationComponent.cpp
   Lift.cpp
@@ -68,20 +62,16 @@ C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46
   Map.cpp
   Menu.cpp
   MenuManager.cpp
-  Génération de code en cours...
-  Compilation en cours...
   Merchand.cpp
   MerchandAnimationComponent.cpp
   Mob.cpp
   MobAttackComponent.cpp
   MobBrain.cpp
-  MobLifeComponent.cpp
   MobMovementComponent.cpp
+  Génération de code en cours...
+  Compilation en cours...
   MovementComponent.cpp
-  MusicData.cpp
-  MusicManager.cpp
   NPCAnimationComponent.cpp
-  Object.cpp
   OptionsMenu.cpp
   PatrolState.cpp
   PatrolToChase.cpp
@@ -90,8 +80,6 @@ C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46
   PlayerAnimationComponent.cpp
   PlayerAttackComponent.cpp
   PlayerInfo.cpp
-  Génération de code en cours...
-  Compilation en cours...
   PlayerMovementComponent.cpp
   PlayerStat.cpp
   ProgressBar.cpp
@@ -102,20 +90,17 @@ C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46
   ShapeObject.cpp
   ShapeWidget.cpp
   ShopMenu.cpp
-  SoundData.cpp
-  SoundManager.cpp
+  Génération de code en cours...
+  Compilation en cours...
   Spawner.cpp
   State.cpp
   TextObject.cpp
+  TextWidget.cpp
   TextureData.cpp
   TextureManager.cpp
-  TextWidget.cpp
   Timer.cpp
   TimerManager.cpp
-  Génération de code en cours...
-  Compilation en cours...
   TitleMenu.cpp
   Transition.cpp
-  Widget.cpp
   Génération de code en cours...
   HollowKnight.vcxproj -> C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
