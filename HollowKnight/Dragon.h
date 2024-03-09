@@ -1,8 +1,8 @@
 #pragma once
-#include "InteractableActor.h"
-#include"DragonAnimationComponent.h"
+#include "Actor.h"
+#include "DragonAnimationComponent.h"
 
-class Dragon : public InteractableActor
+class Dragon : public Actor
 {
 	DragonAnimationComponent* animation;
 
@@ -13,7 +13,7 @@ public:
 	}
 
 public:
-	Dragon(const string& _name, const ShapeData& _data, const vector<string>& _texts = {});
+	Dragon(const ShapeData& _data);
 
 public:
 	void PlayMusic();

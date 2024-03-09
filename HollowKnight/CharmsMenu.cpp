@@ -105,10 +105,10 @@ void CharmsMenu::SelectedCharms()
 		slotsEquippedCharms.push_back(_charm);
 		canvas->AddWidget(_charm);
 	}
-
+	
+	Menu::Init();
 	pointerLeft->SetShapePosition(Vector2f(gridPos.x + 35.0f, _spacingY - halfSize.y * 0.30f));
 	pointerLeft->SetVisible(false);
-	canvas->AddWidget(pointerLeft);
 }
 
 void CharmsMenu::EquippedCharms()

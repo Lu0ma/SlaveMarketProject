@@ -167,7 +167,7 @@ void PlayerMovementComponent::SitDown()
 {
 	if (!isStanding || !owner->GetBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()))
 	{
-		cout << "Impossible de se lever !" << endl;
+		cout << "Impossible de s'assoir !" << endl;
 		return;
 	}
 
@@ -183,7 +183,7 @@ void PlayerMovementComponent::StandUp()
 {
 	if (isStanding)
 	{
-		cout << "impossible de ce lever !" << endl;
+		cout << "Impossible de se lever !" << endl;
 		return;
 	}
 

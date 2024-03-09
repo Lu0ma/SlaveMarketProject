@@ -1,8 +1,8 @@
 #pragma once
-#include"InteractableActor.h"
-#include"AnimationComponent.h"
+#include "Actor.h"
+#include "AnimationComponent.h"
 
-class Grub : public InteractableActor
+class Grub : public Actor
 {
 	AnimationComponent* animation;
 	vector<string> animGrub;
@@ -14,6 +14,6 @@ public:
 	}
 
 public:
-	Grub(const string& _name,const ShapeData& _data, const vector<string>& _texts = {});
+	Grub(const ShapeData& _data);
 };
 

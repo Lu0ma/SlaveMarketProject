@@ -7,7 +7,7 @@
 #define PATH_DISCUSSION "UIs/Discussions/Dialog.png"
 #define FONT "Font.ttf"
 
-InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_NONE)
+InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_OVERLAP)
 {
 	canvas = new Canvas(STRING_ID("Interactable"));
 	isOpen = false;
@@ -78,7 +78,7 @@ void InteractableActor::Init()
 	discussionBG->SetVisible(false);
 	canvas->AddWidget(discussionBG);
 
-	discussionText = new ProgressLabel(TextData("Your words, are they repeating ?", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16), 0.1f);
+	discussionText = new ProgressLabel(TextData("", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16), 0.1f, "Your words, are they repeating ?");
 	discussionText->SetVisible(false);
 	canvas->AddWidget(discussionText);
 }

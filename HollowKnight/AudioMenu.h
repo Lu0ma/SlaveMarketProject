@@ -3,7 +3,7 @@
 #include "Button.h"
 #include <map>
 
-class Audio : public Menu
+class AudioMenu : public Menu
 {
 	vector<Button*> buttons;
 	map<string, ShapeWidget*> indicators;
@@ -16,7 +16,7 @@ class Audio : public Menu
 	Vector2f halfSize;
 
 public:
-	Audio(Menu* _owner);
+	AudioMenu(Menu* _owner);
 
 private:
 	void MoveIndicator(const string _key, const float _percent);

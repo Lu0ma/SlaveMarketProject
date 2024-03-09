@@ -4,8 +4,7 @@
 
 #define MUSIC "Dance.wav"
 
-Dragon::Dragon(const string& _name, const ShapeData& _data, const vector<string>& _texts)
-	: InteractableActor(_name, _data)
+Dragon::Dragon(const ShapeData& _data) : Actor(STRING_ID("Grub"), _data)
 {
 	animation = new DragonAnimationComponent(this);
 }

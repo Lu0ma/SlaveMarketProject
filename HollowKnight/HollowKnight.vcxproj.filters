@@ -531,7 +531,7 @@
     <ClCompile Include="MobMovementComponent.cpp">
       <Filter>Components\Movement</Filter>
     </ClCompile>
-    <ClCompile Include="Audio.cpp">
+    <ClCompile Include="AudioMenu.cpp">
       <Filter>Menus\AudioMenu</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
@@ -902,7 +902,7 @@
     <ClInclude Include="ProgressLabel.h">
       <Filter>UIs\Widgets\ShapeWidgets\Labels\ProgressLabel</Filter>
     </ClInclude>
-    <ClInclude Include="Audio.h">
+    <ClInclude Include="AudioMenu.h">
       <Filter>Menus\AudioMenu</Filter>
     </ClInclude>
   </ItemGroup>

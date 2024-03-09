@@ -44,8 +44,8 @@ private:
 	void InitAnimations();
 	void SetupPlayerInput();
 	void TryToOpen(Menu* _menu);
-	void CloseAllMenus();
 
 public:
 	virtual void Init() override;
+	void CloseAllMenus();
 };

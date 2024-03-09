@@ -62,12 +62,18 @@ void Player::SetupPlayerInput()
 		ActionData("StopJump", [&]() { movement->StopJump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
 		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ ActionType::KeyPressed, Keyboard::LControl })),
 		ActionData("Sit", [&]() {
-			movement->SitDown();
-			attack->SetCanAttack(false);
+			if (!charmsMenu->IsActive())
+			{
+				movement->SitDown();
+				attack->SetCanAttack(false);
+			}
 		}, InputData({ ActionType::KeyPressed, Keyboard::Z })),
 		ActionData("Stand", [&]() {
-			movement->StandUp();
-			attack->SetCanAttack(true);
+			if (!charmsMenu->IsActive())
+			{
+				movement->StandUp();
+				attack->SetCanAttack(true);
+			}
 		}, InputData({ ActionType::KeyPressed, Keyboard::S }))
 	});
 
@@ -77,7 +83,10 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Menu", {
-		ActionData("Pause", [&]() { TryToOpen(pauseMenu); }, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
+		ActionData("Pause", [&]() {
+			TryToOpen(pauseMenu);
+			stats->SetStatus(false);
+		}, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
 		ActionData("Inventory", [&]() { TryToOpen(inventory); }, InputData({ ActionType::KeyPressed, Keyboard::B })),
 		ActionData("CharmsMenu", [&]() {
 			if (!movement->IsStanding())
@@ -96,6 +105,8 @@ void Player::TryToOpen(Menu* _menu)
 
 	if (!_isActive)
 	{
+		movement->SetCanMove(false);
+		attack->SetCanAttack(false);
 		_menu->SetStatus(true);
 		stats->SetStatus(false);
 	}
@@ -107,12 +118,15 @@ void Player::CloseAllMenus()
 	stats->SetStatus(true);
 	inventory->SetStatus(false);
 	interaction->StopInteract();
+
+	movement->SetCanMove(true);
+	attack->SetCanAttack(true);
 }
 
 void Player::Init()
 {
 	movement->SetCanMove(true);
-	stats->Init();
+	stats->SetStatus(true);
 	inventory->Init();
 	charmsMenu->Init();
 

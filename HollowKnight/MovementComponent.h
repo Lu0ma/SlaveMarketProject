@@ -11,13 +11,14 @@ using namespace sf;
 
 class MovementComponent : public Component
 {
-	AnimationComponent* animation;
 
 protected:
 	bool canMove;
 	float speed;
 	float gravity;
 	Vector2f lastDirection;
+	AnimationComponent* animation;
+	CollisionComponent* collision;
 
 public:
 	void SetSpeed(const float _speed)

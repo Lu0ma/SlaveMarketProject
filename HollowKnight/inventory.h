@@ -87,6 +87,12 @@ private:
 	{
 		return PATH_SHRIEK + to_string(isShriekActive) + ".png";
 	}
+public:
+	virtual void SetStatus(const bool _status) override
+	{
+		Menu::SetStatus(_status);
+		pointerLeft->SetVisible(Count() > 0);
+	}
 
 public:
 	Inventory();

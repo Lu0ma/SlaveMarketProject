@@ -140,7 +140,7 @@
     <ClCompile Include="AttackState.cpp" />
     <ClCompile Include="AttackToChase.cpp" />
     <ClCompile Include="AttackToPatrol.cpp" />
-    <ClCompile Include="Audio.cpp" />
+    <ClCompile Include="AudioMenu.cpp" />
     <ClCompile Include="Belfly.cpp" />
     <ClCompile Include="Bench.cpp" />
     <ClCompile Include="Boofly.cpp" />
@@ -244,7 +244,7 @@
     <ClInclude Include="AttackState.h" />
     <ClInclude Include="AttackToChase.h" />
     <ClInclude Include="AttackToPatrol.h" />
-    <ClInclude Include="Audio.h" />
+    <ClInclude Include="AudioMenu.h" />
     <ClInclude Include="Belfly.h" />
     <ClInclude Include="Bench.h" />
     <ClInclude Include="Boofly.h" />

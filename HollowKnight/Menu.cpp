@@ -21,10 +21,16 @@ void Menu::Register()
 void Menu::MovePointers(Button* _button)
 {
 	TextWidget* _text = dynamic_cast<Label*>(_button->GetForeground());
+	if (!_text) return;
 	TextObject* _object = _text->GetObject();
 
 	const Vector2f& _position = _object->GetShapePosition();
 	const Vector2f& _size = _object->GetShapeSize();
+	MovePointers(_position, _size);
+}
+
+void Menu::MovePointers(const Vector2f& _position, const Vector2f& _size)
+{
 	const float _halfSizeX = _size.x / 2.0f;
 	const float _offsetX = _halfSizeX + 30.0f;
 	const float _offsetY = _size.y * 0.5f;

@@ -31,12 +31,10 @@ public:
 
 		canvas->SetVisibilityStatus(_status);
 	}
-	bool IsActive()
+	bool IsActive() const
 	{
 		return isInit && canvas->GetVisibilityStatus();
 	}
-
-
 
 public:
 	Menu(const string& _name, Menu* _owner = nullptr);
@@ -46,6 +44,7 @@ private:
 
 protected:
 	void MovePointers(Button* _button);
+	void MovePointers(const Vector2f& _position, const Vector2f& _size);
 
 public:
 	virtual void Init();

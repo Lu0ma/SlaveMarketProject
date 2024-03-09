@@ -125,10 +125,7 @@ void PurchaseMenu::Init()
 	#pragma region Pointer
 
 	Menu::Init();
-	const Vector2f& _pointerPos = Vector2f(_shopPos.x, _gridPosY);
-	const Vector2f& _halfButtonSize = Vector2f(_buttonSize.x / 2.0f, 0.0f);
-	pointerLeft->SetShapePosition(_pointerPos - _halfButtonSize);
-	pointerRight->SetShapePosition(_pointerPos + _halfButtonSize);
+	MovePointers(buttons.front());
 
 	#pragma endregion
 }

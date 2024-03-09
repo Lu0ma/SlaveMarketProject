@@ -13,20 +13,13 @@
 #define PATH_DRAGON "/Animations/walla.png"
 #define PATH_GRUB "/Animations/Grub.png"
 
-//TODO remove
-Grub* Map::grub;
-
 Map::Map()
 {
-	grub = new Grub("Grub", ShapeData(Vector2f(950.0f, 0.0f), Vector2f(75.0f, 100.0f), PATH_GRUB));
-	dragon = new Dragon("Dragon", ShapeData(Vector2f(700.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
+	grub = new Grub(ShapeData(Vector2f(950.0f, 0.0f), Vector2f(75.0f, 100.0f), PATH_GRUB));
+	dragon = new Dragon(ShapeData(Vector2f(700.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
 	bench = new Bench(ShapeData(Vector2f(300.0f, 5.0f), Vector2f(176.0, 80.0f), PATH_BENCH));
 	pnj = new InteractableActor(STRING_ID("Villageois"), ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PNJ));
 	merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_MERCHAND));
-	background = nullptr;
-
-	//TODO move
-	barrack = nullptr;
 }
 
 Map::~Map()
@@ -79,8 +72,8 @@ MapData Map::LoadMapData(const string& _path)
 		PlatformData _platform = PlatformData(Vector2f((float)_wallPositionX, (float)_wallPositionY), _wallType);
 		platformsData.push_back(_platform);
 		_index +=2;
-
 		_isEndOfWalls = ContainsText("]", GetLineByIndex(_index - 1, _path));
+
 	} while (!_isEndOfWalls);
 
 	InitPlateforms();
@@ -94,8 +87,7 @@ void Map::InitPlateforms()
 	for (int _index = 0; _index < platformsData.size(); _index++)
 	{
 		ComputePlatformType(platformsData[_index].type, _size, _filePath);
-		Actor* _plateform = new Actor(STRING_ID("Plateform"), ShapeData(platformsData[_index].position, _size, _filePath), CT_BLOCK);
-		drawables.push_back(_plateform);
+		new Actor(STRING_ID("Plateform"), ShapeData(platformsData[_index].position, _size, _filePath), CT_BLOCK);
 	}
 }
 
@@ -106,15 +98,15 @@ void Map::Init()
 	pnj->Init();
 	merchand->Init();
 
-	background = new ShapeObject(ShapeData(Vector2f(-300.0f, -SCREEN_HEIGHT + 35.0f), Vector2f(2340.0f, 985.0f), "/Levels/Environment_GROUND.png"));
-	drawables.push_back(background);
+	ShapeObject* _background = new ShapeObject(ShapeData(Vector2f(-300.0f, -SCREEN_HEIGHT + 35.0f), Vector2f(2340.0f, 985.0f), "/Levels/Environment_GROUND.png"));
+	drawables.push_back(_background);
 
 	//TODO move
-	barrack = new ShapeObject(ShapeData(Vector2f(1915.0f, -SCREEN_HEIGHT - 30.0f), Vector2f(3613.0f, 908.0f), "/Levels/Environment.png"));
-	drawables.push_back(barrack);
+	ShapeObject* _barrack = new ShapeObject(ShapeData(Vector2f(1915.0f, -SCREEN_HEIGHT - 30.0f), Vector2f(3613.0f, 908.0f), "/Levels/Environment.png"));
+	drawables.push_back(_barrack);
 
 	//TODO modify ?
-	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-100.0f, 200.0f), Vector2f(5550.0f, 10.0f), ""), CT_BLOCK);
+	new Actor("Ground", ShapeData(Vector2f(-100.0f, 50.0f), Vector2f(5550.0f, 10.0f), ""), CT_BLOCK);
 	//_ground->GetDrawable()->setFillColor(Color::Transparent);
 
 	new CollectableActor(STRING_ID("Vessel"), ShapeData(Vector2f(-250.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Vessels/Vessel_3.png"),
@@ -122,6 +114,12 @@ void Map::Init()
 
 	new CollectableActor(STRING_ID("Item"), ShapeData(Vector2f(-350.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Item.png"),
 		30.0f, "Item", "Ceci est un item", IT_ITEM);
+
+	new CollectableActor(STRING_ID("ItemE"), ShapeData(Vector2f(-400.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/.png"),
+		30.0f, "Item", "Ceci est un ", IT_ITEM);
+
+	new CollectableActor(STRING_ID("Item2"), ShapeData(Vector2f(-450.0f, 30.5f), Vector2f(50.0f, 50.0f), ""),
+		30.0f, "Item", "Ceci", IT_ITEM);
 
 	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(250.0f, 250.0f), "Lift.png"));
 	lifts.push_back(_lift);

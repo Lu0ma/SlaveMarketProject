@@ -38,10 +38,7 @@ void ExtrasMenu::Init()
 	canvas->AddWidget(_buttonText);
 
 	Menu::Init();
-	const Vector2f& _pointerPos = Vector2f(_halfWindowX, _buttonPos.y);
-	const Vector2f& _halfButtonSize = Vector2f(_buttonSize.x / 2.0f, 0.0f);
-	pointerLeft->SetShapePosition(_pointerPos - _halfButtonSize);
-	pointerRight->SetShapePosition(_pointerPos + _halfButtonSize);
+	MovePointers(backButton);
 
 	#pragma endregion
 }

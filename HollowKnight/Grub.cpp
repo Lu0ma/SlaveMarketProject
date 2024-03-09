@@ -1,6 +1,6 @@
 #include "Grub.h"
 
-Grub::Grub(const string& _name, const ShapeData& _data, const vector<string>& _texts) : InteractableActor(STRING_ID("Grub"), _data)
+Grub::Grub(const ShapeData& _data) : Actor(STRING_ID("Grub"), _data)
 {
 	animation = new AnimationComponent(this);
 	animGrub = vector<string>();

@@ -1,4 +1,4 @@
-#include "Audio.h"
+#include "AudioMenu.h"
 #include "Game.h"
 #include "MusicManager.h"
 #include "SoundManager.h"
@@ -12,7 +12,7 @@
 #define PATH_LINE "../Menu/Audio/music_line.png"
 #define PATH_INDICATOR "../Menu/Audio/Indicator.png"
 
-Audio::Audio(Menu* _owner) : Menu("Audio", _owner)
+AudioMenu::AudioMenu(Menu* _owner) : Menu("Audio", _owner)
 {
 	buttons = vector<Button*>();
 	value = 0;
@@ -22,7 +22,7 @@ Audio::Audio(Menu* _owner) : Menu("Audio", _owner)
 }
 
 
-void Audio::Init()
+void AudioMenu::Init()
 {
 	const Vector2f& _windowSize = Game::GetWindowSize();
 	const float _halfWindowX = _windowSize.x / 2.0f;
@@ -164,7 +164,6 @@ void Audio::Init()
 		ShapeWidget* _indicator = new ShapeWidget(ShapeData(_positionIndicator, _sizeIndicator, PATH_INDICATOR));
 		indicators.insert(make_pair(to_string(_i), _indicator));
 		canvas->AddWidget(_indicator);
-
 	}
 
 #pragma endregion
@@ -175,10 +174,7 @@ void Audio::Init()
 	const float _gridPosX = _halfWindowX + _buttonSize.x * 5.0f / 100.0f;
 
 	Menu::Init();
-	const Vector2f& _pointerPos = Vector2f(_gridPosX, _gridPosY);
-	const Vector2f& _halfButtonSize = Vector2f(_buttonSize.x / 2.0f, 0.0f);
-	pointerLeft->SetShapePosition(_pointerPos - _halfButtonSize);
-	pointerRight->SetShapePosition(_pointerPos + _halfButtonSize);
+	MovePointers(buttons.front());
 
 #pragma endregion
 
@@ -188,22 +184,22 @@ void Audio::Init()
 	const float _buttonPosY = _windowSize.y * 0.9f;
 	const Vector2f& _buttonPos = Vector2f(_halfWindowX, _buttonPosY);
 
-	Button* backButton = new Button(ShapeData(_buttonPos, _backSize, ""));
-	backButton->GetData().pressedCallback = [&]() {
+	Button* _backButton = new Button(ShapeData(_buttonPos, _backSize, ""));
+	_backButton->GetData().pressedCallback = [&]() {
 		owner->SetStatus(true);
 		canvas->SetVisibilityStatus(false);
-		};
-	backButton->GetDrawable()->setFillColor(Color::Transparent);
-	canvas->AddWidget(backButton);
+	};
+	_backButton->GetDrawable()->setFillColor(Color::Transparent);
+	canvas->AddWidget(_backButton);
 
 	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
-	backButton->SetForeground(_buttonText);
+	_backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
 #pragma endregion
 }
 
-void Audio::MoveIndicator(const string _key, const float _percent)
+void AudioMenu::MoveIndicator(const string _key, const float _percent)
 {
 	value = _percent * factor / 100.0f;
 	for (auto& _pair : indicators)

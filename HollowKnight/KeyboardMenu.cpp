@@ -40,11 +40,7 @@ void KeyboardMenu::Init()
 	canvas->AddWidget(_buttonText);
 
 	Menu::Init();
-	const Vector2f& _pointerPos = Vector2f(_halfWindowX, _buttonPos.y);
-	const float _pointerSizeX = _buttonSize.x * 0.25f;
-	const float _pointerSizeY = _buttonSize.y * 0.15f;
-	pointerLeft->SetShapePosition(_pointerPos + Vector2f(-_pointerSizeX, _pointerSizeY));
-	pointerRight->SetShapePosition(_pointerPos + Vector2f(_pointerSizeX, _pointerSizeY));
+	MovePointers(backButton);
 
 	#pragma endregion
 }

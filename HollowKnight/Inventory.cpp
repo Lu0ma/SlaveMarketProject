@@ -13,8 +13,6 @@
 #define PATH_GEO "UIs/Inventory/Geo.png"
 #define PATH_SKILL_SLOT "UIs/Inventory/Skills/SkillSlot.png"
 
-#define FONT "Font.ttf"
-
 Inventory::Inventory() : Menu("Inventory", nullptr)
 {
 	gridSize = Vector2i(4, 5);
@@ -89,6 +87,8 @@ Item* Inventory::FindItemData(const string& _path)
 
 void Inventory::Init()
 {
+	Menu::Init();
+
 	canvas->SetVisibilityStatus(false);
 
 	windowSize = Game::GetWindowSize();
@@ -175,19 +175,19 @@ void Inventory::Grid()
 			_button->GetDrawable()->setFillColor(Color::Transparent);
 
 			_button->GetData().hoveredCallback = [&]()
+			{
+				if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 				{
-					if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
+					if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_hoveredButton->GetForeground()))
 					{
-						const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-						//pointer->SetShapePosition(_position);
+						ShapeObject* _object = _itemWidget->GetObject();
+						pointerLeft->SetShapePosition(_object->GetShapePosition());
 
-						if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_hoveredButton->GetForeground()))
-						{
-							descriptionTitle->SetString(_itemWidget->GetTitle());
-							descriptionText->SetString(_itemWidget->GetText());
-						}
+						descriptionTitle->SetString(_itemWidget->GetTitle());
+						descriptionText->SetString(_itemWidget->GetText());
 					}
-				};
+				}
+			};
 
 			buttons.push_back(_button);
 			canvas->AddWidget(_button);
@@ -195,6 +195,8 @@ void Inventory::Grid()
 	}
 
 	pointerLeft = new ShapeWidget(ShapeData(_gridPos, cellSize, PATH_INVENTORY_POINTER));
+	pointerLeft->SetVisible(false);
+	pointerRight->SetVisible(false);
 	canvas->AddWidget(pointerLeft);
 }
 
@@ -402,6 +404,7 @@ void Inventory::AddItem(const int _count, const ItemData& _data)
 	{
 		if (Item* _item = FindItemData(_data.path))
 		{
+			pointerLeft->SetVisible(true);
 			_item->UpdateCount(1);
 			AddItem(_count - 1, _data);
 			return;
@@ -421,9 +424,11 @@ void Inventory::CreateItemData(const ItemData& _data)
 	Button* _button = GetFirstAvailableButton();
 	if (!_button) return;
 
+	ShapeObject* _object = _button->GetObject();
+	pointerLeft->SetShapePosition(_object->GetShapePosition());
 	const ShapeData& _objectData = ShapeData(_button->GetObject()->GetShapePosition(),
-		_button->GetObject()->GetShapeSize() * 70.0f / 100.0f,
-		_data.path);
+											 _button->GetObject()->GetShapeSize() * 70.0f / 100.0f,
+											 _data.path);
 	ItemWidget* _widget = new ItemWidget(_objectData, _data.title, _data.text);
 	Item* _item = new Item(_widget, FONT);
 	Add(_item->GetID(), _item);

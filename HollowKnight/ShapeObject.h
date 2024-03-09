@@ -53,5 +53,5 @@ public:
 
 public:
 	ShapeObject(const ShapeData& _data);
+	~ShapeObject();
 };
-
