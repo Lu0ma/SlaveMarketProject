@@ -44,6 +44,7 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	pauseMenu = new PauseMenu();
 }
 
+
 void Player::InitAnimations()
 {
 	animation->Init();
@@ -131,7 +132,8 @@ void Player::SetupPlayerInput()
 			}
         }, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,6) })),
 		ActionData("CharmsMenu", [&]() {
-			if (!movement->IsStanding())
+			//TODO restore
+			//if (!movement->IsStanding())
 			{
 				TryToOpen(charmsMenu);
 			}
