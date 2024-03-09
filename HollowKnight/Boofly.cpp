@@ -6,6 +6,7 @@
 Boofly::Boofly(const ShapeData& _data) : Mob(_data)
 { 
 	isPatrolling = true;
+	life = new MobLifeComponent(this, 1);
 }
 
 void Boofly::Init()
@@ -40,11 +41,13 @@ void Boofly::Init()
 
 void Boofly::Death()
 {
-	if (life->GetLife() <= 0 && isPatrolling)
+ 	if (life->GetLife() <= 0 && isPatrolling)
 	{
 		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
 		animation->RunAnimation("DeathAir", _directionX);
 		isPatrolling = false;
 		movement->SetCanMove(false);
+		cout << "Moooort" << endl;
+		//Destroy(2.0f);
 	}
 }

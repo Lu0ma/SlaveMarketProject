@@ -2,7 +2,7 @@
 #include "Actor.h"
 #include "CollectableActor.h"
 #include "Lift.h"
-
+#include"Boofly.h"
 #include "Macro.h"
 #include "FileLoader.h"
 
@@ -13,7 +13,7 @@
 #define PATH_MERCHAND "/Characters/PNJ/Merchand.png"
 #define PATH_DRAGON "/Animations/walla.png"
 #define PATH_GRUB "/Animations/Grub.png"
-
+#define PATH_BOOFLY "Animations/Boofly.png"
 
 Grub* Map::grub;
 

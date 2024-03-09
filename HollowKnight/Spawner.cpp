@@ -28,6 +28,7 @@ void Spawner::Spawn()
 	ShapeData _dataBoofly = ShapeData(_positionBoofly, _sizeBoofly, PATH_BOOFLY, IntRect(0, 17, 315, 345));
 	boofly = new Boofly(_dataBoofly);
 	boofly->Init();
+	cout << _positionBoofly.x <<" || " <<_positionBoofly.y << endl;
 
 	Vector2f _positionFalseKnight = Vector2f(1800.0f, -190.0f);
 	Vector2f _sizeFalseKnight = Vector2f(700.0f, 500.0f);
@@ -36,8 +37,8 @@ void Spawner::Spawn()
 	FalseKnight* _falseKnight = new FalseKnight(_data);
 	_falseKnight->Init();
 
-	//ShapeData _dataBelfly = ShapeData(_positionBelfly, _sizeBelfly, PATH_BELFLY);
-	//new Belfly(_dataBelfly);
+	/*ShapeData _dataBelfly = ShapeData(_positionBelfly, _sizeBelfly, PATH_BELFLY);
+	new Belfly(_dataBelfly);*/
 
 	/*ShapeData _dataHuskBully = ShapeData(_positionHuskBully, _sizeHuskBully, PATH_HUSK_BULLY);
 	HuskBully* _huskBully = new HuskBully(_dataHuskBully);
