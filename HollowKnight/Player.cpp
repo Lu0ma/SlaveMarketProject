@@ -84,6 +84,7 @@ void Player::SetupPlayerInput()
         }, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 1) })),
 		ActionData("StopJump", [&]() { movement->StopJump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
         ActionData("Dash", [&]() { movement->Dash(); FxManager::GetInstance().Run("FxDash"); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
+        ActionData("StopDash", [&]() { movement->SetDirectionX(movement->GetDashDirection(), "Right"); }, InputData({ActionType::KeyReleased,Keyboard::LControl})),
         ActionData("ControllerDash", [&]() {
             if (Joystick::isButtonPressed(0, 7))
             {
@@ -106,7 +107,7 @@ void Player::SetupPlayerInput()
 		}, InputData({ ActionType::KeyPressed, Keyboard::S }))
 	});
 	new ActionMap("Attack", {
-		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial"); }, InputData({ActionType::MouseButtonPressed, Mouse::Left})),
+		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial"); }, InputData({ActionType::MouseButtonPressed, Mouse::Right})),
 		ActionData("ControllerSpecial", [&]() {
 			if (Joystick::isButtonPressed(0, 0))
             {
@@ -117,7 +118,7 @@ void Player::SetupPlayerInput()
 			     movement->SetDirectionX(0.0f, "Right");
             }
         }, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,0) })),
-		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "Right"); }, InputData({ ActionType::MouseButtonReleased, Mouse::Left })),
+		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::MouseButtonReleased, Mouse::Left })),
 	});
 	new ActionMap("Menu", {
 		ActionData("Pause", [&]() {

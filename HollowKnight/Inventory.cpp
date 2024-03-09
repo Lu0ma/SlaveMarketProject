@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "HUD.h"
+#include"Macro.h"
 
 #define PATH_INVENTORY "UIs/Inventory/Inventory.png"
 #define PATH_CELL "UIs/Inventory/Cell.png"
@@ -415,7 +416,8 @@ void Inventory::AddItem(const int _count, const ItemData& _data)
 	}
 	else if (_data.type == IT_GEOS)
 	{
-		Game::GetPlayer()->GetStats()->UpdateGeos(50);
+		int _winningGains = Random<int>(100, 1);
+		Game::GetPlayer()->GetStats()->UpdateGeos(_winningGains);
 	}
 }
 

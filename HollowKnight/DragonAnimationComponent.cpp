@@ -6,7 +6,7 @@ DragonAnimationComponent::DragonAnimationComponent(Actor* _owner) : Component(_o
 	animDragon.push_back("DanceRight");
 	animDragon.push_back("DanceLeft");
 
-	const float _speed = 0.1f;
+	const float _speed = 0.085f;
 
 	animation->InitAnimations({
 		AnimationData("DanceLeft", Vector2f(0.0f, 476.0f), Vector2f(275.0f, 286.0f), READ_RIGHT, true, 8, _speed, "DanceRight"),
