@@ -1,4 +1,5 @@
 #include "Grub.h"
+#include "Macro.h"
 
 Grub::Grub(const ShapeData& _data) : Actor(STRING_ID("Grub"), _data)
 {

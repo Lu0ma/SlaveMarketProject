@@ -30,7 +30,7 @@ void InteractionComponent::TryToInteract()
 		{
 			//_interactable->OpenDiscussion();
 			pnj->OpenDiscussion();
-			pnj->GetAnimation()->GetCurrentAnimation()->RunAnimation("Talk", 1);
+			pnj->GetComponent<AnimationComponent>()->RunAnimation("Talk", 1);
 		}
 
 		inventory->SetStatus(false);

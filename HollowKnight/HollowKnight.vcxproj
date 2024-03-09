@@ -168,6 +168,9 @@
     <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="FontData.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="Fx.cpp" />
+    <ClCompile Include="FxData.cpp" />
+    <ClCompile Include="FxManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grub.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -200,7 +203,6 @@
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="MusicData.cpp" />
     <ClCompile Include="MusicManager.cpp" />
-    <ClCompile Include="NPCAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
     <ClCompile Include="PatrolState.cpp" />
@@ -211,6 +213,7 @@
     <ClCompile Include="PlayerAttackComponent.cpp" />
     <ClCompile Include="PlayerMovementComponent.cpp" />
     <ClCompile Include="PlayerStat.cpp" />
+    <ClCompile Include="PNJ.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="ProgressLabel.cpp" />
     <ClCompile Include="PurchaseMenu.cpp" />
@@ -272,6 +275,9 @@
     <ClInclude Include="FileLoader.h" />
     <ClInclude Include="FontData.h" />
     <ClInclude Include="FontManager.h" />
+    <ClInclude Include="Fx.h" />
+    <ClInclude Include="FxData.h" />
+    <ClInclude Include="FxManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Grub.h" />
     <ClInclude Include="HUD.h" />
@@ -305,7 +311,6 @@
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="MusicData.h" />
     <ClInclude Include="MusicManager.h" />
-    <ClInclude Include="NPCAnimationComponent.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OptionsMenu.h" />
     <ClInclude Include="PatrolState.h" />
@@ -316,6 +321,7 @@
     <ClInclude Include="PlayerAttackComponent.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
     <ClInclude Include="PlayerStat.h" />
+    <ClInclude Include="PNJ.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="ProgressLabel.h" />
     <ClInclude Include="PurchaseMenu.h" />

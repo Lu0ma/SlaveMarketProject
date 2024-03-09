@@ -1,5 +1,6 @@
 #pragma once
 #include "MovementComponent.h"
+#include "Macro.h"
 
 class MobMovementComponent : public MovementComponent
 {
@@ -30,9 +31,9 @@ public:
 			canMove = false;
 			owner->GetComponent<AnimationComponent>()->RunAnimation("Turn", _newDirection.x);
 			new Timer([&]() 
-				{
-					SetCanMove(true);
-				}, seconds(0.75f), true, false);
+			{
+				SetCanMove(true);
+			}, seconds(0.75f), true, false);
 		}
 	}
 	void SetCallback(const function<void()>& _callback)

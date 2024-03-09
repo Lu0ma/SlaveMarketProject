@@ -35,6 +35,10 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	interaction = new InteractionComponent(this);
 	components.push_back(interaction);
 
+	light = new CircleShape(55.0f);
+	light->setFillColor(Color(255, 255, 255, 20));
+	light->setOrigin(100.0f, 100.0f);
+
 	stats = new PlayerStat(this);
 	charmsMenu = new CharmsMenu();
 	pauseMenu = new PauseMenu();
@@ -55,10 +59,7 @@ void Player::SetupPlayerInput()
 			FxManager::GetInstance().Run("FxMana");
 		}, InputData({ActionType::KeyPressed, Keyboard::A})),
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
-
 	});
-
-
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("ControllerRight", [&]() {
@@ -71,13 +72,13 @@ void Player::SetupPlayerInput()
 		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
         ActionData("Jump", [&]() {
-            movement->Jump();
+            movement->StartJump();
             FxManager::GetInstance().Run("FxDoubleJump");
         }, InputData({ActionType::KeyPressed, Keyboard::Space})),
         ActionData("ControllerJump", [&]() {
             if (Joystick::isButtonPressed(0, 1))
             {
-                movement->Jump();
+                movement->StartJump();
             }
         }, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 1) })),
 		ActionData("StopJump", [&]() { movement->StopJump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
@@ -173,4 +174,9 @@ void Player::Init()
 
 	InitAnimations();
 	SetupPlayerInput();
+}
+
+void Player::Update(const float _deltaTime)
+{
+	light->setPosition(GetShapePosition() + Vector2f(50.0f, 50.0f));
 }

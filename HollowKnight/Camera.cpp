@@ -1,8 +1,7 @@
 #include "Camera.h"
 #include "Game.h"
 #include "ShapeWidget.h"
-#include <ctime>
-#include <cstdlib>
+#include "Macro.h"
 
 Camera::Camera()
 {

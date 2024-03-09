@@ -4,8 +4,10 @@
 #include <vector>
 #include <functional>
 #include <string>
-#include"Actor.h"
-#include"ActorManager.h"
+#include <ctime>
+#include <cstdlib>
+#include "Actor.h"
+#include "ActorManager.h"
 
 using namespace std;
 using namespace sf;

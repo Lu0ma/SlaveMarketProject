@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Widget.h"
 #include "Label.h"
+#include "Macro.h"
 
 #define PATH_INTERACTION "UIs/Discussions/Interaction.png"
 #define PATH_DISCUSSION "UIs/Discussions/Dialog.png"

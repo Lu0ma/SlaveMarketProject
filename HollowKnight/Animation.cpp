@@ -78,7 +78,7 @@ void Animation::Start(const float _directionX)
     directionX = _directionX;
     shape->setScale(directionX, 1.0f);
 
-    timer = new Timer(this, &Animation::SetNext, seconds(data.timeBetween), true, true);
+    timer = new Timer([&]() { SetNext(); }, seconds(data.timeBetween), true, true);
 }
 
 void Animation::Reset()

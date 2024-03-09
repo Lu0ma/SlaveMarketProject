@@ -283,6 +283,12 @@
     <Filter Include="Menus\Charms">
       <UniqueIdentifier>{27640059-3a16-43e1-871b-f98d6628656c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers\FXs">
+      <UniqueIdentifier>{65350329-96fe-4e6b-a56e-93e26c5babe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\ShapeObjects\Actors\Interactables\PNJ">
+      <UniqueIdentifier>{685f824a-fe92-4cf6-b63c-001f9a0f1a60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -525,9 +531,6 @@
     <ClCompile Include="MerchandAnimationComponent.cpp">
       <Filter>Components\Animations</Filter>
     </ClCompile>
-    <ClCompile Include="NPCAnimationComponent.cpp">
-      <Filter>Components\Animations</Filter>
-    </ClCompile>
     <ClCompile Include="MobMovementComponent.cpp">
       <Filter>Components\Movement</Filter>
     </ClCompile>
@@ -591,9 +594,6 @@
     <ClCompile Include="ProgressLabel.cpp">
       <Filter>UIs\Widgets\ShapeWidgets\Labels\ProgressLabel</Filter>
     </ClCompile>
-    <ClCompile Include="Audio.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Grub.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -601,13 +601,13 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="FxManager.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Managers\FXs</Filter>
     </ClCompile>
     <ClCompile Include="FxData.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Managers\FXs</Filter>
     </ClCompile>
     <ClCompile Include="Fx.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Managers\FXs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -848,9 +848,6 @@
     <ClInclude Include="MenuManager.h">
       <Filter>Managers\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="NPCAnimationComponent.h">
-      <Filter>Components\Animations</Filter>
-    </ClInclude>
     <ClInclude Include="DragonAnimationComponent.h">
       <Filter>Components\Animations</Filter>
     </ClInclude>
@@ -923,26 +920,20 @@
     <ClInclude Include="AudioMenu.h">
       <Filter>Menus\AudioMenu</Filter>
     </ClInclude>
-    <ClInclude Include="Audio.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Grub.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerStats.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="PNJ.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="FxManager.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Managers\FXs</Filter>
     </ClInclude>
     <ClInclude Include="FxData.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Managers\FXs</Filter>
     </ClInclude>
     <ClInclude Include="Fx.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Managers\FXs</Filter>
+    </ClInclude>
+    <ClInclude Include="PNJ.h">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\PNJ</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

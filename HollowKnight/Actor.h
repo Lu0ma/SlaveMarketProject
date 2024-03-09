@@ -1,8 +1,8 @@
 #pragma once
 #include "ShapeObject.h"
 #include "IManagable.h"
-#include "Component.h"
 #include "CollisionComponent.h"
+#include "AnimationComponent.h"
 
 using namespace std;
 
@@ -12,6 +12,7 @@ class Actor : public ShapeObject, public IManagable<string>
 protected:
 	vector<Component*> components;
 	CollisionComponent* collision;
+	AnimationComponent* animation;
 
 public:
 	template <typename T>

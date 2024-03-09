@@ -48,32 +48,7 @@ class PlayerMovementComponent : public MovementComponent
 	//Actor* triggerBox;
 
 public:
-	void SetDirectionX(const float _directionX, const string& _animName)
-	{
-		if (!canMove) return;
-
-		direction.x = _directionX;
-
-		if (_directionX == 0.0f)
-		{
-			if (owner->GetDrawable()->getScale().x >= 0.0f)
-			{
-				dashDirection = 1.0f;
-			}
-
-			else
-			{
-				dashDirection = -1.0f;
-			}
-		}
-
-		else
-		{
-			dashDirection = _directionX;
-		}
-
-		animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
-	}
+	void SetDirectionX(const float _directionX, const string& _animName);
 	void SetDirectionY(const float _directionY)
 	{
 		if (!canMove) return;

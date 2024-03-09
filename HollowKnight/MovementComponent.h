@@ -2,11 +2,8 @@
 #include "Component.h"
 #include <SFML/Graphics.hpp>
 #include "CollisionComponent.h"
-#include <functional>
-#include <iostream>
 #include "AnimationComponent.h"
 
-using namespace std;
 using namespace sf;
 
 class MovementComponent : public Component
@@ -25,22 +22,7 @@ public:
 	{
 		speed = _speed;
 	}
-	void SetCanMove(const bool _status)
-	{
-		canMove = _status;
-
-		if (!animation)
-		{
-			animation = owner->GetComponent<AnimationComponent>();
-			if (!animation) return;
-		}
-
-		if (!canMove)
-		{
-			animation->RunAnimation("Idle", lastDirection.x);
-		}
-
-	}	
+	void SetCanMove(const bool _status);
 	bool GetCanMove() const
 	{
 		return canMove;

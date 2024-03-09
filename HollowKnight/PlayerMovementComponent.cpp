@@ -5,7 +5,34 @@
 #include "Timer.h"
 #include "Macro.h"
 #include "Kismet.h"
-#include"FxManager.h"
+#include "FxManager.h"
+
+void PlayerMovementComponent::SetDirectionX(const float _directionX, const string& _animName)
+{
+	if (!canMove) return;
+
+	direction.x = _directionX;
+
+	if (_directionX == 0.0f)
+	{
+		if (owner->GetDrawable()->getScale().x >= 0.0f)
+		{
+			dashDirection = 1.0f;
+		}
+
+		else
+		{
+			dashDirection = -1.0f;
+		}
+	}
+
+	else
+	{
+		dashDirection = _directionX;
+	}
+
+	animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
+}
 
 PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementComponent(_owner)
 {

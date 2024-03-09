@@ -32,7 +32,7 @@ void Game::Start()
 {
 	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
-	new Timer(this, &Game::Init, seconds(1.0f), true, false);
+	new Timer([&]() { Init(); }, seconds(1.0f), true, false);
 }
 
 void Game::Init()
@@ -75,7 +75,8 @@ void Game::UpdateWindow()
 	{
 		window.draw(*_actor->GetDrawable());
 	}
-	
+	window.draw(*player->GetLight());
+
 	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{

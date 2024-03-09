@@ -1,6 +1,7 @@
 #include "Dragon.h"
 #include "Game.h"
 #include "MusicManager.h"
+#include "Macro.h"
 
 #define MUSIC "Dance.wav"
 
