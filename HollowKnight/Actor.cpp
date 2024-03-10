@@ -43,3 +43,16 @@ void Actor::Destroy(const float _waitingTime)
 {
 	new Timer([&]() { SetToRemove(true); }, seconds(_waitingTime));
 }
+
+void Actor::InitAnimations(const vector<AnimationData>& _animations)
+{
+	vector<string> _animName;
+	for (const AnimationData& _anim : _animations)
+	{
+		_animName.push_back(_anim.name);
+	}
+	animation->AddNames({
+		_animName,
+		});
+	animation->InitAnimations(_animations);
+}

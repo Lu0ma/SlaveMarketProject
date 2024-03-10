@@ -594,9 +594,6 @@
     <ClCompile Include="Grub.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="PNJ.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="FxManager.cpp">
       <Filter>Managers\FXs</Filter>
     </ClCompile>
@@ -605,6 +602,9 @@
     </ClCompile>
     <ClCompile Include="Fx.cpp">
       <Filter>Managers\FXs</Filter>
+    </ClCompile>
+    <ClCompile Include="PNJ.cpp">
+      <Filter>Objects\ShapeObjects\Actors\Interactables\PNJ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

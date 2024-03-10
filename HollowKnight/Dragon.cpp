@@ -5,7 +5,7 @@
 
 #define MUSIC "Dance.wav"
 
-Dragon::Dragon(const ShapeData& _data) : Actor(STRING_ID("Grub"), _data)
+Dragon::Dragon(const ShapeData& _data) : Actor(STRING_ID("Dragon"), _data)
 {
 	animation->AddNames({
 		"DanceRight",

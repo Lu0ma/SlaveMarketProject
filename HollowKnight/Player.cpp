@@ -181,5 +181,6 @@ void Player::Init()
 
 void Player::Update(const float _deltaTime)
 {
+	Actor::Update(_deltaTime);
 	light->setPosition(GetShapePosition() + Vector2f(50.0f, 50.0f));
 }
