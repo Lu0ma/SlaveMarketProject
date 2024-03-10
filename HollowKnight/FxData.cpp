@@ -6,7 +6,7 @@
 
 FxData::FxData(Actor* _actor, const string _path) : IManagable(_path)
 {
-	animation = _actor-GetComponent<AnimationComponent>();
+	animation = _actor->GetComponent<AnimationComponent>();
 	animFx = vector<string>();
 	Init();
 	Register();
