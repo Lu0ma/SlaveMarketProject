@@ -92,7 +92,7 @@ void Player::SetupPlayerInput()
 			}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,1) })),
 
 		ActionData("Dash", [&]() { movement->Dash(); FxManager::GetInstance().Run("FxDash"); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
-		ActionData("StopDash", [&]() { movement->SetDirectionX(movement->GetDashDirection(), "Right"); }, InputData({ActionType::KeyReleased,Keyboard::LControl})),
+		ActionData("StopDash", [&]() { movement->SetDirectionX(0, "StopRight"); }, InputData({ActionType::KeyReleased,Keyboard::LControl})),
 		ActionData("ControllerDash", [&]() {
 
 			if (Joystick::isButtonPressed(0, 7)) {
