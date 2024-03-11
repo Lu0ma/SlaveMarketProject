@@ -38,7 +38,6 @@ void AnimationComponent::RunAnimation(const string& _name, const float _directio
         {
             if (currentAnimation)
             {
-
                 if(_name == currentAnimation->GetID()) return;
 
                 //system("cls");

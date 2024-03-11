@@ -30,6 +30,7 @@ void PatrolState::Start()
 			movement->SetCanMove(false);
 			new Timer([&]() 
 				{				
+
 					if (movement->GetDestination() == startPosition)
 					{
 						movement->SetDestination(goalPosition);

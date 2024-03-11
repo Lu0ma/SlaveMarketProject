@@ -28,11 +28,13 @@ public:
 		if (_newDirection.x != lastDirection.x)
 		{
 			canMove = false;
-			owner->GetComponent<AnimationComponent>()->RunAnimation("Turn", _newDirection.x);
-			new Timer([&]() 
+			owner->GetComponent<AnimationComponent>()->RunAnimation("Turn", lastDirection.x);
+			owner->GetComponent<AnimationComponent>()->GetCurrentAnimation()->SetDirectionX(_newDirection.x);
+
+			new Timer([&]()
 				{
 					SetCanMove(true);
-				}, seconds(0.75f), true, false);
+				}, seconds(.75f), true, false);
 		}
 	}
 	void SetCallback(const function<void()>& _callback)
