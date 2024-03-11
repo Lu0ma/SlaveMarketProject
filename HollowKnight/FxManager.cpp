@@ -1,6 +1,7 @@
 #include "FxManager.h"
 #include"Game.h"
 #include"Fx.h"
+#include"Macro.h"
 
 #define PATH_FX "Animations/Fx.png"
 
@@ -11,7 +12,7 @@ FxManager::FxManager()
 
 void FxManager::Run(const string& _runningAnimation)
 {
-	index++;
+ 	index++;
 	Vector2f _pos = Game::GetPlayer()->GetPosition();
 	float _direction = Game::GetPlayer()->GetPlayerMovement()->GetDashDirection();
 
@@ -46,5 +47,4 @@ void FxManager::Run(const string& _runningAnimation)
 		_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
 		_fx->Destroy(0.5f);
 	}
-	
 }
