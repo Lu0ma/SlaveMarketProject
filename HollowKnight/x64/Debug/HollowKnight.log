@@ -1,2 +1,37 @@
 ﻿  AttackState.cpp
+  Belfly.cpp
+  Boofly.cpp
+  Boss.cpp
+  BossAttackState.cpp
+  BossBrain.cpp
+  BossPatrolState.cpp
+  Brain.cpp
+  ChaseState.cpp
+  DeathMob.cpp
+C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4305: 'argument': truncation from 'unsigned __int64' to 'const T'
+          with
+          [
+              T=int
+          ]
+C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\DeathMob.cpp(46,31): warning C4309: 'argument': truncation of constant value
+  Enemy.cpp
+  EnemyBrain.cpp
+  FalseKnight.cpp
+  Game.cpp
+  HuskBully.cpp
+  InspectComponent.cpp
+  Mob.cpp
+  MobAttackComponent.cpp
+  MobAttackState.cpp
+  MobBrain.cpp
+  Generating Code...
+  Compiling...
+  MobPatrolState.cpp
+  PatrolState.cpp
+  Player.cpp
+  PlayerAttackComponent.cpp
+  PlayerStat.cpp
+  Spawner.cpp
+  State.cpp
+  Generating Code...
   HollowKnight.vcxproj -> C:\Users\mart2812\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

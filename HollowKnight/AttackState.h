@@ -1,8 +1,15 @@
 #pragma once
 #include "State.h"
 
+#include "AnimationComponent.h"
+#include "MobMovementComponent.h"
+#include "InspectComponent.h"
+
 class AttackState : public State
 {
+	AnimationComponent* animation;
+	MobMovementComponent* movement;
+	InspectComponent* inspect;
 
 public:
 	AttackState(Brain* _brain);

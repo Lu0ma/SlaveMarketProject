@@ -8,20 +8,22 @@ PatrolState::PatrolState(Brain* _brain) : State(_brain)
 	movement = nullptr;
 	inspect = nullptr;
 
-	startPosition = Vector2f();
+	startPosition = brain->GetOwner()->GetShapePosition();
 	goalPosition = Vector2f();
 }
 
 void PatrolState::Start()
 {
-	startPosition = brain->GetOwner()->GetShapePosition();
 	goalPosition = startPosition + Vector2f(1000.0f, 0.0f);
 	
 	Actor* _owner = brain->GetOwner();
 
-	inspect = _owner->GetComponent<InspectComponent>();
-	animation = _owner->GetComponent<AnimationComponent>();
-	movement = _owner->GetComponent<MobMovementComponent>();
+	if (!inspect || !animation || !movement )
+	{
+		inspect = _owner->GetComponent<InspectComponent>();
+		animation = _owner->GetComponent<AnimationComponent>();
+		movement = _owner->GetComponent<MobMovementComponent>();
+	}
 
 	movement->SetCallback([&]() 
 		{
