@@ -1,9 +1,13 @@
 #pragma once
 #include "Component.h"
-#include <SFML/Graphics.hpp>
 #include "CollisionComponent.h"
 #include "AnimationComponent.h"
 
+#include <SFML/Graphics.hpp>
+#include <functional>
+#include <iostream>
+
+using namespace std;
 using namespace sf;
 
 class MovementComponent : public Component
@@ -14,6 +18,7 @@ protected:
 	float speed;
 	float gravity;
 	Vector2f lastDirection;
+
 	AnimationComponent* animation;
 	CollisionComponent* collision;
 
@@ -22,7 +27,9 @@ public:
 	{
 		speed = _speed;
 	}
+
 	void SetCanMove(const bool _status);
+
 	bool GetCanMove() const
 	{
 		return canMove;

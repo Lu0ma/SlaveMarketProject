@@ -1,15 +1,14 @@
 #include "PatrolToChase.h"
-#include "ChaseState.h"
-#include "BlackBoard.h"
-#include "Brain.h"
 
-PatrolToChase::PatrolToChase(Brain* _brain) : Transition(_brain)
+PatrolToChase::PatrolToChase(BlackBoard* _blackBoard) : Transition(_blackBoard)
 {
+
 }
 
-void PatrolToChase::Init()
+
+void PatrolToChase::Init(State* _state)
 {
-	nextState = brain->GetChaseState();
+	nextState = _state;
 }
 
 bool PatrolToChase::CanNext() const

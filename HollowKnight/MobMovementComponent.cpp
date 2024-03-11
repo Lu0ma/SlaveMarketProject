@@ -5,6 +5,27 @@
 #include "Macro.h"
 #include "Kismet.h"
 
+void MobMovementComponent::SetDestination(const Vector2f& _destination, const bool _canMove)
+{
+	destination = _destination;
+	//cout << destination.x << " " << destination.y << endl;
+	canMove = _canMove;
+
+	Vector2f _newDirection = _destination - owner->GetShapePosition();
+	Normalize(_newDirection);
+	if (_newDirection.x != lastDirection.x)
+	{
+		canMove = false;
+		owner->GetComponent<AnimationComponent>()->RunAnimation("Turn", lastDirection.x);
+		owner->GetComponent<AnimationComponent>()->GetCurrentAnimation()->SetDirectionX(_newDirection.x);
+
+		new Timer([&]()
+			{
+				SetCanMove(true);
+			}, seconds(.75f), true, false);
+	}
+}
+
 MobMovementComponent::MobMovementComponent(Actor* _owner) : MovementComponent(_owner)
 {
 	minRange = 0.5f;

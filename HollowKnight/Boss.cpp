@@ -1,5 +1,6 @@
 #include "Boss.h"
 #include "Macro.h"
+#include "BossBrain.h"
 
 Boss::Boss(const ShapeData& _data) : Enemy("Boss" + to_string(GetUniqueID()), _data)
 {
@@ -13,11 +14,14 @@ Boss::Boss(const ShapeData& _data) : Enemy("Boss" + to_string(GetUniqueID()), _d
 	life = new MobLifeComponent(this, 3);
 	components.push_back(life);
 
+	inspect = new InspectComponent(this, 200.0f);
+	components.push_back(inspect);
+
 	brain = new BossBrain(this);
 	components.push_back(brain);
 }
 
 void Boss::Update(const float _deltaTime)
 {
-	Actor::Update(_deltaTime);
+	Enemy::Update(_deltaTime);
 }

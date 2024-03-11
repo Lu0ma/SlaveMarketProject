@@ -1,8 +1,7 @@
 #include "Transition.h"
-#include "Brain.h"
 
-Transition::Transition(Brain* _brain)
+Transition::Transition(BlackBoard* _blackBoard)
 {
-	brain = _brain;
-	blackBoard = &_brain->GetBlackBoard();
+	blackBoard = _blackBoard;
+	nextState = nullptr;
 }

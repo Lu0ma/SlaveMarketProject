@@ -1,5 +1,14 @@
 #include "ChaseToAttack.h"
-#include "BlackBoard.h"
+
+ChaseToAttack::ChaseToAttack(BlackBoard* _blackBoard) : Transition(_blackBoard)
+{
+
+}
+
+void ChaseToAttack::Init(State* _nextState)
+{
+    nextState = _nextState;
+}
 
 bool ChaseToAttack::CanNext() const
 {
