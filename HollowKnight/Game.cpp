@@ -26,7 +26,6 @@ Game::Game()
 Game::~Game()
 {
 	delete map;
-	delete camera;
 	delete brightness;
 }
 

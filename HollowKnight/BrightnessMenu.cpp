@@ -9,6 +9,9 @@
 
 BrightnessMenu::BrightnessMenu(Menu* _owner) : Menu("Brightness", _owner)
 {
+	minValue = 0;
+	maxValue = 0;
+	factor = 0;
 	brightButton = nullptr;
 	indicator = nullptr;
 	backButton = nullptr;
@@ -72,14 +75,20 @@ void BrightnessMenu::Init()
 	Button* _buttonMinus = new Button(ShapeData(Vector2f(_halfWindowX, _buttonPosY), _littleButtonSize, PATH_MINUS));
 	_buttonMinus->GetData().pressedCallback = [&]()
 	{
-		Game::GetBrightness()->UpdateBrightness(-10.0f);
+		if (MoveIndicator(-factor))
+		{
+			Game::GetBrightness()->UpdateBrightness(-factor);
+		}
 	};
 	canvas->AddWidget(_buttonMinus);
 
 	Button* _buttonPlus = new Button(ShapeData(Vector2f(_halfWindowX + 200.0f, _buttonPosY), _littleButtonSize, PATH_PLUS));
 	_buttonPlus->GetData().pressedCallback = [&]()
 	{
-		Game::GetBrightness()->UpdateBrightness(10.0f);
+		if (MoveIndicator(factor))
+		{
+			Game::GetBrightness()->UpdateBrightness(factor);
+		}
 	};
 	canvas->AddWidget(_buttonPlus);
 
@@ -88,6 +97,10 @@ void BrightnessMenu::Init()
 	ShapeWidget* _volumeBar = new ShapeWidget(ShapeData(Vector2f(_volumeBarPosX, _buttonPosY), Vector2f(_volumeBarSizeX, 2.0f), PATH_LINE));
 	canvas->AddWidget(_volumeBar);
 
+	minValue = _volumeBarPosX - _volumeBarSizeX / 2.0f;
+	maxValue = _volumeBarPosX + _volumeBarSizeX / 2.0f;
+	factor = 2.0f;
+	
 	const Vector2f& _sizeIndicator = Vector2f(67.0f / 1.25f, 67.0f / 1.25f);
 	const Vector2f& _positionIndicator = Vector2f(_volumeBarPosX, _buttonPosY - 25.0f);
 	indicator = new ShapeWidget(ShapeData(_positionIndicator, _sizeIndicator, PATH_INDICATOR));
@@ -121,4 +134,20 @@ void BrightnessMenu::Init()
 	MovePointers(backButton);
 
 	#pragma endregion
+}
+
+bool BrightnessMenu::MoveIndicator(const float _percent)
+{
+	const float _value = _percent * (maxValue - minValue) / 100.0f;
+
+	Shape* _shape = indicator->GetDrawable();
+	const float _posX = _shape->getPosition().x;
+
+	if (_posX + _value >= minValue && _posX + _value <= maxValue)
+	{
+		_shape->move(_value, 0.0f);
+		return true;
+	}
+
+	return false;
 }

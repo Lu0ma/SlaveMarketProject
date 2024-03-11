@@ -17,11 +17,15 @@ struct Brightness
 {
 	Shader* shader;
 	float gamma;
+	float gammaMin;
+	float gammaMax;
 
 	Brightness()
 	{
 		shader = new Shader();
 		gamma = 1.0f;
+		gammaMin = 0.1f;
+		gammaMax = 3.5f;
 	}
 
 	void Init()
@@ -31,12 +35,16 @@ struct Brightness
 			cerr << "Error => The shader cannot be loaded !" << endl;
 			return;
 		}
+		shader->setUniform("gamma", gamma);
 	}
 
 	void UpdateBrightness(const float _factor)
 	{
-		gamma += gamma * _factor / 100.0f;
-		gamma = gamma < 0.0f ? 0.0f : gamma;
+		gamma += gammaMax * _factor / 100.0f;
+		cout << gamma << endl;
+
+		gamma = gamma < gammaMin ? gammaMin : gamma;
+		gamma = gamma > gammaMax ? gammaMax : gamma;
 		shader->setUniform("gamma", gamma);
 	}
 };
