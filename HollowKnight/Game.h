@@ -13,6 +13,34 @@ using namespace sf;
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 
+struct Brightness
+{
+	Shader* shader;
+	float gamma;
+
+	Brightness()
+	{
+		shader = new Shader();
+		gamma = 1.0f;
+	}
+
+	void Init()
+	{
+		if (!shader->loadFromFile("Assets/Shaders/shader.frag", Shader::Fragment))
+		{
+			cerr << "Error => The shader cannot be loaded !" << endl;
+			return;
+		}
+	}
+
+	void UpdateBrightness(const float _factor)
+	{
+		gamma += gamma * _factor / 100.0f;
+		gamma = gamma < 0.0f ? 0.0f : gamma;
+		shader->setUniform("gamma", gamma);
+	}
+};
+
 class Game
 {
 	static RenderWindow window;
@@ -21,6 +49,7 @@ class Game
 private:
 	static Player* player;
 	static Camera* camera;
+	static Brightness* brightness;
 
 public:
 	static RenderWindow& GetWindow()
@@ -43,6 +72,10 @@ public:
 	{
 		return map;
 	}
+	static Brightness* GetBrightness()
+	{
+		return brightness;
+	}
 
 public:
 	Game();
@@ -58,4 +91,5 @@ public:
 public:
 	void Launch();
 	static void Close();
+
 };

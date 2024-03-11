@@ -147,6 +147,7 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BossBrain.cpp" />
     <ClCompile Include="Brain.cpp" />
+    <ClCompile Include="BrightnessMenu.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Canvas.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BossBrain.h" />
     <ClInclude Include="Brain.h" />
+    <ClInclude Include="BrightnessMenu.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Canvas.h" />

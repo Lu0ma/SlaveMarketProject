@@ -37,7 +37,7 @@ public:
 	{
 		return inventory;
 	}
-	CircleShape* GetLight()const
+	CircleShape* GetLight() const
 	{
 		return light;
 	}

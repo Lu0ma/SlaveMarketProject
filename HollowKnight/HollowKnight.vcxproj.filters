@@ -289,6 +289,9 @@
     <Filter Include="Objects\ShapeObjects\Actors\Interactables\PNJ">
       <UniqueIdentifier>{685f824a-fe92-4cf6-b63c-001f9a0f1a60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menus\BrightnessMenu">
+      <UniqueIdentifier>{889c04bf-ab7c-4de8-b80c-55ecac625f57}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -599,6 +602,9 @@
     </ClCompile>
     <ClCompile Include="Lever.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BrightnessMenu.cpp">
+      <Filter>Menus\BrightnessMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -916,6 +922,9 @@
     </ClInclude>
     <ClInclude Include="PNJ.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables\PNJ</Filter>
+    </ClInclude>
+    <ClInclude Include="BrightnessMenu.h">
+      <Filter>Menus\BrightnessMenu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

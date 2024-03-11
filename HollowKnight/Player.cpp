@@ -35,9 +35,9 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	interaction = new InteractionComponent(this);
 	components.push_back(interaction);
 
-	light = new CircleShape(55.0f);
-	light->setFillColor(Color(255, 255, 255, 20));
-	light->setOrigin(100.0f, 100.0f);
+	light = new CircleShape(150.0f);
+	light->setFillColor(Color(255, 255, 255, 50));
+	light->setOrigin(150.0f, 150.0f);
 
 	stats = new PlayerStat(this);
 	charmsMenu = new CharmsMenu();
@@ -133,8 +133,7 @@ void Player::SetupPlayerInput()
 			}
         }, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,6) })),
 		ActionData("CharmsMenu", [&]() {
-			//TODO restore
-			//if (!movement->IsStanding())
+			if (!movement->IsStanding())
 			{
 				TryToOpen(charmsMenu);
 			}
@@ -182,5 +181,5 @@ void Player::Init()
 void Player::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
-	light->setPosition(GetShapePosition() + Vector2f(50.0f, 50.0f));
+	light->setPosition(GetShapePosition());
 }

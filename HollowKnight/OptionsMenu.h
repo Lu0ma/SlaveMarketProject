@@ -1,5 +1,6 @@
 #pragma once
 #include "Menu.h"
+#include "BrightnessMenu.h"
 #include "ControllerMenu.h"
 #include "KeyboardMenu.h"
 #include "Button.h"
@@ -8,6 +9,7 @@
 class OptionsMenu : public Menu
 {
 	vector<Button*> buttons;
+	BrightnessMenu* brightness;
 	ControllerMenu* controller;
 	KeyboardMenu* keyboard;
 	ShapeWidget* pointer;
