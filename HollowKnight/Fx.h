@@ -1,5 +1,8 @@
 #pragma once
 #include "Actor.h"
+#include<iostream>
+
+using namespace std;
 
 class Fx : public Actor
 {
