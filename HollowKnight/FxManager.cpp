@@ -20,31 +20,31 @@ void FxManager::Run(const string& _runningAnimation)
 		if (_direction == -1)
 		{
 			Fx* _fxdash1 = new Fx("fx" + to_string(index), ShapeData(_pos - Vector2f(200.0f, 0.0f), Vector2f(250.0f, 250.0f), PATH_FX));
-			FxData _fxdata = FxData(_fxdash1, "");
-			_fxdata.GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
-			_fxdash1->Destroy(1.0f);
+			FxData* _fxdata = new FxData(_fxdash1, "");
+			_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
+			_fxdash1->Destroy(0.5f);
 		}
 		else if (_direction == 1)
 		{
 			Fx* _fxdash2 = new Fx("fx" + to_string(index), ShapeData(_pos + Vector2f(200.0f, 0.0f), Vector2f(250.0f, 250.0f), PATH_FX));
-			FxData _fxdata = FxData(_fxdash2, "");
-			_fxdata.GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
-			_fxdash2->Destroy(1.0f);
+			FxData* _fxdata = new FxData(_fxdash2, "");
+			_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
+			_fxdash2->Destroy(0.5f);
 		}
 	}
 	else if (_runningAnimation == "FxDoubleJump")
 	{
 		Fx* _fxJump = new Fx("fx" + to_string(index), ShapeData(_pos + Vector2f(0.0f, -100.0f), Vector2f(250.0f, 250.0f), PATH_FX));
-		FxData _fxdata = FxData(_fxJump, "");
-		_fxdata.GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
-		_fxJump->Destroy(1.0f);
+		FxData* _fxdata = new FxData(_fxJump, "");
+		_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
+		_fxJump->Destroy(0.5f);
 	}
 	else
 	{
 		Fx* _fx = new Fx("fx" + to_string(index), ShapeData(_pos, Vector2f(250.0f, 250.0f), PATH_FX));
-		FxData _fxdata = FxData(_fx, "");
-		_fxdata.GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
-		_fx->Destroy(1.0f);
+		FxData* _fxdata = new FxData(_fx, "");
+		_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
+		_fx->Destroy(0.5f);
 	}
 	
 }

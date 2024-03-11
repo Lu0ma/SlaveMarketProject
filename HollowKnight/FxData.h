@@ -19,7 +19,7 @@ public:
 	FxData(Actor* _actor, const string _path);
 
 public:
-	virtual void Register()override;
+	void Register();
 	void Init();
 };
 

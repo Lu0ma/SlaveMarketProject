@@ -1,38 +1,39 @@
 #pragma once
 #include "Component.h"
 #include "BlackBoard.h"
-
 #include "PatrolState.h"
 #include "ChaseState.h"
 #include "AttackState.h"
 
+#include <vector>
+
+using namespace std;
+
 class Brain : public Component
 {
-	BlackBoard blackBoard;
+	BlackBoard* blackBoard;
 
 protected:
 	State* currentState;
-
-	AttackState* attack;
-	PatrolState* patrol;
-	ChaseState* chase;
+	vector<State*> states;
 
 public:
-	BlackBoard& GetBlackBoard()
+	BlackBoard* GetBlackBoard()
 	{
 		return blackBoard;
 	}
-	AttackState* GetAttackState() const
+
+	template<typename T>
+	T* GetState() const
 	{
-		return attack;
-	}
-	PatrolState* GetPatrolState() const
-	{
-		return patrol;
-	}
-	ChaseState* GetChaseState() const
-	{
-		return chase;
+		for (State* _currentState : states)
+		{
+			if (T* _state = dynamic_cast<T*>(_currentState))
+			{
+				return _state;
+			}
+		}
+		return nullptr;
 	}
 
 public:
@@ -40,5 +41,6 @@ public:
 	~Brain();
 
 public:
+	virtual void Init() = 0;
 	virtual void Update(const float _deltaTime) override;
 };

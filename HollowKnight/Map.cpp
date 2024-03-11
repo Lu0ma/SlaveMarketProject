@@ -115,10 +115,10 @@ void Map::Init()
 	new CollectableActor(STRING_ID("Item"), ShapeData(Vector2f(-350.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Item.png"),
 		30.0f, "Item", "Ceci est un item", IT_ITEM);
 
-	new CollectableActor(STRING_ID("ItemE"), ShapeData(Vector2f(-400.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/.png"),
+	new CollectableActor(STRING_ID("ItemE"), ShapeData(Vector2f(-400.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Item.png"),
 		30.0f, "Item", "Ceci est un ", IT_ITEM);
 
-	new CollectableActor(STRING_ID("Item2"), ShapeData(Vector2f(-450.0f, 30.5f), Vector2f(50.0f, 50.0f), ""),
+	new CollectableActor(STRING_ID("Item2"), ShapeData(Vector2f(-450.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Item.png"),
 		30.0f, "Item", "Ceci", IT_ITEM);
 
 	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(250.0f, 250.0f), "Lift.png"));
