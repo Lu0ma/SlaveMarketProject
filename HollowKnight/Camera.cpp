@@ -5,13 +5,17 @@
 #include <cstdlib>
 #include "TimerManager.h"
 #include "Macro.h"
-Camera::Camera()
+Camera::Camera() : Actor("Camera" , ShapeData())
 {
+	shake = new ShakeComponent(this);
+	Player* _player = Game::GetPlayer();
 	speed = 0.5f;
 	damp = 100.0f;
 	targetPosition = Vector2f();
-	offset = Vector2f(damp * 0.75f, 0.0f);
+	offset = Vector2f(damp * 0.75f,0.0f);
+	offset2 = Vector2f(_player->GetPosition());
 	view = View();
+	defaultView = View();
 	isDown = false;
 	defaultSize = view.getSize();
 	axeX = 0.0f;
@@ -24,7 +28,7 @@ Camera::Camera()
 
 void Camera::MoveToTarget(const float _deltaTime)
 {
-//	Player* _player = Game::GetPlayer();
+	//	Player* _player = Game::GetPlayer();
 	float _distance;
 	if (IsAtDestination(_distance))
 	{
@@ -63,9 +67,16 @@ void Camera::Init()
 
 void Camera::Shake(const float _trauma, const float _duration)
 {
-	shake.max = milliseconds(static_cast<Int32>(_duration));
-	shake.current = seconds(0);
-	shake.trauma += _trauma;
+	shake->max = milliseconds(static_cast<Int32>(_duration));
+	shake->current = seconds(0);
+	shake->trauma += _trauma;
+}
+
+void Camera::ResetShake()
+{
+	shake->max = milliseconds(0);
+	shake->current = seconds(0);
+	shake->trauma = 0.0f;
 }
 
 void Camera::Update(const float _deltaTime)
@@ -73,30 +84,43 @@ void Camera::Update(const float _deltaTime)
 	#pragma region Init
 	RenderWindow& _window = Game::GetWindow();
 	Player* _player = Game::GetPlayer();
-	View _view = GetView();
 	const float _distance = Distance(_player->GetShapePosition().x, view.getCenter().x);
 	const float _newScaleX = Game::GetPlayer()->GetDrawable()->getScale().x;
+	const float _newScaleY = Game::GetPlayer()->GetDrawable()->getScale().y;
 #pragma endregion
+
+	
+	//if (_distance > damp || oldScaleX != _newScaleX && oldScaleY != _newScaleY)
+	//{
+	//	 const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offset.x : -offset.x;
+	//	 targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, offset.y));
+	//	 oldScaleX = _newScaleX;
+	//	 oldScaleY = _newScaleY;
+	//}
+	
+	const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offset.x : -offset.x;
+	targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, offset.y));
+	oldScaleX = _newScaleX;
 	MoveToTarget(_deltaTime);
 	UpdateSizeView();
-	if (_distance > damp || oldScaleX != _newScaleX)
-	{
-		 const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offset.x : -offset.x;
-		 targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, offset.y));
-		 oldScaleX = _newScaleX;
-	}
 
-#pragma region ShakeUpdate
+	#pragma region ShakeUpdate
 	// Le tremblement est terminer 
-	if (shake.current >= shake.max) return;
-	float _angle = CAMERA_SHAKE_ANGLE * shake.trauma * Randn();
-	offset.x = CAMERA_SHAKE_OFFSET * shake.trauma * Randn();
-	offset.y = CAMERA_SHAKE_OFFSET * shake.trauma * Randn();
+	if (shake->current >= shake->max)
+	{ 
+		//_window.setView(defaultView);
+		return;
+	}
+	float _angle = CAMERA_SHAKE_ANGLE * shake->trauma * Randn();
+	offset2.x = CAMERA_SHAKE_OFFSET * shake->trauma * Randn();
+	offset2.y = CAMERA_SHAKE_OFFSET * shake->trauma * Randn();
 	view.setRotation(_angle);
 	_window.setView(view);
-	shake.current += milliseconds(100);
-	float _ratio = shake.current.asSeconds() / shake.max.asSeconds();
-	shake.trauma *= 1.0f - _ratio * _ratio;
+	shake->current += milliseconds(100);
+	float _ratio = shake->current.asSeconds() / shake->max.asSeconds();
+	shake->trauma *= 1.0f - _ratio * _ratio;
+	// ResetShake();
+	
 #pragma endregion
 
 }
