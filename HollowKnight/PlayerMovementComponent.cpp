@@ -56,7 +56,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	jumpDuration = 0.2f;
 	jumpDurationFactor = 0.075f;
 	jumpTimer = nullptr;
-	gravity = 0.6f;
+	gravity = 0.8f;
 
 	// Dash
 	canDash = true;
