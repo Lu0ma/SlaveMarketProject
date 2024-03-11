@@ -17,26 +17,8 @@ class MobMovementComponent : public MovementComponent
 	float checkGroundDistance;
 
 public:
-	void SetDestination(const Vector2f& _destination, const bool _canMove = true)
-	{
-		destination = _destination;
-		//cout << destination.x << " " << destination.y << endl;
-		canMove = _canMove;
+	void SetDestination(const Vector2f& _destination, const bool _canMove = true);
 
-		Vector2f _newDirection = _destination - owner->GetShapePosition();
-		Normalize(_newDirection);
-		if (_newDirection.x != lastDirection.x)
-		{
-			canMove = false;
-			owner->GetComponent<AnimationComponent>()->RunAnimation("Turn", lastDirection.x);
-			owner->GetComponent<AnimationComponent>()->GetCurrentAnimation()->SetDirectionX(_newDirection.x);
-
-			new Timer([&]()
-				{
-					SetCanMove(true);
-				}, seconds(.75f), true, false);
-		}
-	}
 	void SetCallback(const function<void()>& _callback)
 	{
 		callback = _callback;

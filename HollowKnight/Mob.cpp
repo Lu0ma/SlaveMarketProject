@@ -8,9 +8,6 @@ Mob::Mob(const ShapeData& _data) : Enemy(STRING_ID("Mob"), _data)
 	isPatrolling = false;
 	cooldownAttack = false;
 
-	animation = new AnimationComponent(this);
-	components.push_back(animation);
-
 	movement = new MobMovementComponent(this);
 	movement->SetSpeed(0.1f);
 	components.push_back(movement);
@@ -31,4 +28,12 @@ Mob::Mob(const ShapeData& _data) : Enemy(STRING_ID("Mob"), _data)
 void Mob::Update(const float _deltaTime)
 {
 	Enemy::Update(_deltaTime);
+}
+
+void Mob::Attack(Player* _player)
+{
+}
+
+void Mob::Death()
+{
 }

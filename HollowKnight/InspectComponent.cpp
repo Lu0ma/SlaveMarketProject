@@ -21,7 +21,7 @@ bool InspectComponent::HasTarget(const Vector2f& _position, const Vector2f& _des
 	const float _maxDistance = Distance(_position, _destination);
 	HitInfo _hitInfo;
 
-	const bool _hasHit = Raycast(_position, _direction, _maxDistance, _hitInfo, { owner->GetDrawable() });
+	const bool _hasHit = Raycast(_position, _direction, _maxDistance, _hitInfo, { owner });
 	if (_hasHit && dynamic_cast<Player*>(_hitInfo.actor) && _hitInfo.distance < 1.0f)
 	{
 		cout << owner->GetID() << " : " << _hitInfo.actor->GetID() << endl;
