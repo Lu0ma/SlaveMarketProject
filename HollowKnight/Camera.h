@@ -28,15 +28,22 @@ class Camera : public Actor
 	float oldScaleX;
 	float oldScaleY;
 	Vector2f targetPosition;
+	Vector2f defaultTargetPosition;
 	Vector2f offset;
 	Vector2f offset2;
+
 	Vector2f defaultSize;
 	View view;
 	View defaultView;
 	ShakeComponent* shake;
 	bool isDown;
-
+	bool isUp;
 	bool isZoom;
+
+	bool canShake;
+
+	bool isShake;
+	
 	float axeX;
 	float axeY;
 
@@ -51,6 +58,10 @@ public:
 		isDown = _isDown;
 	}
 
+	void SetIsUp(const bool _isUp)
+	{
+		isUp = _isUp;
+	}
 	void SetAxeY(const float _axeY)
 	{
 		axeY = _axeY;
@@ -59,6 +70,16 @@ public:
 	void SetIsZoom(const bool _isZoom)
 	{
 		isZoom = _isZoom;
+	}
+
+	void SetTargetPosition(const float _posX, const float  _posY)
+	{
+		targetPosition = Vector2f(_posX, _posY);
+	}
+
+	void SetCanShake(const bool _canShake)
+	{
+		canShake = _canShake;
 	}
 public:
 	Camera();
@@ -70,10 +91,9 @@ private:
 public:
 	void Init();
 	void Shake(const float _trauma, const float _duration);
+	void ShakeActor(const float _duration);
 	void ResetShake();
 	void Update(const float _deltaTime);
-
-
-	void UpdateSizeView();
+	void UpdateSizeView(const float _deltaTime);
 };
 

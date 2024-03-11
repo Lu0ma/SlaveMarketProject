@@ -58,54 +58,80 @@ void Player::SetupPlayerInput()
 			stats->UseMana(-10.0f);
 			stats->UpdateLife(1);
 			FxManager::GetInstance().Run("FxMana");
+			Game::GetCamera()->SetIsZoom(true);
 		}, InputData({ActionType::KeyPressed, Keyboard::A})),
-		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
+		ActionData("ShakePlayer " , [&]() {Game::GetCamera()->ShakeActor(1000.0f); Game::GetCamera()->SetCanShake(true); } , InputData({ActionType::KeyPressed, Keyboard::K})),
+		ActionData("StopShakePlayer ",  [&]() {new Timer([&]() {Game::GetCamera()->SetCanShake(false); } , seconds(1)); } , InputData({ActionType::KeyReleased , Keyboard::K})),
+		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); Game::GetCamera()->SetIsZoom(false);  }, InputData({ActionType::KeyReleased, Keyboard::A})),
 	});
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("ControllerRight", [&]() {
 			if (_event.joystickMove.axis == Joystick::Axis::X && _event.joystickMove.position > 100)
-            {
+			{
 				movement->SetDirectionX(1.0f, "Right");
 			}
-        }, InputData({ ActionType::JoystickMoved, Joystick::Axis::X})),
+		}, InputData({ ActionType::JoystickMoved, Joystick::Axis::X})),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
 		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
-        ActionData("Jump", [&]() {
-            movement->StartJump();
-            FxManager::GetInstance().Run("FxDoubleJump");
-        }, InputData({ActionType::KeyPressed, Keyboard::Space})),
-        ActionData("ControllerJump", [&]() {
-            if (Joystick::isButtonPressed(0, 1))
-            {
-                movement->StartJump();
-            }
-        }, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 1) })),
+		ActionData("Jump", [&]() {
+			movement->StartJump();
+			FxManager::GetInstance().Run("FxDoubleJump");
+		}, InputData({ActionType::KeyPressed, Keyboard::Space})),
+		ActionData("ControllerJump", [&]() {
+			if (Joystick::isButtonPressed(0, 1))
+			{
+				movement->StartJump();
+			}
+		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 1) })),
 		ActionData("StopJump", [&]() { movement->StopJump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
-        ActionData("Dash", [&]() { movement->Dash(); FxManager::GetInstance().Run("FxDash"); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
-        ActionData("StopDash", [&]() { movement->SetDirectionX(movement->GetDashDirection(), "Right"); }, InputData({ActionType::KeyReleased,Keyboard::LControl})),
-        ActionData("ControllerDash", [&]() {
-            if (Joystick::isButtonPressed(0, 7))
-            {
-                movement->Dash();
-            }
-        }, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 7) })),
+		ActionData("Dash", [&]() { movement->Dash(); FxManager::GetInstance().Run("FxDash"); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
+		ActionData("StopDash", [&]() { movement->SetDirectionX(movement->GetDashDirection(), "Right"); }, InputData({ActionType::KeyReleased,Keyboard::LControl})),
+		ActionData("ControllerDash", [&]() {
+			if (Joystick::isButtonPressed(0, 7))
+			{
+				movement->Dash();
+			}
+		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 7) })),
 		ActionData("Sit", [&]() {
 			if (!charmsMenu->IsActive())
 			{
 				movement->SitDown();
 				attack->SetCanAttack(false);
 			}
-        }, InputData({ ActionType::KeyPressed, Keyboard::Z })),
+		}, InputData({ ActionType::KeyPressed, Keyboard::Z})),
 		ActionData("Stand", [&]() {
 			if (!charmsMenu->IsActive())
 			{
 				movement->StandUp();
 				attack->SetCanAttack(true);
 			}
-		}, InputData({ ActionType::KeyPressed, Keyboard::S }))
+		}, InputData({ ActionType::KeyPressed, Keyboard::S})),
+		ActionData("Shake" , [&]()
+			{
+				Game::GetCamera()->Shake(0.7f , 50000.0f);
+			},InputData({ActionType::KeyPressed, Keyboard::C})),
+
+		ActionData("Look Down" , [&]()
+			{
+				Game::GetCamera()->SetIsDown(true); } , InputData({ActionType::KeyPressed , Keyboard::Down})),
+
+
+					ActionData("Stop Look Down" , [&]()
+			{
+				Game::GetCamera()->SetIsDown(false); } , InputData({ActionType:: KeyReleased , Keyboard::Down})),
+
+					ActionData("Look Up", [&]()
+		{
+			Game::GetCamera()->SetIsUp(true); }, InputData({ ActionType::KeyPressed , Keyboard::Up })),
+
+
+			ActionData("Stop Look Up", [&]()
+				{
+					Game::GetCamera()->SetIsUp(false); }, InputData({ ActionType::KeyReleased , Keyboard::Up })),
 	});
+
 	new ActionMap("Attack", {
 		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial"); }, InputData({ActionType::MouseButtonPressed, Mouse::Right})),
 		ActionData("ControllerSpecial", [&]() {
