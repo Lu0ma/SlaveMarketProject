@@ -1,2 +1,0 @@
-C:\Users\SCH 34\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
-D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
