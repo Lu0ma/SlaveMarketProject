@@ -56,6 +56,6 @@ void Lift::Interact()
 	else if (Distance(_playerPos, lever->GetShapePosition()) <= 50.0f)
 	{
 		status = LMS_UP;
-		lever->GetAnimation()->GetCurrentAnimation()->RunAnimation("Down", 1.0f);
+		lever->GetComponent<AnimationComponent>()->RunAnimation("Down", 1.0f);
 	}
 }

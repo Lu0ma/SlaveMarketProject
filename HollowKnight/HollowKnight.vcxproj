@@ -184,7 +184,6 @@
     <ClCompile Include="Kismet.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Lever.cpp" />
-    <ClCompile Include="LeverAnimationComponent.cpp" />
     <ClCompile Include="Lift.cpp" />
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -193,7 +192,6 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuManager.cpp" />
     <ClCompile Include="Merchand.cpp" />
-    <ClCompile Include="MerchandAnimationComponent.cpp" />
     <ClCompile Include="Mob.cpp" />
     <ClCompile Include="MobAttackComponent.cpp" />
     <ClCompile Include="MobBrain.cpp" />
@@ -292,7 +290,6 @@
     <ClInclude Include="Kismet.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Lever.h" />
-    <ClInclude Include="LeverAnimationComponent.h" />
     <ClInclude Include="Lift.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="MainMenu.h" />
@@ -300,7 +297,6 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuManager.h" />
     <ClInclude Include="Merchand.h" />
-    <ClInclude Include="MerchandAnimationComponent.h" />
     <ClInclude Include="Mob.h" />
     <ClInclude Include="MobAttackComponent.h" />
     <ClInclude Include="MobBrain.h" />

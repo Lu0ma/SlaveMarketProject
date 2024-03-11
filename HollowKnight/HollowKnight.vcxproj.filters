@@ -522,12 +522,6 @@
     <ClCompile Include="MenuManager.cpp">
       <Filter>Managers\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="LeverAnimationComponent.cpp">
-      <Filter>Components\Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="MerchandAnimationComponent.cpp">
-      <Filter>Components\Animations</Filter>
-    </ClCompile>
     <ClCompile Include="MobMovementComponent.cpp">
       <Filter>Components\Movement</Filter>
     </ClCompile>
@@ -582,9 +576,6 @@
     <ClCompile Include="Dragon.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables\Dragon</Filter>
     </ClCompile>
-    <ClCompile Include="Lever.cpp">
-      <Filter>Objects\ShapeObjects\Actors\Interactables\Lever</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Objects\ShapeObjects\Actors\Enemies</Filter>
     </ClCompile>
@@ -605,6 +596,9 @@
     </ClCompile>
     <ClCompile Include="PNJ.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables\PNJ</Filter>
+    </ClCompile>
+    <ClCompile Include="Lever.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -844,12 +838,6 @@
     </ClInclude>
     <ClInclude Include="MenuManager.h">
       <Filter>Managers\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="LeverAnimationComponent.h">
-      <Filter>Components\Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="MerchandAnimationComponent.h">
-      <Filter>Components\Animations</Filter>
     </ClInclude>
     <ClInclude Include="MobMovementComponent.h">
       <Filter>Components\Movement</Filter>

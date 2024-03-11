@@ -23,7 +23,7 @@ void InteractionComponent::TryToInteract()
 		if (merchand = dynamic_cast<Merchand*>(_interactable))
 		{
 			merchand->OpenDiscussion();
-			merchand->GetAnimation()->GetCurrentAnimation()->RunAnimation("Sell", 1);
+			merchand->GetComponent<AnimationComponent>()->RunAnimation("Sell", 1);
 		}
 
 		else if(pnj = dynamic_cast<PNJ*>(_interactable))

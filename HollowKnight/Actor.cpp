@@ -55,4 +55,5 @@ void Actor::InitAnimations(const vector<AnimationData>& _animations)
 		_animName,
 		});
 	animation->InitAnimations(_animations);
+
 }
