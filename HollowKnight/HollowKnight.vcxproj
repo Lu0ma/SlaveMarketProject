@@ -140,7 +140,7 @@
     <ClCompile Include="AttackState.cpp" />
     <ClCompile Include="AttackToChase.cpp" />
     <ClCompile Include="AttackToPatrol.cpp" />
-    <ClCompile Include="Audio.cpp" />
+    <ClCompile Include="AudioMenu.cpp" />
     <ClCompile Include="Belfly.cpp" />
     <ClCompile Include="Bench.cpp" />
     <ClCompile Include="Boofly.cpp" />
@@ -162,7 +162,6 @@
     <ClCompile Include="ControllerMenu.cpp" />
     <ClCompile Include="DeathMob.cpp" />
     <ClCompile Include="Dragon.cpp" />
-    <ClCompile Include="DragonAnimationComponent.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBrain.cpp" />
     <ClCompile Include="ExtrasMenu.cpp" />
@@ -170,6 +169,9 @@
     <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="FontData.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="Fx.cpp" />
+    <ClCompile Include="FxData.cpp" />
+    <ClCompile Include="FxManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grub.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -185,7 +187,6 @@
     <ClCompile Include="Kismet.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Lever.cpp" />
-    <ClCompile Include="LeverAnimationComponent.cpp" />
     <ClCompile Include="Lift.cpp" />
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -194,7 +195,6 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuManager.cpp" />
     <ClCompile Include="Merchand.cpp" />
-    <ClCompile Include="MerchandAnimationComponent.cpp" />
     <ClCompile Include="Mob.cpp" />
     <ClCompile Include="MobAttackComponent.cpp" />
     <ClCompile Include="MobAttackState.cpp" />
@@ -205,7 +205,6 @@
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="MusicData.cpp" />
     <ClCompile Include="MusicManager.cpp" />
-    <ClCompile Include="NPCAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
     <ClCompile Include="PatrolState.cpp" />
@@ -217,6 +216,7 @@
     <ClCompile Include="PlayerAttackComponent.cpp" />
     <ClCompile Include="PlayerMovementComponent.cpp" />
     <ClCompile Include="PlayerStat.cpp" />
+    <ClCompile Include="PNJ.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="ProgressLabel.cpp" />
     <ClCompile Include="PurchaseMenu.cpp" />
@@ -251,7 +251,7 @@
     <ClInclude Include="AttackState.h" />
     <ClInclude Include="AttackToChase.h" />
     <ClInclude Include="AttackToPatrol.h" />
-    <ClInclude Include="Audio.h" />
+    <ClInclude Include="AudioMenu.h" />
     <ClInclude Include="Belfly.h" />
     <ClInclude Include="Bench.h" />
     <ClInclude Include="BlackBoard.h" />
@@ -274,7 +274,6 @@
     <ClInclude Include="ControllerMenu.h" />
     <ClInclude Include="DeathMob.h" />
     <ClInclude Include="Dragon.h" />
-    <ClInclude Include="DragonAnimationComponent.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBrain.h" />
     <ClInclude Include="ExtrasMenu.h" />
@@ -282,6 +281,9 @@
     <ClInclude Include="FileLoader.h" />
     <ClInclude Include="FontData.h" />
     <ClInclude Include="FontManager.h" />
+    <ClInclude Include="Fx.h" />
+    <ClInclude Include="FxData.h" />
+    <ClInclude Include="FxManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Grub.h" />
     <ClInclude Include="HUD.h" />
@@ -299,7 +301,6 @@
     <ClInclude Include="Kismet.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Lever.h" />
-    <ClInclude Include="LeverAnimationComponent.h" />
     <ClInclude Include="Lift.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="MainMenu.h" />
@@ -307,7 +308,6 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuManager.h" />
     <ClInclude Include="Merchand.h" />
-    <ClInclude Include="MerchandAnimationComponent.h" />
     <ClInclude Include="Mob.h" />
     <ClInclude Include="MobAttackComponent.h" />
     <ClInclude Include="MobAttackState.h" />
@@ -318,7 +318,6 @@
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="MusicData.h" />
     <ClInclude Include="MusicManager.h" />
-    <ClInclude Include="NPCAnimationComponent.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OptionsMenu.h" />
     <ClInclude Include="PatrolState.h" />
@@ -330,6 +329,7 @@
     <ClInclude Include="PlayerAttackComponent.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
     <ClInclude Include="PlayerStat.h" />
+    <ClInclude Include="PNJ.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="ProgressLabel.h" />
     <ClInclude Include="PurchaseMenu.h" />

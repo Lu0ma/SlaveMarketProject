@@ -4,8 +4,10 @@
 #include <vector>
 #include <functional>
 #include <string>
-#include"Actor.h"
-#include"ActorManager.h"
+#include <ctime>
+#include <cstdlib>
+#include "Actor.h"
+#include "ActorManager.h"
 
 using namespace std;
 using namespace sf;
@@ -18,12 +20,17 @@ using namespace sf;
 
 int GetUniqueID();
 float Length(Vector2f& _vector);
+
 void Normalize(Vector2f& _vector);
 float Distance(const float _first, const float _second);
 float Distance(const Vector2f& _first, const Vector2f& _second);
+float Distance(const float _first, const float _second);
 void SetOriginAtMiddle(Shape* _shape);
 vector<string> GetWords(const string& _text, const bool _withSpaces = false);
-
+static inline float Randn()
+{
+	return -1 + 2 * ((float)rand()) / RAND_MAX;
+}
 template <typename T>
 T Random(const T _max, const T _min = T(0))
 {
@@ -45,6 +52,24 @@ bool Contains(T* _valueToFind, const vector<T*>& _vector)
 	}
 
 	return false;
+}
+
+template <typename T>
+int GetIndexByValue(const vector<T*>& _vector, T* _value)
+{
+	int _index = 0;
+
+	for (T* _currentValue : _vector)
+	{
+		if (_currentValue == _value)
+		{
+			return _index;
+		}
+
+		_index++;
+	}
+
+	return -1;
 }
 
 template<typename Class>

@@ -68,15 +68,6 @@ void AchievementsMenu::Init()
 			"SOULFUL",
 			"Acquire 3 Vessel Fragments"
 		},
-		/*{   
-			"PROTECTED_PATH",
-			"PROTECTED.png",
-			"Acquire 4 Mask Shards"
-	     }*/
-			
-	     //},
-
-
 		/*{
 			"MASKED_PATH"
 			"MASKED.png",
@@ -102,7 +93,6 @@ void AchievementsMenu::Init()
 			"FALSEHOOD.png",
 			"Defeat the False Knight"
 		},*/
-
 	};
 
 	const float _firstAchievementPosY = _windowSize.y * 0.3f;
@@ -136,20 +126,20 @@ void AchievementsMenu::Init()
 	const float _buttonPosY = _windowSize.y * 0.9f;
 	const Vector2f& _buttonPos = Vector2f(_halfWindowX, _buttonPosY);
 
-	Button* _backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
-	_backButton->GetData().pressedCallback = [&]() {
+	backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
+	backButton->GetData().pressedCallback = [&]() {
 		owner->SetStatus(true);
 		canvas->SetVisibilityStatus(false);
 	};
-	_backButton->GetDrawable()->setFillColor(Color::Transparent);
-	canvas->AddWidget(_backButton);
+	backButton->GetDrawable()->setFillColor(Color::Transparent);
+	canvas->AddWidget(backButton);
 
 	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
-	_backButton->SetForeground(_buttonText);
+	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	MovePointers(backButton);
 
 	#pragma endregion
 }

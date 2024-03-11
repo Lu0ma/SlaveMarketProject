@@ -1,15 +1,19 @@
 #pragma once
 #include "ShapeObject.h"
 #include "IManagable.h"
-#include "Component.h"
 #include "CollisionComponent.h"
+#include "AnimationComponent.h"
 
 using namespace std;
 
 class Actor : public ShapeObject, public IManagable<string>
 {
+
 protected:
 	vector<Component*> components;
+	CollisionComponent* collision;
+	AnimationComponent* animation;
+
 public:
 	template <typename T>
 	T* GetComponent() const
@@ -40,10 +44,8 @@ protected:
 	virtual void Register() override;
 private:
 	virtual void Init() {};
-
 public:
 	virtual void Update(const float _deltaTime);
-
-protected:
 	void Destroy(const float _waitingTime = 0.0f);
+	void InitAnimations(const vector<AnimationData>& _animations);
 };

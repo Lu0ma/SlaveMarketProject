@@ -9,6 +9,7 @@ InteractionComponent::InteractionComponent(Actor* _owner) : Component(_owner)
 	range = 200.0f;
 	inventory = dynamic_cast<Player*>(_owner)->GetInventory();
 	merchand = nullptr;
+	pnj = nullptr;
 }
 
 
@@ -22,11 +23,14 @@ void InteractionComponent::TryToInteract()
 		if (merchand = dynamic_cast<Merchand*>(_interactable))
 		{
 			merchand->OpenDiscussion();
+			merchand->GetComponent<AnimationComponent>()->RunAnimation("Sell", 1);
 		}
 
-		else
+		else if(pnj = dynamic_cast<PNJ*>(_interactable))
 		{
-			_interactable->OpenDiscussion();
+			//_interactable->OpenDiscussion();
+			pnj->OpenDiscussion();
+			pnj->GetComponent<AnimationComponent>()->RunAnimation("Talk", 1);
 		}
 
 		inventory->SetStatus(false);

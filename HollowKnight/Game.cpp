@@ -23,7 +23,8 @@ Game::Game()
 
 Game::~Game()
 {
-	delete camera;
+	delete map;
+	/*delete camera;*/
 }
 
 
@@ -31,7 +32,7 @@ void Game::Start()
 {
 	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
-	new Timer(this, &Game::Init, seconds(1.0f), true, false);
+	new Timer([&]() { Init(); }, seconds(1.0f), true, false);
 }
 
 void Game::Init()
@@ -51,8 +52,8 @@ void Game::Update()
 	{
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
-		map->GetDragon()->PlayMusic();
-		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
+		//map->GetDragon()->PlayMusic();
+		/*player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);*/
 		ActorManager::GetInstance().Update();
 	}
 }
@@ -75,7 +76,7 @@ void Game::UpdateWindow()
 		window.draw(*_actor->GetDrawable());
 	}
 	window.draw(*player->GetLight());
-	
+
 	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{

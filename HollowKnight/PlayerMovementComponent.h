@@ -37,41 +37,18 @@ class PlayerMovementComponent : public MovementComponent
 	bool isStanding;
 	float sitOffset;
 
+	//Distance
+	float checkWallDistance;
+
 	// Components
-	CollisionComponent* collision;
 	PlayerAnimationComponent* animation;
 
-	Actor* rayCastLine;
+	//Actor* rayCastLineX;
+	Actor* rayCastLineY;
+	//Actor* triggerBox;
 
 public:
-	void SetDirectionX(const float _directionX, const string& _animName)
-	{
-		if (!canMove) return;
-
-		direction.x = _directionX;
-
-		if (_directionX == 0.0f)
-		{
-			cout << owner->GetDrawable()->getScale().x << endl;
-
-			if (owner->GetDrawable()->getScale().x >= 0.0f)
-			{
-				dashDirection = 1.0f;
-			}
-
-			else
-			{
-				dashDirection = -1.0f;
-			}
-		}
-
-		else
-		{
-			dashDirection = _directionX;
-		}
-
-		animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
-	}
+	void SetDirectionX(const float _directionX, const string& _animName);
 	void SetDirectionY(const float _directionY)
 	{
 		if (!canMove) return;
@@ -89,15 +66,18 @@ public:
 	{
 		return direction;
 	}
+	float GetDashDirection()const
+	{
+		return dashDirection;
+	}
 
 public:
 	PlayerMovementComponent(Actor* _owner);
 
 private:
-	void TryToMove(const float _deltaTime);
 	bool CheckGround();
-	void Jump(const float _deltaTime);
-
+	void Jump();
+	
 public:
 	virtual void Update(const float _deltaTime) override;
 	void StartJump();

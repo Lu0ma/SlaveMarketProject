@@ -9,14 +9,14 @@ class CollectableActor : public Actor
 	ItemData data;
 	Player* player;
 
-	AnimationComponent* animation;
+	/*AnimationComponent* animation;
 	vector<string> animCollectable;
 
 public:
 	AnimationComponent* GetCurrentAnimation()const
 	{
 		return animation;
-	}
+	}*/
 
 public:
 	CollectableActor(const string& _name, const ShapeData& _data, const float _range,

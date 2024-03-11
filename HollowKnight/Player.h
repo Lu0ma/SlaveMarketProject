@@ -41,6 +41,10 @@ public:
 	{
 		return light;
 	}
+	PlayerMovementComponent* GetPlayerMovement()const
+	{
+		return movement;
+	}
 
 public:
 	Player(const string& _name, const ShapeData& _data);
@@ -49,8 +53,9 @@ private:
 	void InitAnimations();
 	void SetupPlayerInput();
 	void TryToOpen(Menu* _menu);
-	void CloseAllMenus();
 
 public:
 	virtual void Init() override;
+	virtual void Update(const float _deltaTime) override;
+	void CloseAllMenus();
 };

@@ -31,7 +31,16 @@ public:
 	{
 		shape->setPosition(_position);
 	}
+	void SetShapeSize(const Vector2f& _size)
+	{
+		const Vector2i& _position = Vector2i(shape->getLocalBounds().getPosition());
+		shape->setTextureRect(IntRect(_position, Vector2i(_size)));
+	}
 	virtual Shape* GetDrawable() const override
+	{
+		return shape;
+	}
+	Shape* GetShape() const
 	{
 		return shape;
 	}
@@ -53,5 +62,5 @@ public:
 
 public:
 	ShapeObject(const ShapeData& _data);
+	~ShapeObject();
 };
-

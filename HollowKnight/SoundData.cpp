@@ -2,10 +2,12 @@
 #include "SoundManager.h"
 #include <iostream>
 
-SoundData::SoundData(const string& _path, const float _volume) : IManagable(_path)
+SoundData::SoundData(const string& _path, const float _volume, const float _volumeMax) : IManagable(_path)
 {
-	sound->setVolume(_volume);
 	Register();
+
+	sound->setVolume(_volume);
+	volumeMax = _volumeMax;
 }
 
 void SoundData::Register()
@@ -21,10 +23,8 @@ void SoundData::Play()
 
 void SoundData::AdjustVolume(const float _percent)
 {
-	const float _value = _percent * sound->getVolume() / 100.0f;
-
-	float _volume = sound->getVolume() + _value;
-	_volume < 0 ? _volume = 0 : _volume;
-	_volume > 100 ? _volume = 100 : _volume;
-	sound->setVolume(_volume);
+	float _newVolume = _percent * volumeMax / 100.0f;
+	_newVolume = _newVolume < 0.0f ? 0.0f : _newVolume;
+	_newVolume = _newVolume > volumeMax ? volumeMax : _newVolume;
+	sound->setVolume(_newVolume);
 }

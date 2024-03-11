@@ -10,3 +10,8 @@ ShapeObject::ShapeObject(const ShapeData& _data)
 	_data.rect == IntRect() ? _textureManager.Load(this, _data.path)
 							: _textureManager.LoadWithRect(this, _data.path, _data.rect);
 }
+
+ShapeObject::~ShapeObject()
+{
+	delete shape;
+}

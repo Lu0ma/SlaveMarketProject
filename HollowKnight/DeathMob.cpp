@@ -1,16 +1,14 @@
 #include "DeathMob.h"
-#include"Game.h"
-#include"Player.h"
-#include"CollectableActor.h"
-#include"Macro.h"
+#include "Game.h"
+#include "Player.h"
+#include "CollectableActor.h"
+#include "Macro.h"
 
 DeathMob::DeathMob(const string& _name, const ShapeData& _data) : Mob(_data)
 {
-	animation = new AnimationComponent(this);
 	animDeath = vector<string>();
 	name = _name;
 	death = 0;
-	//Action();
 }
 
 
@@ -43,7 +41,7 @@ void DeathMob::Death()
 		death++; 
 		animation->RunAnimation("Death", GetDrawable()->getScale().x);
 		GetDrawable()->setScale(Vector2f(0.0f, 0.0f));
-		int _newDeath = Random<int>(10000000000000000000 , 0);
+		int _newDeath = Random<int>(10000, 0);
 		new CollectableActor("Geo"+ to_string(_newDeath), ShapeData(Vector2f(GetPosition().x, GetPosition().y + 20.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, IT_GEOS);
 	}
 	

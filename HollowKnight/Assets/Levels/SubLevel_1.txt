@@ -46,6 +46,11 @@ walls = [
  WallPosY = -955
  WallType = 0
 }
+{
+ WallPosX = -1000
+ WallPosY = 0
+ WallType = 0
+}
 ]
 enemies = 
 {

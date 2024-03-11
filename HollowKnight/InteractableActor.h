@@ -5,7 +5,6 @@
 #include "Label.h"
 #include "ProgressLabel.h"
 
-
 class InteractableActor : public Actor
 {
 protected:
@@ -19,7 +18,6 @@ protected:
 	// Discussion
 	ShapeWidget* discussionBG;
 	ProgressLabel* discussionText;
-
 
 public:
 	void SetIsOpen(const bool _status)

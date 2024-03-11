@@ -1,6 +1,5 @@
 #pragma once
 #include "Mob.h"
-#include "AnimationComponent.h"
 #include "Player.h"
 
 class Boofly : public Mob

@@ -7,6 +7,7 @@
 #include "Lift.h"
 #include"Dragon.h"
 #include"Grub.h"
+#include"PNJ.h"
 
 using namespace std;
 using namespace sf;
@@ -57,16 +58,12 @@ struct PlatformData
 
 class Map
 {
-	static Grub* grub;
+	Grub* grub;
 	Dragon* dragon;
 	Bench* bench;
 	Merchand* merchand;
-	InteractableActor* pnj;
-	ShapeObject* background;
-	ShapeObject* barrack;
-
+	PNJ* pnj;
 	vector<PlatformData> platformsData;
-
 	vector<ShapeObject*> drawables;
 	vector<Lift*> lifts;
 
@@ -87,7 +84,7 @@ public:
 	{
 		return lifts;
 	}
-	static Grub* GetGrub()
+	Grub* GetGrub()
 	{
 		return grub;
 	}
