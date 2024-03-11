@@ -9,7 +9,7 @@ Actor::Actor(const string& _name, const ShapeData& _data, const CollisionType& _
 	Register();
 	SetOriginAtMiddle(GetDrawable());
 
-	collision = new CollisionComponent(this, CT_BLOCK);
+	collision = new CollisionComponent(this, _collisionType);
 	components.push_back(collision);
 }
 
