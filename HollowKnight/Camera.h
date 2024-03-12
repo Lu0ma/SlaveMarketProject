@@ -55,6 +55,7 @@ class Camera : public Actor
 	Vector2f offsetScreen;
 	Vector2f defaultSize;
 
+	Vector2f zoom;
 	View view;
 	ShakeComponent* shake;
 
@@ -100,12 +101,16 @@ private:
 	void MoveToTarget(const float _deltaTime);
 	bool IsAtDestination(float& _distance);
 	void ShakeActor(const float _deltaTime);
-	void UpdateSizeView(const float _deltaTime);
+	void UpdateViewSize(const float _deltaTime);
+	void ZoomView(const float _deltaTime);
+	void ResetZoom();
 
 public:
 	void Init();
 	void Shake(const float _trauma, const float _duration);
 	void Update(const float _deltaTime);
-	void ResetZoom();
+
+
+
 };
 

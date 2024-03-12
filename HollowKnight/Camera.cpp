@@ -27,6 +27,8 @@ Camera::Camera() : Actor("Camera" , ShapeData())
 	isZoom = false;
 	isUp = false;
 	canShake = false;
+
+	zoom = Vector2f();
 }
 
 void Camera::MoveToTarget(const float _deltaTime)
@@ -108,7 +110,7 @@ void Camera::Update(const float _deltaTime)
 		ShakeActor(_deltaTime);
 	}
 	MoveToTarget(_deltaTime);
-	UpdateSizeView(_deltaTime);
+	UpdateViewSize(_deltaTime);
 	shake->Update(view);
 }
 
@@ -123,20 +125,28 @@ void Camera::ResetZoom()
 	}
 }
 
-void Camera::UpdateSizeView(const float _deltaTime)
+void Camera::ZoomView(const float _deltaTime)
 {
+	zoom -= Vector2f(0.3f * _deltaTime, 0.3f * _deltaTime);
+}
+
+void Camera::UpdateViewSize(const float _deltaTime)
+{
+	const float _limits = defaultSize.x - 300;
+	zoom = view.getSize();
 	if (!isZoom)
 	{
 		ResetZoom();
 	}
 	else
 	{
-		if (view.getSize().x <= defaultSize.x - 35)
+		if (view.getSize().x <= _limits)
 		{
-			Shake(0.0004f, 100);
+			Shake(0.0011f, 100 * _deltaTime);
 			return;
 		}
-		view.zoom(0.99999f);
+		ZoomView(_deltaTime);
+		view.setSize(zoom) ;
 	}
 }
 
