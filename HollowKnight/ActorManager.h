@@ -22,5 +22,6 @@ public:
 	ActorManager();
 
 public:
+	void Init();
 	void Update();
 };

@@ -4,7 +4,6 @@
 
 ActorManager::ActorManager()
 {
-
 }
 
 
@@ -18,4 +17,9 @@ void ActorManager::Update()
 	}
 
 	GarbageValues();
+}
+
+void ActorManager::Init()
+{
+	//new Timer([&]() { Update(); }, seconds(0.01f), true, true);
 }

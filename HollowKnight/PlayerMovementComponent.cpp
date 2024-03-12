@@ -51,13 +51,13 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 	// Jump
 	isJumping = false;
-	canIncreaseJump = false;
+	//canIncreaseJump = false;
 	jumpForce = 0.6f;
-	currentJumpForce = jumpForce;
+	/*currentJumpForce = jumpForce;
 	jumpForceFactor = 2.0f;
 	jumpDuration = 0.15f;
-	jumpDurationFactor = 1.0f;
-	increaseJumpDuration = 2.0f;
+	jumpDurationFactor = 3.0f;
+	increaseJumpDuration = 2.0f;*/
 	gravity = 0.8f;
 	increaseJumpTimer = nullptr;
 	jumpTimer = nullptr;
@@ -96,7 +96,7 @@ bool PlayerMovementComponent::CheckGround()
 void PlayerMovementComponent::Update(const float _deltaTime)
 {
 	if (!canMove) return;
-
+	
 	Jump();
 
 	// Déplacement par défaut
@@ -161,42 +161,52 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	}
 }
 
-void PlayerMovementComponent::StartJump()
-{
-	if (!canMove || isJumping || !isOnGround) return;
-
-	//cout << "StartJump" << endl;
-	isJumping = true;
-	canIncreaseJump = true;
-
-	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
-	//FxManager::GetInstance().Run("FxDoubleJump");
-
-	jumpTimer = new Timer([&]() { 
-		cout << "Stop Jump : " << jumpTimer->GetCurrentDuration() << endl;
-		isJumping = false;
-	}, seconds(jumpDuration));
-	increaseJumpTimer = new Timer([&]() { 
-		StopJump(); 
-	}, seconds(increaseJumpDuration));
-}
+//void PlayerMovementComponent::StartJump()
+//{
+//	if (!canMove || isJumping || !isOnGround) return;
+//
+//	// si je clique, je saute de 50.0f
+//	// si je maintient le click en continue, je veux augmenter la target destination 
+//
+//
+//
+//	//cout << "StartJump" << endl;
+//	isJumping = true;
+//	canIncreaseJump = true;
+//
+//	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
+//	//FxManager::GetInstance().Run("FxDoubleJump");
+//
+//	jumpTimer = new Timer([&]() { 
+//		cout << "Stop Jump : " << jumpTimer->GetCurrentDuration() << endl;
+//		isJumping = false;
+//	}, seconds(jumpDuration));
+//	increaseJumpTimer = new Timer([&]() { 
+//		StopJump(); 
+//	}, seconds(increaseJumpDuration));
+//}
+//
+//void PlayerMovementComponent::Jump()
+//{
+//	if (!canIncreaseJump) return;
+//
+//	//cout << "Jump" << endl;
+//	jumpTimer->AddDuration(jumpDurationFactor);
+//	currentJumpForce += jumpForceFactor;
+//	//cout << "Jump : " << jumpTimer->GetCurrentDuration() << endl;
+//}
+//
+//void PlayerMovementComponent::StopJump()
+//{
+//	//cout << "Stop increase" << endl;
+//	canIncreaseJump = false;
+//	currentJumpForce = jumpForce;
+//	//increaseJumpTimer->Stop();
+//}
 
 void PlayerMovementComponent::Jump()
 {
-	if (!canIncreaseJump) return;
-
-	//cout << "Jump" << endl;
-	jumpTimer->AddDuration(jumpDurationFactor);
-	currentJumpForce += jumpForceFactor;
-	//cout << "Jump : " << jumpTimer->GetCurrentDuration() << endl;
-}
-
-void PlayerMovementComponent::StopJump()
-{
-	//cout << "Stop increase" << endl;
-	canIncreaseJump = false;
-	currentJumpForce = jumpForce;
-	//increaseJumpTimer->Stop();
+	// 
 }
 
 void PlayerMovementComponent::Dash()
