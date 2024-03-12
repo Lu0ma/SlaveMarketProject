@@ -1,7 +1,7 @@
 #include "Boofly.h"
 #include "MovementComponent.h"
 #include "CollectableActor.h"
-
+#include "TimerManager.h"
 Boofly::Boofly(const ShapeData& _data) : Mob(_data)
 { 
 	isPatrolling = true;
@@ -49,7 +49,13 @@ void Boofly::Death()
 		//new Timer([&]() { GetDrawable()->setScale(0.0f, 0.0f); }, seconds(2.0f));
 		CollectableActor* _geo = new CollectableActor(STRING_ID("Geo"), ShapeData(Vector2f(GetPosition().x, GetPosition().y + 20.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, IT_GEOS);
 		_geo->Destroy(2.0f);
+		//TimerManager::GetInstance().SetTimeScale(0);
+		//if (TimerManager::GetInstance().GetDeltaTime() == 0)
+		//{
+		//	new Timer([&]() {TimerManager::GetInstance().SetTimeScale(1); }, seconds(2));
+		//}
 	}
+	
 }
 
 void Boofly::Attack(Player* _player)

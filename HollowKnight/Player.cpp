@@ -8,7 +8,7 @@
 // System
 #include "Macro.h"
 #include "Kismet.h"
-
+#include "Camera.h"
 // Managers
 #include "ActorManager.h"
 #include "InputManager.h"

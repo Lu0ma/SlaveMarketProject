@@ -4,7 +4,7 @@
 #include <ctime>
 #include <cstdlib>
 #include "TimerManager.h"
-#include "Macro.h"
+
 #include "Timer.h"
 Camera::Camera() : Actor("Camera" , ShapeData())
 {
@@ -87,28 +87,11 @@ void Camera::ShakeActor(const float _deltaTime)
 	targetPosition += _offset * _deltaTime;
 }
 
-void Camera::ShakeScreen()
-{
-	float _angle = CAMERA_SHAKE_ANGLE * shake->trauma * Randn();
-	offsetScreen.x = CAMERA_SHAKE_OFFSET * shake->trauma * Randn();
-	offsetScreen.y = CAMERA_SHAKE_OFFSET * shake->trauma * Randn();
-	view.setRotation(_angle);
-	shake->current += milliseconds(static_cast<Int32>(11.0f));
-	const float _ratio = shake->current.asSeconds() / shake->max.asSeconds();
-	shake->trauma *= 1.0f - _ratio * _ratio;
-}
-
 void Camera::Update(const float _deltaTime)
 {
-	#pragma region Init
-	RenderWindow& _window = Game::GetWindow();
 	Player* _player = Game::GetPlayer();
-	const float _distance = Distance(_player->GetShapePosition().x, view.getCenter().x);
-	const float _newScaleX = Game::GetPlayer()->GetDrawable()->getScale().x;
-	const float _newScaleY = Game::GetPlayer()->GetDrawable()->getScale().y;
-	#pragma endregion
-
 	const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offsetCamera.x : -offsetCamera.x;
+
 	if (isDown)
 	{
 		targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, 400.0f));
@@ -124,18 +107,9 @@ void Camera::Update(const float _deltaTime)
 		targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, offsetCamera.y));
 		ShakeActor(_deltaTime);
 	}
-	
-	//oldScaleX = _newScaleX;
 	MoveToTarget(_deltaTime);
 	UpdateSizeView(_deltaTime);
-
-	#pragma region ShakeUpdate
-	// Le tremblement est terminer 
-	if (shake->current >= shake->max) return;
-	ShakeScreen();
-	
-#pragma endregion
-
+	shake->Update(view);
 }
 
 void Camera::UpdateSizeView(const float _deltaTime)
@@ -152,7 +126,11 @@ void Camera::UpdateSizeView(const float _deltaTime)
 	}
 	else
 	{
-		if (view.getSize().x <= defaultSize.x - 35) return;
+		if (view.getSize().x <= defaultSize.x - 35)
+		{
+			Shake(0.0004f, 100);
+			return;
+		}
 		view.zoom(0.99999f);
 	}
 }
