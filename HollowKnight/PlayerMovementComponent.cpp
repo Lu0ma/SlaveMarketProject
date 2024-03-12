@@ -108,7 +108,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 		_offset *= gravity * _deltaTime;
 		//owner->GetDrawable()->move(_offset);
 		//return;
-
+		
 		//TODO double jump
 	}
 
@@ -167,6 +167,7 @@ void PlayerMovementComponent::StartJump()
 
 	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
 	jumpTimer = new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
+	
 }
 
 void PlayerMovementComponent::Jump()
@@ -179,6 +180,7 @@ void PlayerMovementComponent::Jump()
 void PlayerMovementComponent::StopJump()
 {
 	canIncreaseJump = false;
+	/*animation->GetCurrentAnimation()->RunAnimation("Fall", dashDirection);*/
 }
 
 void PlayerMovementComponent::Dash()

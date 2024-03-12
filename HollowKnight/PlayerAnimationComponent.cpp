@@ -38,8 +38,9 @@ void PlayerAnimationComponent::Init()
 		AnimationData("Special", Vector2f(0.0f, 320.0f), _size, READ_RIGHT, true, 7, _speed),
 		AnimationData("DoubleJump", Vector2f(0.0f, 965.0f), Vector2f(126.0f, 89.0f), READ_RIGHT, false, 5, _speed, "StopRight"),
 		AnimationData("Wall", Vector2f(640.0f,240.0f), _size, READ_RIGHT, true, 4, _speed),
-		AnimationData("Fall", Vector2f(0.0f, 1056.0f), Vector2f(85.0f, 92.0f), READ_RIGHT, true, 3, 0.03f),
-		AnimationData("HeadUp", Vector2f(0.0f, 638.0f), Vector2f(80.0f, 83.0f), READ_RIGHT, true, 5, 0.03f),
-		AnimationData("HeadDown", Vector2f(369.0f, 1062.0f), Vector2f(91.0f, 91.0f), READ_RIGHT, true, 8, 0.03f),
+		AnimationData("Fall", Vector2f(0.0f, 1056.0f), Vector2f(85.0f, 92.0f), READ_RIGHT, true, 1, _speed),
+		AnimationData("StopFall", Vector2f(255.0f, 1062.0f), Vector2f(85.0f, 92.0f), READ_RIGHT, false, 1, _speed, "StopRight"),
+		AnimationData("HeadUp", Vector2f(240.0f, 638.0f), Vector2f(80.0f, 83.0f), READ_RIGHT, true, 1, _speed),
+		AnimationData("HeadDown", Vector2f(644.0f, 1062.0f), Vector2f(91.0f, 91.0f), READ_RIGHT, true, 1, _speed),
 	});
 }

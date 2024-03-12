@@ -64,15 +64,15 @@ void Player::SetupPlayerInput()
 
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
 		});
-	new ActionMap("Movements", {
+	/*new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("ControllerRight", [&]() {
-			/*if (_event.joystickMove.axis == Joystick::Axis::X && _event.joystickMove.position > 100)
+			if (_event.joystickMove.axis == Joystick::Axis::X && _event.joystickMove.position > 100)
 
 		ActionData("ShakePlayer " , [&]() {Game::GetCamera()->ShakeActor(1000.0f); Game::GetCamera()->SetCanShake(true); } , InputData({ActionType::KeyPressed, Keyboard::K})),
 		ActionData("StopShakePlayer ",  [&]() {new Timer([&]() {Game::GetCamera()->SetCanShake(false); } , milliseconds(5.0f)); } , InputData({ActionType::KeyReleased , Keyboard::K})),
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); Game::GetCamera()->SetIsZoom(false);  }, InputData({ActionType::KeyReleased, Keyboard::A})),
-	});
+	});*/
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("ControllerRight", [&]() {
@@ -80,7 +80,7 @@ void Player::SetupPlayerInput()
 
 			{
 				movement->SetDirectionX(1.0f, "Right");
-			}*/
+			}
 			float _xDirection;
 			if (_event.type == sf::Event::JoystickMoved)
 			{
@@ -137,18 +137,18 @@ void Player::SetupPlayerInput()
 			{ Game::GetCamera()->Shake(0.7f , 5000000.0f);},InputData({ActionType::KeyPressed, Keyboard::C})),
 
 		ActionData("Look Down" , [&]()
-			{Game::GetCamera()->SetIsDown(true); } , InputData({ActionType::KeyPressed , Keyboard::Down})),
+			{Game::GetCamera()->SetIsDown(true); animation->GetCurrentAnimation()->RunAnimation("HeadDown", movement->GetDashDirection()); } , InputData({ActionType::KeyPressed , Keyboard::Down})),
 		
 		ActionData("Stop Look Down" , [&]()
-			{Game::GetCamera()->SetIsDown(false); } , InputData({ActionType:: KeyReleased , Keyboard::Down})),
+			{Game::GetCamera()->SetIsDown(false); animation->GetCurrentAnimation()->RunAnimation("StopRight", movement->GetDashDirection()); } , InputData({ActionType:: KeyReleased , Keyboard::Down})),
 		
 		ActionData("Look Up", [&]()
-		{Game::GetCamera()->SetIsUp(true); }, InputData({ ActionType::KeyPressed , Keyboard::Up })),
+		{Game::GetCamera()->SetIsUp(true); animation->GetCurrentAnimation()->RunAnimation("HeadUp", movement->GetDashDirection()); }, InputData({ ActionType::KeyPressed , Keyboard::Up })),
 
 
 			ActionData("Stop Look Up", [&]()
 				{
-					Game::GetCamera()->SetIsUp(false); }, InputData({ ActionType::KeyReleased , Keyboard::Up })) , });
+					Game::GetCamera()->SetIsUp(false); animation->GetCurrentAnimation()->RunAnimation("StopRight", movement->GetDashDirection()); }, InputData({ ActionType::KeyReleased , Keyboard::Up })) , });
 
 	new ActionMap("Attack", {
 		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial"); }, InputData({ActionType::MouseButtonPressed, Mouse::Right})),
