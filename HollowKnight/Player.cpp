@@ -68,11 +68,16 @@ void Player::SetupPlayerInput()
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("Controller", [&]() {
-			if ( Joystick::getAxisPosition(0, Joystick::X) > 0.0015259)
+
+			if (Joystick::getAxisPosition(0, Joystick::X) == 0.0015259)
+			{
+				movement->SetDirectionX(0.0f, "StopRight");
+			}
+			else if ( Joystick::getAxisPosition(0, Joystick::X) > 0.0015259)
 			{
 				movement->SetDirectionX(1.0f, "Right");
 			} 
-			if (Joystick::getAxisPosition(0, Joystick::X) < 0.0015259)
+			else if (Joystick::getAxisPosition(0, Joystick::X) < 0.0015259)
 			{
 				movement->SetDirectionX(-1.0f, "Left");
 			}
