@@ -19,6 +19,10 @@ public:
 	{
 		duration += _duration;
 	}
+	float GetCurrentDuration() const
+	{
+		return currentDuration;
+	}
 	bool IsRunning() const
 	{
 		return isRunning;
@@ -51,6 +55,7 @@ private:
 public:
 	void Update(const float _deltaTime);
 	void Start();
+	void Resume();
 	void Pause();
 	void Reset();
 	void Stop();

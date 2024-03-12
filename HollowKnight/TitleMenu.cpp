@@ -46,7 +46,6 @@ void TitleMenu::Init()
 	const vector<ButtonData>& _allData = {
 		ButtonData("START GAME", [&]() { 
 			Game::GetPlayer()->Init();
-			//Game::GetCamera()->SetTarget(TARGET_PLAYER);
 			SetStatus(false);
 		}),
 		ButtonData("OPTIONS", [&]() {
@@ -105,7 +104,7 @@ void TitleMenu::Init()
 
 	const float _versionPosX = _windowSize.x * 90.0f / 100.0f;
 	const float _versionPosY = _windowSize.y * 90.0f / 100.0f;
-	Label* _version = new Label(TextData("v 1.0.0", Vector2f(_versionPosX, _versionPosY), FONT, 18));
+	Label* _version = new Label(TextData("v 1.2.0", Vector2f(_versionPosX, _versionPosY), FONT, 18));
 	canvas->AddWidget(_version);
 
 	#pragma endregion

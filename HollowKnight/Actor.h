@@ -28,10 +28,6 @@ public:
 
 		return nullptr;
 	}
-	Vector2f GetPosition()const
-	{
-		return shape->getPosition();
-	}
 	FloatRect GetBounds() const
 	{
 		return shape->getGlobalBounds();

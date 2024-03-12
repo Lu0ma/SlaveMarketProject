@@ -1,5 +1,6 @@
 #pragma once
 #include "Menu.h"
+#include "CharmWidget.h"
 
 class CharmsMenu : public Menu
 {
@@ -54,7 +55,7 @@ private:
 	void Background();
 	void Separator();
 	void SelectedCharms();
-	void EquippedCharms();
+	void SlotCharms();
 	void Notches();
 	void NotchesText();
 	void EquippedText();

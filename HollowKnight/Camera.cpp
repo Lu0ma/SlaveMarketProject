@@ -13,7 +13,7 @@ Camera::Camera() : Actor("Camera" , ShapeData())
 	damp = 100.0f;
 	targetPosition = Vector2f();
 	offset = Vector2f(damp * 0.75f,0.0f);
-	offset2 = Vector2f(_player->GetPosition());
+	offset2 = Vector2f(_player->GetShapePosition());
 	view = View();
 	defaultView = View();
 	isDown = false;
@@ -21,6 +21,7 @@ Camera::Camera() : Actor("Camera" , ShapeData())
 	axeX = 0.0f;
 	axeY = 0.0f;
 	isZoom = false;
+	view.zoom(1.5f);
 }
 
 
@@ -122,7 +123,6 @@ void Camera::Update(const float _deltaTime)
 	// ResetShake();
 	
 #pragma endregion
-
 }
 
 void Camera::UpdateSizeView()

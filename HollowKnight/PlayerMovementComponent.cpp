@@ -52,11 +52,15 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	// Jump
 	isJumping = false;
 	canIncreaseJump = false;
-	jumpForce = 0.5f;
-	jumpDuration = 0.2f;
-	jumpDurationFactor = 0.075f;
-	jumpTimer = nullptr;
+	jumpForce = 0.6f;
+	currentJumpForce = jumpForce;
+	jumpForceFactor = 2.0f;
+	jumpDuration = 0.15f;
+	jumpDurationFactor = 1.0f;
+	increaseJumpDuration = 2.0f;
 	gravity = 0.8f;
+	increaseJumpTimer = nullptr;
+	jumpTimer = nullptr;
 
 	// Dash
 	canDash = true;
@@ -161,24 +165,38 @@ void PlayerMovementComponent::StartJump()
 {
 	if (!canMove || isJumping || !isOnGround) return;
 
-	cout << "StartJump" << endl;
+	//cout << "StartJump" << endl;
 	isJumping = true;
 	canIncreaseJump = true;
 
 	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
-	jumpTimer = new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
+	//FxManager::GetInstance().Run("FxDoubleJump");
+
+	jumpTimer = new Timer([&]() { 
+		cout << "Stop Jump : " << jumpTimer->GetCurrentDuration() << endl;
+		isJumping = false;
+	}, seconds(jumpDuration));
+	increaseJumpTimer = new Timer([&]() { 
+		StopJump(); 
+	}, seconds(increaseJumpDuration));
 }
 
 void PlayerMovementComponent::Jump()
 {
 	if (!canIncreaseJump) return;
 
+	//cout << "Jump" << endl;
 	jumpTimer->AddDuration(jumpDurationFactor);
+	currentJumpForce += jumpForceFactor;
+	//cout << "Jump : " << jumpTimer->GetCurrentDuration() << endl;
 }
 
 void PlayerMovementComponent::StopJump()
 {
+	//cout << "Stop increase" << endl;
 	canIncreaseJump = false;
+	currentJumpForce = jumpForce;
+	//increaseJumpTimer->Stop();
 }
 
 void PlayerMovementComponent::Dash()
@@ -189,6 +207,7 @@ void PlayerMovementComponent::Dash()
 	isDashing = true;
 	new Timer([this]() { isDashing = false; }, seconds(dashDuration));
 	animation->GetCurrentAnimation()->RunAnimation("Dash", dashDirection);
+	FxManager::GetInstance().Run("FxDash");
 }
 
 void PlayerMovementComponent::SitDown()

@@ -19,10 +19,14 @@ class PlayerMovementComponent : public MovementComponent
 	bool isJumping;
 	bool canIncreaseJump;
 	float jumpForce;
+	float currentJumpForce;
+	float jumpForceFactor;
 	float jumpDuration;
 	float jumpDurationFactor;
+	float increaseJumpDuration;
 	float gravity;
 	Timer* jumpTimer;
+	Timer* increaseJumpTimer;
 
 	// Dash
 	bool canDash;

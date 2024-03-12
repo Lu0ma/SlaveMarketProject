@@ -55,13 +55,9 @@ void Player::SetupPlayerInput()
 {
 	Event _event;
 	new ActionMap("Stats", {
-		ActionData("ConvertManaToLife", [&]() {
-			stats->UseMana(-10.0f);
-			stats->UpdateLife(1);
-			FxManager::GetInstance().Run("FxMana");
-		}, InputData({ActionType::KeyPressed, Keyboard::A})),
-		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
-		});
+		ActionData("ConvertManaToLife", [&]() { stats->UseMana(0.6f); }, InputData({ ActionType::KeyPressed, Keyboard::A })),
+		ActionData("StopConvertManaToLife", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
+	});
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("ControllerRight", [&]() {
@@ -80,10 +76,7 @@ void Player::SetupPlayerInput()
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
 		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
-		ActionData("Jump", [&]() {
-			movement->StartJump();
-			FxManager::GetInstance().Run("FxDoubleJump");
-		}, InputData({ActionType::KeyPressed, Keyboard::Space})),
+		ActionData("Jump", [&]() { movement->StartJump(); }, InputData({ActionType::KeyPressed, Keyboard::Space})),
 		ActionData("ControllerJump", [&]() {
 			if (Joystick::isButtonPressed(0, 1))
 			{
@@ -91,7 +84,7 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 1) })),
 		ActionData("StopJump", [&]() { movement->StopJump(); }, InputData({ ActionType::KeyReleased, Keyboard::Space })),
-		ActionData("Dash", [&]() { movement->Dash(); FxManager::GetInstance().Run("FxDash"); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
+		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
 		ActionData("StopDash", [&]() { movement->SetDirectionX(0, "StopRight"); }, InputData({ActionType::KeyReleased,Keyboard::LControl})),
 		ActionData("ControllerDash", [&]() {
 			if (Joystick::isButtonPressed(0, 7))
@@ -113,7 +106,7 @@ void Player::SetupPlayerInput()
 				attack->SetCanAttack(true);
 			}
 		}, InputData({ ActionType::KeyPressed, Keyboard::S }))
-		});
+	});
 	new ActionMap("Attack", {
 		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial"); }, InputData({ActionType::MouseButtonPressed, Mouse::Right})),
 		ActionData("ControllerSpecial", [&]() {
@@ -127,7 +120,7 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,0) })),
 		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::MouseButtonReleased, Mouse::Left })),
-		});
+	});
 	new ActionMap("Menu", {
 		ActionData("Pause", [&]() {
 			TryToOpen(pauseMenu);
@@ -143,17 +136,17 @@ void Player::SetupPlayerInput()
 		ActionData("CharmsMenu", [&]() {
 			if (!movement->IsStanding())
 			{
-				TryToOpen(charmsMenu);
+				TryToOpen(charmsMenu, false);
 			}
 		}, InputData({ ActionType::KeyPressed, Keyboard::P })),
 		ActionData("Interact", [&]() { interaction->TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E })),
-		});
+	});
 }
 
-void Player::TryToOpen(Menu* _menu)
+void Player::TryToOpen(Menu* _menu, const bool _restoreActions)
 {
 	const bool _isActive = _menu->IsActive();
-	CloseAllMenus();
+	CloseAllMenus(_restoreActions);
 
 	if (!_isActive)
 	{
@@ -164,23 +157,26 @@ void Player::TryToOpen(Menu* _menu)
 	}
 }
 
-void Player::CloseAllMenus()
+void Player::CloseAllMenus(const bool _restoreActions)
 {
 	charmsMenu->SetStatus(false);
 	stats->SetStatus(true);
 	inventory->SetStatus(false);
 	interaction->StopInteract();
 
-	movement->SetCanMove(true);
-	attack->SetCanAttack(true);
+	if (_restoreActions)
+	{
+		movement->SetCanMove(true);
+		attack->SetCanAttack(true);
+	}
 }
 
 void Player::Init()
 {
 	movement->SetCanMove(true);
 	stats->SetStatus(true);
-	inventory->Init();
-	charmsMenu->Init();
+	inventory->SetStatus(false);
+	charmsMenu->SetStatus(false);
 
 	InitAnimations();
 	SetupPlayerInput();
