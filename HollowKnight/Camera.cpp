@@ -75,7 +75,6 @@ void Camera::Shake(const float _trauma, const float _duration)
 	shake->trauma += _trauma;
 }
 
-
 void Camera::ShakeActor(const float _deltaTime)
 {
 	if (!canShake) return;
@@ -94,9 +93,12 @@ void Camera::ShakeActor(const float _deltaTime)
 		_offset = Vector2f(static_cast<float>(-_randomX), static_cast<float>(-_randomY));
 	}
 
-	Vector2f _newTargetPosition = Vector2f(_player->GetShapePosition() + _offset);
+
+	Vector2f _newTargetPosition = Vector2f(targetPosition + _offset);
 	// Normalize(_newTargetPosition);
-	view.setCenter(_newTargetPosition * speed * _deltaTime);
+	 view.setCenter(_newTargetPosition);
+
+	// targetPosition += _newTargetPosition;
 }
 
 void Camera::ResetShake()
@@ -149,8 +151,8 @@ void Camera::Update(const float _deltaTime)
 	offset2.x = CAMERA_SHAKE_OFFSET * shake->trauma * Randn();
 	offset2.y = CAMERA_SHAKE_OFFSET * shake->trauma * Randn();
 	view.setRotation(_angle);
-	_window.setView(view);
-	shake->current += milliseconds(100);
+	//_window.setView(view);
+	shake->current += milliseconds(11.0f);
 	float _ratio = shake->current.asSeconds() / shake->max.asSeconds();
 	shake->trauma *= 1.0f - _ratio * _ratio;
 	
@@ -172,9 +174,7 @@ void Camera::UpdateSizeView(const float _deltaTime)
 	else if(isZoom)
 	{
 		if (view.getSize().x <= defaultSize.x - 35) return;
-		view.zoom(0.999f);
-
-		/*view.zoom*/
+		view.zoom(0.99999f);
 	}
 }
 
