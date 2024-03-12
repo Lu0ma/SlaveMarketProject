@@ -203,6 +203,7 @@
     <ClCompile Include="PurchaseMenu.cpp" />
     <ClCompile Include="QuitGameMenu.cpp" />
     <ClCompile Include="QuitToMenu.cpp" />
+    <ClCompile Include="ScrollBar.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
     <ClCompile Include="ShapeWidget.cpp" />
     <ClCompile Include="ShopMenu.cpp" />
@@ -294,6 +295,7 @@
     <ClInclude Include="PurchaseMenu.h" />
     <ClInclude Include="QuitGameMenu.h" />
     <ClInclude Include="QuitToMenu.h" />
+    <ClInclude Include="ScrollBar.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="ShapeWidget.h" />
     <ClInclude Include="ShopMenu.h" />

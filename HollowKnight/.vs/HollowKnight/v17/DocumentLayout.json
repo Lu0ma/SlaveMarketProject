@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\CharmsMenu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:CharmsMenu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\ScrollBar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:ScrollBar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\PlayerMovementComponent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:PlayerMovementComponent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\ScrollBar.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:ScrollBar.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\CharmsMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:CharmsMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\AchievementsMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:AchievementsMenu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\AchievementsMenu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:AchievementsMenu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 4053,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,34 +38,34 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerMovementComponent.cpp",
-              "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\PlayerMovementComponent.cpp",
-              "RelativeDocumentMoniker": "PlayerMovementComponent.cpp",
-              "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\PlayerMovementComponent.cpp",
-              "RelativeToolTip": "PlayerMovementComponent.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAKAAAA",
+              "DocumentIndex": 2,
+              "Title": "AchievementsMenu.cpp",
+              "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\AchievementsMenu.cpp",
+              "RelativeDocumentMoniker": "AchievementsMenu.cpp",
+              "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\AchievementsMenu.cpp",
+              "RelativeToolTip": "AchievementsMenu.cpp",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAAHwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-11T12:25:32.209Z",
+              "WhenOpened": "2024-03-12T09:53:31.175Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CharmsMenu.cpp",
-              "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\CharmsMenu.cpp",
-              "RelativeDocumentMoniker": "CharmsMenu.cpp",
-              "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\CharmsMenu.cpp",
-              "RelativeToolTip": "CharmsMenu.cpp",
-              "ViewState": "AQIAAI4AAAAAAAAAAAAAAJcAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "ScrollBar.cpp",
+              "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\ScrollBar.cpp",
+              "RelativeDocumentMoniker": "ScrollBar.cpp",
+              "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\ScrollBar.cpp",
+              "RelativeToolTip": "ScrollBar.cpp",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAACsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-11T10:41:55.844Z",
+              "WhenOpened": "2024-03-12T09:28:14.075Z",
               "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 3033,
+          "DockedWidth": 2522,
           "SelectedChildIndex": 1,
           "Children": [
             {
@@ -70,15 +74,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CharmsMenu.h",
-              "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\CharmsMenu.h",
-              "RelativeDocumentMoniker": "CharmsMenu.h",
-              "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\CharmsMenu.h",
-              "RelativeToolTip": "CharmsMenu.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "ScrollBar.h",
+              "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\ScrollBar.h",
+              "RelativeDocumentMoniker": "ScrollBar.h",
+              "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\ScrollBar.h",
+              "RelativeToolTip": "ScrollBar.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-11T10:41:57.045Z",
+              "WhenOpened": "2024-03-12T09:27:53.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AchievementsMenu.h",
+              "DocumentMoniker": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\AchievementsMenu.h",
+              "RelativeDocumentMoniker": "AchievementsMenu.h",
+              "ToolTip": "C:\\Users\\vokin\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\AchievementsMenu.h",
+              "RelativeToolTip": "AchievementsMenu.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-12T09:53:35.021Z",
               "EditorCaption": ""
             }
           ]

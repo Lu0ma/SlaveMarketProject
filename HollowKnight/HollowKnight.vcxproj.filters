@@ -229,6 +229,9 @@
     <Filter Include="Components\Animations\Player">
       <UniqueIdentifier>{2d3f0cd4-362d-4210-b47c-2a10c5c54932}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\ScrollBar">
+      <UniqueIdentifier>{de1068a0-3a5d-44b4-9f8d-14d8583fa1b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -491,6 +494,9 @@
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollBar.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets\ScrollBar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -763,6 +769,9 @@
     </ClInclude>
     <ClInclude Include="MerchandAnimationComponent.h">
       <Filter>Components\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollBar.h">
+      <Filter>UIs\Widgets\ShapeWidgets\ScrollBar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

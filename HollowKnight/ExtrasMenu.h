@@ -1,7 +1,6 @@
 #pragma once
 #include "Menu.h"
 #include "Button.h"
-
 class ExtrasMenu : public Menu
 {
 	Button* backButton;

@@ -2,12 +2,12 @@
 #include "Game.h"
 
 #define PATH_ACHIEVEMENTS "UIs/Menus/Achievements/Achievement_"
+#define PATH_SCROLL "UIs/Menus/Achievements/ScrollBar/Sans titre.png"
 
 AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achivements", _owner)
 {
-
+	handle = nullptr;
 }
-
 
 void AchievementsMenu::Init()
 {
@@ -116,4 +116,16 @@ void AchievementsMenu::Init()
 	canvas->AddWidget(pointer);
 
 	#pragma endregion
+
+#pragma region ScrollBar
+	
+	const Vector2f& _barSize = Vector2f(61, 400.0f);
+	const float _windowOneThirdX = _windowSize.x / 1.35f;
+	const Vector2f& _scrollSize = Vector2f(30.0f, 60.0f);
+
+	handle = new ScrollBar(ShapeData(Vector2f(_windowOneThirdX, 225.0f), _scrollSize, PATH_SCROLL), 7);
+	canvas->AddWidget(handle->GetBar());
+	canvas->AddWidget(handle);
+#pragma endregion
+
 }
