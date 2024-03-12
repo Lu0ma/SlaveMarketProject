@@ -19,6 +19,7 @@ void FxData::Register()
 
 void FxData::Init()
 {
+	animFx.resize(5);
 	animFx.push_back("None");
 	animFx.push_back("FxMana");
 	animFx.push_back("FxSpecial");
