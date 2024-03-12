@@ -38,7 +38,7 @@ struct InputData
 	{
 		type = _type;
 		buttons = _buttons;
-		callback = callback;
+		callback = _callback;
 	}
 	InputData(ActionType _type, int _key)
 	{

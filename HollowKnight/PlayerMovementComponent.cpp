@@ -180,7 +180,12 @@ void PlayerMovementComponent::Jump()
 void PlayerMovementComponent::StopJump()
 {
 	canIncreaseJump = false;
-	/*animation->GetCurrentAnimation()->RunAnimation("Fall", dashDirection);*/
+	animation->GetCurrentAnimation()->RunAnimation("Fall", dashDirection);
+
+	if (!isOnGround)
+	{
+		animation->GetCurrentAnimation()->RunAnimation("StopFall", dashDirection);
+	}
 }
 
 void PlayerMovementComponent::Dash()
@@ -191,6 +196,7 @@ void PlayerMovementComponent::Dash()
 	isDashing = true;
 	new Timer([this]() { isDashing = false; }, seconds(dashDuration));
 	animation->GetCurrentAnimation()->RunAnimation("Dash", dashDirection);
+	FxManager::GetInstance().Run("FxDash");
 }
 
 void PlayerMovementComponent::SitDown()
