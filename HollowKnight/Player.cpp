@@ -64,12 +64,9 @@ void Player::SetupPlayerInput()
 
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
 		});
-	new ActionMap("Movements", {
-		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
-		ActionData("ControllerRight", [&]() {
-			if (_event.joystickMove.axis == Joystick::Axis::X && _event.joystickMove.position > 100)
 
-		ActionData("ShakePlayer " , [&]() {Game::GetCamera()->ShakeActor(1000.0f); Game::GetCamera()->SetCanShake(true); } , InputData({ActionType::KeyPressed, Keyboard::K})),
+	new ActionMap("Camera " , {
+		ActionData("ShakePlayer " , [&]() { Game::GetCamera()->SetCanShake(true); } , InputData({ActionType::KeyPressed, Keyboard::K})),
 		ActionData("StopShakePlayer ",  [&]() {new Timer([&]() {Game::GetCamera()->SetCanShake(false); } , milliseconds(5.0f)); } , InputData({ActionType::KeyReleased , Keyboard::K})),
 
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); Game::GetCamera()->SetIsZoom(false);  }, InputData({ActionType::KeyReleased, Keyboard::A})),

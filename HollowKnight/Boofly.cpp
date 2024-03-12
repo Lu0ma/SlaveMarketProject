@@ -37,28 +37,28 @@ void Boofly::Init()
 	});
 }
 
-void Boofly::Death()
-{
- 	if (life->GetLife() <= 0 && isPatrolling)
-	{
-		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
-		animation->RunAnimation("DeathAir", _directionX);
-		isPatrolling = false;
-		movement->SetCanMove(false);
-		cout << "Moooort" << endl;
-		//new Timer([&]() { GetDrawable()->setScale(0.0f, 0.0f); }, seconds(2.0f));
-		CollectableActor* _geo = new CollectableActor(STRING_ID("Geo"), ShapeData(Vector2f(GetPosition().x, GetPosition().y + 20.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, IT_GEOS);
-		_geo->Destroy(2.0f);
-		//TimerManager::GetInstance().SetTimeScale(0);
-		//if (TimerManager::GetInstance().GetDeltaTime() == 0)
-		//{
-		//	new Timer([&]() {TimerManager::GetInstance().SetTimeScale(1); }, seconds(2));
-		//}
-	}
-	
-}
-
-void Boofly::Attack(Player* _player)
-{
-
-}
+//void Boofly::Death()
+//{
+// 	if (life->GetLife() <= 0 && isPatrolling)
+//	{
+//		float _directionX = animation->GetCurrentAnimation()->GetDirectionX();
+//		animation->RunAnimation("DeathAir", _directionX);
+//		isPatrolling = false;
+//		movement->SetCanMove(false);
+//		cout << "Moooort" << endl;
+//		//new Timer([&]() { GetDrawable()->setScale(0.0f, 0.0f); }, seconds(2.0f));
+//		CollectableActor* _geo = new CollectableActor(STRING_ID("Geo"), ShapeData(Vector2f(GetPosition().x, GetPosition().y + 20.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, IT_GEOS);
+//		_geo->Destroy(2.0f);
+//		//TimerManager::GetInstance().SetTimeScale(0);
+//		//if (TimerManager::GetInstance().GetDeltaTime() == 0)
+//		//{
+//		//	new Timer([&]() {TimerManager::GetInstance().SetTimeScale(1); }, seconds(2));
+//		//}
+//	}
+//	
+//}
+//
+//void Boofly::Attack(Player* _player)
+//{
+//
+//}
