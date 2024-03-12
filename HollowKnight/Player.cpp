@@ -8,7 +8,7 @@
 // System
 #include "Macro.h"
 #include "Kismet.h"
-
+#include "Camera.h"
 // Managers
 #include "ActorManager.h"
 #include "InputManager.h"
@@ -64,15 +64,16 @@ void Player::SetupPlayerInput()
 
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
 		});
-	/*new ActionMap("Movements", {
+	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("ControllerRight", [&]() {
 			if (_event.joystickMove.axis == Joystick::Axis::X && _event.joystickMove.position > 100)
 
 		ActionData("ShakePlayer " , [&]() {Game::GetCamera()->ShakeActor(1000.0f); Game::GetCamera()->SetCanShake(true); } , InputData({ActionType::KeyPressed, Keyboard::K})),
 		ActionData("StopShakePlayer ",  [&]() {new Timer([&]() {Game::GetCamera()->SetCanShake(false); } , milliseconds(5.0f)); } , InputData({ActionType::KeyReleased , Keyboard::K})),
+
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); Game::GetCamera()->SetIsZoom(false);  }, InputData({ActionType::KeyReleased, Keyboard::A})),
-	});*/
+	});
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("ControllerRight", [&]() {
@@ -134,7 +135,9 @@ void Player::SetupPlayerInput()
 
 	new ActionMap("Camera", {
 		ActionData("Shake" , [&]()
-			{ Game::GetCamera()->Shake(0.7f , 5000000.0f);},InputData({ActionType::KeyPressed, Keyboard::C})),
+			{
+				Game::GetCamera()->Shake(0.7f , 1000000.0f);
+			},InputData({ActionType::KeyPressed, Keyboard::C})),
 
 		ActionData("Look Down" , [&]()
 			{Game::GetCamera()->SetIsDown(true); animation->GetCurrentAnimation()->RunAnimation("HeadDown", movement->GetDashDirection()); } , InputData({ActionType::KeyPressed , Keyboard::Down})),
