@@ -3,10 +3,21 @@
 #include "ChaseToPatrol.h"
 #include "ChaseToAttack.h"
 
+#include "AnimationComponent.h"
+#include "MobMovementComponent.h"
+#include "InspectComponent.h"
+
 class ChaseState : public State
 {
+	AnimationComponent* animation;
+	MobMovementComponent* movement;
+	InspectComponent* inspect;
+
 	ChaseToPatrol* chaseToPatrol;
 	ChaseToAttack* chaseToAttack;
+
+private:
+	Timer* chaseTimer;
 
 public:
 	ChaseState(Brain* _brain);

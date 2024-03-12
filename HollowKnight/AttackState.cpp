@@ -20,6 +20,8 @@ void AttackState::Start()
 		movement = _owner->GetComponent<MobMovementComponent>();
 	}
 
+
+
 	// Boss -> lance l'anim d'attaque, sur la fin de l'anim si le joueur est toujours en InRange do damage, puis reviens en patrol/chase
 
 	// Mob -> Lance l'anim d'attaque, si le joueur est toujours inRange do damage, puis reviens en patrol
@@ -36,8 +38,9 @@ void AttackState::Update(const float _deltaTime)
 
 	if (inspect)
 	{
-		brain->GetBlackBoard()->hasTarget = inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetDestination());
-		brain->GetBlackBoard()->isInRange = inspect->IsInRange();
+		//brain->GetBlackBoard()->hasTarget = 
+		inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetLastDirection());
+		//brain->GetBlackBoard()->isInRange = inspect->IsInRange();
 	}
 }
 

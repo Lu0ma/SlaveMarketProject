@@ -14,6 +14,8 @@ class PatrolState : public State
 	Vector2f startPosition;
 	Vector2f goalPosition;
 
+	Timer* patrolTimer;
+
 public:
 	PatrolState(Brain* _brain);
 

@@ -98,16 +98,23 @@ void Map::Init()
 	pnj->Init();
 	merchand->Init();
 
-	ShapeObject* _background = new ShapeObject(ShapeData(Vector2f(-300.0f, -SCREEN_HEIGHT + 35.0f), Vector2f(2340.0f, 985.0f), "/Levels/Environment_GROUND.png"));
+	ShapeObject* _background = new ShapeObject(ShapeData(Vector2f(-300.0f, -SCREEN_HEIGHT), Vector2f(2340.0f, 985.0f), "Levels/Environment_GROUND.png"));
+	_background->GetDrawable()->setOrigin(0.0f, 0.0f);
 	drawables.push_back(_background);
 
 	//TODO move
-	ShapeObject* _barrack = new ShapeObject(ShapeData(Vector2f(1915.0f, -SCREEN_HEIGHT - 30.0f), Vector2f(3613.0f, 908.0f), "/Levels/Environment.png"));
+	ShapeObject* _barrack = new ShapeObject(ShapeData(Vector2f(1915.0f, -SCREEN_HEIGHT - 100.0f + 20.0f), Vector2f(3613.0f, 908.0f), "Levels/Environment.png"));
+	_barrack->GetDrawable()->setOrigin(0.0f, 0.0f);
 	drawables.push_back(_barrack);
 
+	//TODO move
+	ShapeObject* _arena = new ShapeObject(ShapeData(Vector2f(3721.5f, -SCREEN_HEIGHT - 200.0f + 20.0f), Vector2f(1920.0f, 1080.0f), "Levels/Arena.jpg"));
+	_arena->GetDrawable()->setOrigin(0.0f, 0.0f);
+	drawables.push_back(_arena);
+
 	//TODO modify ?
-	new Actor("Ground", ShapeData(Vector2f(-100.0f, 50.0f), Vector2f(5550.0f, 10.0f), ""), CT_BLOCK);
-	//_ground->GetDrawable()->setFillColor(Color::Transparent);
+	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-100.0f, 0.0f), Vector2f(12000.0f, 10.0f), ""), CT_BLOCK);
+	_ground->GetDrawable()->setFillColor(Color::Red);
 
 	new CollectableActor(STRING_ID("Vessel"), ShapeData(Vector2f(-250.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Vessels/Vessel_3.png"),
 		30.0f, "Vessel", "Le truc qui regen la mana", IT_VESSEL);

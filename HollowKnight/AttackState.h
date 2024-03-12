@@ -7,6 +7,7 @@
 
 class AttackState : public State
 {
+protected:
 	AnimationComponent* animation;
 	MobMovementComponent* movement;
 	InspectComponent* inspect;

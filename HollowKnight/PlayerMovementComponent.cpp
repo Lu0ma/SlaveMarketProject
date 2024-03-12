@@ -161,7 +161,7 @@ void PlayerMovementComponent::StartJump()
 {
 	if (!canMove || isJumping || !isOnGround) return;
 
-	cout << "StartJump" << endl;
+	//cout << "StartJump" << endl;
 	isJumping = true;
 	canIncreaseJump = true;
 

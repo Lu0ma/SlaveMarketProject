@@ -14,10 +14,16 @@ class InspectComponent : public Component
 	Actor* raycast;
 
 public:
+	const HitInfo& GetHitInfo()
+	{
+		return hitInfo;
+	}
+
+public:
 	InspectComponent(Actor* _owner, const float _viewRange);
 
 public:
-	bool HasTarget(const Vector2f& _position, const Vector2f& _destination);
+	bool HasTarget(const Vector2f& _position, Vector2f _destination);
 	bool IsInRange();
 };
 

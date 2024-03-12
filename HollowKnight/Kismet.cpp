@@ -19,7 +19,7 @@ bool Raycast(const Vector2f& _origin, const Vector2f& _direction, const float _m
 			if (_actor->GetDrawable()->getGlobalBounds().contains(_currentPosition))
 			{
 				_hitInfo.position = _currentPosition;
-				_hitInfo.distance = _distance;
+				_hitInfo.distance = _distance * 100.0f;
 				_hitInfo.actor = _actor;
 
 				return true;

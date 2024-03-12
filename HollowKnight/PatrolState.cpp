@@ -14,7 +14,7 @@ PatrolState::PatrolState(Brain* _brain) : State(_brain)
 
 void PatrolState::Start()
 {
-	goalPosition = startPosition + Vector2f(1000.0f, 0.0f);
+	goalPosition = startPosition + Vector2f(1500.0f, 0.0f);
 	
 	Actor* _owner = brain->GetOwner();
 
@@ -28,9 +28,9 @@ void PatrolState::Start()
 	movement->SetCallback([&]() 
 		{
 			movement->SetCanMove(false);
-			new Timer([&]() 
-				{				
-
+			patrolTimer = new Timer([&]()
+				{
+					cout << "Patrol TIMER" << endl;
 					if (movement->GetDestination() == startPosition)
 					{
 						movement->SetDestination(goalPosition);
@@ -52,12 +52,15 @@ void PatrolState::Update(const float _deltaTime)
 	if (inspect)
 	{
 		brain->GetBlackBoard()->hasTarget = inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetDestination());
-		brain->GetBlackBoard()->isInRange = inspect->IsInRange();
+		//brain->GetBlackBoard()->isInRange = inspect->IsInRange();
 	}
 }
 
 void PatrolState::Stop()
 {
-	movement->SetCallback([&](){});
+	patrolTimer->Stop();
+	movement->SetCallback([&]() {});
+	//movement->SetDestination(brain->GetOwner()->GetShapePosition());
+	//animation->RunAnimation("Idle", 1.0f);
 	cout << "Stop Patrol" << endl;
 }

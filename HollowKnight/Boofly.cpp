@@ -24,6 +24,7 @@ void Boofly::Init()
 	animation->InitAnimations(
 	{
 		AnimationData("Idle", Vector2f(0.0f, 17.0f), _size, READ_RIGHT, true, 5, _speed, ""),
+		AnimationData("Running", Vector2f(0.0f, 17.0f), _size, READ_RIGHT, true, 5, _speed, ""),
 		AnimationData("Turn", Vector2f(0.0f, 380.0f), _size, READ_RIGHT, false, 4, _speedTurn, "Idle"),
 		AnimationData("Bounce", Vector2f(42.0f, 745.0f), _sizeBounce, READ_RIGHT, false, 2, _speed),
 		AnimationData("DeathAir", Vector2f(0.0f, 1120.0f), _sizeDeathAir, READ_RIGHT, true, 4, _speed, "DeathLand"),
