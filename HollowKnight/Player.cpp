@@ -60,8 +60,8 @@ void Player::SetupPlayerInput()
 			FxManager::GetInstance().Run("FxMana");
 			Game::GetCamera()->SetIsZoom(true);
 		}, InputData({ActionType::KeyPressed, Keyboard::A})),
-		ActionData("ShakePlayer " , [&]() {Game::GetCamera()->ShakeActor(1000.0f); Game::GetCamera()->SetCanShake(true); } , InputData({ActionType::KeyPressed, Keyboard::K})),
-		ActionData("StopShakePlayer ",  [&]() {new Timer([&]() {Game::GetCamera()->SetCanShake(false); } , milliseconds(5.0f)); } , InputData({ActionType::KeyReleased , Keyboard::K})),
+		ActionData("ShakePlayer " , [&]() {/*Game::GetCamera()->ShakeActor();*/ Game::GetCamera()->SetCanShake(true); } , InputData({ActionType::KeyPressed, Keyboard::K})),
+		ActionData("StopShakePlayer ",  [&]() {new Timer([&]() {Game::GetCamera()->SetCanShake(false); } , milliseconds(static_cast<Int32>(5.0f))); } , InputData({ActionType::KeyReleased , Keyboard::K})),
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); Game::GetCamera()->SetIsZoom(false);  }, InputData({ActionType::KeyReleased, Keyboard::A})),
 	});
 	new ActionMap("Movements", {
@@ -110,7 +110,7 @@ void Player::SetupPlayerInput()
 		}, InputData({ ActionType::KeyPressed, Keyboard::S})),
 		ActionData("Shake" , [&]()
 			{
-				Game::GetCamera()->Shake(0.7f , 5000000.0f);
+				Game::GetCamera()->Shake(0.7f , 1000000.0f);
 			},InputData({ActionType::KeyPressed, Keyboard::C})),
 
 		ActionData("Look Down" , [&]()
