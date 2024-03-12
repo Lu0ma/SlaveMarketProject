@@ -130,30 +130,25 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ ActionType::KeyPressed, Keyboard::S }))
 		});
-		}, InputData({ ActionType::KeyPressed, Keyboard::S})),
+
+
+	new ActionMap("Camera", {
 		ActionData("Shake" , [&]()
-			{
-				Game::GetCamera()->Shake(0.7f , 5000000.0f);
-			},InputData({ActionType::KeyPressed, Keyboard::C})),
+			{ Game::GetCamera()->Shake(0.7f , 5000000.0f);},InputData({ActionType::KeyPressed, Keyboard::C})),
 
 		ActionData("Look Down" , [&]()
-			{
-				Game::GetCamera()->SetIsDown(true); } , InputData({ActionType::KeyPressed , Keyboard::Down})),
-
-
-					ActionData("Stop Look Down" , [&]()
-			{
-				Game::GetCamera()->SetIsDown(false); } , InputData({ActionType:: KeyReleased , Keyboard::Down})),
-
-					ActionData("Look Up", [&]()
-		{
-			Game::GetCamera()->SetIsUp(true); }, InputData({ ActionType::KeyPressed , Keyboard::Up })),
+			{Game::GetCamera()->SetIsDown(true); } , InputData({ActionType::KeyPressed , Keyboard::Down})),
+		
+		ActionData("Stop Look Down" , [&]()
+			{Game::GetCamera()->SetIsDown(false); } , InputData({ActionType:: KeyReleased , Keyboard::Down})),
+		
+		ActionData("Look Up", [&]()
+		{Game::GetCamera()->SetIsUp(true); }, InputData({ ActionType::KeyPressed , Keyboard::Up })),
 
 
 			ActionData("Stop Look Up", [&]()
 				{
-					Game::GetCamera()->SetIsUp(false); }, InputData({ ActionType::KeyReleased , Keyboard::Up })),
-	});
+					Game::GetCamera()->SetIsUp(false); }, InputData({ ActionType::KeyReleased , Keyboard::Up })) , });
 
 	new ActionMap("Attack", {
 		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial"); }, InputData({ActionType::MouseButtonPressed, Mouse::Right})),
