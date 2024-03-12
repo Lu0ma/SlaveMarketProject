@@ -36,4 +36,6 @@ void Mob::Attack(Player* _player)
 
 void Mob::Death()
 {
+	ActorManager::GetInstance().Remove("Mob");
+	cout << "il est mort " << endl;
 }

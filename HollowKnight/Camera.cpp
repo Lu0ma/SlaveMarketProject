@@ -112,17 +112,22 @@ void Camera::Update(const float _deltaTime)
 	shake->Update(view);
 }
 
+void Camera::ResetZoom()
+{
+	if (view.getSize().x <= defaultSize.x)
+	{
+		view.setSize(view.getSize().x + axeX, view.getSize().y + axeY);
+		axeX += 0.01f;
+		axeY += 0.01f;
+
+	}
+}
+
 void Camera::UpdateSizeView(const float _deltaTime)
 {
 	if (!isZoom)
 	{
-		if (view.getSize().x <= defaultSize.x)
-		{
-			view.setSize(view.getSize().x + axeX, view.getSize().y + axeY);
-			axeX += 0.01f;
-			axeY += 0.01f;
-			
-		}
+		ResetZoom();
 	}
 	else
 	{

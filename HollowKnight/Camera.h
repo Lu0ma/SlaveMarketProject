@@ -106,5 +106,6 @@ public:
 	void Init();
 	void Shake(const float _trauma, const float _duration);
 	void Update(const float _deltaTime);
+	void ResetZoom();
 };
 
