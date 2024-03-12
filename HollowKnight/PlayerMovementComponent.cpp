@@ -5,7 +5,34 @@
 #include "Timer.h"
 #include "Macro.h"
 #include "Kismet.h"
-#include"FxManager.h"
+#include "FxManager.h"
+
+void PlayerMovementComponent::SetDirectionX(const float _directionX, const string& _animName)
+{
+	if (!canMove) return;
+
+	direction.x = _directionX;
+
+	if (_directionX == 0.0f)
+	{
+		if (owner->GetDrawable()->getScale().x >= 0.0f)
+		{
+			dashDirection = 1.0f;
+		}
+
+		else
+		{
+			dashDirection = -1.0f;
+		}
+	}
+
+	else
+	{
+		dashDirection = _directionX;
+	}
+
+	animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
+}
 
 PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementComponent(_owner)
 {
@@ -20,13 +47,16 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 	// Ground
 	isOnGround = false;
-	checkGroundDistance = 1.7f;
+	checkGroundDistance = owner->GetShapeSize().y * 0.3f;
 
 	// Jump
 	isJumping = false;
-	jumpForce = 0.65f;
-	jumpDuration = 0.45f;
-	gravity = 0.66f;
+	canIncreaseJump = false;
+	jumpForce = 0.5f;
+	jumpDuration = 0.2f;
+	jumpDurationFactor = 0.075f;
+	jumpTimer = nullptr;
+	gravity = 0.8f;
 
 	// Dash
 	canDash = true;
@@ -41,23 +71,29 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	isStanding = true;
 	sitOffset = 30.0f;
 
+	//Distance
+	checkWallDistance = owner->GetShapeSize().x / 2.0f;
+
 	// Components
 	animation = owner->GetComponent<PlayerAnimationComponent>();
-}
 
+	rayCastLineY = new Actor("raycastlineY", ShapeData(owner->GetShapePosition(), Vector2f(5.0f, checkGroundDistance) , ""));
+	rayCastLineY->GetDrawable()->setFillColor(Color::Blue);
+	rayCastLineY->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable()->setFillColor(Color::Transparent);
+}
 
 bool PlayerMovementComponent::CheckGround()
 {
-	HitInfo _hit;
-	const bool _hasHit = Raycast(owner->GetShapePosition() + Vector2f(0.0f, 40.0f), Vector2f(0.0f, 1.0f),
-								 checkGroundDistance, _hit, { owner->GetDrawable() });
-
-	return _hasHit;
+	HitInfo _info;
+	rayCastLineY->GetDrawable()->setPosition(owner->GetShapePosition() + Vector2f(0.0f, owner->GetShapeSize().y / 2.0f));
+	return Raycast(owner->GetShapePosition(), Vector2f(0.0f, 1.0f), checkGroundDistance, _info, { owner, rayCastLineY });
 }
 
 void PlayerMovementComponent::Update(const float _deltaTime)
 {
 	if (!canMove) return;
+
+	Jump();
 
 	// Déplacement par défaut
 	const float _finalSpeed = isSprinting ? sprintSpeed : speed;
@@ -69,8 +105,11 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	{
 		// Application de la gravité
 		_offset = direction + Vector2f(0.0f, 1.0f);
-		Normalize(_offset);
 		_offset *= gravity * _deltaTime;
+		//owner->GetDrawable()->move(_offset);
+		//return;
+		
+		//TODO double jump
 	}
 
 	// Si je suis au sol
@@ -81,7 +120,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 		{
 			// Application de l'esquive
 			_offset = Vector2f(dashDirection * dashSpeed * _deltaTime, 0.0f);
- 		}
+		}
 
 		// Si je suis en train de jump et que je ne dash pas
 		else if (isJumping)
@@ -103,16 +142,45 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 		}
 	}
 
-	owner->GetDrawable()->move(_offset);
+	const Vector2f& _collisionOffset = Vector2f(0.0f, -5.0f);
+	const Vector2f& _destination = _offset + _collisionOffset;
+	collision->GetBoxCollision()->GetDrawable()->setPosition(owner->GetShapePosition() + Vector2f(_destination.x * checkWallDistance, _destination.y));
+
+	/*
+	const float _collisionOffsetY = 5.0f;
+	collision->GetBoxCollision()->GetDrawable()->setPosition(owner->GetShapePosition() + Vector2f(_offset.x * checkWallDistance, _offset.y * checkWallDistance - _collisionOffsetY));
+	*/
+
+	if (!collision->CheckCollision({ rayCastLineY }))
+	{
+		owner->GetDrawable()->move(_offset);
+	}
+}
+
+void PlayerMovementComponent::StartJump()
+{
+	if (!canMove || isJumping || !isOnGround) return;
+
+	cout << "StartJump" << endl;
+	isJumping = true;
+	canIncreaseJump = true;
+
+	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
+	jumpTimer = new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
+	
 }
 
 void PlayerMovementComponent::Jump()
 {
-	if (!canMove || !isOnGround || isJumping) return;
+	if (!canIncreaseJump) return;
 
-	isJumping = true;
-	new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
-	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
+	jumpTimer->AddDuration(jumpDurationFactor);
+}
+
+void PlayerMovementComponent::StopJump()
+{
+	canIncreaseJump = false;
+	/*animation->GetCurrentAnimation()->RunAnimation("Fall", dashDirection);*/
 }
 
 void PlayerMovementComponent::Dash()
@@ -129,7 +197,7 @@ void PlayerMovementComponent::SitDown()
 {
 	if (!isStanding || !owner->GetBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()))
 	{
-		cout << "Impossible de se lever !" << endl;
+		cout << "Impossible de s'assoir !" << endl;
 		return;
 	}
 
@@ -145,7 +213,7 @@ void PlayerMovementComponent::StandUp()
 {
 	if (isStanding)
 	{
-		cout << "impossible de ce lever !" << endl;
+		cout << "Impossible de se lever !" << endl;
 		return;
 	}
 

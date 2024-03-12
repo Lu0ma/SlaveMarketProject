@@ -3,6 +3,7 @@
 
 class ControllerMenu : public Menu
 {
+	Button* backButton;
 
 public:
 	ControllerMenu(Menu* _owner);

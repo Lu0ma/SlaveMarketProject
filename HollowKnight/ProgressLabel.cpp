@@ -7,52 +7,22 @@ void ProgressLabel::SetVisible(const bool _status)
 {
 	if (_status)
 	{
-		GetDrawable()->setFillColor(Color::Red);
-		const string& _text = GetDrawable()->getString();
-		GetDrawable()->setString("");
-		SetString(_text);
+		letterIndex = 0;
+		displayedLetters.clear();
+		SetString(text);
 	}
 
 	Widget::SetVisible(_status);
 }
 
-ProgressLabel::ProgressLabel(const TextData& _data, const float _charDuration,
-							 const AligmentText& _aligement)
-						   : Label(_data, _aligement)
+ProgressLabel::ProgressLabel(const TextData& _data, const float _charDuration, const string& _text,
+							 const AligmentText& _aligement) : Label(_data, _aligement)
 {
 	charDuration = _charDuration;
-	text = "";
+	text = _text;
 	letterIndex = 0;
 }
 
-//void ProgressLabel::SetString(const string& _text)
-//{
-//	// j'affiche toutes les charDuration un char supplémentaire
-//
-//	const int _textSize = static_cast<int>(_text.size());
-//	const float _displayDuration = charDuration * _textSize;
-//
-//	//timer = new Timer([&]() { Label::SetString(displayedLetters); }, seconds(charDuration), false, true);
-//
-//	for (const string& _word : GetWords(_text, true))
-//	{
-//		for (char _letter : _word)
-//		{
-//			displayedLetters += _letter;
-//			new Timer([&]() { 
-//				Label::SetString(displayedLetters); }, seconds(charDuration));
-//
-//			if (_kbhit())
-//			{
-//				system("cls");
-//				cout << "Skip la cinématique !" << endl;
-//				return;
-//			}
-//		}
-//
-//		cout << " ";
-//	}
-//}
 
 void ProgressLabel::SetString(const string& _text)
 {
@@ -71,12 +41,11 @@ void ProgressLabel::SetString(const string& _text)
 		if (letterIndex <= _lettersCount)
 		{
 			const char _letter = _word[letterIndex - _lettersCount + _wordLettersCount];
-			cout << _letter << endl;
-			displayedLetters += _letter;
+			displayedLetters += _letter == '\0' ? ' ' : _letter;
 			Label::SetString(displayedLetters);
 			letterIndex++;
-			new Timer([&]() { 
-				SetString(text); }, seconds(charDuration));
+			new Timer([&]() { SetString(text); }, seconds(charDuration));
+
 			return;
 		}
 	}

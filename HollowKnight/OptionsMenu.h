@@ -3,7 +3,7 @@
 #include "ControllerMenu.h"
 #include "KeyboardMenu.h"
 #include "Button.h"
-#include "Audio.h"
+#include "AudioMenu.h"
 
 class OptionsMenu : public Menu
 {
@@ -11,7 +11,7 @@ class OptionsMenu : public Menu
 	ControllerMenu* controller;
 	KeyboardMenu* keyboard;
 	ShapeWidget* pointer;
-	Audio* audio;
+	AudioMenu* audio;
 
 public:
 	OptionsMenu(Menu* _owner);

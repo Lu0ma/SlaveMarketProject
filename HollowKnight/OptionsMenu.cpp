@@ -7,7 +7,7 @@ OptionsMenu::OptionsMenu(Menu* _owner) : Menu("OptionsMenu", _owner)
 	buttons = vector<Button*>();
 	controller = new ControllerMenu(this);
 	keyboard = new KeyboardMenu(this);
-	audio = new Audio(this);
+	audio = new AudioMenu(this);
 }
 
 void OptionsMenu::Init()
@@ -91,8 +91,7 @@ void OptionsMenu::Init()
 		{
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
-				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-				pointer->SetShapePosition(_position);
+				MovePointers(_hoveredButton);
 			}
 		};
 		_button->GetData().pressedCallback = _allData[_index].callback;
@@ -106,8 +105,8 @@ void OptionsMenu::Init()
 		canvas->AddWidget(_title);
 	}
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _gridPosY), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	MovePointers(buttons.front());
 
 	#pragma endregion
 }

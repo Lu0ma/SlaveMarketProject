@@ -8,6 +8,7 @@
 #include "PlayerAttackComponent.h"
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
+#include "CollisionComponent.h"
 
 using namespace std;
 
@@ -52,8 +53,9 @@ private:
 	void InitAnimations();
 	void SetupPlayerInput();
 	void TryToOpen(Menu* _menu);
-	void CloseAllMenus();
 
 public:
 	virtual void Init() override;
+	virtual void Update(const float _deltaTime) override;
+	void CloseAllMenus();
 };

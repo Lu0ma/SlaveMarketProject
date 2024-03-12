@@ -58,16 +58,12 @@ struct PlatformData
 
 class Map
 {
-	static Grub* grub;
+	Grub* grub;
 	Dragon* dragon;
 	Bench* bench;
 	Merchand* merchand;
 	PNJ* pnj;
-	ShapeObject* background;
-	ShapeObject* barrack;
-
 	vector<PlatformData> platformsData;
-
 	vector<ShapeObject*> drawables;
 	vector<Lift*> lifts;
 
@@ -88,7 +84,7 @@ public:
 	{
 		return lifts;
 	}
-	static Grub* GetGrub()
+	Grub* GetGrub()
 	{
 		return grub;
 	}

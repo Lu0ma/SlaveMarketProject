@@ -78,8 +78,7 @@ void ShopMenu::Init()
 		{
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
-				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-				pointer->SetShapePosition(_position);
+				MovePointers(_hoveredButton);
 
 				if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_hoveredButton->GetForeground()))
 				{
@@ -116,8 +115,8 @@ void ShopMenu::Init()
 
 	#pragma region Pointer
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_buttonPosX, _startPosY), _buttonSize, PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	MovePointers(buttons.front());
 
 	#pragma endregion
 

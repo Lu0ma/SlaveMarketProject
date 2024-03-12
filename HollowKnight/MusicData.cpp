@@ -2,11 +2,12 @@
 #include "MusicManager.h"
 #include <iostream>
 
-MusicData::MusicData(const string& _path, const float _volume) : IManagable(_path)
+MusicData::MusicData(const string& _path, const float _volume, const float _volumeMax) : IManagable(_path)
 {
-	volumeMax = _volume;
-	setVolume(volumeMax);
 	Register();
+
+	setVolume(_volume);
+	volumeMax = _volumeMax;
 }
 
 void MusicData::Register()
@@ -16,15 +17,13 @@ void MusicData::Register()
 
 void MusicData::Play()
 {
-	setVolume(50.0f);
-	play();
+	//play();
 }
 
 void MusicData::AdjustVolume(const float _percent)
 {
-	const float _value = _percent * volumeMax / 100.0f;
-	float _volume = getVolume() + _value;
-	_volume < 0 ? _volume = 0 : _volume;
-	_volume > 100 ? _volume = 100 : _volume;
-	setVolume(_volume);
+	float _newVolume = _percent * volumeMax / 100.0f;
+	_newVolume = _newVolume < 0.0f ? 0.0f : _newVolume;
+	_newVolume = _newVolume > volumeMax ? volumeMax : _newVolume;
+	setVolume(_newVolume);
 }

@@ -2,6 +2,10 @@
 #include "Component.h"
 #include "IManager.h"
 #include "Animation.h"
+#include <vector>
+#include <string>
+
+using namespace std;
 
 class AnimationComponent : public Component, public IManager<string, Animation>
 {
@@ -9,6 +13,10 @@ class AnimationComponent : public Component, public IManager<string, Animation>
     vector<string> animationNames;
 
 public:
+    void AddNames(const vector<string>& _names)
+    {
+        animationNames.insert(animationNames.end(), _names.begin(), _names.end());
+    }
     Animation* GetCurrentAnimation() const
     {
         return currentAnimation;

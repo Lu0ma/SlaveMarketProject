@@ -1,5 +1,5 @@
 #pragma once
-#include"Component.h"
+#include "Component.h"
 
 class MobAttackComponent : public Component
 {
@@ -21,4 +21,3 @@ public:
 public:
 	void Attack();
 };
-

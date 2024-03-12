@@ -3,7 +3,7 @@
 
 #include "Game.h"
 
-Lift::Lift(const ShapeData& _data) : Actor(STRING_ID("Lift"), _data)
+Lift::Lift(const ShapeData& _data) : Actor(STRING_ID("Lift"), _data, CT_NONE)
 {
 	moveSpeed = 2.0f;
 	destinationUp = _data.position.y - 500.0f;
@@ -56,6 +56,6 @@ void Lift::Interact()
 	else if (Distance(_playerPos, lever->GetShapePosition()) <= 50.0f)
 	{
 		status = LMS_UP;
-		lever->GetAnimation()->GetCurrentAnimation()->RunAnimation("Down", 1.0f);
+		lever->GetComponent<AnimationComponent>()->RunAnimation("Down", 1.0f);
 	}
 }

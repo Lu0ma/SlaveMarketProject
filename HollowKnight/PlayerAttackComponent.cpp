@@ -8,6 +8,7 @@
 
 PlayerAttackComponent::PlayerAttackComponent(Actor* _owner, const int _damages) : Component(_owner)
 {
+	canAttack = true;
 	damages = _damages;
 	range = 50.0f;
 	animation = owner->GetComponent<PlayerAnimationComponent>();
@@ -16,7 +17,7 @@ PlayerAttackComponent::PlayerAttackComponent(Actor* _owner, const int _damages) 
 
 void PlayerAttackComponent::SpecialAttack()
 {
-	//if (!canAttack) return;
+	if (!canAttack) return;
 
 	const Vector2f& _ownerPosition = owner->GetShapePosition();
 	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(_ownerPosition, 45.0f);
@@ -59,8 +60,8 @@ void PlayerAttackComponent::SpecialAttack()
 
 		else
 		{
-			Map::GetGrub()->GetCurrentAnimation()->RunAnimation("Escape", -1);
-			Map::GetGrub()->Destroy(3.0f);
+			Game::GetMap()->GetGrub()->GetComponent<AnimationComponent>()->RunAnimation("Escape", -1);
+            Game::GetMap()->GetGrub()->Destroy(3.0f);
 		}
 	}
 

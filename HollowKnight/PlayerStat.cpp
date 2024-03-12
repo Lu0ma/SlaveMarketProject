@@ -102,7 +102,6 @@ void PlayerStat::UpdateLife(const int _count)
 	}
 
 	currentLifesCount += _count;
-	cout << currentLifesCount << endl;
 
 	if (currentLifesCount == 0)
 	{

@@ -1,60 +1,99 @@
 #pragma once
-#include<SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
+#include "Actor.h"
+#include "Component.h"
 using namespace sf;
 
-enum Target
+#define CAMERA_SHAKE_ANGLE 10.0f
+#define CAMERA_SHAKE_OFFSET 20.0f
+
+struct ShakeComponent : public Component
 {
-	TARGET_NONE , TARGET_PLAYER , TARGET_WINDOW
+	Time current;
+	Time max;
+	float trauma;
+
+	ShakeComponent(Actor* _actor) : Component(_actor)
+	{
+		current = Time();
+		max = Time();
+		trauma = 0;
+	}
 };
 
-class Camera
+class Camera : public Actor
 {
+	float speed;
+	float damp;
+	float oldScaleX;
+	float oldScaleY;
+	Vector2f targetPosition;
+	Vector2f defaultTargetPosition;
+	Vector2f offset;
+	Vector2f offset2;
+
+	Vector2f defaultSize;
 	View view;
-	Vector2f center;
-	Vector2f size;
-	Target target;
+	View defaultView;
+	ShakeComponent* shake;
+	bool isDown;
+	bool isUp;
+	bool isZoom;
+
+	bool canShake;
+
+	bool isShake;
+	
+	float axeX;
+	float axeY;
 
 public:
-	void SetTarget(const Target& _target)
-	{
-		target = _target;
-	}
-	void SetView(const View& _view)
-	{
-		view = _view;
-	}
-	void SetCenter(const Vector2f& _center)
-	{
-		center = _center;
-	}
-	void SetSize(const Vector2f& _size)
-	{
-		size = _size;
-	}
 	View GetView() const
 	{
 		return view;
 	}
-	Vector2f GetCenter() const
+public:
+	void SetIsDown(const bool _isDown)
 	{
-		return center;
-	}
-	Vector2f GetSize() const
-	{
-		return size;
-	}
-	Target GetTargetStat() const
-	{
-		return target;
+		isDown = _isDown;
 	}
 
+	void SetIsUp(const bool _isUp)
+	{
+		isUp = _isUp;
+	}
+	void SetAxeY(const float _axeY)
+	{
+		axeY = _axeY;
+	}
+
+	void SetIsZoom(const bool _isZoom)
+	{
+		isZoom = _isZoom;
+	}
+
+	void SetTargetPosition(const float _posX, const float  _posY)
+	{
+		targetPosition = Vector2f(_posX, _posY);
+	}
+
+	void SetCanShake(const bool _canShake)
+	{
+		canShake = _canShake;
+	}
 public:
-	Camera(const Target& _target);
+	Camera();
 
 private:
-	FloatRect GetPlayerRect();
+	void MoveToTarget(const float _deltaTime);
+	bool IsAtDestination(float& _distance);
 
 public:
-	View FollowPlayer();
-	void CheckCameraState(View& _newView);
+	void Init();
+	void Shake(const float _trauma, const float _duration);
+	void ShakeActor(const float _duration);
+	void ResetShake();
+	void Update(const float _deltaTime);
+	void UpdateSizeView(const float _deltaTime);
 };
+

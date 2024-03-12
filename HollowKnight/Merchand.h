@@ -1,22 +1,16 @@
 #pragma once
 #include "InteractableActor.h"
 #include "ShopMenu.h"
-#include "MerchandAnimationComponent.h"
 #include"HUD.h"
 
 class Merchand : public InteractableActor
 {
 	ShopMenu* shop;
-	MerchandAnimationComponent* animation;
 
 public:
 	void SetShopStatus(const bool _status)
 	{
 		shop->SetStatus(_status);
-	}
-	MerchandAnimationComponent* GetAnimation() const
-	{
-		return animation;
 	}
 
 public:

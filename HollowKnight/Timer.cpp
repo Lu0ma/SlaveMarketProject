@@ -1,5 +1,6 @@
 #include "Timer.h"
 #include "TimerManager.h"
+#include "Macro.h"
 
 Timer::Timer(const function<void()>& _callback, const Time& _time,
 	const bool _startRunning, const bool _isLoop) : IManagable(GetUniqueID())

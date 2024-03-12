@@ -2,12 +2,13 @@
 #include "Game.h"
 #include "Widget.h"
 #include "Label.h"
+#include "Macro.h"
 
 #define PATH_INTERACTION "UIs/Discussions/Interaction.png"
 #define PATH_DISCUSSION "UIs/Discussions/Dialog.png"
 #define FONT "Font.ttf"
 
-InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data)
+InteractableActor::InteractableActor(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_OVERLAP)
 {
 	canvas = new Canvas(STRING_ID("Interactable"));
 	isOpen = false;
@@ -64,7 +65,10 @@ void InteractableActor::CloseDiscussion()
 
 void InteractableActor::Init()
 {
-	const Vector2f& _interactionBGPos = Vector2f(690.0f, 230.0f);
+	const Vector2f& _interactionBGPos = /*Vector2f(690.0f, 230.0f); */ GetShapePosition();
+	const RenderWindow& _window = Game::GetWindow();
+	const Vector2f& _interactionBGPos2 = _window.mapPixelToCoords(static_cast<Vector2i>(_interactionBGPos));
+
 	interactionBG = new ShapeWidget(ShapeData(_interactionBGPos, Vector2f(200.0f, 124.0f), PATH_INTERACTION));
 	canvas->AddWidget(interactionBG);
 
@@ -78,7 +82,7 @@ void InteractableActor::Init()
 	discussionBG->SetVisible(false);
 	canvas->AddWidget(discussionBG);
 
-	discussionText = new ProgressLabel(TextData("Your words, are they repeating ?", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16), 0.1f);
+	discussionText = new ProgressLabel(TextData("", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16), 0.1f, "Bienvenue a Shrek City ma couille !");
 	discussionText->SetVisible(false);
 	canvas->AddWidget(discussionText);
 }

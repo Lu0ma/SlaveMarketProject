@@ -15,6 +15,12 @@ protected:
 	vector<Value*> unregisteredValues;
 
 public:
+	int Count() const
+	{
+		return (int)allValues.size();
+	}
+
+public:
 	IManager(const bool _needToDelete = true)
 	{
 		needToDelete = _needToDelete;
@@ -109,7 +115,7 @@ public:
 	{
 		vector<SpecificValue*> _allspecificValues;
 
-		vector<Value*>_allValues = GetAllValues();
+		const vector<Value*>& _allValues = GetAllValues();
 		for (Value* _value : _allValues)
 		{
 			if (SpecificValue* _specificValue = dynamic_cast<SpecificValue*>(_value))
@@ -119,7 +125,6 @@ public:
 		}
 		
 		return _allspecificValues;
-
 	}
 
 	bool Exist(const Key& _key) const
