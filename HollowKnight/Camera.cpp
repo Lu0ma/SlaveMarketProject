@@ -66,6 +66,7 @@ void Camera::Init()
 	ShapeWidget* _ligneRight = new ShapeWidget(ShapeData(_halfWindowSize + Vector2f(damp, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
 	_ligneRight->GetDrawable()->setFillColor(Color::Magenta);
 	_canvas->AddWidget(_ligneRight);
+
 }
 
 void Camera::Shake(const float _trauma, const float _duration)
@@ -121,7 +122,11 @@ void Camera::ResetZoom()
 		view.setSize(view.getSize().x + axeX, view.getSize().y + axeY);
 		axeX += 0.01f;
 		axeY += 0.01f;
-
+	}
+	else
+	{
+		axeX = 0.0f;
+		axeY = 0.0f;
 	}
 }
 
@@ -142,7 +147,7 @@ void Camera::UpdateViewSize(const float _deltaTime)
 	{
 		if (view.getSize().x <= _limits)
 		{
-			Shake(0.0011f, 100 * _deltaTime);
+			Shake(0.01f, 10 * _deltaTime);
 			return;
 		}
 		ZoomView(_deltaTime);
