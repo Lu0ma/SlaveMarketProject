@@ -1,0 +1,5 @@
+﻿  Game.cpp
+  Player.cpp
+C:\Users\Gregory ZANATTA\OneDrive\Bureau\Cours P1\SFML\SlaveMarketProject\HollowKnight\Player.cpp(70,115): warning C4244: 'argument' : conversion de 'float' en 'sf::Int32', perte possible de données
+  Génération de code en cours...
+  HollowKnight.vcxproj -> C:\Users\Gregory ZANATTA\OneDrive\Bureau\Cours P1\SFML\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

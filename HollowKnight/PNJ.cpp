@@ -1,5 +1,6 @@
 #include "PNJ.h"
 #include "Macro.h"
+#include "SoundManager.h"
 
 PNJ::PNJ(const ShapeData& _data) : InteractableActor(STRING_ID("PNJ"), _data)
 {
@@ -24,5 +25,26 @@ PNJ::PNJ(const ShapeData& _data) : InteractableActor(STRING_ID("PNJ"), _data)
 		AnimationData("Stand", Vector2f(0.0f, 12.0f), _sizeStand, READ_RIGHT, true, 6, _speed),
 		AnimationData("Talk", Vector2f(0.0f, 100.0f), _sizeTalk, READ_RIGHT, true, 6, _speed),
 		});
+
+	soundIndex = 0;
+}
+
+void PNJ::Update(const float _deltaTime)
+{
+
+	soundIndex++;
+	if (soundIndex > 3)
+	{
+		soundIndex = 0;
+	}
+
+	vector<string> _sounds = {
+		"Assets/Musics/Hammer1.ogg",
+		"Assets/Musics/Hammer2.ogg",
+		"Assets/Musics/Hammer3.ogg",
+		"Assets/Musics/Hammer4.ogg",
+	};
+
+	SoundManager::GetInstance().Play(_sounds[soundIndex], DirectionalSettings(GetPosition(), 175, 10.0f));
 }
 

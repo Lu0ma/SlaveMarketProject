@@ -60,7 +60,6 @@ void Game::Update()
 void Game::UpdateWindow()
 {
 	window.clear(); // Color(127, 127, 127, 0) gris
-
 	const float _deltaTime = TimerManager::GetInstance().GetDeltaTime();
 	camera->Update(_deltaTime);
 

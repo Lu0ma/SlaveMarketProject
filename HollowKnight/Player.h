@@ -9,6 +9,7 @@
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
 #include "CollisionComponent.h"
+#include <SFML/Audio.hpp>
 
 using namespace std;
 
