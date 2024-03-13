@@ -29,11 +29,12 @@ void MainMenu::Init()
 
 	const float _mainMenuTextPosX = _windowSize.x * 0.80f;
 	const float _mainMenuTextPosY = _windowSize.y * 0.75f;
-	Label* _mainMenuText = new Label(TextData("Press space key to continue..", Vector2f(_mainMenuTextPosX, _mainMenuTextPosY), FONT, 26), AT_RIGHT);
+	Label* _mainMenuText = new Label(TextData("Press space key to continue or any Buttons..", Vector2f(_mainMenuTextPosX, _mainMenuTextPosY), FONT, 26), AT_RIGHT);
 
 	canvas->AddWidget(_mainMenuText);
 	new ActionMap("MenuInputs", {
-		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
+		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu(); }, InputData({ ActionType::KeyPressed, Keyboard::Space })),
+		ActionData("OpenTitleMenuWithController", [&]() { OpenTitleMenu(); }, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 0) })),
 	});
 
 	MusicManager::GetInstance().Play(MUSIC);

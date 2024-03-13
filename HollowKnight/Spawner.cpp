@@ -45,4 +45,5 @@ void Spawner::Spawn()
 	_huskBully->Init();*/
 
 	//deathMob = new DeathMob(_data);
+
 }

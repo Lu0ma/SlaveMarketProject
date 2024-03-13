@@ -61,7 +61,7 @@ void Player::SetupPlayerInput()
 			FxManager::GetInstance().Run("FxMana");
 			Game::GetCamera()->SetIsZoom(true);
 		}, InputData({ActionType::KeyPressed, Keyboard::A})),
-	
+	ActionData("ManaToLife", [&]() {stats->UpdateLife(-1); }, InputData({ActionType::KeyPressed, Keyboard::M})),
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
 		});
 
@@ -189,10 +189,11 @@ void Player::SetupPlayerInput()
 			if (Joystick::isButtonPressed(0, 0))
 			{
 				attack->SpecialAttack();
+				cout << "Attack" << endl;
 			}
 			else
 			{
-				 movement->SetDirectionX(0.0f, "Right");
+				 movement->SetDirectionX(0.0f, "StopRight");
 			}
 		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,0) })),
 		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::MouseButtonReleased, Mouse::Left })),

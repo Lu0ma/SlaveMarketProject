@@ -167,4 +167,5 @@ void PlayerStat::Death()
 	} 
 
 	UpdateGeos(-geosCount);
+
 }

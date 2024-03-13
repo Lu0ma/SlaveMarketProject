@@ -53,18 +53,19 @@ void PlayerAttackComponent::SpecialAttack()
 	{
 		_lift->Interact();
 	}
+	
 	const vector<Grub*>& _grubs = RetrieveAllMobsAround<Grub>(_ownerPosition, 45.0f);
 	for (Grub* _grub : _grubs)
 	{
+		
 		if (!_grub) continue;
 
 		else
 		{
 			Game::GetMap()->GetGrub()->GetComponent<AnimationComponent>()->RunAnimation("Escape", -1);
-            Game::GetMap()->GetGrub()->Destroy(3.0f);
+            /*Game::GetMap()->GetGrub()->Destroy(3.0f);*/
 		}
 	}
-
 
 	animation->GetCurrentAnimation()->RunAnimation("Special", owner->GetDrawable()->getScale().x);
 }
