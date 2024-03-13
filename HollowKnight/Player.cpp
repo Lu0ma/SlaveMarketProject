@@ -18,7 +18,7 @@
 #define PATH_ITEM "UIs/Inventory/Item.png"
 #define PATH_ITEM2 "test.png"
 #define PATH_DEATHMOB "Animations/DeathMob.png"
-#define DEAD_ZONE 50.f
+#define DEAD_ZONE 75.f
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_BLOCK)
 {
@@ -67,22 +67,52 @@ void Player::SetupPlayerInput()
 
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
-		ActionData("Controller", [&]() {
-
-			if (Joystick::getAxisPosition(0, Joystick::X) == 0.0015259)
-			{
-				movement->SetDirectionX(0.0f, "StopRight");
-			}
-			else if ( Joystick::getAxisPosition(0, Joystick::X) > 0.0015259)
-			{
+		ActionData("ControllerMove", [&]() {
+			 if ( Joystick::getAxisPosition(0, Joystick::X) > DEAD_ZONE)
+			 {
 				movement->SetDirectionX(1.0f, "Right");
-			} 
-			else if (Joystick::getAxisPosition(0, Joystick::X) < 0.0015259)
-			{
+			 } 
+			 else if (Joystick::getAxisPosition(0, Joystick::X) < -DEAD_ZONE)
+			 {
 				movement->SetDirectionX(-1.0f, "Left");
-			}
+			 }
+			 else
+			 {
+				movement->SetDirectionX(0.0f, "StopLeft");
+			 }
+			 if (Joystick::getAxisPosition(0, Joystick::Y) > DEAD_ZONE)
+			 {
+				 Game::GetCamera()->SetIsDown(true);
+				 animation->GetCurrentAnimation()->RunAnimation("HeadDown", movement->GetDashDirection());
+			 }
+			 else
+			 {
+				  Game::GetCamera()->SetIsDown(false);
+             }
+			 if (Joystick::getAxisPosition(0, Joystick::Y) < -DEAD_ZONE)
+			 {
+				 Game::GetCamera()->SetIsUp(true);
+				 animation->GetCurrentAnimation()->RunAnimation("HeadUp", movement->GetDashDirection());
+			 }
+			 else
+			 {
+				  Game::GetCamera()->SetIsUp(false);
+			 }
+			 if (Joystick::getAxisPosition(0, Joystick::Y) < -20 && !charmsMenu->IsActive())
+			 {
+				 movement->SitDown();
+				 attack->SetCanAttack(false);
+			 }
+			 else if (Joystick::getAxisPosition(0, Joystick::Y) > 20 && !charmsMenu->IsActive())
+			 {
+				 movement->StandUp();
+				 attack->SetCanAttack(true);
+			 }
 			cout << Joystick::getAxisPosition(0, Joystick::X) << endl;
+			cout << Joystick::getAxisPosition(0, Joystick::Y) << endl;
 		}, InputData({ ActionType::JoystickMoved, Joystick::X})),
+
+
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
 		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
@@ -132,6 +162,15 @@ void Player::SetupPlayerInput()
 
 		ActionData("Look Down" , [&]()
 			{Game::GetCamera()->SetIsDown(true); animation->GetCurrentAnimation()->RunAnimation("HeadDown", movement->GetDashDirection()); } , InputData({ActionType::KeyPressed , Keyboard::Down})),
+
+		/*ActionData("Conroller Look Down" , [&]() {
+			if (Joystick::getAxisPosition(1, Joystick::Y) > DEAD_ZONE)
+			{
+				Game::GetCamera()->SetIsDown(true); 
+				animation->GetCurrentAnimation()->RunAnimation("HeadDown", movement->GetDashDirection());
+			}
+				cout << Joystick::getAxisPosition(1, Joystick::Y) << endl;
+			} , InputData({ActionType::JoystickMoved , Joystick::Y})),*/
 		
 		ActionData("Stop Look Down" , [&]()
 			{Game::GetCamera()->SetIsDown(false); animation->GetCurrentAnimation()->RunAnimation("StopRight", movement->GetDashDirection()); } , InputData({ActionType:: KeyReleased , Keyboard::Down})),
@@ -163,6 +202,15 @@ void Player::SetupPlayerInput()
 			TryToOpen(pauseMenu);
 			stats->SetStatus(false);
 		}, InputData({ ActionType::KeyPressed, Keyboard::Escape })),
+		ActionData("ControllerPause", [&]() {
+
+			if (Joystick::isButtonPressed(0, 9))
+			{
+				TryToOpen(pauseMenu);
+				stats->SetStatus(false);
+			}
+		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,9) })),
+
 		ActionData("Inventory", [&]() { TryToOpen(inventory); }, InputData({ ActionType::KeyPressed, Keyboard::B })),
 		ActionData("ControllerInventory", [&]() {
 			if (Joystick::isButtonPressed(0, 6))
@@ -178,6 +226,14 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ ActionType::KeyPressed, Keyboard::P })),
 		ActionData("Interact", [&]() { interaction->TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E })),
+
+		ActionData("ControllerInteract", [&]() 
+			{ 
+			if (Joystick::isButtonPressed(0, 8)) //Change button to ps5 button
+			{
+				interaction->TryToInteract();
+			}
+			},InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0,8) })),
 		});
 }
 
