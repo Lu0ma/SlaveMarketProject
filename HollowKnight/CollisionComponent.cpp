@@ -53,7 +53,7 @@ bool CollisionComponent::CheckCollision(const vector<Actor*>& _ignoredActors)
 		{
 			if (_collisionComponent->GetType() == CT_BLOCK)
 			{
-				cout << _collisionComponent->owner->GetID() << endl;
+				//cout << _collisionComponent->owner->GetID() << endl;
 				return true;
 			}
 		}	

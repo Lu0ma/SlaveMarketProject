@@ -22,4 +22,3 @@ public:
 	void Register();
 	void Init();
 };
-

@@ -5,11 +5,8 @@
 class PlayerMovementComponent : public MovementComponent
 {
 	// Movement
+	bool directionHasChanged;
 	Vector2f direction;
-
-	// Sprintç
-	bool isSprinting;
-	float sprintSpeed;
 
 	// Ground
 	bool isOnGround;
@@ -17,16 +14,15 @@ class PlayerMovementComponent : public MovementComponent
 
 	// Jump
 	bool isJumping;
-	//bool canIncreaseJump;
+	bool canDoubleJump;
 	float jumpForce;
-	/*float currentJumpForce;
-	float jumpForceFactor;
-	float jumpDuration;
-	float jumpDurationFactor;
-	float increaseJumpDuration;*/
+	float currentJumpForce;
+	float jumpFactor;
+
+	// Gravity
 	float gravity;
-	Timer* jumpTimer;
-	Timer* increaseJumpTimer;
+	float downSpeed;
+	float downFactor;
 
 	// Dash
 	bool canDash;
@@ -58,9 +54,9 @@ public:
 		if (!canMove) return;
 		direction.y = _directionY;
 	}
-	void SetSprint(const bool _status)
+	bool IsOnGround() const
 	{
-		isSprinting = _status;
+		return isOnGround;
 	}
 	bool IsStanding() const
 	{
@@ -80,12 +76,10 @@ public:
 
 private:
 	bool CheckGround();
-	//void Jump();
+	void StopJump();
 	
 public:
 	virtual void Update(const float _deltaTime) override;
-	/*void StartJump();
-	void StopJump();*/
 	void Jump();
 	void Dash();
 	void SitDown();
