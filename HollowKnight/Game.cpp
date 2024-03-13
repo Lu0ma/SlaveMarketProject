@@ -39,8 +39,6 @@ void Game::Start()
 
 void Game::Init()
 {
-	ActorManager::GetInstance().Init();
-
 	menu->Init();
 	map->Init();
 	camera->Init();

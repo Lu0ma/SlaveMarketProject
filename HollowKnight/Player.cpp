@@ -80,7 +80,7 @@ void Player::SetupPlayerInput()
 		ActionData("Look Up", [&]() {
 			Game::GetCamera()->SetIsUp(true);
 			animation->GetCurrentAnimation()->RunAnimation("HeadUp", movement->GetDashDirection());
-		}, InputData({ ActionType::KeyPressed, Keyboard::Up }),
+		}, InputData({ ActionType::KeyPressed, Keyboard::Up })),
 		ActionData("Stop Look Up", [&]() {
 			Game::GetCamera()->SetIsUp(false);
 			animation->GetCurrentAnimation()->RunAnimation("StopRight", movement->GetDashDirection());
@@ -100,7 +100,7 @@ void Player::SetupPlayerInput()
 		ActionData("ControllerJump", [&]() {
 			if (Joystick::isButtonPressed(0, 1))
 			{
-				movement->StartJump();
+				movement->Jump();
 			}
 		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 1) })),
 		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
