@@ -84,7 +84,7 @@ void AudioMenu::Init()
 						if (MoveIndicator("Sound Volume", -10.0f))
 						{
 							soundValue -= 10.0f;
-							SoundManager::GetInstance().AdjustAllVolume(soundValue);
+							//SoundManager::GetInstance().AdjustAllVolume(soundValue);
 						}
 						if (MoveIndicator("Music Volume", -10.0f))
 						{
@@ -107,7 +107,7 @@ void AudioMenu::Init()
 					if (MoveIndicator("Sound Volume", -10.0f))
 					{
 						soundValue -= 10.0f;
-						SoundManager::GetInstance().AdjustAllVolume(soundValue);
+						//SoundManager::GetInstance().AdjustAllVolume(soundValue);
 					}
 				}
 			},
@@ -115,7 +115,7 @@ void AudioMenu::Init()
 					if (soundValue + 10.0f <= masterValue && MoveIndicator("Sound Volume", 10.0f))
 					{
 						soundValue += 10.0f;
-						SoundManager::GetInstance().AdjustAllVolume(soundValue);
+						//SoundManager::GetInstance().AdjustAllVolume(soundValue);
 					}
 				}
 			}),

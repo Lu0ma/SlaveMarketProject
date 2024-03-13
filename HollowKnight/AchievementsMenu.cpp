@@ -3,7 +3,7 @@
 
 #define PATH_ACHIEVEMENTS "UIs/Menus/Achievements/Achievement_"
 
-AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achivements", _owner)
+AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achievements", _owner)
 {
 
 }
