@@ -106,7 +106,7 @@ private:
 	bool IsAtDestination(float& _distance);
 	void UpdateViewSize(const float _deltaTime);
 	void ZoomView(const float _deltaTime);
-	void ResetZoom();
+	void ResetZoom(const float _deltaTime);
 	void ShakeActor(const float _deltaTime);
 
 public:
