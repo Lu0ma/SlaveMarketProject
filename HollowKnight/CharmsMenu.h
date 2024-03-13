@@ -8,6 +8,13 @@ struct CharmsItem
 	string text;
 };
 
+struct CharmsItem
+{
+	string widgetPath;
+	string title;
+	string text;
+};
+
 class CharmsMenu : public Menu
 {
 	Vector2i gridSize;
