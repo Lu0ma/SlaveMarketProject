@@ -5,7 +5,7 @@
 
 ControllerMenu::ControllerMenu(Menu* _owner) : Menu("Controller", _owner)
 {
-
+	backButton = nullptr;
 }
 
 

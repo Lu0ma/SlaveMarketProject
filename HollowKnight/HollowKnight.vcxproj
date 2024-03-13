@@ -149,10 +149,12 @@
     <ClCompile Include="BossBrain.cpp" />
     <ClCompile Include="BossPatrolState.cpp" />
     <ClCompile Include="Brain.cpp" />
+    <ClCompile Include="BrightnessMenu.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="CharmsMenu.cpp" />
+    <ClCompile Include="CharmWidget.cpp" />
     <ClCompile Include="ChaseState.cpp" />
     <ClCompile Include="ChaseToAttack.cpp" />
     <ClCompile Include="ChaseToPatrol.cpp" />
@@ -261,10 +263,12 @@
     <ClInclude Include="BossBrain.h" />
     <ClInclude Include="BossPatrolState.h" />
     <ClInclude Include="Brain.h" />
+    <ClInclude Include="BrightnessMenu.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="CharmsMenu.h" />
+    <ClInclude Include="CharmWidget.h" />
     <ClInclude Include="ChaseState.h" />
     <ClInclude Include="ChaseToAttack.h" />
     <ClInclude Include="ChaseToPatrol.h" />

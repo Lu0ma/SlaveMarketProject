@@ -289,6 +289,12 @@
     <Filter Include="Objects\ShapeObjects\Actors\Interactables\PNJ">
       <UniqueIdentifier>{685f824a-fe92-4cf6-b63c-001f9a0f1a60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menus\BrightnessMenu">
+      <UniqueIdentifier>{889c04bf-ab7c-4de8-b80c-55ecac625f57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\Items\Charms">
+      <UniqueIdentifier>{f4834ea2-22a4-4a18-b639-fd7b5f14dfd1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -599,6 +605,33 @@
     </ClCompile>
     <ClCompile Include="Lever.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BrightnessMenu.cpp">
+      <Filter>Menus\BrightnessMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="BossAttackState.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BossPatrolState.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="InspectComponent.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MobAttackState.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MobPatrolState.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PatrolToAttack.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollBar.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CharmWidget.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets\Items\Charms</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -916,6 +949,36 @@
     </ClInclude>
     <ClInclude Include="PNJ.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables\PNJ</Filter>
+    </ClInclude>
+    <ClInclude Include="BrightnessMenu.h">
+      <Filter>Menus\BrightnessMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackBoard.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="BossAttackState.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="BossPatrolState.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="InspectComponent.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="MobAttackState.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="MobPatrolState.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="PatrolToAttack.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollBar.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CharmWidget.h">
+      <Filter>UIs\Widgets\ShapeWidgets\Items\Charms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

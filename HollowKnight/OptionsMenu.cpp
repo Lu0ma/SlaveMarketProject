@@ -5,6 +5,7 @@
 OptionsMenu::OptionsMenu(Menu* _owner) : Menu("OptionsMenu", _owner)
 {
 	buttons = vector<Button*>();
+	brightness = new BrightnessMenu(this);
 	controller = new ControllerMenu(this);
 	keyboard = new KeyboardMenu(this);
 	audio = new AudioMenu(this);
@@ -60,7 +61,8 @@ void OptionsMenu::Init()
 		}),
 		ButtonData("VIDEO", [&]() {
 			cout << "VIDEO" << endl;
-			//canvas->SetVisibilityStatus(false);
+			brightness->SetStatus(true);
+			canvas->SetVisibilityStatus(false);
 		}),
 		ButtonData("CONTROLLER", [&]() {
 			controller->SetStatus(true);

@@ -12,6 +12,13 @@ class TitleMenu : public Menu
 	QuitGameMenu* quitGame;
 
 public:
+	virtual void SetStatus(const bool _status)
+	{
+		options->SetOwner(this);
+		Menu::SetStatus(_status);
+	}
+
+public:
 	TitleMenu(Menu* _owner);
 
 public:

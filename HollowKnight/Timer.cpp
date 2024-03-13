@@ -28,7 +28,6 @@ void Timer::Update(const float _deltaTime)
 	currentDuration += _deltaTime;
 	if (currentDuration >= duration)
 	{
-		Reset();
 		if (callback)
 		{
 			callback();
@@ -38,11 +37,19 @@ void Timer::Update(const float _deltaTime)
 		{
 			Stop();
 		}
+
+		Reset();
 	}
 
 }
 
 void Timer::Start()
+{
+	Reset();
+	Resume();
+}
+
+void Timer::Resume()
 {
 	isRunning = true;
 }

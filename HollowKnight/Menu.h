@@ -31,6 +31,10 @@ public:
 
 		canvas->SetVisibilityStatus(_status);
 	}
+	void SetOwner(Menu* _owner)
+	{
+		owner = _owner;
+	}
 	bool IsActive() const
 	{
 		return isInit && canvas->GetVisibilityStatus();
