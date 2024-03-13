@@ -133,7 +133,7 @@ void Player::SetupPlayerInput()
 	new ActionMap("Camera", {
 		ActionData("Shake" , [&]()
 			{
-				Game::GetCamera()->Shake(0.7f , 1000000.0f);
+				Game::GetCamera()->GetShake()->Shake(0.7f , 1000.0f);
 			},InputData({ActionType::KeyPressed, Keyboard::C})),
 
 		ActionData("Look Down" , [&]()

@@ -69,6 +69,10 @@ public:
 	{
 		return view;
 	}
+	ShakeComponent* GetShake() const
+	{
+		return shake;
+	}
 public:
 	void SetIsDown(const bool _isDown)
 	{
@@ -107,9 +111,7 @@ private:
 
 public:
 	void Init();
-	void Shake(const float _trauma, const float _duration);
 	void Update(const float _deltaTime);
-
 
 
 };

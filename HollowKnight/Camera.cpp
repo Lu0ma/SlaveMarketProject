@@ -8,27 +8,28 @@
 #include "Timer.h"
 Camera::Camera() : Actor("Camera" , ShapeData())
 {
+
 	shake = new ShakeComponent(this);
-	
-	targetPosition = Vector2f();
-	offsetCamera = Vector2f(damp * 0.75f,0.0f);
-	offsetScreen = Vector2f();
-
-	view = View();
-
-	defaultSize = view.getSize();
 
 	axeX = 0.0f;
 	axeY = 0.0f;
 	speed = 0.5f;
 	damp = 100.0f;
 
+	targetPosition = Vector2f();
+	offsetCamera = Vector2f(damp * 0.75f,0.0f);
+	offsetScreen = Vector2f();
+	zoom = Vector2f();
+	defaultSize = view.getSize();
+
+	view = View();
+
+
 	isDown = false;
 	isZoom = false;
 	isUp = false;
 	canShake = false;
 
-	zoom = Vector2f();
 }
 
 void Camera::MoveToTarget(const float _deltaTime)
@@ -46,7 +47,6 @@ void Camera::MoveToTarget(const float _deltaTime)
 bool Camera::IsAtDestination(float& _distance)
 {
 	_distance = Distance(view.getCenter(), targetPosition);
-
 	return _distance <= 10.5f;
 }
 
@@ -69,20 +69,13 @@ void Camera::Init()
 
 }
 
-void Camera::Shake(const float _trauma, const float _duration)
-{
-	shake->max = milliseconds(static_cast<Int32>(_duration));
-	shake->current = seconds(0);
-	shake->trauma += _trauma;
-}
-
 void Camera::ShakeActor(const float _deltaTime)
 {
 	if (!canShake) return;
 	#pragma region Inits
 	Vector2f _offset;
-	int _randomX = Random<int>(500 , 100);
-	int _randomY = Random<int>(500, 100);
+	int _randomX = Random<int>(100 , 10);
+	int _randomY = Random<int>(100, 10);
 	int _randomNeg = Random<int>(2, 1);
 #pragma endregion 
 	_randomNeg == 1 ? _offset = Vector2f(static_cast<float>(_randomX), static_cast<float>(_randomY)) :
@@ -137,17 +130,17 @@ void Camera::ZoomView(const float _deltaTime)
 
 void Camera::UpdateViewSize(const float _deltaTime)
 {
-	const float _limits = defaultSize.x - 300;
-	zoom = view.getSize();
 	if (!isZoom)
 	{
 		ResetZoom();
 	}
 	else
 	{
+		const float _limits = defaultSize.x - 300;
+		zoom = view.getSize();
 		if (view.getSize().x <= _limits)
 		{
-			Shake(0.01f, 10 * _deltaTime);
+			shake->Shake(0.01f, 10 * _deltaTime);
 			return;
 		}
 		ZoomView(_deltaTime);
