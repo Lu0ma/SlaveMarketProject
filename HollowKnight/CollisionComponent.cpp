@@ -49,8 +49,10 @@ bool CollisionComponent::CheckCollision(const vector<Actor*>& _ignoredActors)
 			if (_collisionComponent->GetType() == CT_BLOCK)
 			{
 				cout << _collisionComponent->owner->GetID() << endl;
+				cout << "Je touche un block " << endl;
 				return true;
 			}
+			//else if(_collisionComponent->GetType() == )
 		}	
 	}
 

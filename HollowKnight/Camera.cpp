@@ -52,20 +52,6 @@ bool Camera::IsAtDestination(float& _distance)
 
 void Camera::Init()
 {
-	const Vector2f& _halfWindowSize = Game::GetWindowSize() / 2.0f;
-	Canvas* _canvas = new Canvas("Camera");
-
-	ShapeWidget* _ligneLeft = new ShapeWidget(ShapeData(_halfWindowSize + Vector2f(-damp, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
-	_ligneLeft->GetDrawable()->setFillColor(Color::Magenta);
-	_canvas->AddWidget(_ligneLeft);
-
-	ShapeWidget* _ligneMiddle = new ShapeWidget(ShapeData(_halfWindowSize, Vector2f(1, SCREEN_HEIGHT)));
-	_ligneMiddle->GetDrawable()->setFillColor(Color::Red);
-	_canvas->AddWidget(_ligneMiddle);
-
-	ShapeWidget* _ligneRight = new ShapeWidget(ShapeData(_halfWindowSize + Vector2f(damp, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
-	_ligneRight->GetDrawable()->setFillColor(Color::Magenta);
-	_canvas->AddWidget(_ligneRight);
 
 }
 

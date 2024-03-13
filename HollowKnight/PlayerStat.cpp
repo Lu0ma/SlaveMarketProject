@@ -138,14 +138,13 @@ void PlayerStat::Death()
 	numberOfDeath++;
 	Player* _player = Game::GetPlayer();
 	Vector2f _benchPos = Game::GetMap()->GetBench()->GetPosition();
-
 	Vector2f _lastPos = _player->GetPosition();
-	/*DeathMob* _deathMob = new DeathMob(ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
-	_deathMob->Init();*/
+	//DeathMob* _deathMob = new DeathMob(ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
+	//_deathMob->Init();
 
-	/*DeathMob* _deathMob = new DeathMob("DeathMob",ShapeData(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), PATH_DEATHMOB));
-	int _life = _deathMob->GetLife()->GetLife();
-	cout << _life << endl;*/
+	//DeathMob* _deathMob = new DeathMob("DeathMob",ShapeData(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), PATH_DEATHMOB));
+	//int _life = _deathMob->GetLife()->GetLife();
+	//cout << _life << endl;
 	
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
