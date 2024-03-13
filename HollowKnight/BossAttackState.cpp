@@ -27,8 +27,7 @@ void BossAttackState::Start()
 			{
 				Player* _player = dynamic_cast<Player*>(inspect->GetHitInfo().actor);
 				_player->GetStats()->UpdateLife(-1);
+				inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetLastDirection());
 			}
 		}, seconds(1.2f), true, false);
-
-
 }

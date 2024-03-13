@@ -1,5 +1,6 @@
 #pragma once
 #include "State.h"
+#include "PatrolToDeath.h"
 
 #include "AnimationComponent.h"
 #include "MobMovementComponent.h"
@@ -15,6 +16,8 @@ class PatrolState : public State
 	Vector2f goalPosition;
 
 	Timer* patrolTimer;
+
+	PatrolToDeath* patrolToDeath;
 
 public:
 	PatrolState(Brain* _brain);

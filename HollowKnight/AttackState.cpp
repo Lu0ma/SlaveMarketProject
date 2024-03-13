@@ -1,11 +1,17 @@
 #include "AttackState.h"
 #include "Brain.h"
+#include "MobLifeComponent.h"
 
 AttackState::AttackState(Brain* _brain) : State(_brain)
 {
 	animation = nullptr;
 	movement = nullptr;
 	inspect = nullptr;
+	hasAttack = false;
+
+	BlackBoard* _blackBoard = _brain->GetBlackBoard();
+	attackToDeath = new AttackToDeath(_blackBoard);
+	transitions.push_back(attackToDeath);
 }
 
 
@@ -38,13 +44,18 @@ void AttackState::Update(const float _deltaTime)
 
 	if (inspect)
 	{
-		//brain->GetBlackBoard()->hasTarget = 
 		inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetLastDirection());
-		//brain->GetBlackBoard()->isInRange = inspect->IsInRange();
+		brain->GetBlackBoard()->isInRange = inspect->IsInRange();
+		//brain->GetBlackBoard()->hasTarget = 
+	}
+	if (brain->GetOwner()->GetComponent<MobLifeComponent>()->GetLife() <= 0)
+	{
+		brain->GetBlackBoard()->isDead = true;
 	}
 }
 
 void AttackState::Stop()
 {
+	movement->SetDestination(brain->GetOwner()->GetShapePosition());
 	cout << "Stop Attack" << endl;
 }

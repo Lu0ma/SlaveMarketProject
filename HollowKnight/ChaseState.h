@@ -2,6 +2,7 @@
 #include "State.h"
 #include "ChaseToPatrol.h"
 #include "ChaseToAttack.h"
+#include "ChaseToDeath.h"
 
 #include "AnimationComponent.h"
 #include "MobMovementComponent.h"
@@ -15,6 +16,7 @@ class ChaseState : public State
 
 	ChaseToPatrol* chaseToPatrol;
 	ChaseToAttack* chaseToAttack;
+	ChaseToDeath* chaseToDeath;
 
 private:
 	Timer* chaseTimer;

@@ -1,5 +1,6 @@
 #pragma once
 #include "State.h"
+#include "AttackToDeath.h"
 
 #include "AnimationComponent.h"
 #include "MobMovementComponent.h"
@@ -11,6 +12,9 @@ protected:
 	AnimationComponent* animation;
 	MobMovementComponent* movement;
 	InspectComponent* inspect;
+	bool hasAttack;
+
+	AttackToDeath* attackToDeath;
 
 public:
 	AttackState(Brain* _brain);

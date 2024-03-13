@@ -8,8 +8,9 @@ InspectComponent::InspectComponent(Actor* _owner, const float _viewRange) : Comp
 {
 	hitInfo = HitInfo();
 	viewRange = _viewRange;
+	factor = 5.0f;
 
-	ShapeData _data2 = ShapeData(owner->GetShapePosition(), Vector2f(viewRange, 5.0f), "");
+	ShapeData _data2 = ShapeData(owner->GetShapePosition(), Vector2f(viewRange / 2.0f, 5.0f), "");
 	raycast = new Actor(STRING_ID("Raycast"), _data2);
 }
 
@@ -40,8 +41,8 @@ bool InspectComponent::HasTarget(const Vector2f& _position, Vector2f _destinatio
 
 	if (_hasHit && dynamic_cast<Player*>(_hitInfo.actor)) //&& _hitInfo.distance < viewRange)
 	{
-		cout << owner->GetID() << " : " << _hitInfo.actor->GetID() << endl; 
-		cout << _hitInfo.distance << endl;
+		/*cout << owner->GetID() << " : " << _hitInfo.actor->GetID() << endl; 
+		cout << _hitInfo.distance << endl;*/
 		hitInfo = _hitInfo;
 		return true;
 	}
@@ -52,5 +53,5 @@ bool InspectComponent::HasTarget(const Vector2f& _position, Vector2f _destinatio
 
 bool InspectComponent::IsInRange()
 {	
-	return hitInfo.actor && hitInfo.distance <= viewRange / 5.0f;
+	return hitInfo.actor && hitInfo.distance <= viewRange / 2.0f;
 }

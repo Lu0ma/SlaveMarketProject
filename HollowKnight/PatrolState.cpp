@@ -1,15 +1,21 @@
 #include "PatrolState.h"
 #include "Brain.h"
 #include "Macro.h"
+#include "MobLifeComponent.h"
 
 PatrolState::PatrolState(Brain* _brain) : State(_brain)
 {
 	animation = nullptr;
 	movement = nullptr;
 	inspect = nullptr;
+	patrolTimer = nullptr;
 
 	startPosition = brain->GetOwner()->GetShapePosition();
 	goalPosition = Vector2f();
+
+	BlackBoard* _blackBoard = _brain->GetBlackBoard();
+	patrolToDeath = new PatrolToDeath(_blackBoard);
+	transitions.push_back(patrolToDeath);
 }
 
 void PatrolState::Start()
@@ -52,14 +58,18 @@ void PatrolState::Update(const float _deltaTime)
 	if (inspect)
 	{
 		brain->GetBlackBoard()->hasTarget = inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetDestination());
-		//brain->GetBlackBoard()->isInRange = inspect->IsInRange();
+		brain->GetBlackBoard()->isInRange = inspect->IsInRange();
+	}
+	if (brain->GetOwner()->GetComponent<MobLifeComponent>()->GetLife() <= 0)
+	{
+		brain->GetBlackBoard()->isDead = true;
 	}
 }
 
 void PatrolState::Stop()
 {
 	patrolTimer->Stop();
-	movement->SetCallback([&]() {});
+	movement->SetCallback(nullptr);
 	//movement->SetDestination(brain->GetOwner()->GetShapePosition());
 	//animation->RunAnimation("Idle", 1.0f);
 	cout << "Stop Patrol" << endl;
