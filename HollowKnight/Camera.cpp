@@ -22,7 +22,7 @@ Camera::Camera() : Actor("Camera" , ShapeData())
 	zoom = Vector2f();
 	defaultSize = view.getSize();
 
-	view = View();
+	// view = View(Vector2f() , Vector2f(Game::GetWindowSize().x, Game::GetWindowSize().y));
 
 
 	isDown = false;
@@ -108,8 +108,6 @@ void Camera::ResetZoom(const float _deltaTime)
 		axeX = 0.0f;
 		axeY = 0.0f;
 	}
-
-
 }
 
 void Camera::ZoomView(const float _deltaTime)

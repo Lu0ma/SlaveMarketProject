@@ -19,7 +19,6 @@ protected:
 	ShapeWidget* pointerLeft;
 	ShapeWidget* pointerRight;
 	Menu* owner;
-
 public:
 	virtual void SetStatus(const bool _status)
 	{
