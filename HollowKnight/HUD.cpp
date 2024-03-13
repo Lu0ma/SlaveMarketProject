@@ -40,14 +40,17 @@ void HUD::Interact(const Vector2f& _worldPosition, const Event& _event)
 		{
 			_scrollBar->UpdateScroll(_event);
 		}
-		else if (_event.type == Event::MouseButtonPressed)
-		{
-			if (_event.mouseButton.button == Mouse::Left)
-			{
-				const Vector2f& _position = static_cast<Vector2f>(Vector2i(_event.mouseButton.x, _event.mouseButton.y));
-				_scrollBar->ComputeClickOnBar(_position);
-			}
-		}
+		//else if (_scrollBar->GetDrawable()->getGlobalBounds().contains(_worldPosition))
+		//{
+		//	if (_event.type == Event::MouseButtonPressed)
+		//	{
+		//		if (_event.mouseButton.button == Mouse::Left)
+		//		{
+		//			const Vector2f& _position = static_cast<Vector2f>(Vector2i(_event.mouseButton.x, _event.mouseButton.y));
+		//			_scrollBar->ComputeClickOnBar(_position);
+		//		}
+		//	}
+		//}
 	}
 }
 

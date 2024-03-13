@@ -1,2 +1,7 @@
 ﻿  AchievementsMenu.cpp
+FileLoader.obj : warning LNK4099: PDB '' n'a pu être trouvé avec 'FileLoader.obj' ou sur '' ; l'objet sera lié sans informations de débogage
+Label.obj : warning LNK4099: PDB '' n'a pu être trouvé avec 'Label.obj' ou sur '' ; l'objet sera lié sans informations de débogage
+MobLifeComponent.obj : warning LNK4099: PDB '' n'a pu être trouvé avec 'MobLifeComponent.obj' ou sur '' ; l'objet sera lié sans informations de débogage
+Object.obj : warning LNK4099: PDB '' n'a pu être trouvé avec 'Object.obj' ou sur '' ; l'objet sera lié sans informations de débogage
+Widget.obj : warning LNK4099: PDB '' n'a pu être trouvé avec 'Widget.obj' ou sur '' ; l'objet sera lié sans informations de débogage
   HollowKnight.vcxproj -> C:\Users\vokin\Documents\GitHub\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
