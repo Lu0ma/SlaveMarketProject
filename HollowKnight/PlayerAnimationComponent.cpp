@@ -42,5 +42,6 @@ void PlayerAnimationComponent::Init()
 		AnimationData("StopFall", Vector2f(255.0f, 1062.0f), Vector2f(85.0f, 92.0f), READ_RIGHT, false, 1, _speed, "StopRight"),
 		AnimationData("HeadUp", Vector2f(240.0f, 638.0f), Vector2f(80.0f, 83.0f), READ_RIGHT, true, 1, _speed),
 		AnimationData("HeadDown", Vector2f(644.0f, 1062.0f), Vector2f(91.0f, 91.0f), READ_RIGHT, true, 1, _speed),
+		//AnimationData("HeadDown", Vector2f(1153.0f, 774.0f), Vector2f(56.0f, 89.0f), READ_RIGHT, true, 1, _speed),
 	});
 }
