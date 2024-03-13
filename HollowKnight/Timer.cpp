@@ -39,6 +39,7 @@ void Timer::Update(const float _deltaTime)
 			Stop();
 		}
 	}
+
 }
 
 void Timer::Start()

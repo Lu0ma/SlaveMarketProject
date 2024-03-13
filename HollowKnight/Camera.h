@@ -104,10 +104,10 @@ public:
 private:
 	void MoveToTarget(const float _deltaTime);
 	bool IsAtDestination(float& _distance);
-	void ShakeActor(const float _deltaTime);
 	void UpdateViewSize(const float _deltaTime);
 	void ZoomView(const float _deltaTime);
 	void ResetZoom();
+	void ShakeActor(const float _deltaTime);
 
 public:
 	void Init();

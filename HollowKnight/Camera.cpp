@@ -60,8 +60,8 @@ void Camera::ShakeActor(const float _deltaTime)
 	if (!canShake) return;
 	#pragma region Inits
 	Vector2f _offset;
-	int _randomX = Random<int>(100 , 10);
-	int _randomY = Random<int>(100, 10);
+	int _randomX = Random<int>(400, 100);
+	int _randomY = Random<int>(400 , 100);
 	int _randomNeg = Random<int>(2, 1);
 #pragma endregion 
 	_randomNeg == 1 ? _offset = Vector2f(static_cast<float>(_randomX), static_cast<float>(_randomY)) :
