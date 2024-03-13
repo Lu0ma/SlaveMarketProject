@@ -2,6 +2,13 @@
 #include "Menu.h"
 #include "CharmWidget.h"
 
+struct CharmsItem
+{
+	string widgetPath;
+	string title;
+	string text;
+};
+
 class CharmsMenu : public Menu
 {
 	Vector2i gridSize;
@@ -15,6 +22,8 @@ class CharmsMenu : public Menu
 
 	int notches;
 	int charmsCount;
+
+	vector<CharmsItem> _items;
 
 	vector<Button*> slotsCharms;
 	vector<Button*> slotsEquippedCharms;

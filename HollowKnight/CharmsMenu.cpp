@@ -45,6 +45,7 @@ void CharmsMenu::Init()
 	gridPos = Vector2f(windowSize.x / 12.0f, windowSize.y / 8.0f);
 	halfSize = windowSize / 2.0f;
 
+	_items = vector<CharmsItem>();
 	Background();
 	Separator();
 	SelectedCharms();
@@ -114,14 +115,9 @@ void CharmsMenu::SlotCharms()
 	const float _spacingY = halfSize.y * 0.8f;
 	const Vector2f& _gapSlot = Vector2f(35.0f, 35.0f);
 
-	struct CharmsItem
-	{
-		string widgetPath;
-		string title;
-		string text;
-	};
+	
 
-	const vector<CharmsItem>& _items = {
+	_items = {
 		{
 			"UIs/Charms/SkillSlot.png",
 			"Gathering Swarm",
