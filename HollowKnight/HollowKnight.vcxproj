@@ -356,6 +356,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Assets\Levels\SubLevel_1.txt" />
+    <Text Include="SaveOption.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

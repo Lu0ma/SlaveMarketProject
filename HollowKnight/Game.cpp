@@ -37,8 +37,8 @@ void Game::Start()
 void Game::Init()
 {
 	menu->Init();
-	map->Init();
 	camera->Init();
+	map->Init();
 
 	//TODO move
 	Spawner* _spawner = new Spawner();

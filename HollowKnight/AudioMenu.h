@@ -20,7 +20,6 @@ public:
 
 private:
 	bool MoveIndicator(const string _key, const float _percent);
-
 public:
 	virtual void Init() override;
 };

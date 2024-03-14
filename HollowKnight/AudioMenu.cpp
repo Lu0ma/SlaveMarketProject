@@ -13,6 +13,7 @@
 #define PATH_LINE "../Menu/Audio/music_line.png"
 #define PATH_INDICATOR "../Menu/Audio/Indicator.png"
 
+#define MUSIC_SAVE  "SaveOption"
 AudioMenu::AudioMenu(Menu* _owner) : Menu("Audio", _owner)
 {
 	minValue = 0;
@@ -86,14 +87,16 @@ void AudioMenu::Init()
 							soundValue -= 10.0f;
 							
 							SoundManager::GetInstance().AdjustAllVolume(soundValue);
+							cout << "soundValue :" << soundValue << endl << endl;
 						}
 						if (MoveIndicator("Music Volume", -10.0f))
 						{
 							musicValue -= 10.0f;
 							MusicManager::GetInstance().AdjustAllVolume(musicValue);
+							cout << "musicValue :" << musicValue << endl << endl;;
 						}
 						masterValue -= 10.0f;
-
+						cout << "masterValue :" << masterValue << endl << endl;;
 					}
 				}
 			},
@@ -101,6 +104,8 @@ void AudioMenu::Init()
 					if (MoveIndicator("Master Volume", 10.0f))
 					{
 						masterValue += 10.0f;
+						cout << "masterValue :" << masterValue << endl << endl;;
+						Save(to_string(masterValue), MUSIC_SAVE);
 					}
 				}
 			}),
@@ -110,6 +115,7 @@ void AudioMenu::Init()
 					{
 						soundValue -= 10.0f;
 						SoundManager::GetInstance().AdjustAllVolume(soundValue);
+						cout << "soundValue :" << soundValue << endl << endl;;
 					}
 				}
 			},
@@ -118,6 +124,7 @@ void AudioMenu::Init()
 					{
 						soundValue += 10.0f;
 						SoundManager::GetInstance().AdjustAllVolume(soundValue);
+						cout << "soundValue :" << soundValue << endl << endl;;
 					}
 				}
 			}),
@@ -127,6 +134,7 @@ void AudioMenu::Init()
 					{
 						musicValue -= 10.0f;
 						MusicManager::GetInstance().AdjustAllVolume(musicValue);
+						cout << "musicValue :" << musicValue << endl << endl;;
 					}
 				}
 			},
@@ -135,6 +143,7 @@ void AudioMenu::Init()
 					{
 						musicValue += 10.0f;
 						MusicManager::GetInstance().AdjustAllVolume(musicValue);
+						cout << "musicValue :" << musicValue << endl << endl;;
 					}
 				}
 			}),
@@ -220,6 +229,7 @@ void AudioMenu::Init()
 	canvas->AddWidget(backButton);
 
 	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
+
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
