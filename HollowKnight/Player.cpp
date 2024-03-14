@@ -1,10 +1,12 @@
 #include "Player.h"
 #include "Game.h"
 
+// Sound
+
 // Mobs
 #include "Mob.h"
 #include "SoundData.h"
-#include "SoundManager.h"
+#include "SoundData.h"
 #include "DeathMob.h"
 
 // System
@@ -22,6 +24,9 @@
 #define PATH_ITEM2 "test.png"
 #define PATH_DEATHMOB "Animations/DeathMob.png"
 #define DEAD_ZONE 50.f
+
+#define SOUND_JUMP "Knight/hero_jump"
+#define SOUND_FOOTSTEP_GRASS "Knight/hero_run_footsteps_grass"
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_BLOCK)
 {
@@ -68,14 +73,6 @@ void Player::SetupPlayerInput()
 		});
 
 	new ActionMap("Camera " , {
-		ActionData("ShakePlayer " , [&]() { Game::GetCamera()->SetCanShake(true); } , InputData({ActionType::KeyPressed, Keyboard::K})),
-		ActionData("StopShakePlayer ",  [&]() {new Timer([&]() {Game::GetCamera()->SetCanShake(false); } , milliseconds(5.0f)); } , InputData({ActionType::KeyReleased , Keyboard::K})),
-			if (movement->IsOnGround())
-			{
-				stats->UseMana(0.6f);
-				Game::GetCamera()->SetIsZoom(true);
-			}
-		}, InputData({ ActionType::KeyPressed, Keyboard::A })),
 		ActionData("StopConvertManaToLife", [&]() {
 			movement->SetDirectionX(0.0f, "StopRight");
 			Game::GetCamera()->SetIsZoom(false);
@@ -109,11 +106,11 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Movements", {
-		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
-		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
-		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
+		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right");  new SoundData(SOUND_FOOTSTEP_GRASS , 100.0f , false); }, InputData({ActionType::KeyPressed, Keyboard::D})),
+		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight");  }, InputData({ ActionType::KeyReleased, Keyboard::D })),
+		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left");  new SoundData(SOUND_FOOTSTEP_GRASS , 100.0f , false); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
-		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ActionType::KeyPressed, Keyboard::Space})),
+		ActionData("Jump", [&]() { movement->Jump();  new SoundData(SOUND_JUMP , 100.0f , false); }, InputData({ActionType::KeyPressed, Keyboard::Space})),
 		ActionData("ControllerJump", [&]() {
 			if (Joystick::isButtonPressed(0, 1))
 			{
@@ -121,7 +118,7 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 1) })),
 		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
-		ActionData("StopDash", [&]() { movement->SetDirectionX(0, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
+		ActionData("StopDash", [&]() { movement->SetDirectionX(0, "StopDash"); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
 		ActionData("ControllerDash", [&]() {
 			if (Joystick::isButtonPressed(0, 7))
 			{
@@ -190,7 +187,7 @@ void Player::TryToOpen(Menu* _menu, const bool _restoreActions)
 	if (!_isActive)
 	{
 		SoundManager::GetInstance().Stop("bench rest");
-		new SoundData("boss gushing", 50.0f);
+		new SoundData("boss gushing", 50.0f, false);
 
 		movement->SetCanMove(false);
 		attack->SetCanAttack(false);
@@ -201,7 +198,7 @@ void Player::TryToOpen(Menu* _menu, const bool _restoreActions)
 	else
 	{
 		SoundManager::GetInstance().Stop("boss gushing");
-		new SoundData("bench rest", 50.0f);
+		new SoundData("bench rest", 50.0f, false);
 	}
 }
 

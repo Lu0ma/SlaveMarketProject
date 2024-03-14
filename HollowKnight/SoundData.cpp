@@ -33,11 +33,10 @@
 #include "SoundManager.h"
 #include <iostream>
 
-SoundData::SoundData(const string& _path, const float _volume, const float _volumeMax,
-					 const AudioType& _type) : IManagable(_path)
+SoundData::SoundData(const string& _path, const float _volume, const bool _isLoop, const float _volumeMax,  const AudioType& _type) : IManagable(_path)
 {
 	Register();
-
+//	setLoop(_isLoop);
 	setVolume(_volume);
 	volumeMax = _volumeMax;
 
@@ -47,10 +46,11 @@ SoundData::SoundData(const string& _path, const float _volume, const float _volu
 		return;
 	}
 	setBuffer(buffer);
-	
-	SoundManager::GetInstance().Play(_path);
-}
 
+
+
+	SoundManager::GetInstance().Play(_path , _isLoop);	
+}
 
 void SoundData::Register()
 {

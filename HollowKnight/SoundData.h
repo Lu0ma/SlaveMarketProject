@@ -36,10 +36,8 @@ class SoundData : public Sound, public IManagable<string>
 {
 	float volumeMax;
 	SoundBuffer buffer;
-
 public:
-	SoundData(const string& _path, const float _volume,  const float _volumeMax = 100.0f,
-			  const AudioType& _type = MP3);
+	SoundData(const string& _path, const float _volume,  const bool _isLoop , const float _volumeMax = 100.0f, const AudioType& _type = WAV);
 
 public:
 	virtual void Register() override;

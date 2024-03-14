@@ -9,9 +9,19 @@
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
 #include "CollisionComponent.h"
+#include "SoundManager.h"
 
 using namespace std;
 
+struct PlayerSoundData
+{
+	SoundManager soundPlayer;
+
+	PlayerSoundData()
+	{
+		//soundPlayer.GetInstance().
+	}
+};
 class Player : public Actor
 {
 	PauseMenu* pauseMenu;
