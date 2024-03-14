@@ -61,7 +61,7 @@ void Player::SetupPlayerInput()
 			FxManager::GetInstance().Run("FxMana");
 			Game::GetCamera()->SetIsZoom(true);
 		}, InputData({ActionType::KeyPressed, Keyboard::A})),
-	ActionData("ManaToLife", [&]() {stats->UpdateLife(-1); FxManager::GetInstance().Run("FxIsHitten"); }, InputData({ActionType::KeyPressed, Keyboard::M})),
+	ActionData("ManaToLife", [&]() {stats->UpdateLife(-1); FxManager::GetInstance().Run("FxHighAttack"); }, InputData({ActionType::KeyPressed, Keyboard::M})),
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
 		});
 
