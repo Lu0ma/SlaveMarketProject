@@ -40,7 +40,7 @@ void PatrolState::Start()
 			movement->SetCanMove(false);
 			patrolTimer = new Timer([&]()
 				{
-					cout << "Patrol TIMER" << endl;
+					cout << brain->GetOwner()->GetID() << "Patrol TIMER" << endl;
 					if (movement->GetDestination() == startPosition)
 					{
 						movement->SetDestination(goalPosition);
