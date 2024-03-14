@@ -31,7 +31,12 @@ struct DirectionalSettings
 	Vector2f position;
 
 public:
-	DirectionalSettings() = default;
+	DirectionalSettings()
+	{
+		minDistance = 0.1f;
+		attenuationSpeed = 75.0f;
+		position = Vector2f();
+	}
 	DirectionalSettings(const Vector2f& _position, const float _minDistance, const float _attenuationSpeed)
 	{
 		position = _position;
@@ -42,23 +47,21 @@ public:
 
 class SoundManager : public Singleton<SoundManager>, public IManager<string, SoundData>
 {
-	float* volume;
-	float tempVolume;
 	bool isMuted;
+	float volume;
+	float tempVolume;
 
 public:
 	SoundManager();
-	~SoundManager();
 
 public:
-	float* GetVolume() const
+	float GetVolume() const
 	{
 		return volume;
 	}
 
 public:
 	void Play(const string& _path, const DirectionalSettings& _settings = DirectionalSettings());
+	void AdjustAllVolume(const float _value);
 	void Stop(const string& _path);
-	void IncreaseVolume(const float _value);
-	void DecreaseVolume(const float _value);
 };

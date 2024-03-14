@@ -3,6 +3,8 @@
 
 // Mobs
 #include "Mob.h"
+#include "SoundData.h"
+#include "SoundManager.h"
 #include "DeathMob.h"
 
 // System
@@ -175,10 +177,19 @@ void Player::TryToOpen(Menu* _menu, const bool _restoreActions)
 
 	if (!_isActive)
 	{
+		SoundManager::GetInstance().Stop("bench rest");
+		new SoundData("boss gushing", 50.0f);
+
 		movement->SetCanMove(false);
 		attack->SetCanAttack(false);
 		_menu->SetStatus(true);
 		stats->SetStatus(false);
+	}
+
+	else
+	{
+		SoundManager::GetInstance().Stop("boss gushing");
+		new SoundData("bench rest", 50.0f);
 	}
 }
 

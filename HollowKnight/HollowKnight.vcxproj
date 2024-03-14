@@ -230,6 +230,7 @@
     <ClCompile Include="ShopMenu.cpp" />
     <ClCompile Include="SoundData.cpp" />
     <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="TextObject.cpp" />
@@ -347,6 +348,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SoundData.h" />
     <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="TextObject.h" />

@@ -15,14 +15,8 @@ AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achivements", _owner)
 
 void AchievementsMenu::Init()
 {
-
-	canvas = new Canvas("Achievements", FloatRect(0, 0, 1, 1));
 	const Vector2f& _windowSize = Game::GetWindowSize();
 	const float _halfWindowX = _windowSize.x / 2.0f;
-
-	boxOfView = new ShapeWidget(ShapeData(Vector2f(_windowSize.x / 2.0f - 50.0f, _windowSize.y / 2.0f + 20.0f), Vector2f(600.0f, 375.0f), ""));
-	boxOfView->GetDrawable()->setFillColor(Color::Transparent);
-	canvas->AddWidget(boxOfView);
 
 	#pragma region Background
 
@@ -131,6 +125,32 @@ void AchievementsMenu::Init()
 
 	#pragma endregion 
 
+	#pragma region ScrollBox
+
+	#pragma region Bar
+
+	const Vector2f& _barSize = Vector2f(61, 400.0f);
+	const float _windowOneThirdX = _windowSize.x / 1.35f;
+	const Vector2f& _scrollSize = Vector2f(30.0f, 60.0f);
+
+	handle = new ScrollBar(ShapeData(Vector2f(_windowOneThirdX, 225.0f), _scrollSize, PATH_SCROLL), 4, [&](bool _scrolltype) {ComputeScroll(allData, _scrolltype); });
+	canvas->AddWidget(handle->GetBar());
+	canvas->AddWidget(handle);
+	canvas->AddWidget(handle->GetButtonUp());
+	canvas->AddWidget(handle->GetButtonDown());
+
+	#pragma endregion
+
+	#pragma region Box
+
+	boxOfView = new ShapeWidget(ShapeData(Vector2f(_windowSize.x / 2.0f - 50.0f, _windowSize.y / 2.0f + 20.0f), Vector2f(600.0f, 375.0f), ""));
+	boxOfView->GetDrawable()->setFillColor(Color::Transparent);
+	canvas->AddWidget(boxOfView);
+
+	#pragma endregion
+
+	#pragma endregion
+
 	#pragma region Back
 
 	const Vector2f& _buttonSize = Vector2f(200.0f, 50.0f);
@@ -151,20 +171,6 @@ void AchievementsMenu::Init()
 
 	/*pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));
 	canvas->AddWidget(pointer);*/
-
-	#pragma endregion
-
-	#pragma region ScrollBar
-
-	const Vector2f& _barSize = Vector2f(61, 400.0f);
-	const float _windowOneThirdX = _windowSize.x / 1.35f;
-	const Vector2f& _scrollSize = Vector2f(30.0f, 60.0f);
-
-	handle = new ScrollBar(ShapeData(Vector2f(_windowOneThirdX, 225.0f), _scrollSize, PATH_SCROLL), 4, [&](bool _scrolltype) {ComputeScroll(allData, _scrolltype); });
-	canvas->AddWidget(handle->GetBar());
-	canvas->AddWidget(handle);
-	canvas->AddWidget(handle->GetButtonUp());
-	canvas->AddWidget(handle->GetButtonDown());
 
 	#pragma endregion
 }
