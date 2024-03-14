@@ -6,7 +6,6 @@ class VideoMenu : public Menu
 {
 	vector<Button*> buttons;
 	BrightnessMenu* brightness;
-	Button* backButton;
 
 public:
 	VideoMenu(Menu* _owner);

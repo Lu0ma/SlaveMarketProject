@@ -5,7 +5,7 @@
 
 KeyboardMenu::KeyboardMenu(Menu* _owner) : Menu("Keyboard", _owner)
 {
-	backButton = nullptr;
+
 }
 
 

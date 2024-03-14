@@ -11,6 +11,7 @@ OptionsMenu::OptionsMenu(Menu* _owner) : Menu("OptionsMenu", _owner)
 	keyboard = new KeyboardMenu(this);
 }
 
+
 void OptionsMenu::Init()
 {
 	const Vector2f& _windowSize = Game::GetWindowSize();

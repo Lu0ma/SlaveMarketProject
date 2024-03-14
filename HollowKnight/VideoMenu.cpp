@@ -5,7 +5,6 @@ VideoMenu::VideoMenu(Menu* _owner) : Menu("VideoMenu", _owner)
 {
 	buttons = vector<Button*>();
 	brightness = new BrightnessMenu(this);
-	backButton = nullptr;
 }
 
 

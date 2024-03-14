@@ -4,8 +4,6 @@
 
 class AchievementsMenu : public Menu
 {
-	Button* backButton;
-
 public:
 	AchievementsMenu(Menu* _owner);
 

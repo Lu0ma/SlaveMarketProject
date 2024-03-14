@@ -18,6 +18,7 @@ protected:
 	Canvas* canvas;
 	ShapeWidget* pointerLeft;
 	ShapeWidget* pointerRight;
+	Button* backButton;
 	Menu* owner;
 
 public:

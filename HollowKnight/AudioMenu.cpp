@@ -19,7 +19,6 @@ AudioMenu::AudioMenu(Menu* _owner) : Menu("Audio", _owner)
 	soundValue = 50.0f;
 	musicValue = 50.0f;
 	masterValue = 50.0f;
-	backButton = nullptr;
 	buttons = vector<Button*>();
 	indicators = map<string, ShapeWidget*>();
 }

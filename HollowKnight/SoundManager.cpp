@@ -63,6 +63,7 @@ SoundManager::~SoundManager()
 	delete volume;
 }
 
+
 void SoundManager::Play(const string& _path, const DirectionalSettings& _settings)
 {
 	if (_path == "") return;

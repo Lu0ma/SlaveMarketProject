@@ -3,7 +3,6 @@
 
 class KeyboardMenu : public Menu
 {
-	Button* backButton;
 
 public:
 	KeyboardMenu(Menu* _owner);
