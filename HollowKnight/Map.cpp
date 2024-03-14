@@ -4,8 +4,13 @@
 #include "Lift.h"
 #include "Macro.h"
 #include "FileLoader.h"
+#include "TextureManager.h"
+#include "Game.h"
+#include "Item.h"
+#include "Enemy.h"
+#include "Boss.h"
+#include "Mob.h"
 
-#define LEVEL "Assets/Levels/SubLevel_1.txt"
 #define PATH_BENCH "Map/Bench.png"
 #define PATH_STAND "/UIs/Shop/Stand.png"
 #define PATH_PNJ "/Characters/PNJ/PNJA.png"
@@ -20,6 +25,7 @@ Map::Map()
 	dragon = new Dragon(ShapeData(Vector2f(700.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
 	bench = new Bench(ShapeData(Vector2f(300.0f, 5.0f), Vector2f(176.0, 80.0f), PATH_BENCH));
 	merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_MERCHAND));
+	currentLevel = 2;
 }
 
 Map::~Map()
@@ -35,9 +41,10 @@ MapData Map::LoadMapData(const string& _path)
 {
 	MapData _data;
 	const string& _symbol = " = ";
-
+	
 	//background
 	_data.backgroundPath = GetStringAfterSymbol(GetLineByText("BackgroundPath", _path), _symbol);
+	cout << _data.backgroundPath << endl;
 
 	const float _bgPosX = stof(GetStringAfterSymbol(GetLineByText("BackgroundPosX", _path), _symbol));
 	const float _bgPosY = stof(GetStringAfterSymbol(GetLineByText("BackgroundPosY", _path), _symbol));
@@ -45,60 +52,202 @@ MapData Map::LoadMapData(const string& _path)
 
 	const float _bgSizeX = stof(GetStringAfterSymbol(GetLineByText("BackgroundSizeX", _path), _symbol));
 	const float _bgSizeY = stof(GetStringAfterSymbol(GetLineByText("BackgroundSizeY", _path), _symbol));
-	_data.backgroundPos = Vector2f(_bgSizeX, _bgSizeY);
+	_data.backgroundSize = Vector2f(_bgSizeX, _bgSizeY);
 
-	const float _clampCamMinX = stof(GetStringAfterSymbol(GetLineByText("ClampCamMinX", _path), _symbol));
+	/*const float _clampCamMinX = stof(GetStringAfterSymbol(GetLineByText("ClampCamMinX", _path), _symbol));
 	const float _clampCamMinY = stof(GetStringAfterSymbol(GetLineByText("ClampCamMinY", _path), _symbol));
-	_data.clampCamMin = Vector2f(_bgPosX, _bgPosY);
+	_data.clampCamMin = Vector2f(_bgPosX, _bgPosY);*/
 
 	const float _clampCamMaxX = stof(GetStringAfterSymbol(GetLineByText("ClampCamMaxX", _path), _symbol));
 	const float _clampCamMaxY = stof(GetStringAfterSymbol(GetLineByText("ClampCamMaxY", _path), _symbol));
 	_data.clampCamMax = Vector2f(_bgPosX, _bgPosY);
+	
 
-	//walls
-	const string& _wallSymbol = "walls = [";
-	const int _wallIndex = GetIndexByText(_wallSymbol, _path);
-	int _index = _wallIndex + 2;
+#pragma region Items
 
-	bool _isEndOfWalls;
+	const string& _itemSymbol = "items = [";
+	const int _itemIndex = GetIndexByText(_itemSymbol, _path);
+	int _index = _itemIndex + 2;
+	bool _isEndOfItem;
+	do
+	{
+		// Recupérer les informations de l'item, augmenter l'index a chaque fois
+		const string& _itemName = GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol);
+		_index++;
+		const float _itemPositionX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _itemPositionY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _itemSizeX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _itemSizeY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const string& _itemPath = GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol);
+		cout << _itemPath << endl;
+		_index++;
+		const string& _itemDesc = GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol);
+		_index++;
+		const float _range = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const ItemType& _itemType = static_cast<ItemType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
+		_index++;
+
+		CollectableActor* _item = 
+			new CollectableActor(STRING_ID(_itemName), ShapeData(Vector2f(_itemPositionX, _itemPositionY), Vector2f(_itemSizeX, _itemSizeY), _itemPath), 
+				_range, _itemDesc, _itemName, _itemType);
+		//CollectableActor* _item = new CollectableActor(_itemName, ShapeData(, Vector2f(_itemSizeX, _itemSizeY), _itemPath), _range, _itemType);
+		// itemData.push_back(_item->GetItemData());
+		_index += 2;
+		_isEndOfItem = ContainsText("]", GetLineByIndex(_index - 1, _path));
+		cout << "ITEM CREE" << endl;
+	} while (!_isEndOfItem);
+
+
+#pragma endregion
+
+#pragma region Platform
+
+	const string& _platformSymbol = "platforms = [";
+	const int _platformIndex = GetIndexByText(_platformSymbol, _path);
+	_index = _platformIndex + 2;
+
+	bool _isEndOfPlatform;
 	do 
 	{
-		const int _wallPositionX = stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		const int _platformPositionX = stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
 		_index++;
-		const int _wallPositionY = stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		const int _platformPositionY = stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
 		_index++;
-		PlatformType _wallType = static_cast<PlatformType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
+		PlatformType _platformType = static_cast<PlatformType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
 		_index++;
-		PlatformData _platform = PlatformData(Vector2f((float)_wallPositionX, (float)_wallPositionY), _wallType);
+		PlatformData _platform = PlatformData(Vector2f((float)_platformPositionX, (float)_platformPositionY), _platformType);
 		platformsData.push_back(_platform);
 		_index +=2;
-		_isEndOfWalls = ContainsText("]", GetLineByIndex(_index - 1, _path));
+		_isEndOfPlatform = ContainsText("]", GetLineByIndex(_index - 1, _path));
+		
+	} while (!_isEndOfPlatform);
 
-	} while (!_isEndOfWalls);
+#pragma endregion
 
-	InitPlateforms();
+#pragma region Grounds
+
+	const string& _groundSymbol = "grounds = [";
+	const int _groundIndex = GetIndexByText(_groundSymbol, _path);
+	_index = _groundIndex + 2;
+	bool _isEndOfGround;
+	do
+	{
+		// Recupérer les informations du ground, augmenter l'index a chaque fois
+		const float _groundPositionX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _groundPositionY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _groundSizeX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _groundSizeY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const CollisionType& _groundCollisionType = static_cast<CollisionType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
+		_index++;
+
+		// Créer avec les infos
+		Actor* _ground = new Actor(STRING_ID("Ground"), ShapeData(Vector2f(_groundPositionX, _groundPositionY), Vector2f(_groundSizeX, _groundSizeY), ""), _groundCollisionType);
+		_ground->GetDrawable()->setFillColor(Color::Red);
+
+		_index += 2;
+		_isEndOfGround = ContainsText("]", GetLineByIndex(_index - 1, _path));
+	} while (!_isEndOfGround);
+
+#pragma endregion
+
+#pragma region Enemies 
+
+	const string& _enemySymbol = "enemies = [";
+	const int _enemyIndex = GetIndexByText(_groundSymbol, _path);
+	_index = _enemyIndex + 2;
+	bool _isEndOfEnemy;
+	do
+	{
+		// Recupérer les informations du ground, augmenter l'index a chaque fois
+		const EnemyType& _enemyType = static_cast<EnemyType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
+		_index++;
+		if (_enemyIndex == BOSS)
+		{
+			const BossType& _enemyIndex = static_cast<BossType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
+		}
+		else if (_enemyIndex == MOB)
+		{
+			const MobType& _enemyIndex = static_cast<MobType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
+		}
+		_index++;
+		const float _enemyPositionX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _enemyPositionY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _enemySizeX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _enemySizeY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+
+
+		// Créer avec les infos
+		if (_enemyIndex == BOSS)
+		{
+			new Boss(ShapeData(Vector2f(_enemyPositionX, _enemyPositionY), Vector2f(_enemySizeX, _enemySizeY)));
+		}
+		else if (_enemyIndex == MOB)
+		{
+			new Mob(ShapeData(Vector2f(_enemyPositionX, _enemyPositionY), Vector2f(_enemySizeX, _enemySizeY)));
+		}		
+
+		_index += 2;
+		_isEndOfGround = ContainsText("]", GetLineByIndex(_index - 1, _path));
+	} while (!_isEndOfGround);
+
+#pragma endregion
+
+#pragma region NPCS
+	const string& _npcSymbol = "enemies = [";
+	const int _npcIndex = GetIndexByText(_groundSymbol, _path);
+	_index = _enemyIndex + 2;
+	bool _isEndOfEnemy;
+	do
+	{
+		// Recupérer les informations de npc, augmenter l'index a chaque fois
+		
+		_index += 2;
+		_isEndOfGround = ContainsText("]", GetLineByIndex(_index - 1, _path));
+	} while (!_isEndOfGround);
+#pragma endregion
+
+#pragma region Environment
+
+#pragma endregion
+
+
+	InitPlatforms();
 	return _data;
 }
 
-void Map::InitPlateforms()
+void Map::InitPlatforms()
 {
 	Vector2f _size;
 	string _filePath;
 	for (int _index = 0; _index < platformsData.size(); _index++)
 	{
 		ComputePlatformType(platformsData[_index].type, _size, _filePath);
-		new Actor(STRING_ID("Plateform"), ShapeData(platformsData[_index].position, _size, _filePath), CT_BLOCK);
+
+		Actor* _actor = new Actor(STRING_ID("Plateform"), ShapeData(platformsData[_index].position, _size, _filePath), CT_BLOCK);
 	}
 }
 
 void Map::Init()
 {
-	LoadMapData(LEVEL);
+	MapData _mapdata = LoadMapData(GetLevelFromIndex(currentLevel));
 	bench->Init();
 	merchand->Init();
 	pnj->Init();
-
-	ShapeObject* _background = new ShapeObject(ShapeData(Vector2f(-300.0f, -SCREEN_HEIGHT), Vector2f(2340.0f, 985.0f), "Levels/Environment_GROUND.png"));
+	// "Levels/Environment_GROUND.png"
+	ShapeObject* _background = new ShapeObject(ShapeData(_mapdata.backgroundPos + Vector2f(0, -_mapdata.backgroundSize.y + 220), _mapdata.backgroundSize, _mapdata.backgroundPath));
 	_background->GetDrawable()->setOrigin(0.0f, 0.0f);
 	drawables.push_back(_background);
 
@@ -113,20 +262,8 @@ void Map::Init()
 	drawables.push_back(_arena);
 
 	//TODO modify ?
-	Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-100.0f, 0.0f), Vector2f(12000.0f, 10.0f), ""), CT_BLOCK);
-	_ground->GetDrawable()->setFillColor(Color::Red);
-
-	new CollectableActor(STRING_ID("Vessel"), ShapeData(Vector2f(-250.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Vessels/Vessel_3.png"),
-		30.0f, "Vessel", "Le truc qui regen la mana", IT_VESSEL);
-
-	new CollectableActor(STRING_ID("Item"), ShapeData(Vector2f(-350.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Item.png"),
-		30.0f, "Item", "Ceci est un item", IT_ITEM);
-
-	new CollectableActor(STRING_ID("ItemE"), ShapeData(Vector2f(-400.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Item.png"),
-		30.0f, "Item", "Ceci est un ", IT_ITEM);
-
-	new CollectableActor(STRING_ID("Item2"), ShapeData(Vector2f(-450.0f, 30.5f), Vector2f(50.0f, 50.0f), "UIs/Inventory/Item.png"),
-		30.0f, "Item", "Ceci", IT_ITEM);
+	/*Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-100.0f, 30.0f), Vector2f(12000.0f, 10.0f), ""), CT_BLOCK);
+	_ground->GetDrawable()->setFillColor(Color::Red);*/
 
 	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(250.0f, 250.0f), "Lift.png"));
 	lifts.push_back(_lift);

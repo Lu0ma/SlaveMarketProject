@@ -53,7 +53,7 @@ void TitleMenu::Init()
 			SetStatus(false);
 		}),
 		ButtonData("ACHIEVEMENTS", [&]() {
-			if (achievement->GetAchievementCanvas())
+			/*if (achievement->GetAchievementCanvas())
 			{
 				achievement->GetAchievementCanvas()->SetVisibilityStatus(true);
 				SetStatus(false);
@@ -62,7 +62,7 @@ void TitleMenu::Init()
 			{
 				achievement->SetStatus(true);
 				SetStatus(false);
-			}
+			}*/
 		}),
 		ButtonData("EXTRAS", [&]() {
 			cout << "EXTRAS" << endl;

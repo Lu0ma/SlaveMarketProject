@@ -18,7 +18,7 @@ string GetLineByIndex(const int _index, const string& _path)
 		if (_lineIndex == _index) return _line;
 		_lineIndex++;
 	}
-
+	_lineIndex++;
 	return _line;
 }
 
@@ -110,7 +110,7 @@ string GetStringAfterSymbol(const string& _text, const string& _symbol)
 			_index++;
 			if (_index >= _symbolSize)
 			{
-				return GetStringAfterIndex(_text, _charIndex);
+				return GetStringAfterIndex(_text, _charIndex + 1);
 			}
 
 			continue;

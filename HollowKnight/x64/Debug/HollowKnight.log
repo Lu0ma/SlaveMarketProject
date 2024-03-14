@@ -1,54 +1,6 @@
-﻿  AchievementsMenu.cpp
-  AudioMenu.cpp
-  Belfly.cpp
-  Boofly.cpp
-  Boss.cpp
-  BrightnessMenu.cpp
-  Camera.cpp
-  CharmsMenu.cpp
-  CollectableActor.cpp
-  CollisionComponent.cpp
-  ControllerMenu.cpp
-  DeathMob.cpp
-  Dragon.cpp
-  ExtrasMenu.cpp
-  FalseKnight.cpp
-  FxManager.cpp
-  Game.cpp
-  HuskBully.cpp
-  InspectComponent.cpp
-  InteractableActor.cpp
-  Génération de code en cours...
-  Compilation en cours...
-  InteractionComponent.cpp
-  Inventory.cpp
-  KeyboardMenu.cpp
-  Lift.cpp
-  Main.cpp
-  MainMenu.cpp
-  Map.cpp
-  Menu.cpp
-  MenuManager.cpp
-  Merchand.cpp
+﻿  Map.cpp
+D:\Github\SlaveMarketProject\HollowKnight\Map.cpp(212,7): error C2086: 'bool _isEndOfEnemy': redefinition
+D:\Github\SlaveMarketProject\HollowKnight\Map.cpp(167,7): message : see declaration of '_isEndOfEnemy'
   Mob.cpp
-  MobAttackComponent.cpp
-  OptionsMenu.cpp
-  PauseMenu.cpp
-  Player.cpp
-D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Player.cpp(93,77): warning C4244: 'argument' : conversion de 'float' en 'sf::Int32', perte possible de données
-  PlayerAttackComponent.cpp
-  PlayerMovementComponent.cpp
-  PlayerStat.cpp
-  PurchaseMenu.cpp
-  QuitGameMenu.cpp
-  Génération de code en cours...
-  Compilation en cours...
-  QuitToMenu.cpp
-  ShopMenu.cpp
-  SoundData.cpp
-  SoundManager.cpp
   Spawner.cpp
-  TitleMenu.cpp
-  VideoMenu.cpp
-  Génération de code en cours...
-  HollowKnight.vcxproj -> D:\p1VS\SFML\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
+  Generating Code...

@@ -39,6 +39,11 @@ void SetOriginAtMiddle(Shape* _shape)
 	_shape->setOrigin(_size / 2.0f);
 }
 
+string GetLevelFromIndex(const int _index)
+{
+	return "Assets/Levels/SubLevel_" + to_string(_index) + ".txt";
+}
+
 vector<string> GetWords(const string& _text, const bool _withSpaces)
 {
 	vector<string> _words;

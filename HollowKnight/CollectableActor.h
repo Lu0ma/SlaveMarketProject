@@ -10,7 +10,11 @@ class CollectableActor : public Actor
 	Player* player;
 
 	//vector<string> animCollectable;
-
+public:
+	ItemData GetItemData()
+	{
+		return data;
+	}
 public:
 	CollectableActor(const string& _name, const ShapeData& _data, const float _range,
 					 const string& _title, const string& _text, const ItemType& _type);

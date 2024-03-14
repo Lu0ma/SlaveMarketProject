@@ -1,5 +1,6 @@
 #pragma once
 #include "Menu.h"
+#include "ScrollBar.h"
 
 struct AchievementData
 {

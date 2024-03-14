@@ -24,7 +24,7 @@ Camera::Camera() : Actor("Camera" , ShapeData())
 
 	view = View();
 
-
+	// view.zoom(5.0f);
 	isDown = false;
 	isZoom = false;
 	isUp = false;

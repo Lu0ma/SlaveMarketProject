@@ -1,4 +1,5 @@
-BackgroundPath = Dirtmouth_100%.png
+BackgroundPath = Levels/Backgrounds/Dirtmouth_100%.png
+
 
 BackgroundPosX = 50
 BackgroundPosY = 50
@@ -11,60 +12,126 @@ ClampCamMinY = 0
 ClampCamMaxX = 500
 ClampCamMaxY = 500
 
-walls = [
+items = [
 {
- WallPosX = 1200
- WallPosY = -185
- WallType = 2
+Name = Vessel
+CollectablePosX = -250
+CollectablePosY = 30.5
+CollectableSizeX = 50
+CollectableSizeY = 50
+Path = UIs/Inventory/Vessels/Vessel_3.png
+ItemDesc = Le truc qui regen la mana
+Range = 30.0f
+ItemType = 2
 }
 {
- WallPosX = 900
- WallPosY = -385
- WallType = 1
+Name = Item
+CollectablePosX = -350.0 
+CollectablePosY = 30.5
+CollectableSizeX = 50
+CollectableSizeY = 50
+Path = UIs/Inventory/Item.png
+ItemDesc = Ceci est un item
+Range = 30.0f
+ItemType = 3
 }
 {
- WallPosX = 1200
- WallPosY = -585
- WallType = 0
+Name = Item
+CollectablePosX = -400
+CollectablePosY = 30.5
+CollectableSizeX = 50
+CollectableSizeY = 50
+Path = UIs/Inventory/Item.png
+ItemDesc = Ceci est un 
+Range = 30.0f
+ItemType = 3
 }
 {
- WallPosX = 1500
- WallPosY = -785
- WallType = 1
-}
-{
- WallPosX = 1800
- WallPosY = -585
- WallType = 1
-}
-{
- WallPosX = 2100
- WallPosY = -785
- WallType = 0
-}
-{
- WallPosX = 2500
- WallPosY = -955
- WallType = 0
-}
-{
- WallPosX = -1000
- WallPosY = 0
- WallType = 0
+ Name = Item
+ CollectablePosX = -450
+ CollectablePosY = 30.5
+ CollectableSizeX = 50
+ CollectableSizeY = 50
+ Path = UIs/Inventory/Item.png
+ ItemDesc = Ceci
+ Range = 30.0f
+ ItemType = 3
 }
 ]
-enemies = 
+
+platforms = [
 {
- TYPE
- pos
- size
- path
+ PlatformPosX = 1200
+ PlatformPosY = -185
+ PlatformType = 2
 }
+{
+ PlatformPosX = 900
+ PlatformPosY = -385
+ PlatformType = 1
+}
+{
+ PlatformPosX = 1200
+ PlatformPosY = -585
+ PlatformType = 0
+}
+{
+ PlatformPosX = 1500
+ PlatformPosY = -785
+ PlatformType = 1
+}
+{
+ PlatformPosX = 1800
+ PlatformPosY = -585
+ PlatformType = 1
+}
+{
+ PlatformPosX = 2100
+ PlatformPosY = -785
+ PlatformType = 0
+}
+{
+ PlatformPosX = 2500
+ PlatformPosY = -955
+ PlatformType = 0
+}
+{
+ PlatformPosX = -1000
+ PlatformPosY = 0
+ PlatformType = 0
+}
+]
+
+grounds = [
+{
+ CollectablePosX = 100
+ CollectablePosY = 30.5
+ CollectableSizeX = 12000
+ CollectableSizeY = 10
+ CollisionType = 3
+}
+
+enemies = [
+{
+ EnemyType = 0
+ EnemyIndex = 0
+ EnemyPosX = 1200
+ EnemyPosY = -185
+ EnemySizeX = 1200
+ EnemySizeY = -185
+}
+]
 
 npcs = 
 {
- TYPE
- pos
- size
- path
+ NpcType = 
+ NpcPosX =
+ NpcPosY =  
 }
+
+Environment = [
+{
+ 
+}
+
+]

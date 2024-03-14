@@ -26,6 +26,7 @@ float Distance(const float _first, const float _second);
 float Distance(const Vector2f& _first, const Vector2f& _second);
 float Distance(const float _first, const float _second);
 void SetOriginAtMiddle(Shape* _shape);
+string GetLevelFromIndex(const int _index);
 vector<string> GetWords(const string& _text, const bool _withSpaces = false);
 static inline float Randn()
 {
