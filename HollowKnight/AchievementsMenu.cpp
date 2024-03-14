@@ -4,7 +4,7 @@
 #define PATH_ACHIEVEMENTS "UIs/Menus/Achievements/Achievement_"
 #define PATH_SCROLL "UIs/Menus/Achievements/ScrollBar/Scroll.png"
 
-AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achivements", _owner)
+AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achievements", _owner)
 {
 	handle = nullptr;
 	canvas = nullptr;
@@ -21,29 +21,30 @@ void AchievementsMenu::Init()
 
 	boxOfView = new ShapeWidget(ShapeData(Vector2f(_windowSize.x / 2.0f - 50.0f, _windowSize.y / 2.0f + 20.0f), Vector2f(600.0f, 375.0f), ""));
 	boxOfView->GetDrawable()->setFillColor(Color::Transparent);
+	canvas->AddWidget(boxOfView);
 
-
-#pragma region Background
+	#pragma region Background
 
 	ShapeWidget* _background = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_BACKGROUND));
 	canvas->AddWidget(_background);
 
-#pragma endregion
+	#pragma endregion
 
-#pragma region Title
+	#pragma region Title
 
-	const float _tilePosY = _windowSize.y * 0.15f;
-	Label* _title = new Label(TextData("ACHIEVEMENTS", Vector2f(_halfWindowX, _tilePosY), FONT, 32));
+	const float _titlePosY = _windowSize.y * 0.1f;
+	Label* _title = new Label(TextData("Achievements", Vector2f(_halfWindowX, _titlePosY), FONT, 36));
 	canvas->AddWidget(_title);
 
-	const float _tileIconPosY = _tilePosY + 50.0f;
-	ShapeWidget* _titleIcon = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _tileIconPosY), Vector2f(765.0f, 78.0f), PATH_TITLE_ICON));
-	_titleIcon->GetDrawable()->setScale(0.6f, 0.6f);
-	canvas->AddWidget(_titleIcon);
+	const float _titleBarPosY = _titlePosY + 75.0f;
+	const Vector2f& _titleBarSize = Vector2f(_windowSize.x * 0.4f, 50.0f);
+	const float _halfTitleBarSizeX = _titleBarSize.x * 0.45f;
+	ShapeWidget* _titleBar = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _titleBarPosY), _titleBarSize, PATH_TITLE_ICON));
+	canvas->AddWidget(_titleBar);
 
-#pragma endregion
+	#pragma endregion
 
-#pragma region Grid
+	#pragma region Grid
 
 	allData = {
 		{
@@ -114,6 +115,7 @@ void AchievementsMenu::Init()
 		Achievement* _achievement = new Achievement(_icon, { _achievementTitle, _achievementDescrition });
 		achievements.insert(achievements.begin(), _achievement);
 	}
+
 	int _index = 0;
 	for (Achievement* _achievement : achievements)
 	{
@@ -125,9 +127,10 @@ void AchievementsMenu::Init()
 		}
 		_index++;
 	}
-#pragma endregion 
 
-#pragma region Back
+	#pragma endregion 
+
+	#pragma region Back
 
 	const Vector2f& _buttonSize = Vector2f(200.0f, 50.0f);
 	const float _buttonPosY = _windowSize.y * 0.9f;
@@ -148,9 +151,9 @@ void AchievementsMenu::Init()
 	// pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));
 	// canvas->AddWidget(pointer);
 
-#pragma endregion
+	#pragma endregion
 
-#pragma region ScrollBar
+	#pragma region ScrollBar
 
 	const Vector2f& _barSize = Vector2f(61, 400.0f);
 	const float _windowOneThirdX = _windowSize.x / 1.35f;
@@ -161,8 +164,8 @@ void AchievementsMenu::Init()
 	canvas->AddWidget(handle);
 	canvas->AddWidget(handle->GetButtonUp());
 	canvas->AddWidget(handle->GetButtonDown());
-#pragma endregion
-	canvas->AddWidget(boxOfView);
+
+	#pragma endregion
 }
 
 void AchievementsMenu::ComputeScroll(const vector<AchievementData>& _data, const bool _scrollType)

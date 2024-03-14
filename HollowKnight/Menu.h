@@ -6,7 +6,7 @@
 #include "Label.h"
 
 #define PATH_BACKGROUND "UIs/Menus/Background.png"
-#define PATH_TITLE_ICON "UIs/Menus/TitleIcon.png"
+#define PATH_TITLE_ICON "UIs/Menus/TitleBarMenu.png"
 #define PATH_POINTER "UIs/Menus/Pointer.png"
 #define FONT "Font.ttf"
 
@@ -18,6 +18,7 @@ protected:
 	Canvas* canvas;
 	ShapeWidget* pointerLeft;
 	ShapeWidget* pointerRight;
+	Button* backButton;
 	Menu* owner;
 
 public:

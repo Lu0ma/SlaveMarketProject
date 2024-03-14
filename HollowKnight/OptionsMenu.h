@@ -1,19 +1,18 @@
 #pragma once
 #include "Menu.h"
-#include "BrightnessMenu.h"
+#include "AudioMenu.h"
+#include "VideoMenu.h"
 #include "ControllerMenu.h"
 #include "KeyboardMenu.h"
-#include "Button.h"
-#include "AudioMenu.h"
 
 class OptionsMenu : public Menu
 {
 	vector<Button*> buttons;
-	BrightnessMenu* brightness;
+	AudioMenu* audio;
+	VideoMenu* video;
 	ControllerMenu* controller;
 	KeyboardMenu* keyboard;
 	ShapeWidget* pointer;
-	AudioMenu* audio;
 
 public:
 	OptionsMenu(Menu* _owner);

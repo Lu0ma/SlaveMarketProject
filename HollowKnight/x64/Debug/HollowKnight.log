@@ -1,70 +1,29 @@
 ﻿  AchievementsMenu.cpp
-  Action.cpp
-  ActionMap.cpp
-  Actor.cpp
-  ActorManager.cpp
-  Animation.cpp
-  AnimationComponent.cpp
-  AttackState.cpp
-  AttackToChase.cpp
-  AttackToPatrol.cpp
   AudioMenu.cpp
   Belfly.cpp
-  Bench.cpp
   Boofly.cpp
   Boss.cpp
-  BossAttackState.cpp
-  BossBrain.cpp
-  BossPatrolState.cpp
-  Brain.cpp
   BrightnessMenu.cpp
-  Generating Code...
-  Compiling...
-  Button.cpp
   Camera.cpp
-  Canvas.cpp
   CharmsMenu.cpp
-  CharmWidget.cpp
-  ChaseState.cpp
-  ChaseToAttack.cpp
-  ChaseToPatrol.cpp
   CollectableActor.cpp
   CollisionComponent.cpp
-  Component.cpp
   ControllerMenu.cpp
   DeathMob.cpp
   Dragon.cpp
-  Enemy.cpp
-  EnemyBrain.cpp
   ExtrasMenu.cpp
   FalseKnight.cpp
-  FileLoader.cpp
-  FontData.cpp
-  Generating Code...
-  Compiling...
-  FontManager.cpp
-  Fx.cpp
-  FxData.cpp
   FxManager.cpp
   Game.cpp
-  Grub.cpp
-  HUD.cpp
   HuskBully.cpp
-  InputManager.cpp
   InspectComponent.cpp
   InteractableActor.cpp
+  Génération de code en cours...
+  Compilation en cours...
   InteractionComponent.cpp
   Inventory.cpp
-  Item.cpp
-  ItemWidget.cpp
   KeyboardMenu.cpp
-  Kismet.cpp
-  Label.cpp
-  Lever.cpp
   Lift.cpp
-  Generating Code...
-  Compiling...
-  Macro.cpp
   Main.cpp
   MainMenu.cpp
   Map.cpp
@@ -73,52 +32,23 @@
   Merchand.cpp
   Mob.cpp
   MobAttackComponent.cpp
-  MobAttackState.cpp
-  MobBrain.cpp
-  MobLifeComponent.cpp
-  MobMovementComponent.cpp
-  MobPatrolState.cpp
-  MovementComponent.cpp
-  MusicData.cpp
-  MusicManager.cpp
-  Object.cpp
   OptionsMenu.cpp
-  PatrolState.cpp
-  Generating Code...
-  Compiling...
-  PatrolToAttack.cpp
-  PatrolToChase.cpp
   PauseMenu.cpp
   Player.cpp
-D:\Github\SlaveMarketProject\HollowKnight\Player.cpp(90,77): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
-  PlayerAnimationComponent.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Player.cpp(93,77): warning C4244: 'argument' : conversion de 'float' en 'sf::Int32', perte possible de données
   PlayerAttackComponent.cpp
   PlayerMovementComponent.cpp
   PlayerStat.cpp
-  PNJ.cpp
-  ProgressBar.cpp
-  ProgressLabel.cpp
   PurchaseMenu.cpp
   QuitGameMenu.cpp
+  Génération de code en cours...
+  Compilation en cours...
   QuitToMenu.cpp
-  ScrollBar.cpp
-  ShapeObject.cpp
-  ShapeWidget.cpp
   ShopMenu.cpp
   SoundData.cpp
   SoundManager.cpp
-  Generating Code...
-  Compiling...
   Spawner.cpp
-  State.cpp
-  TextObject.cpp
-  TextureData.cpp
-  TextureManager.cpp
-  TextWidget.cpp
-  Timer.cpp
-  TimerManager.cpp
   TitleMenu.cpp
-  Transition.cpp
-  Widget.cpp
-  Generating Code...
-  HollowKnight.vcxproj -> D:\Github\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
+  VideoMenu.cpp
+  Génération de code en cours...
+  HollowKnight.vcxproj -> D:\p1VS\SFML\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe
