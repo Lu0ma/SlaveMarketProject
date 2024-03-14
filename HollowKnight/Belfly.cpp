@@ -23,8 +23,3 @@ void Belfly::Init()
 		AnimationData("DeathAttack", Vector2f(0.0f, 175.0f), _sizeAttack, _readDirection, _toRepeat, _countAttack, _speedAttack),
 	});
 }
-
-void Belfly::Death()
-{
-
-}

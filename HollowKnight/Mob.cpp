@@ -30,10 +30,10 @@ void Mob::Update(const float _deltaTime)
 	Enemy::Update(_deltaTime);
 }
 
-void Mob::Attack(Player* _player)
+void Mob::Death()
 {
 }
 
-void Mob::Death()
+void Mob::Attack(Player* _player)
 {
 }

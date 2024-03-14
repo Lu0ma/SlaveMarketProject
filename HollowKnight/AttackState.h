@@ -2,16 +2,9 @@
 #include "State.h"
 #include "AttackToDeath.h"
 
-#include "AnimationComponent.h"
-#include "MobMovementComponent.h"
-#include "InspectComponent.h"
-
 class AttackState : public State
 {
 protected:
-	AnimationComponent* animation;
-	MobMovementComponent* movement;
-	InspectComponent* inspect;
 	bool hasAttack;
 
 	AttackToDeath* attackToDeath;

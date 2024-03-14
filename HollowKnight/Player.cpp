@@ -60,6 +60,7 @@ void Player::SetupPlayerInput()
 			stats->UpdateLife(1);
 			FxManager::GetInstance().Run("FxMana");
 		}, InputData({ActionType::KeyPressed, Keyboard::A})),
+		ActionData("ManaToLife", [&]() {stats->UpdateLife(-1); }, InputData({ActionType::KeyPressed, Keyboard::M})), //TODO REMOVE
 		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
 		});
 	new ActionMap("Movements", {

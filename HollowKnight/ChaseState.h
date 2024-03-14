@@ -4,22 +4,15 @@
 #include "ChaseToAttack.h"
 #include "ChaseToDeath.h"
 
-#include "AnimationComponent.h"
-#include "MobMovementComponent.h"
-#include "InspectComponent.h"
-
 class ChaseState : public State
 {
-	AnimationComponent* animation;
-	MobMovementComponent* movement;
-	InspectComponent* inspect;
-
 	ChaseToPatrol* chaseToPatrol;
 	ChaseToAttack* chaseToAttack;
 	ChaseToDeath* chaseToDeath;
 
 private:
 	Timer* chaseTimer;
+	Timer* stopChaseTimer;
 
 public:
 	ChaseState(Brain* _brain);

@@ -11,6 +11,7 @@ BossAttackState::BossAttackState(Brain* _brain) : AttackState(_brain)
 void BossAttackState::Init()
 {
 	attackToChase->Init(dynamic_cast<BossBrain*>(brain)->GetChaseState());
+	attackToDeath->Init(dynamic_cast<BossBrain*>(brain)->GetDeathState());
 }
 
 void BossAttackState::Start()

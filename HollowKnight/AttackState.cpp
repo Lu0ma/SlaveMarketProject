@@ -4,9 +4,9 @@
 
 AttackState::AttackState(Brain* _brain) : State(_brain)
 {
-	animation = nullptr;
+	/*animation = nullptr;
 	movement = nullptr;
-	inspect = nullptr;
+	inspect = nullptr;*/
 	hasAttack = false;
 
 	BlackBoard* _blackBoard = _brain->GetBlackBoard();
@@ -14,9 +14,12 @@ AttackState::AttackState(Brain* _brain) : State(_brain)
 	transitions.push_back(attackToDeath);
 }
 
-
 void AttackState::Start()
 {
+	//timerInspect->Start();
+
+	cout << brain->GetOwner()->GetID() << "Start Attack" << endl;
+
 	Actor* _owner = brain->GetOwner();
 
 	if (!inspect || !animation || !movement)
@@ -32,7 +35,6 @@ void AttackState::Start()
 
 	// Mob -> Lance l'anim d'attaque, si le joueur est toujours inRange do damage, puis reviens en patrol
 
-	cout << "Start Attack" << endl;
 }
 
 void AttackState::Update(const float _deltaTime)
@@ -56,6 +58,7 @@ void AttackState::Update(const float _deltaTime)
 
 void AttackState::Stop()
 {
+	//timerInspect->Pause();
 	movement->SetDestination(brain->GetOwner()->GetShapePosition());
-	cout << "Stop Attack" << endl;
+	cout << brain->GetOwner()->GetID() << "Stop Attack" << endl;
 }

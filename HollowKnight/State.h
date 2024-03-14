@@ -1,6 +1,11 @@
 #pragma once
 #include "Transition.h"
 #include <vector>
+#include "Timer.h"
+
+#include "AnimationComponent.h"
+#include "MobMovementComponent.h"
+#include "InspectComponent.h"
 
 using namespace std;
 
@@ -13,6 +18,12 @@ class State
 protected:
 	Brain* brain;
 	vector<Transition*> transitions;
+
+	AnimationComponent* animation;
+	MobMovementComponent* movement;
+	InspectComponent* inspect;
+
+	Timer* timerInspect;
 
 public:
 	Transition* GetNextTransition()
@@ -32,5 +43,8 @@ public:
 	virtual void Start() = 0;
 	virtual void Update(const float _deltaTime);
 	virtual void Stop() = 0;
+
+protected:
+	void InitTimerInspect();
 };
 

@@ -11,4 +11,5 @@ BossPatrolState::BossPatrolState(BossBrain* _brain) : PatrolState(_brain)
 void BossPatrolState::Init()
 {
 	patrolToChase->Init(dynamic_cast<BossBrain*>(brain)->GetChaseState());
+	patrolToDeath->Init(dynamic_cast<BossBrain*>(brain)->GetDeathState());
 }

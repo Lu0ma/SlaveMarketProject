@@ -16,6 +16,7 @@ void MobBrain::Init()
 {
 	attack->Init();
 	patrol->Init();
+	death->Init();
 
 	currentState = patrol;
 	currentState->Start();

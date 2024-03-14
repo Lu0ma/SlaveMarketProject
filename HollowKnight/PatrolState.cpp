@@ -5,9 +5,9 @@
 
 PatrolState::PatrolState(Brain* _brain) : State(_brain)
 {
-	animation = nullptr;
+	/*animation = nullptr;
 	movement = nullptr;
-	inspect = nullptr;
+	inspect = nullptr;*/
 	patrolTimer = nullptr;
 
 	startPosition = brain->GetOwner()->GetShapePosition();
@@ -20,6 +20,10 @@ PatrolState::PatrolState(Brain* _brain) : State(_brain)
 
 void PatrolState::Start()
 {
+	//timerInspect->Start();
+
+	std::cout << brain->GetOwner()->GetID() << "Start Patrol" << endl;
+
 	goalPosition = startPosition + Vector2f(1500.0f, 0.0f);
 	
 	Actor* _owner = brain->GetOwner();
@@ -48,12 +52,17 @@ void PatrolState::Start()
 				}, seconds(2.0f), true, false);
 		});
 
-	std::cout << "Start Patrol" << endl;
 }
 
 void PatrolState::Update(const float _deltaTime)
 {
 	State::Update(_deltaTime);
+
+	/*if (inspect->GetHitInfo().operator!=(HitInfo()))
+	{
+		cout << "Karl Marx " << endl << endl << endl;
+		brain->GetBlackBoard()->isInRange = inspect->IsInRange();
+	}*/
 
 	if (inspect)
 	{
@@ -68,9 +77,11 @@ void PatrolState::Update(const float _deltaTime)
 
 void PatrolState::Stop()
 {
+	//timerInspect->Pause();
 	patrolTimer->Stop();
 	movement->SetCallback(nullptr);
 	//movement->SetDestination(brain->GetOwner()->GetShapePosition());
 	//animation->RunAnimation("Idle", 1.0f);
-	cout << "Stop Patrol" << endl;
+	cout << brain->GetOwner()->GetID() << "Stop Patrol" << endl;
 }
+

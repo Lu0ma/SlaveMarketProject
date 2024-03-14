@@ -41,8 +41,3 @@ void HuskBully::Init()
 		AnimationData("DeathLandRight", Vector2f(16.0f, 1050.0f), _sizeDeathLand, _readDirection, true, 8, 0.15f),
 	});
 }
-
-void HuskBully::Death()
-{
-
-}

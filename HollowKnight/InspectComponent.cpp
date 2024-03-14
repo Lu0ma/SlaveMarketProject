@@ -41,8 +41,8 @@ bool InspectComponent::HasTarget(const Vector2f& _position, Vector2f _destinatio
 
 	if (_hasHit && dynamic_cast<Player*>(_hitInfo.actor)) //&& _hitInfo.distance < viewRange)
 	{
-		/*cout << owner->GetID() << " : " << _hitInfo.actor->GetID() << endl; 
-		cout << _hitInfo.distance << endl;*/
+		/*cout << owner->GetID() << " : " << _hitInfo.actor->GetID() << endl; */
+		cout << _hitInfo.position.x << endl;
 		hitInfo = _hitInfo;
 		return true;
 	}

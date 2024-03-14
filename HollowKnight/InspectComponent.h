@@ -15,7 +15,7 @@ class InspectComponent : public Component
 	float factor;
 
 public:
-	const HitInfo& GetHitInfo()
+	HitInfo GetHitInfo() const
 	{
 		return hitInfo;
 	}

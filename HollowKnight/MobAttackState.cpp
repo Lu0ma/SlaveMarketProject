@@ -12,6 +12,7 @@ MobAttackState::MobAttackState(Brain* _brain) : AttackState(_brain)
 void MobAttackState::Init()
 {
 	attackToPatrol->Init(dynamic_cast<MobBrain*>(brain)->GetPatrolState());
+	attackToDeath->Init(dynamic_cast<MobBrain*>(brain)->GetDeathState());
 }
 
 void MobAttackState::Start()
@@ -24,6 +25,6 @@ void MobAttackState::Start()
 	Game::GetPlayer()->GetStats()->UpdateLife(-1);
 
 	new Timer([&]() {
-		brain->GetBlackBoard()->hasTarget = false;
-		}, seconds(0.5f), true, false);
+		brain->GetBlackBoard()->isInRange = false;
+		}, seconds(0.12f), true, false);
 }

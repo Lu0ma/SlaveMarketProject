@@ -26,7 +26,7 @@ void Boofly::Init()
 		AnimationData("Turn", Vector2f(0.0f, 380.0f), _size, READ_RIGHT, false, 4, _speedTurn, "Idle"),
 		AnimationData("Bounce", Vector2f(42.0f, 745.0f), _sizeBounce, READ_RIGHT, false, 2, 0.06f, "Idle"),
 		//AnimationData("Bounce2", Vector2f(42.0f, 745.0f), _sizeBounce, READ_RIGHT, false, 1, 0.02f, "Idle"),
-		AnimationData("DeathAir", Vector2f(0.0f, 1120.0f), _sizeDeathAir, READ_RIGHT, true, 4, _speed, "DeathLand"),
-		AnimationData("DeathLand", Vector2f(0.0f, 1480.0f), _sizeDeathLand, READ_RIGHT, false, 3, _speed),
+		AnimationData("Death Air", Vector2f(30.0f, 1125.0f), _sizeDeathAir, READ_RIGHT, true, 4, _speed, "Death Land"),
+		AnimationData("Death Land", Vector2f(0.0f, 1480.0f), _sizeDeathLand, READ_RIGHT, false, 4, _speed),
 	});
 }
