@@ -13,7 +13,6 @@ protected:
 	vector<Component*> components;
 	CollisionComponent* collision;
 	AnimationComponent* animation;
-
 public:
 	template <typename T>
 	T* GetComponent() const

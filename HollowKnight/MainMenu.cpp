@@ -38,5 +38,5 @@ void MainMenu::Init()
 		}, InputData({ ActionType::KeyPressed, Keyboard::Space }))
 	});
 
-	music = new MusicData("CityofTears", 100.0f);
+	music = new MusicData("CityofTears", 0.0f);
 }

@@ -22,14 +22,14 @@ Camera::Camera() : Actor("Camera" , ShapeData())
 	zoom = Vector2f();
 	defaultSize = view.getSize();
 
-	view = View();
+	// view = View(Vector2f() , Vector2f(Game::GetWindowSize().x, Game::GetWindowSize().y));
 
 
 	isDown = false;
 	isZoom = false;
 	isUp = false;
 	canShake = false;
-
+	canUpdate = true;
 }
 
 void Camera::MoveToTarget(const float _deltaTime)
@@ -66,6 +66,7 @@ void Camera::ShakeActor(const float _deltaTime)
 	int _randomY = Random<int>(400 , 100);
 	int _randomNeg = Random<int>(2, 1);
 
+
 	#pragma endregion 
 
 	_randomNeg == 1 ? _offset = Vector2f(static_cast<float>(_randomX), static_cast<float>(_randomY)) :
@@ -76,8 +77,11 @@ void Camera::ShakeActor(const float _deltaTime)
 void Camera::Update(const float _deltaTime)
 {
 	Player* _player = Game::GetPlayer();
+	RenderWindow& _window = Game::GetWindow();
 	const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offsetCamera.x : -offsetCamera.x;
+	const float _distance = Distance(1.0f , _player->GetShapePosition().y);
 
+	const float _lastPositionPlayer = _player->GetShapePosition().y;
 	if (isDown)
 	{
 		targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, 400.0f));
@@ -90,7 +94,12 @@ void Camera::Update(const float _deltaTime)
 	}
 	else
 	{
-		targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, offsetCamera.y));
+		cout << _distance;
+		if (_distance > damp)
+		{
+
+		targetPosition = Vector2f(Vector2f(_player->GetShapePosition().x , 0.0f) + Vector2f(_offsetX, canUpdate ? view.getCenter().y : _player->GetShapePosition().y));
+		}
 		ShakeActor(_deltaTime);
 	}
 	MoveToTarget(_deltaTime);
@@ -98,15 +107,16 @@ void Camera::Update(const float _deltaTime)
 	shake->Update(view);
 }
 
-void Camera::ResetZoom()
+void Camera::ResetZoom(const float _deltaTime)
 {
 	if (view.getSize().x <= defaultSize.x)
 	{
 		view.setSize(view.getSize().x + axeX, view.getSize().y + axeY);
-		axeX += 0.01f;
-		axeY += 0.01f;
+		axeX += 0.01f * _deltaTime;
+		axeY += 0.01f * _deltaTime;
+		return;
 	}
-	else
+	else if (view.getSize().x >= defaultSize.x)
 	{
 		axeX = 0.0f;
 		axeY = 0.0f;
@@ -122,7 +132,7 @@ void Camera::UpdateViewSize(const float _deltaTime)
 {
 	if (!isZoom)
 	{
-		ResetZoom();
+		ResetZoom(_deltaTime);
 	}
 
 	else

@@ -221,6 +221,7 @@
     <ClCompile Include="PlayerAnimationComponent.cpp" />
     <ClCompile Include="PlayerAttackComponent.cpp" />
     <ClCompile Include="PlayerMovementComponent.cpp" />
+    <ClCompile Include="PlayerSoundData.cpp" />
     <ClCompile Include="PlayerStat.cpp" />
     <ClCompile Include="PNJ.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
@@ -342,6 +343,8 @@
     <ClInclude Include="PlayerAnimationComponent.h" />
     <ClInclude Include="PlayerAttackComponent.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
+    <ClInclude Include="PlayerSound.h" />
+    <ClInclude Include="PlayerSoundData.h" />
     <ClInclude Include="PlayerStat.h" />
     <ClInclude Include="PNJ.h" />
     <ClInclude Include="ProgressBar.h" />
@@ -372,6 +375,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Assets\Levels\SubLevel_1.txt" />
+    <Text Include="SaveOption.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
