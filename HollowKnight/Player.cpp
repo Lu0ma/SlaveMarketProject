@@ -62,11 +62,19 @@ void Player::SetupPlayerInput()
 			{
 				stats->UseMana(0.6f);
 				Game::GetCamera()->SetIsZoom(true);
+
+				movement->SetCanMove(false);
+				attack->SetCanAttack(false);
 			}
 		}, InputData({ ActionType::KeyPressed, Keyboard::A })),
 		ActionData("StopConvertManaToLife", [&]() {
+
+			movement->SetCanMove(true);
+			attack->SetCanAttack(true);
+
 			movement->SetDirectionX(0.0f, "StopRight");
 			Game::GetCamera()->SetIsZoom(false);
+
 		}, InputData({ActionType::KeyReleased, Keyboard::A})),
 	});
 
@@ -92,7 +100,7 @@ void Player::SetupPlayerInput()
 		}, InputData({ ActionType::KeyReleased, Keyboard::Up })),
 		ActionData("ShakePlayer", [&]() { Game::GetCamera()->SetCanShake(true); }, InputData({ActionType::KeyPressed, Keyboard::K })),
 		ActionData("StopShakePlayer", [&]() {
-			new Timer([&]() { Game::GetCamera()->SetCanShake(false); }, milliseconds(5.0f));
+			new Timer([&]() { Game::GetCamera()->SetCanShake(false); }, milliseconds((Int32)5.0f));
 		}, InputData({ ActionType::KeyReleased, Keyboard::K })),
 	});
 

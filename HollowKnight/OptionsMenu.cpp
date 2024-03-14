@@ -53,7 +53,6 @@ void OptionsMenu::Init()
 
 	const vector<ButtonData>& _allData = {
 		ButtonData("GAME", [&]() {
-			cout << "GAME" << endl;
 			//canvas->SetVisibilityStatus(false);
 		}),
 		ButtonData("AUDIO", [&]() {
@@ -61,7 +60,6 @@ void OptionsMenu::Init()
 			canvas->SetVisibilityStatus(false);
 		}),
 		ButtonData("VIDEO", [&]() {
-			cout << "VIDEO" << endl;
 			video->SetStatus(true);
 			canvas->SetVisibilityStatus(false);
 		}),

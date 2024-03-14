@@ -55,7 +55,6 @@ void Game::Update()
 	{
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
-		// map->GetDragon()->PlayMusic();
 		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
 		ActorManager::GetInstance().Update();
 	}
@@ -63,39 +62,72 @@ void Game::Update()
 
 void Game::UpdateWindow()
 {
-	window.clear(); // Color(127, 127, 127, 0) gris
+	window.clear();
 
 	const float _deltaTime = TimerManager::GetInstance().GetDeltaTime();
 	camera->Update(_deltaTime);
 
 	window.setView(camera->GetView());
+	//DrawWorldUIs();
 
-	for (ShapeObject* _drawable : map->GetAllDrawables())
-	{
-		window.draw(*_drawable->GetDrawable(), brightness->shader);
-	}
-	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
-	{
-		window.draw(*_actor->GetDrawable(), brightness->shader);
-	}
+	DrawMap();
+	DrawActors();
 	//window.draw(*player->GetLight());
 
-	View _view = window.getDefaultView();
+	DrawUIs();
+	window.display();
+}
+
+#pragma region Draws
+
+void Game::DrawWorldUIs()
+{
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{
-  		if (!_canvas->IsVisible()) continue;
-		_view.setViewport(_canvas->GetRect());
-		window.setView(_view);
-
-		for (Widget* _widget : _canvas->GetWidgets()) 
+		for (Widget* _widget : _canvas->GetWorldWidgets())
 		{
 			if (!_widget->IsVisible()) continue;
 			const RenderStates& _render = _widget->CanApplyShader() ? brightness->shader : RenderStates::Default;
 			window.draw(*_widget->GetDrawable(), _render);
 		}
 	}
-	window.display();
 }
+
+void Game::DrawMap()
+{
+	for (ShapeObject* _drawable : map->GetAllDrawables())
+	{
+		window.draw(*_drawable->GetDrawable(), brightness->shader);
+	}
+}
+
+void Game::DrawActors()
+{
+	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
+	{
+		window.draw(*_actor->GetDrawable(), brightness->shader);
+	}
+}
+
+void Game::DrawUIs()
+{
+	View _view = window.getDefaultView();
+	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
+	{
+		if (!_canvas->IsVisible()) continue;
+		_view.setViewport(_canvas->GetRect());
+		window.setView(_view);
+
+		for (Widget* _widget : _canvas->GetUiWidgets())
+		{
+			if (!_widget->IsVisible()) continue;
+			const RenderStates& _render = _widget->CanApplyShader() ? brightness->shader : RenderStates::Default;
+			window.draw(*_widget->GetDrawable(), _render);
+		}
+	}
+}
+
+#pragma endregion
 
 void Game::Stop()
 {

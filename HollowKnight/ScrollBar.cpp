@@ -4,7 +4,7 @@
 #define PATH_BAR "UIs/Menus/Achievements/ScrollBar/Bar.png"
 #define PATH_BUTTON "UIs/Menus/Achievements/ScrollBar/Button.png"
 
-ScrollBar::ScrollBar(const ShapeData& _data, const int _scrollAmount,const function<void(bool)>& _callback) : ShapeWidget(_data)
+ScrollBar::ScrollBar(const ShapeData& _data, const int _scrollAmount, const function<void(bool)>& _callback) : ShapeWidget(_data)
 {
 	callback = _callback;
 	baseIndex = 0;
@@ -12,20 +12,8 @@ ScrollBar::ScrollBar(const ShapeData& _data, const int _scrollAmount,const funct
 
 	const Vector2f& _buttonSize = Vector2f(35.0f, 35.0f);
 	bar = new ShapeWidget(ShapeData(Vector2f(_data.position.x, _data.position.y + 175.0f), Vector2f(_data.size.x, _data.size.y + 340.0f), PATH_BAR));
-
-	buttonUp = new Button(ShapeData(Vector2f(_data.position.x, _data.position.y - 60.0f), _buttonSize, PATH_BUTTON));
-	buttonUp->GetData().pressedCallback = [&]() {
-		UpScroll();
-		};
-
-	buttonDown = new Button(ShapeData(Vector2f(_data.position.x, _data.position.y + 410.0f), _buttonSize, PATH_BUTTON));
-	buttonDown->GetDrawable()->setRotation(180.0f);
-	buttonDown->GetData().pressedCallback = [&]() {
-		DownScroll();
-		};
-
-
 }
+
 
 void ScrollBar::UpdateScroll(const Event& _event)
 {
@@ -63,9 +51,9 @@ void ScrollBar::ComputeClickOnBar(const Vector2f& _position)
 	//on calcule la position de la bar en fonction du pourcentage
 	const float _clickOnBar = (_pourcentage * scrollAmount - baseIndex - 10) * 10;
 	cout << round(_clickOnBar) << endl;
+
 	//on met la bar au pourcentage
 	ComputeByIndex(_clickOnBar);
-
 }
 
 void ScrollBar::ComputeByIndex(const float _destination)

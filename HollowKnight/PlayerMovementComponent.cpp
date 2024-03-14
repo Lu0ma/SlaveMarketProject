@@ -21,6 +21,7 @@ void PlayerMovementComponent::SetDirectionX(const float _directionX, const strin
 		if (directionHasChanged)
 		{
 			directionHasChanged = false;
+			animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
 			return;
 		}
 
@@ -197,7 +198,7 @@ void PlayerMovementComponent::Jump()
 
 void PlayerMovementComponent::Dash()
 {
-	if (!canDash || isDashing) return;
+	if (!canMove || !canDash || isDashing) return;
 
 	isJumping = false;
 	canDash = false;
@@ -209,7 +210,7 @@ void PlayerMovementComponent::Dash()
 
 void PlayerMovementComponent::SitDown()
 {
-	if (!isStanding || !owner->GetBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()))
+	if (!canMove || !isStanding || !owner->GetBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()))
 	{
 		cout << "Impossible de s'assoir !" << endl;
 		return;
@@ -225,6 +226,8 @@ void PlayerMovementComponent::SitDown()
 
 void PlayerMovementComponent::StandUp()
 {
+	if (!canMove) return;
+
 	if (isStanding)
 	{
 		cout << "Impossible de se lever !" << endl;

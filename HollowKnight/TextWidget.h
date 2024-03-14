@@ -18,5 +18,5 @@ public:
 	}
 
 public:
-	TextWidget(const TextData& _data);
+	TextWidget(const TextData& _data, const WidgetType& _type = WT_UI);
 };

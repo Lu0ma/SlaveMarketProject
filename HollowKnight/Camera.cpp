@@ -58,12 +58,16 @@ void Camera::Init()
 void Camera::ShakeActor(const float _deltaTime)
 {
 	if (!canShake) return;
+
 	#pragma region Inits
+
 	Vector2f _offset;
 	int _randomX = Random<int>(400, 100);
 	int _randomY = Random<int>(400 , 100);
 	int _randomNeg = Random<int>(2, 1);
-#pragma endregion 
+
+	#pragma endregion 
+
 	_randomNeg == 1 ? _offset = Vector2f(static_cast<float>(_randomX), static_cast<float>(_randomY)) :
 	_offset = Vector2f(static_cast<float>(-_randomX), static_cast<float>(-_randomY));
 	targetPosition += _offset * _deltaTime;
@@ -120,6 +124,7 @@ void Camera::UpdateViewSize(const float _deltaTime)
 	{
 		ResetZoom();
 	}
+
 	else
 	{
 		const float _limits = defaultSize.x - 300;
@@ -133,6 +138,3 @@ void Camera::UpdateViewSize(const float _deltaTime)
 		view.setSize(zoom) ;
 	}
 }
-
-
-

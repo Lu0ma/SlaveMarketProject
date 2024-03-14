@@ -23,7 +23,7 @@ protected:
 	Menu* owner;
 
 public:
-	virtual void SetStatus(const bool _status)
+	virtual void SetStatus(const bool _status, const bool _applyToWidgets = true)
 	{
 		if (!isInit)
 		{
@@ -31,7 +31,7 @@ public:
 			isInit = true;
 		}
 
-		canvas->SetVisibilityStatus(_status);
+		canvas->SetVisibilityStatus(_status, _applyToWidgets);
 	}
 	void SetOwner(Menu* _owner)
 	{
