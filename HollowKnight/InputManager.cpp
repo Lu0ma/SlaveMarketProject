@@ -17,7 +17,7 @@ bool InputManager::Update(RenderWindow& _window)
 	{
 		if (_event.type == Event::Closed) return false;
 
-		HUD::GetInstance().Interact(worldPosition, _event.type);
+		HUD::GetInstance().Interact(worldPosition, _event);
 		UpdateInputs(_event);
 	}
 

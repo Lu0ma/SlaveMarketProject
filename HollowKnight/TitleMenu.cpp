@@ -17,6 +17,8 @@ TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
 
 void TitleMenu::Init()
 {
+	Menu::Init();
+
 	const Vector2f& _windowSize = Game::GetWindowSize();
 	const float _halfWindowX = _windowSize.x / 2.0f;
 
@@ -42,24 +44,23 @@ void TitleMenu::Init()
 	};
 
 	const vector<ButtonData>& _allData = {
-		ButtonData("START GAME", [&]() { 
+		ButtonData("Start Game", [&]() { 
 			Game::GetPlayer()->Init();
-			//Game::GetCamera()->SetTarget(TARGET_PLAYER);
 			SetStatus(false);
 		}),
-		ButtonData("OPTIONS", [&]() {
+		ButtonData("Options", [&]() {
 			options->SetStatus(true);
 			SetStatus(false);
 		}),
-		ButtonData("ACHIEVEMENTS", [&]() {
+		ButtonData("Achievements", [&]() {
 			achievement->SetStatus(true);
 			SetStatus(false);
 		}),
-		ButtonData("EXTRAS", [&]() {
+		ButtonData("Extras", [&]() {
 			cout << "EXTRAS" << endl;
 			//TODO easter
 		}),
-		ButtonData("QUIT GAME", [&]() {
+		ButtonData("Quit Game", [&]() {
 			quitGame->SetStatus(true);
 			SetStatus(false);
 		})
@@ -80,8 +81,7 @@ void TitleMenu::Init()
 		{
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
-				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-				pointer->SetShapePosition(_position);
+				MovePointers(_hoveredButton);
 			}
 		};
 		_button->GetData().pressedCallback = _allData[_index].callback;
@@ -95,8 +95,8 @@ void TitleMenu::Init()
 		canvas->AddWidget(_title);
 	}
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_gridPosX, _gridPosY), Vector2f(_buttonSize.x * 2.0f, _buttonSize.y * 2.0f), PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	MovePointers(buttons.front());
 	
 	#pragma endregion
 
@@ -104,7 +104,7 @@ void TitleMenu::Init()
 
 	const float _versionPosX = _windowSize.x * 90.0f / 100.0f;
 	const float _versionPosY = _windowSize.y * 90.0f / 100.0f;
-	Label* _version = new Label(TextData("v 1.0.0", Vector2f(_versionPosX, _versionPosY), FONT, 18));
+	Label* _version = new Label(TextData("v 1.2.0", Vector2f(_versionPosX, _versionPosY), FONT, 18));
 	canvas->AddWidget(_version);
 
 	#pragma endregion

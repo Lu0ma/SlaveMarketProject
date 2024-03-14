@@ -29,5 +29,5 @@ public:
 	}
 
 public:
-	Label(const TextData& _data, const AligmentText& _aligement = AT_CENTER);
+	Label(const TextData& _data, const AligmentText& _aligement = AT_CENTER, const WidgetType& _type = WT_UI);
 };

@@ -4,27 +4,36 @@
 #include <ctime>
 #include <cstdlib>
 #include "TimerManager.h"
-#include "Macro.h"
-Camera::Camera()
+
+#include "Timer.h"
+Camera::Camera() : Actor("Camera" , ShapeData())
 {
-	speed = 0.5f;
-	damp = 100.0f;
-	targetPosition = Vector2f();
-	offset = Vector2f(damp * 0.75f, 0.0f);
-	view = View();
-	isDown = false;
-	defaultSize = view.getSize();
+
+	shake = new ShakeComponent(this);
+
 	axeX = 0.0f;
 	axeY = 0.0f;
+	speed = 0.5f;
+	damp = 100.0f;
+
+	targetPosition = Vector2f();
+	offsetCamera = Vector2f(damp * 0.75f,0.0f);
+	offsetScreen = Vector2f();
+	zoom = Vector2f();
+	defaultSize = view.getSize();
+
+	view = View();
+
+
+	isDown = false;
 	isZoom = false;
+	isUp = false;
+	canShake = false;
+
 }
-
-
-
 
 void Camera::MoveToTarget(const float _deltaTime)
 {
-//	Player* _player = Game::GetPlayer();
 	float _distance;
 	if (IsAtDestination(_distance))
 	{
@@ -38,86 +47,94 @@ void Camera::MoveToTarget(const float _deltaTime)
 bool Camera::IsAtDestination(float& _distance)
 {
 	_distance = Distance(view.getCenter(), targetPosition);
-
 	return _distance <= 10.5f;
 }
 
 void Camera::Init()
 {
-	const Vector2f& _halfWindowSize = Game::GetWindowSize() / 2.0f;
-	Canvas* _canvas = new Canvas("Camera");
-
-	ShapeWidget* _ligneLeft = new ShapeWidget(ShapeData(_halfWindowSize + Vector2f(-damp, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
-	_ligneLeft->GetDrawable()->setFillColor(Color::Magenta);
-	_canvas->AddWidget(_ligneLeft);
-
-	ShapeWidget* _ligneMiddle = new ShapeWidget(ShapeData(_halfWindowSize, Vector2f(1, SCREEN_HEIGHT)));
-	_ligneMiddle->GetDrawable()->setFillColor(Color::Red);
-	_canvas->AddWidget(_ligneMiddle);
-
-	ShapeWidget* _ligneRight = new ShapeWidget(ShapeData(_halfWindowSize + Vector2f(damp, 0.0f), Vector2f(1, SCREEN_HEIGHT)));
-	_ligneRight->GetDrawable()->setFillColor(Color::Magenta);
-	_canvas->AddWidget(_ligneRight);
 
 }
 
-void Camera::Shake(const float _trauma, const float _duration)
+void Camera::ShakeActor(const float _deltaTime)
 {
-	shake.max = milliseconds(static_cast<Int32>(_duration));
-	shake.current = seconds(0);
-	shake.trauma += _trauma;
+	if (!canShake) return;
+
+	#pragma region Inits
+
+	Vector2f _offset;
+	int _randomX = Random<int>(400, 100);
+	int _randomY = Random<int>(400 , 100);
+	int _randomNeg = Random<int>(2, 1);
+
+	#pragma endregion 
+
+	_randomNeg == 1 ? _offset = Vector2f(static_cast<float>(_randomX), static_cast<float>(_randomY)) :
+	_offset = Vector2f(static_cast<float>(-_randomX), static_cast<float>(-_randomY));
+	targetPosition += _offset * _deltaTime;
 }
 
 void Camera::Update(const float _deltaTime)
 {
-	#pragma region Init
-	RenderWindow& _window = Game::GetWindow();
 	Player* _player = Game::GetPlayer();
-	View _view = GetView();
-	const float _distance = Distance(_player->GetShapePosition().x, view.getCenter().x);
-	const float _newScaleX = Game::GetPlayer()->GetDrawable()->getScale().x;
-#pragma endregion
-	MoveToTarget(_deltaTime);
-	UpdateSizeView();
-	if (_distance > damp || oldScaleX != _newScaleX)
+	const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offsetCamera.x : -offsetCamera.x;
+
+	if (isDown)
 	{
-		 const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offset.x : -offset.x;
-		 targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, offset.y));
-		 oldScaleX = _newScaleX;
+		targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, 400.0f));
+		ShakeActor(_deltaTime);
 	}
-
-#pragma region ShakeUpdate
-	// Le tremblement est terminer 
-	if (shake.current >= shake.max) return;
-	float _angle = CAMERA_SHAKE_ANGLE * shake.trauma * Randn();
-	offset.x = CAMERA_SHAKE_OFFSET * shake.trauma * Randn();
-	offset.y = CAMERA_SHAKE_OFFSET * shake.trauma * Randn();
-	view.setRotation(_angle);
-	_window.setView(view);
-	shake.current += milliseconds(100);
-	float _ratio = shake.current.asSeconds() / shake.max.asSeconds();
-	shake.trauma *= 1.0f - _ratio * _ratio;
-#pragma endregion
-
+	else if (isUp)
+	{
+		targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, -400.0f));
+		ShakeActor(_deltaTime);
+	}
+	else
+	{
+		targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, offsetCamera.y));
+		ShakeActor(_deltaTime);
+	}
+	MoveToTarget(_deltaTime);
+	UpdateViewSize(_deltaTime);
+	shake->Update(view);
 }
 
-void Camera::UpdateSizeView()
+void Camera::ResetZoom()
+{
+	if (view.getSize().x <= defaultSize.x)
+	{
+		view.setSize(view.getSize().x + axeX, view.getSize().y + axeY);
+		axeX += 0.01f;
+		axeY += 0.01f;
+	}
+	else
+	{
+		axeX = 0.0f;
+		axeY = 0.0f;
+	}
+}
+
+void Camera::ZoomView(const float _deltaTime)
+{
+	zoom -= Vector2f(0.3f * _deltaTime, 0.3f * _deltaTime);
+}
+
+void Camera::UpdateViewSize(const float _deltaTime)
 {
 	if (!isZoom)
 	{
-		if (view.getSize().x <= defaultSize.x)
-		{
-			view.setSize(view.getSize().x + axeX, view.getSize().y + axeY);
-			axeX += 1.1f;
-			axeY += 1.1f;
-		}
+		ResetZoom();
 	}
-	else if(isZoom)
+
+	else
 	{
-		if (view.getSize().x <= defaultSize.x - 35) return;
-		view.zoom(0.999f);
+		const float _limits = defaultSize.x - 300;
+		zoom = view.getSize();
+		if (view.getSize().x <= _limits)
+		{
+			shake->Shake(0.01f, 10 * _deltaTime);
+			return;
+		}
+		ZoomView(_deltaTime);
+		view.setSize(zoom) ;
 	}
 }
-
-
-

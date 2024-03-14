@@ -4,8 +4,10 @@
 #include <vector>
 #include <functional>
 #include <string>
-#include"Actor.h"
-#include"ActorManager.h"
+#include <ctime>
+#include <cstdlib>
+#include "Actor.h"
+#include "ActorManager.h"
 
 using namespace std;
 using namespace sf;
@@ -50,6 +52,24 @@ bool Contains(T* _valueToFind, const vector<T*>& _vector)
 	}
 
 	return false;
+}
+
+template <typename T>
+int GetIndexByValue(const vector<T*>& _vector, T* _value)
+{
+	int _index = 0;
+
+	for (T* _currentValue : _vector)
+	{
+		if (_currentValue == _value)
+		{
+			return _index;
+		}
+
+		_index++;
+	}
+
+	return -1;
 }
 
 template<typename Class>

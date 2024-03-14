@@ -1,6 +1,5 @@
 #pragma once
 #include "Mob.h"
-#include "AnimationComponent.h"
 
 class Belfly : public Mob
 {

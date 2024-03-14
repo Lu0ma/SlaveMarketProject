@@ -29,8 +29,10 @@ CharmsMenu::CharmsMenu() : Menu("CharmsMenu", nullptr)
 	titleItem = nullptr;
 }
 
+
 void CharmsMenu::Init()
 {
+	Menu::Init();
 	canvas->SetVisibilityStatus(false);
 
 	gridSize = Vector2i(9, 4);
@@ -43,10 +45,11 @@ void CharmsMenu::Init()
 	gridPos = Vector2f(windowSize.x / 12.0f, windowSize.y / 8.0f);
 	halfSize = windowSize / 2.0f;
 
+	_items = vector<CharmsItem>();
 	Background();
 	Separator();
 	SelectedCharms();
-	EquippedCharms();
+	SlotCharms();
 	Notches();
 	NotchesText();
 	EquippedText();
@@ -81,49 +84,40 @@ void CharmsMenu::SelectedCharms()
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(slotsEquippedCharms))
 			{
 				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-				pointer->SetShapePosition(_position);
-				pointer->SetVisible(true);
+				pointerLeft->SetShapePosition(_position);
+				pointerLeft->GetDrawable()->setScale(1.0f, 1.0f);
+				pointerLeft->SetVisible(true);
 			}
 		};
-
 		_charm->GetData().pressedCallback = [&]()
 		{
 			if (Button* _pressedButton = HUD::GetInstance().GetPressedButton(slotsEquippedCharms))
 			{
-				if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_pressedButton->GetForeground()))
+				if (CharmWidget* _charm = dynamic_cast<CharmWidget*>(_pressedButton->GetForeground()))
 				{
 					_pressedButton->SetForeground(nullptr);
-					if (Button* _slotCharms = GetFirstAvailableSlotCharms())
-					{
-						_slotCharms->SetForeground(_itemWidget);
-						_itemWidget->GetDrawable()->setPosition(_slotCharms->GetDrawable()->getPosition());
-					}
+					_charm->ResetPosition();
 				}
 			}
 		};
-
 		slotsEquippedCharms.push_back(_charm);
 		canvas->AddWidget(_charm);
 	}
-
-	pointer = new ShapeWidget(ShapeData(Vector2f(gridPos.x + 35.0f, _spacingY - halfSize.y * 0.30f), Vector2f(80.0f, 80.0f), PATH_CHARM_POINTER));
-	pointer->SetVisible(false);
-	canvas->AddWidget(pointer);
+	
+	pointerLeft = new ShapeWidget(ShapeData(Vector2f(gridPos.x + 35.0f, _spacingY - halfSize.y * 0.30f), Vector2f(50.0f, 50.0f), PATH_CHARM_POINTER));
+	pointerLeft->SetVisible(false);
+	pointerRight->SetVisible(false);
+	canvas->AddWidget(pointerLeft);
 }
 
-void CharmsMenu::EquippedCharms()
+void CharmsMenu::SlotCharms()
 {
 	const float _spacingY = halfSize.y * 0.8f;
 	const Vector2f& _gapSlot = Vector2f(35.0f, 35.0f);
 
-	struct CharmsItem
-	{
-		string widgetPath;
-		string title;
-		string text;
-	};
+	
 
-	const vector<CharmsItem>& _items = {
+	_items = {
 		{
 			"UIs/Charms/SkillSlot.png",
 			"Gathering Swarm",
@@ -150,45 +144,42 @@ void CharmsMenu::EquippedCharms()
 			const float _posY = _spacingY + gridPos.y + _row * slotSize.y + _gapSlot.y * _row;
 
 			Button* _slot = new Button(ShapeData(Vector2f(_posX, _posY), slotSize, PATH_SKILL_SLOT));
-			//_slot->GetDrawable()->setFillColor(Color::Transparent);
 			_count %= 2;
-			ItemWidget* _widget = new ItemWidget(ShapeData(Vector2f(_posX, _posY), slotSize * 2.0f, CHARMS + to_string(_index) + ".png"), _items[_count].title, _items[_count].text);
-
 			_slot->GetData().hoveredCallback = [&]()
+			{
+				if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(slotsCharms))
 				{
-					if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(slotsCharms))
-					{
-						const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-						pointer->SetShapePosition(_position);
+					const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
+					pointerLeft->SetShapePosition(_position);
+					pointerLeft->GetDrawable()->setScale(1.5f, 1.5f);
 
-						if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_hoveredButton->GetForeground()))
-						{
-							titleItem->SetString(_itemWidget->GetTitle());
-							descriptionItem->SetString(_itemWidget->GetText());
-						}
+					if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_hoveredButton->GetForeground()))
+					{
+						titleItem->SetString(_itemWidget->GetTitle());
+						descriptionItem->SetString(_itemWidget->GetText());
 					}
-				};
-
+				}
+			};
 			_slot->GetData().pressedCallback = [&]()
+			{
+				if (Button* _pressedButton = HUD::GetInstance().GetPressedButton(slotsCharms))
 				{
-					if (Button* _pressedButton = HUD::GetInstance().GetPressedButton(slotsCharms))
+					if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_pressedButton->GetForeground()))
 					{
-						if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_pressedButton->GetForeground()))
+						if (Button* _equippedCharms = GetFirstAvailableEquippedSlot())
 						{
 							_pressedButton->SetForeground(nullptr);
-							if (Button* _equippedCharms = GetFirstAvailableEquippedSlot())
-							{
-								_equippedCharms->SetForeground(_itemWidget);
-								_itemWidget->GetDrawable()->setPosition(_equippedCharms->GetDrawable()->getPosition());
-							}
+							_equippedCharms->SetForeground(_itemWidget);
+							_itemWidget->SetShapePosition(_equippedCharms->GetShapePosition());
 						}
 					}
-				};
-
-			_slot->SetForeground(_widget);
-
+				}
+			};
 			slotsCharms.push_back(_slot);
 			canvas->AddWidget(_slot);
+
+			CharmWidget* _widget = new CharmWidget(ShapeData(Vector2f(_posX, _posY), slotSize * 2.0f, CHARMS + to_string(_index) + ".png"), _items[_count].title, _items[_count].text, _slot);
+			_slot->SetForeground(_widget);
 			canvas->AddWidget(_widget);
 		}
 	}

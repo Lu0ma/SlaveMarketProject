@@ -78,8 +78,7 @@ void ShopMenu::Init()
 		{
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
-				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-				pointer->SetShapePosition(_position);
+				MovePointers(_hoveredButton);
 
 				if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_hoveredButton->GetForeground()))
 				{
@@ -89,13 +88,13 @@ void ShopMenu::Init()
 			}
 		};
 		_button->GetData().pressedCallback = [&]() {
-			purchase->SetStatus(true);
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
 				const SellItem& _item = GetSellItemByButton(_hoveredButton);
 				purchase->SetItem(_item);
 			}
 			SetStatus(false);
+			purchase->SetStatus(true);
 		};
 		buttons.push_back(_button);
 		canvas->AddWidget(_button);
@@ -116,8 +115,8 @@ void ShopMenu::Init()
 
 	#pragma region Pointer
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_buttonPosX, _startPosY), _buttonSize, PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	MovePointers(buttons.front());
 
 	#pragma endregion
 
@@ -153,7 +152,7 @@ void ShopMenu::Init()
 	#pragma endregion
 }
 
-void ShopMenu::SetStatus(const bool _status)
+void ShopMenu::SetStatus(const bool _status, const bool _applyToWidgets)
 {
 	if (!_status)
 	{

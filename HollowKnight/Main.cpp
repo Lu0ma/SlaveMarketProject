@@ -17,9 +17,9 @@ int main()
     Game _game;
     _game.Launch();
 
+   /* #pragma region EasterEgg
 
-   /*  #pragma region EsterEgg
-  sf::RenderWindow window(sf::VideoMode(1200, 800), "Olivier....", Style::Titlebar);
+   sf::RenderWindow window(sf::VideoMode(1200, 800), "Olivier....", Style::Titlebar);
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 

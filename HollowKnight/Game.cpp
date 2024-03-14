@@ -4,36 +4,37 @@
 #include "ActorManager.h"
 #include "HUD.h"
 #include "Widget.h"
-
 #include "Spawner.h"
 
-//#define PATH_PLAYER "Player.png"
 #define PATH_PLAYER "Animations/knighModif.png"
 
 RenderWindow Game::window;
 Map* Game::map;
 Player* Game::player;
 Camera* Game::camera;
+Brightness* Game::brightness;
 
 Game::Game()
 {
 	menu = new MainMenu();
-	player = new Player("Player", ShapeData(Vector2f(0.0f, -300.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
+	player = new Player("Player", ShapeData(Vector2f(-500.0f, -250.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	map = new Map();
 	camera = new Camera();
+	brightness = new Brightness();
 } 
 
 Game::~Game()
 {
-	delete camera;
+	delete map;
+	delete brightness;
 }
 
 
 void Game::Start()
 {
-	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Hollow Knight");
+	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
-	new Timer(this, &Game::Init, seconds(1.0f), true, false);
+	new Timer([&]() { Init(); }, seconds(1.0f), true, false);
 }
 
 void Game::Init()
@@ -41,6 +42,7 @@ void Game::Init()
 	menu->Init();
 	map->Init();
 	camera->Init();
+	brightness->Init();
 
 	//TODO move
 	Spawner* _spawner = new Spawner();
@@ -53,48 +55,83 @@ void Game::Update()
 	{
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
-		map->GetDragon()->PlayMusic();
 		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
-		const float _deltaTime = TimerManager::GetInstance().GetDeltaTime();
-		camera->Update(_deltaTime);
 		ActorManager::GetInstance().Update();
 	}
 }
 
 void Game::UpdateWindow()
 {
-	window.clear(); // Color(127, 127, 127, 0) gris
+	window.clear();
+
+	const float _deltaTime = TimerManager::GetInstance().GetDeltaTime();
+	camera->Update(_deltaTime);
 
 	window.setView(camera->GetView());
-	for (ShapeObject* _drawable : map->GetAllDrawables())
-	{
-		window.draw(*_drawable->GetDrawable());
-	}
-	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
-	{
-		window.draw(*_actor->GetDrawable());
-	}
-	window.draw(*player->GetLight());
-	
-	View _view = window.getDefaultView();
-	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
-	{
-  		if (!_canvas->IsVisible()) continue;
-		_view.setViewport(_canvas->GetRect());
-		window.setView(_view);
+	//DrawWorldUIs();
 
-		for (Widget* _widget : _canvas->GetWidgets()) 
-		{
-			if (!_widget->IsVisible()) continue;
-			window.draw(*_widget->GetDrawable());
-		}
-	}
+	DrawMap();
+	DrawActors();
+	//window.draw(*player->GetLight());
+
+	DrawUIs();
 	window.display();
 }
 
+#pragma region Draws
+
+void Game::DrawWorldUIs()
+{
+	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
+	{
+		for (Widget* _widget : _canvas->GetWorldWidgets())
+		{
+			if (!_widget->IsVisible()) continue;
+			const RenderStates& _render = _widget->CanApplyShader() ? brightness->shader : RenderStates::Default;
+			window.draw(*_widget->GetDrawable(), _render);
+		}
+	}
+}
+
+void Game::DrawMap()
+{
+	for (ShapeObject* _drawable : map->GetAllDrawables())
+	{
+		window.draw(*_drawable->GetDrawable(), brightness->shader);
+	}
+}
+
+void Game::DrawActors()
+{
+	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
+	{
+		window.draw(*_actor->GetDrawable(), brightness->shader);
+	}
+}
+
+void Game::DrawUIs()
+{
+	View _view = window.getDefaultView();
+	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
+	{
+		if (!_canvas->IsVisible()) continue;
+		_view.setViewport(_canvas->GetRect());
+		window.setView(_view);
+
+		for (Widget* _widget : _canvas->GetUiWidgets())
+		{
+			if (!_widget->IsVisible()) continue;
+			const RenderStates& _render = _widget->CanApplyShader() ? brightness->shader : RenderStates::Default;
+			window.draw(*_widget->GetDrawable(), _render);
+		}
+	}
+}
+
+#pragma endregion
+
 void Game::Stop()
 {
-	cout << "A bientôt !" << endl;
+	cout << "A bientï¿½t !" << endl;
 }
 
 

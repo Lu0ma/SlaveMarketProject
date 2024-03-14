@@ -4,9 +4,10 @@
 #include "ShapeWidget.h"
 #include "Button.h"
 #include "Label.h"
+#include "ScrollBar.h"
 
 #define PATH_BACKGROUND "UIs/Menus/Background.png"
-#define PATH_TITLE_ICON "UIs/Menus/TitleIcon.png"
+#define PATH_TITLE_ICON "UIs/Menus/TitleBarMenu.png"
 #define PATH_POINTER "UIs/Menus/Pointer.png"
 #define FONT "Font.ttf"
 
@@ -16,11 +17,13 @@ class Menu : public IManagable<string>
 
 protected:
 	Canvas* canvas;
-	ShapeWidget* pointer;
+	ShapeWidget* pointerLeft;
+	ShapeWidget* pointerRight;
+	Button* backButton;
 	Menu* owner;
 
 public:
-	virtual void SetStatus(const bool _status)
+	virtual void SetStatus(const bool _status, const bool _applyToWidgets = true)
 	{
 		if (!isInit)
 		{
@@ -28,19 +31,27 @@ public:
 			isInit = true;
 		}
 
-		canvas->SetVisibilityStatus(_status);
+		canvas->SetVisibilityStatus(_status, _applyToWidgets);
 	}
-	bool IsActive()
+	void SetOwner(Menu* _owner)
+	{
+		owner = _owner;
+	}
+	bool IsActive() const
 	{
 		return isInit && canvas->GetVisibilityStatus();
 	}
 
-private:
-	virtual void Register() override;
-
 public:
 	Menu(const string& _name, Menu* _owner = nullptr);
 
+private:
+	virtual void Register() override;
+
+protected:
+	void MovePointers(Button* _button);
+	void MovePointers(const Vector2f& _position, const Vector2f& _size);
+
 public:
-	virtual void Init() = 0;
+	virtual void Init();
 };

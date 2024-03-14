@@ -87,6 +87,12 @@ private:
 	{
 		return PATH_SHRIEK + to_string(isShriekActive) + ".png";
 	}
+public:
+	virtual void SetStatus(const bool _status, const bool _applyToWidgets = true) override
+	{
+		Menu::SetStatus(_status, _applyToWidgets);
+		pointerLeft->SetVisible(Count() > 0);
+	}
 
 public:
 	Inventory();

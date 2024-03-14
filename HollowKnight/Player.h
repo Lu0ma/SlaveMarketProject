@@ -37,9 +37,13 @@ public:
 	{
 		return inventory;
 	}
-	CircleShape* GetLight()const
+	CircleShape* GetLight() const
 	{
 		return light;
+	}
+	PlayerMovementComponent* GetPlayerMovement()const
+	{
+		return movement;
 	}
 
 public:
@@ -48,9 +52,10 @@ public:
 private:
 	void InitAnimations();
 	void SetupPlayerInput();
-	void TryToOpen(Menu* _menu);
-	void CloseAllMenus();
+	void TryToOpen(Menu* _menu, const bool _restoreActions = true);
 
 public:
 	virtual void Init() override;
+	virtual void Update(const float _deltaTime) override;
+	void CloseAllMenus(const bool _restoreActions);
 };

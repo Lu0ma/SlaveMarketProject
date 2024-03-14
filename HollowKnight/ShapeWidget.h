@@ -8,6 +8,10 @@ protected:
 	ShapeObject* shapeObject;
 
 public:
+	virtual void SetShapePosition(const Vector2f& _position)
+	{
+		GetDrawable()->setPosition(_position);
+	}
 	virtual ShapeObject* GetObject() const override
 	{
 		return shapeObject;
@@ -16,12 +20,12 @@ public:
 	{
 		return shapeObject->GetDrawable();
 	}
-	virtual void SetShapePosition(const Vector2f& _position)
+	virtual Vector2f GetShapePosition()
 	{
-		GetDrawable()->setPosition(_position);
+		return GetDrawable()->getPosition();
 	}
 
 public:
-	ShapeWidget(const ShapeData& _data);
+	ShapeWidget(const ShapeData& _data, const WidgetType& _type = WT_UI);
 	~ShapeWidget();
 };

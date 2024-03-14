@@ -43,11 +43,13 @@ void PauseMenu::Init()
 	const vector<ButtonData>& _allData = {
 		ButtonData("CONTINUE", [&]() {
 			SetStatus(false);
+			Game::GetPlayer()->CloseAllMenus(true);
 		}),
 		ButtonData("OPTIONS", [&]() {
 			SetStatus(false);
-			// Open options menu
-			MenuManager::GetInstance().GetMenu<OptionsMenu>()->SetStatus(true);
+			OptionsMenu* _options = MenuManager::GetInstance().GetMenu<OptionsMenu>();
+			_options->SetOwner(this);
+			_options->SetStatus(true);
 		}),
 		ButtonData("QUIT TO MENU", [&]() {
 			SetStatus(false);
@@ -69,8 +71,7 @@ void PauseMenu::Init()
 		{
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
-				const Vector2f& _position = _hoveredButton->GetDrawable()->getPosition();
-				pointer->SetShapePosition(_position);
+				MovePointers(_hoveredButton);
 			}
 		};
 		_button->GetData().pressedCallback = _allData[_index].callback;
@@ -87,8 +88,8 @@ void PauseMenu::Init()
 
 	#pragma region Pointer
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _gridPosY), _buttonSize, PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	MovePointers(buttons.front());
 
 	#pragma endregion
 }

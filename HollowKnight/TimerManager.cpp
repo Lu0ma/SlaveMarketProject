@@ -12,6 +12,9 @@ TimerManager::TimerManager()
 	framesCount = 0;
 	maxFrameRate = 60;
 	fps = 0;
+	current = 0;
+	max = 0;
+	isPause = false;
 }
 
 
@@ -33,11 +36,14 @@ void TimerManager::Update()
 	elapsedTime = time - lastTime;
 	deltaTime = elapsedTime * timeScale;
 	framesCount++;
-
-	UpdateTimers();
-
 	if (Render() && renderCallback)
 	{
 		renderCallback();
 	}
+	UpdateTimers();
+}
+
+void TimerManager::Pause(const float _duration)
+{
+
 }

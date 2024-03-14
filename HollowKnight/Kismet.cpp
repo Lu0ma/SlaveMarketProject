@@ -3,7 +3,7 @@
 #include "ActorManager.h"
 
 bool Raycast(const Vector2f& _origin, const Vector2f& _direction, const float _maxDistance,
-			 HitInfo& _hitInfo, const vector<Shape*>& _ignoredShapes, const float _precision)
+			 HitInfo& _hitInfo, const vector<Actor*>& _ignoredActors, const float _precision)
 {
 	if (_direction == Vector2f()) return false;
 
@@ -14,10 +14,9 @@ bool Raycast(const Vector2f& _origin, const Vector2f& _direction, const float _m
 	{
 		for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 		{
-			Shape* _shape = _actor->GetDrawable();
-			if (Contains(_shape, _ignoredShapes)) continue;
+			if (Contains(_actor, _ignoredActors)) continue;
 
-			if (_shape->getGlobalBounds().contains(_currentPosition))
+			if (_actor->GetComponent<CollisionComponent>()->CheckCollision(_currentPosition))
 			{
 				_hitInfo.position = _currentPosition;
 				_hitInfo.distance = _distance;
@@ -68,19 +67,21 @@ vector<HitInfo> RaycastAll(const Vector2f& _origin, const Vector2f& _direction, 
 	return _hitInfos;
 }
 
-vector<Actor*> Boxcast(Shape* _shape, const vector<Actor*>& _actors)
+bool BoxCast(const FloatRect& _boxRect, HitInfo& _hitInfo, const vector<Actor*>& _ignoredActors)
 {
-	vector<Actor*> _actorsHit;
-	const FloatRect& _rect = _shape->getGlobalBounds();
-
-	for (Actor* _actor : _actors)
+	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
-		Shape* _currentShape = _actor->GetDrawable();
-		if (_currentShape != _shape && _rect.intersects(_currentShape->getGlobalBounds()))
+		if (Contains(_actor, _ignoredActors)) continue;
+
+		if (_boxRect.intersects(_actor->GetDrawable()->getGlobalBounds()))
 		{
-			_actorsHit.push_back(_actor);
+			_hitInfo.position = _actor->GetShapePosition();
+			_hitInfo.distance = Distance(_hitInfo.position, _boxRect.getPosition());
+			_hitInfo.actor = _actor;
+
+			return true;
 		}
 	}
 
-	return _actorsHit;
+	return false;
 }

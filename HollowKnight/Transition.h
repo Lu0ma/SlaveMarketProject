@@ -2,14 +2,12 @@
 #include "BlackBoard.h"
 
 class State;
-class Brain;
 
 class Transition
 {
 protected:
-	State* nextState;
 	BlackBoard* blackBoard;
-	Brain* brain;
+	State* nextState;
 
 public:
 	State* GetNextState() const 
@@ -18,9 +16,9 @@ public:
 	}
 
 public:
-	Transition(Brain* _brain);
+	Transition(BlackBoard* _blackBoard);
 
 public:
-	virtual void Init() = 0;
+	virtual void Init(State* _state) = 0;
 	virtual bool CanNext() const = 0;
 };

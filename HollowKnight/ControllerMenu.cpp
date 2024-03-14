@@ -1,7 +1,7 @@
 #include "ControllerMenu.h"
 #include "Game.h"
 
-#define PATH_CONTROLLER "UIs/Menus/Options/Controller/Background.png"
+#define PATH_CONTROLLER "UIs/Menus/Options/Controller/Controller.png"
 
 ControllerMenu::ControllerMenu(Menu* _owner) : Menu("Controller", _owner)
 {
@@ -16,8 +16,29 @@ void ControllerMenu::Init()
 
 	#pragma region Background
 
-	ShapeWidget* _background = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_CONTROLLER));
+	ShapeWidget* _background = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_BACKGROUND));
 	canvas->AddWidget(_background);
+
+	#pragma endregion
+
+	#pragma region Title
+
+	const float _titlePosY = _windowSize.y * 0.1f;
+	Label* _title = new Label(TextData("Controller", Vector2f(_halfWindowX, _titlePosY), FONT, 36));
+	canvas->AddWidget(_title);
+
+	const float _titleBarPosY = _titlePosY + 75.0f;
+	const Vector2f& _titleBarSize = Vector2f(_windowSize.x * 0.4f, 50.0f);
+	const float _halfTitleBarSizeX = _titleBarSize.x * 0.45f;
+	ShapeWidget* _titleBar = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _titleBarPosY), _titleBarSize, PATH_TITLE_ICON));
+	canvas->AddWidget(_titleBar);
+
+	#pragma endregion
+
+	#pragma region Image
+
+	ShapeWidget* _image = new ShapeWidget(ShapeData(_windowSize / 2.0f, Vector2f(747.0f, 334.0f), PATH_CONTROLLER));
+	canvas->AddWidget(_image);
 
 	#pragma endregion
 
@@ -27,20 +48,20 @@ void ControllerMenu::Init()
 	const float _buttonPosY = _windowSize.y * 0.9f;
 	const Vector2f& _buttonPos = Vector2f(_halfWindowX, _buttonPosY);
 
-	Button* _backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
-	_backButton->GetData().pressedCallback = [&]() {
+	backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
+	backButton->GetData().pressedCallback = [&]() {
 		owner->SetStatus(true);
 		canvas->SetVisibilityStatus(false);
 	};
-	_backButton->GetDrawable()->setFillColor(Color::Transparent);
-	canvas->AddWidget(_backButton);
+	backButton->GetDrawable()->setFillColor(Color::Transparent);
+	canvas->AddWidget(backButton);
 
 	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
-	_backButton->SetForeground(_buttonText);
+	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	MovePointers(backButton);
 
 	#pragma endregion
 }

@@ -1,11 +1,9 @@
 #pragma once
-#include"Mob.h"
-#include "AnimationComponent.h"
-#include<vector>
+#include "Mob.h"
+#include <vector>
 
 class DeathMob : public Mob
 {
-	AnimationComponent* animation;
 	vector<string> animDeath;
 	string name;
 	int death;

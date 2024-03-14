@@ -1,5 +1,6 @@
 #include "Timer.h"
 #include "TimerManager.h"
+#include "Macro.h"
 
 Timer::Timer(const function<void()>& _callback, const Time& _time,
 	const bool _startRunning, const bool _isLoop) : IManagable(GetUniqueID())
@@ -27,7 +28,6 @@ void Timer::Update(const float _deltaTime)
 	currentDuration += _deltaTime;
 	if (currentDuration >= duration)
 	{
-		Reset();
 		if (callback)
 		{
 			callback();
@@ -37,10 +37,19 @@ void Timer::Update(const float _deltaTime)
 		{
 			Stop();
 		}
+
+		Reset();
 	}
+
 }
 
 void Timer::Start()
+{
+	Reset();
+	Resume();
+}
+
+void Timer::Resume()
 {
 	isRunning = true;
 }

@@ -8,6 +8,7 @@ class InputManager : public Singleton<InputManager>, public IManager<string, Act
 	Vector2f mousePosition;
 	Vector2f worldPosition;
 
+
 public:
 	Vector2f GetMousePosition() const 
 	{

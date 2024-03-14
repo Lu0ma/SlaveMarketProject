@@ -5,11 +5,8 @@
 class PlayerMovementComponent : public MovementComponent
 {
 	// Movement
+	bool directionHasChanged;
 	Vector2f direction;
-
-	// Sprintç
-	bool isSprinting;
-	float sprintSpeed;
 
 	// Ground
 	bool isOnGround;
@@ -17,12 +14,15 @@ class PlayerMovementComponent : public MovementComponent
 
 	// Jump
 	bool isJumping;
-	bool canIncreaseJump;
+	bool canDoubleJump;
 	float jumpForce;
-	float jumpDuration;
-	float jumpDurationFactor;
+	float currentJumpForce;
+	float jumpFactor;
+
+	// Gravity
 	float gravity;
-	Timer* jumpTimer;
+	float downSpeed;
+	float downFactor;
 
 	// Dash
 	bool canDash;
@@ -37,46 +37,30 @@ class PlayerMovementComponent : public MovementComponent
 	bool isStanding;
 	float sitOffset;
 
+	//Distance
+	float checkWallDistance;
+
 	// Components
 	PlayerAnimationComponent* animation;
 
+	//Actor* rayCastLineX;
+	Actor* rayCastLineY;
+	//Actor* triggerBox;
+
 public:
-	void SetDirectionX(const float _directionX, const string& _animName)
-	{
-		if (!canMove) return;
-
-		direction.x = _directionX;
-
-		if (_directionX == 0.0f)
-		{
-			cout << owner->GetDrawable()->getScale().x << endl;
-
-			if (owner->GetDrawable()->getScale().x >= 0.0f)
-			{
-				dashDirection = 1.0f;
-			}
-
-			else
-			{
-				dashDirection = -1.0f;
-			}
-		}
-
-		else
-		{
-			dashDirection = _directionX;
-		}
-
-		animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
-	}
+	void SetDirectionX(const float _directionX, const string& _animName);
 	void SetDirectionY(const float _directionY)
 	{
 		if (!canMove) return;
 		direction.y = _directionY;
 	}
-	void SetSprint(const bool _status)
+	bool IsOnGround() const
 	{
-		isSprinting = _status;
+		return isOnGround;
+	}
+	bool GetIsDashing() const
+	{
+		return isDashing;
 	}
 	bool IsStanding() const
 	{
@@ -86,18 +70,21 @@ public:
 	{
 		return direction;
 	}
+	float GetDashDirection()const
+	{
+		return dashDirection;
+	}
 
 public:
 	PlayerMovementComponent(Actor* _owner);
 
 private:
 	bool CheckGround();
-	void Jump(const float _deltaTime);
-
+	void StopJump();
+	
 public:
 	virtual void Update(const float _deltaTime) override;
-	void StartJump();
-	void StopJump();
+	void Jump();
 	void Dash();
 	void SitDown();
 	void StandUp();

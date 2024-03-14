@@ -1,9 +1,9 @@
 #include "ExtrasMenu.h"
 #include "Game.h"
 
-ExtrasMenu::ExtrasMenu(Menu* _owner) : Menu("Controller", _owner)
+ExtrasMenu::ExtrasMenu(Menu* _owner) : Menu("Extras", _owner)
 {
-	backButton = nullptr;
+
 }
 
 
@@ -37,8 +37,10 @@ void ExtrasMenu::Init()
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
-	pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));
-	canvas->AddWidget(pointer);
+	Menu::Init();
+	MovePointers(backButton);
 
 	#pragma endregion
+
+
 }
