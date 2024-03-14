@@ -44,31 +44,23 @@ void TitleMenu::Init()
 	};
 
 	const vector<ButtonData>& _allData = {
-		ButtonData("START GAME", [&]() { 
+		ButtonData("Start Game", [&]() { 
 			Game::GetPlayer()->Init();
 			SetStatus(false);
 		}),
-		ButtonData("OPTIONS", [&]() {
+		ButtonData("Options", [&]() {
 			options->SetStatus(true);
 			SetStatus(false);
 		}),
-		ButtonData("ACHIEVEMENTS", [&]() {
-			if (achievement->GetAchievementCanvas())
-			{
-				achievement->GetAchievementCanvas()->SetVisibilityStatus(true);
-				SetStatus(false);
-			}
-			else 
-			{
-				achievement->SetStatus(true);
-				SetStatus(false);
-			}
+		ButtonData("Achievements", [&]() {
+			achievement->SetStatus(true);
+			SetStatus(false);
 		}),
-		ButtonData("EXTRAS", [&]() {
+		ButtonData("Extras", [&]() {
 			cout << "EXTRAS" << endl;
 			//TODO easter
 		}),
-		ButtonData("QUIT GAME", [&]() {
+		ButtonData("Quit Game", [&]() {
 			quitGame->SetStatus(true);
 			SetStatus(false);
 		})
