@@ -11,7 +11,7 @@ BrightnessMenu::BrightnessMenu(Menu* _owner) : Menu("Brightness", _owner)
 {
 	minValue = 0;
 	maxValue = 0;
-	factor = 0;
+	factor = 5.0f;
 	brightButton = nullptr;
 	indicator = nullptr;
 }
@@ -98,7 +98,6 @@ void BrightnessMenu::Init()
 
 	minValue = _volumeBarPosX - _volumeBarSizeX / 2.0f;
 	maxValue = _volumeBarPosX + _volumeBarSizeX / 2.0f;
-	factor = 2.0f;
 	
 	const Vector2f& _sizeIndicator = Vector2f(67.0f / 1.25f, 67.0f / 1.25f);
 	const Vector2f& _positionIndicator = Vector2f(_volumeBarPosX, _buttonPosY - 25.0f);

@@ -19,9 +19,8 @@
 #include "TimerManager.h"
 
 #define PATH_ITEM "UIs/Inventory/Item.png"
-#define PATH_ITEM2 "test.png"
 #define PATH_DEATHMOB "Animations/DeathMob.png"
-#define DEAD_ZONE 50.f
+#define DEAD_ZONE 50.0f
 
 Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_BLOCK)
 {
