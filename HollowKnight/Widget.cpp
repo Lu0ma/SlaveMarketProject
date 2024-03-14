@@ -3,4 +3,5 @@
 Widget::Widget()
 {
 	isVisible = true;
+	applyShader = false;
 }

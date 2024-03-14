@@ -12,18 +12,21 @@ RenderWindow Game::window;
 Map* Game::map;
 Player* Game::player;
 Camera* Game::camera;
+Brightness* Game::brightness;
 
 Game::Game()
 {
 	menu = new MainMenu();
-	player = new Player("Player", ShapeData(Vector2f(0.0f, -250.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
+	player = new Player("Player", ShapeData(Vector2f(-500.0f, -250.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
 	map = new Map();
 	camera = new Camera();
+	brightness = new Brightness();
 } 
 
 Game::~Game()
 {
 	delete map;
+	delete brightness;
 }
 
 
@@ -39,6 +42,9 @@ void Game::Init()
 	menu->Init();
 	camera->Init();
 	map->Init();
+
+	brightness->Init();
+
 
 	//TODO move
 	Spawner* _spawner = new Spawner();
@@ -68,13 +74,13 @@ void Game::UpdateWindow()
 
 	for (ShapeObject* _drawable : map->GetAllDrawables())
 	{
-		window.draw(*_drawable->GetDrawable());
+		window.draw(*_drawable->GetDrawable(), brightness->shader);
 	}
 	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
 	{
-		window.draw(*_actor->GetDrawable());
+		window.draw(*_actor->GetDrawable(), brightness->shader);
 	}
-	window.draw(*player->GetLight());
+	//window.draw(*player->GetLight());
 
 	View _view = window.getDefaultView();
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
@@ -86,7 +92,8 @@ void Game::UpdateWindow()
 		for (Widget* _widget : _canvas->GetWidgets()) 
 		{
 			if (!_widget->IsVisible()) continue;
-			window.draw(*_widget->GetDrawable());
+			const RenderStates& _render = _widget->CanApplyShader() ? brightness->shader : RenderStates::Default;
+			window.draw(*_widget->GetDrawable(), _render);
 		}
 	}
 
@@ -96,7 +103,7 @@ void Game::UpdateWindow()
 
 void Game::Stop()
 {
-	cout << "A bientôt !" << endl;
+	cout << "A bientï¿½t !" << endl;
 }
 
 

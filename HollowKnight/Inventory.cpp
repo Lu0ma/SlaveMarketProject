@@ -90,8 +90,6 @@ void Inventory::Init()
 {
 	Menu::Init();
 
-	canvas->SetVisibilityStatus(false);
-
 	windowSize = Game::GetWindowSize();
 	halfSize = windowSize / 2.0f;
 	gridSizeX = gridSize.x * cellSize.x;
@@ -403,16 +401,23 @@ void Inventory::AddItem(const int _count, const ItemData& _data)
 	
 	else if (_data.type == IT_ITEM)
 	{
+		cout << "Add item to inventory" << endl;
+
 		if (Item* _item = FindItemData(_data.path))
 		{
 			pointerLeft->SetVisible(true);
 			_item->UpdateCount(1);
 			AddItem(_count - 1, _data);
+
+			cout << "UpdateCount into inventory" << endl;
+
 			return;
 		}
 
 		CreateItemData(_data);
 		AddItem(_count - 1, _data);
+
+		cout << "Create slot item in the inventory" << endl;
 	}
 	else if (_data.type == IT_GEOS)
 	{

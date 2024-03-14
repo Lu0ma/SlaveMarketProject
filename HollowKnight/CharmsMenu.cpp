@@ -45,10 +45,11 @@ void CharmsMenu::Init()
 	gridPos = Vector2f(windowSize.x / 12.0f, windowSize.y / 8.0f);
 	halfSize = windowSize / 2.0f;
 
+	_items = vector<CharmsItem>();
 	Background();
 	Separator();
 	SelectedCharms();
-	EquippedCharms();
+	SlotCharms();
 	Notches();
 	NotchesText();
 	EquippedText();
@@ -92,14 +93,10 @@ void CharmsMenu::SelectedCharms()
 		{
 			if (Button* _pressedButton = HUD::GetInstance().GetPressedButton(slotsEquippedCharms))
 			{
-				if (ItemWidget* _itemWidget = dynamic_cast<ItemWidget*>(_pressedButton->GetForeground()))
+				if (CharmWidget* _charm = dynamic_cast<CharmWidget*>(_pressedButton->GetForeground()))
 				{
-					if (Button* _slotCharms = GetFirstAvailableSlotCharms())
-					{
-						_pressedButton->SetForeground(nullptr);
-						_slotCharms->SetForeground(_itemWidget);
-						_itemWidget->SetShapePosition(_slotCharms->GetShapePosition());
-					}
+					_pressedButton->SetForeground(nullptr);
+					_charm->ResetPosition();
 				}
 			}
 		};
@@ -113,19 +110,14 @@ void CharmsMenu::SelectedCharms()
 	canvas->AddWidget(pointerLeft);
 }
 
-void CharmsMenu::EquippedCharms()
+void CharmsMenu::SlotCharms()
 {
 	const float _spacingY = halfSize.y * 0.8f;
 	const Vector2f& _gapSlot = Vector2f(35.0f, 35.0f);
 
-	struct CharmsItem
-	{
-		string widgetPath;
-		string title;
-		string text;
-	};
+	
 
-	const vector<CharmsItem>& _items = {
+	_items = {
 		{
 			"UIs/Charms/SkillSlot.png",
 			"Gathering Swarm",
@@ -186,7 +178,7 @@ void CharmsMenu::EquippedCharms()
 			slotsCharms.push_back(_slot);
 			canvas->AddWidget(_slot);
 
-			ItemWidget* _widget = new ItemWidget(ShapeData(Vector2f(_posX, _posY), slotSize * 2.0f, CHARMS + to_string(_index) + ".png"), _items[_count].title, _items[_count].text);
+			CharmWidget* _widget = new CharmWidget(ShapeData(Vector2f(_posX, _posY), slotSize * 2.0f, CHARMS + to_string(_index) + ".png"), _items[_count].title, _items[_count].text, _slot);
 			_slot->SetForeground(_widget);
 			canvas->AddWidget(_widget);
 		}

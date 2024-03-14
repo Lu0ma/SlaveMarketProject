@@ -5,9 +5,6 @@
 #include "HUD.h"
 #include "Macro.h"
 
-#define PATH_BACKGROUND "UIs/Menus/Background.png"
-#define PATH_TITLE_ICON "UIs/Menus/TitleIcon.png"
-#define FONT "Font.ttf"
 #define PATH_MINUS "../Menu/Audio/Minus.png"
 #define PATH_PLUS "../Menu/Audio/Plus.png"
 #define PATH_LINE "../Menu/Audio/music_line.png"
@@ -23,7 +20,6 @@ AudioMenu::AudioMenu(Menu* _owner) : Menu("Audio", _owner)
 	soundValue = 50.0f;
 	musicValue = 50.0f;
 	masterValue = 50.0f;
-	backButton = nullptr;
 	buttons = vector<Button*>();
 	indicators = map<string, ShapeWidget*>();
 }
@@ -43,14 +39,15 @@ void AudioMenu::Init()
 
 	#pragma region Title
 
-	const float _tilePosY = _windowSize.y * 0.15f;
-	Label* _title = new Label(TextData("Audio", Vector2f(_halfWindowX, _tilePosY), FONT, 32));
+	const float _titlePosY = _windowSize.y * 0.1f;
+	Label* _title = new Label(TextData("Video", Vector2f(_halfWindowX, _titlePosY), FONT, 36));
 	canvas->AddWidget(_title);
 
-	const float _tileIconPosY = _tilePosY + 50.0f;
-	ShapeWidget* _titleIcon = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _tileIconPosY), Vector2f(765.0f, 78.0f), PATH_TITLE_ICON));
-	_titleIcon->GetDrawable()->setScale(0.6f, 0.6f);
-	canvas->AddWidget(_titleIcon);
+	const float _titleBarPosY = _titlePosY + 75.0f;
+	const Vector2f& _titleBarSize = Vector2f(_windowSize.x * 0.4f, 50.0f);
+	const float _halfTitleBarSizeX = _titleBarSize.x * 0.45f;
+	ShapeWidget* _titleBar = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _titleBarPosY), _titleBarSize, PATH_TITLE_ICON));
+	canvas->AddWidget(_titleBar);
 
 	#pragma endregion
 
@@ -152,7 +149,7 @@ void AudioMenu::Init()
 
 	const Vector2f& _buttonSize = Vector2f(600.0f, 70.0f);
 	const float _gapY = _buttonSize.y * 20.0f / 100.0f;
-	const float _gridPosY = _windowSize.y * 0.35f;
+	const float _gridPosY = _titleBarPosY + 100.0f;
 
 	const int _dataCount = static_cast<int>(_audioButtonsData.size());
 

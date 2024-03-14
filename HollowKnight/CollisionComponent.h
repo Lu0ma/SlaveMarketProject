@@ -30,5 +30,6 @@ public:
 	~CollisionComponent();
 
 public:
+	bool CheckCollision(const Vector2f& _position);
 	bool CheckCollision(const vector<Actor*>& _ignoredActors = vector<Actor*>());
 };

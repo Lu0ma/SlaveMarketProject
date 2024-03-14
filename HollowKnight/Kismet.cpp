@@ -16,7 +16,7 @@ bool Raycast(const Vector2f& _origin, const Vector2f& _direction, const float _m
 		{
 			if (Contains(_actor, _ignoredActors)) continue;
 
-			if (_actor->GetDrawable()->getGlobalBounds().contains(_currentPosition))
+			if (_actor->GetComponent<CollisionComponent>()->CheckCollision(_currentPosition))
 			{
 				_hitInfo.position = _currentPosition;
 				_hitInfo.distance = _distance;

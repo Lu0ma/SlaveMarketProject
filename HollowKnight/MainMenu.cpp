@@ -4,7 +4,6 @@
 #include "MusicManager.h"
 
 #define PATH_MAIN_MENU "UIs/Menus/MainMenu/Background.png"
-#define MUSIC "CityofTears.mp3"
 
 MainMenu::MainMenu() : Menu("MainMenu")
 {
@@ -33,8 +32,11 @@ void MainMenu::Init()
 
 	canvas->AddWidget(_mainMenuText);
 	new ActionMap("MenuInputs", {
-		ActionData("OpenTitleMenu", [&]() { OpenTitleMenu(); }, InputData({ ActionType::KeyPressed, Keyboard::Space }))
+		ActionData("OpenTitleMenu", [&]() { 
+			OpenTitleMenu();
+			music->Stop();
+		}, InputData({ ActionType::KeyPressed, Keyboard::Space }))
 	});
 
-	MusicManager::GetInstance().Play(MUSIC);
+	music = new MusicData("CityofTears", 100.0f);
 }

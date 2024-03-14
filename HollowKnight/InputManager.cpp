@@ -24,7 +24,8 @@ bool InputManager::Update(RenderWindow& _window)
 			_window.setView(View(_visibleArea));
 			cout << "resized" << endl;
 		}
-		HUD::GetInstance().Interact(worldPosition, _event.type);
+		//HUD::GetInstance().Interact(worldPosition, _event.type);
+		HUD::GetInstance().Interact(worldPosition, _event);
 		UpdateInputs(_event);
 	}
 
