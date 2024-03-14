@@ -289,10 +289,6 @@
     <Filter Include="Objects\ShapeObjects\Actors\Interactables\PNJ">
       <UniqueIdentifier>{685f824a-fe92-4cf6-b63c-001f9a0f1a60}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
-    <Filter Include="IAs\States\Death">
-      <UniqueIdentifier>{0affda7f-98ed-4d47-a5ed-f4f8599cbafb}</UniqueIdentifier>
-=======
     <Filter Include="Menus\BrightnessMenu">
       <UniqueIdentifier>{889c04bf-ab7c-4de8-b80c-55ecac625f57}</UniqueIdentifier>
     </Filter>
@@ -313,7 +309,6 @@
     </Filter>
     <Filter Include="Fichiers de ressources\SoundSystem">
       <UniqueIdentifier>{5aae8b1c-d93f-44c8-bae6-730aa36131dc}</UniqueIdentifier>
->>>>>>> Release
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -659,39 +654,6 @@
     <ClCompile Include="SoundSystem.cpp">
       <Filter>Fichiers de ressources\SoundSystem</Filter>
     </ClCompile>
-    <ClCompile Include="InspectComponent.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="ScrollBar.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="BossAttackState.cpp">
-      <Filter>IAs\States\Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="MobAttackState.cpp">
-      <Filter>IAs\States\Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="BossPatrolState.cpp">
-      <Filter>IAs\States\Patrol</Filter>
-    </ClCompile>
-    <ClCompile Include="MobPatrolState.cpp">
-      <Filter>IAs\States\Patrol</Filter>
-    </ClCompile>
-    <ClCompile Include="PatrolToAttack.cpp">
-      <Filter>IAs\Transitions\Patrol</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackToDeath.cpp">
-      <Filter>IAs\Transitions\Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="ChaseToDeath.cpp">
-      <Filter>IAs\Transitions\Chase</Filter>
-    </ClCompile>
-    <ClCompile Include="PatrolToDeath.cpp">
-      <Filter>IAs\Transitions\Patrol</Filter>
-    </ClCompile>
-    <ClCompile Include="DeathState.cpp">
-      <Filter>IAs\States\Death</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -1009,16 +971,6 @@
     <ClInclude Include="PNJ.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables\PNJ</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="BlackBoard.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="InspectComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ScrollBar.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-=======
     <ClInclude Include="BrightnessMenu.h">
       <Filter>Menus\BrightnessMenu</Filter>
     </ClInclude>
@@ -1027,46 +979,22 @@
     </ClInclude>
     <ClInclude Include="VideoMenu.h">
       <Filter>Menus\OptionsMenu\VideoMenu</Filter>
->>>>>>> Release
     </ClInclude>
     <ClInclude Include="BossAttackState.h">
       <Filter>IAs\States\Attack</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="MobAttackState.h">
-      <Filter>IAs\States\Attack</Filter>
-=======
     <ClInclude Include="BossPatrolState.h">
       <Filter>IAs\States\Patrol</Filter>
->>>>>>> Release
     </ClInclude>
     <ClInclude Include="MobPatrolState.h">
       <Filter>IAs\States\Patrol</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="BossPatrolState.h">
-      <Filter>IAs\States\Patrol</Filter>
-=======
     <ClInclude Include="MobAttackState.h">
       <Filter>IAs\States\Attack</Filter>
->>>>>>> Release
     </ClInclude>
     <ClInclude Include="PatrolToAttack.h">
       <Filter>IAs\Transitions\Patrol</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="AttackToDeath.h">
-      <Filter>IAs\Transitions\Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="ChaseToDeath.h">
-      <Filter>IAs\Transitions\Chase</Filter>
-    </ClInclude>
-    <ClInclude Include="PatrolToDeath.h">
-      <Filter>IAs\Transitions\Patrol</Filter>
-    </ClInclude>
-    <ClInclude Include="DeathState.h">
-      <Filter>IAs\States\Death</Filter>
-=======
     <ClInclude Include="InspectComponent.h">
       <Filter>Components\Inspect</Filter>
     </ClInclude>
@@ -1078,7 +1006,6 @@
     </ClInclude>
     <ClInclude Include="SoundSystem.h">
       <Filter>Fichiers de ressources\SoundSystem</Filter>
->>>>>>> Release
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -57,35 +57,26 @@ void Player::InitAnimations()
 void Player::SetupPlayerInput()
 {
 	new ActionMap("Stats", {
-		ActionData("ConvertManaToLife", [&]() {
-<<<<<<< HEAD
-			stats->UseMana(-10.0f);
-			stats->UpdateLife(1);
-			FxManager::GetInstance().Run("FxMana");
-		}, InputData({ActionType::KeyPressed, Keyboard::A})),
-		ActionData("ManaToLife", [&]() {stats->UpdateLife(-1); }, InputData({ActionType::KeyPressed, Keyboard::M})), //TODO REMOVE
-		ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
+			ActionData("ConvertManaToLife", [&]() {
+				if (movement->IsOnGround())
+				{
+					stats->UseMana(0.6f);
+					Game::GetCamera()->SetIsZoom(true);
+
+					movement->SetCanMove(false);
+					attack->SetCanAttack(false);
+				}
+			}, InputData({ ActionType::KeyPressed, Keyboard::A })),
+			ActionData("StopConvertManaToLife", [&]() {
+
+				movement->SetCanMove(true);
+				attack->SetCanAttack(true);
+
+				movement->SetDirectionX(0.0f, "StopRight");
+				Game::GetCamera()->SetIsZoom(false);
+
+			}, InputData({ActionType::KeyReleased, Keyboard::A})),
 		});
-=======
-			if (movement->IsOnGround())
-			{
-				stats->UseMana(0.6f);
-				Game::GetCamera()->SetIsZoom(true);
-
-				movement->SetCanMove(false);
-				attack->SetCanAttack(false);
-			}
-		}, InputData({ ActionType::KeyPressed, Keyboard::A })),
-		ActionData("StopConvertManaToLife", [&]() {
-
-			movement->SetCanMove(true);
-			attack->SetCanAttack(true);
-
-			movement->SetDirectionX(0.0f, "StopRight");
-			Game::GetCamera()->SetIsZoom(false);
-
-		}, InputData({ActionType::KeyReleased, Keyboard::A})),
-	});
 
 	new ActionMap("Camera", {
 		ActionData("Shake", [&]() {
@@ -111,9 +102,8 @@ void Player::SetupPlayerInput()
 		ActionData("StopShakePlayer", [&]() {
 			new Timer([&]() { Game::GetCamera()->SetCanShake(false); }, milliseconds((Int32)5.0f));
 		}, InputData({ ActionType::KeyReleased, Keyboard::K })),
-	});
+		});
 
->>>>>>> Release
 	new ActionMap("Movements", {
 		ActionData("Right", [&]() {
 			if (!movement->GetIsDashing())
@@ -158,11 +148,11 @@ void Player::SetupPlayerInput()
 				attack->SetCanAttack(true);
 			}
 		}, InputData({ ActionType::KeyPressed, Keyboard::S }))
-	});
+		});
 
 	new ActionMap("Attack", {
 		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial"); Game::GetCamera()->GetShake()->Shake(2.0f, 800.0f); ActorManager::GetInstance().SetStop(true); new Timer([&]() {ActorManager::GetInstance().SetStop(false); }  , milliseconds(500)); }, InputData({ActionType::MouseButtonPressed, Mouse::Right})),
-		ActionData("StopSpecial", [&]() { }, InputData({ActionType::MouseButtonReleased, Mouse::Right})),
+		ActionData("StopSpecial", [&]() {}, InputData({ActionType::MouseButtonReleased, Mouse::Right})),
 		ActionData("ControllerSpecial", [&]() {
 			if (Joystick::isButtonPressed(0, 0))
 			{
@@ -174,7 +164,7 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 0) })),
 		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::MouseButtonReleased, Mouse::Left })),
-	});
+		});
 
 	new ActionMap("Menu", {
 		ActionData("Pause", [&]() {
@@ -195,7 +185,7 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ ActionType::KeyPressed, Keyboard::P })),
 		ActionData("Interact", [&]() { interaction->TryToInteract(); }, InputData({ ActionType::KeyPressed, Keyboard::E })),
-	});
+		});
 }
 
 void Player::TryToOpen(Menu* _menu, const bool _restoreActions)

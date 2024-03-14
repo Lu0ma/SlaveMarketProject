@@ -182,21 +182,6 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	}
 }
 
-<<<<<<< HEAD
-void PlayerMovementComponent::StartJump()
-{
-	if (!canMove || isJumping || !isOnGround) return;
-
-	//cout << "StartJump" << endl;
-	isJumping = true;
-	canIncreaseJump = true;
-
-	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
-	jumpTimer = new Timer([this]() { isJumping = false; }, seconds(jumpDuration));
-}
-
-=======
->>>>>>> Release
 void PlayerMovementComponent::Jump()
 {
 	if (!canMove || !canDoubleJump) return;

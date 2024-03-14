@@ -37,10 +37,7 @@ void Timer::Update(const float _deltaTime)
 		{
 			Stop();
 		}
-<<<<<<< HEAD
-=======
 
->>>>>>> Release
 		Reset();
 	}
 

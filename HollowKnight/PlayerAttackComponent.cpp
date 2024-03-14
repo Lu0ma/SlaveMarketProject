@@ -29,16 +29,13 @@ void PlayerAttackComponent::SpecialAttack()
 		else
 		{
 			//_mob->GetLife()->TakeDamages(GetDamages());
-<<<<<<< HEAD
 			_mob->GetLife()->SetLife(0);
 			if (DeathMob* _deathMob = dynamic_cast<DeathMob*>(_mob))
 			{
 				_deathMob->Death();
 			}
-=======
 			//_mob->GetLife()->SetLife(0);
 			//_mob->Death();
->>>>>>> Release
 			Game::GetPlayer()->GetStats()->UseMana(10.0f);
 		}
 	}
@@ -51,16 +48,13 @@ void PlayerAttackComponent::SpecialAttack()
 		else
 		{
 			//_mob->GetLife()->TakeDamages(GetDamages());
-<<<<<<< HEAD
 			_mob->GetLife()->SetLife(0);
 			if (DeathMob* _deathMob = dynamic_cast<DeathMob*>(_mob))
 			{
 				_deathMob->Death();
 			}
-=======
 			//_mob->GetLife()->SetLife(0);
 			//_mob->Death();
->>>>>>> Release
 			Game::GetPlayer()->GetStats()->UseMana(1.0f);
 		}
 	}

@@ -41,14 +41,8 @@ void DeathMob::Death()
 		animation->RunAnimation("Death", GetDrawable()->getScale().x);
 		GetDrawable()->setScale(Vector2f(0.0f, 0.0f));
 		int _newDeath = Random<int>(10000, 0);
-<<<<<<< HEAD
-		new CollectableActor("Geo"+ to_string(_newDeath), ShapeData(Vector2f(GetPosition().x, GetPosition().y + 20.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, IT_GEOS);
-	}	
-=======
 		new CollectableActor("Geo"+ to_string(_newDeath), ShapeData(Vector2f(GetShapePosition().x, GetShapePosition().y + 20.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, IT_GEOS);
 	}
-	
->>>>>>> Release
 }
  
 void DeathMob::Update(const float _deltaTime)
