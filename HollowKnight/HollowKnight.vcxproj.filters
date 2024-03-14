@@ -289,8 +289,31 @@
     <Filter Include="Objects\ShapeObjects\Actors\Interactables\PNJ">
       <UniqueIdentifier>{685f824a-fe92-4cf6-b63c-001f9a0f1a60}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="IAs\States\Death">
       <UniqueIdentifier>{0affda7f-98ed-4d47-a5ed-f4f8599cbafb}</UniqueIdentifier>
+=======
+    <Filter Include="Menus\BrightnessMenu">
+      <UniqueIdentifier>{889c04bf-ab7c-4de8-b80c-55ecac625f57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\Items\Charms">
+      <UniqueIdentifier>{f4834ea2-22a4-4a18-b639-fd7b5f14dfd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\OptionsMenu\VideoMenu">
+      <UniqueIdentifier>{284bffb5-fe12-49f2-a3f4-60f869b223da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menus\OptionsMenu\VideoMenu\ScreenScale">
+      <UniqueIdentifier>{deb6e7b6-de81-4163-90b0-c4b3fe4c4103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Inspect">
+      <UniqueIdentifier>{4c4d5da3-1c9c-40da-ac17-8de615ffc6b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIs\Widgets\ShapeWidgets\ScrollBars">
+      <UniqueIdentifier>{206b4188-667b-4615-9288-e4d6dd95afb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\SoundSystem">
+      <UniqueIdentifier>{5aae8b1c-d93f-44c8-bae6-730aa36131dc}</UniqueIdentifier>
+>>>>>>> Release
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -600,8 +623,41 @@
     <ClCompile Include="PNJ.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables\PNJ</Filter>
     </ClCompile>
+    <ClCompile Include="BrightnessMenu.cpp">
+      <Filter>Menus\BrightnessMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="CharmWidget.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets\Items\Charms</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoMenu.cpp">
+      <Filter>Menus\OptionsMenu\VideoMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="BossAttackState.cpp">
+      <Filter>IAs\States\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="BossPatrolState.cpp">
+      <Filter>IAs\States\Patrol</Filter>
+    </ClCompile>
+    <ClCompile Include="MobPatrolState.cpp">
+      <Filter>IAs\States\Patrol</Filter>
+    </ClCompile>
+    <ClCompile Include="MobAttackState.cpp">
+      <Filter>IAs\States\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="PatrolToAttack.cpp">
+      <Filter>IAs\Transitions\Patrol</Filter>
+    </ClCompile>
+    <ClCompile Include="InspectComponent.cpp">
+      <Filter>Components\Inspect</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollBar.cpp">
+      <Filter>UIs\Widgets\ShapeWidgets\ScrollBars</Filter>
+    </ClCompile>
     <ClCompile Include="Lever.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Objects\ShapeObjects\Actors\Interactables\Lever</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundSystem.cpp">
+      <Filter>Fichiers de ressources\SoundSystem</Filter>
     </ClCompile>
     <ClCompile Include="InspectComponent.cpp">
       <Filter>Fichiers sources</Filter>
@@ -953,6 +1009,7 @@
     <ClInclude Include="PNJ.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables\PNJ</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="BlackBoard.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -961,22 +1018,43 @@
     </ClInclude>
     <ClInclude Include="ScrollBar.h">
       <Filter>Fichiers d%27en-tête</Filter>
+=======
+    <ClInclude Include="BrightnessMenu.h">
+      <Filter>Menus\BrightnessMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="CharmWidget.h">
+      <Filter>UIs\Widgets\ShapeWidgets\Items\Charms</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoMenu.h">
+      <Filter>Menus\OptionsMenu\VideoMenu</Filter>
+>>>>>>> Release
     </ClInclude>
     <ClInclude Include="BossAttackState.h">
       <Filter>IAs\States\Attack</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="MobAttackState.h">
       <Filter>IAs\States\Attack</Filter>
+=======
+    <ClInclude Include="BossPatrolState.h">
+      <Filter>IAs\States\Patrol</Filter>
+>>>>>>> Release
     </ClInclude>
     <ClInclude Include="MobPatrolState.h">
       <Filter>IAs\States\Patrol</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="BossPatrolState.h">
       <Filter>IAs\States\Patrol</Filter>
+=======
+    <ClInclude Include="MobAttackState.h">
+      <Filter>IAs\States\Attack</Filter>
+>>>>>>> Release
     </ClInclude>
     <ClInclude Include="PatrolToAttack.h">
       <Filter>IAs\Transitions\Patrol</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="AttackToDeath.h">
       <Filter>IAs\Transitions\Attack</Filter>
     </ClInclude>
@@ -988,6 +1066,19 @@
     </ClInclude>
     <ClInclude Include="DeathState.h">
       <Filter>IAs\States\Death</Filter>
+=======
+    <ClInclude Include="InspectComponent.h">
+      <Filter>Components\Inspect</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackBoard.h">
+      <Filter>IAs\Brains</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollBar.h">
+      <Filter>UIs\Widgets\ShapeWidgets\ScrollBars</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundSystem.h">
+      <Filter>Fichiers de ressources\SoundSystem</Filter>
+>>>>>>> Release
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

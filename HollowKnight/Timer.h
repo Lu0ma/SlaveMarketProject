@@ -14,10 +14,15 @@ class Timer : public IManagable<int>
 	bool isRunning;
 	bool isLoop;
 
+	bool isPause;
 public:
 	void AddDuration(const float _duration)
 	{
 		duration += _duration;
+	}
+	float GetCurrentDuration() const
+	{
+		return currentDuration;
 	}
 	bool IsRunning() const
 	{
@@ -51,6 +56,7 @@ private:
 public:
 	void Update(const float _deltaTime);
 	void Start();
+	void Resume();
 	void Pause();
 	void Reset();
 	void Stop();

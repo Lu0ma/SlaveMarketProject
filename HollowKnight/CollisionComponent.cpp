@@ -35,6 +35,11 @@ CollisionComponent::~CollisionComponent()
 }
 
 
+bool CollisionComponent::CheckCollision(const Vector2f& _position)
+{
+	return type == CT_BLOCK && boxCollision->GetDrawable()->getGlobalBounds().contains(_position);
+}
+
 bool CollisionComponent::CheckCollision(const vector<Actor*>& _ignoredActors)
 {
 	vector<Actor*> _actors = { owner };

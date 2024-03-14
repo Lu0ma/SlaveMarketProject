@@ -12,7 +12,6 @@ using namespace sf;
 
 class MovementComponent : public Component
 {
-
 protected:
 	bool canMove;
 	float speed;

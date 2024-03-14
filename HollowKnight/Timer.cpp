@@ -37,11 +37,22 @@ void Timer::Update(const float _deltaTime)
 		{
 			Stop();
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> Release
 		Reset();
 	}
+
 }
 
 void Timer::Start()
+{
+	Reset();
+	Resume();
+}
+
+void Timer::Resume()
 {
 	isRunning = true;
 	Reset();

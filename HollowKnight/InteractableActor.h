@@ -18,6 +18,7 @@ protected:
 	// Discussion
 	ShapeWidget* discussionBG;
 	ProgressLabel* discussionText;
+	//Vector2f currentPosition;
 
 public:
 	void SetIsOpen(const bool _status)

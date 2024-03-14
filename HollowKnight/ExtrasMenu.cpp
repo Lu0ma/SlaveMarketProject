@@ -1,9 +1,9 @@
 #include "ExtrasMenu.h"
 #include "Game.h"
 
-ExtrasMenu::ExtrasMenu(Menu* _owner) : Menu("Controller", _owner)
+ExtrasMenu::ExtrasMenu(Menu* _owner) : Menu("Extras", _owner)
 {
-	backButton = nullptr;
+
 }
 
 
@@ -41,4 +41,6 @@ void ExtrasMenu::Init()
 	MovePointers(backButton);
 
 	#pragma endregion
+
+
 }

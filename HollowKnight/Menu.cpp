@@ -9,6 +9,7 @@ Menu::Menu(const string& _name, Menu* _owner) : IManagable(_name)
 	canvas = new Canvas(_name);
 	pointerLeft = nullptr;
 	pointerRight = nullptr;
+	backButton = nullptr;
 	owner = _owner;
 }
 

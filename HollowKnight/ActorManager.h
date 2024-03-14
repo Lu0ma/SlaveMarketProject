@@ -8,6 +8,7 @@ class ActorManager : public Singleton<ActorManager>, public IManager<string, Act
 {
 	vector<InteractableActor*> interactables;
 
+	bool stop;
 public:
 	void AddInteractable(InteractableActor* _interactable)
 	{
@@ -18,6 +19,10 @@ public:
 		return interactables;
 	}
 
+	void SetStop(const bool _stop)
+	{
+		stop = _stop;
+	}
 public:
 	ActorManager();
 

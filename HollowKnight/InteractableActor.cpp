@@ -65,21 +65,26 @@ void InteractableActor::CloseDiscussion()
 
 void InteractableActor::Init()
 {
-	const Vector2f& _interactionBGPos = Vector2f(690.0f, 230.0f);
-	interactionBG = new ShapeWidget(ShapeData(_interactionBGPos, Vector2f(200.0f, 124.0f), PATH_INTERACTION));
+	const Vector2f& _interactionBGPos = /*Vector2f(690.0f, 230.0f); */ GetShapePosition();
+	const RenderWindow& _window = Game::GetWindow();
+	const Vector2f& _interactionBGPos2 = _window.mapPixelToCoords(static_cast<Vector2i>(_interactionBGPos));
+
+	interactionBG = new ShapeWidget(ShapeData(_interactionBGPos, Vector2f(200.0f, 124.0f), PATH_INTERACTION), WT_WORLD);
+	interactionBG->SetVisible(false);
 	canvas->AddWidget(interactionBG);
 
-	interactionText = new Label(TextData("LISTEN", _interactionBGPos + Vector2f(0.0f, -10.0f), FONT, 32));
+	interactionText = new Label(TextData("Listen", _interactionBGPos + Vector2f(0.0f, -10.0f), FONT, 32), AT_CENTER, WT_WORLD);
+	interactionText->SetVisible(false);
 	canvas->AddWidget(interactionText);
 
 	const Vector2f& _halfWindowSize = Game::GetWindowSize() / 2.0f;
 	const Vector2f& _discussionPos = Vector2f(_halfWindowSize.x, 80.0f);
 
-	discussionBG = new ShapeWidget(ShapeData(_discussionPos, Vector2f(418.0f, 150.0f), PATH_DISCUSSION));
+	discussionBG = new ShapeWidget(ShapeData(_discussionPos, Vector2f(418.0f, 150.0f), PATH_DISCUSSION), WT_WORLD);
 	discussionBG->SetVisible(false);
 	canvas->AddWidget(discussionBG);
 
-	discussionText = new ProgressLabel(TextData("", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16), 0.1f, "Your words, are they repeating ?");
+	discussionText = new ProgressLabel(TextData("", _discussionPos + Vector2f(0.0f, -20.0f), FONT, 16), 0.1f, "Bon jeu à toi dans Hollow Knight !", AT_CENTER, WT_WORLD);
 	discussionText->SetVisible(false);
 	canvas->AddWidget(discussionText);
 }

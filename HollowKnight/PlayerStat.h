@@ -1,6 +1,7 @@
 #pragma once
 #include "Menu.h"
 #include "ProgressBar.h"
+#include "Timer.h"
 
 #define PATH_LIFE "UIs/Player/Life/Life_"
 
@@ -17,13 +18,15 @@ class PlayerStat : public Menu
 
 	// Mana
 	ProgressBar* manaBar;
+	float manaUsed;
+	float manaUsedLifespan;
+	Timer* resetManaTimer;
 
 	// Geos
 	int geosCount;
 	Label* geosCountText;
 
 	// Components
-	Player* player;
 	PlayerAnimationComponent* animation;
 	PlayerMovementComponent* movement;
 
@@ -57,12 +60,10 @@ public:
 
 public:
 	void Init();
-
 	void UseMana(const float _factor);
 	void StopUsingMana();
 	void UpdateLife(const int _count);
 	void AddLife();
 	void UpdateGeos(const int _factor);
 	void Death();
-
 };

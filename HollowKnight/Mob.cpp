@@ -32,6 +32,8 @@ void Mob::Update(const float _deltaTime)
 
 void Mob::Death()
 {
+	//ActorManager::GetInstance().Remove("Mob");
+	cout << "il est mort " << endl;
 }
 
 void Mob::Attack(Player* _player)

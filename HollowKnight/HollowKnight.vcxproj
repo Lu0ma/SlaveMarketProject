@@ -150,10 +150,12 @@
     <ClCompile Include="BossBrain.cpp" />
     <ClCompile Include="BossPatrolState.cpp" />
     <ClCompile Include="Brain.cpp" />
+    <ClCompile Include="BrightnessMenu.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="CharmsMenu.cpp" />
+    <ClCompile Include="CharmWidget.cpp" />
     <ClCompile Include="ChaseState.cpp" />
     <ClCompile Include="ChaseToAttack.cpp" />
     <ClCompile Include="ChaseToDeath.cpp" />
@@ -232,6 +234,7 @@
     <ClCompile Include="ShopMenu.cpp" />
     <ClCompile Include="SoundData.cpp" />
     <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="TextObject.cpp" />
@@ -242,6 +245,7 @@
     <ClCompile Include="TimerManager.cpp" />
     <ClCompile Include="TitleMenu.cpp" />
     <ClCompile Include="Transition.cpp" />
+    <ClCompile Include="VideoMenu.cpp" />
     <ClCompile Include="Widget.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -266,10 +270,12 @@
     <ClInclude Include="BossBrain.h" />
     <ClInclude Include="BossPatrolState.h" />
     <ClInclude Include="Brain.h" />
+    <ClInclude Include="BrightnessMenu.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="CharmsMenu.h" />
+    <ClInclude Include="CharmWidget.h" />
     <ClInclude Include="ChaseState.h" />
     <ClInclude Include="ChaseToAttack.h" />
     <ClInclude Include="ChaseToDeath.h" />
@@ -350,6 +356,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SoundData.h" />
     <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="TextObject.h" />
@@ -360,6 +367,7 @@
     <ClInclude Include="TimerManager.h" />
     <ClInclude Include="TitleMenu.h" />
     <ClInclude Include="Transition.h" />
+    <ClInclude Include="VideoMenu.h" />
     <ClInclude Include="Widget.h" />
   </ItemGroup>
   <ItemGroup>
