@@ -654,27 +654,6 @@
     <ClCompile Include="SoundSystem.cpp">
       <Filter>Fichiers de ressources\SoundSystem</Filter>
     </ClCompile>
-    <ClCompile Include="BossAttackState.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="BossPatrolState.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="InspectComponent.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="MobAttackState.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="MobPatrolState.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="PatrolToAttack.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="ScrollBar.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionMap.h">
@@ -991,29 +970,7 @@
     </ClInclude>
     <ClInclude Include="PNJ.h">
       <Filter>Objects\ShapeObjects\Actors\Interactables\PNJ</Filter>
-    <ClInclude Include="BlackBoard.h">
-      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="BossAttackState.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="BossPatrolState.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="InspectComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="MobAttackState.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="MobPatrolState.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="PatrolToAttack.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ScrollBar.h">
-      <Filter>Fichiers d%27en-tête</Filter>
     <ClInclude Include="BrightnessMenu.h">
       <Filter>Menus\BrightnessMenu</Filter>
     </ClInclude>
@@ -1049,6 +1006,9 @@
     </ClInclude>
     <ClInclude Include="SoundSystem.h">
       <Filter>Fichiers de ressources\SoundSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSound.h">
+      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

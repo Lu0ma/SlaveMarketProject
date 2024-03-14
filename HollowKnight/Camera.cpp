@@ -29,7 +29,7 @@ Camera::Camera() : Actor("Camera" , ShapeData())
 	isZoom = false;
 	isUp = false;
 	canShake = false;
-
+	canUpdate = true;
 }
 
 void Camera::MoveToTarget(const float _deltaTime)
@@ -72,8 +72,10 @@ void Camera::ShakeActor(const float _deltaTime)
 void Camera::Update(const float _deltaTime)
 {
 	Player* _player = Game::GetPlayer();
+	RenderWindow& _window = Game::GetWindow();
 	const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offsetCamera.x : -offsetCamera.x;
 
+	const float _lastPositionPlayer = _player->GetShapePosition().y;
 	if (isDown)
 	{
 		targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, 400.0f));
@@ -86,7 +88,7 @@ void Camera::Update(const float _deltaTime)
 	}
 	else
 	{
-		targetPosition = Vector2f(_player->GetShapePosition() + Vector2f(_offsetX, offsetCamera.y));
+		targetPosition = Vector2f(Vector2f(_player->GetShapePosition().x , 0.0f) + Vector2f(_offsetX, canUpdate ? view.getCenter().y : _player->GetShapePosition().y));
 		ShakeActor(_deltaTime);
 	}
 	MoveToTarget(_deltaTime);

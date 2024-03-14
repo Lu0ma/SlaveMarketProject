@@ -1,3 +1,0 @@
-﻿  Player.cpp
-D:\SlaveMarketProject\HollowKnight\Player.cpp(104,77): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
-  HollowKnight.vcxproj -> D:\SlaveMarketProject\HollowKnight\x64\Debug\HollowKnight.exe

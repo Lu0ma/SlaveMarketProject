@@ -334,6 +334,7 @@
     <ClInclude Include="PlayerAnimationComponent.h" />
     <ClInclude Include="PlayerAttackComponent.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
+    <ClInclude Include="PlayerSound.h" />
     <ClInclude Include="PlayerStat.h" />
     <ClInclude Include="PNJ.h" />
     <ClInclude Include="ProgressBar.h" />

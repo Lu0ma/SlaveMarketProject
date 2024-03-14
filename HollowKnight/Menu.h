@@ -5,7 +5,7 @@
 #include "Button.h"
 #include "Label.h"
 #include "ScrollBar.h"
-
+#include "SoundData.h"
 #define PATH_BACKGROUND "UIs/Menus/Background.png"
 #define PATH_TITLE_ICON "UIs/Menus/TitleBarMenu.png"
 #define PATH_POINTER "UIs/Menus/Pointer.png"
@@ -14,7 +14,7 @@
 class Menu : public IManagable<string>
 {
 	bool isInit;
-
+	SoundData* sound;
 protected:
 	Canvas* canvas;
 	ShapeWidget* pointerLeft;

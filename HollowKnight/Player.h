@@ -9,7 +9,7 @@
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
 #include "CollisionComponent.h"
-#include "SoundManager.h"
+
 
 using namespace std;
 
@@ -68,4 +68,5 @@ public:
 	virtual void Init() override;
 	virtual void Update(const float _deltaTime) override;
 	void CloseAllMenus(const bool _restoreActions);
+
 };

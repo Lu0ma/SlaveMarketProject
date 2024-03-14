@@ -63,7 +63,7 @@ class Camera : public Actor
 	bool isUp;
 	bool isZoom;
 	bool canShake;
-
+	bool canUpdate;
 public:
 	View GetView() const
 	{
@@ -79,6 +79,10 @@ public:
 		isDown = _isDown;
 	}
 
+	void SetUpdate(const bool _canUpdate)
+	{
+		canUpdate = _canUpdate;
+	}
 	void SetIsUp(const bool _isUp)
 	{
 		isUp = _isUp;
