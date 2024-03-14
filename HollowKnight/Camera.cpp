@@ -58,12 +58,14 @@ void Camera::Init()
 void Camera::ShakeActor(const float _deltaTime)
 {
 	if (!canShake) return;
+
 	#pragma region Inits
 	Vector2f _offset;
 	int _randomX = Random<int>(400, 100);
 	int _randomY = Random<int>(400 , 100);
 	int _randomNeg = Random<int>(2, 1);
 #pragma endregion 
+
 	_randomNeg == 1 ? _offset = Vector2f(static_cast<float>(_randomX), static_cast<float>(_randomY)) :
 	_offset = Vector2f(static_cast<float>(-_randomX), static_cast<float>(-_randomY));
 	targetPosition += _offset * _deltaTime;
@@ -74,6 +76,7 @@ void Camera::Update(const float _deltaTime)
 	Player* _player = Game::GetPlayer();
 	RenderWindow& _window = Game::GetWindow();
 	const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offsetCamera.x : -offsetCamera.x;
+	const float _distance = Distance(1.0f , _player->GetShapePosition().y);
 
 	const float _lastPositionPlayer = _player->GetShapePosition().y;
 	if (isDown)
@@ -88,7 +91,12 @@ void Camera::Update(const float _deltaTime)
 	}
 	else
 	{
+		cout << _distance;
+		if (_distance > damp)
+		{
+
 		targetPosition = Vector2f(Vector2f(_player->GetShapePosition().x , 0.0f) + Vector2f(_offsetX, canUpdate ? view.getCenter().y : _player->GetShapePosition().y));
+		}
 		ShakeActor(_deltaTime);
 	}
 	MoveToTarget(_deltaTime);

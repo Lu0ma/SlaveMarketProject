@@ -64,6 +64,7 @@ class Camera : public Actor
 	bool isZoom;
 	bool canShake;
 	bool canUpdate;
+
 public:
 	View GetView() const
 	{

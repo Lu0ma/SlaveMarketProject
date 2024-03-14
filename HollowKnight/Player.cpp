@@ -51,6 +51,10 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	stats = new PlayerStat(this);
 	charmsMenu = new CharmsMenu();
 	pauseMenu = new PauseMenu();
+
+	sound = new SoundData(SOUND_CHARGE_COMPLETE, 40.0f, false);
+
+	data = PlayerSoundData();
 }
 
 
@@ -68,15 +72,14 @@ void Player::SetupPlayerInput()
 			FxManager::GetInstance().Run("FxMana");
 			Game::GetCamera()->SetIsZoom(true);
 		}, InputData({ActionType::KeyPressed,Keyboard::A})),
-		   ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); Game::GetCamera()->SetIsZoom(false); }, InputData({ActionType::KeyReleased, Keyboard::A})),
-
+		   ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); Game::GetCamera()->SetIsZoom(false); sound->play(); }, InputData({ActionType::KeyReleased, Keyboard::A})),
 		});
 
 	new ActionMap("Camera " , {
 		ActionData("StopConvertManaToLife", [&]() {
 			movement->SetDirectionX(0.0f, "StopRight");
 			Game::GetCamera()->SetIsZoom(false);
-			new SoundData(SOUND_CHARGE_COMPLETE, 100.0f, false);
+			//sound->play();
 		}, InputData({ActionType::KeyReleased, Keyboard::A})),
 	});
 
