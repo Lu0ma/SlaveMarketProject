@@ -5,11 +5,12 @@
 OptionsMenu::OptionsMenu(Menu* _owner) : Menu("OptionsMenu", _owner)
 {
 	buttons = vector<Button*>();
-	brightness = new BrightnessMenu(this);
+	audio = new AudioMenu(this);
+	video = new VideoMenu(this);
 	controller = new ControllerMenu(this);
 	keyboard = new KeyboardMenu(this);
-	audio = new AudioMenu(this);
 }
+
 
 void OptionsMenu::Init()
 {
@@ -25,14 +26,14 @@ void OptionsMenu::Init()
 
 	#pragma region Title
 	
-	const float _tilePosY = _windowSize.y * 0.15f;
-	Label* _title = new Label(TextData("OPTIONS", Vector2f(_halfWindowX, _tilePosY), FONT, 32));
+	const float _titlePosY = _windowSize.y * 0.1f;
+	Label* _title = new Label(TextData("Options", Vector2f(_halfWindowX, _titlePosY), FONT, 36));
 	canvas->AddWidget(_title);
 
-	const float _tileIconPosY = _tilePosY + 50.0f;
-	ShapeWidget* _titleIcon = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _tileIconPosY), Vector2f(765.0f, 78.0f), PATH_TITLE_ICON));
-	_titleIcon->GetDrawable()->setScale(0.6f, 0.6f);
-	canvas->AddWidget(_titleIcon);
+	const float _titleBarPosY = _titlePosY + 75.0f;
+	const Vector2f& _titleBarSize = Vector2f(_windowSize.x * 0.4f, 50.0f);
+	ShapeWidget* _titleBar = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _titleBarPosY), _titleBarSize, PATH_TITLE_ICON));
+	canvas->AddWidget(_titleBar);
 
 	#pragma endregion
 
@@ -61,7 +62,7 @@ void OptionsMenu::Init()
 		}),
 		ButtonData("VIDEO", [&]() {
 			cout << "VIDEO" << endl;
-			brightness->SetStatus(true);
+			video->SetStatus(true);
 			canvas->SetVisibilityStatus(false);
 		}),
 		ButtonData("CONTROLLER", [&]() {
@@ -80,7 +81,7 @@ void OptionsMenu::Init()
 
 	const Vector2f& _buttonSize = Vector2f(200.0f, 50.0f);
 	const float _gapY = _buttonSize.y * 15.0f / 100.0f;
-	const float _gridPosY = _windowSize.y * 0.35f;
+	const float _gridPosY = _titleBarPosY + 75.0f;
 
 	const int _dataCount = (int)_allData.size();
 	for (int _index = 0; _index < _dataCount; _index++)

@@ -62,7 +62,10 @@ void Player::SetupPlayerInput()
 				Game::GetCamera()->SetIsZoom(true);
 			}
 		}, InputData({ ActionType::KeyPressed, Keyboard::A })),
-		ActionData("StopConvertManaToLife", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ActionType::KeyReleased, Keyboard::A})),
+		ActionData("StopConvertManaToLife", [&]() {
+			movement->SetDirectionX(0.0f, "StopRight");
+			Game::GetCamera()->SetIsZoom(false);
+		}, InputData({ActionType::KeyReleased, Keyboard::A})),
 	});
 
 	new ActionMap("Camera", {

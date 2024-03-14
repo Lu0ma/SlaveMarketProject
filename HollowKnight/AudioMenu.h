@@ -11,7 +11,6 @@ class AudioMenu : public Menu
 	float masterValue;
 	float soundValue;
 	float musicValue;
-	Button* backButton;
 	vector<Button*> buttons;
 	map<string, ShapeWidget*> indicators;
 

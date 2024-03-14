@@ -8,7 +8,6 @@ class BrightnessMenu : public Menu
 	float factor;
 	Button* brightButton;
 	ShapeWidget* indicator;
-	Button* backButton;
 
 public:
 	BrightnessMenu(Menu* _owner);

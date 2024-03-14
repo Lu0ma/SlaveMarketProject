@@ -14,7 +14,6 @@ BrightnessMenu::BrightnessMenu(Menu* _owner) : Menu("Brightness", _owner)
 	factor = 0;
 	brightButton = nullptr;
 	indicator = nullptr;
-	backButton = nullptr;
 }
 
 
