@@ -9,6 +9,7 @@ struct TextData : public Data
 	int size;
 	Color color;
 	Time time;
+
 	TextData() = default;
 	TextData(const string& _text, const Vector2f& _position, const string& _path = "",
 		const int _size = 16, const Color& _color = Color::White) : Data(_position, _path)
@@ -17,8 +18,6 @@ struct TextData : public Data
 		size = _size;
 		color = _color;
 	}
-
-
 };
 
 class TextObject : public Object
