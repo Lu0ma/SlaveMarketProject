@@ -21,7 +21,6 @@ void PlayerMovementComponent::SetDirectionX(const float _directionX, const strin
 		if (directionHasChanged)
 		{
 			directionHasChanged = false;
-			animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
 			return;
 		}
 
@@ -34,14 +33,16 @@ void PlayerMovementComponent::SetDirectionX(const float _directionX, const strin
 		{
 			dashDirection = -1.0f;
 		}
+
+		animation->GetCurrentAnimation()->RunAnimation("StopRight", dashDirection);
 	}
 
 	else
 	{
 		dashDirection = _directionX;
+		animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
 	}
 
-	animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
 	direction.x = _directionX;
 }
 
@@ -113,11 +114,11 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 {
 	if (!canMove) return;
 
-	isOnGround = CheckGround();
-	if (isOnGround)
+	if (isOnGround = CheckGround())
 	{
 		downSpeed = gravity;
 		canDoubleJump = true;
+		SetDirectionX(direction.x, "Right");
 	}
 
 	Vector2f _offset;

@@ -105,9 +105,19 @@ void Player::SetupPlayerInput()
 	});
 
 	new ActionMap("Movements", {
-		ActionData("Right", [&]() { movement->SetDirectionX(1.0f, "Right"); }, InputData({ActionType::KeyPressed, Keyboard::D})),
+		ActionData("Right", [&]() {
+			if (!movement->GetIsDashing())
+			{
+				movement->SetDirectionX(1.0f, "Right");
+			}
+		}, InputData({ActionType::KeyPressed, Keyboard::D})),
 		ActionData("StopRight", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::D })),
-		ActionData("Left", [&]() { movement->SetDirectionX(-1.0f, "Left"); }, InputData({ ActionType::KeyPressed, Keyboard::Q })),
+		ActionData("Left", [&]() {
+			if (!movement->GetIsDashing())
+			{
+				movement->SetDirectionX(-1.0f, "Left");
+			}
+		}, InputData({ ActionType::KeyPressed, Keyboard::Q })),
 		ActionData("StopLeft", [&]() { movement->SetDirectionX(0.0f, "StopLeft"); }, InputData({ ActionType::KeyReleased, Keyboard::Q })),
 		ActionData("Jump", [&]() { movement->Jump(); }, InputData({ActionType::KeyPressed, Keyboard::Space})),
 		ActionData("ControllerJump", [&]() {
@@ -117,7 +127,7 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 1) })),
 		ActionData("Dash", [&]() { movement->Dash(); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
-		ActionData("StopDash", [&]() { movement->SetDirectionX(0, "StopRight"); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
+		ActionData("StopDash", [&]() { movement->SetDirectionX(0, "Right"); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
 		ActionData("ControllerDash", [&]() {
 			if (Joystick::isButtonPressed(0, 7))
 			{
