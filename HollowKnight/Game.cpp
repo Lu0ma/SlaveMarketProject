@@ -47,7 +47,6 @@ void Game::Init()
 
 void Game::Update()
 {
-
 	while (window.isOpen())
 	{
 		TimerManager::GetInstance().Update();
@@ -55,13 +54,12 @@ void Game::Update()
 		// map->GetDragon()->PlayMusic();
 		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
 		ActorManager::GetInstance().Update();
-
 	}
 }
 
 void Game::UpdateWindow()
 {
-	Event _event = Event();
+
 	window.clear(); // Color(127, 127, 127, 0) gris
 
 	const float _deltaTime = TimerManager::GetInstance().GetDeltaTime();
@@ -92,11 +90,6 @@ void Game::UpdateWindow()
 		}
 	}
 
- //  	if (_event.type == Event::Resized)
-	//{
-	//	const FloatRect _visibleArea(0.0f, 0.0f, _event.size.width, _event.size.height);
-	//	window.setView(View(_visibleArea));
-	//}
 
 	window.display();
 }
