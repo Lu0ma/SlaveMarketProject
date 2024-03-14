@@ -156,10 +156,13 @@ void PlayerStat::Death()
 		}
 	}
 
+	
+
 	DeathMob* _deathMob = new DeathMob("Death" + to_string(numberOfDeath), ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
 	_deathMob->Init();
 
-	_player->SetShapePosition(_benchPos);
+	_player->GetAnimation()->GetCurrentAnimation()->RunAnimation("Death", 1);
+
 
 	for (int _index = 0; _index < currentMaxLifesCount; _index++)
 	{
@@ -167,5 +170,7 @@ void PlayerStat::Death()
 	} 
 
 	UpdateGeos(-geosCount);
+
+	_player->SetShapePosition(Vector2f(_benchPos.x + 150.0f, _benchPos.y -2000.0f));
 
 }

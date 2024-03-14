@@ -22,6 +22,8 @@ void PlayerAnimationComponent::Init()
 	animPlayer.push_back("Fall");
 	animPlayer.push_back("HeadUp");
 	animPlayer.push_back("HeadDown");
+	animPlayer.push_back("Death");
+	animPlayer.push_back("Revive");
 
 	const Vector2f& _size = Vector2f(80.0f, 80.0f);
 	const float _speed = 0.1f;
@@ -43,5 +45,7 @@ void PlayerAnimationComponent::Init()
 		AnimationData("HeadUp", Vector2f(240.0f, 638.0f), Vector2f(80.0f, 83.0f), READ_RIGHT, true, 1, _speed),
 		AnimationData("HeadDown", Vector2f(644.0f, 1062.0f), Vector2f(91.0f, 91.0f), READ_RIGHT, true, 1, _speed),
 		//AnimationData("HeadDown", Vector2f(1153.0f, 774.0f), Vector2f(56.0f, 89.0f), READ_RIGHT, true, 1, _speed),
+		AnimationData("Death", Vector2f(999.0f, 151.0f), Vector2f(115.0f, 105.0f), READ_RIGHT, false, 4, 0.6f, "StopRight"),
+		AnimationData("Revive", Vector2f(800.0f, 0.0f),_size, READ_RIGHT, false, 1, 0.3f, "StopRight"),
 	});
 }

@@ -4,6 +4,7 @@
 #include"Macro.h"
 
 #define PATH_FX "Animations/Fx.png"
+#define PATH_FX2 "Animations/Fx2.png"
 
 FxManager::FxManager()
 {
@@ -39,6 +40,32 @@ void FxManager::Run(const string& _runningAnimation)
 		FxData* _fxdata = new FxData(_fxJump, "");
 		_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
 		_fxJump->Destroy(0.5f);
+	}
+	else if (_runningAnimation == "FxIsHitten")
+	{
+		if (_direction == 1)
+		{
+			Fx* _fx = new Fx("fx" + to_string(index), ShapeData(_pos + Vector2f(-25.0f, 0.0f), Vector2f(250.0f, 250.0f), PATH_FX2));
+			FxData* _fxdata = new FxData(_fx, "");
+			_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
+			_fx->Destroy(0.2f);
+		}
+		
+		else if (_direction == -1)
+		{
+			Fx* _fx = new Fx("fx" + to_string(index), ShapeData(_pos + Vector2f(25.0f, 0.0f), Vector2f(250.0f, 250.0f), PATH_FX2));
+			FxData* _fxdata = new FxData(_fx, "");
+			_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
+			_fx->Destroy(0.2f);
+		}
+	}
+	else if (_runningAnimation == "FxDarkHole")
+	{
+
+		Fx* _fx = new Fx("fx" + to_string(index), ShapeData(_pos + Vector2f(-25.0f, 0.0f), Vector2f(250.0f, 250.0f), PATH_FX2));
+		FxData* _fxdata = new FxData(_fx, "");
+		_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
+		_fx->Destroy(0.2f);
 	}
 	else
 	{

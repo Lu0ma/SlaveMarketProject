@@ -45,6 +45,10 @@ public:
 	{
 		return movement;
 	}
+	PlayerAnimationComponent* GetAnimation()const
+	{
+		return animation;
+	}
 
 public:
 	Player(const string& _name, const ShapeData& _data);

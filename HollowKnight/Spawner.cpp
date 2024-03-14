@@ -46,4 +46,5 @@ void Spawner::Spawn()
 
 	//deathMob = new DeathMob(_data);
 
+	
 }
