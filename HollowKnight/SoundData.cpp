@@ -45,7 +45,7 @@ SoundData::SoundData(const string& _path, const float _volume, const bool _isLoo
 		return;
 	}
 	setBuffer(buffer); // Warning 
-	SoundManager::GetInstance().Play(_path , _isLoop);	// Warning
+	// SoundManager::GetInstance().Play(_path , _isLoop);	// Warning
 }
 
 void SoundData::Register()
@@ -59,4 +59,9 @@ void SoundData::AdjustVolume(const float _percent)
 	_newVolume = _newVolume < 0.0f ? 0.0f : _newVolume;
 	_newVolume = _newVolume > volumeMax ? volumeMax : _newVolume;
 	setVolume(_newVolume);
+}
+
+void SoundData::GetSound(const string& _sound)
+{
+	SoundManager::GetInstance().Get(_sound);
 }

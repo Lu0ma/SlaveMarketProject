@@ -15,7 +15,6 @@ public:
 	{
 		buttons.push_back(_button);
 	}
-
 	void AddScrollBar(ScrollBar* _scrollBar)
 	{
 		scrollBars.push_back(_scrollBar);

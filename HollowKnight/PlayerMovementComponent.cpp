@@ -6,8 +6,45 @@
 #include "Macro.h"
 #include "Kismet.h"
 #include "FxManager.h"
-#include "PlayerSound.h"
 
+void PlayerMovementComponent::SetDirectionX(const float _directionX, const string& _animName)
+{
+	if (!canMove) return;
+
+	if (_directionX == direction.x * -1.0f)
+	{
+		directionHasChanged = true;
+	}
+
+	if (_directionX == 0.0f)
+	{
+		if (directionHasChanged)
+		{
+			directionHasChanged = false;
+			return;
+		}
+
+		if (owner->GetDrawable()->getScale().x >= 0.0f)
+		{
+			dashDirection = 1.0f;
+		}
+
+		else
+		{
+			dashDirection = -1.0f;
+		}
+
+		animation->GetCurrentAnimation()->RunAnimation("StopRight", dashDirection);
+	}
+
+	else
+	{
+		dashDirection = _directionX;
+		animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
+	}
+
+	direction.x = _directionX;
+}
 
 PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementComponent(_owner)
 {
@@ -77,17 +114,11 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 {
 	if (!canMove) return;
 
-	isOnGround = CheckGround();
-	if (isOnGround)
+	if (isOnGround = CheckGround())
 	{
-		Game::GetCamera()->SetUpdate(false);
 		downSpeed = gravity;
 		canDoubleJump = true;
-		// new SoundData(SOUND_CHARGE_INITIATE, 100.0f, false);
-	}
-	else
-	{
-		Game::GetCamera()->SetUpdate(true);
+		SetDirectionX(direction.x, "Right");
 	}
 
 	Vector2f _offset;
@@ -113,6 +144,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 
 		// Déplacement par défaut
 		_offset = direction * speed * _deltaTime;
+
 		// Si je suis en l'air et que je ne saute pas
 		if (!isOnGround && !isJumping)
 		{
@@ -159,21 +191,15 @@ void PlayerMovementComponent::Jump()
 		canDoubleJump = false;
 		currentJumpForce = jumpForce;
 		FxManager::GetInstance().Run("FxDoubleJump");
-		PlaySound(SOUND_WINGS, false);
-
 	}
 
 	isJumping = true;
 	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
-	if (canDoubleJump)
-	{
-		PlaySound(SOUND_JUMP, false);
-	}
 }
 
 void PlayerMovementComponent::Dash()
 {
-	if (!canDash || isDashing) return;
+	if (!canMove || !canDash || isDashing) return;
 
 	isJumping = false;
 	canDash = false;
@@ -185,7 +211,7 @@ void PlayerMovementComponent::Dash()
 
 void PlayerMovementComponent::SitDown()
 {
-	if (!isStanding || !owner->GetBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()))
+	if (!canMove || !isStanding || !owner->GetBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()))
 	{
 		cout << "Impossible de s'assoir !" << endl;
 		return;
@@ -201,6 +227,8 @@ void PlayerMovementComponent::SitDown()
 
 void PlayerMovementComponent::StandUp()
 {
+	if (!canMove) return;
+
 	if (isStanding)
 	{
 		cout << "Impossible de se lever !" << endl;
@@ -213,51 +241,4 @@ void PlayerMovementComponent::StandUp()
 	canMove = true;
 
 	animation->GetCurrentAnimation()->RunAnimation("StopRight", dashDirection);
-}
-
-void PlayerMovementComponent::SetDirectionX(const float _directionX, const string& _animName)
-{
-	if (!canMove) return;
-
-	if (_directionX == direction.x * -1.0f)
-	{
-		directionHasChanged = true;
-	}
-
-	if (_directionX == 0.0f)
-	{
-		if (directionHasChanged)
-		{
-			directionHasChanged = false;
-			return;
-		}
-
-		if (owner->GetDrawable()->getScale().x >= 0.0f)
-		{
-			dashDirection = 1.0f;
-		}
-
-		else
-		{
-			dashDirection = -1.0f;
-		}
-	}
-
-	else
-	{
-		dashDirection = _directionX;
-	}
-
-	animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
-	PlaySound(SOUND_FOOTSTEP_GRASS, false);
-	direction.x = _directionX;
-}
-void PlayerMovementComponent::PlaySound(const string& _sound, const bool _isLoop)
-{
-	new SoundData(_sound, 100.0f, _isLoop);
-}
-
-void PlayerMovementComponent::Stop()
-{
-
 }

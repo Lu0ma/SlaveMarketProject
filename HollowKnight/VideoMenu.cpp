@@ -105,7 +105,12 @@ void VideoMenu::Init()
 		{
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
-				MovePointers(_hoveredButton);
+				ShapeObject* _object = _hoveredButton->GetObject();
+				const Vector2f& _position = _object->GetShapePosition();
+				const float _halfSizeX = _object->GetShapeSize().x * 0.4f;
+				const Vector2f& _offset = Vector2f(_halfSizeX, 0.0f);
+				pointerLeft->SetShapePosition(_position - _offset);
+				pointerRight->SetShapePosition(_position + _offset);
 			}
 		};
 		_button->GetData().pressedCallback = _buttons[_index].callback;

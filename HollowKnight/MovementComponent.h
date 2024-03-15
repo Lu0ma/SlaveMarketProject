@@ -34,6 +34,11 @@ public:
 		return canMove;
 	}
 
+	const Vector2f& GetLastDirection()
+	{
+		return lastDirection;
+	}
+
 public:
 	MovementComponent(Actor* _owner);
 };

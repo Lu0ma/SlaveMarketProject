@@ -1,19 +1,22 @@
 #include "Canvas.h"
 #include "HUD.h"
 
-Canvas::Canvas(const string& _name, const FloatRect& _rect, const vector<Widget*>& _widgets)
-				: IManagable(_name)
+Canvas::Canvas(const string& _name, const FloatRect& _rect) : IManagable(_name)
 {
 	Register();
 
 	isVisible = true;
 	rect = _rect;
-	widgets = _widgets;
 }
 
 Canvas::~Canvas()
 {
-	for (Widget* _widget : widgets)
+	for (Widget* _widget : uiWidgets)
+	{
+		delete _widget;
+	}
+
+	for (Widget* _widget : worldWidgets)
 	{
 		delete _widget;
 	}
@@ -37,10 +40,10 @@ void Canvas::AddWidget(Widget* _widget)
 		HUD::GetInstance().AddScrollBar(_scrollBar);
 	}
 
-	widgets.push_back(_widget);
-}
+	vector<Widget*>* _widgets[] = {
+		&uiWidgets,
+		&worldWidgets
+	};
 
-void Canvas::DeleteWidget()
-{
-	widgets.pop_back();
+	_widgets[_widget->GetType()]->push_back(_widget);
 }

@@ -9,19 +9,10 @@
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
 #include "CollisionComponent.h"
-
+#include "PlayerSoundData.h"
 
 using namespace std;
 
-struct PlayerSoundData
-{
-	SoundManager soundPlayer;
-
-	PlayerSoundData()
-	{
-		//soundPlayer.GetInstance().
-	}
-};
 class Player : public Actor
 {
 	PauseMenu* pauseMenu;
@@ -33,7 +24,8 @@ class Player : public Actor
 	PlayerAnimationComponent* animation;
 	InteractionComponent* interaction;
 	CircleShape* light;
-
+	SoundData* sound;
+	PlayerSoundData data;
 public:
 	void SetStatus(const bool _status)
 	{

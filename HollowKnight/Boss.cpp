@@ -14,7 +14,7 @@ Boss::Boss(const ShapeData& _data) : Enemy("Boss" + to_string(GetUniqueID()), _d
 	life = new MobLifeComponent(this, 3);
 	components.push_back(life);
 
-	inspect = new InspectComponent(this, 200.0f);
+	inspect = new InspectComponent(this, 500.0f);
 	components.push_back(inspect);
 
 	brain = new BossBrain(this);

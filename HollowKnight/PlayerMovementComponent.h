@@ -58,6 +58,10 @@ public:
 	{
 		return isOnGround;
 	}
+	bool GetIsDashing() const
+	{
+		return isDashing;
+	}
 	bool IsStanding() const
 	{
 		return isStanding;

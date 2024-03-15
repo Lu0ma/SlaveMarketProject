@@ -7,16 +7,11 @@ class ScrollBar : public ShapeWidget
 	int baseIndex;
 	int scrollAmount;
 	ShapeWidget* bar;
-	Button* buttonUp;
-	Button* buttonDown;
 	function<void(bool)> callback;
+
 public:
 	void SetScrollAmount(const int _scrollAmount) { scrollAmount = _scrollAmount; }
-
 	ShapeWidget* GetBar() { return bar; }
-
-	Button* GetButtonUp() { return buttonUp; }
-	Button* GetButtonDown() { return buttonDown; }
 	int GetBaseIndex() { return baseIndex; }
 
 public:
@@ -29,4 +24,3 @@ public:
 	void ComputeClickOnBar(const Vector2f& _position);
 	void ComputeByIndex(const float _destination);
 };
-

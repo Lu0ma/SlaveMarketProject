@@ -152,7 +152,7 @@ void ShopMenu::Init()
 	#pragma endregion
 }
 
-void ShopMenu::SetStatus(const bool _status)
+void ShopMenu::SetStatus(const bool _status, const bool _applyToWidgets)
 {
 	if (!_status)
 	{
