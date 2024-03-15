@@ -27,10 +27,6 @@ class Player : public Actor
 	SoundData* sound;
 	PlayerSoundData data;
 
-	vector<ShapeObject*> areas;
-
-	bool canSee;
-
 public:
 	void SetStatus(const bool _status)
 	{
@@ -52,16 +48,9 @@ public:
 	{
 		return movement;
 	}
-	bool GetCanSee() const
-	{
-		return canSee;
-	}
-	void SetCanSee(const bool _canSee)
-	{
-		canSee = _canSee;
-	}
+
 public:
-	Player(const string& _name, const ShapeData& _data, const vector<ShapeObject*>& _areas);
+	Player(const string& _name, const ShapeData& _data);
 
 private:
 	void InitAnimations();
@@ -72,5 +61,4 @@ public:
 	virtual void Init() override;
 	virtual void Update(const float _deltaTime) override;
 	void CloseAllMenus(const bool _restoreActions);
-
 };

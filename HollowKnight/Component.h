@@ -14,5 +14,6 @@ public:
 	Component(Actor* _owner);
 
 public:
+	virtual void Init() { };
 	virtual void Update(const float _deltaTime) { };
 };

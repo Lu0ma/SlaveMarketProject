@@ -13,5 +13,5 @@ void PatrolToAttack::Init(State* _nextState)
 
 bool PatrolToAttack::CanNext() const
 {
-	return blackBoard->isInRange;
+	return blackBoard->hasTarget;
 }

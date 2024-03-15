@@ -10,25 +10,25 @@ void DeathState::Start()
 {
 	cout << brain->GetOwner()->GetID() << "Start Death" << endl;
 
-	Actor* _owner = brain->GetOwner();
+	//Actor* _owner = brain->GetOwner();
 
-	if (!inspect || !animation || !movement)
-	{
-		inspect = _owner->GetComponent<InspectComponent>();
-		animation = _owner->GetComponent<AnimationComponent>();
-		movement = _owner->GetComponent<MobMovementComponent>();
-	}
+	//if (!inspect || !animation || !patrol)
+	//{
+	//	inspect = _owner->GetComponent<InspectComponent>();
+	//	animation = _owner->GetComponent<AnimationComponent>();
+	//	patrol = _owner->GetComponent<MobMovementComponent>();
+	//}
 
-	movement->SetCanMove(false);
+	//patrol->SetCanMove(false);
 
-	for (const string& _name : animation->GetAnimationNames())
-	{
-		if (ContainsText(_name, "Death")) //si il trouve "Death" au débuit du name alors il lance l'anim
-		{
- 			animation->RunAnimation(_name, animation->GetCurrentAnimation()->GetDirectionX());
-			return;
-		}
-	}
+	//for (const string& _name : animation->GetAnimationNames())
+	//{
+	//	if (ContainsText(_name, "Death")) //si il trouve "Death" au débuit du name alors il lance l'anim
+	//	{
+ //			animation->RunAnimation(_name, animation->GetCurrentAnimation()->GetDirectionX());
+	//		return;
+	//	}
+	//}
 }
 
 void DeathState::Update(const float _deltaTime)

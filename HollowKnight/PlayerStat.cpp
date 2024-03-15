@@ -153,28 +153,31 @@ void PlayerStat::Death()
 {
 	numberOfDeath++;
 
-	//TODO remove
-	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
+	////TODO remove
+	//for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
+	//{
+	//	if (DeathMob* _death = dynamic_cast<DeathMob*>(_actor))
+	//	{
+	//		// _death->SetToRemove(true);
+	//		_death->GetDrawable()->setScale(Vector2f(0.0f, 0.0f)); ///TODO CHANGE
+	//	}
+	//}
+
+	//Player* _player = Game::GetPlayer();
+	//Vector2f _lastPos = _player->GetShapePosition();
+	//DeathMob* _deathMob = new DeathMob("Death" + to_string(numberOfDeath), ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
+	//_deathMob->Init();
+
+	if (Bench* _bench = Game::GetMap()->GetBench())
 	{
-		if (DeathMob* _death = dynamic_cast<DeathMob*>(_actor))
-		{
-			// _death->SetToRemove(true);
-			_death->GetDrawable()->setScale(Vector2f(0.0f, 0.0f)); ///TODO CHANGE
-		}
+		const Vector2f& _benchPos = _bench->GetShapePosition();
+		Game::GetPlayer()->SetShapePosition(_benchPos);
 	}
 
-	Player* _player = Game::GetPlayer();
-	Vector2f _lastPos = _player->GetShapePosition();
-	DeathMob* _deathMob = new DeathMob("Death" + to_string(numberOfDeath), ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
-	_deathMob->Init();
-
-	Vector2f _benchPos = Game::GetMap()->GetBench()->GetShapePosition();
-	_player->SetShapePosition(_benchPos);
-
-	for (int _index = 0; _index < currentMaxLifesCount; _index++)
-	{
-		_player->GetStats()->UpdateLife(1);
-	} 
+	//for (int _index = 0; _index < currentMaxLifesCount; _index++)
+	//{
+	//	_player->GetStats()->UpdateLife(1);
+	//} 
 
 	UpdateGeos(-geosCount);
 }

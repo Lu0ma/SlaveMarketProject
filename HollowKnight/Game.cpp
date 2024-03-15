@@ -9,6 +9,11 @@
 
 #define PATH_PLAYER "Animations/knighModif.png"
 
+#include "HuskBully.h"
+#include "Boofly.h"
+#include "Belfly.h"
+#include "FalseKnight.h"
+
 RenderWindow Game::window;
 Map* Game::map;
 Player* Game::player;
@@ -16,6 +21,12 @@ Camera* Game::camera;
 Brightness* Game::brightness;
 
 #include "TriggerBox.h"
+
+#define PATH_BOOFLY "Animations/Boofly.png"
+#define PATH_BELFLY "Animations/BelflyModif.png"
+#define PATH_HUSK_BULLY "Animations/HuskBully.png"
+#define PATH_DEATHMOB "Animations/DeathMob.png"
+#define PATH_FALSE_KNIGHT "Animations/FalseKnight.png"
 
 Game::Game()
 {
@@ -49,12 +60,29 @@ void Game::Init()
 	camera->Init();
 	brightness->Init();
 
-	TriggerBox* _box = new TriggerBox(ShapeData(Vector2f(100.0f, 0.0f), Vector2f(200.0f, 200.0f), ""), [&]() {
+	/*TriggerBox* _box = new TriggerBox(ShapeData(Vector2f(100.0f, 0.0f), Vector2f(200.0f, 200.0f), ""), [&]() {
 		cout << "coucou" << endl;
 	});
 
 	_box->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable()->setOutlineThickness(-5.0f);
-	_box->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable()->setFillColor(Color::Red);
+	_box->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable()->setFillColor(Color::Red);*/
+
+	Vector2f _sizeBoofly = Vector2f(150.0f, 180.0f);
+	Vector2f _sizeBelfly = Vector2f(50.0f, 50.0f);
+	Vector2f _sizeHuskBully = Vector2f(75.0f, 75.0f);
+	Vector2f _sizeFalseKnight = Vector2f(700.0f, 500.0f);
+
+	ShapeData _dataBoofly = ShapeData(Vector2f(200.0f, -350.0f), _sizeBoofly, PATH_BOOFLY, IntRect(0, 17, 315, 345));
+	Boofly* _boofly = new Boofly(_dataBoofly);
+	_boofly->Init();
+
+	ShapeData _dataHuskBully = ShapeData(Vector2f(300.0f, -150.0f), _sizeHuskBully, PATH_HUSK_BULLY, IntRect(5, 21, 105, 135));
+	HuskBully* _huskBully = new HuskBully(_dataHuskBully);
+	_huskBully->Init();
+
+	//ShapeData _data = ShapeData(_positionFalseKnight, _sizeFalseKnight, PATH_FALSE_KNIGHT);
+	//FalseKnight* _falseKnight = new FalseKnight(_data);
+	//_falseKnight->Init();
 }
 
 void Game::Update()

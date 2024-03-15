@@ -7,45 +7,6 @@
 #include "Kismet.h"
 #include "FxManager.h"
 
-void PlayerMovementComponent::SetDirectionX(const float _directionX, const string& _animName)
-{
-	if (!canMove) return;
-
-	if (_directionX == direction.x * -1.0f)
-	{
-		directionHasChanged = true;
-	}
-
-	if (_directionX == 0.0f)
-	{
-		if (directionHasChanged)
-		{
-			directionHasChanged = false;
-			return;
-		}
-
-		if (owner->GetDrawable()->getScale().x >= 0.0f)
-		{
-			dashDirection = 1.0f;
-		}
-
-		else
-		{
-			dashDirection = -1.0f;
-		}
-
-		animation->GetCurrentAnimation()->RunAnimation("StopRight", dashDirection);
-	}
-
-	else
-	{
-		dashDirection = _directionX;
-		animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
-	}
-
-	direction.x = _directionX;
-}
-
 PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementComponent(_owner)
 {
 	// Movement
@@ -88,22 +49,17 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 	// Components
 	animation = owner->GetComponent<PlayerAnimationComponent>();
-
-	rayCastLineY = new Actor("raycastlineY", ShapeData(owner->GetShapePosition(), Vector2f(5.0f, checkGroundDistance) , ""));
-	rayCastLineY->GetDrawable()->setFillColor(Color::Blue);
-	rayCastLineY->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable()->setFillColor(Color::Transparent);
 }
+
 
 bool PlayerMovementComponent::CheckGround()
 {
 	HitInfo _info;
-	rayCastLineY->GetDrawable()->setPosition(owner->GetShapePosition() + Vector2f(0.0f, owner->GetShapeSize().y / 2.0f));
-	return Raycast(owner->GetShapePosition(), Vector2f(0.0f, 1.0f), checkGroundDistance, _info, { owner, rayCastLineY });
+	return Raycast(owner->GetShapePosition(), Vector2f(0.0f, 1.0f), checkGroundDistance, _info, { owner });
 }
 
 void PlayerMovementComponent::StopJump()
 {
-	system("cls");
 	isJumping = false;
 	currentJumpForce = jumpForce;
 	downSpeed = gravity;
@@ -178,7 +134,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	const Vector2f& _destination = _offset + _collisionOffset;
 	collision->GetBoxCollision()->GetDrawable()->setPosition(owner->GetShapePosition() + Vector2f(_destination.x * checkWallDistance, _destination.y));
 
-	if (!collision->CheckCollision({ rayCastLineY }))
+	if (!collision->CheckCollision())
 	{
 		owner->GetDrawable()->move(_offset);
 	}
@@ -243,4 +199,44 @@ void PlayerMovementComponent::StandUp()
 	canMove = true;
 
 	animation->GetCurrentAnimation()->RunAnimation("StopRight", dashDirection);
+}
+
+
+void PlayerMovementComponent::SetDirectionX(const float _directionX, const string& _animName)
+{
+	if (!canMove) return;
+
+	if (_directionX == direction.x * -1.0f)
+	{
+		directionHasChanged = true;
+	}
+
+	if (_directionX == 0.0f)
+	{
+		animation->GetCurrentAnimation()->RunAnimation("StopRight", dashDirection);
+
+		if (directionHasChanged)
+		{
+			directionHasChanged = false;
+			return;
+		}
+
+		if (owner->GetDrawable()->getScale().x >= 0.0f)
+		{
+			dashDirection = 1.0f;
+		}
+
+		else
+		{
+			dashDirection = -1.0f;
+		}
+	}
+
+	else
+	{
+		dashDirection = _directionX;
+		animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
+	}
+
+	direction.x = _directionX;
 }
