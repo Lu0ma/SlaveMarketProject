@@ -9,10 +9,15 @@
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
 #include "CollisionComponent.h"
-#include "PlayerSoundData.h"
 
 using namespace std;
 
+
+struct PlayerSoundData
+{
+
+	void RandomSoundAttack();
+};
 class Player : public Actor
 {
 	PauseMenu* pauseMenu;
@@ -24,8 +29,8 @@ class Player : public Actor
 	PlayerAnimationComponent* animation;
 	InteractionComponent* interaction;
 	CircleShape* light;
-	SoundData* sound;
-	PlayerSoundData data;
+	// SoundData* sound;
+	
 public:
 	void SetStatus(const bool _status)
 	{
@@ -60,5 +65,5 @@ public:
 	virtual void Init() override;
 	virtual void Update(const float _deltaTime) override;
 	void CloseAllMenus(const bool _restoreActions);
-
+	
 };

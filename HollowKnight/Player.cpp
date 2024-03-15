@@ -52,9 +52,7 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	charmsMenu = new CharmsMenu();
 	pauseMenu = new PauseMenu();
 
-	sound = new SoundData(SOUND_CHARGE_COMPLETE, 40.0f, false);
-
-	data = PlayerSoundData();
+	//sound = new SoundData(SOUND_CHARGE_COMPLETE, 40.0f, false);
 }
 
 
@@ -71,8 +69,8 @@ void Player::SetupPlayerInput()
 			stats->UpdateLife(1);
 			FxManager::GetInstance().Run("FxMana");
 			Game::GetCamera()->SetIsZoom(true);
-		}, InputData({ActionType::KeyPressed,Keyboard::A})),
-		   ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); Game::GetCamera()->SetIsZoom(false); sound->play(); }, InputData({ActionType::KeyReleased, Keyboard::A})),
+		}, InputData({ActionType::KeyPressed,Keyboard::A})), 
+		   ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); Game::GetCamera()->SetIsZoom(false); new SoundData(SOUND_CHARGE_COMPLETE, 40.0f, false); }, InputData({ActionType::KeyReleased, Keyboard::A})),
 		});
 
 	new ActionMap("Camera " , {
@@ -147,7 +145,7 @@ void Player::SetupPlayerInput()
 
 	new ActionMap("Attack", {
 		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial");/* Game::GetCamera()->GetShake()->Shake(2.0f, 2800.0f); ActorManager::GetInstance().SetStop(true);*/
-		new Timer([&]() {ActorManager::GetInstance().SetStop(false); }  , milliseconds(500)); new SoundData(SOUND_DAMAGE_LESS_HARSH_V2, 100.0f, false); } , InputData({ActionType::MouseButtonPressed, Mouse::Right})),
+		new Timer([&]() {ActorManager::GetInstance().SetStop(false); }  , milliseconds(500)); new SoundData(SOUND_DAMAGE_V1, 100.0f, false); } , InputData({ActionType::MouseButtonPressed, Mouse::Right})),
 		ActionData("StopSpecial", [&]() { }, InputData({ActionType::MouseButtonReleased, Mouse::Right})),
 		ActionData("ControllerSpecial", [&]() {
 			if (Joystick::isButtonPressed(0, 0))
@@ -238,4 +236,9 @@ void Player::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
 	light->setPosition(GetShapePosition());
+}
+
+void PlayerSoundData::RandomSoundAttack()
+{
+
 }

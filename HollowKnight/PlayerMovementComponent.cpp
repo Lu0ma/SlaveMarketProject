@@ -80,10 +80,10 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	isOnGround = CheckGround();
 	if (isOnGround)
 	{
+		
 		Game::GetCamera()->SetUpdate(false);
 		downSpeed = gravity;
 		canDoubleJump = true;
-		// new SoundData(SOUND_CHARGE_INITIATE, 100.0f, false);
 	}
 	else
 	{
