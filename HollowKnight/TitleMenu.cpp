@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "HUD.h"
 #include "ActorManager.h"
-
+#define SOUND_CONFIRM "Ui/ui_button_confirm"
 #define PATH_TITLE_MENU "UIs/Menus/TitleMenu/Background.png"
 
 TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
@@ -12,7 +12,6 @@ TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
 	options = new OptionsMenu(this);
 	achievement = new AchievementsMenu(this);
 	quitGame = new QuitGameMenu(this);
-	extras = new ExtrasMenu(this);
 }
 
 
@@ -48,19 +47,21 @@ void TitleMenu::Init()
 		ButtonData("Start Game", [&]() { 
 			Game::GetPlayer()->Init();
 			SetStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
 		ButtonData("Options", [&]() {
 			options->SetStatus(true);
 			SetStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
 		ButtonData("Achievements", [&]() {
 			achievement->SetStatus(true);
 			SetStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
 		ButtonData("Extras", [&]() {
-			extras->SetStatus(true);
-			SetStatus(false);
-			//cout << "EXTRAS" << endl;
+			cout << "EXTRAS" << endl;
+			new SoundData(SOUND_CONFIRM, 100, false);
 			//TODO easter
 		}),
 		ButtonData("Quit Game", [&]() {

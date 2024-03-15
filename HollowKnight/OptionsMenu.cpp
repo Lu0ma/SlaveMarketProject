@@ -2,6 +2,8 @@
 #include "Game.h"
 #include "HUD.h"
 
+#define SOUND_CONFIRM "Ui/ui_button_confirm"
+
 OptionsMenu::OptionsMenu(Menu* _owner) : Menu("OptionsMenu", _owner)
 {
 	buttons = vector<Button*>();
@@ -54,26 +56,32 @@ void OptionsMenu::Init()
 	const vector<ButtonData>& _allData = {
 		ButtonData("GAME", [&]() {
 			//canvas->SetVisibilityStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
 		ButtonData("AUDIO", [&]() {
 			audio->SetStatus(true);
 			canvas->SetVisibilityStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
 		ButtonData("VIDEO", [&]() {
 			video->SetStatus(true);
 			canvas->SetVisibilityStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
 		ButtonData("CONTROLLER", [&]() {
 			controller->SetStatus(true);
 			canvas->SetVisibilityStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
 		ButtonData("KEYBOARD", [&]() {
 			keyboard->SetStatus(true);
 			canvas->SetVisibilityStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
 		ButtonData("BACK", [&]() {
 			owner->SetStatus(true);
 			canvas->SetVisibilityStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		})
 	};
 
@@ -93,6 +101,7 @@ void OptionsMenu::Init()
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
 				MovePointers(_hoveredButton);
+				
 			}
 		};
 		_button->GetData().pressedCallback = _allData[_index].callback;

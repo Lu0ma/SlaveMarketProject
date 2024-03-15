@@ -654,19 +654,7 @@
     <ClCompile Include="SoundSystem.cpp">
       <Filter>Fichiers de ressources\SoundSystem</Filter>
     </ClCompile>
-    <ClCompile Include="AttackToDeath.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="ChaseToDeath.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="DeathState.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="PatrolToDeath.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="CreditsMenu.cpp">
+    <ClCompile Include="PlayerSoundData.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1022,23 +1010,15 @@
     <ClInclude Include="SoundSystem.h">
       <Filter>Fichiers de ressources\SoundSystem</Filter>
     </ClInclude>
-    <ClInclude Include="AttackToDeath.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="PlayerSound.h">
+      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
     </ClInclude>
-    <ClInclude Include="ChaseToDeath.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="DeathState.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="PatrolToDeath.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CreditsMenu.h">
+    <ClInclude Include="PlayerSoundData.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Assets\Levels\SubLevel_1.txt" />
+    <Text Include="SaveOption.txt" />
   </ItemGroup>
 </Project>
