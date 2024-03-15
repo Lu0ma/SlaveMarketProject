@@ -5,6 +5,7 @@
 #include "HUD.h"
 #include "Widget.h"
 #include "Spawner.h"
+#include "Particule.h"
 
 #define PATH_PLAYER "Animations/knighModif.png"
 
@@ -19,8 +20,8 @@ Brightness* Game::brightness;
 Game::Game()
 {
 	menu = new MainMenu();
-	player = new Player("Player", ShapeData(Vector2f(100.0f, -2000.0f), Vector2f(75.0f, 75.0f), PATH_PLAYER));
 	map = new Map();
+	player = new Player("Player", ShapeData(Vector2f(-500.0f, -250.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER), map->GetDarkAreas());
 	camera = new Camera();
 	brightness = new Brightness();
 } 
@@ -43,7 +44,8 @@ void Game::Start()
 void Game::Init()
 {
 	menu->Init();
-	map->Init();
+	
+
 	camera->Init();
 	brightness->Init();
 
@@ -61,7 +63,9 @@ void Game::Update()
 	{
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
-		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
+		/*player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);*/
+		brightness->UpdateShader(GetWindowSize() / 2.0f);
+
 		ActorManager::GetInstance().Update();
 	}
 }

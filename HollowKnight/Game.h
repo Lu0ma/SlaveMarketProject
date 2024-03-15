@@ -19,6 +19,7 @@ struct Brightness
 	float gamma;
 	float gammaMin;
 	float gammaMax;
+	float luminosity;
 
 	Brightness()
 	{
@@ -26,6 +27,7 @@ struct Brightness
 		gamma = 1.0f;
 		gammaMin = 0.1f;
 		gammaMax = 3.5f;
+		luminosity = 0.1f;
 	}
 
 	void Init()
@@ -35,7 +37,13 @@ struct Brightness
 			cerr << "Error => The shader cannot be loaded !" << endl;
 			return;
 		}
-		shader->setUniform("gamma", gamma);
+	}
+
+	void UpdateShader(const Vector2f& _position)
+	{
+		shader->setUniform("lightPosition", _position);
+		shader->setUniform("baseLuminosity", luminosity);
+
 	}
 
 	void UpdateBrightness(const float _factor)
@@ -46,6 +54,11 @@ struct Brightness
 		gamma = gamma < gammaMin ? gammaMin : gamma;
 		gamma = gamma > gammaMax ? gammaMax : gamma;
 		shader->setUniform("gamma", gamma);
+	}
+
+	void SetLuminosity(const float _luminosity)
+	{
+		luminosity = _luminosity;
 	}
 };
 
@@ -58,6 +71,7 @@ private:
 	static Player* player;
 	static Camera* camera;
 	static Brightness* brightness;
+	
 
 public:
 	static RenderWindow& GetWindow()

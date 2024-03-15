@@ -4,6 +4,7 @@
 #include "AchievementsMenu.h"
 #include "QuitGameMenu.h"
 #include "ExtrasMenu.h"
+#include "SaveSelectorMenu.h"
 
 class TitleMenu : public Menu
 {
@@ -12,6 +13,7 @@ class TitleMenu : public Menu
 	AchievementsMenu* achievement;
 	QuitGameMenu* quitGame;
 	ExtrasMenu* extras;
+	SaveSelectorMenu* saveSelector;
 
 public:
 	virtual void SetStatus(const bool _status)

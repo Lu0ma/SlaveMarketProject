@@ -168,6 +168,7 @@
     <ClCompile Include="DeathMob.cpp" />
     <ClCompile Include="DeathState.cpp" />
     <ClCompile Include="Dragon.cpp" />
+    <ClCompile Include="DustEffect.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBrain.cpp" />
     <ClCompile Include="ExtrasMenu.cpp" />
@@ -213,6 +214,7 @@
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
+    <ClCompile Include="Particule.cpp" />
     <ClCompile Include="PatrolState.cpp" />
     <ClCompile Include="PatrolToAttack.cpp" />
     <ClCompile Include="PatrolToChase.cpp" />
@@ -230,6 +232,7 @@
     <ClCompile Include="PurchaseMenu.cpp" />
     <ClCompile Include="QuitGameMenu.cpp" />
     <ClCompile Include="QuitToMenu.cpp" />
+    <ClCompile Include="SaveSelectorMenu.cpp" />
     <ClCompile Include="ScrollBar.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
     <ClCompile Include="ShapeWidget.cpp" />
@@ -291,6 +294,7 @@
     <ClInclude Include="DeathMob.h" />
     <ClInclude Include="DeathState.h" />
     <ClInclude Include="Dragon.h" />
+    <ClInclude Include="DustEffect.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBrain.h" />
     <ClInclude Include="ExtrasMenu.h" />
@@ -337,6 +341,7 @@
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OptionsMenu.h" />
+    <ClInclude Include="Particule.h" />
     <ClInclude Include="PatrolState.h" />
     <ClInclude Include="PatrolToAttack.h" />
     <ClInclude Include="PatrolToChase.h" />
@@ -355,6 +360,7 @@
     <ClInclude Include="PurchaseMenu.h" />
     <ClInclude Include="QuitGameMenu.h" />
     <ClInclude Include="QuitToMenu.h" />
+    <ClInclude Include="SaveSelectorMenu.h" />
     <ClInclude Include="ScrollBar.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="ShapeWidget.h" />
