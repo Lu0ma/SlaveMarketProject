@@ -3,21 +3,12 @@
 
 void MusicManager::Play(const string& _path)
 {
-	if (_path == "") return;
-
-	MusicData* _musicData = Get(_path);
-
-	if (!_musicData)
+	if (current)
 	{
-		_musicData = new MusicData(_path, 100.0f);
-		if (!_musicData->openFromFile("Assets/Musics/" + _path))
-		{
-			cerr << "Le son n'a pas été correctement chargée !" << endl;
-			return;
-		}
+		current->Stop();
 	}
 
-	if (_musicData)
+	if (MusicData* _musicData = Get(_path))
 	{
 		_musicData->Play();
 	}
@@ -28,5 +19,19 @@ void MusicManager::AdjustAllVolume(const float _volume)
 	for (MusicData* _musicData : MusicManager::GetInstance().GetAllValues())
 	{
 		_musicData->AdjustVolume(_volume);
+	}
+}
+
+void MusicManager::Stop(const string& _path)
+{
+	if (current && _path == "")
+	{
+		current->Stop();
+		return;
+	}
+
+	if (MusicData* _musicData = Get(_path))
+	{
+		_musicData->Stop();
 	}
 }

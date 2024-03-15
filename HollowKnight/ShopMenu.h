@@ -37,6 +37,6 @@ public:
 
 public:
 	virtual void Init() override;
-	virtual void SetStatus(const bool _status) override;
+	virtual void SetStatus(const bool _status, const bool _applyToWidgets = true) override;
 	void Open();
 };

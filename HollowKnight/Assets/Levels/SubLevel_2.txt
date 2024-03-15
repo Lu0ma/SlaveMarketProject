@@ -110,35 +110,37 @@ grounds = [
  GroundSizeY = 10
  GroundCollisionType = 3
 }
+]
 
 enemies = [
 {
  EnemyType = 0
  EnemyIndex = 0
- EnemyPosX = 1200
- EnemyPosY = -185
- EnemySizeX = 1200
- EnemySizeY = -185
+ EnemyPosX = 1800
+ EnemyPosY = -190
+ EnemySizeX = 700
+ EnemySizeY = 500
+ EnemyPath = Animations/FalseKnight.png
 }
 ]
 
 npcs = [
 {
- NpcType = 
- NpcPosX = 
- NpcPosY =  
- NpcSizeX =
- NpcSizeY =
- NpcText = 
+ NpcType = 0
+ NpcPosX = 1000
+ NpcPosY = -185
+ NpcSizeX = 1200
+ NpcSizeY = -185
+ NpcText = Je mets ceci au cas mais normalement useless
 }
 ]
 
 Environment = [
 {
- EnvironmentPosX = 
- EnvironmentPosY =  
- EnvironmentSizeX = 
- EnvironmentSizeY =
- EnvironmentPath =
+ EnvironmentPosX = 1915
+ EnvironmentPosY = -800
+ EnvironmentSizeX = 3613
+ EnvironmentSizeY = 908
+ EnvironmentPath = Levels/Arena.jpg
 }
 ]

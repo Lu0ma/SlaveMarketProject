@@ -307,6 +307,9 @@
     <Filter Include="UIs\Widgets\ShapeWidgets\ScrollBars">
       <UniqueIdentifier>{206b4188-667b-4615-9288-e4d6dd95afb2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers de ressources\SoundSystem">
+      <UniqueIdentifier>{5aae8b1c-d93f-44c8-bae6-730aa36131dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -647,6 +650,12 @@
     </ClCompile>
     <ClCompile Include="Lever.cpp">
       <Filter>Objects\ShapeObjects\Actors\Interactables\Lever</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundSystem.cpp">
+      <Filter>Fichiers de ressources\SoundSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSoundData.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -998,8 +1007,18 @@
     <ClInclude Include="ScrollBar.h">
       <Filter>UIs\Widgets\ShapeWidgets\ScrollBars</Filter>
     </ClInclude>
+    <ClInclude Include="SoundSystem.h">
+      <Filter>Fichiers de ressources\SoundSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSound.h">
+      <Filter>Objects\ShapeObjects\Actors\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSoundData.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Assets\Levels\SubLevel_1.txt" />
+    <Text Include="SaveOption.txt" />
   </ItemGroup>
 </Project>

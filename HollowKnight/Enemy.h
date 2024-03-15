@@ -24,7 +24,6 @@ protected:
 	EnemyBrain* brain;
 	MobLifeComponent* life;
 	bool isDead;
-	Actor* raycast;
 
 public:
 	Enemy(const string& _name, const ShapeData& _data);

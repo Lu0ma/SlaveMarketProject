@@ -33,14 +33,16 @@ void PlayerMovementComponent::SetDirectionX(const float _directionX, const strin
 		{
 			dashDirection = -1.0f;
 		}
+
+		animation->GetCurrentAnimation()->RunAnimation("StopRight", dashDirection);
 	}
 
 	else
 	{
 		dashDirection = _directionX;
+		animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
 	}
 
-	animation->GetCurrentAnimation()->RunAnimation(_animName, dashDirection);
 	direction.x = _directionX;
 }
 
@@ -112,12 +114,14 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 {
 	if (!canMove) return;
 
-	isOnGround = CheckGround();
-	if (isOnGround)
+	if (isOnGround = CheckGround())
 	{
 		downSpeed = gravity;
 		canDoubleJump = true;
+		SetDirectionX(direction.x, "Right");
 	}
+
+	Game::GetCamera()->SetUpdate(!isOnGround);
 
 	Vector2f _offset;
 
@@ -197,7 +201,7 @@ void PlayerMovementComponent::Jump()
 
 void PlayerMovementComponent::Dash()
 {
-	if (!canDash || isDashing) return;
+	if (!canMove || !canDash || isDashing) return;
 
 	isJumping = false;
 	canDash = false;
@@ -209,7 +213,7 @@ void PlayerMovementComponent::Dash()
 
 void PlayerMovementComponent::SitDown()
 {
-	if (!isStanding || !owner->GetBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()))
+	if (!canMove || !isStanding || !owner->GetBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()))
 	{
 		cout << "Impossible de s'assoir !" << endl;
 		return;
@@ -225,6 +229,8 @@ void PlayerMovementComponent::SitDown()
 
 void PlayerMovementComponent::StandUp()
 {
+	if (!canMove) return;
+
 	if (isStanding)
 	{
 		cout << "Impossible de se lever !" << endl;

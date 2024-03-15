@@ -11,6 +11,7 @@
 #include "Boss.h"
 #include "Mob.h"
 #include "InteractableActor.h"
+#include "FalseKnight.h"
 
 #define PATH_BENCH "Map/Bench.png"
 #define PATH_STAND "/UIs/Shop/Stand.png"
@@ -42,8 +43,8 @@ MapData Map::LoadMapData(const string& _path)
 {
 	MapData _data;
 	const string& _symbol = " = ";
-	
-	//background
+
+#pragma region Background
 	_data.backgroundPath = GetStringAfterSymbol(GetLineByText("BackgroundPath", _path), _symbol);
 	cout << _data.backgroundPath << endl;
 
@@ -62,13 +63,16 @@ MapData Map::LoadMapData(const string& _path)
 	const float _clampCamMaxX = stof(GetStringAfterSymbol(GetLineByText("ClampCamMaxX", _path), _symbol));
 	const float _clampCamMaxY = stof(GetStringAfterSymbol(GetLineByText("ClampCamMaxY", _path), _symbol));
 	_data.clampCamMax = Vector2f(_bgPosX, _bgPosY);
-	
+
+#pragma endregion
+
+	int _index;
 
 #pragma region Items
 
 	const string& _itemSymbol = "items = [";
 	const int _itemIndex = GetIndexByText(_itemSymbol, _path);
-	int _index = _itemIndex + 2;
+	_index = _itemIndex + 2;
 	bool _isEndOfItem;
 	do
 	{
@@ -93,8 +97,8 @@ MapData Map::LoadMapData(const string& _path)
 		const ItemType& _itemType = static_cast<ItemType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
 		_index++;
 
-		CollectableActor* _item = 
-			new CollectableActor(STRING_ID(_itemName), ShapeData(Vector2f(_itemPositionX, _itemPositionY), Vector2f(_itemSizeX, _itemSizeY), _itemPath), 
+		CollectableActor* _item =
+			new CollectableActor(STRING_ID(_itemName), ShapeData(Vector2f(_itemPositionX, _itemPositionY), Vector2f(_itemSizeX, _itemSizeY), _itemPath),
 				_range, _itemDesc, _itemName, _itemType);
 		//CollectableActor* _item = new CollectableActor(_itemName, ShapeData(, Vector2f(_itemSizeX, _itemSizeY), _itemPath), _range, _itemType);
 		// itemData.push_back(_item->GetItemData());
@@ -113,7 +117,7 @@ MapData Map::LoadMapData(const string& _path)
 	_index = _platformIndex + 2;
 
 	bool _isEndOfPlatform;
-	do 
+	do
 	{
 		const int _platformPositionX = stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
 		_index++;
@@ -123,9 +127,9 @@ MapData Map::LoadMapData(const string& _path)
 		_index++;
 		PlatformData _platform = PlatformData(Vector2f((float)_platformPositionX, (float)_platformPositionY), _platformType);
 		platformsData.push_back(_platform);
-		_index +=2;
+		_index += 2;
 		_isEndOfPlatform = ContainsText("]", GetLineByIndex(_index - 1, _path));
-		
+
 	} while (!_isEndOfPlatform);
 
 #pragma endregion
@@ -163,21 +167,22 @@ MapData Map::LoadMapData(const string& _path)
 #pragma region Enemies 
 
 	const string& _enemySymbol = "enemies = [";
-	const int _enemyIndex = GetIndexByText(_groundSymbol, _path);
+	const int _enemyIndex = GetIndexByText(_enemySymbol, _path);
 	_index = _enemyIndex + 2;
 	bool _isEndOfEnemy;
+	int _enemyIndexType = 0; // Initialize with a default value
 	do
 	{
 		// Recupérer les informations du ground, augmenter l'index a chaque fois
 		const EnemyType& _enemyType = static_cast<EnemyType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
 		_index++;
-		if (_enemyIndex == BOSS)
+		if (_enemyType == BOSS)
 		{
-			const BossType& _enemyIndex = static_cast<BossType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
+			const BossType& _enemyIndexType = static_cast<BossType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
 		}
-		else if (_enemyIndex == MOB)
+		else if (_enemyType == MOB)
 		{
-			const MobType& _enemyIndex = static_cast<MobType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
+			const MobType& _enemyIndexType = static_cast<MobType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
 		}
 		_index++;
 		const float _enemyPositionX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
@@ -188,17 +193,25 @@ MapData Map::LoadMapData(const string& _path)
 		_index++;
 		const float _enemySizeY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
 		_index++;
-
+		const string& _enemyPath = GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol);
+		_index++;
 
 		// Créer avec les infos
-		if (_enemyIndex == BOSS)
+		if (_enemyIndexType == (int)BOSS)
 		{
-			new Boss(ShapeData(Vector2f(_enemyPositionX, _enemyPositionY), Vector2f(_enemySizeX, _enemySizeY)));
+			FalseKnight* _falseKnight = new FalseKnight(ShapeData(Vector2f(_enemyPositionX, _enemyPositionY), Vector2f(_enemySizeX, _enemySizeY)));
+			_falseKnight->Init();
+			_falseKnight->GetDrawable()->setFillColor(Color::Transparent);
+			// new Boss(ShapeData(Vector2f(_enemyPositionX, _enemyPositionY), Vector2f(_enemySizeX, _enemySizeY)));
 		}
-		else if (_enemyIndex == MOB)
+		else if (_enemyIndexType == (int)MOB)
 		{
-			new Mob(ShapeData(Vector2f(_enemyPositionX, _enemyPositionY), Vector2f(_enemySizeX, _enemySizeY)));
-		}		
+			new Mob(ShapeData(Vector2f(_enemyPositionX, _enemyPositionY), Vector2f(_enemySizeX, _enemySizeY), _enemyPath));
+		}
+		else
+		{
+			cout << "EPIC FAIL" << endl;
+		}
 
 		_index += 2;
 		_isEndOfEnemy = ContainsText("]", GetLineByIndex(_index - 1, _path));
@@ -244,8 +257,8 @@ MapData Map::LoadMapData(const string& _path)
 
 #pragma region Environment
 
-	const string& _environmentSymbol = "enemies = [";
-	const int _environmentIndex = GetIndexByText(_npcSymbol, _path);
+	const string& _environmentSymbol = "Environment = [";
+	const int _environmentIndex = GetIndexByText(_environmentSymbol, _path);
 	_index = _environmentIndex + 2;
 	bool _isEndOfEnvironment;
 
@@ -261,9 +274,10 @@ MapData Map::LoadMapData(const string& _path)
 		_index++;
 		const string& _environmentPath = GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol);
 		_index++;
-		
-		ShapeObject(ShapeData(Vector2f(_environmentPositionX, _environmentPositionY), Vector2f(_environmentSizeX, _environmentSizeY), _environmentPath));
-		
+
+		ShapeObject(ShapeData(Vector2f(_environmentPositionX, _environmentPositionY),
+			Vector2f(_environmentSizeX, _environmentSizeY), _environmentPath));
+
 
 		_index += 2;
 		_isEndOfEnvironment = ContainsText("]", GetLineByIndex(_index - 1, _path));

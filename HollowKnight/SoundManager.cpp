@@ -53,70 +53,42 @@
 
 SoundManager::SoundManager()
 {
-	volume = new float(40.0f);
 	isMuted = false;
+	volume = 40.0f;
 	tempVolume = 1;
 }
 
-SoundManager::~SoundManager()
+
+void SoundManager::Play(const string& _path,const bool _isloop , const DirectionalSettings& _settings)
 {
-	delete volume;
+	if (SoundData* _soundData = Get(_path))
+	{
+		_soundData->setPosition(Vector3f(_settings.position.x, _settings.position.y, 0.0f));
+		_soundData->setRelativeToListener(_settings.attenuationSpeed == 0.0f);
+		_soundData->setAttenuation(_settings.attenuationSpeed);
+		_soundData->setMinDistance(_settings.minDistance);
+		_soundData->setVolume(volume);
+		_soundData->setLoop(_isloop);
+		_soundData->play();
+	}
 }
 
-
-void SoundManager::Play(const string& _path, const DirectionalSettings& _settings)
+void SoundManager::AdjustAllVolume(const float _value)
 {
-	if (_path == "") return;
+	const float _newVolume = volume + _value;
+	if (_newVolume > 100.0f || _newVolume < 0.0f) return;
 
-	SoundData* _soundData = Get(_path);
-
-	if (!_soundData)
+	volume = _newVolume;
+	for (SoundData* _sound : GetAllValues())
 	{
-		_soundData = new SoundData(_path);
+		_sound->AdjustVolume(volume);
 	}
-
-	_soundData->setPosition(Vector3f(_settings.position.x, _settings.position.y, 0.0f));
-	_soundData->setRelativeToListener(_settings.attenuationSpeed == 0.0f);
-	_soundData->setAttenuation(_settings.attenuationSpeed);
-	_soundData->setMinDistance(_settings.minDistance);
-	_soundData->setVolume(*volume);
-	_soundData->play();
 }
 
 void SoundManager::Stop(const string& _path)
 {
-	if (_path == "") return;
-
-	SoundData* _soundData = Get(_path);
-
-	if (!_soundData)
+	if (SoundData* _soundData = Get(_path))
 	{
-		_soundData = new SoundData(_path);
-	}
-
-	_soundData->stop();
-}
-
-void SoundManager::IncreaseVolume(const float _value)
-{
-	if (*volume <= 99.0f)
-	{
-		*volume += _value;
-		for (SoundData* _sound : GetAllValues())
-		{
-			_sound->setVolume(*volume);
-		}
-	}
-}
-
-void SoundManager::DecreaseVolume(const float _value)
-{
-	if (*volume >= 1.0f)
-	{
-		*volume -= _value;
-		for (SoundData* _sound : GetAllValues())
-		{
-			_sound->setVolume(*volume);
-		}
+		_soundData->stop();
 	}
 }

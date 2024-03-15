@@ -1,7 +1,7 @@
 #pragma once
 #include "MovementComponent.h"
 #include "PlayerAnimationComponent.h"
-
+#include "SoundManager.h"
 class PlayerMovementComponent : public MovementComponent
 {
 	// Movement
@@ -58,6 +58,10 @@ public:
 	{
 		return isOnGround;
 	}
+	bool GetIsDashing() const
+	{
+		return isDashing;
+	}
 	bool IsStanding() const
 	{
 		return isStanding;
@@ -77,7 +81,8 @@ public:
 private:
 	bool CheckGround();
 	void StopJump();
-	
+	void PlaySound(const string& _sound, const bool _isLoop);
+	void Stop();
 public:
 	virtual void Update(const float _deltaTime) override;
 	void Jump();

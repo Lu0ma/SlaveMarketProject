@@ -28,7 +28,6 @@ void Lift::Move(const float _deltaTime)
 	if (status == LMS_DOWN)
 	{
 		Game::GetPlayer()->GetDrawable()->move(_direction * _deltaTime);
-		//Game::GetCamera()->SetCenter(Vector2f(Game::GetPlayer()->GetBounds().left, Game::GetPlayer()->GetBounds().top)); // WHAT
 	}
 }
 
@@ -36,8 +35,6 @@ void Lift::Move(const float _deltaTime)
 void Lift::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
-
-	//cout << GetShapePosition().y << endl;
 
 	if (status != LMS_NONE)
 	{

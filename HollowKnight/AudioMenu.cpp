@@ -5,11 +5,15 @@
 #include "HUD.h"
 #include "Macro.h"
 
+#include "SoundData.h"
+
+
 #define PATH_MINUS "../Menu/Audio/Minus.png"
 #define PATH_PLUS "../Menu/Audio/Plus.png"
 #define PATH_LINE "../Menu/Audio/music_line.png"
 #define PATH_INDICATOR "../Menu/Audio/Indicator.png"
-
+#define SOUND_CLICK  "Ui/ui_option_click"
+#define MUSIC_SAVE  "SaveOption"
 AudioMenu::AudioMenu(Menu* _owner) : Menu("Audio", _owner)
 {
 	minValue = 0;
@@ -81,14 +85,21 @@ void AudioMenu::Init()
 						if (MoveIndicator("Sound Volume", -10.0f))
 						{
 							soundValue -= 10.0f;
-							//SoundManager::GetInstance().AdjustAllVolume(soundValue);
+							
+							SoundManager::GetInstance().AdjustAllVolume(soundValue);
+							new SoundData(SOUND_CLICK, 100, false);
+							cout << "soundValue :" << soundValue << endl << endl;
 						}
 						if (MoveIndicator("Music Volume", -10.0f))
 						{
 							musicValue -= 10.0f;
 							MusicManager::GetInstance().AdjustAllVolume(musicValue);
+							new SoundData(SOUND_CLICK, 100, false);
+							cout << "musicValue :" << musicValue << endl << endl;;
 						}
 						masterValue -= 10.0f;
+						new SoundData(SOUND_CLICK, 100, false);
+						cout << "masterValue :" << masterValue << endl << endl;;
 					}
 				}
 			},
@@ -96,6 +107,9 @@ void AudioMenu::Init()
 					if (MoveIndicator("Master Volume", 10.0f))
 					{
 						masterValue += 10.0f;
+						new SoundData(SOUND_CLICK, 100, false);
+						cout << "masterValue :" << masterValue << endl << endl;;
+						// Save(to_string(masterValue), MUSIC_SAVE);
 					}
 				}
 			}),
@@ -104,7 +118,9 @@ void AudioMenu::Init()
 					if (MoveIndicator("Sound Volume", -10.0f))
 					{
 						soundValue -= 10.0f;
-						//SoundManager::GetInstance().AdjustAllVolume(soundValue);
+						SoundManager::GetInstance().AdjustAllVolume(soundValue);
+						new SoundData(SOUND_CLICK, 100, false);
+						cout << "soundValue :" << soundValue << endl << endl;;
 					}
 				}
 			},
@@ -112,7 +128,9 @@ void AudioMenu::Init()
 					if (soundValue + 10.0f <= masterValue && MoveIndicator("Sound Volume", 10.0f))
 					{
 						soundValue += 10.0f;
-						//SoundManager::GetInstance().AdjustAllVolume(soundValue);
+						SoundManager::GetInstance().AdjustAllVolume(soundValue);
+						new SoundData(SOUND_CLICK, 100, false);
+						cout << "soundValue :" << soundValue << endl << endl;;
 					}
 				}
 			}),
@@ -122,6 +140,8 @@ void AudioMenu::Init()
 					{
 						musicValue -= 10.0f;
 						MusicManager::GetInstance().AdjustAllVolume(musicValue);
+						new SoundData(SOUND_CLICK, 100, false);
+						cout << "musicValue :" << musicValue << endl << endl;;
 					}
 				}
 			},
@@ -130,6 +150,8 @@ void AudioMenu::Init()
 					{
 						musicValue += 10.0f;
 						MusicManager::GetInstance().AdjustAllVolume(musicValue);
+						new SoundData(SOUND_CLICK, 100, false);
+						cout << "musicValue :" << musicValue << endl << endl;;
 					}
 				}
 			}),
@@ -215,6 +237,7 @@ void AudioMenu::Init()
 	canvas->AddWidget(backButton);
 
 	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
+
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
@@ -223,7 +246,7 @@ void AudioMenu::Init()
 	#pragma region Pointer
 
 	Menu::Init();
-	MovePointers(backButton);
+	MovePointers(buttons.front());
 
 	#pragma endregion
 }

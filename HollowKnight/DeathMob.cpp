@@ -11,7 +11,6 @@ DeathMob::DeathMob(const string& _name, const ShapeData& _data) : Mob(_data)
 	death = 0;
 }
 
-
 void DeathMob::Init()
 {
 	animDeath.push_back("StandBy");
@@ -36,7 +35,7 @@ void DeathMob::Death()
 	{
 		return;
 	}
- 	else if (GetLife()->GetLife() == 0)
+ 	else if (GetLife()->GetLife() <= 0)
 	{
 		death++; 
 		animation->RunAnimation("Death", GetDrawable()->getScale().x);
@@ -44,7 +43,6 @@ void DeathMob::Death()
 		int _newDeath = Random<int>(10000, 0);
 		new CollectableActor("Geo"+ to_string(_newDeath), ShapeData(Vector2f(GetShapePosition().x, GetShapePosition().y + 20.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, IT_GEOS);
 	}
-	
 }
  
 void DeathMob::Update(const float _deltaTime)

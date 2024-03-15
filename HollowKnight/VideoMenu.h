@@ -5,6 +5,18 @@
 class VideoMenu : public Menu
 {
 	vector<Button*> buttons;
+
+	int resolutionIndex;
+	Vector2u resolution;
+	Label* resolutionText;
+
+	bool fullScreenActivated;
+	Label* fullscreenText;
+
+	int particuleStateIndex;
+	Label* particuleText;
+
+	Button* brightnessButton;
 	BrightnessMenu* brightness;
 
 public:

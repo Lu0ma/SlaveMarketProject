@@ -135,6 +135,17 @@ string GetStringAfterIndex(const string& _text, const int _index)
 	return _string;
 }
 
+void Save(const string& _text, const string& _path)
+{
+	ofstream _stream = ofstream(_path);
+	if (!_stream)
+	{
+		cerr << "Le flux n'a pas été correctement construit !" << endl;
+		return;
+	}
+	_stream << _text;
+}
+
 void ReadAllFile(const string& _path, vector<string>& _array)
 {
 	ifstream _stream = ifstream(_path);

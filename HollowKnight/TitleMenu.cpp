@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "HUD.h"
 #include "ActorManager.h"
-
+#define SOUND_CONFIRM "Ui/ui_button_confirm"
 #define PATH_TITLE_MENU "UIs/Menus/TitleMenu/Background.png"
 
 TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
@@ -44,31 +44,27 @@ void TitleMenu::Init()
 	};
 
 	const vector<ButtonData>& _allData = {
-		ButtonData("START GAME", [&]() { 
+		ButtonData("Start Game", [&]() { 
 			Game::GetPlayer()->Init();
 			SetStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
-		ButtonData("OPTIONS", [&]() {
+		ButtonData("Options", [&]() {
 			options->SetStatus(true);
 			SetStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
-		ButtonData("ACHIEVEMENTS", [&]() {
-			/*if (achievement->GetAchievementCanvas())
-			{
-				achievement->GetAchievementCanvas()->SetVisibilityStatus(true);
-				SetStatus(false);
-			}
-			else 
-			{
-				achievement->SetStatus(true);
-				SetStatus(false);
-			}*/
+		ButtonData("Achievements", [&]() {
+			achievement->SetStatus(true);
+			SetStatus(false);
+			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
-		ButtonData("EXTRAS", [&]() {
+		ButtonData("Extras", [&]() {
 			cout << "EXTRAS" << endl;
+			new SoundData(SOUND_CONFIRM, 100, false);
 			//TODO easter
 		}),
-		ButtonData("QUIT GAME", [&]() {
+		ButtonData("Quit Game", [&]() {
 			quitGame->SetStatus(true);
 			SetStatus(false);
 		})

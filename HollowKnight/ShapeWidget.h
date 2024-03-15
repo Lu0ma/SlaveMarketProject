@@ -26,6 +26,6 @@ public:
 	}
 
 public:
-	ShapeWidget(const ShapeData& _data);
+	ShapeWidget(const ShapeData& _data, const WidgetType& _type = WT_UI);
 	~ShapeWidget();
 };

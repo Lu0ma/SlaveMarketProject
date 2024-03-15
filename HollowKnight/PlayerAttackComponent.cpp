@@ -1,7 +1,8 @@
 #include "PlayerAttackComponent.h"
 #include "Game.h"
 #include "Lift.h"
-#include "Mob.h"
+#include "Enemy.h"
+#include "DeathMob.h"
 #include "Grub.h"
 #include "Macro.h"
 #include"Game.h"
@@ -20,28 +21,38 @@ void PlayerAttackComponent::SpecialAttack()
 	if (!canAttack) return;
 
 	const Vector2f& _ownerPosition = owner->GetShapePosition();
-	const vector<Mob*>& _mobs = RetrieveAllMobsAround<Mob>(_ownerPosition, 45.0f);
-	for (Mob* _mob : _mobs)
+	const vector<Enemy*>& _mobs = RetrieveAllMobsAround<Enemy>(_ownerPosition, 45.0f);
+	for (Enemy* _mob : _mobs)
 	{
 		if (!_mob) continue;
 		
 		else
 		{
 			//_mob->GetLife()->TakeDamages(GetDamages());
+			_mob->GetLife()->SetLife(0);
+			if (DeathMob* _deathMob = dynamic_cast<DeathMob*>(_mob))
+			{
+				_deathMob->Death();
+			}
 			//_mob->GetLife()->SetLife(0);
 			//_mob->Death();
 			Game::GetPlayer()->GetStats()->UseMana(10.0f);
 		}
 	}
 
-	const vector<Mob*>& _mobss = RetrieveAllMobsAround<Mob>(_ownerPosition, -45.0f);
-	for (Mob* _mob : _mobss)
+	const vector<Enemy*>& _mobss = RetrieveAllMobsAround<Enemy>(_ownerPosition, -45.0f);
+	for (Enemy* _mob : _mobss)
 	{
 		if (!_mob) continue;
 
 		else
 		{
 			//_mob->GetLife()->TakeDamages(GetDamages());
+			_mob->GetLife()->SetLife(0);
+			if (DeathMob* _deathMob = dynamic_cast<DeathMob*>(_mob))
+			{
+				_deathMob->Death();
+			}
 			//_mob->GetLife()->SetLife(0);
 			//_mob->Death();
 			Game::GetPlayer()->GetStats()->UseMana(1.0f);
