@@ -17,7 +17,7 @@ Spawner::Spawner()
 
 void Spawner::Spawn()
 {
-	Vector2f _positionBoofly = Vector2f(0.0f, -250.0f);
+	Vector2f _positionBoofly = Vector2f(-500.0f, -250.0f);
 	Vector2f _positionBelfly = Vector2f(200.0f, 225.0f);
 	Vector2f _positionHuskBully = Vector2f(400.0f, 250.0f);
 	Vector2f _sizeBoofly = Vector2f(220.0f, 200.0f);

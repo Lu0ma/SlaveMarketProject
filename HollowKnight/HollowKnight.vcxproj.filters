@@ -310,6 +310,9 @@
     <Filter Include="Fichiers de ressources\SoundSystem">
       <UniqueIdentifier>{5aae8b1c-d93f-44c8-bae6-730aa36131dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menus\ExtrasMenu\CreditsMenu">
+      <UniqueIdentifier>{af244d12-042f-4edc-9c1e-7448d6e2653c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -669,8 +672,8 @@
     <ClCompile Include="PatrolToDeath.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="TriggerBox.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="CreditsMenu.cpp">
+      <Filter>Menus\ExtrasMenu\CreditsMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1043,8 +1046,8 @@
     <ClInclude Include="PatrolToDeath.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="TriggerBox.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="CreditsMenu.h">
+      <Filter>Menus\ExtrasMenu\CreditsMenu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

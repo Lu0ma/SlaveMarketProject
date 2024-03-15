@@ -12,8 +12,8 @@ TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
 	options = new OptionsMenu(this);
 	achievement = new AchievementsMenu(this);
 	quitGame = new QuitGameMenu(this);
+	extras = new ExtrasMenu(this);
 }
-
 
 void TitleMenu::Init()
 {
@@ -60,9 +60,9 @@ void TitleMenu::Init()
 			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
 		ButtonData("Extras", [&]() {
-			cout << "EXTRAS" << endl;
+			extras->SetStatus(true);
+			SetStatus(false);
 			new SoundData(SOUND_CONFIRM, 100, false);
-			//TODO easter
 		}),
 		ButtonData("Quit Game", [&]() {
 			quitGame->SetStatus(true);
@@ -71,7 +71,7 @@ void TitleMenu::Init()
 	};
 
 	const Vector2f& _buttonSize = Vector2f(200.0f, 50.0f);
-	const float _gapY = _buttonSize.y * 5.0f / 100.0f;
+	const float _gapY = _buttonSize.y * 0.35f;
 	const float _gridPosX = _halfWindowX + _buttonSize.x * 5.0f / 100.0f;
 	const float _gridPosY = _windowSize.y * 55.0f / 100.0f;
 
@@ -94,7 +94,7 @@ void TitleMenu::Init()
 		buttons.push_back(_button);
 		canvas->AddWidget(_button);
 
-		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 24));
+		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 35));
 		_button->SetForeground(_title);
 		canvas->AddWidget(_title);
 	}
@@ -106,9 +106,9 @@ void TitleMenu::Init()
 
 	#pragma region Version
 
-	const float _versionPosX = _windowSize.x * 90.0f / 100.0f;
+	const float _versionPosX = _windowSize.x * 0.2f;
 	const float _versionPosY = _windowSize.y * 90.0f / 100.0f;
-	Label* _version = new Label(TextData("v 1.2.0", Vector2f(_versionPosX, _versionPosY), FONT, 18));
+	Label* _version = new Label(TextData("V 0.1.2.0", Vector2f(_versionPosX, _versionPosY), FONT, 25));
 	canvas->AddWidget(_version);
 
 	#pragma endregion

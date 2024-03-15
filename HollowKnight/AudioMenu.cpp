@@ -6,13 +6,6 @@
 #include "Macro.h"
 #include "SoundData.h"
 
-#define PATH_MINUS "UIs/Menus/Options/Audio/Minus.png"
-#define PATH_PLUS "UIs/Menus/Options/Audio/Plus.png"
-#define PATH_LINE "UIs/Menus/Options/Audio/music_line.png"
-#define PATH_INDICATOR "UIs/Menus/Options/Audio/Indicator.png"
-#define SOUND_CLICK "Ui/ui_option_click"
-#define MUSIC_SAVE "SaveOption"
-
 AudioMenu::AudioMenu(Menu* _owner) : Menu("Audio", _owner)
 {
 	minValue = 0;
@@ -158,7 +151,7 @@ void AudioMenu::Init()
 	};
 
 	const Vector2f& _buttonSize = Vector2f(600.0f, 70.0f);
-	const float _gapY = _buttonSize.y * 20.0f / 100.0f;
+	const float _gapY = _buttonSize.y * 0.8f;
 	const float _gridPosY = _titleBarPosY + 100.0f;
 
 	const int _dataCount = static_cast<int>(_audioButtonsData.size());
@@ -177,11 +170,12 @@ void AudioMenu::Init()
 			if (Button* _hoveredButton = HUD::GetInstance().GetHoveredButton(buttons))
 			{
 				ShapeObject* _object = _hoveredButton->GetObject();
-				const Vector2f& _position = _object->GetShapePosition();
-				const float _halfSizeX = _object->GetShapeSize().x * 0.4f;
-				const Vector2f& _offset = Vector2f(_halfSizeX, 0.0f);
-				pointerLeft->SetShapePosition(_position - _offset);
-				pointerRight->SetShapePosition(_position + _offset);
+				const Vector2f& _position = _object->GetShapePosition() - Vector2f(50.0f, 0.0f);
+				const float _halfSizeX = _object->GetShapeSize().x * 0.52f;
+				const Vector2f& _offsetX = Vector2f(_halfSizeX, 0.0f);
+				const Vector2f& _offsetY = Vector2f(0.0f, 3.0f);
+				pointerLeft->SetShapePosition(_position - _offsetX + _offsetY);
+				pointerRight->SetShapePosition(_position + _offsetX + _offsetY);
 			}
 		};
 		buttons.push_back(_button);
@@ -195,7 +189,7 @@ void AudioMenu::Init()
 		_buttonPlus->GetData().pressedCallback = _audioButtonsData[_i].plusButton.callback;
 		canvas->AddWidget(_buttonPlus);
 
-		Label* _title = new Label(TextData(_audioButtonsData[_i].title, Vector2f(_halfWindowX / 1.25f, _buttonPos.y - 10.0f), FONT, 20));
+		Label* _title = new Label(TextData(_audioButtonsData[_i].title, Vector2f(_halfWindowX / 1.25f, _buttonPos.y - 10.0f), FONT, 35));
 		canvas->AddWidget(_title);
 
 		const float _volumeBarPosX = _buttonPos.x + 100.0f;
@@ -235,7 +229,7 @@ void AudioMenu::Init()
 	backButton->GetDrawable()->setFillColor(Color::Transparent);
 	canvas->AddWidget(backButton);
 
-	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
+	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 35));
 
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
