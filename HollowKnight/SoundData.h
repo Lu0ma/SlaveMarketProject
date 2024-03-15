@@ -20,5 +20,6 @@ public:
 	virtual void Register() override;
 	void AdjustVolume(const float _percent);
 	void GetSound(const string& _sound);
-
+	float DurationTime();
+	void Play();
 };

@@ -20,4 +20,5 @@ public:
 	void Play();
 	void AdjustVolume(const float _value);
 	void Stop();
+	float DurationTime();
 };

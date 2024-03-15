@@ -1,6 +1,6 @@
 #include "InputManager.h"
 #include "HUD.h"
-
+#include "Game.h"
 bool InputManager::Update(RenderWindow& _window)
 {
 	/*if (!Joystick::isConnected(0))
@@ -18,10 +18,12 @@ bool InputManager::Update(RenderWindow& _window)
 		if (_event.type == Event::Closed) return false;
 		if (_event.type == Event::Resized)
 		{
-			//
 			const FloatRect _visibleArea(0.0f, 0.0f, _event.size.width, _event.size.height);
-			 //const FloatRect _visibleArea(0.0f, 0.0f,0.0f, 0.0f);
+			//Game::SetViewA(View(_visibleArea));
+			cout << _window.getView().getSize().x << endl;
 			_window.setView(View(_visibleArea));
+			cout << _window.getView().getSize().x << endl;
+		//	cout << _window.getDefaultView().getCenter().x << endl;
 			cout << "resized" << endl;
 		}
 		//HUD::GetInstance().Interact(worldPosition, _event.type);

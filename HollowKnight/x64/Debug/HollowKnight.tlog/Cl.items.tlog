@@ -7,6 +7,7 @@ D:\SlaveMarketProject\HollowKnight\Animation.cpp;D:\SlaveMarketProject\HollowKni
 D:\SlaveMarketProject\HollowKnight\AnimationComponent.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\AnimationComponent.obj
 D:\SlaveMarketProject\HollowKnight\AttackState.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\AttackState.obj
 D:\SlaveMarketProject\HollowKnight\AttackToChase.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\AttackToChase.obj
+D:\SlaveMarketProject\HollowKnight\AttackToDeath.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\AttackToDeath.obj
 D:\SlaveMarketProject\HollowKnight\AttackToPatrol.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\AttackToPatrol.obj
 D:\SlaveMarketProject\HollowKnight\AudioMenu.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\AudioMenu.obj
 D:\SlaveMarketProject\HollowKnight\Belfly.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\Belfly.obj
@@ -25,12 +26,14 @@ D:\SlaveMarketProject\HollowKnight\CharmsMenu.cpp;D:\SlaveMarketProject\HollowKn
 D:\SlaveMarketProject\HollowKnight\CharmWidget.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\CharmWidget.obj
 D:\SlaveMarketProject\HollowKnight\ChaseState.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\ChaseState.obj
 D:\SlaveMarketProject\HollowKnight\ChaseToAttack.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\ChaseToAttack.obj
+D:\SlaveMarketProject\HollowKnight\ChaseToDeath.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\ChaseToDeath.obj
 D:\SlaveMarketProject\HollowKnight\ChaseToPatrol.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\ChaseToPatrol.obj
 D:\SlaveMarketProject\HollowKnight\CollectableActor.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\CollectableActor.obj
 D:\SlaveMarketProject\HollowKnight\CollisionComponent.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\CollisionComponent.obj
 D:\SlaveMarketProject\HollowKnight\Component.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\Component.obj
 D:\SlaveMarketProject\HollowKnight\ControllerMenu.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\ControllerMenu.obj
 D:\SlaveMarketProject\HollowKnight\DeathMob.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\DeathMob.obj
+D:\SlaveMarketProject\HollowKnight\DeathState.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\DeathState.obj
 D:\SlaveMarketProject\HollowKnight\Dragon.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\Dragon.obj
 D:\SlaveMarketProject\HollowKnight\Enemy.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\Enemy.obj
 D:\SlaveMarketProject\HollowKnight\EnemyBrain.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\EnemyBrain.obj
@@ -80,6 +83,7 @@ D:\SlaveMarketProject\HollowKnight\OptionsMenu.cpp;D:\SlaveMarketProject\HollowK
 D:\SlaveMarketProject\HollowKnight\PatrolState.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\PatrolState.obj
 D:\SlaveMarketProject\HollowKnight\PatrolToAttack.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\PatrolToAttack.obj
 D:\SlaveMarketProject\HollowKnight\PatrolToChase.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\PatrolToChase.obj
+D:\SlaveMarketProject\HollowKnight\PatrolToDeath.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\PatrolToDeath.obj
 D:\SlaveMarketProject\HollowKnight\PauseMenu.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\PauseMenu.obj
 D:\SlaveMarketProject\HollowKnight\Player.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\Player.obj
 D:\SlaveMarketProject\HollowKnight\PlayerAnimationComponent.cpp;D:\SlaveMarketProject\HollowKnight\x64\Debug\PlayerAnimationComponent.obj

@@ -5,6 +5,7 @@
 #define SOUND_FOOTSTEP_METAL "Knight/hero_run_footsteps_metal"
 #define SOUND_FOOTSTEP_STONE "Knight/hero_run_footsteps_stone" 
 #define SOUND_FOOTSTEP_BONE  "Knight/hero_run_footsteps_bones"
+#define SOUND_FOOTSTEP_GRASS_V2 "Knight/grass_move_2"
 #pragma endregion
 
 #pragma region TAKE DAMAGE

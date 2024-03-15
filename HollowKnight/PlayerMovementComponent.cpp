@@ -6,6 +6,8 @@
 #include "Macro.h"
 #include "Kismet.h"
 #include "FxManager.h"
+#include "PlayerSound.h"
+#include "SoundData.h"
 
 void PlayerMovementComponent::SetDirectionX(const float _directionX, const string& _animName)
 {
@@ -116,23 +118,17 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 
 	if (isOnGround = CheckGround())
 	{
-<<<<<<< HEAD
-		
 		Game::GetCamera()->SetUpdate(false);
 		downSpeed = gravity;
 		canDoubleJump = true;
+
 	}
 	else
 	{
 		Game::GetCamera()->SetUpdate(true);
-=======
-		downSpeed = gravity;
-		canDoubleJump = true;
-		SetDirectionX(direction.x, "Right");
->>>>>>> Release
+
 	}
 
-	Game::GetCamera()->SetUpdate(!isOnGround);
 
 	Vector2f _offset;
 
@@ -204,10 +200,15 @@ void PlayerMovementComponent::Jump()
 		canDoubleJump = false;
 		currentJumpForce = jumpForce;
 		FxManager::GetInstance().Run("FxDoubleJump");
+		new SoundData(SOUND_WINGS, 100, false);
 	}
-
+	if (canDoubleJump)
+	{
+		new SoundData(SOUND_JUMP, 100, false);
+	}
 	isJumping = true;
 	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
+
 }
 
 void PlayerMovementComponent::Dash()

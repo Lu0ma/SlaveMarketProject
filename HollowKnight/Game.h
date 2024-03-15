@@ -58,6 +58,7 @@ private:
 	static Player* player;
 	static Camera* camera;
 	static Brightness* brightness;
+	static View view;
 
 public:
 	static RenderWindow& GetWindow()
@@ -76,6 +77,10 @@ public:
 	{
 		return camera;
 	}
+	static View GetView()
+	{
+		return view;
+	}
 	static Map* GetMap() 
 	{
 		return map;
@@ -83,6 +88,11 @@ public:
 	static Brightness* GetBrightness()
 	{
 		return brightness;
+	}
+
+	static void SetViewA(const View& _view)
+	{
+		view = _view;
 	}
 
 public:

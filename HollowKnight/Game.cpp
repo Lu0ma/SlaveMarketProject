@@ -13,7 +13,7 @@ Map* Game::map;
 Player* Game::player;
 Camera* Game::camera;
 Brightness* Game::brightness;
-
+View Game::view;
 Game::Game()
 {
 	menu = new MainMenu();
@@ -21,6 +21,7 @@ Game::Game()
 	map = new Map();
 	camera = new Camera();
 	brightness = new Brightness();
+	view = window.getDefaultView();
 } 
 
 Game::~Game()
@@ -111,12 +112,12 @@ void Game::DrawActors()
 
 void Game::DrawUIs()
 {
-	View _view = window.getDefaultView();
+	view = window.getDefaultView(); // A changer 
 	for (Canvas* _canvas : HUD::GetInstance().GetAllValues())
 	{
 		if (!_canvas->IsVisible()) continue;
-		_view.setViewport(_canvas->GetRect());
-		window.setView(_view);
+		view.setViewport(_canvas->GetRect());
+		window.setView(view);
 
 		for (Widget* _widget : _canvas->GetUiWidgets())
 		{

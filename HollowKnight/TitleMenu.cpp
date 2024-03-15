@@ -4,7 +4,7 @@
 #include "ActorManager.h"
 #define SOUND_CONFIRM "Ui/ui_button_confirm"
 #define PATH_TITLE_MENU "UIs/Menus/TitleMenu/Background.png"
-
+#define MUSIC_GAME "OST_Crossroads"
 TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
 {
 	canvas = new Canvas("Title");
@@ -48,6 +48,7 @@ void TitleMenu::Init()
 			Game::GetPlayer()->Init();
 			SetStatus(false);
 			new SoundData(SOUND_CONFIRM, 100, false);
+			new MusicData(MUSIC_GAME, 0, 100, WAV);
 		}),
 		ButtonData("Options", [&]() {
 			options->SetStatus(true);
