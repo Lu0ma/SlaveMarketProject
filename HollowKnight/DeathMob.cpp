@@ -12,7 +12,6 @@ DeathMob::DeathMob(const string& _name, const ShapeData& _data) : Mob(_data)
 	death = 0;
 }
 
-
 void DeathMob::Init()
 {
 	animDeath.push_back("StandBy");
@@ -43,11 +42,13 @@ void DeathMob::Death()
 		animation->RunAnimation("Death", GetDrawable()->getScale().x);
 		GetDrawable()->setScale(Vector2f(0.0f, 0.0f));
 		int _newDeath = Random<int>(10000, 0);
+
 		AnimationData _data = AnimationData("Spawn", Vector2f(0.0f, 92.0f), Vector2f(50.0f, 41.0f), READ_RIGHT, true, 6, 0.1f);
 		new CollectableActor("Geo"+ to_string(_newDeath), ShapeData(Vector2f(GetPosition().x, GetPosition().y + 20.0f), Vector2f(50.0f, 50.0f), "Animations/Geos.png"), 30.0f, _data,IT_GEOS);
 		FxManager::GetInstance().Run("FxDarkHole");
+
+		
 	}
-	
 }
  
 void DeathMob::Update(const float _deltaTime)
@@ -76,7 +77,7 @@ void DeathMob::Action()
 
 void DeathMob::Attack(Player* _player)
 {
-	if (GetDrawable()->getGlobalBounds().contains(_player->GetPosition()))
+	if (GetDrawable()->getGlobalBounds().contains(_player->GetShapePosition()))
 	{
 		animation->RunAnimation("Explosion", GetDrawable()->getScale().x);
 		_player->GetStats()->UpdateLife(-1);

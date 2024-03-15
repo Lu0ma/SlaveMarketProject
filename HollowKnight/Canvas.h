@@ -8,25 +8,33 @@
 using namespace std;
 using namespace sf;
 
-
 class Canvas : public IManagable<string>
 {
 	bool isVisible;
 	FloatRect rect;
-	vector<Widget*> widgets;
+	vector<Widget*> uiWidgets;
+	vector<Widget*> worldWidgets;
 
 public:
 	bool GetVisibilityStatus()
 	{
 		return isVisible;
 	}
-	void SetVisibilityStatus(bool _status)
+	void SetVisibilityStatus(const bool _status, const bool _applyToWidgets = true)
 	{
 		isVisible = _status;
 
-		for (Widget* _widget : widgets)
+		if (_applyToWidgets)
 		{
-			_widget->SetVisible(_status);
+			for (Widget* _widget : uiWidgets)
+			{
+				_widget->SetVisible(_status);
+			}
+
+			for (Widget* _widget : worldWidgets)
+			{
+				_widget->SetVisible(_status);
+			}
 		}
 	}
 	bool IsVisible() const
@@ -37,14 +45,17 @@ public:
 	{
 		return rect;
 	}
-	vector<Widget*> GetWidgets() const
+	vector<Widget*> GetUiWidgets() const
 	{
-		return widgets;
+		return uiWidgets;
+	}
+	vector<Widget*> GetWorldWidgets() const
+	{
+		return worldWidgets;
 	}
 
 public:
-	Canvas(const string& _name, const FloatRect& _rect = FloatRect(0, 0, 1, 1), 
-		   const vector<Widget*>& _widgets = vector<Widget*>());
+	Canvas(const string& _name, const FloatRect& _rect = FloatRect(0, 0, 1, 1));
 	~Canvas();
 
 private:
@@ -52,6 +63,4 @@ private:
 
 public:
 	void AddWidget(Widget* _widget);
-
-	void DeleteWidget();
 };

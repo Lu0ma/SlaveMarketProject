@@ -1,6 +1,7 @@
 #include "Menu.h"
 #include "MenuManager.h"
 
+#define SOUND_SELECT "Ui/ui_change_selection"
 Menu::Menu(const string& _name, Menu* _owner) : IManagable(_name)
 {
 	Register();
@@ -9,7 +10,9 @@ Menu::Menu(const string& _name, Menu* _owner) : IManagable(_name)
 	canvas = new Canvas(_name);
 	pointerLeft = nullptr;
 	pointerRight = nullptr;
+	backButton = nullptr;
 	owner = _owner;
+	sound = new SoundData(SOUND_SELECT, 100, false);
 }
 
 
@@ -36,6 +39,8 @@ void Menu::MovePointers(const Vector2f& _position, const Vector2f& _size)
 	const float _offsetY = _size.y * 0.5f;
 	pointerLeft->SetShapePosition(_position + Vector2f(-_offsetX, _offsetY));
 	pointerRight->SetShapePosition(_position + Vector2f(_offsetX, _offsetY));
+	// new SoundData(SOUND_SELECT, 100, false);
+	sound->play();
 }
 
 void Menu::Init()

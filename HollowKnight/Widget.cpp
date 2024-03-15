@@ -1,6 +1,8 @@
 #include "Widget.h"
 
-Widget::Widget()
+Widget::Widget(const WidgetType& _type)
 {
 	isVisible = true;
+	applyShader = false;
+	type = _type;
 }

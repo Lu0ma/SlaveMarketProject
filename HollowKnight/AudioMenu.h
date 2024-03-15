@@ -2,7 +2,7 @@
 #include "Menu.h"
 #include "Button.h"
 #include <map>
-
+#include "FileLoader.h"
 class AudioMenu : public Menu
 {
 	float minValue;
@@ -11,7 +11,6 @@ class AudioMenu : public Menu
 	float masterValue;
 	float soundValue;
 	float musicValue;
-	Button* backButton;
 	vector<Button*> buttons;
 	map<string, ShapeWidget*> indicators;
 
@@ -20,7 +19,6 @@ public:
 
 private:
 	bool MoveIndicator(const string _key, const float _percent);
-
 public:
 	virtual void Init() override;
 };

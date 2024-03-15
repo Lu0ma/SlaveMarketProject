@@ -12,7 +12,6 @@ using namespace sf;
 
 class MovementComponent : public Component
 {
-
 protected:
 	bool canMove;
 	float speed;
@@ -33,6 +32,11 @@ public:
 	bool GetCanMove() const
 	{
 		return canMove;
+	}
+
+	const Vector2f& GetLastDirection()
+	{
+		return lastDirection;
 	}
 
 public:

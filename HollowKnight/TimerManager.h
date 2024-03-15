@@ -9,11 +9,22 @@
 using namespace sf;
 using namespace std;
 
+//struct Timer
+//{
+//
+//	Timer(c)
+//	Time _current = seconds(0);
+//	Time _max = milliseconds(static_cast<Int32>(_duration));
+//};
 class TimerManager : public Singleton<TimerManager>, public IManager<int, Timer>
 {
 	// Clock pour avoir accès à toutes les données de temps
 	Clock clock;
 
+
+	float current;
+
+	float max;
 	// Temps en seconde depuis le début du programme
 	float time;
 
@@ -43,6 +54,8 @@ class TimerManager : public Singleton<TimerManager>, public IManager<int, Timer>
 
 	// Méthode de rappel à éxécuter si le rendu est à jour
 	function<void()> renderCallback;
+
+	bool isPause;
 
 private:
 	void ComputeFPS()
@@ -82,6 +95,10 @@ public:
 		return fps;
 	}
 
+	void SetPause(const bool _isPause)
+	{
+		isPause = _isPause;
+	}
 
 public:
 	TimerManager();
@@ -91,4 +108,6 @@ private:
 
 public:
 	void Update();
+
+	void Pause(const float _duration);
 };

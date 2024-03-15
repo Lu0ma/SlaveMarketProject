@@ -4,24 +4,25 @@
 #include "ShapeWidget.h"
 #include "Button.h"
 #include "Label.h"
-
+#include "ScrollBar.h"
+#include "SoundData.h"
 #define PATH_BACKGROUND "UIs/Menus/Background.png"
-#define PATH_TITLE_ICON "UIs/Menus/TitleIcon.png"
+#define PATH_TITLE_ICON "UIs/Menus/TitleBarMenu.png"
 #define PATH_POINTER "UIs/Menus/Pointer.png"
 #define FONT "Font.ttf"
 
 class Menu : public IManagable<string>
 {
 	bool isInit;
-
+	SoundData* sound;
 protected:
 	Canvas* canvas;
 	ShapeWidget* pointerLeft;
 	ShapeWidget* pointerRight;
+	Button* backButton;
 	Menu* owner;
-
 public:
-	virtual void SetStatus(const bool _status)
+	virtual void SetStatus(const bool _status, const bool _applyToWidgets = true)
 	{
 		if (!isInit)
 		{
@@ -29,7 +30,11 @@ public:
 			isInit = true;
 		}
 
-		canvas->SetVisibilityStatus(_status);
+		canvas->SetVisibilityStatus(_status, _applyToWidgets);
+	}
+	void SetOwner(Menu* _owner)
+	{
+		owner = _owner;
 	}
 	bool IsActive() const
 	{

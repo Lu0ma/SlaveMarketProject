@@ -8,7 +8,13 @@ struct HitInfo
 	Vector2f position;
 	float distance;
 	Actor* actor;
+
+	bool operator!=(const HitInfo& _hitInfo) const
+	{
+		return (actor != _hitInfo.actor && distance != _hitInfo.distance && position != _hitInfo.position);
+	}
 };
+
 
 bool Raycast(const Vector2f& _origin, const Vector2f& _direction, const float _maxDistance,
 			 HitInfo& _hitInfo, const vector<Actor*>& _ignoredActors = vector<Actor*>(),

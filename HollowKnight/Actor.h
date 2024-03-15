@@ -13,7 +13,6 @@ protected:
 	vector<Component*> components;
 	CollisionComponent* collision;
 	AnimationComponent* animation;
-
 public:
 	template <typename T>
 	T* GetComponent() const
@@ -27,10 +26,6 @@ public:
 		}
 
 		return nullptr;
-	}
-	Vector2f GetPosition()const
-	{
-		return shape->getPosition();
 	}
 	FloatRect GetBounds() const
 	{

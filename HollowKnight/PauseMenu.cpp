@@ -43,12 +43,13 @@ void PauseMenu::Init()
 	const vector<ButtonData>& _allData = {
 		ButtonData("CONTINUE", [&]() {
 			SetStatus(false);
-			Game::GetPlayer()->CloseAllMenus();
+			Game::GetPlayer()->CloseAllMenus(true);
 		}),
 		ButtonData("OPTIONS", [&]() {
 			SetStatus(false);
-			// Open options menu
-			MenuManager::GetInstance().GetMenu<OptionsMenu>()->SetStatus(true);
+			OptionsMenu* _options = MenuManager::GetInstance().GetMenu<OptionsMenu>();
+			_options->SetOwner(this);
+			_options->SetStatus(true);
 		}),
 		ButtonData("QUIT TO MENU", [&]() {
 			SetStatus(false);

@@ -90,8 +90,6 @@ void Inventory::Init()
 {
 	Menu::Init();
 
-	canvas->SetVisibilityStatus(false);
-
 	windowSize = Game::GetWindowSize();
 	halfSize = windowSize / 2.0f;
 	gridSizeX = gridSize.x * cellSize.x;
