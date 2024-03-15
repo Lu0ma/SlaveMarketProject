@@ -8,8 +8,8 @@ struct ShapeData : public Data
 
 	ShapeData() {}
 	ShapeData(const Vector2f& _position, const Vector2f& _size,
-			  const string& _path = "", const IntRect& _rect = IntRect())
-			  : Data(_position, _path)
+		const string& _path = "", const IntRect& _rect = IntRect())
+		: Data(_position, _path)
 	{
 		size = _size;
 		rect = _rect;

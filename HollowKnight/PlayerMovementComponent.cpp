@@ -51,6 +51,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 	// Movement
 	canMove = false;
 	speed = 0.45f;
+	isStunned = false;
 	directionHasChanged = false;
 	direction = Vector2f();
 
@@ -122,6 +123,12 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	}
 
 	Game::GetCamera()->SetUpdate(!isOnGround);
+
+
+	if (isStunned)
+	{
+		return;
+	}
 
 	Vector2f _offset;
 
@@ -213,6 +220,7 @@ void PlayerMovementComponent::Dash()
 
 void PlayerMovementComponent::SitDown()
 {
+	if (!Game::GetMap()->GetBench()) return;
 	if (!canMove || !isStanding || !owner->GetBounds().contains(Game::GetMap()->GetBench()->GetShapePosition()))
 	{
 		cout << "Impossible de s'assoir !" << endl;

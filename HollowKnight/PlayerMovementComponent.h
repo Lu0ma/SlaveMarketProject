@@ -9,6 +9,8 @@ class PlayerMovementComponent : public MovementComponent
 	Vector2f direction;
 
 	// Ground
+
+	bool isStunned;
 	bool isOnGround;
 	float checkGroundDistance;
 
@@ -48,6 +50,16 @@ class PlayerMovementComponent : public MovementComponent
 	//Actor* triggerBox;
 
 public:
+	void SetIsStunned(const bool _isStunned)
+	{
+		string _msg = _isStunned ? "Stun" : "Destun";
+		cout << _msg;
+		isStunned = _isStunned;
+	}
+	bool GetIsStunned() const
+	{
+		return isStunned;
+	}
 	void SetDirectionX(const float _directionX, const string& _animName);
 	void SetDirectionY(const float _directionY)
 	{

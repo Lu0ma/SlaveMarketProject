@@ -7,6 +7,7 @@ TriggerBox::TriggerBox(const ShapeData& _data, const function<void()>& _callback
 	callback = _callback;
 	boxRect = FloatRect();
 	shape->setFillColor(Color::Blue);
+	shape->setOutlineThickness(10.0f);
 }
 
 

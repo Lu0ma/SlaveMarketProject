@@ -1,7 +1,7 @@
 BackgroundPath = Levels/Backgrounds/Kings Pass_100%.png
 
 
-BackgroundPosX = -870
+BackgroundPosX = 0
 BackgroundPosY = 0
 BackgroundSizeX = 5380
 BackgroundSizeY = 3200
@@ -67,7 +67,7 @@ grounds = [
 {
  GroundPosX = 100
  GroundPosY = -90
- GroundSizeX = 20000
+ GroundSizeX = 12000
  GroundSizeY = 10
  GroundCollisionType = 3
 }
@@ -88,11 +88,11 @@ enemies = [
 npcs = [
 {
  NpcType = 0
- NpcPosX = 1000
+ NpcPosX = 10000
  NpcPosY = -185
  NpcSizeX = 100
  NpcSizeY = 100
- NpcText = Je mets ceci au cas mais normalement useless
+ NpcPath = Je mets ceci au cas mais normalement useless
 }
 ]
 

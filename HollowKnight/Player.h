@@ -30,6 +30,7 @@ public:
 	void SetStatus(const bool _status)
 	{
 		movement->SetCanMove(_status);
+		// attack->SetCanAttack(_status);
 	}
 	PlayerStat* GetStats() const
 	{
@@ -55,7 +56,6 @@ private:
 	void InitAnimations();
 	void SetupPlayerInput();
 	void TryToOpen(Menu* _menu, const bool _restoreActions = true);
-
 public:
 	virtual void Init() override;
 	virtual void Update(const float _deltaTime) override;

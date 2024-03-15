@@ -13,6 +13,10 @@ class PlayerAttackComponent : public Component
 	PlayerAnimationComponent* animation;
 
 public:
+	bool GetCanAttack() const
+	{
+		return canAttack;
+	}
 	void SetCanAttack(const bool _status)
 	{
 		canAttack = _status;

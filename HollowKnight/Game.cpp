@@ -19,7 +19,7 @@ Brightness* Game::brightness;
 Game::Game()
 {
 	menu = new MainMenu();
-	player = new Player("Player", ShapeData(Vector2f(100.0f, -2000.0f), Vector2f(75.0f, 75.0f), PATH_PLAYER));
+	player = new Player("Player", ShapeData(Vector2f(1000.0f, -2000.0f), Vector2f(75.0f, 100.0f), PATH_PLAYER));
 	map = new Map();
 	camera = new Camera();
 	brightness = new Brightness();
@@ -46,13 +46,6 @@ void Game::Init()
 	map->Init();
 	camera->Init();
 	brightness->Init();
-
-	TriggerBox* _box = new TriggerBox(ShapeData(Vector2f(100.0f, 0.0f), Vector2f(200.0f, 200.0f), ""), [&]() {
-		cout << "coucou" << endl;
-	});
-
-	_box->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable()->setOutlineThickness(-5.0f);
-	_box->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable()->setFillColor(Color::Red);
 }
 
 void Game::Update()

@@ -20,8 +20,8 @@ Dragon::Dragon(const ShapeData& _data) : Actor(STRING_ID("Dragon"), _data)
 	});*/
 
 	InitAnimations({
-		AnimationData("DanceLeft", Vector2f(0.0f, 476.0f), Vector2f(275.0f, 286.0f), READ_RIGHT, false, 8, _speed, "DanceRight"),
-		AnimationData("DanceRight", Vector2f(0.0f, 53.0f), Vector2f(267.0f, 286.0f), READ_RIGHT, false, 8, _speed, "DanceLeft"),
+		AnimationData("DanceLeft", Vector2f(0.0f, 0.0f), Vector2f(249.0f, 196.0f), READ_RIGHT, true, 112, _speed, "DanceRight"),
+		// AnimationData("DanceRight", Vector2f(0.0f, 53.0f), Vector2f(498.0f, 498.0f), READ_RIGHT, false, 8, _speed, "DanceLeft"),
 		});
 }
 

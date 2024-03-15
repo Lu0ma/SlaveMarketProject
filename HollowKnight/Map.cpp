@@ -13,6 +13,7 @@
 #include "InteractableActor.h"
 #include "FalseKnight.h"
 #include "Game.h"
+#include "TriggerBox.h"
 
 
 #define PATH_BENCH "Map/Bench.png"
@@ -45,6 +46,15 @@ MapData Map::LoadMapData(const string& _path)
 {
 	MapData _data;
 	const string& _symbol = " = ";
+	int _index;
+
+	new Dragon(ShapeData(Vector2f(3200.0f, -150.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
+
+	TriggerBox* _box = new TriggerBox(ShapeData(Vector2f(1000.0f, -150.0f), Vector2f(10.0f, 20.0f), ""), [&]() {
+		Game::GetPlayer()->SetStatus(true);
+		});
+
+	
 
 #pragma region Background
 	_data.backgroundPath = GetStringAfterSymbol(GetLineByText("BackgroundPath", _path), _symbol);
@@ -70,7 +80,6 @@ MapData Map::LoadMapData(const string& _path)
 
 #pragma endregion
 
-	int _index;
 
 #pragma region Items
 
@@ -159,8 +168,13 @@ MapData Map::LoadMapData(const string& _path)
 		_index++;
 
 		// Créer avec les infos
-		Actor* _ground = new Actor(STRING_ID("Ground"), ShapeData(Vector2f(_groundPositionX, _groundPositionY), Vector2f(_groundSizeX, _groundSizeY), ""), _groundCollisionType);
-		_ground->GetDrawable()->setFillColor(Color::Red);
+		Actor* _ground = new Actor(STRING_ID("Ground"), 
+			ShapeData(Vector2f(_groundPositionX, _groundPositionY), Vector2f(_groundSizeX, _groundSizeY), ""), 
+			_groundCollisionType);
+		// _ground->GetDrawable()->setFillColor(Color::Transparent);
+		/*
+		_ground->GetDrawable()->setOutlineColor(Color::Red);
+		_ground->GetDrawable()->setOutlineThickness(10.0f);*/
 
 		_index += 2;
 		_isEndOfGround = ContainsText("]", GetLineByIndex(_index - 1, _path));
