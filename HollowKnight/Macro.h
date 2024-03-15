@@ -6,6 +6,7 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
+#include <cmath>
 #include "Actor.h"
 #include "ActorManager.h"
 
@@ -97,4 +98,42 @@ template <typename T>
 void EraseElement(vector<T*>& _vector, const T* _element)
 {
 	_vector.erase(remove(_vector.begin(), _vector.end(), _element), _vector.end());
+}
+
+template<typename Class>
+vector<Class*> RetrieveAllMobAbove(const Vector2f& _position, const float _radius)
+{
+	float _squareRadius = _radius * _radius;
+
+	vector<Class*> _classes = vector<Class*>();
+	/*CircleShape* _circle = new CircleShape(_radius);
+	_circle->setPosition(_position);*/
+
+
+	const vector<Actor*> _actors = ActorManager::GetInstance().GetAllValues();
+
+	for (Actor* _actor : _actors)
+	{
+		if (_actor->GetShapePosition().y > _position.y)
+		{
+			continue;
+		}
+		
+		// distance entre l'acteur et le joueur
+		float _dx = _actor->GetShapePosition().x - _position.x;
+		float _dy = _actor->GetShapePosition().y - _position.y;
+		float _squareDistance = _dx * _dx + _dy * _dy;
+
+		// si les acteurs sont à l'interieur du cercle
+		if (_squareDistance <= _squareRadius)
+		{
+			Class* _class = dynamic_cast<Class*>(_actor);
+
+			if (_class != nullptr)
+			{
+				_classes.push_back(_class);
+			}
+		}
+	}
+	return _classes;
 }

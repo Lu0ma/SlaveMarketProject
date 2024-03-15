@@ -34,4 +34,16 @@ void Spawner::Spawn()
 	ShapeData _data = ShapeData(_positionFalseKnight, _sizeFalseKnight, PATH_FALSE_KNIGHT);
 	FalseKnight* _falseKnight = new FalseKnight(_data);
 	_falseKnight->Init();
+
+
+	/*ShapeData _dataBelfly = ShapeData(_positionBelfly, _sizeBelfly, PATH_BELFLY);
+	new Belfly(_dataBelfly);*/
+
+	/*ShapeData _dataHuskBully = ShapeData(_positionHuskBully, _sizeHuskBully, PATH_HUSK_BULLY);
+	HuskBully* _huskBully = new HuskBully(_dataHuskBully);
+	_huskBully->Init();*/
+
+	//deathMob = new DeathMob(_data);
+
+
 }
