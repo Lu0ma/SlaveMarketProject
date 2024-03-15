@@ -136,7 +136,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	{
 		// Application de l'esquive
 		_offset = Vector2f(dashDirection * dashSpeed * _deltaTime, 0.0f);
-		sound->dash->Play();
+		//sound->PlaySound(SOUND_DASH, true);
 	}
 
 	else
@@ -145,7 +145,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 		if (!canDash && !isResetingDash)
 		{
 			isResetingDash = true;
-			sound->dash->stop();
+			//sound->PlaySound(SOUND_DASH, false);
 			new Timer([this]() {
 				canDash = true;
 				isResetingDash = false;
@@ -165,7 +165,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 			_offset = direction + Vector2f(0.0f, 1.0f * downSpeed);
 			Normalize(_offset);
 			_offset *= _deltaTime;
-			sound->footStep->stop();
+			sound->PlaySound(SOUND_FOOTSTEP_GRASS, false);
 		}
 
 		// Si je suis en train de jump
@@ -203,29 +203,36 @@ void PlayerMovementComponent::Jump()
 		canDoubleJump = false;
 		currentJumpForce = jumpForce;
 		FxManager::GetInstance().Run("FxDoubleJump");
-		sound->footStep->stop();
-		sound->PlaySound(SOUND_JUMP ,true);
+		sound->PlaySound(SOUND_FOOTSTEP_GRASS, false);
+		sound->PlaySound(SOUND_WINGS, true);
 	
 	}
 	if (canDoubleJump)
 	{
-		sound->footStep->stop();
+		sound->PlaySound(SOUND_JUMP, true);
+		isJumping = true;
+		animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
+		return;
 	}
 	isJumping = true;
 	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
-	
+	sound->PlaySound(SOUND_JUMP, true);
 }
 
 void PlayerMovementComponent::Dash()
 {
-	if (!canMove || !canDash || isDashing) return;
-
+	if (!canMove || !canDash || isDashing)
+	{
+		sound->PlaySound(SOUND_DASH, false);
+		return;
+	}
 	isJumping = false;
 	canDash = false;
 	isDashing = true;
 	new Timer([this]() { isDashing = false; }, seconds(dashDuration));
 	animation->GetCurrentAnimation()->RunAnimation("Dash", dashDirection);
 	FxManager::GetInstance().Run("FxDash");
+	sound->PlaySound(SOUND_DASH, true);
 }
 
 void PlayerMovementComponent::SitDown()
@@ -258,6 +265,5 @@ void PlayerMovementComponent::StandUp()
 	owner->GetDrawable()->setPosition(_position.x, _position.y + sitOffset);
 	isStanding = true;
 	canMove = true;
-
 	animation->GetCurrentAnimation()->RunAnimation("StopRight", dashDirection);
 }

@@ -48,7 +48,7 @@ void TitleMenu::Init()
 			Game::GetPlayer()->Init();
 			SetStatus(false);
 			new SoundData(SOUND_CONFIRM, 100, false);
-			new MusicData(MUSIC_GAME, 0, 100, WAV);
+			new MusicData(MUSIC_GAME, 4, 100, WAV);
 		}),
 		ButtonData("Options", [&]() {
 			options->SetStatus(true);
