@@ -1,0 +1,210 @@
+﻿  AchievementsMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  Action.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'Action.cpp' : No such file or directory
+  ActionMap.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'ActionMap.cpp' : No such file or directory
+  Actor.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  ActorManager.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ActorManager.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Singleton.h' : No such file or directory
+  Animation.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Animation.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Animation.h' : No such file or directory
+  AnimationComponent.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\AnimationComponent.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  AttackState.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Timer.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  AttackToChase.cpp
+  AttackToPatrol.cpp
+  Audio.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'Audio.cpp' : No such file or directory
+  Belfly.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  Bench.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Bench.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Bench.h' : No such file or directory
+  Boofly.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  Boss.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  BossBrain.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Brain.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  Brain.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Brain.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  Button.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'Button.cpp' : No such file or directory
+  Camera.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  Canvas.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Canvas.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  Génération de code en cours...
+  Compilation en cours...
+  CharmsMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  ChaseState.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Timer.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  ChaseToAttack.cpp
+  ChaseToPatrol.cpp
+  CollectableActor.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  CollisionComponent.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\CollisionComponent.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  Component.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'Component.cpp' : No such file or directory
+  ControllerMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ControllerMenu.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'ControllerMenu.h' : No such file or directory
+  DeathMob.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  Dragon.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  DragonAnimationComponent.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'DragonAnimationComponent.cpp' : No such file or directory
+  Enemy.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  EnemyBrain.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Brain.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  ExtrasMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  FalseKnight.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  FileLoader.cpp
+  FontData.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'FontData.cpp' : No such file or directory
+  FontManager.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'FontManager.cpp' : No such file or directory
+  Game.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  Grub.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  Génération de code en cours...
+  Compilation en cours...
+  HUD.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\HUD.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Singleton.h' : No such file or directory
+  HuskBully.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  InputManager.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\InputManager.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Singleton.h' : No such file or directory
+  InteractableActor.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  InteractionComponent.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\InteractionComponent.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  Inventory.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  Item.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'Item.cpp' : No such file or directory
+  ItemWidget.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'ItemWidget.cpp' : No such file or directory
+  KeyboardMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  Kismet.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  Label.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Widget.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  Lever.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  LeverAnimationComponent.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'LeverAnimationComponent.cpp' : No such file or directory
+  Lift.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Lift.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Lift.h' : No such file or directory
+  Macro.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'Macro.cpp' : No such file or directory
+  Main.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  MainMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  Map.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  Menu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  MenuManager.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'MenuManager.cpp' : No such file or directory
+  Génération de code en cours...
+  Compilation en cours...
+  Merchand.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  MerchandAnimationComponent.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'MerchandAnimationComponent.cpp' : No such file or directory
+  Mob.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  MobAttackComponent.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\MobAttackComponent.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  MobBrain.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Brain.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  MobLifeComponent.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'MobLifeComponent.cpp' : No such file or directory
+  MobMovementComponent.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\MovementComponent.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  MovementComponent.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\MovementComponent.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  MusicData.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\MusicData.h(3,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  MusicManager.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\MusicManager.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Singleton.h' : No such file or directory
+  NPCAnimationComponent.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'NPCAnimationComponent.cpp' : No such file or directory
+  Object.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'Object.cpp' : No such file or directory
+  OptionsMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  PatrolState.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Timer.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  PatrolToChase.cpp
+  PauseMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\PauseMenu.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'PauseMenu.h' : No such file or directory
+  Player.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  PlayerAnimationComponent.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\PlayerAnimationComponent.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'PlayerAnimationComponent.h' : No such file or directory
+  PlayerAttackComponent.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\PlayerAttackComponent.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'PlayerAttackComponent.h' : No such file or directory
+  PlayerInfo.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'PlayerInfo.cpp' : No such file or directory
+  Génération de code en cours...
+  Compilation en cours...
+  PlayerMovementComponent.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\MovementComponent.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Component.h' : No such file or directory
+  PlayerStat.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  ProgressBar.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'ProgressBar.cpp' : No such file or directory
+  ProgressLabel.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Widget.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  PurchaseMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\PurchaseMenu.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'PurchaseMenu.h' : No such file or directory
+  QuitGameMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\QuitGameMenu.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'QuitGameMenu.h' : No such file or directory
+  QuitToMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\QuitToMenu.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'QuitToMenu.h' : No such file or directory
+  ShapeObject.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\ShapeObject.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  ShapeWidget.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Widget.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  ShopMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  SoundData.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\SoundData.h(4,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  SoundManager.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\SoundData.h(4,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  Spawner.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Spawner.cpp(1,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Spawner.h' : No such file or directory
+  State.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Timer.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  TextObject.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'TextObject.cpp' : No such file or directory
+  TextureData.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'TextureData.cpp' : No such file or directory
+  TextureManager.cpp
+c1xx : fatal  error C1083: Impossible d'ouvrir le fichier source : 'TextureManager.cpp' : No such file or directory
+  TextWidget.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Widget.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  Timer.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Timer.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  TimerManager.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\TimerManager.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Singleton.h' : No such file or directory
+  Génération de code en cours...
+  Compilation en cours...
+  TitleMenu.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Menu.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'IManagable.h' : No such file or directory
+  Transition.cpp
+  Widget.cpp
+D:\p1VS\SFML\SlaveMarketProject\HollowKnight\Widget.h(2,10): fatal  error C1083: Impossible d'ouvrir le fichier include : 'Object.h' : No such file or directory
+  Génération de code en cours...
