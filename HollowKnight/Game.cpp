@@ -32,7 +32,8 @@ Game::~Game()
 
 void Game::Start()
 {
-	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
+	window.create(VideoMode(1920, 1080), "HollowKnight", Style::Fullscreen);
+
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer([&]() { Init(); }, seconds(1.0f), true, false);
 }
@@ -43,10 +44,6 @@ void Game::Init()
 	map->Init();
 	camera->Init();
 	brightness->Init();
-
-	//TODO move
-	Spawner* _spawner = new Spawner();
-	_spawner->Spawn();
 }
 
 void Game::Update()
