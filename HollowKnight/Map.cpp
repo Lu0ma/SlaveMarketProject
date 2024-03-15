@@ -27,6 +27,7 @@ Map::Map()
 	dragon = new Dragon(ShapeData(Vector2f(700.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
 	bench = new Bench(ShapeData(Vector2f(300.0f, 5.0f), Vector2f(176.0, 80.0f), PATH_BENCH));
 	merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_MERCHAND));
+	dustEffect = new DustEffect();
 	currentLevel = 2;
 }
 
@@ -325,4 +326,6 @@ void Map::Init()
 
 	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(250.0f, 250.0f), "Lift.png"));
 	lifts.push_back(_lift);
+
+	dustEffect->Init();
 }

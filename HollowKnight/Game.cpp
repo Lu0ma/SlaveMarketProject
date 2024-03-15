@@ -5,6 +5,7 @@
 #include "HUD.h"
 #include "Widget.h"
 #include "Spawner.h"
+#include "Particule.h"
 
 #define PATH_PLAYER "Animations/knighModif.png"
 
@@ -55,7 +56,9 @@ void Game::Update()
 	{
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
-		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
+		/*player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);*/
+		brightness->UpdateShader(GetWindowSize() / 2.0f);
+
 		ActorManager::GetInstance().Update();
 	}
 }

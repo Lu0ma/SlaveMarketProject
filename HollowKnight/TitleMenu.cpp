@@ -12,6 +12,7 @@ TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
 	options = new OptionsMenu(this);
 	achievement = new AchievementsMenu(this);
 	quitGame = new QuitGameMenu(this);
+	saveSelector = new SaveSelectorMenu(this);
 }
 
 
@@ -45,7 +46,7 @@ void TitleMenu::Init()
 
 	const vector<ButtonData>& _allData = {
 		ButtonData("Start Game", [&]() { 
-			Game::GetPlayer()->Init();
+			saveSelector->Init();
 			SetStatus(false);
 			new SoundData(SOUND_CONFIRM, 100, false);
 		}),

@@ -3,6 +3,7 @@
 #include "OptionsMenu.h"
 #include "AchievementsMenu.h"
 #include "QuitGameMenu.h"
+#include "SaveSelectorMenu.h"
 
 class TitleMenu : public Menu
 {
@@ -10,6 +11,7 @@ class TitleMenu : public Menu
 	OptionsMenu* options;
 	AchievementsMenu* achievement;
 	QuitGameMenu* quitGame;
+	SaveSelectorMenu* saveSelector;
 
 public:
 	virtual void SetStatus(const bool _status)

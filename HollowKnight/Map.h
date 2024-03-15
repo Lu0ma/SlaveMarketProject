@@ -9,6 +9,7 @@
 #include"Grub.h"
 #include"PNJ.h"
 #include "CollectableActor.h"
+#include "DustEffect.h"
 
 using namespace std;
 using namespace sf;
@@ -69,6 +70,7 @@ class Map
 	vector<PlatformData> platformsData;
 	vector<ShapeObject*> drawables;
 	vector<Lift*> lifts;
+	DustEffect* dustEffect;
 	int currentLevel;
 
 public:
