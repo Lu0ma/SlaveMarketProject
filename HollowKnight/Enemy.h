@@ -3,6 +3,21 @@
 #include "MobLifeComponent.h"
 #include "EnemyBrain.h"
 
+enum EnemyType
+{
+	BOSS, MOB
+};
+
+enum MobType
+{
+	MOB1, MOB2
+};
+
+enum BossType
+{
+	FALSE_KNIGHT
+};
+
 class Enemy : public Actor
 {
 protected:

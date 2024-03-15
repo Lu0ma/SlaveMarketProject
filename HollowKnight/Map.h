@@ -8,6 +8,7 @@
 #include"Dragon.h"
 #include"Grub.h"
 #include"PNJ.h"
+#include "CollectableActor.h"
 
 using namespace std;
 using namespace sf;
@@ -30,11 +31,13 @@ struct MapData
 	string backgroundPath;
 	Vector2f backgroundPos;
 	Vector2f backgroundSize;
+	
 
 	Vector2f clampCamMin;
 	Vector2f clampCamMax;
 
 	vector<WallData> walls;
+	vector<CollectableActor*> items;
 };
 
 enum PlatformType
@@ -66,6 +69,7 @@ class Map
 	vector<PlatformData> platformsData;
 	vector<ShapeObject*> drawables;
 	vector<Lift*> lifts;
+	int currentLevel;
 
 public:
 	Dragon* GetDragon()const
@@ -96,7 +100,7 @@ public:
 private:
 	MapData LoadMapData(const string& _path);
 
-	void InitPlateforms();
+	void InitPlatforms();
 
 	void ComputePlatformType(const PlatformType& _type, Vector2f& _size, string& _path)
 	{
@@ -110,11 +114,12 @@ private:
 			_size = Vector2f(198.0f, 85.0f);
 			_path = PATH_MID;
 		}
-		else
+		else if (_type == PT_WIDE)
 		{
 			_size = Vector2f(263.0f, 85.0f);
 			_path = PATH_WIDE;
 		}
+
 	}
 
 public:

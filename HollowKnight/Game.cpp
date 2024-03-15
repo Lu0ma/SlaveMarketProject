@@ -17,7 +17,7 @@ Brightness* Game::brightness;
 Game::Game()
 {
 	menu = new MainMenu();
-	player = new Player("Player", ShapeData(Vector2f(-500.0f, -250.0f), Vector2f(100.0f, 100.0f), PATH_PLAYER));
+	player = new Player("Player", ShapeData(Vector2f(-500.0f, -250.0f), Vector2f(75.0f, 75.0f), PATH_PLAYER));
 	map = new Map();
 	camera = new Camera();
 	brightness = new Brightness();
@@ -32,7 +32,8 @@ Game::~Game()
 
 void Game::Start()
 {
-	window.create(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "HollowKnight");
+	window.create(VideoMode(1920, 1080), "HollowKnight", Style::Fullscreen);
+
 	TimerManager::GetInstance().SetRenderCallback(bind(&Game::UpdateWindow, this));
 	new Timer([&]() { Init(); }, seconds(1.0f), true, false);
 }
@@ -43,10 +44,6 @@ void Game::Init()
 	map->Init();
 	camera->Init();
 	brightness->Init();
-
-	//TODO move
-	Spawner* _spawner = new Spawner();
-	_spawner->Spawn();
 }
 
 void Game::Update()

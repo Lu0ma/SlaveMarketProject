@@ -226,7 +226,7 @@ void Player::TryToOpen(Menu* _menu, const bool _restoreActions)
 	if (!_isActive)
 	{
 		SoundManager::GetInstance().Stop("bench rest");
-		new SoundData("boss gushing", 50.0f, false);
+		new SoundData("bossgushing", 50.0f, false);
 
 		movement->SetCanMove(false);
 		attack->SetCanAttack(false);
@@ -236,7 +236,7 @@ void Player::TryToOpen(Menu* _menu, const bool _restoreActions)
 
 	else
 	{
-		SoundManager::GetInstance().Stop("boss gushing");
+		SoundManager::GetInstance().Stop("bossgushing");
 		new SoundData("bench rest", 50.0f, false);
 	}
 }

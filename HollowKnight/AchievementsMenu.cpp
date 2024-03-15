@@ -29,14 +29,14 @@ void AchievementsMenu::Init()
 	const Vector2f& _windowSize = Game::GetWindowSize();
 	const float _halfWindowX = _windowSize.x / 2.0f;
 
-	#pragma region Background
+#pragma region Background
 
 	ShapeWidget* _background = new ShapeWidget(ShapeData(_windowSize / 2.0f, _windowSize, PATH_BACKGROUND));
 	canvas->AddWidget(_background);
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region Title
+#pragma region Title
 
 	const float _titlePosY = _windowSize.y * 0.1f;
 	Label* _title = new Label(TextData("Achievements", Vector2f(_halfWindowX, _titlePosY), FONT, 36));
@@ -48,9 +48,9 @@ void AchievementsMenu::Init()
 	ShapeWidget* _titleBar = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _titleBarPosY), _titleBarSize, PATH_TITLE_ICON));
 	canvas->AddWidget(_titleBar);
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region Grid
+#pragma region Grid
 
 	allData = {
 		{
@@ -121,11 +121,11 @@ void AchievementsMenu::Init()
 		achievements.insert(achievements.begin(), _achievement);
 	}
 
-	#pragma endregion 
+#pragma endregion 
 
-	#pragma region ScrollBox
+#pragma region ScrollBox
 
-	#pragma region Bar
+#pragma region Bar
 
 	const Vector2f& _barSize = Vector2f(61, 400.0f);
 	const float _windowOneThirdX = _windowSize.x / 1.35f;
@@ -135,19 +135,19 @@ void AchievementsMenu::Init()
 	canvas->AddWidget(handle->GetBar());
 	canvas->AddWidget(handle);
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region Box
+#pragma region Box
 
 	boxOfView = new ShapeWidget(ShapeData(Vector2f(_windowSize.x / 2.0f - 50.0f, _windowSize.y / 2.0f + 20.0f), Vector2f(600.0f, 375.0f), ""));
 	boxOfView->GetDrawable()->setFillColor(Color::Transparent);
 	canvas->AddWidget(boxOfView);
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region Back
+#pragma region Back
 
 	const Vector2f& _buttonSize = Vector2f(200.0f, 50.0f);
 	const float _buttonPosY = _windowSize.y * 0.9f;
@@ -157,7 +157,7 @@ void AchievementsMenu::Init()
 	backButton->GetData().pressedCallback = [&]() {
 		owner->SetStatus(true);
 		canvas->SetVisibilityStatus(false);
-	};
+		};
 	backButton->GetDrawable()->setFillColor(Color::Transparent);
 	canvas->AddWidget(backButton);
 
@@ -168,7 +168,7 @@ void AchievementsMenu::Init()
 	Menu::Init();
 	MovePointers(backButton);
 
-	#pragma endregion
+#pragma endregion
 }
 
 void AchievementsMenu::ComputeScroll(const vector<AchievementData>& _data, const bool _scrollType)

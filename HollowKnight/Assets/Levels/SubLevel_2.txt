@@ -1,0 +1,141 @@
+BackgroundPath = Levels/Backgrounds/Dirtmouth_100%.png
+
+
+BackgroundPosX = 50
+BackgroundPosY = 50
+BackgroundSizeX = 7086
+BackgroundSizeY = 1906
+
+
+ClampCamMinX = 0
+ClampCamMinY = 0
+ClampCamMaxX = 500
+ClampCamMaxY = 500
+
+items = [
+{
+Name = Vessel
+CollectablePosX = -250
+CollectablePosY = 30.5
+CollectableSizeX = 50
+CollectableSizeY = 50
+Path = UIs/Inventory/Vessels/Vessel_3.png
+ItemDesc = Le truc qui regen la mana
+Range = 30.0f
+ItemType = 2
+}
+{
+Name = Item
+CollectablePosX = -350.0 
+CollectablePosY = 30.5
+CollectableSizeX = 50
+CollectableSizeY = 50
+Path = UIs/Inventory/Item.png
+ItemDesc = Ceci est un item
+Range = 30.0f
+ItemType = 3
+}
+{
+Name = Item
+CollectablePosX = -400
+CollectablePosY = 30.5
+CollectableSizeX = 50
+CollectableSizeY = 50
+Path = UIs/Inventory/Item.png
+ItemDesc = Ceci est un 
+Range = 30.0f
+ItemType = 3
+}
+{
+ Name = Item
+ CollectablePosX = -450
+ CollectablePosY = 30.5
+ CollectableSizeX = 50
+ CollectableSizeY = 50
+ Path = UIs/Inventory/Item.png
+ ItemDesc = Ceci
+ Range = 30.0f
+ ItemType = 3
+}
+]
+
+platforms = [
+{
+ PlatformPosX = 1200
+ PlatformPosY = -185
+ PlatformType = 2
+}
+{
+ PlatformPosX = 900
+ PlatformPosY = -385
+ PlatformType = 1
+}
+{
+ PlatformPosX = 1200
+ PlatformPosY = -585
+ PlatformType = 0
+}
+{
+ PlatformPosX = 1500
+ PlatformPosY = -785
+ PlatformType = 1
+}
+{
+ PlatformPosX = 1800
+ PlatformPosY = -585
+ PlatformType = 1
+}
+{
+ PlatformPosX = 2100
+ PlatformPosY = -785
+ PlatformType = 0
+}
+{
+ PlatformPosX = 2500
+ PlatformPosY = -955
+ PlatformType = 0
+}
+]
+
+grounds = [
+{
+ GroundPosX = 100
+ GroundPosY = 30.5
+ GroundSizeX = 12000
+ GroundSizeY = 10
+ GroundCollisionType = 3
+}
+]
+
+enemies = [
+{
+ EnemyType = 0
+ EnemyIndex = 0
+ EnemyPosX = 1800
+ EnemyPosY = -190
+ EnemySizeX = 700
+ EnemySizeY = 500
+ EnemyPath = Animations/FalseKnight.png
+}
+]
+
+npcs = [
+{
+ NpcType = 0
+ NpcPosX = 1000
+ NpcPosY = -185
+ NpcSizeX = 1200
+ NpcSizeY = -185
+ NpcText = Je mets ceci au cas mais normalement useless
+}
+]
+
+Environment = [
+{
+ EnvironmentPosX = 1915
+ EnvironmentPosY = -800
+ EnvironmentSizeX = 3613
+ EnvironmentSizeY = 908
+ EnvironmentPath = Levels/Arena.jpg
+}
+]

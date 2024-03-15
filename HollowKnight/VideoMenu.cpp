@@ -1,7 +1,13 @@
 #include "VideoMenu.h"
 #include "Game.h"
+#include "TextureManager.h"
 
 using namespace Style;
+
+#define PATH_MINUS "UIs/Menus/Options/Audio/Minus.png"
+#define PATH_PLUS "UIs/Menus/Options/Audio/Plus.png"
+#define PATH_CHECKBOX_EMPTY "UIs/Menus/Options/Video/EmptyCheckbox.png"
+#define PATH_CHECKBOX_FULL "UIs/Menus/Options/Video/FullCheckbox.png"
 
 VideoMenu::VideoMenu(Menu* _owner) : Menu("VideoMenu", _owner)
 {
@@ -16,6 +22,14 @@ VideoMenu::VideoMenu(Menu* _owner) : Menu("VideoMenu", _owner)
 	particuleStateIndex = 0;
 	particuleText = nullptr;
 
+	canUpdateFrameRate = true;
+	capFrameRate = false;
+	frameRate = 60;
+	maxFrameRate = 300;
+	frameRateFactor = 5;
+	frameRateButton = nullptr;
+	frameRateText = nullptr;
+
 	brightnessButton = nullptr;
 	brightness = new BrightnessMenu(this);
 }
@@ -27,7 +41,7 @@ void VideoMenu::ChangeResolution()
 		Vector2u(800, 600),
 		Vector2u(1280, 720),
 		Vector2u(1920, 1080),
-		Vector2u(3840, 2160),
+		//Vector2u(3840, 2160),
 	};
 
 	resolutionIndex++;
@@ -46,17 +60,8 @@ void VideoMenu::ToggleFullScreen()
 	fullScreenActivated = !fullScreenActivated;
 	fullscreenText->SetString(fullScreenActivated ? "On" : "Off");
 
-	if (fullScreenActivated)
-	{
-		Game::GetWindow().create(VideoMode(1920, 1080), "HollowKnight", Fullscreen);
-	}
-
-	else
-	{
-		Game::GetWindow().create(VideoMode(resolution.x, resolution.y), "HollowKnight", Default);
-	}
-
-	cout << resolution.x << " " << resolution.y << endl;
+	Game::GetWindow().create(VideoMode(1920, 1080), "HollowKnight", fullScreenActivated ? Fullscreen : Default);
+	resolution = Vector2u(1920, 1080);
 }
 
 void VideoMenu::ChangeParticule()
@@ -70,6 +75,32 @@ void VideoMenu::ChangeParticule()
 	particuleStateIndex++;
 	particuleStateIndex %= 3;
 	particuleText->SetString(_particulesState[particuleStateIndex]);
+}
+
+void VideoMenu::UpdateFrameRate(const int _factor)
+{
+	if (!canUpdateFrameRate) return;
+
+	frameRate += _factor * frameRateFactor;
+	frameRate = frameRate < 0 ? 0 : frameRate;
+	frameRate = frameRate > maxFrameRate ? maxFrameRate : frameRate;
+	frameRateText->SetString(to_string(frameRate));
+
+	Game::GetWindow().setFramerateLimit(frameRate);
+}
+
+void VideoMenu::ToggleCapFrameRate()
+{
+	capFrameRate = !capFrameRate;
+
+	const string& _path = capFrameRate ? PATH_CHECKBOX_FULL : PATH_CHECKBOX_EMPTY;
+	TextureManager::GetInstance().Load(checkBox->GetObject(), _path);
+
+	const Color& _color = capFrameRate ? Color(127, 127, 127, 255) : Color::White;
+	frameRateText->GetDrawable()->setFillColor(_color);
+
+	canUpdateFrameRate = !capFrameRate;
+	Game::GetWindow().setFramerateLimit(capFrameRate ? 0 : frameRate);
 }
 
 
@@ -166,12 +197,51 @@ void VideoMenu::Init()
 
 		const float _valueTextPosX = _halfWindowX + _halfTitleBarSizeX;
 		_buttonData->valueText = new Label(TextData("", Vector2f(_valueTextPosX, _buttonPos.y), FONT, 16), AT_RIGHT);
-		//_buttonData->callback();
+		_buttonData->callback();
 		canvas->AddWidget(_buttonData->valueText);
 
 		Label* _description = new Label(TextData(_buttonData->description, Vector2f(_halfWindowX, _buttonPos.y + 25.0f), FONT, 12));
 		canvas->AddWidget(_description);
 	}
+
+	#pragma endregion
+
+	#pragma region FrameRate
+
+	const float _frameRateButtonPosY = buttons.back()->GetShapePosition().y + _buttonSize.y / 2.0f + 15.0f;
+	frameRateButton = new Button(ShapeData(Vector2f(_halfWindowX, _frameRateButtonPosY), _buttonSize, ""));
+	frameRateButton->GetDrawable()->setFillColor(Color::Transparent);
+	frameRateButton->GetData().hoveredCallback = [&]()
+	{
+		ShapeObject* _object = frameRateButton->GetObject();
+		const Vector2f& _position = _object->GetShapePosition();
+		const float _halfSizeX = _object->GetShapeSize().x * 0.45f;
+		const Vector2f& _offsetX = Vector2f(_halfSizeX, 0.0f);
+		const Vector2f& _offsetY = Vector2f(0.0f, 10.0f);
+		pointerLeft->SetShapePosition(_position - _offsetX + _offsetY);
+		pointerRight->SetShapePosition(_position + _offsetX + _offsetY);
+	};
+	canvas->AddWidget(frameRateButton);
+
+	const float _buttonTitlePosX = _halfWindowX - _halfTitleBarSizeX;
+	Label* _frameRateTitle = new Label(TextData("Frame Rate", Vector2f(_buttonTitlePosX, _frameRateButtonPosY), FONT, 20), AT_LEFT);
+	canvas->AddWidget(_frameRateTitle);
+
+	const Vector2f& _littleButtonSize = Vector2f(25.0f, 25.0f);
+	Button* _buttonMinus = new Button(ShapeData(Vector2f(_halfWindowX + 50.0f, _frameRateButtonPosY + 10.0f), _littleButtonSize, PATH_MINUS));
+	_buttonMinus->GetData().pressedCallback = [&]() { UpdateFrameRate(-1); };
+	canvas->AddWidget(_buttonMinus);
+
+	frameRateText = new Label(TextData("60", Vector2f(_halfWindowX + 100.0f, _frameRateButtonPosY), FONT, 20), AT_CENTER);
+	canvas->AddWidget(frameRateText);
+
+	Button* _buttonPlus = new Button(ShapeData(Vector2f(_halfWindowX + 150.0f, _frameRateButtonPosY + 10.0f), _littleButtonSize, PATH_PLUS));
+	_buttonPlus->GetData().pressedCallback = [&]() { UpdateFrameRate(1); };
+	canvas->AddWidget(_buttonPlus);
+
+	checkBox = new Button(ShapeData(Vector2f(_halfWindowX + 200.0f, _frameRateButtonPosY + 10.0f), _littleButtonSize * 2.0f, PATH_CHECKBOX_EMPTY));
+	checkBox->GetData().pressedCallback = [&]() { ToggleCapFrameRate(); };
+	canvas->AddWidget(checkBox);
 
 	#pragma endregion
 

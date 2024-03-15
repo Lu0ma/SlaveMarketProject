@@ -1,0 +1,69 @@
+BackgroundPath = Bonjour
+
+BackgroundPosX = 50
+BackgroundPosY = 50
+BackgroundSizeX = 500
+BackgroundSizeY = 500
+
+ClampCamMinX = 0
+ClampCamMinY = 0
+ClampCamMaxX = 500
+ClampCamMaxY = 500
+
+walls = [
+{
+ WallPosX = 1200
+ WallPosY = -185
+ WallType = 2
+}
+{
+ WallPosX = 900
+ WallPosY = -385
+ WallType = 1
+}
+{
+ WallPosX = 1200
+ WallPosY = -585
+ WallType = 0
+}
+{
+ WallPosX = 1500
+ WallPosY = -785
+ WallType = 1
+}
+{
+ WallPosX = 1800
+ WallPosY = -585
+ WallType = 1
+}
+{
+ WallPosX = 2100
+ WallPosY = -785
+ WallType = 0
+}
+{
+ WallPosX = 2500
+ WallPosY = -955
+ WallType = 0
+}
+{
+ WallPosX = -1000
+ WallPosY = 0
+ WallType = 0
+}
+]
+enemies = 
+{
+ TYPE
+ pos
+ size
+ path
+}
+
+npcs = 
+{
+ TYPE
+ pos
+ size
+ path
+}

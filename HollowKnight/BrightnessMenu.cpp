@@ -67,7 +67,7 @@ void BrightnessMenu::Init()
 	};
 	canvas->AddWidget(brightButton);
 
-	Label* _title = new Label(TextData("BRIGHTNESS", Vector2f(_halfWindowX / 1.25f, _buttonPosY - 10.0f), FONT, 20));
+	Label* _title = new Label(TextData("Brightness", Vector2f(_halfWindowX / 1.25f, _buttonPosY - 10.0f), FONT, 20));
 	canvas->AddWidget(_title);
 
 	const Vector2f& _littleButtonSize = Vector2f(25.0f, 25.0f);
