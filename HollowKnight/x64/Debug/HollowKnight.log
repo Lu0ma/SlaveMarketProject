@@ -1,6 +1,0 @@
-﻿  Map.cpp
-D:\Github\SlaveMarketProject\HollowKnight\Map.cpp(212,7): error C2086: 'bool _isEndOfEnemy': redefinition
-D:\Github\SlaveMarketProject\HollowKnight\Map.cpp(167,7): message : see declaration of '_isEndOfEnemy'
-  Mob.cpp
-  Spawner.cpp
-  Generating Code...
