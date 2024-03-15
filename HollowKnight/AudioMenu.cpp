@@ -4,16 +4,15 @@
 #include "SoundManager.h"
 #include "HUD.h"
 #include "Macro.h"
-
 #include "SoundData.h"
 
+#define PATH_MINUS "UIs/Menus/Options/Audio/Minus.png"
+#define PATH_PLUS "UIs/Menus/Options/Audio/Plus.png"
+#define PATH_LINE "UIs/Menus/Options/Audio/music_line.png"
+#define PATH_INDICATOR "UIs/Menus/Options/Audio/Indicator.png"
+#define SOUND_CLICK "Ui/ui_option_click"
+#define MUSIC_SAVE "SaveOption"
 
-#define PATH_MINUS "../Menu/Audio/Minus.png"
-#define PATH_PLUS "../Menu/Audio/Plus.png"
-#define PATH_LINE "../Menu/Audio/music_line.png"
-#define PATH_INDICATOR "../Menu/Audio/Indicator.png"
-#define SOUND_CLICK  "Ui/ui_option_click"
-#define MUSIC_SAVE  "SaveOption"
 AudioMenu::AudioMenu(Menu* _owner) : Menu("Audio", _owner)
 {
 	minValue = 0;

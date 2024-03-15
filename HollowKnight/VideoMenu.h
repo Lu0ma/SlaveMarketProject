@@ -16,6 +16,15 @@ class VideoMenu : public Menu
 	int particuleStateIndex;
 	Label* particuleText;
 
+	bool canUpdateFrameRate;
+	bool capFrameRate;
+	int frameRate;
+	int maxFrameRate;
+	int frameRateFactor;
+	Button* frameRateButton;
+	Label* frameRateText;
+	Button* checkBox;
+
 	Button* brightnessButton;
 	BrightnessMenu* brightness;
 
@@ -26,6 +35,8 @@ private:
 	void ChangeResolution();
 	void ToggleFullScreen();
 	void ChangeParticule();
+	void UpdateFrameRate(const int _factor);
+	void ToggleCapFrameRate();
 
 public:
 	virtual void Init() override;

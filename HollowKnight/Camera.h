@@ -46,9 +46,10 @@ struct ShakeComponent : public Component
 class Camera : public Actor
 {
 	float speed;
-	float damp;
 	float axeX;
 	float axeY;
+	float dampX;
+	float dampY;
 
 	Vector2f targetPosition;
 	Vector2f offsetCamera;
