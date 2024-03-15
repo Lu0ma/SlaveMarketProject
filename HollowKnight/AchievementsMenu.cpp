@@ -125,6 +125,21 @@ void AchievementsMenu::Init()
 
 	#pragma region ScrollBox
 
+	Button* _backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
+	_backButton->GetData().pressedCallback = [&]() {
+		owner->SetStatus(true);
+		canvas->SetVisibilityStatus(false);
+		};
+	_backButton->GetDrawable()->setFillColor(Color::Transparent);
+	canvas->AddWidget(_backButton);
+
+	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
+	_backButton->SetForeground(_buttonText);
+	canvas->AddWidget(_buttonText);
+
+#pragma endregion
+
+#pragma region ScrollBar
 	#pragma region Bar
 
 	const Vector2f& _barSize = Vector2f(61, 400.0f);

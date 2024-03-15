@@ -35,7 +35,11 @@ struct Brightness
 			cerr << "Error => The shader cannot be loaded !" << endl;
 			return;
 		}
-		shader->setUniform("gamma", gamma);
+	}
+
+	void UpdateShader(const Vector2f& _position)
+	{
+		shader->setUniform("lightPosition", _position);
 	}
 
 	void UpdateBrightness(const float _factor)

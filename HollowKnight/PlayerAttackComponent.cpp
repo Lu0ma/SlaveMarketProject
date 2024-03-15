@@ -64,41 +64,18 @@ void PlayerAttackComponent::SpecialAttack()
 	{
 		_lift->Interact();
 	}
-	
 	const vector<Grub*>& _grubs = RetrieveAllMobsAround<Grub>(_ownerPosition, 45.0f);
 	for (Grub* _grub : _grubs)
 	{
-		
 		if (!_grub) continue;
 
 		else
 		{
 			Game::GetMap()->GetGrub()->GetComponent<AnimationComponent>()->RunAnimation("Escape", -1);
-            /*Game::GetMap()->GetGrub()->Destroy(3.0f);*/
+            Game::GetMap()->GetGrub()->Destroy(3.0f);
 		}
 	}
+
 
 	animation->GetCurrentAnimation()->RunAnimation("Special", owner->GetDrawable()->getScale().x);
-}
-
-void PlayerAttackComponent::UpAttack()
-{
-	if (!canAttack) return;
-
-	const Vector2f& _ownerPosition = owner->GetShapePosition();
-	const vector<Mob*>& _mobs = RetrieveAllMobAbove<Mob>(_ownerPosition, 50.0f);
-	for (Mob* _mob : _mobs)
-	{
-		if (!_mob) continue;
-
-		else
-		{
-			//_mob->GetLife()->TakeDamages(GetDamages());
-			_mob->GetLife()->SetLife(0);
-			_mob->Death();
-			Game::GetPlayer()->GetStats()->UseMana(10.0f);
-		}
-	}
-
-
 }

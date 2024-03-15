@@ -6,7 +6,6 @@
 #include "TimerManager.h"
 
 #include "Timer.h"
-
 Camera::Camera() : Actor("Camera" , ShapeData())
 {
 
@@ -23,13 +22,14 @@ Camera::Camera() : Actor("Camera" , ShapeData())
 	zoom = Vector2f();
 	defaultSize = view.getSize();
 
+	// view = View(Vector2f() , Vector2f(Game::GetWindowSize().x, Game::GetWindowSize().y));
+
 	isDown = false;
 	isZoom = false;
 	isUp = false;
 	canShake = false;
 	canUpdate = true;
 }
-
 
 void Camera::MoveToTarget(const float _deltaTime)
 {
@@ -51,7 +51,7 @@ bool Camera::IsAtDestination(float& _distance)
 
 void Camera::Init()
 {
-	view.setCenter(Game::GetPlayer()->GetShapePosition());
+
 }
 
 void Camera::ShakeActor(const float _deltaTime)
@@ -78,7 +78,7 @@ void Camera::Update(const float _deltaTime)
 	Player* _player = Game::GetPlayer();
 	RenderWindow& _window = Game::GetWindow();
 	const float _offsetX = Game::GetPlayer()->GetDrawable()->getScale().x > 0.0f ? offsetCamera.x : -offsetCamera.x;
-	const float _distance = Distance(1.0f, _player->GetShapePosition().y);
+	const float _distance = Distance(1.0f , _player->GetShapePosition().y);
 
 	const float _lastPositionPlayer = _player->GetShapePosition().y;
 	if (isDown)
@@ -93,7 +93,12 @@ void Camera::Update(const float _deltaTime)
 	}
 	else
 	{
-		targetPosition = Vector2f(Vector2f(_player->GetShapePosition().x, 0.0f) + Vector2f(_offsetX, canUpdate ? view.getCenter().y : _player->GetShapePosition().y));
+		cout << _distance;
+		if (_distance > damp)
+		{
+
+		targetPosition = Vector2f(Vector2f(_player->GetShapePosition().x , 0.0f) + Vector2f(_offsetX, canUpdate ? view.getCenter().y : _player->GetShapePosition().y));
+		}
 		ShakeActor(_deltaTime);
 	}
 	MoveToTarget(_deltaTime);

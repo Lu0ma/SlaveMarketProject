@@ -246,7 +246,7 @@ void AudioMenu::Init()
 	#pragma region Pointer
 
 	Menu::Init();
-	MovePointers(buttons.front());
+	MovePointers(backButton);
 
 	#pragma endregion
 }

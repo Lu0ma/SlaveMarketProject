@@ -117,7 +117,4 @@ private:
 public:
 	void Init();
 	void Update(const float _deltaTime);
-
-
 };
-

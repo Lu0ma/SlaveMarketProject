@@ -6,7 +6,7 @@
 #include "Widget.h"
 #include "Spawner.h"
 
-#define PATH_PLAYER "Animations/knighModif2.png"
+#define PATH_PLAYER "Animations/knighModif.png"
 
 RenderWindow Game::window;
 Map* Game::map;
@@ -28,7 +28,6 @@ Game::~Game()
 	delete map;
 	delete brightness;
 }
-
 
 void Game::Start()
 {
@@ -55,7 +54,9 @@ void Game::Update()
 	{
 		TimerManager::GetInstance().Update();
 		if (!InputManager::GetInstance().Update(window)) break;
-		player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);
+		// map->GetDragon()->PlayMusic();
+		/*player->GetLight()->setPosition(player->GetShapePosition().x + 50.0f, player->GetShapePosition().y + 50.0f);*/
+		brightness->UpdateShader(GetWindowSize() /2.0f);
 		ActorManager::GetInstance().Update();
 	}
 }
@@ -70,6 +71,21 @@ void Game::UpdateWindow()
 	window.setView(camera->GetView());
 	//DrawWorldUIs();
 
+	for (ShapeObject* _drawable : map->GetAllDrawables())
+	{
+		window.draw(*_drawable->GetDrawable(), brightness->shader);
+	}
+	for (Actor* _actor : ActorManager::GetInstance().GetAllValues())
+	{
+		if (dynamic_cast<Particule*>(_actor))
+		{
+			window.draw(*_actor->GetDrawable());
+		}
+		else
+		{
+			window.draw(*_actor->GetDrawable(), brightness->shader);
+		}
+	}
 	DrawMap();
 	DrawActors();
 	//window.draw(*player->GetLight());

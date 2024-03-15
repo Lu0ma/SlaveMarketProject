@@ -19,7 +19,9 @@ Map::Map()
 	grub = new Grub(ShapeData(Vector2f(950.0f, 0.0f), Vector2f(75.0f, 100.0f), PATH_GRUB));
 	dragon = new Dragon(ShapeData(Vector2f(700.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
 	bench = new Bench(ShapeData(Vector2f(300.0f, 5.0f), Vector2f(176.0, 80.0f), PATH_BENCH));
-	merchand = new Merchand(ShapeData(Vector2f(600.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_MERCHAND));
+	merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f),
+	PATH_MERCHAND));
+	dustEffect = new DustEffect();
 }
 
 Map::~Map()
@@ -98,6 +100,8 @@ void Map::Init()
 	merchand->Init();
 	pnj->Init();
 
+	
+
 	ShapeObject* _background = new ShapeObject(ShapeData(Vector2f(-300.0f, -SCREEN_HEIGHT), Vector2f(2340.0f, 985.0f), "Levels/Environment_GROUND.png"));
 	_background->GetDrawable()->setOrigin(0.0f, 0.0f);
 	drawables.push_back(_background);
@@ -130,4 +134,10 @@ void Map::Init()
 
 	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(250.0f, 250.0f), "Lift.png"));
 	lifts.push_back(_lift);
+
+	/*ShapeObject* ALLMAP = new ShapeObject(ShapeData(Vector2f(0.0f, 0.0f), Vector2f(7086.0f, 1903.0f), "Levels/Backgrounds/Dirtmouth.png"));
+	drawables.push_back(ALLMAP);*/
+
+
+
 }

@@ -8,7 +8,7 @@
 #include"Dragon.h"
 #include"Grub.h"
 #include"PNJ.h"
-
+#include "DustEffect.h"
 using namespace std;
 using namespace sf;
 
@@ -66,7 +66,7 @@ class Map
 	vector<PlatformData> platformsData;
 	vector<ShapeObject*> drawables;
 	vector<Lift*> lifts;
-
+	DustEffect* dustEffect;
 public:
 	Dragon* GetDragon()const
 	{

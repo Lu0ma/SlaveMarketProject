@@ -31,6 +31,5 @@ public:
 
 public:
 	void SpecialAttack();
-	void UpAttack();
 };
 
