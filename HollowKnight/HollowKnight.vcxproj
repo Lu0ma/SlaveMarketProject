@@ -246,6 +246,7 @@
     <ClCompile Include="TimerManager.cpp" />
     <ClCompile Include="TitleMenu.cpp" />
     <ClCompile Include="Transition.cpp" />
+    <ClCompile Include="TriggerBox.cpp" />
     <ClCompile Include="VideoMenu.cpp" />
     <ClCompile Include="Widget.cpp" />
   </ItemGroup>
@@ -370,6 +371,7 @@
     <ClInclude Include="TimerManager.h" />
     <ClInclude Include="TitleMenu.h" />
     <ClInclude Include="Transition.h" />
+    <ClInclude Include="TriggerBox.h" />
     <ClInclude Include="VideoMenu.h" />
     <ClInclude Include="Widget.h" />
   </ItemGroup>

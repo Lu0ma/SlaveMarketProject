@@ -46,8 +46,6 @@ MapData Map::LoadMapData(const string& _path)
 	MapData _data;
 	const string& _symbol = " = ";
 
-	Game::GetPlayer()->SetShapePosition(Vector2f(100.0f, -2000.0f));
-
 #pragma region Background
 	_data.backgroundPath = GetStringAfterSymbol(GetLineByText("BackgroundPath", _path), _symbol);
 	cout << _data.backgroundPath << endl;
@@ -118,7 +116,7 @@ MapData Map::LoadMapData(const string& _path)
 
 #pragma region Platform
 
-	const string& _platformSymbol = "platforms = [";
+	/*const string& _platformSymbol = "platforms = [";
 	const int _platformIndex = GetIndexByText(_platformSymbol, _path);
 	_index = _platformIndex + 2;
 
@@ -136,7 +134,7 @@ MapData Map::LoadMapData(const string& _path)
 		_index += 2;
 		_isEndOfPlatform = ContainsText("]", GetLineByIndex(_index - 1, _path));
 
-	} while (!_isEndOfPlatform);
+	} while (!_isEndOfPlatform);*/
 
 #pragma endregion
 
