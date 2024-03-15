@@ -28,7 +28,9 @@ Map::Map()
 	bench = new Bench(ShapeData(Vector2f(300.0f, 5.0f), Vector2f(176.0, 80.0f), PATH_BENCH));
 	merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_MERCHAND));
 	dustEffect = new DustEffect();
+	darkAreas = vector<ShapeObject*>();
 	currentLevel = 2;
+	Init();
 }
 
 Map::~Map()
@@ -326,6 +328,11 @@ void Map::Init()
 
 	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(250.0f, 250.0f), "Lift.png"));
 	lifts.push_back(_lift);
+
+	ShapeObject* _darkArea = new ShapeObject(ShapeData(Vector2f(-500.0f, 0.0f), Vector2f(200.0f, 200.0f)));
+	_darkArea->GetDrawable()->setFillColor(Color::White);
+	darkAreas.push_back(_darkArea);
+	drawables.push_back(_darkArea);
 
 	dustEffect->Init();
 }

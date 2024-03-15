@@ -107,7 +107,7 @@ void SaveSelectorMenu::Init()
 			{
 				MovePointers(_hoveredButton);
 			}
-			};
+		};
 
 		_clearButton->GetData().pressedCallback = [&]() {
 			cout << "Clear" << endl;

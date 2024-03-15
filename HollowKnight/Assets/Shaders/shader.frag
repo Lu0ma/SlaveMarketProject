@@ -1,6 +1,7 @@
 #define RADIUS 400
 #define COLOR vec3(1.0, 1.0, 1.0)
-#define BASE_COLOR vec3(0.1, 0.1, 0.1)
+
+uniform float baseLuminosity;
 
 uniform sampler2D texture;
 
@@ -9,7 +10,7 @@ uniform vec2 lightPosition;
 void main() {
     vec4 pixel = texture2D(texture, gl_TexCoord[0].xy);
 
-    vec3 finalColor = BASE_COLOR;
+    vec3 finalColor = vec3(baseLuminosity);
 
     vec2 toLight = lightPosition - gl_FragCoord.xy;
     float distance = length(toLight);

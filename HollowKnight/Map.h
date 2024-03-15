@@ -71,9 +71,15 @@ class Map
 	vector<ShapeObject*> drawables;
 	vector<Lift*> lifts;
 	DustEffect* dustEffect;
+	vector<ShapeObject*> darkAreas;
 	int currentLevel;
 
 public:
+
+	vector<ShapeObject*> GetDarkAreas()
+	{
+		return darkAreas;
+	}
 	Dragon* GetDragon()const
 	{
 		return dragon;

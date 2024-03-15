@@ -26,6 +26,11 @@ class Player : public Actor
 	CircleShape* light;
 	SoundData* sound;
 	PlayerSoundData data;
+
+	vector<ShapeObject*> areas;
+
+	bool canSee;
+
 public:
 	void SetStatus(const bool _status)
 	{
@@ -47,9 +52,16 @@ public:
 	{
 		return movement;
 	}
-
+	bool GetCanSee() const
+	{
+		return canSee;
+	}
+	void SetCanSee(const bool _canSee)
+	{
+		canSee = _canSee;
+	}
 public:
-	Player(const string& _name, const ShapeData& _data);
+	Player(const string& _name, const ShapeData& _data, const vector<ShapeObject*>& _areas);
 
 private:
 	void InitAnimations();

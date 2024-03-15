@@ -3,6 +3,7 @@
 
 // Sound
 #include "SoundData.h"
+
 // Mobs
 #include "Mob.h"
 #include "SoundData.h"
@@ -13,21 +14,21 @@
 #include "Macro.h"
 #include "Kismet.h"
 #include "Camera.h"
+
 // Managers
 #include "ActorManager.h"
 #include "InputManager.h"
-#include"FxManager.h"
+#include "FxManager.h"
 #include "Timer.h"
 #include "TimerManager.h"
 #include "PlayerSound.h"
 #include "MusicData.h"
+
 #define PATH_ITEM "UIs/Inventory/Item.png"
 #define PATH_DEATHMOB "Animations/DeathMob.png"
 #define DEAD_ZONE 50.0f
 
-
-
-Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data, CT_BLOCK)
+Player::Player(const string& _name, const ShapeData& _data, const vector<ShapeObject*>& _areas) : Actor(_name, _data, CT_NONE)
 {
 	animation = new PlayerAnimationComponent(this);
 	components.push_back(animation);
@@ -54,6 +55,10 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	sound = new SoundData(SOUND_CHARGE_COMPLETE, 40.0f, false);
 
 	data = PlayerSoundData();
+
+	canSee = true;
+
+	areas = _areas;
 }
 
 
@@ -271,4 +276,13 @@ void Player::Update(const float _deltaTime)
 {
 	Actor::Update(_deltaTime);
 	light->setPosition(GetShapePosition());
+
+	for (ShapeObject* _area : areas)
+	{
+		if (GetDrawable()->getGlobalBounds().contains(_area->GetDrawable()->getPosition()))
+		{
+			Game::GetBrightness()->SetLuminosity(0.1f);
+		}
+		else Game::GetBrightness()->SetLuminosity(1.0f);
+	}
 }
