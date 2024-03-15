@@ -1,12 +1,6 @@
 #include "BrightnessMenu.h"
 #include "Game.h"
 
-#define PATH_IMAGE "UIs/Brightness/Image.jpg"
-#define PATH_LINE "../Menu/Audio/music_line.png"
-#define PATH_INDICATOR "../Menu/Audio/Indicator.png"
-#define PATH_MINUS "../Menu/Audio/Minus.png"
-#define PATH_PLUS "../Menu/Audio/Plus.png"
-
 BrightnessMenu::BrightnessMenu(Menu* _owner) : Menu("Brightness", _owner)
 {
 	minValue = 0;
@@ -45,29 +39,30 @@ void BrightnessMenu::Init()
 	#pragma region Description
 
 	const float _descriptionPosY = _imageSize.y * 0.5f + _imagePosY + 50.0f;
-	Label* _description = new Label(TextData("Adjust brightness to your desired level.", Vector2f(_halfWindowX, _descriptionPosY), FONT, 15));
+	Label* _description = new Label(TextData("Adjust brightness to your desired level.", Vector2f(_halfWindowX, _descriptionPosY), FONT, 35));
 	canvas->AddWidget(_description);
 
 	#pragma endregion
 
 	#pragma region Button
 
-	const Vector2f& _buttonSize = Vector2f(600.0f, 150.0f);
+	const Vector2f& _buttonSize = Vector2f(700.0f, 150.0f);
 	const float _buttonPosY = _descriptionPosY + 100.0f;
 	brightButton = new Button(ShapeData(Vector2f(_halfWindowX, _buttonPosY), _buttonSize, ""));
 	brightButton->GetDrawable()->setFillColor(Color::Transparent);
 	brightButton->GetData().hoveredCallback = [&]()
 	{
 		ShapeObject* _object = brightButton->GetObject();
-		const Vector2f& _position = brightButton->GetShapePosition();
-		const float _halfSizeX = _object->GetShapeSize().x * 0.4f;
-		const Vector2f& _offset = Vector2f(_halfSizeX, 0.0f);
-		pointerLeft->SetShapePosition(_position - _offset);
-		pointerRight->SetShapePosition(_position + _offset);
+		const Vector2f& _position = brightButton->GetShapePosition() - Vector2f(30.0f, 0.0f);
+		const float _halfSizeX = _object->GetShapeSize().x * 0.43f;
+		const Vector2f& _offsetX = Vector2f(_halfSizeX, 0.0f);
+		const Vector2f& _offsetY = Vector2f(0.0f, 2.0f);
+		pointerLeft->SetShapePosition(_position - _offsetX - _offsetY);
+		pointerRight->SetShapePosition(_position + (_offsetX * 0.85f) - _offsetY);
 	};
 	canvas->AddWidget(brightButton);
 
-	Label* _title = new Label(TextData("Brightness", Vector2f(_halfWindowX / 1.25f, _buttonPosY - 10.0f), FONT, 20));
+	Label* _title = new Label(TextData("Brightness", Vector2f(_halfWindowX / 1.25f, _buttonPosY - 10.0f), FONT, 35));
 	canvas->AddWidget(_title);
 
 	const Vector2f& _littleButtonSize = Vector2f(25.0f, 25.0f);
@@ -124,7 +119,7 @@ void BrightnessMenu::Init()
 	backButton->GetDrawable()->setFillColor(Color::Transparent);
 	canvas->AddWidget(backButton);
 
-	Label* _buttonText = new Label(TextData("DONE", Vector2f(_halfWindowX, _backButtonPosY), FONT, 20));
+	Label* _buttonText = new Label(TextData("DONE", Vector2f(_halfWindowX, _backButtonPosY), FONT, 35));
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 

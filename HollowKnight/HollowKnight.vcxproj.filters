@@ -310,6 +310,9 @@
     <Filter Include="Fichiers de ressources\SoundSystem">
       <UniqueIdentifier>{5aae8b1c-d93f-44c8-bae6-730aa36131dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menus\ExtrasMenu\CreditsMenu">
+      <UniqueIdentifier>{af244d12-042f-4edc-9c1e-7448d6e2653c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -656,6 +659,21 @@
     </ClCompile>
     <ClCompile Include="PlayerSoundData.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackToDeath.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ChaseToDeath.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathState.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PatrolToDeath.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditsMenu.cpp">
+      <Filter>Menus\ExtrasMenu\CreditsMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1015,6 +1033,21 @@
     </ClInclude>
     <ClInclude Include="PlayerSoundData.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackToDeath.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="ChaseToDeath.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathState.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="PatrolToDeath.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditsMenu.h">
+      <Filter>Menus\ExtrasMenu\CreditsMenu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

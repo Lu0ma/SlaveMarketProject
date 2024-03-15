@@ -67,9 +67,11 @@ void CreditsMenu::Init()
 		"Ingénieur Animation : Raphaël",
 		"Map Constructeur : Julio",
 		"Responsable IA (zarma) : Olivier",
-		""
+		"Democrate des collisions : Nino celui qu'on apprécie pas trop",
+		"Aide aux sons : Greg",
+		"Gestionnaire des UIs : Nicolas",
+		"Music : Christopher Larkin (pas les droits mais takpt)"
 	};
-
 
 	const Vector2f& _textSize = Vector2f(200.0f, 50.0f);
 	const float _gapY = _textSize.y * 15.0f / 100.0f;
@@ -79,7 +81,7 @@ void CreditsMenu::Init()
 	for (int _index = 0; _index < _dataCount; _index++)
 	{
 		float _textPosY = _gridPosY + _textSize.y * _index + _gapY * _index;
-		_textPosY += _index == _dataCount - 1 ? _windowSize.y * 0.15f : 0.0f;
+		_textPosY += _index == _dataCount - 1 ? _windowSize.y * 0.1f : 0.0f;
 		const Vector2f& _textPos = Vector2f(_halfWindowX, _textPosY);
 		
 

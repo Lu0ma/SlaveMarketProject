@@ -11,6 +11,29 @@
 #define PATH_TITLE_ICON "UIs/Menus/TitleBarMenu.png"
 #define PATH_POINTER "UIs/Menus/Pointer.png"
 #define FONT "Font.ttf"
+#define PATH_MINUS "UIs/Menus/Options/Audio/Minus.png"
+#define PATH_PLUS "UIs/Menus/Options/Audio/Plus.png"
+
+//=================================
+// BRIGHTNESS MENU
+//=================================
+#define PATH_IMAGE "UIs/Brightness/Image.jpg"
+#define PATH_LINE "UIs/Menus/Options/Audio/music_line.png"
+#define PATH_INDICATOR "UIs/Menus/Options/Audio/Indicator.png"
+
+//=================================
+// AUDIO MENU
+//=================================
+#define PATH_LINE "UIs/Menus/Options/Audio/music_line.png"
+#define PATH_INDICATOR "UIs/Menus/Options/Audio/Indicator.png"
+#define SOUND_CLICK "Ui/ui_option_click"
+#define MUSIC_SAVE "SaveOption"
+
+//=================================
+// VIDEO MENU
+//=================================
+#define PATH_CHECKBOX_EMPTY "UIs/Menus/Options/Video/EmptyCheckbox.png"
+#define PATH_CHECKBOX_FULL "UIs/Menus/Options/Video/FullCheckbox.png"
 
 class Menu : public IManagable<string>
 {

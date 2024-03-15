@@ -86,7 +86,7 @@ void OptionsMenu::Init()
 	};
 
 	const Vector2f& _buttonSize = Vector2f(200.0f, 50.0f);
-	const float _gapY = _buttonSize.y * 15.0f / 100.0f;
+	const float _gapY = _buttonSize.y * 0.80f;
 	const float _gridPosY = _titleBarPosY + 75.0f;
 
 	const int _dataCount = (int)_allData.size();
@@ -110,7 +110,7 @@ void OptionsMenu::Init()
 		buttons.push_back(_button);
 		canvas->AddWidget(_button);
 
-		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
+		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 35));
 		_button->SetForeground(_title);
 		canvas->AddWidget(_title);
 	}

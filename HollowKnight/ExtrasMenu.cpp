@@ -45,41 +45,40 @@ void ExtrasMenu::Init()
 		function<void()> callback;
 	};
 
-	string _bigSpace = "                 ";
-
 	StyleButton* _styleData = new StyleButton({
-		"Menu Style :" + _bigSpace,
+		"Menu Style :",
 		style,
 		[&]() {IncreaseIndexStyles(); }
 		});
 
 
-	const Vector2f& _styleButtonSize = Vector2f(200.0f, 50.0f);
-	const float _stylesButtonPosY = _windowSize.y * 0.3f;
-	const Vector2f& _styleButtonPos = Vector2f(_halfWindowX - 100.0f, _stylesButtonPosY);
+	const Vector2f& _styleButtonSize = Vector2f(740.0f, 50.0f);
+	const float _stylesButtonPosY = _windowSize.y * 0.28f;
+	const Vector2f& _styleButtonPos = Vector2f(_halfWindowX - 90.0f, _stylesButtonPosY);
 
 	styleButton = new Button(ShapeData(_styleButtonPos, _styleButtonSize, ""));
-	styleButton->GetData().hoveredCallback = [&]() //CRASH
+	styleButton->GetData().hoveredCallback = [&]()
 	{
 		MovePointers(styleButton);
 		ShapeObject* _object = styleButton->GetObject();
-		const Vector2f& _position = _object->GetShapePosition() + Vector2f(100.0f, 0.0f);
-		const float _sizeX = _object->GetShapeSize().x * 1.3f;
-		const Vector2f& _offsetX = Vector2f(_sizeX, 0.0f);
-		const Vector2f& _offsetY = Vector2f(0.0f, 8.0f);
+		const Vector2f& _position = _object->GetShapePosition() + Vector2f(150.0f, 0.0f);
+		const float _sizeX = _object->GetShapeSize().x;
+		const Vector2f& _offsetX = Vector2f(_sizeX * 0.63f, 0.0f);
+		const Vector2f& _offsetY = Vector2f(0.0f, 12.0f);
 		pointerLeft->SetShapePosition(_position - _offsetX + _offsetY);
-		pointerRight->SetShapePosition(_position + _offsetX + _offsetY);
+		pointerRight->SetShapePosition(_position + (_offsetX * 0.70f )+ _offsetY);
 	};
 	styleButton->GetData().pressedCallback = _styleData->callback;
 	styleButton->GetDrawable()->setFillColor(Color::Transparent);
 	canvas->AddWidget(styleButton);
 
-	Label* _styleText = new Label(TextData(_styleData->title, _styleButtonPos, FONT, 20));
+	const Vector2f _stylePos = _styleButtonPos - Vector2f(180.0f, 0.0f);
+	Label* _styleText = new Label(TextData(_styleData->title, _stylePos, FONT, 30), AT_CENTER);
 	styleButton->SetForeground(_styleText);
 	canvas->AddWidget(_styleText);
 
 	const float _valueTextPosX = _halfWindowX + _halfTitleBarSizeX;
-	_styleData->valueText = new Label(TextData("", Vector2f(_valueTextPosX, _styleButtonPos.y), FONT, 16), AT_RIGHT);
+	_styleData->valueText = new Label(TextData("", Vector2f(_valueTextPosX, _styleButtonPos.y), FONT, 30), AT_RIGHT);
 	canvas->AddWidget(_styleData->valueText);
 
 #pragma endregion
@@ -111,13 +110,13 @@ void ExtrasMenu::Init()
 
 	const Vector2f& _buttonSize = Vector2f(200.0f, 50.0f);
 	const float _gapY = _buttonSize.y * 15.0f / 100.0f;
-	const float _gridPosY = _titleBarPosY + 175.0f;
+	const float _gridPosY = _titleBarPosY + 300.0f;
 
 	const int _dataCount = (int)_allData.size();
 	for (int _index = 0; _index < _dataCount; _index++)
 	{
 		float _buttonPosY = _gridPosY + _buttonSize.y * _index + _gapY * _index;
-		_buttonPosY += _index == _dataCount - 1 ? _windowSize.y * 0.15f : 0.0f;
+		_buttonPosY += _index == _dataCount - 1 ? _windowSize.y * 0.3f : 0.0f;
 		const Vector2f& _buttonPos = Vector2f(_halfWindowX, _buttonPosY);
 		Button* _button = new Button(ShapeData(_buttonPos, _buttonSize, ""));
 		_button->GetData().hoveredCallback = [&]()
@@ -133,7 +132,8 @@ void ExtrasMenu::Init()
 		buttons.push_back(_button);
 		canvas->AddWidget(_button);
 
-		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
+		int _fontSize = _index == _dataCount - 1 ? 20 : 30;
+		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, _fontSize));
 		_button->SetForeground(_title);
 		canvas->AddWidget(_title);
 	}
