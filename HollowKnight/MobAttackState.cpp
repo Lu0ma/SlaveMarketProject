@@ -1,5 +1,6 @@
 #include "MobAttackState.h"
 #include "MobBrain.h"
+#include "Game.h"
 
 MobAttackState::MobAttackState(Brain* _brain) : AttackState(_brain)
 {
@@ -11,4 +12,19 @@ MobAttackState::MobAttackState(Brain* _brain) : AttackState(_brain)
 void MobAttackState::Init()
 {
 	attackToPatrol->Init(dynamic_cast<MobBrain*>(brain)->GetPatrolState());
+	attackToDeath->Init(dynamic_cast<MobBrain*>(brain)->GetDeathState());
+}
+
+void MobAttackState::Start()
+{
+	cout << "MobAttack START" << endl;
+	AttackState::Start();
+
+	animation->RunAnimation("Bounce", animation->GetCurrentAnimation()->GetDirectionX());
+
+	Game::GetPlayer()->GetStats()->UpdateLife(-1);
+
+	new Timer([&]() {
+		brain->GetBlackBoard()->isInRange = false;
+		}, seconds(0.12f), true, false);
 }

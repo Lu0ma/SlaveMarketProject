@@ -61,7 +61,7 @@ public:
 	}
 
 public:
-	void Play(const string& _path, const DirectionalSettings& _settings = DirectionalSettings());
+	void Play(const string& _path, const bool _isLoop ,const DirectionalSettings& _settings = DirectionalSettings());
 	void AdjustAllVolume(const float _value);
 	void Stop(const string& _path);
 };

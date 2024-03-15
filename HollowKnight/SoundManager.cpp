@@ -59,7 +59,7 @@ SoundManager::SoundManager()
 }
 
 
-void SoundManager::Play(const string& _path, const DirectionalSettings& _settings)
+void SoundManager::Play(const string& _path,const bool _isloop , const DirectionalSettings& _settings)
 {
 	if (SoundData* _soundData = Get(_path))
 	{
@@ -68,6 +68,7 @@ void SoundManager::Play(const string& _path, const DirectionalSettings& _setting
 		_soundData->setAttenuation(_settings.attenuationSpeed);
 		_soundData->setMinDistance(_settings.minDistance);
 		_soundData->setVolume(volume);
+		_soundData->setLoop(_isloop);
 		_soundData->play();
 	}
 }

@@ -16,7 +16,15 @@ bool InputManager::Update(RenderWindow& _window)
 	while (_window.pollEvent(_event))
 	{
 		if (_event.type == Event::Closed) return false;
-
+		if (_event.type == Event::Resized)
+		{
+			//
+			const FloatRect _visibleArea(0.0f, 0.0f, _event.size.width, _event.size.height);
+			 //const FloatRect _visibleArea(0.0f, 0.0f,0.0f, 0.0f);
+			_window.setView(View(_visibleArea));
+			cout << "resized" << endl;
+		}
+		//HUD::GetInstance().Interact(worldPosition, _event.type);
 		HUD::GetInstance().Interact(worldPosition, _event);
 		UpdateInputs(_event);
 	}

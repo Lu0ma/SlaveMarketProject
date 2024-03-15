@@ -6,6 +6,7 @@
 AnimationComponent::AnimationComponent(Actor* _owner) : Component(_owner)
 {
     currentAnimation = nullptr;
+    animationNames = vector<string>();
 }
 
 

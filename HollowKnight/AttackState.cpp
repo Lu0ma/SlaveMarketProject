@@ -1,16 +1,25 @@
 #include "AttackState.h"
 #include "Brain.h"
+#include "MobLifeComponent.h"
 
 AttackState::AttackState(Brain* _brain) : State(_brain)
 {
-	animation = nullptr;
+	/*animation = nullptr;
 	movement = nullptr;
-	inspect = nullptr;
-}
+	inspect = nullptr;*/
+	hasAttack = false;
 
+	BlackBoard* _blackBoard = _brain->GetBlackBoard();
+	attackToDeath = new AttackToDeath(_blackBoard);
+	transitions.push_back(attackToDeath);
+}
 
 void AttackState::Start()
 {
+	//timerInspect->Start();
+
+	cout << brain->GetOwner()->GetID() << "Start Attack" << endl;
+
 	Actor* _owner = brain->GetOwner();
 
 	if (!inspect || !animation || !movement)
@@ -20,11 +29,12 @@ void AttackState::Start()
 		movement = _owner->GetComponent<MobMovementComponent>();
 	}
 
+
+
 	// Boss -> lance l'anim d'attaque, sur la fin de l'anim si le joueur est toujours en InRange do damage, puis reviens en patrol/chase
 
 	// Mob -> Lance l'anim d'attaque, si le joueur est toujours inRange do damage, puis reviens en patrol
 
-	cout << "Start Attack" << endl;
 }
 
 void AttackState::Update(const float _deltaTime)
@@ -36,12 +46,19 @@ void AttackState::Update(const float _deltaTime)
 
 	if (inspect)
 	{
-		brain->GetBlackBoard()->hasTarget = inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetDestination());
+		inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetLastDirection());
 		brain->GetBlackBoard()->isInRange = inspect->IsInRange();
+		//brain->GetBlackBoard()->hasTarget = 
+	}
+	if (brain->GetOwner()->GetComponent<MobLifeComponent>()->GetLife() <= 0)
+	{
+		brain->GetBlackBoard()->isDead = true;
 	}
 }
 
 void AttackState::Stop()
 {
-	cout << "Stop Attack" << endl;
+	//timerInspect->Pause();
+	movement->SetDestination(brain->GetOwner()->GetShapePosition());
+	cout << brain->GetOwner()->GetID() << "Stop Attack" << endl;
 }

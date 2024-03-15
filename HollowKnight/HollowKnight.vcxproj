@@ -139,6 +139,7 @@
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="AttackState.cpp" />
     <ClCompile Include="AttackToChase.cpp" />
+    <ClCompile Include="AttackToDeath.cpp" />
     <ClCompile Include="AttackToPatrol.cpp" />
     <ClCompile Include="AudioMenu.cpp" />
     <ClCompile Include="Belfly.cpp" />
@@ -157,12 +158,14 @@
     <ClCompile Include="CharmWidget.cpp" />
     <ClCompile Include="ChaseState.cpp" />
     <ClCompile Include="ChaseToAttack.cpp" />
+    <ClCompile Include="ChaseToDeath.cpp" />
     <ClCompile Include="ChaseToPatrol.cpp" />
     <ClCompile Include="CollectableActor.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ControllerMenu.cpp" />
     <ClCompile Include="DeathMob.cpp" />
+    <ClCompile Include="DeathState.cpp" />
     <ClCompile Include="Dragon.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBrain.cpp" />
@@ -212,11 +215,13 @@
     <ClCompile Include="PatrolState.cpp" />
     <ClCompile Include="PatrolToAttack.cpp" />
     <ClCompile Include="PatrolToChase.cpp" />
+    <ClCompile Include="PatrolToDeath.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAnimationComponent.cpp" />
     <ClCompile Include="PlayerAttackComponent.cpp" />
     <ClCompile Include="PlayerMovementComponent.cpp" />
+    <ClCompile Include="PlayerSoundData.cpp" />
     <ClCompile Include="PlayerStat.cpp" />
     <ClCompile Include="PNJ.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
@@ -254,6 +259,7 @@
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="AttackState.h" />
     <ClInclude Include="AttackToChase.h" />
+    <ClInclude Include="AttackToDeath.h" />
     <ClInclude Include="AttackToPatrol.h" />
     <ClInclude Include="AudioMenu.h" />
     <ClInclude Include="Belfly.h" />
@@ -273,12 +279,14 @@
     <ClInclude Include="CharmWidget.h" />
     <ClInclude Include="ChaseState.h" />
     <ClInclude Include="ChaseToAttack.h" />
+    <ClInclude Include="ChaseToDeath.h" />
     <ClInclude Include="ChaseToPatrol.h" />
     <ClInclude Include="CollectableActor.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ControllerMenu.h" />
     <ClInclude Include="DeathMob.h" />
+    <ClInclude Include="DeathState.h" />
     <ClInclude Include="Dragon.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBrain.h" />
@@ -329,11 +337,14 @@
     <ClInclude Include="PatrolState.h" />
     <ClInclude Include="PatrolToAttack.h" />
     <ClInclude Include="PatrolToChase.h" />
+    <ClInclude Include="PatrolToDeath.h" />
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAnimationComponent.h" />
     <ClInclude Include="PlayerAttackComponent.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
+    <ClInclude Include="PlayerSound.h" />
+    <ClInclude Include="PlayerSoundData.h" />
     <ClInclude Include="PlayerStat.h" />
     <ClInclude Include="PNJ.h" />
     <ClInclude Include="ProgressBar.h" />
@@ -364,6 +375,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Assets\Levels\SubLevel_1.txt" />
+    <Text Include="SaveOption.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

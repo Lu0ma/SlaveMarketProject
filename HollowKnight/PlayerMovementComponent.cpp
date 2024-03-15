@@ -121,6 +121,8 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 		SetDirectionX(direction.x, "Right");
 	}
 
+	Game::GetCamera()->SetUpdate(!isOnGround);
+
 	Vector2f _offset;
 
 	// Si je suis en train de dash

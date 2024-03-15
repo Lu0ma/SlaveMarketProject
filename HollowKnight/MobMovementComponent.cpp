@@ -24,6 +24,10 @@ void MobMovementComponent::SetDestination(const Vector2f& _destination, const bo
 				SetCanMove(true);
 			}, seconds(.75f), true, false);
 	}
+	else
+	{
+		owner->GetComponent<AnimationComponent>()->RunAnimation("Running", lastDirection.x);
+	}
 }
 
 MobMovementComponent::MobMovementComponent(Actor* _owner) : MovementComponent(_owner)
