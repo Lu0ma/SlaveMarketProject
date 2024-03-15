@@ -10,6 +10,7 @@
 #include "Enemy.h"
 #include "Boss.h"
 #include "Mob.h"
+#include "InteractableActor.h"
 
 #define PATH_BENCH "Map/Bench.png"
 #define PATH_STAND "/UIs/Shop/Stand.png"
@@ -200,26 +201,73 @@ MapData Map::LoadMapData(const string& _path)
 		}		
 
 		_index += 2;
-		_isEndOfGround = ContainsText("]", GetLineByIndex(_index - 1, _path));
-	} while (!_isEndOfGround);
+		_isEndOfEnemy = ContainsText("]", GetLineByIndex(_index - 1, _path));
+	} while (!_isEndOfEnemy);
 
 #pragma endregion
 
 #pragma region NPCS
-	const string& _npcSymbol = "enemies = [";
-	const int _npcIndex = GetIndexByText(_groundSymbol, _path);
-	_index = _enemyIndex + 2;
-	bool _isEndOfEnemy;
+	const string& _npcSymbol = "npcs = [";
+	const int _npcIndex = GetIndexByText(_npcSymbol, _path);
+	_index = _npcIndex + 2;
+	bool _isEndOfNPC;
+
 	do
 	{
 		// Recupérer les informations de npc, augmenter l'index a chaque fois
-		
+		const NPCType& _npcType = static_cast<NPCType>(stoi(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol)));
+		_index++;
+		const float _npcPositionX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _npcPositionY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _npcSizeX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _npcSizeY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const string& _npcText = GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol);
+		_index++;
+
+		if (_npcType == MERCHAND)
+		{
+			new Merchand(ShapeData(Vector2f(_npcPositionX, _npcPositionY), Vector2f(_npcSizeX, _npcSizeY)));
+		}
+		else if (_npcType == NPC)
+		{
+			new PNJ(ShapeData(Vector2f(_npcPositionX, _npcPositionY), Vector2f(_npcSizeX, _npcSizeY)));
+		}
+
 		_index += 2;
-		_isEndOfGround = ContainsText("]", GetLineByIndex(_index - 1, _path));
-	} while (!_isEndOfGround);
+		_isEndOfNPC = ContainsText("]", GetLineByIndex(_index - 1, _path));
+	} while (!_isEndOfNPC);
 #pragma endregion
 
 #pragma region Environment
+
+	const string& _environmentSymbol = "enemies = [";
+	const int _environmentIndex = GetIndexByText(_npcSymbol, _path);
+	_index = _environmentIndex + 2;
+	bool _isEndOfEnvironment;
+
+	do
+	{
+		const float _environmentPositionX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _environmentPositionY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _environmentSizeX = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const float _environmentSizeY = stof(GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol));
+		_index++;
+		const string& _environmentPath = GetStringAfterSymbol(GetLineByIndex(_index, _path), _symbol);
+		_index++;
+		
+		ShapeObject(ShapeData(Vector2f(_environmentPositionX, _environmentPositionY), Vector2f(_environmentSizeX, _environmentSizeY), _environmentPath));
+		
+
+		_index += 2;
+		_isEndOfEnvironment = ContainsText("]", GetLineByIndex(_index - 1, _path));
+	} while (!_isEndOfEnvironment);
 
 #pragma endregion
 
@@ -260,10 +308,6 @@ void Map::Init()
 	ShapeObject* _arena = new ShapeObject(ShapeData(Vector2f(3721.5f, -SCREEN_HEIGHT - 200.0f + 20.0f), Vector2f(1920.0f, 1080.0f), "Levels/Arena.jpg"));
 	_arena->GetDrawable()->setOrigin(0.0f, 0.0f);
 	drawables.push_back(_arena);
-
-	//TODO modify ?
-	/*Actor* _ground = new Actor("Ground", ShapeData(Vector2f(-100.0f, 30.0f), Vector2f(12000.0f, 10.0f), ""), CT_BLOCK);
-	_ground->GetDrawable()->setFillColor(Color::Red);*/
 
 	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(250.0f, 250.0f), "Lift.png"));
 	lifts.push_back(_lift);

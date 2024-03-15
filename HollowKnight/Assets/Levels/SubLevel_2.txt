@@ -104,11 +104,11 @@ platforms = [
 
 grounds = [
 {
- CollectablePosX = 100
- CollectablePosY = 30.5
- CollectableSizeX = 12000
- CollectableSizeY = 10
- CollisionType = 3
+ GroundPosX = 100
+ GroundPosY = 30.5
+ GroundSizeX = 12000
+ GroundSizeY = 10
+ GroundCollisionType = 3
 }
 
 enemies = [
@@ -122,16 +122,23 @@ enemies = [
 }
 ]
 
-npcs = 
+npcs = [
 {
  NpcType = 
- NpcPosX =
+ NpcPosX = 
  NpcPosY =  
+ NpcSizeX =
+ NpcSizeY =
+ NpcText = 
 }
+]
 
 Environment = [
 {
- 
+ EnvironmentPosX = 
+ EnvironmentPosY =  
+ EnvironmentSizeX = 
+ EnvironmentSizeY =
+ EnvironmentPath =
 }
-
 ]

@@ -5,6 +5,12 @@
 #include "Label.h"
 #include "ProgressLabel.h"
 
+enum NPCType
+{
+	MERCHAND,NPC
+};
+
+
 class InteractableActor : public Actor
 {
 protected:
