@@ -50,7 +50,7 @@ void CreditsMenu::Init()
 	backButton->GetDrawable()->setFillColor(Color::Transparent);
 	canvas->AddWidget(backButton);
 
-	Label* _buttonText = new Label(TextData("BACK", _buttonPos, FONT, 20));
+	Label* _buttonText = new Label(TextData("BACK", _buttonPos, FONT, 30));
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
@@ -74,7 +74,7 @@ void CreditsMenu::Init()
 	};
 
 	const Vector2f& _textSize = Vector2f(200.0f, 50.0f);
-	const float _gapY = _textSize.y * 15.0f / 100.0f;
+	const float _gapY = _textSize.y * 0.20f;
 	const float _gridPosY = _titleBarPosY + 75.0f;
 
 	const int _dataCount = (int)_allData.size();
@@ -85,7 +85,7 @@ void CreditsMenu::Init()
 		const Vector2f& _textPos = Vector2f(_halfWindowX, _textPosY);
 		
 
-		Label* _title = new Label(TextData(_allData[_index], _textPos, FONT, 20));
+		Label* _title = new Label(TextData(_allData[_index], _textPos, FONT, 30));
 
 		canvas->AddWidget(_title);
 	}

@@ -27,7 +27,7 @@ void HuskBully::Init()
 		AnimationData("Turn", Vector2f(0.0f, 320.0f), _sizeIdle, _readDirection, false, 2, _speedIdle, "Run"),
 		AnimationData("Run", Vector2f(0.0f, 171.0f), _sizeWalk, _readDirection, true, 7, _speedWalk, "Turn"),
 		AnimationData("Attack", Vector2f(0.0f, 474.0f), _sizeAttack, _readDirection, false, 4, _speedIdle, "AttackLunge"),
-		AnimationData("AttackLunge", Vector2f(0.0f, 632.f), _sizeAttackLunge, _readDirection, true, 2, 0.15f, "AttackCooldown"),
+		AnimationData("AttackLunge", Vector2f(0.0f, 632.f), _sizeAttackLunge, _readDirection, false, 2, 0.15f, "AttackCooldown"),
 		AnimationData("AttackCooldown", Vector2f(0.0f, 776.f), _sizeAttackLunge, _readDirection, false, 1, 0.2f, "Idle"),
 		AnimationData("DeathAir", Vector2f(0.0f, 920.f), _sizeDeath, _readDirection, false, 1, 0.2f, "DeathLand"),
 		AnimationData("DeathLand", Vector2f(16.0f, 1050.0f), _sizeDeathLand, _readDirection, true, 8, 0.2f),

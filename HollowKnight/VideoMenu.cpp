@@ -177,7 +177,7 @@ void VideoMenu::Init()
 				const Vector2f& _position = _object->GetShapePosition();
 				const float _halfSizeX = _object->GetShapeSize().x * 0.41f;
 				const Vector2f& _offsetX = Vector2f(_halfSizeX, 0.0f);
-				const Vector2f& _offsetY = Vector2f(0.0f, 15.0f);
+				const Vector2f& _offsetY = Vector2f(0.0f, 10.0f);
 				pointerLeft->SetShapePosition(_position - _offsetX + _offsetY);
 				pointerRight->SetShapePosition(_position + _offsetX + _offsetY);
 			}
@@ -187,11 +187,11 @@ void VideoMenu::Init()
 		canvas->AddWidget(_button);
 
 		const float _buttonTitlePosX = _halfWindowX - _halfTitleBarSizeX;
-		Label* _title = new Label(TextData(_buttonData->title, Vector2f(_buttonTitlePosX, _buttonPos.y), FONT, 35), AT_LEFT);
+		Label* _title = new Label(TextData(_buttonData->title, Vector2f(_buttonTitlePosX, _buttonPos.y), FONT, 30), AT_LEFT);
 		canvas->AddWidget(_title);
 
 		const float _valueTextPosX = _halfWindowX + _halfTitleBarSizeX;
-		_buttonData->valueText = new Label(TextData("", Vector2f(_valueTextPosX, _buttonPos.y), FONT, 35), AT_RIGHT);
+		_buttonData->valueText = new Label(TextData("", Vector2f(_valueTextPosX, _buttonPos.y), FONT, 30), AT_RIGHT);
 		_buttonData->callback();
 		canvas->AddWidget(_buttonData->valueText);
 

@@ -28,7 +28,7 @@ void MainMenu::Init()
 
 	const float _mainMenuTextPosX = _windowSize.x * 0.80f;
 	const float _mainMenuTextPosY = _windowSize.y * 0.75f;
-	Label* _mainMenuText = new Label(TextData("Press space key to continue..", Vector2f(_mainMenuTextPosX, _mainMenuTextPosY), FONT, 35), AT_RIGHT);
+	Label* _mainMenuText = new Label(TextData("Press space key to continue..", Vector2f(_mainMenuTextPosX, _mainMenuTextPosY), FONT, 30), AT_RIGHT);
 
 	canvas->AddWidget(_mainMenuText);
 	new ActionMap("MenuInputs", {

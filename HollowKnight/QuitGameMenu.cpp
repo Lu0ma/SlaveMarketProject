@@ -70,7 +70,7 @@ void QuitGameMenu::Init()
 		buttons.push_back(_button);
 		canvas->AddWidget(_button);
 
-		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 35));
+		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 30));
 		_button->SetForeground(_title);
 		canvas->AddWidget(_title);
 	}

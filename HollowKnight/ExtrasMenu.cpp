@@ -52,9 +52,9 @@ void ExtrasMenu::Init()
 		});
 
 
-	const Vector2f& _styleButtonSize = Vector2f(740.0f, 50.0f);
+	const Vector2f& _styleButtonSize = Vector2f(750.0f, 50.0f);
 	const float _stylesButtonPosY = _windowSize.y * 0.28f;
-	const Vector2f& _styleButtonPos = Vector2f(_halfWindowX - 90.0f, _stylesButtonPosY);
+	const Vector2f& _styleButtonPos = Vector2f(_halfWindowX - 0.0f, _stylesButtonPosY);
 
 	styleButton = new Button(ShapeData(_styleButtonPos, _styleButtonSize, ""));
 	styleButton->GetData().hoveredCallback = [&]()
@@ -63,17 +63,17 @@ void ExtrasMenu::Init()
 		ShapeObject* _object = styleButton->GetObject();
 		const Vector2f& _position = _object->GetShapePosition() + Vector2f(150.0f, 0.0f);
 		const float _sizeX = _object->GetShapeSize().x;
-		const Vector2f& _offsetX = Vector2f(_sizeX * 0.63f, 0.0f);
+		const Vector2f& _offsetX = Vector2f(_sizeX, 0.0f);
 		const Vector2f& _offsetY = Vector2f(0.0f, 12.0f);
-		pointerLeft->SetShapePosition(_position - _offsetX + _offsetY);
-		pointerRight->SetShapePosition(_position + (_offsetX * 0.70f )+ _offsetY);
+		pointerLeft->SetShapePosition(_position - (_offsetX * 0.76f) + _offsetY);
+		pointerRight->SetShapePosition(_position + (_offsetX * 0.32f )+ _offsetY);
 	};
 	styleButton->GetData().pressedCallback = _styleData->callback;
 	styleButton->GetDrawable()->setFillColor(Color::Transparent);
 	canvas->AddWidget(styleButton);
 
 	const Vector2f _stylePos = _styleButtonPos - Vector2f(180.0f, 0.0f);
-	Label* _styleText = new Label(TextData(_styleData->title, _stylePos, FONT, 30), AT_CENTER);
+	Label* _styleText = new Label(TextData(_styleData->title, _stylePos, FONT, 30), AT_RIGHT);
 	styleButton->SetForeground(_styleText);
 	canvas->AddWidget(_styleText);
 
@@ -132,8 +132,8 @@ void ExtrasMenu::Init()
 		buttons.push_back(_button);
 		canvas->AddWidget(_button);
 
-		int _fontSize = _index == _dataCount - 1 ? 20 : 30;
-		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, _fontSize));
+		//int _fontSize = _index == _dataCount - 1 ? 20 : 30;
+		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 30));
 		_button->SetForeground(_title);
 		canvas->AddWidget(_title);
 	}
