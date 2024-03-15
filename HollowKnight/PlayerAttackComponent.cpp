@@ -6,6 +6,7 @@
 #include "Grub.h"
 #include "Macro.h"
 #include"Game.h"
+#include"FxManager.h"
 
 PlayerAttackComponent::PlayerAttackComponent(Actor* _owner, const int _damages) : Component(_owner)
 {
@@ -36,7 +37,7 @@ void PlayerAttackComponent::SpecialAttack()
 			}
 			//_mob->GetLife()->SetLife(0);
 			//_mob->Death();
-			Game::GetPlayer()->GetStats()->UseMana(10.0f);
+			//Game::GetPlayer()->GetStats()->UseMana(10.0f);
 		}
 	}
 
@@ -86,8 +87,8 @@ void PlayerAttackComponent::UpAttack()
 	if (!canAttack) return;
 
 	const Vector2f& _ownerPosition = owner->GetShapePosition();
-	const vector<Mob*>& _mobs = RetrieveAllMobAbove<Mob>(_ownerPosition, 50.0f);
-	for (Mob* _mob : _mobs)
+	const vector<Enemy*>& _mobs = RetrieveAllMobAbove<Enemy>(_ownerPosition, 50.0f);
+	for (Enemy* _mob : _mobs)
 	{
 		if (!_mob) continue;
 
@@ -95,10 +96,10 @@ void PlayerAttackComponent::UpAttack()
 		{
 			//_mob->GetLife()->TakeDamages(GetDamages());
 			_mob->GetLife()->SetLife(0);
-			_mob->Death();
+			//_mob->Death();
 			Game::GetPlayer()->GetStats()->UseMana(10.0f);
 		}
 	}
-
-
+	FxManager::GetInstance().Run("FxHighAttack");
+	animation->GetCurrentAnimation()->RunAnimation("UpAttack", owner->GetDrawable()->getScale().x);
 }

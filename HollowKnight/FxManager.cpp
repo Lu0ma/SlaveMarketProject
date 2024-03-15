@@ -5,6 +5,7 @@
 
 #define PATH_FX "Animations/Fx.png"
 #define PATH_FX2 "Animations/Fx2.png"
+#define PATH_FX3 "Animations/Fx3.png"
 
 FxManager::FxManager()
 {
@@ -71,6 +72,14 @@ void FxManager::Run(const string& _runningAnimation)
 	{
 
 		Fx* _fx = new Fx("fx" + to_string(index), ShapeData(_pos + Vector2f(0.0f, -150.0f), Vector2f(200.0f, 350.0f), PATH_FX2));
+		FxData* _fxdata = new FxData(_fx, "");
+		_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, _direction);
+		_fx->Destroy(1.0f);
+	}
+	else if (_runningAnimation == "FxBroken")
+	{
+
+		Fx* _fx = new Fx("fx" + to_string(index), ShapeData(_pos + Vector2f(0.0f, 0.0f), Vector2f(500.0f, 300.0f), PATH_FX3));
 		FxData* _fxdata = new FxData(_fx, "");
 		_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, _direction);
 		_fx->Destroy(1.0f);

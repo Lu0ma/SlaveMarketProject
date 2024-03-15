@@ -181,8 +181,13 @@ void Player::SetupPlayerInput()
 			}
 		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 0) })),
 		ActionData("StopSlash", [&]() { movement->SetDirectionX(0.0f, "StopRight"); }, InputData({ ActionType::MouseButtonReleased, Mouse::Right })),
+		ActionData("UpAttack", [&]() {
+			
+			attack->UpAttack(); 
+			new Timer([&]() { Game::GetCamera()->GetShake()->Shake(2.0f, 800.0f); }, seconds(0.01), true, false);
+			}, InputData({ ActionType::KeyPressed, Keyboard::O })),
+		ActionData("Test", [&]() { FxManager::GetInstance().Run("FxBroken"); new Timer([&]() { Game::GetCamera()->GetShake()->Shake(2.0f, 800.0f); }, seconds(0.01), true, false); animation->GetCurrentAnimation()->RunAnimation("IsHitten", movement->GetDashDirection()); }, InputData({ActionType::MouseButtonPressed, Mouse::Middle})),
 		});
-
 	new ActionMap("Menu", {
 		ActionData("Pause", [&]() {
 			TryToOpen(pauseMenu);
