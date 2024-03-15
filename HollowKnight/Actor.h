@@ -37,9 +37,11 @@ public:
 
 protected:
 	virtual void Register() override;
+	
 private:
-	virtual void Init() {};
+
 public:
+	virtual void Init();
 	virtual void Update(const float _deltaTime);
 	void Destroy(const float _waitingTime = 0.0f);
 	void InitAnimations(const vector<AnimationData>& _animations);

@@ -1,5 +1,5 @@
 #include "MobMovementComponent.h"
-#include "MobLifeComponent.h"
+#include "EnemyLifeComponent.h"
 #include "AnimationComponent.h"
 #include "Actor.h"
 #include "Macro.h"
@@ -8,11 +8,11 @@
 void MobMovementComponent::SetDestination(const Vector2f& _destination, const bool _canMove)
 {
 	destination = _destination;
-	//cout << destination.x << " " << destination.y << endl;
 	canMove = _canMove;
 
 	Vector2f _newDirection = _destination - owner->GetShapePosition();
 	Normalize(_newDirection);
+
 	if (_newDirection.x != lastDirection.x)
 	{
 		canMove = false;
@@ -20,9 +20,9 @@ void MobMovementComponent::SetDestination(const Vector2f& _destination, const bo
 		owner->GetComponent<AnimationComponent>()->GetCurrentAnimation()->SetDirectionX(_newDirection.x);
 
 		new Timer([&]()
-			{
-				SetCanMove(true);
-			}, seconds(.75f), true, false);
+		{
+			SetCanMove(true);
+		}, seconds(0.75f), true, false);
 	}
 	else
 	{
@@ -44,6 +44,7 @@ MobMovementComponent::MobMovementComponent(Actor* _owner) : MovementComponent(_o
 	isOnGround = false;
 	checkGroundDistance = 1.7f;
 }
+
 
 void MobMovementComponent::MoveToDestination(const float _deltaTime)
 {
@@ -87,7 +88,7 @@ void MobMovementComponent::Update(const float _deltaTime)
 	Vector2f _direction = destination;
 	Normalize(_direction);
 
-	if (isOnGround && owner->GetComponent<MobLifeComponent>()->GetLife() <= 0)
+	if (isOnGround && owner->GetComponent<EnemyLifeComponent>()->GetLife() <= 0)
 	{
 		owner->GetComponent<AnimationComponent>()->GetCurrentAnimation()->StopLoopAnimation();
 		return;

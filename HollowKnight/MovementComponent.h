@@ -26,15 +26,12 @@ public:
 	{
 		speed = _speed;
 	}
-
 	void SetCanMove(const bool _status);
-
 	bool GetCanMove() const
 	{
 		return canMove;
 	}
-
-	const Vector2f& GetLastDirection()
+	Vector2f GetLastDirection() const
 	{
 		return lastDirection;
 	}

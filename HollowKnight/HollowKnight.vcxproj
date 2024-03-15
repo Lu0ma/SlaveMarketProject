@@ -204,7 +204,7 @@
     <ClCompile Include="MobAttackComponent.cpp" />
     <ClCompile Include="MobAttackState.cpp" />
     <ClCompile Include="MobBrain.cpp" />
-    <ClCompile Include="MobLifeComponent.cpp" />
+    <ClCompile Include="EnemyLifeComponent.cpp" />
     <ClCompile Include="MobMovementComponent.cpp" />
     <ClCompile Include="MobPatrolState.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
@@ -212,6 +212,7 @@
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OptionsMenu.cpp" />
+    <ClCompile Include="PatrolComponent.cpp" />
     <ClCompile Include="PatrolState.cpp" />
     <ClCompile Include="PatrolToAttack.cpp" />
     <ClCompile Include="PatrolToChase.cpp" />
@@ -327,7 +328,7 @@
     <ClInclude Include="MobAttackComponent.h" />
     <ClInclude Include="MobAttackState.h" />
     <ClInclude Include="MobBrain.h" />
-    <ClInclude Include="MobLifeComponent.h" />
+    <ClInclude Include="EnemyLifeComponent.h" />
     <ClInclude Include="MobMovementComponent.h" />
     <ClInclude Include="MobPatrolState.h" />
     <ClInclude Include="MovementComponent.h" />
@@ -335,6 +336,7 @@
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OptionsMenu.h" />
+    <ClInclude Include="PatrolComponent.h" />
     <ClInclude Include="PatrolState.h" />
     <ClInclude Include="PatrolToAttack.h" />
     <ClInclude Include="PatrolToChase.h" />

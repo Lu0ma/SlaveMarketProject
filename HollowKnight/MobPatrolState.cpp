@@ -11,5 +11,5 @@ MobPatrolState::MobPatrolState(Brain* _brain) : PatrolState(_brain)
 void MobPatrolState::Init()
 {
 	patrolToAttack->Init(dynamic_cast<MobBrain*>(brain)->GetAttackState());
-	patrolToDeath->Init(dynamic_cast<MobBrain*>(brain)->GetDeathState());
+	//patrolToDeath->Init(dynamic_cast<MobBrain*>(brain)->GetDeathState());
 }

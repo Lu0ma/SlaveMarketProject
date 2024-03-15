@@ -10,25 +10,25 @@ BossAttackState::BossAttackState(Brain* _brain) : AttackState(_brain)
 
 void BossAttackState::Init()
 {
-	attackToChase->Init(dynamic_cast<BossBrain*>(brain)->GetChaseState());
-	attackToDeath->Init(dynamic_cast<BossBrain*>(brain)->GetDeathState());
+	/*attackToChase->Init(dynamic_cast<BossBrain*>(brain)->GetChaseState());
+	attackToDeath->Init(dynamic_cast<BossBrain*>(brain)->GetDeathState());*/
 }
 
 void BossAttackState::Start()
 {
 	AttackState::Start();
 
-	movement->SetCanMove(false);
+	//patrol->SetCanMove(false);
 
-	animation->RunAnimation("Attack", animation->GetCurrentAnimation()->GetDirectionX());
+	//animation->RunAnimation("Attack", animation->GetCurrentAnimation()->GetDirectionX());
 
-	new Timer([&]()
-		{
-			if (inspect->GetHitInfo().actor)
-			{
-				Player* _player = dynamic_cast<Player*>(inspect->GetHitInfo().actor);
-				_player->GetStats()->UpdateLife(-1);
-				inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetLastDirection());
-			}
-		}, seconds(1.2f), true, false);
+	//new Timer([&]()
+	//{
+	//	if (inspect->GetHitInfo().actor)
+	//	{
+	//		Player* _player = dynamic_cast<Player*>(inspect->GetHitInfo().actor);
+	//		_player->GetStats()->UpdateLife(-1);
+	//		//inspect->HasTarget(brain->GetOwner()->GetShapePosition(), patrol->GetLastDirection());
+	//	}
+	//}, seconds(1.2f), true, false);
 }

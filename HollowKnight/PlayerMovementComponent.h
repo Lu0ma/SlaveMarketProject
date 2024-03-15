@@ -2,6 +2,7 @@
 #include "MovementComponent.h"
 #include "PlayerAnimationComponent.h"
 #include "SoundManager.h"
+
 class PlayerMovementComponent : public MovementComponent
 {
 	// Movement
@@ -42,10 +43,6 @@ class PlayerMovementComponent : public MovementComponent
 
 	// Components
 	PlayerAnimationComponent* animation;
-
-	//Actor* rayCastLineX;
-	Actor* rayCastLineY;
-	//Actor* triggerBox;
 
 public:
 	void SetDirectionX(const float _directionX, const string& _animName);

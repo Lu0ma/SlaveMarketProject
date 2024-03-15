@@ -49,11 +49,6 @@ public:
 		if (!shape) return Vector2f();
 		return shape->getPosition();
 	}
-	Vector2f GetShapePositionMiddle() const
-	{
-		if (!shape) return Vector2f();
-		return Vector2f(shape->getPosition().x, shape->getPosition().y);
-	}
 	Vector2f GetShapeSize() const
 	{
 		if (!shape) return Vector2f();

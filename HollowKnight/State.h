@@ -19,12 +19,6 @@ protected:
 	Brain* brain;
 	vector<Transition*> transitions;
 
-	AnimationComponent* animation;
-	MobMovementComponent* movement;
-	InspectComponent* inspect;
-
-	Timer* timerInspect;
-
 public:
 	Transition* GetNextTransition()
 	{
@@ -43,8 +37,4 @@ public:
 	virtual void Start() = 0;
 	virtual void Update(const float _deltaTime);
 	virtual void Stop() = 0;
-
-protected:
-	void InitTimerInspect();
 };
-

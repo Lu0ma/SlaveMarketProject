@@ -25,9 +25,19 @@ Actor::~Actor()
 	}
 }
 
+
 void Actor::Register()
 {
 	ActorManager::GetInstance().Add(id, this);
+}
+
+
+void Actor::Init()
+{
+	for (Component* _component : components)
+	{
+		_component->Init();
+	}
 }
 
 
@@ -37,7 +47,6 @@ void Actor::Update(const float _deltaTime)
 	{
 		_component->Update(_deltaTime);
 	}
-	
 }
 
 void Actor::Destroy(const float _waitingTime)
@@ -52,9 +61,9 @@ void Actor::InitAnimations(const vector<AnimationData>& _animations)
 	{
 		_animName.push_back(_anim.name);
 	}
+
 	animation->AddNames({
 		_animName,
-		});
+	});
 	animation->InitAnimations(_animations);
-
 }

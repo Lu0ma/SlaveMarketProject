@@ -26,6 +26,7 @@ class Player : public Actor
 	CircleShape* light;
 	SoundData* sound;
 	PlayerSoundData data;
+
 public:
 	void SetStatus(const bool _status)
 	{
@@ -60,5 +61,4 @@ public:
 	virtual void Init() override;
 	virtual void Update(const float _deltaTime) override;
 	void CloseAllMenus(const bool _restoreActions);
-
 };

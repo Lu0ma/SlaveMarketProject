@@ -18,7 +18,6 @@ class MobMovementComponent : public MovementComponent
 
 public:
 	void SetDestination(const Vector2f& _destination, const bool _canMove = true);
-
 	void SetCallback(const function<void()>& _callback)
 	{
 		callback = _callback;

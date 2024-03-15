@@ -1,13 +1,16 @@
 #pragma once
 #include "State.h"
 #include "AttackToDeath.h"
+#include "InspectComponent.h"
+#include "MobAttackComponent.h"
 
 class AttackState : public State
 {
-protected:
-	bool hasAttack;
-
 	AttackToDeath* attackToDeath;
+	InspectComponent* inspect;
+	MobAttackComponent* attack;
+protected:
+	AnimationComponent* animation;
 
 public:
 	AttackState(Brain* _brain);

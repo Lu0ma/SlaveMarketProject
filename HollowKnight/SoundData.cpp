@@ -36,6 +36,7 @@
 SoundData::SoundData(const string& _path, const float _volume, const bool _isLoop, const float _volumeMax,  const AudioType& _type) : IManagable(_path)
 {
 	Register();
+
 	setVolume(_volume);
 	volumeMax = _volumeMax;
 
@@ -44,7 +45,7 @@ SoundData::SoundData(const string& _path, const float _volume, const bool _isLoo
 		cerr << "Le son " << _path << " n'a pas été correctement chargé !" << endl;
 		return;
 	}
-	setBuffer(buffer); // Warning 
+	//setBuffer(buffer); // Warning 
 	// SoundManager::GetInstance().Play(_path , _isLoop);	// Warning
 }
 

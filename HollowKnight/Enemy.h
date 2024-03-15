@@ -1,6 +1,6 @@
 #pragma once
 #include "Actor.h"
-#include "MobLifeComponent.h"
+#include "EnemyLifeComponent.h"
 #include "EnemyBrain.h"
 
 enum EnemyType
@@ -21,23 +21,23 @@ enum BossType
 class Enemy : public Actor
 {
 protected:
-	EnemyBrain* brain;
-	MobLifeComponent* life;
 	bool isDead;
+	EnemyBrain* brain;
+	EnemyLifeComponent* life;
 
 public:
 	Enemy(const string& _name, const ShapeData& _data);
 
 public:
-	EnemyBrain* GetBrain()
+	EnemyBrain* GetBrain() const
 	{
 		return brain;
 	}
-	MobLifeComponent* GetLife()const
+	EnemyLifeComponent* GetLife() const
 	{
 		return life;
 	}
-	bool IsDead()
+	bool IsDead() const
 	{
 		return isDead;
 	}

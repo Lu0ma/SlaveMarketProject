@@ -9,12 +9,15 @@ using namespace sf;
 
 class InspectComponent : public Component
 {
-	HitInfo hitInfo;
+	bool hasTarget;
 	float viewRange;
-	Actor* raycast;
-	float factor;
+	HitInfo hitInfo;
 
 public:
+	bool HasTarget() const
+	{
+		return hasTarget;
+	}
 	HitInfo GetHitInfo() const
 	{
 		return hitInfo;
@@ -24,7 +27,5 @@ public:
 	InspectComponent(Actor* _owner, const float _viewRange);
 
 public:
-	bool HasTarget(const Vector2f& _position, Vector2f _destination);
-	bool IsInRange();
+	virtual void Update(const float _deltaTime) override;
 };
-
