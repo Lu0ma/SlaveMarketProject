@@ -95,11 +95,6 @@ platforms = [
  PlatformPosY = -955
  PlatformType = 0
 }
-{
- PlatformPosX = -1000
- PlatformPosY = 0
- PlatformType = 0
-}
 ]
 
 grounds = [
