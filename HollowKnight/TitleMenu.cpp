@@ -12,8 +12,8 @@ TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
 	options = new OptionsMenu(this);
 	achievement = new AchievementsMenu(this);
 	quitGame = new QuitGameMenu(this);
+	extras = new ExtrasMenu(this);
 }
-
 
 void TitleMenu::Init()
 {
@@ -60,9 +60,9 @@ void TitleMenu::Init()
 			new SoundData(SOUND_CONFIRM, 100, false);
 		}),
 		ButtonData("Extras", [&]() {
-			cout << "EXTRAS" << endl;
+			extras->SetStatus(true);
+			SetStatus(false);
 			new SoundData(SOUND_CONFIRM, 100, false);
-			//TODO easter
 		}),
 		ButtonData("Quit Game", [&]() {
 			quitGame->SetStatus(true);
