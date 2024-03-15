@@ -79,7 +79,7 @@ void FxManager::Run(const string& _runningAnimation)
 	else if (_runningAnimation == "FxBroken")
 	{
 
-		Fx* _fx = new Fx("fx" + to_string(index), ShapeData(_pos + Vector2f(0.0f, 0.0f), Vector2f(500.0f, 300.0f), PATH_FX3));
+		Fx* _fx = new Fx("fx" + to_string(index), ShapeData(_pos + Vector2f(0.0f, 0.0f), Vector2f(800.0f, 300.0f), PATH_FX3));
 		FxData* _fxdata = new FxData(_fx, "");
 		_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, _direction);
 		_fx->Destroy(1.0f);
