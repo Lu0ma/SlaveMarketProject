@@ -18,7 +18,7 @@ SoundData::SoundData(const string& _path, const float _volume, const bool _isLoo
 	}
 	setBuffer(buffer); // Warning
 
-	SoundManager::GetInstance().Play(_path , _isLoop);	// Warning
+	//SoundManager::GetInstance().Play(_path , _isLoop);	// Warning
 }
 
 SoundData::~SoundData()

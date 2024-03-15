@@ -90,7 +90,7 @@ PlayerMovementComponent::PlayerMovementComponent(Actor* _owner) : MovementCompon
 
 	// Components
 	animation = owner->GetComponent<PlayerAnimationComponent>();
-
+	sound = new PlayerSoundComponent(owner);
 	rayCastLineY = new Actor("raycastlineY", ShapeData(owner->GetShapePosition(), Vector2f(5.0f, checkGroundDistance) , ""));
 	rayCastLineY->GetDrawable()->setFillColor(Color::Blue);
 	rayCastLineY->GetComponent<CollisionComponent>()->GetBoxCollision()->GetDrawable()->setFillColor(Color::Transparent);
@@ -121,7 +121,6 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 		Game::GetCamera()->SetUpdate(false);
 		downSpeed = gravity;
 		canDoubleJump = true;
-
 	}
 	else
 	{
@@ -137,6 +136,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 	{
 		// Application de l'esquive
 		_offset = Vector2f(dashDirection * dashSpeed * _deltaTime, 0.0f);
+		sound->dash->Play();
 	}
 
 	else
@@ -145,6 +145,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 		if (!canDash && !isResetingDash)
 		{
 			isResetingDash = true;
+			sound->dash->stop();
 			new Timer([this]() {
 				canDash = true;
 				isResetingDash = false;
@@ -164,6 +165,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 			_offset = direction + Vector2f(0.0f, 1.0f * downSpeed);
 			Normalize(_offset);
 			_offset *= _deltaTime;
+			sound->footStep->stop();
 		}
 
 		// Si je suis en train de jump
@@ -193,6 +195,7 @@ void PlayerMovementComponent::Update(const float _deltaTime)
 
 void PlayerMovementComponent::Jump()
 {
+	
 	if (!canMove || !canDoubleJump) return;
 
 	if (!isOnGround && canDoubleJump)
@@ -200,15 +203,17 @@ void PlayerMovementComponent::Jump()
 		canDoubleJump = false;
 		currentJumpForce = jumpForce;
 		FxManager::GetInstance().Run("FxDoubleJump");
-		new SoundData(SOUND_WINGS, 100, false);
+		sound->footStep->stop();
+		sound->PlaySound(SOUND_JUMP ,true);
+	
 	}
 	if (canDoubleJump)
 	{
-		new SoundData(SOUND_JUMP, 100, false);
+		sound->footStep->stop();
 	}
 	isJumping = true;
 	animation->GetCurrentAnimation()->RunAnimation("Jump", dashDirection);
-
+	
 }
 
 void PlayerMovementComponent::Dash()

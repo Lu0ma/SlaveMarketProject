@@ -50,7 +50,7 @@ Player::Player(const string& _name, const ShapeData& _data) : Actor(_name, _data
 	stats = new PlayerStat(this);
 	charmsMenu = new CharmsMenu();
 	pauseMenu = new PauseMenu();
-	sound = new PlayerSoundComponenent(this);
+	sound = new PlayerSoundComponent(this);
 	//sound = new SoundData(SOUND_CHARGE_COMPLETE, 40.0f, false);
 }
 
@@ -119,6 +119,7 @@ void Player::SetupPlayerInput()
 			if (!movement->GetIsDashing())
 			{
 				movement->SetDirectionX(1.0f, "Right");
+			 	sound->footStep->pause();
 				sound->footStep->Play();
 			}
 		}, InputData({ActionType::KeyPressed, Keyboard::D})),
@@ -127,7 +128,7 @@ void Player::SetupPlayerInput()
 			if (!movement->GetIsDashing())
 			{
 				movement->SetDirectionX(-1.0f, "Left");
-				//new SoundData(SOUND_FOOTSTEP_GRASS_V2, 100, false);
+				sound->footStep->pause();
 				sound->footStep->Play();
 				//if()
 			}
@@ -144,11 +145,9 @@ void Player::SetupPlayerInput()
 				movement->Jump();
 			}
 		}, InputData({ ActionType::JoystickButtonPressed, Joystick::isButtonPressed(0, 1) })),
-		ActionData("Dash", [&]() { movement->Dash(); new SoundData(SOUND_DASH , 100 , false); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
+		ActionData("Dash", [&]() { movement->Dash(); sound->dash->Play(); }, InputData({ActionType::KeyPressed,Keyboard::LControl})),
 
-		ActionData("StopDash", [&]() { movement->SetDirectionX(0, "Right"); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
-
-		ActionData("StopDash", [&]() { movement->SetDirectionX(0, "StopDash"); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
+		ActionData("StopDash", [&]() { movement->SetDirectionX(0, "Right"); sound->dash->stop(); }, InputData({ ActionType::KeyReleased, Keyboard::LControl })),
 		ActionData("ControllerDash", [&]() {
 			if (Joystick::isButtonPressed(0, 7))
 			{
@@ -175,7 +174,7 @@ void Player::SetupPlayerInput()
 
 		ActionData("StopSpecial", [&]() {}, InputData({ActionType::MouseButtonReleased, Mouse::Right})),
 		ActionData("Special", [&]() { attack->SpecialAttack(); FxManager::GetInstance().Run("FxSpecial");/* Game::GetCamera()->GetShake()->Shake(2.0f, 2800.0f); ActorManager::GetInstance().SetStop(true);*/
-		new Timer([&]() {ActorManager::GetInstance().SetStop(false); }  , milliseconds(500)); new SoundData(SOUND_DAMAGE_V1, 100.0f, false); } , InputData({ActionType::MouseButtonPressed, Mouse::Right})),
+	new Timer([&]() {ActorManager::GetInstance().SetStop(false); }, milliseconds(500)); sound->attack->stop();  sound->attack->Play(); }, InputData({ ActionType::MouseButtonPressed, Mouse::Right })),
 		ActionData("StopSpecial", [&]() { }, InputData({ActionType::MouseButtonReleased, Mouse::Right})),
 
 		ActionData("ControllerSpecial", [&]() {
@@ -373,8 +372,8 @@ void Player::TryToOpen(Menu* _menu, const bool _restoreActions)
 
 	if (!_isActive)
 	{
-		SoundManager::GetInstance().Stop("bench rest");
-		new SoundData("boss gushing", 50.0f, false);
+		//SoundManager::GetInstance().Stop("bench rest");
+		//new SoundData("boss gushing", 50.0f, false);
 
 		movement->SetCanMove(false);
 		attack->SetCanAttack(false);
@@ -384,8 +383,8 @@ void Player::TryToOpen(Menu* _menu, const bool _restoreActions)
 
 	else
 	{
-		SoundManager::GetInstance().Stop("boss gushing");
-		new SoundData("bench rest", 50.0f, false);
+		//SoundManager::GetInstance().Stop("boss gushing");
+		//new SoundData("bench rest", 50.0f, false);
 	}
 }
 

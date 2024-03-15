@@ -9,18 +9,10 @@
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
 #include "CollisionComponent.h"
-#include "PlayerSound.h"
+#include "PlayerSoundComponent.h"
 using namespace std;
 
 
-struct PlayerSoundComponenent : public Component
-{
-	SoundData* footStep;
-	PlayerSoundComponenent(Actor* _owner) : Component(_owner)
-	{
-		footStep = new  SoundData(SOUND_FOOTSTEP_GRASS, 100, false);
-	}
-};
 class Player : public Actor
 {
 	PauseMenu* pauseMenu;
@@ -33,7 +25,7 @@ class Player : public Actor
 	InteractionComponent* interaction;
 	CircleShape* light;
 	// SoundData* sound;
-	PlayerSoundComponenent* sound;
+	PlayerSoundComponent* sound;
 	
 public:
 	void SetStatus(const bool _status)
