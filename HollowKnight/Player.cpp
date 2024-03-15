@@ -66,34 +66,26 @@ void Player::InitAnimations()
 void Player::SetupPlayerInput()
 {
 	new ActionMap("Stats", {
-			ActionData("ConvertManaToLife", [&]() {
-				if (movement->IsOnGround())
-				{
-					stats->UseMana(0.6f);
-					Game::GetCamera()->SetIsZoom(true);
-
-					movement->SetCanMove(false);
-					attack->SetCanAttack(false);
-				}
-			}, InputData({ ActionType::KeyPressed, Keyboard::A })),
-			ActionData("StopConvertManaToLife", [&]() {
-
-				movement->SetCanMove(true);
-				attack->SetCanAttack(true);
-
-				movement->SetDirectionX(0.0f, "StopRight");
-				Game::GetCamera()->SetIsZoom(false);
-
-			}, InputData({ActionType::KeyReleased, Keyboard::A})),
-		});
 		ActionData("ConvertManaToLife", [&]() {
-			stats->UseMana(-10.0f);
-			stats->UpdateLife(1);
-			FxManager::GetInstance().Run("FxMana");
-			Game::GetCamera()->SetIsZoom(true);
-		}, InputData({ActionType::KeyPressed,Keyboard::A})),
-		   ActionData("StopConvertManaToLife", [&]() {movement->SetDirectionX(0.0f, "StopRight"); Game::GetCamera()->SetIsZoom(false); sound->play(); }, InputData({ActionType::KeyReleased, Keyboard::A})),
-		});
+			if (movement->IsOnGround())
+			{
+				stats->UseMana(0.6f);
+				Game::GetCamera()->SetIsZoom(true);
+
+				movement->SetCanMove(false);
+				attack->SetCanAttack(false);
+			}
+		}, InputData({ ActionType::KeyPressed, Keyboard::A })),
+		ActionData("StopConvertManaToLife", [&]() {
+
+			movement->SetCanMove(true);
+			attack->SetCanAttack(true);
+
+			movement->SetDirectionX(0.0f, "StopRight");
+			Game::GetCamera()->SetIsZoom(false);
+
+		}, InputData({ActionType::KeyReleased, Keyboard::A})),
+	});
 
 	new ActionMap("Camera " , {
 		ActionData("StopConvertManaToLife", [&]() {
@@ -263,7 +255,6 @@ void Player::CloseAllMenus(const bool _restoreActions)
 		attack->SetCanAttack(true);
 	}
 }
-
 
 
 void Player::Init()
