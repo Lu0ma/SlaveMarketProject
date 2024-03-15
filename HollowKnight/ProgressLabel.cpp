@@ -16,7 +16,8 @@ void ProgressLabel::SetVisible(const bool _status)
 }
 
 ProgressLabel::ProgressLabel(const TextData& _data, const float _charDuration, const string& _text,
-							 const AligmentText& _aligement) : Label(_data, _aligement)
+							 const AligmentText& _aligement, const WidgetType& _type)
+							: Label(_data, _aligement, _type)
 {
 	charDuration = _charDuration;
 	text = _text;

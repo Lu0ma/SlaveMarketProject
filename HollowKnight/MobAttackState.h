@@ -11,5 +11,5 @@ public:
 
 public:
 	virtual void Init() override;
-
+	virtual void Start() override;
 };

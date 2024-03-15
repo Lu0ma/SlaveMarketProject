@@ -4,12 +4,23 @@
 #define PATH_ACHIEVEMENTS "UIs/Menus/Achievements/Achievement_"
 #define PATH_SCROLL "UIs/Menus/Achievements/ScrollBar/Scroll.png"
 
-AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achivements", _owner)
+AchievementsMenu::AchievementsMenu(Menu* _owner) : Menu("Achievements", _owner)
 {
 	handle = nullptr;
-	canvas = nullptr;
-	allData = vector<AchievementData>();
 	boxOfView = nullptr;
+	allData = vector<AchievementData>();
+}
+
+
+void AchievementsMenu::UpdateVisibility()
+{
+	for (Achievement* achievement : achievements)
+	{
+		const FloatRect& _boxBounds = boxOfView->GetDrawable()->getGlobalBounds();
+		const Vector2f& _widgetPos = achievement->widget->GetDrawable()->getPosition();
+		const bool _contains = _boxBounds.contains(_widgetPos);
+		achievement->SetVisible(_contains);
+	}
 }
 
 
@@ -91,13 +102,12 @@ void AchievementsMenu::Init()
 	const float _gapY = _iconSize.y * 0.25f;
 
 	const int _dataCount = (int)allData.size();
-	for (int _index = 0, _offset = 0; _index < _dataCount; _index++, _offset++)
+	for (int _index = 0; _index < _dataCount; _index++)
 	{
-		_offset %= 6; //TODO remove si on met plusieurs achivements
-		const AchievementData& _data = allData[_offset];
+		const AchievementData& _data = allData[_index];
 		const float _achievementPosY = _firstAchievementPosY + _iconSize.y * _index + _gapY * _index;
 
-		const string& _path = PATH_ACHIEVEMENTS + to_string(_offset + 1) + ".png";
+		const string& _path = PATH_ACHIEVEMENTS + to_string(_index + 1) + ".png";
 		ShapeWidget* _icon = new ShapeWidget(ShapeData(Vector2f(_iconPosX, _achievementPosY), _iconSize, _path));
 		canvas->AddWidget(_icon);
 
@@ -111,18 +121,6 @@ void AchievementsMenu::Init()
 		achievements.insert(achievements.begin(), _achievement);
 	}
 
-	int _index = 0;
-	for (Achievement* _achievement : achievements)
-	{
-		if (_index <= 3)
-		{
-			achievements[_index]->widget->SetVisible(false);
-			achievements[_index]->labels[0]->SetVisible(false);
-			achievements[_index]->labels[1]->SetVisible(false);
-		}
-		_index++;
-	}
-
 	#pragma endregion 
 
 	#pragma region ScrollBox
@@ -133,11 +131,9 @@ void AchievementsMenu::Init()
 	const float _windowOneThirdX = _windowSize.x / 1.35f;
 	const Vector2f& _scrollSize = Vector2f(30.0f, 60.0f);
 
-	handle = new ScrollBar(ShapeData(Vector2f(_windowOneThirdX, 225.0f), _scrollSize, PATH_SCROLL), 4, [&](bool _scrolltype) {ComputeScroll(allData, _scrolltype); });
+	handle = new ScrollBar(ShapeData(Vector2f(_windowOneThirdX, 225.0f), _scrollSize, PATH_SCROLL), 4, [&](bool _scrolltype) { ComputeScroll(allData, _scrolltype); });
 	canvas->AddWidget(handle->GetBar());
 	canvas->AddWidget(handle);
-	canvas->AddWidget(handle->GetButtonUp());
-	canvas->AddWidget(handle->GetButtonDown());
 
 	#pragma endregion
 
@@ -157,78 +153,32 @@ void AchievementsMenu::Init()
 	const float _buttonPosY = _windowSize.y * 0.9f;
 	const Vector2f& _buttonPos = Vector2f(_halfWindowX, _buttonPosY);
 
-	Button* _backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
-	_backButton->GetData().pressedCallback = [&]() {
+	backButton = new Button(ShapeData(_buttonPos, _buttonSize, ""));
+	backButton->GetData().pressedCallback = [&]() {
 		owner->SetStatus(true);
 		canvas->SetVisibilityStatus(false);
-		};
-	_backButton->GetDrawable()->setFillColor(Color::Transparent);
-	canvas->AddWidget(_backButton);
+	};
+	backButton->GetDrawable()->setFillColor(Color::Transparent);
+	canvas->AddWidget(backButton);
 
 	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
-	_backButton->SetForeground(_buttonText);
+	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
-	/*pointer = new ShapeWidget(ShapeData(Vector2f(_halfWindowX, _buttonPos.y), Vector2f(_buttonSize.x, _buttonSize.y), PATH_POINTER));
-	canvas->AddWidget(pointer);*/
+	Menu::Init();
+	MovePointers(backButton);
 
 	#pragma endregion
 }
 
 void AchievementsMenu::ComputeScroll(const vector<AchievementData>& _data, const bool _scrollType)
 {
+	firstElementIndexShown += _scrollType ? -1 : 1;
+
 	const int _dataSize = (int)_data.size();
 	for (int _index = 0; _index < _dataSize; _index++)
 	{
-		const int _baseIndex = handle->GetBaseIndex();
-
-		if (_scrollType)
-		{
-			achievements[_index]->widget->GetDrawable()->setPosition(
-				achievements[_index]->widget->GetDrawable()->getPosition().x,
-				achievements[_index]->widget->GetDrawable()->getPosition().y + 62.5f);
-
-			for (int _offset = 0; _offset < 2; _offset++)
-			{
-				achievements[_index]->labels[_offset]->GetDrawable()->setPosition(
-					achievements[_index]->labels[_offset]->GetDrawable()->getPosition().x,
-					achievements[_index]->labels[_offset]->GetDrawable()->getPosition().y + 62.5f);
-			}
-
-		}
-		else
-		{
-			achievements[_index]->widget->GetDrawable()->setPosition(
-				achievements[_index]->widget->GetDrawable()->getPosition().x,
-				achievements[_index]->widget->GetDrawable()->getPosition().y - 62.5f);
-
-			for (int _offset = 0; _offset < 2; _offset++)
-			{
-				achievements[_index]->labels[_offset]->GetDrawable()->setPosition(
-					achievements[_index]->labels[_offset]->GetDrawable()->getPosition().x,
-					achievements[_index]->labels[_offset]->GetDrawable()->getPosition().y - 62.5f);
-			}
-		}
-	}
-
-	for (int _index = 0; _index < _dataSize; _index++)
-	{
-		if (!boxOfView->GetDrawable()->getGlobalBounds().contains(achievements[_index]->widget->GetDrawable()->getPosition()))
-		{
-			achievements[_index]->SetVisible(false);
-			for (int _offset = 0; _offset < 2; _offset++)
-			{
-				achievements[_index]->labels[_offset]->SetVisible(false);
-			}
-		}
-		else
-		{
-			achievements[_index]->SetVisible(true);
-			for (int _offset = 0; _offset < 2; _offset++)
-			{
-				achievements[_index]->labels[_offset]->SetVisible(true);
-
-			}
-		}
+		achievements[_index]->Move(Vector2f(0.0f, _scrollType ? 62.5f : -62.5f));
+		UpdateVisibility();
 	}
 }

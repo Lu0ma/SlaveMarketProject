@@ -2,11 +2,17 @@
 #include "State.h"
 #include "ChaseToPatrol.h"
 #include "ChaseToAttack.h"
+#include "ChaseToDeath.h"
 
 class ChaseState : public State
 {
 	ChaseToPatrol* chaseToPatrol;
 	ChaseToAttack* chaseToAttack;
+	ChaseToDeath* chaseToDeath;
+
+private:
+	Timer* chaseTimer;
+	Timer* stopChaseTimer;
 
 public:
 	ChaseState(Brain* _brain);

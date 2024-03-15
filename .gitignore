@@ -33,3 +33,10 @@
 
 #CUSTOM
 *.ipcd
+*.ipch
+*.tlog
+*.idb
+*.pdb
+*.suo
+*.ilk
+*.log

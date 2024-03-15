@@ -94,10 +94,17 @@ public:
 	void Init();
 	void Update();
 	void UpdateWindow();
+	#pragma region Draws
+
+	void DrawWorldUIs();
+	void DrawMap();
+	void DrawActors();
+	void DrawUIs();
+
+	#pragma endregion
 	void Stop();
 
 public:
 	void Launch();
 	static void Close();
-
 };

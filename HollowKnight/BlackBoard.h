@@ -2,6 +2,7 @@
 
 struct BlackBoard
 {
-	bool hasTarget;
-	bool isInRange;
+	bool hasTarget = false;
+	bool isInRange = false;
+	bool isDead = false;
 };
