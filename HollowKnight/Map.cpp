@@ -12,6 +12,8 @@
 #include "Mob.h"
 #include "InteractableActor.h"
 #include "FalseKnight.h"
+#include "Game.h"
+
 
 #define PATH_BENCH "Map/Bench.png"
 #define PATH_STAND "/UIs/Shop/Stand.png"
@@ -22,12 +24,12 @@
 
 Map::Map()
 {
-	pnj = new PNJ(ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PNJ));
-	grub = new Grub(ShapeData(Vector2f(950.0f, 0.0f), Vector2f(75.0f, 100.0f), PATH_GRUB));
-	dragon = new Dragon(ShapeData(Vector2f(700.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
-	bench = new Bench(ShapeData(Vector2f(300.0f, 5.0f), Vector2f(176.0, 80.0f), PATH_BENCH));
-	merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_MERCHAND));
-	currentLevel = 2;
+	//pnj = new PNJ(ShapeData(Vector2f(150.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_PNJ));
+	//grub = new Grub(ShapeData(Vector2f(950.0f, 0.0f), Vector2f(75.0f, 100.0f), PATH_GRUB));
+	//dragon = new Dragon(ShapeData(Vector2f(700.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_DRAGON));
+	//bench = new Bench(ShapeData(Vector2f(300.0f, 5.0f), Vector2f(176.0, 80.0f), PATH_BENCH));
+	//merchand = new Merchand(ShapeData(Vector2f(500.0f, 0.0f), Vector2f(100.0f, 100.0f), PATH_MERCHAND));
+	currentLevel = 1;
 }
 
 Map::~Map()
@@ -43,6 +45,8 @@ MapData Map::LoadMapData(const string& _path)
 {
 	MapData _data;
 	const string& _symbol = " = ";
+
+	Game::GetPlayer()->SetShapePosition(Vector2f(100.0f, -2000.0f));
 
 #pragma region Background
 	_data.backgroundPath = GetStringAfterSymbol(GetLineByText("BackgroundPath", _path), _symbol);
@@ -63,6 +67,8 @@ MapData Map::LoadMapData(const string& _path)
 	const float _clampCamMaxX = stof(GetStringAfterSymbol(GetLineByText("ClampCamMaxX", _path), _symbol));
 	const float _clampCamMaxY = stof(GetStringAfterSymbol(GetLineByText("ClampCamMaxY", _path), _symbol));
 	_data.clampCamMax = Vector2f(_bgPosX, _bgPosY);
+
+	
 
 #pragma endregion
 
@@ -305,24 +311,27 @@ void Map::InitPlatforms()
 void Map::Init()
 {
 	MapData _mapdata = LoadMapData(GetLevelFromIndex(currentLevel));
-	bench->Init();
-	merchand->Init();
-	pnj->Init();
-	// "Levels/Environment_GROUND.png"
+	//bench->Init();
+	//merchand->	Init();
+	//pnj->Init();
+
+
+
+	// BACKGROUND LOAD
 	ShapeObject* _background = new ShapeObject(ShapeData(_mapdata.backgroundPos + Vector2f(0, -_mapdata.backgroundSize.y + 220), _mapdata.backgroundSize, _mapdata.backgroundPath));
 	_background->GetDrawable()->setOrigin(0.0f, 0.0f);
 	drawables.push_back(_background);
 
-	//TODO move
-	ShapeObject* _barrack = new ShapeObject(ShapeData(Vector2f(1915.0f, -SCREEN_HEIGHT - 100.0f + 20.0f), Vector2f(3613.0f, 908.0f), "Levels/Environment.png"));
-	_barrack->GetDrawable()->setOrigin(0.0f, 0.0f);
-	drawables.push_back(_barrack);
+	////TODO move
+	//ShapeObject* _barrack = new ShapeObject(ShapeData(Vector2f(1915.0f, -SCREEN_HEIGHT - 100.0f + 20.0f), Vector2f(3613.0f, 908.0f), "Levels/Environment.png"));
+	//_barrack->GetDrawable()->setOrigin(0.0f, 0.0f);
+	//drawables.push_back(_barrack);
 
-	//TODO move
-	ShapeObject* _arena = new ShapeObject(ShapeData(Vector2f(3721.5f, -SCREEN_HEIGHT - 200.0f + 20.0f), Vector2f(1920.0f, 1080.0f), "Levels/Arena.jpg"));
-	_arena->GetDrawable()->setOrigin(0.0f, 0.0f);
-	drawables.push_back(_arena);
+	////TODO move ARRENE
+	//ShapeObject* _arena = new ShapeObject(ShapeData(Vector2f(3721.5f, -SCREEN_HEIGHT - 200.0f + 20.0f), Vector2f(1920.0f, 1080.0f), "Levels/Arena.jpg"));
+	//_arena->GetDrawable()->setOrigin(0.0f, 0.0f);
+	//drawables.push_back(_arena);
 
-	Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(250.0f, 250.0f), "Lift.png"));
-	lifts.push_back(_lift);
+	/*Lift* _lift = new Lift(ShapeData(Vector2f(-350.0f, 500.0f), Vector2f(250.0f, 250.0f), "Lift.png"));
+	lifts.push_back(_lift);*/
 }

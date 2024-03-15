@@ -24,8 +24,8 @@ Camera::Camera() : Actor("Camera" , ShapeData())
 	defaultSize = view.getSize();
 
 	view = View();
+	view.zoom(-1.01f);
 
-	// view.zoom(5.0f);
 	isDown = false;
 	isZoom = false;
 	isUp = false;
