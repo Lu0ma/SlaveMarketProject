@@ -88,7 +88,7 @@ void Camera::Update(const float _deltaTime)
 	}
 	else
 	{
-		targetPosition = Vector2f(Vector2f(_player->GetShapePosition().x , 0.0f) + Vector2f(_offsetX, canUpdate ? view.getCenter().y : _player->GetShapePosition().y));
+		targetPosition = Vector2f(Vector2f(_player->GetShapePosition().x , 0.0f) + Vector2f(_offsetX, canUpdate ? view.getCenter().y : _player->GetShapePosition().y * _deltaTime));
 		ShakeActor(_deltaTime);
 	}
 	MoveToTarget(_deltaTime);
