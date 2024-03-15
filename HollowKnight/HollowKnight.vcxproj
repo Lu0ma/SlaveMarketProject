@@ -164,6 +164,7 @@
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ControllerMenu.cpp" />
+    <ClCompile Include="CreditsMenu.cpp" />
     <ClCompile Include="DeathMob.cpp" />
     <ClCompile Include="DeathState.cpp" />
     <ClCompile Include="Dragon.cpp" />
@@ -284,6 +285,7 @@
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ControllerMenu.h" />
+    <ClInclude Include="CreditsMenu.h" />
     <ClInclude Include="DeathMob.h" />
     <ClInclude Include="DeathState.h" />
     <ClInclude Include="Dragon.h" />

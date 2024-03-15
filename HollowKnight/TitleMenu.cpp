@@ -12,6 +12,7 @@ TitleMenu::TitleMenu(Menu* _owner) : Menu("TitleMenu", _owner)
 	options = new OptionsMenu(this);
 	achievement = new AchievementsMenu(this);
 	quitGame = new QuitGameMenu(this);
+	extras = new ExtrasMenu(this);
 }
 
 
@@ -57,7 +58,9 @@ void TitleMenu::Init()
 			SetStatus(false);
 		}),
 		ButtonData("Extras", [&]() {
-			cout << "EXTRAS" << endl;
+			extras->SetStatus(true);
+			SetStatus(false);
+			//cout << "EXTRAS" << endl;
 			//TODO easter
 		}),
 		ButtonData("Quit Game", [&]() {
