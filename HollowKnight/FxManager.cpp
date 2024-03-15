@@ -14,7 +14,7 @@ FxManager::FxManager()
 void FxManager::Run(const string& _runningAnimation)
 {
  	index++;
-	Vector2f _pos = Game::GetPlayer()->GetPosition();
+	Vector2f _pos = Game::GetPlayer()->GetShapePosition();
 	float _direction = Game::GetPlayer()->GetPlayerMovement()->GetDashDirection();
 
 	if (_runningAnimation == "FxDash")

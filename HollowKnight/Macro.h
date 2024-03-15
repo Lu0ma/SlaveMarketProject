@@ -114,14 +114,14 @@ vector<Class*> RetrieveAllMobAbove(const Vector2f& _position, const float _radiu
 
 	for (Actor* _actor : _actors)
 	{
-		if (_actor->GetPosition().y > _position.y)
+		if (_actor->GetShapePosition().y > _position.y)
 		{
 			continue;
 		}
 		
 		// distance entre l'acteur et le joueur
-		float _dx = _actor->GetPosition().x - _position.x;
-		float _dy = _actor->GetPosition().y - _position.y;
+		float _dx = _actor->GetShapePosition().x - _position.x;
+		float _dy = _actor->GetShapePosition().y - _position.y;
 		float _squareDistance = _dx * _dx + _dy * _dy;
 
 		// si les acteurs sont à l'interieur du cercle

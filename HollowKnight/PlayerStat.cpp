@@ -164,17 +164,14 @@ void PlayerStat::Death()
 	}
 
 
+	Player* _player = Game::GetPlayer();
+	Vector2f _lastPos = _player->GetShapePosition();
 	
 
 	DeathMob* _deathMob = new DeathMob("Death" + to_string(numberOfDeath), ShapeData(_lastPos, Vector2f(100.0f, 100.0f), PATH_DEATHMOB));
 	_deathMob->Init();
 
 	_player->GetAnimation()->GetCurrentAnimation()->RunAnimation("Death", 1);
-
-
-	Player* _player = Game::GetPlayer();
-	Vector2f _lastPos = _player->GetShapePosition();
-	
 
 	Vector2f _benchPos = Game::GetMap()->GetBench()->GetShapePosition();
 	_player->SetShapePosition(_benchPos);
