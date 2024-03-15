@@ -189,7 +189,7 @@ void AudioMenu::Init()
 		_buttonPlus->GetData().pressedCallback = _audioButtonsData[_i].plusButton.callback;
 		canvas->AddWidget(_buttonPlus);
 
-		Label* _title = new Label(TextData(_audioButtonsData[_i].title, Vector2f(_halfWindowX / 1.25f, _buttonPos.y - 10.0f), FONT, 35));
+		Label* _title = new Label(TextData(_audioButtonsData[_i].title, Vector2f(_halfWindowX / 1.25f, _buttonPos.y - 10.0f), FONT, 30));
 		canvas->AddWidget(_title);
 
 		const float _volumeBarPosX = _buttonPos.x + 100.0f;
@@ -229,7 +229,7 @@ void AudioMenu::Init()
 	backButton->GetDrawable()->setFillColor(Color::Transparent);
 	canvas->AddWidget(backButton);
 
-	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 35));
+	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 30));
 
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);

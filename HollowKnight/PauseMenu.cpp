@@ -59,7 +59,7 @@ void PauseMenu::Init()
 
 	const Vector2f& _buttonSize = Vector2f(100.0f, 50.0f);
 	const float _gridPosY = _windowSize.y * 0.42f;
-	const float _gapY = 0.0f;
+	const float _gapY = 25.0f;
 
 	const int _buttonsCount = (int)_allData.size();
 	for (int _index = 0; _index < _buttonsCount; _index++)
@@ -79,7 +79,7 @@ void PauseMenu::Init()
 		buttons.push_back(_button);
 		canvas->AddWidget(_button);
 
-		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 22));
+		Label* _title = new Label(TextData(_allData[_index].text, Vector2f(_halfWindowX, _buttonPos.y), FONT, 30));
 		_button->SetForeground(_title);
 		canvas->AddWidget(_title);
 	}

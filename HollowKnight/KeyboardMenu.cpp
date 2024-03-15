@@ -56,7 +56,7 @@ void KeyboardMenu::Init()
 	backButton->GetDrawable()->setFillColor(Color::Transparent);
 	canvas->AddWidget(backButton);
 
-	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 20));
+	Label* _buttonText = new Label(TextData("BACK", Vector2f(_halfWindowX, _buttonPos.y), FONT, 30));
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 

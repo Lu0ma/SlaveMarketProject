@@ -39,7 +39,7 @@ void BrightnessMenu::Init()
 	#pragma region Description
 
 	const float _descriptionPosY = _imageSize.y * 0.5f + _imagePosY + 50.0f;
-	Label* _description = new Label(TextData("Adjust brightness to your desired level.", Vector2f(_halfWindowX, _descriptionPosY), FONT, 35));
+	Label* _description = new Label(TextData("Adjust brightness to your desired level.", Vector2f(_halfWindowX, _descriptionPosY), FONT, 30));
 	canvas->AddWidget(_description);
 
 	#pragma endregion
@@ -53,16 +53,16 @@ void BrightnessMenu::Init()
 	brightButton->GetData().hoveredCallback = [&]()
 	{
 		ShapeObject* _object = brightButton->GetObject();
-		const Vector2f& _position = brightButton->GetShapePosition() - Vector2f(30.0f, 0.0f);
+		const Vector2f& _position = brightButton->GetShapePosition() - Vector2f(25.0f, 0.0f);
 		const float _halfSizeX = _object->GetShapeSize().x * 0.43f;
 		const Vector2f& _offsetX = Vector2f(_halfSizeX, 0.0f);
-		const Vector2f& _offsetY = Vector2f(0.0f, 2.0f);
-		pointerLeft->SetShapePosition(_position - _offsetX - _offsetY);
-		pointerRight->SetShapePosition(_position + (_offsetX * 0.85f) - _offsetY);
+		const Vector2f& _offsetY = Vector2f(0.0f, 0.0f);
+		pointerLeft->SetShapePosition(_position - _offsetX + _offsetY);
+		pointerRight->SetShapePosition(_position + (_offsetX * 0.85f) + _offsetY);
 	};
 	canvas->AddWidget(brightButton);
 
-	Label* _title = new Label(TextData("Brightness", Vector2f(_halfWindowX / 1.25f, _buttonPosY - 10.0f), FONT, 35));
+	Label* _title = new Label(TextData("Brightness", Vector2f(_halfWindowX / 1.25f, _buttonPosY - 10.0f), FONT, 30));
 	canvas->AddWidget(_title);
 
 	const Vector2f& _littleButtonSize = Vector2f(25.0f, 25.0f);
@@ -119,7 +119,7 @@ void BrightnessMenu::Init()
 	backButton->GetDrawable()->setFillColor(Color::Transparent);
 	canvas->AddWidget(backButton);
 
-	Label* _buttonText = new Label(TextData("DONE", Vector2f(_halfWindowX, _backButtonPosY), FONT, 35));
+	Label* _buttonText = new Label(TextData("DONE", Vector2f(_halfWindowX, _backButtonPosY), FONT, 30));
 	backButton->SetForeground(_buttonText);
 	canvas->AddWidget(_buttonText);
 
