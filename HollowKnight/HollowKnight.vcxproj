@@ -265,6 +265,7 @@
     <ClInclude Include="BossAttackState.h" />
     <ClInclude Include="BossBrain.h" />
     <ClInclude Include="BossPatrolState.h" />
+    <ClInclude Include="BossSound.h" />
     <ClInclude Include="Brain.h" />
     <ClInclude Include="BrightnessMenu.h" />
     <ClInclude Include="Button.h" />

@@ -1016,6 +1016,9 @@
     <ClInclude Include="PlayerSoundData.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="BossSound.h">
+      <Filter>Objects\ShapeObjects\Actors\Enemies\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Assets\Levels\SubLevel_1.txt" />

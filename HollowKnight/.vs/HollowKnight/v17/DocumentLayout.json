@@ -3,36 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\SoundData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:SoundData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\BossSound.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:BossSound.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\PlayerSoundData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:PlayerSoundData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\PlayerSoundData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:PlayerSoundData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\PlayerSoundData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:PlayerSoundData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\SoundData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:SoundData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\SoundData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:SoundData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\PlayerSoundData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|solutionrelative:PlayerSoundData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FDBB214F-0E84-4862-BE9A-73826C5CA963}|HollowKnight.vcxproj|C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\ActionMap.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -45,25 +49,25 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 135,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 141,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Player.h",
               "DocumentMoniker": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Player.h",
               "RelativeDocumentMoniker": "Player.h",
               "ToolTip": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Player.h",
               "RelativeToolTip": "Player.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAQAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAABEAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-14T20:03:54.212Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "SoundData.h",
               "DocumentMoniker": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\SoundData.h",
               "RelativeDocumentMoniker": "SoundData.h",
@@ -76,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Camera.h",
               "DocumentMoniker": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Camera.h",
               "RelativeDocumentMoniker": "Camera.h",
@@ -89,7 +93,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "PlayerSoundData.h",
               "DocumentMoniker": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\PlayerSoundData.h",
               "RelativeDocumentMoniker": "PlayerSoundData.h",
@@ -102,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ActionMap.cpp",
               "DocumentMoniker": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\ActionMap.cpp",
               "RelativeDocumentMoniker": "ActionMap.cpp",
@@ -110,31 +114,43 @@
               "RelativeToolTip": "ActionMap.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-14T19:57:47.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-14T19:57:47.475Z"
             }
           ]
         },
         {
-          "DockedWidth": 265,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 259,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "BossSound.h",
+              "DocumentMoniker": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\BossSound.h",
+              "RelativeDocumentMoniker": "BossSound.h",
+              "ToolTip": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\BossSound.h",
+              "RelativeToolTip": "BossSound.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-14T21:16:26.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Camera.cpp",
               "DocumentMoniker": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Camera.cpp",
               "RelativeDocumentMoniker": "Camera.cpp",
               "ToolTip": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Camera.cpp",
               "RelativeToolTip": "Camera.cpp",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAAAGAAAAAAAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAAFwAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-14T20:26:06.926Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "SoundData.cpp",
               "DocumentMoniker": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\SoundData.cpp",
               "RelativeDocumentMoniker": "SoundData.cpp",
@@ -160,13 +176,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Player.cpp",
               "RelativeDocumentMoniker": "Player.cpp",
               "ToolTip": "C:\\Users\\kaiss\\Documents\\GitHub\\SlaveMarketProject\\HollowKnight\\Player.cpp",
               "RelativeToolTip": "Player.cpp",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAkwEoAAADGAAAA",
+              "ViewState": "AQIAADsAAAAAAAAAAAAkwEoAAADGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-14T20:00:28.305Z",
               "EditorCaption": ""
