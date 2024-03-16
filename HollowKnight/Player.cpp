@@ -81,6 +81,7 @@ void Player::SetupPlayerInput()
 			attack->SetCanAttack(true);
 
 			movement->SetDirectionX(0.0f, "StopRight");
+			animation->GetCurrentAnimation()->RunAnimation("StopRight", movement->GetDashDirection());//
 			Game::GetCamera()->SetIsZoom(false);
 
 		}, InputData({ActionType::KeyReleased, Keyboard::A})),

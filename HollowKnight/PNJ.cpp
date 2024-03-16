@@ -21,7 +21,7 @@ PNJ::PNJ(const ShapeData& _data) : InteractableActor(STRING_ID("PNJ"), _data)
 		});*/
 
 	InitAnimations({
-		AnimationData("Stand", Vector2f(0.0f, 12.0f), _sizeStand, READ_RIGHT, true, 6, _speed),
+		AnimationData("Stand", Vector2f(0.0f, 12.0f), _sizeStand, READ_RIGHT, true, 6, 0.4f),
 		AnimationData("Talk", Vector2f(0.0f, 100.0f), _sizeTalk, READ_RIGHT, true, 6, _speed),
 		});
 }

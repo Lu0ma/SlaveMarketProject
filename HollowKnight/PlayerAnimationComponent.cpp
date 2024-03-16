@@ -31,8 +31,8 @@ void PlayerAnimationComponent::Init()
 	const float _speed = 0.1f;
 
 	animation->InitAnimations({
-		AnimationData("Right", Vector2f(80.0f, 33.0f), _size, READ_RIGHT, true, 3, _speed),
 		AnimationData("StopRight", Vector2f(0.0f, 33.0f), _size, READ_RIGHT, true, 1, _speed), //TODO put FIRST
+		AnimationData("Right", Vector2f(80.0f, 33.0f), _size, READ_RIGHT, true, 3, _speed),
 		AnimationData("Left", Vector2f(80.0f, 33.0f), _size, READ_RIGHT, true, 3, _speed),
 		AnimationData("StopLeft", Vector2f(0.0f, 33.0f), _size, READ_RIGHT, true, 1, _speed),
 		AnimationData("Jump", Vector2f(0.0f, 753.0f), Vector2f(79.0f, 71.0f), READ_RIGHT, false, 9, 0.03f, "StopRight"),
