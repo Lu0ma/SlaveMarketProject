@@ -15,9 +15,11 @@ class SoundData : public Sound, public IManagable<string>
 	SoundBuffer buffer;
 public:
 	SoundData(const string& _path, const float _volume,  const bool _isLoop , const float _volumeMax = 100.0f, const AudioType& _type = WAV);
-
+	~SoundData();
 public:
 	virtual void Register() override;
 	void AdjustVolume(const float _percent);
 	void GetSound(const string& _sound);
+	float DurationTime();
+	void Play();
 };

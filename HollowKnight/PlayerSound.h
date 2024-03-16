@@ -5,14 +5,23 @@
 #define SOUND_FOOTSTEP_METAL "Knight/hero_run_footsteps_metal"
 #define SOUND_FOOTSTEP_STONE "Knight/hero_run_footsteps_stone" 
 #define SOUND_FOOTSTEP_BONE  "Knight/hero_run_footsteps_bones"
+#define SOUND_FOOTSTEP_GRASS_V2 "Knight/grass_move_2"
 #pragma endregion
 
 #pragma region TAKE DAMAGE
-#define SOUND_DAMAGE_V1 "Knight/hero_damage"
-#define SOUND_DAMAGE_V2 "Knight/hero_damage_02"
+#define SOUND_TAKE_DAMAGE_V1 "Knight/hero_damage"
+#define SOUND_TAKE_DAMAGE_V2 "Knight/hero_damage_02"
 #define SOUND_DAMAGE_LESS_HARSH_V1 "Knight/hero_damage_less_harsh"
 #define SOUND_DAMAGE_LESS_HARSH_V2 "Knight/hero_damage_less_harsh_02"
 #define SOUND_DAMAGE_DOUBLE "Knight/hero_double_damage"
+#pragma endregion
+
+#pragma region DAMAGE
+#define SOUND_DAMAGE_V1 "Knight/sword_1"
+#define SOUND_DAMAGE_V2 "Knight/sword_2"
+#define SOUND_DAMAGE_V3 "Knight/sword_3"
+#define SOUND_DAMAGE_V4 "Knight/sword_4"
+#define SOUND_DAMAGE_V5 "Knight/sword_5"
 #pragma endregion
 
 #pragma region JUMP

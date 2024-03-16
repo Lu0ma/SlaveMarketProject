@@ -2,10 +2,12 @@
 #include "BossBrain.h"
 #include "Player.h"
 
+
 BossAttackState::BossAttackState(Brain* _brain) : AttackState(_brain)
 {
 	attackToChase = new AttackToChase(_brain->GetBlackBoard());
 	transitions.push_back(attackToChase);
+	sound = new BossSoundComponent(_brain->GetOwner());
 }
 
 void BossAttackState::Init()
@@ -31,4 +33,17 @@ void BossAttackState::Start()
 	//		//inspect->HasTarget(brain->GetOwner()->GetShapePosition(), patrol->GetLastDirection());
 	//	}
 	//}, seconds(1.2f), true, false);
+
+	//animation->RunAnimation("Attack", animation->GetCurrentAnimation()->GetDirectionX());
+	//sound->PlaySound(SOUND_STRIKE_GROUND_BOSS, true);
+	//new Timer([&]()
+	//	{
+	//		if (inspect->GetHitInfo().actor)
+	//		{
+	//			Player* _player = dynamic_cast<Player*>(inspect->GetHitInfo().actor);
+	//			_player->GetStats()->UpdateLife(-1);
+	//			inspect->HasTarget(brain->GetOwner()->GetShapePosition(), movement->GetLastDirection());
+	//		}
+	//	}, seconds(1.2f), true, false);
+
 }

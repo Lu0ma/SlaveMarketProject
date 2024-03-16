@@ -50,7 +50,7 @@
 //}
 
 #include "SoundManager.h"
-
+#include "SoundData.h"
 SoundManager::SoundManager()
 {
 	isMuted = false;
@@ -63,13 +63,14 @@ void SoundManager::Play(const string& _path,const bool _isloop , const Direction
 {
 	if (SoundData* _soundData = Get(_path))
 	{
+		//if (_soundData->getStatus() == Playing) return;
 		_soundData->setPosition(Vector3f(_settings.position.x, _settings.position.y, 0.0f));
 		_soundData->setRelativeToListener(_settings.attenuationSpeed == 0.0f);
 		_soundData->setAttenuation(_settings.attenuationSpeed);
 		_soundData->setMinDistance(_settings.minDistance);
 		_soundData->setVolume(volume);
 		_soundData->setLoop(_isloop);
-		_soundData->play();
+		_soundData->Play();
 	}
 }
 

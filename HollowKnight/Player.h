@@ -9,9 +9,9 @@
 #include "PlayerAnimationComponent.h"
 #include "InteractionComponent.h"
 #include "CollisionComponent.h"
-#include "PlayerSoundData.h"
-
+#include "PlayerSoundComponent.h"
 using namespace std;
+
 
 class Player : public Actor
 {
@@ -25,8 +25,10 @@ class Player : public Actor
 	InteractionComponent* interaction;
 	CircleShape* light;
 	SoundData* sound;
-	PlayerSoundData data;
 
+
+	// SoundData* sound;
+	PlayerSoundComponent* sound;
 public:
 	void SetStatus(const bool _status)
 	{

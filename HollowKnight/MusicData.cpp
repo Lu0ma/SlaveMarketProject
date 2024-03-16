@@ -27,6 +27,7 @@ void MusicData::Register()
 
 void MusicData::Play()
 {
+	if (getStatus() == Playing) return;
 	play();
 }
 
