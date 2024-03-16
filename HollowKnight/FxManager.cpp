@@ -84,6 +84,13 @@ void FxManager::Run(const string& _runningAnimation)
 		_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, _direction);
 		_fx->Destroy(1.0f);
 	}
+	else if (_runningAnimation == "FxSpecial")
+	{
+		Fx* _fx = new Fx("fx" + to_string(index), ShapeData(_pos, Vector2f(350.0f, 250.0f), PATH_FX));
+		FxData* _fxdata = new FxData(_fx, "");
+		_fxdata->GetCurrentAnimation()->RunAnimation(_runningAnimation, -_direction);
+		_fx->Destroy(0.5f);
+	}
 	else
 	{
 		Fx* _fx = new Fx("fx" + to_string(index), ShapeData(_pos, Vector2f(250.0f, 250.0f), PATH_FX));
